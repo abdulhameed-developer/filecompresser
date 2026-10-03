@@ -56,6 +56,12 @@ const SECTIONS = [
       'These terms may be updated as the site changes. The date at the top of this page reflects the most recent revision.',
     ],
   },
+  {
+    heading: 'About this document',
+    body: [
+      'These terms were written for this specific service rather than copied from a template, but they have not been reviewed by a qualified lawyer. They are written in plain English and describe what actually happens when you use the site. If you need terms you can rely on for a commercial arrangement, have a lawyer review these before you rely on them.',
+    ],
+  },
 ]
 
 export default function TermsPage() {

@@ -1,0 +1,93 @@
+name: Deploy
+
+# Runs only after CI passes on main, and deploys the exact artefact CI verified.
+#
+# Two properties this file is built around:
+#   1. The build is produced once and promoted. Nothing is rebuilt at deploy
+#      time, so what ships is byte-for-byte what passed the audits.
+#   2. It refuses to deploy QA fixtures. `verify.sh` cleans up after itself,
+#      and this is the second, independent check.
+#
+# Configure the target in the repository settings -> Environments, or add
+# DEPLOY_PROVIDER secrets. Until then this job validates the artefact and
+# stops, rather than pretending to have deployed something.
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    branches: [main]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Verify and deploy
+    # Only after a green CI run, never on a red one.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: production
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build the production artefact
+        run: npm run build
+
+      - name: Refuse to ship QA fixtures
+        run: |
+          if ls public/*.gif public/*.wav public/*.pdf public/*.zip >/dev/null 2>&1; then
+            echo "::error::QA fixtures are in public/ — refusing to deploy"
+            ls -la public/
+            exit 1
+          fi
+
+      - name: Record what is being shipped
+        run: |
+          {
+            echo "Build ID: $(cat .next/BUILD_ID)"
+            echo "Built:    $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "Commit:   ${{ github.sha }}"
+            echo "public/:  $(ls public | tr '\n' ' ')"
+          } | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload the deployable artefact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-${{ github.sha }}
+          path: |
+            .next
+            public
+            package.json
+            package-lock.json
+            next.config.mjs
+          retention-days: 30
+
+      - name: Deploy
+        if: ${{ env.DEPLOY_COMMAND != '' }}
+        run: ${{ env.DEPLOY_COMMAND }}
+        env:
+          DEPLOY_COMMAND: ${{ vars.DEPLOY_COMMAND }}
+          SITE_URL: ${{ vars.SITE_URL }}
+
+      - name: Deployment not configured
+        if: ${{ vars.DEPLOY_COMMAND == '' }}
+        run: |
+          echo "::notice title=Deploy not configured::"
+          echo "The artefact was built and verified but no deploy target is set."
+          echo "Add a repository variable DEPLOY_COMMAND (or wire a host provider)"
+          echo "to make this job publish. The build output is attached as an"
+          echo "artefact named site-<sha>."
+          echo "Target: ${{ vars.SITE_URL }}"

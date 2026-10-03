@@ -1,0 +1,99 @@
+name: CI
+
+# Every check the project actually relies on runs here, in one place:
+#   lint, typecheck, unit tests, dependency audit, production build, then the
+#   browser-driven audits (route crawl, navigation, responsive, role/a11y).
+#
+# The browser audits are the point of this file. They are what caught the
+# scroll-position regression, the off-centre sections, the overflowing tools
+# dropdown, the contrast failures and the closed-<details> bug — none of which
+# lint or unit tests can see.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Cancel an in-flight run for the same branch when a newer commit lands.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Build and verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        # `npm ci` fails if package-lock.json is out of sync with package.json,
+        # which is exactly the drift this is meant to catch.
+        run: npm ci
+
+      - name: Lint, typecheck, test, audit, build
+        run: |
+          npm run lint
+          npx tsc --noEmit
+          npm test
+          npm audit --omit=dev
+          npm run build
+
+      # The audits drive a real browser against a real production build, so they
+      # need Chrome. Playwright is installed outside the project on purpose: it
+      # is QA tooling, not something the site ships.
+      - name: Install Playwright for the audits
+        run: |
+          mkdir -p "$HOME/pwtools"
+          cd "$HOME/pwtools"
+          npm init -y >/dev/null 2>&1 || true
+          npm install playwright-core@1.63.0 omggif
+
+      - name: Set up Chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+
+      - name: Generate QA fixtures
+        # Kept out of public/ by default; copied in only for the run, and the
+        # cleanup step below removes them before anything can be deployed.
+        run: |
+          export PW_TOOLS=/home/runner/pwtools
+          node scripts/make-gif.mjs
+          COPY_TO_PUBLIC=1 node scripts/make-fixtures.mjs
+
+      - name: Build and run the audits
+        run: bash scripts/verify.sh
+        env:
+          PW_TOOLS: /home/runner/pwtools
+
+      - name: Confirm no QA fixtures reached public/
+        run: |
+          if ls public/*.gif public/*.wav public/*.pdf public/*.zip >/dev/null 2>&1; then
+            echo "::error::QA fixtures are present in public/ and would be deployed"
+            ls -la public/
+            exit 1
+          fi
+          echo "public/ is clean"
+
+      - name: Upload failure artefacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-logs
+          path: |
+            /tmp/filecompresser-verify.log
+            /tmp/verify.out
+          if-no-files-found: ignore
+          retention-days: 7

@@ -163,17 +163,41 @@ if [ "$SKIP_BROWSER" -eq 0 ] && [ -d "$PW_TOOLS/node_modules/playwright-core" ];
   step "role audit (security, a11y, contrast, performance)"
   PW_TOOLS="$PW_TOOLS" node scripts/role-audit.mjs "$BASE"
 
+  step "accessibility audit (keyboard, reflow, motion, targets)"
+  PW_TOOLS="$PW_TOOLS" node scripts/a11y-manual-audit.mjs "$BASE"
+
   if [ -f public/anim.gif ]; then
     step "functionality audit"
     CASE_TIMEOUT_MS=60000 PW_TOOLS="$PW_TOOLS" node scripts/functionality-audit.mjs "$BASE"
+    # The fixtures are QA-only and were copied into public/ purely so the
+    # browser could fetch them. They are removed here so a passing run leaves
+    # the tree deployable, and so the hygiene check below has something to say.
+    step "removing QA fixtures from public/"
+    rm -f public/anim.gif public/traversal.zip public/absolute.zip \
+          public/normal.zip public/not-really.zip public/sample.pdf public/tone.wav
+    echo "  cleaned"
   else
     echo
     echo "skipping functionality audit: fixtures not in public/"
-    echo "  run: node scripts/make-gif.mjs && node scripts/make-fixtures.mjs"
+    echo "  run: node scripts/make-gif.mjs && COPY_TO_PUBLIC=1 node scripts/make-fixtures.mjs"
   fi
 else
   echo
   echo "skipping browser audits (PW_TOOLS=$PW_TOOLS, or --no-browser)"
 fi
+
+step "public/ hygiene"
+# A passing run must leave public/ holding site assets only. Anything left here
+# would be deployed, so this is a hard failure rather than a warning.
+set +e
+leaked="$(ls public/*.gif public/*.wav public/*.pdf public/*.zip 2>/dev/null)"
+set -e
+if [ -n "$leaked" ]; then
+  echo "  QA fixtures are present in public/ and would be deployed:" >&2
+  echo "$leaked" | sed 's/^/    /' >&2
+  echo "  Remove them, or re-run with COPY_TO_PUBLIC=0." >&2
+  exit 1
+fi
+echo "  public/ contains site assets only"
 
 printf '\n=== ALL CHECKS PASSED ===\n'

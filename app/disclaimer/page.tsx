@@ -62,6 +62,14 @@ const SECTIONS = [
       'Nothing on this site is legal, medical, or financial advice. This is a file utility.',
     ],
   },
+  {
+    heading: 'Liability',
+    body: [
+      'To the fullest extent the law allows, filecompresser is provided as-is, without warranty of any kind. The operators of this site are not liable for lost files, lost data, corrupted output, or any loss arising from your use of the tools.',
+      'Because your files never leave your device, that is also your only backup. Nothing here is a substitute for keeping your own copy of anything you cannot afford to lose.',
+      'If you are relying on these tools for something contractual, regulated or otherwise consequential — filing a document, submitting evidence, publishing under a deadline — check the output, and consider whether you need professional advice first.',
+    ],
+  },
 ]
 
 export default function DisclaimerPage() {

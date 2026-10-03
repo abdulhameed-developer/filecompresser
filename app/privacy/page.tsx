@@ -77,6 +77,12 @@ const SECTIONS = [
       'If this policy changes — for example if a tool ever needed server-side processing — the tool page would say so explicitly, and this page would be updated. A tool that stops running client-side would stop claiming that your files never leave your device.',
     ],
   },
+  {
+    heading: 'About this document',
+    body: [
+      'This policy describes the software on this site as it is actually built, rather than being copied from a template. It has not been reviewed by a qualified lawyer or a privacy professional. If you need advice about how a service like this complies with the law where you live, speak to a lawyer — the technical facts below are accurate, but the legal conclusions drawn from them depend on your situation.',
+    ],
+  },
 ]
 
 export default function PrivacyPage() {
