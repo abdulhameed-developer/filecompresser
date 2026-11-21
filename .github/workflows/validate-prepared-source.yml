@@ -113,6 +113,77 @@ jobs:
           console.log(JSON.stringify({ vulnerabilities: audit.metadata.vulnerabilities, advisories }))
           console.log('DEPENDENCY_DIAGNOSTIC_END')
           NODE
+      - name: Inventory pinned validation runtime and CMS license files
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --input-type=module <<'NODE'
+          import { readFileSync, readdirSync, existsSync, lstatSync } from 'node:fs'
+          import { createHash } from 'node:crypto'
+          import path from 'node:path'
+          import ts from 'typescript'
+          const digest = bytes => createHash('sha256').update(bytes).digest('hex')
+          const lock = JSON.parse(readFileSync('package-lock.json', 'utf8'))
+          const zodNodes = Object.keys(lock.packages || {}).filter(name => name === 'node_modules/zod' || name.endsWith('/node_modules/zod'))
+          const wanted = { ZodType: new Set(['safeParse', 'safeParseAsync', '_parseAsync', '~validate']), ZodArray: new Set(['_parse']), ZodSet: new Set(['_parse']), ZodMap: new Set(['_parse']) }
+          const runtime = zodNodes.map(directory => {
+            const metadata = JSON.parse(readFileSync(path.join(directory, 'package.json'), 'utf8'))
+            const files = ['v3/types.js', 'v3/types.cjs', 'v3/helpers/parseUtil.js', 'v3/helpers/parseUtil.cjs'].map(relative => {
+              const filename = path.join(directory, relative)
+              const bytes = readFileSync(filename)
+              if (bytes.length > 2 * 1024 * 1024) throw Error('Unexpected validation runtime size.')
+              const source = bytes.toString('utf8')
+              const tree = ts.createSourceFile(relative, source, ts.ScriptTarget.Latest, true, ts.ScriptKind.JS)
+              const methods = []
+              const visit = node => {
+                if ((ts.isClassDeclaration(node) || ts.isClassExpression(node)) && node.name && wanted[node.name.text]) {
+                  for (const member of node.members) {
+                    const name = member.name?.getText(tree).replace(/^['"]|['"]$/g, '')
+                    if (wanted[node.name.text].has(name) && ts.isMethodDeclaration(member)) methods.push({ owner: node.name.text, name, source: member.getText(tree) })
+                  }
+                }
+                if (ts.isFunctionDeclaration(node) && node.name?.text === 'addIssueToContext') methods.push({ owner: 'parseUtil', name: 'addIssueToContext', source: node.getText(tree) })
+                ts.forEachChild(node, visit)
+              }
+              visit(tree)
+              return { path: filename, bytes: bytes.length, sha256: digest(bytes), imports: source.split('\n').filter(line => /^import /.test(line) || /require\(["']\./.test(line)).slice(0, 20), methods }
+            })
+            return { directory, version: metadata.version, npmIntegrity: lock.packages[directory]?.integrity, files }
+          })
+          const packages = ['tinacms', '@tinacms/cli', '@tinacms/app', '@tinacms/schema-tools'].map(name => {
+            const directory = path.join('node_modules', name)
+            const metadata = JSON.parse(readFileSync(path.join(directory, 'package.json'), 'utf8'))
+            const licenseFiles = readdirSync(directory).filter(filename => /^(licen[cs]e|notice|copying)(?:[._-].*)?$/i.test(filename)).map(filename => {
+              const target = path.join(directory, filename)
+              const info = lstatSync(target)
+              if (!info.isFile() || info.isSymbolicLink() || info.size > 32 * 1024) throw Error('Unexpected CMS license file.')
+              const bytes = readFileSync(target)
+              return { filename, bytes: bytes.length, sha256: digest(bytes), text: bytes.toString('utf8') }
+            })
+            const references = []
+            const walk = current => {
+              if (references.length > 80) throw Error('Unexpected CMS runtime inventory volume.')
+              for (const entry of readdirSync(current, { withFileTypes: true })) {
+                if (entry.name === 'node_modules' || entry.name.startsWith('.')) continue
+                const filename = path.join(current, entry.name)
+                if (entry.isDirectory()) { if (existsSync(filename)) walk(filename); continue }
+                if (!entry.isFile() || !/\.(?:cjs|mjs|js)$/.test(entry.name)) continue
+                const info = lstatSync(filename)
+                if (info.size > 20 * 1024 * 1024) throw Error('Unexpected CMS module size.')
+                const bytes = readFileSync(filename)
+                const source = bytes.toString('utf8')
+                const zodReferences = source.match(/(?:import[^;\n]{0,300}from\s*["']zod[^"']*["']|require\(["']zod[^"']*["']\))/g) || []
+                const markers = ['ZodEffects', 'ZodFirstPartyTypeKind', 'zod-to-json-schema', 'class ZodArray', 'class ZodType'].filter(marker => source.includes(marker))
+                if (zodReferences.length || markers.length) references.push({ path: filename, bytes: bytes.length, sha256: digest(bytes), zodReferences, markers })
+              }
+            }
+            walk(directory)
+            return { name, version: metadata.version, declaredZod: metadata.dependencies?.zod, license: metadata.license, npmIntegrity: lock.packages[directory]?.integrity, licenseFiles, references }
+          })
+          console.log('CMS_VALIDATION_RUNTIME_BEGIN')
+          console.log(JSON.stringify({ runtime, packages }))
+          console.log('CMS_VALIDATION_RUNTIME_END')
+          NODE
       - name: Validate types, lint and tests
         run: |
           set -euo pipefail
