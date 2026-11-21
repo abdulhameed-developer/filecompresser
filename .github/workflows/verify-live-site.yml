@@ -1,0 +1,270 @@
+name: Verify deployed FileCompresser
+on:
+  push:
+    branches: [work/filecompresser-live-smoke-20261121]
+permissions:
+  contents: read
+concurrency:
+  group: filecompresser-live-smoke
+  cancel-in-progress: false
+jobs:
+  smoke:
+    if: github.repository == 'abdulhameed-developer/filecompresser' && github.ref == 'refs/heads/work/filecompresser-live-smoke-20261121'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      # Source and production origins verified by the owning task.
+      # This isolated verification branch must not enable Cloudflare previews.
+      REVIEWED_SOURCE_SHA: 716d06b7432f1ec5200f8a77b6c60b1747bc0a5e
+      PAGES_ORIGIN: https://filecompresser.pages.dev
+      SITE_ORIGIN: https://filecompresser.com
+      NEXT_PUBLIC_SITE_URL: https://filecompresser.com
+      NEXT_PUBLIC_ENABLE_INDEXING: 'true'
+      NODE_TLS_REJECT_UNAUTHORIZED: '1'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22.22.1'
+          package-manager-cache: false
+      - name: Verify isolated source and fixed public target
+        run: |
+          set -euo pipefail
+          [[ "$REVIEWED_SOURCE_SHA" =~ ^[a-f0-9]{40}$ ]]
+          [[ "$SITE_ORIGIN" == 'https://filecompresser.com' ]]
+          git merge-base --is-ancestor "$REVIEWED_SOURCE_SHA" HEAD
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict'
+          import { execFileSync } from 'node:child_process'
+          const changed = execFileSync('git', ['diff', '--name-only', '-z', '--no-renames', process.env.REVIEWED_SOURCE_SHA, 'HEAD']).toString().split('\0').filter(Boolean)
+          assert.deepEqual(changed, ['.github/workflows/verify-live-site.yml'])
+          const pages = new URL(process.env.PAGES_ORIGIN)
+          assert.match(pages.hostname, /^[a-z0-9-]+\.pages\.dev$/)
+          assert(!pages.hostname.includes('replace'))
+          assert.equal(pages.origin, process.env.PAGES_ORIGIN)
+          assert.equal(pages.protocol, 'https:')
+          NODE
+          mkdir -p .qa-results
+      - name: Verify live redirects, robots, admin headers and missing pages
+        id: http
+        continue-on-error: true
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict'
+          import { writeFileSync } from 'node:fs'
+          const origin = process.env.SITE_ORIGIN
+          const results = []
+          const request = url => fetch(url, { redirect: 'manual', signal: AbortSignal.timeout(30000) })
+          async function check(name, work) {
+            try { const detail = await work(); results.push({name, pass:true, detail}); console.log('PASS', name) }
+            catch (error) { results.push({name, pass:false, error:String(error)}); console.error('FAIL', name, String(error)) }
+          }
+          const path = '/jpg-compressor?smoke=1&via=verification'
+          for (const from of ['http://filecompresser.com', 'https://www.filecompresser.com', process.env.PAGES_ORIGIN]) {
+            await check('301 keeps path and query: ' + from, async () => {
+              const response = await request(from + path)
+              assert.equal(response.status, 301)
+              assert.equal(new URL(response.headers.get('location'), from).href, origin + path)
+              return {status:response.status, location:response.headers.get('location')}
+            })
+          }
+          await check('Public robots allows indexing and excludes admin', async () => {
+            const response = await request(origin + '/robots.txt')
+            assert.equal(response.status, 200)
+            const body = await response.text()
+            assert.match(body, /^Allow:\s*\/$/m)
+            assert(!/^Disallow:\s*\/$/m.test(body))
+            assert.match(body, /^Disallow:\s*\/admin\/?$/m)
+            assert(body.includes('Sitemap: ' + origin + '/sitemap.xml'))
+          })
+          await check('Sitemap contains only owned-origin published pages', async () => {
+            const response = await request(origin + '/sitemap.xml')
+            assert.equal(response.status, 200)
+            const body = await response.text()
+            const locations = [...body.matchAll(/<loc>([^<]+)<\/loc>/g)].map(item => item[1])
+            assert(locations.length >= 26)
+            assert(locations.every(loc => new URL(loc).origin === origin))
+            assert(!locations.some(loc => /\/admin(?:\/|$)|\/wav-to-mp3(?:\/|$)/.test(new URL(loc).pathname)))
+            return {pages:locations.length}
+          })
+          // These test named crawler user agents, not verified search-engine IPs.
+          // Node's default HTTPS client verifies certificates; no bypass is used.
+          for (const [bot, agent] of [
+            ['Googlebot', 'Googlebot/2.1 (+http://www.google.com/bot.html)'],
+            ['Bingbot', 'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)'],
+          ]) for (const route of ['/robots.txt', '/sitemap.xml']) for (const method of ['HEAD', 'GET']) {
+            await check(`${bot} ${method} ${route}`, async () => {
+              const response = await fetch(origin + route, {method, redirect:'manual', headers:{'user-agent':agent}, signal:AbortSignal.timeout(30000)})
+              assert.equal(response.status, 200)
+              assert(!response.headers.get('cf-mitigated'), 'Cloudflare returned a challenge instead of public crawler content')
+              const type = response.headers.get('content-type') || ''
+              assert.match(type, route.endsWith('.xml') ? /(?:application|text)\/xml/i : /text\/plain/i)
+              if (method === 'GET') {
+                const body = await response.text()
+                if (route.endsWith('.xml')) { assert.match(body, /<urlset[\s>]/); assert(body.includes('<loc>' + origin)) }
+                else { assert.match(body, /^User-agent:\s*\*$/m); assert(body.includes('Sitemap: ' + origin + '/sitemap.xml')) }
+              }
+              return {status:response.status, contentType:type, server:response.headers.get('server')}
+            })
+          }
+          for (const route of ['/filecompresser-live-check-unknown', '/blog/filecompresser-live-check-unknown']) {
+            await check('Real noindex 404: ' + route, async () => {
+              const response = await request(origin + route)
+              assert.equal(response.status, 404)
+              assert.match(await response.text(), /name="robots"[^>]*content="[^"]*noindex/)
+            })
+          }
+          await check('CMS admin static entry is noindex with isolated authentication policy', async () => {
+            const response = await fetch(origin + '/admin/', {redirect: 'follow', signal: AbortSignal.timeout(30000)})
+            assert.equal(new URL(response.url).origin, origin)
+            assert(['/admin', '/admin/'].includes(new URL(response.url).pathname))
+            assert.equal(response.status, 200)
+            assert.match(response.headers.get('x-robots-tag') || '', /noindex/)
+            assert.match(response.headers.get('x-robots-tag') || '', /nofollow/)
+            assert.equal(response.headers.get('cross-origin-opener-policy'), 'same-origin-allow-popups')
+            assert.match(response.headers.get('cache-control') || '', /private/)
+            const policy = response.headers.get('content-security-policy') || ''
+            assert(policy.includes('https://*.tina.io'))
+            assert(!policy.includes('localhost:4001'))
+            const body = await response.text()
+            assert.match(body, /<script[^>]+src=/)
+            return {status:response.status, robots:response.headers.get('x-robots-tag')}
+          })
+          writeFileSync('.qa-results/live-http.json', JSON.stringify({origin, source:process.env.REVIEWED_SOURCE_SHA, checks:results}, null, 2))
+          if (results.some(item => !item.pass)) process.exitCode = 1
+          NODE
+      - name: Crawl live public pages and canonical metadata
+        id: routes
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          timeout 180s node scripts/route-crawl.mjs "$SITE_ORIGIN" 2>&1 | tee .qa-results/live-route-crawl.log
+      - name: Install only production modules and isolated decoder/browser tools
+        run: |
+          set -euo pipefail
+          npm ci --omit=dev --no-fund --audit=false
+          QA_TOOLS_DIR="$RUNNER_TEMP/filecompresser-live-pwtools"
+          mkdir -p "$QA_TOOLS_DIR"
+          npm install --prefix "$QA_TOOLS_DIR" --no-save --no-package-lock --no-fund --audit=false playwright-core@1.64.1 ffmpeg-static@5.3.0 ffprobe-static@3.1.0
+          QA_CHROME="$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
+          [[ -n "$QA_CHROME" && -x "$QA_CHROME" ]] || { echo 'Official runner Chrome is unavailable.' >&2; exit 1; }
+          printf 'PW_TOOLS=%s\nCHROME_PATH=%s\n' "$QA_TOOLS_DIR" "$QA_CHROME" >> "$GITHUB_ENV"
+      - name: Capture the live homepage and blog and verify the CMS article image
+        id: capture
+        timeout-minutes: 3
+        continue-on-error: true
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict'
+          import { createRequire } from 'node:module'
+          import { createHash } from 'node:crypto'
+          import { writeFileSync } from 'node:fs'
+          import path from 'node:path'
+          const qa = createRequire(path.join(process.env.PW_TOOLS, 'qa.cjs'))
+          const {chromium} = qa('playwright-core')
+          const origin = process.env.SITE_ORIGIN
+          const errors = []
+          const evidence = {origin, source:process.env.REVIEWED_SOURCE_SHA, checks:[]}
+          const browser = await chromium.launch({executablePath:process.env.CHROME_PATH, headless:true, chromiumSandbox:true})
+          try {
+            const context = await browser.newContext({viewport:{width:1440, height:1000}, ignoreHTTPSErrors:false})
+            const page = await context.newPage()
+            page.on('pageerror', error => errors.push(error.message))
+            for (const [route, filename] of [['/', 'live-home.png'], ['/blog', 'live-blog.png']]) {
+              const response = await page.goto(origin + route, {waitUntil:'networkidle', timeout:45000})
+              assert.equal(response.status(), 200)
+              await page.locator('main h1').waitFor({state:'visible'})
+              await page.screenshot({path:path.join('.qa-results',filename), fullPage:true})
+              evidence.checks.push({name:'Public page screenshot', route, filename, pass:true})
+            }
+            const articleRoute = '/blog/how-browser-compression-works'
+            const response = await page.goto(origin + articleRoute, {waitUntil:'networkidle', timeout:45000})
+            assert.equal(response.status(), 200)
+            const article = page.locator('article.postPage')
+            assert.match(await article.innerText(), /\b21\s*MB\b/i)
+            const updated = page.locator('.postUpdated time')
+            assert.equal(await updated.getAttribute('datetime'), '2026-11-21')
+            assert.equal((await updated.innerText()).trim(), '21 November 2026')
+            const image = page.locator('.articleHero img')
+            await image.waitFor({state:'visible'})
+            await image.evaluate(element => element.decode())
+            assert.equal(await image.getAttribute('src'), '/uploads/pipeline.webp')
+            const expectedAlt = 'Folders pass through a green press inside a browser-shaped frame.'
+            assert.equal(await image.getAttribute('alt'), expectedAlt)
+            assert.equal(await image.evaluate(element => element.naturalWidth), 1200)
+            await page.screenshot({path:'.qa-results/live-article.png', fullPage:true})
+            evidence.checks.push({name:'CMS article copy, date and featured image', route:articleRoute, bytesLabel:'21 MB', updated:'2026-11-21', src:'/uploads/pipeline.webp', alt:expectedAlt, naturalWidth:1200, pass:true})
+            const asset = await fetch(origin + '/uploads/pipeline.webp', {redirect:'manual', signal:AbortSignal.timeout(30000)})
+            assert.equal(asset.status, 200)
+            assert.match(asset.headers.get('content-type') || '', /image\/webp/i)
+            const bytes = Buffer.from(await asset.arrayBuffer())
+            assert.equal(bytes.length, 65252)
+            const hash = createHash('sha256').update(bytes).digest('hex')
+            assert.equal(hash, '678779be62eda16f550140fab0970d1fd7323b21f281e37073954de41ba4dde6')
+            evidence.checks.push({name:'Published image matches the CMS asset bytes', bytes:bytes.length, sha256:hash, pass:true})
+            assert.deepEqual(errors, [])
+          } catch (error) {
+            evidence.checks.push({name:'Live public capture or article assertion', pass:false, error:String(error)})
+            throw error
+          } finally {
+            evidence.errors = errors
+            writeFileSync('.qa-results/live-capture.json', JSON.stringify(evidence, null, 2))
+            await browser.close()
+          }
+          NODE
+      - name: Reuse existing PNG and WAV output checks against production
+        id: outputs
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          node --input-type=module <<'NODE'
+          import { readFileSync, writeFileSync } from 'node:fs'
+          import assert from 'node:assert/strict'
+          const source = readFileSync('scripts/functionality-audit.mjs', 'utf8')
+          const marker = 'async function check(name, work) {'
+          assert.equal(source.split(marker).length, 2, 'The reviewed audit helper changed; review this smoke selection before running.')
+          const selected = ['/png-compressor decoded output', '/wav-compressor .wav genuine audio source/output', 'No file-upload requests or unhandled browser exceptions']
+          const launchMarker = "args: ['--no-sandbox', '--disable-dev-shm-usage'],"
+          assert.equal(source.split(launchMarker).length, 2, 'The reviewed browser launch changed; review sandboxing before running.')
+          const filtered = source.replace(marker, `${marker}\n  if (!${JSON.stringify(selected)}.includes(name)) return`).replace(launchMarker, 'chromiumSandbox: true,')
+          writeFileSync('.qa-results/production-functionality.mjs', filtered)
+          NODE
+          TEST_BROWSER=chromium timeout 420s node .qa-results/production-functionality.mjs "$SITE_ORIGIN" 2>&1 | tee .qa-results/live-functionality.log
+          node --input-type=module <<'NODE'
+          import { readFileSync } from 'node:fs'
+          import assert from 'node:assert/strict'
+          const evidence = JSON.parse(readFileSync('.qa-results/functionality.json', 'utf8'))
+          assert.deepEqual(evidence.results.map(item => item.name), ['/png-compressor decoded output', '/wav-compressor .wav genuine audio source/output', 'No file-upload requests or unhandled browser exceptions'])
+          assert(evidence.results.every(item => item.pass))
+          assert.deepEqual(evidence.errors, [])
+          assert.deepEqual(evidence.requests, [])
+          NODE
+      - name: Keep public-site verification evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: live-site-smoke-${{ github.run_id }}
+          path: |
+            .qa-results/live-http.json
+            .qa-results/live-route-crawl.log
+            .qa-results/live-functionality.log
+            .qa-results/live-capture.json
+            .qa-results/live-home.png
+            .qa-results/live-blog.png
+            .qa-results/live-article.png
+            .qa-results/functionality.json
+            .qa-results/failure-*.png
+          if-no-files-found: warn
+          retention-days: 7
+      - name: Require every production check to pass
+        if: always()
+        env:
+          HTTP_OUTCOME: ${{ steps.http.outcome }}
+          ROUTE_OUTCOME: ${{ steps.routes.outcome }}
+          OUTPUT_OUTCOME: ${{ steps.outputs.outcome }}
+          CAPTURE_OUTCOME: ${{ steps.capture.outcome }}
+        run: |
+          [[ "$HTTP_OUTCOME" == 'success' && "$ROUTE_OUTCOME" == 'success' && "$OUTPUT_OUTCOME" == 'success' && "$CAPTURE_OUTCOME" == 'success' ]]
