@@ -342,20 +342,38 @@ export function verifyAdminResourceBundle(projectRoot = process.cwd()) {
       || helper.parameters.length !== 1 || !ts.isIdentifier(helper.parameters[0].name) || helper.parameters[0].initializer || helper.parameters[0].dotDotDotToken) return null
     const external = helper.parameters[0].name.text
     const identifier = (node, value) => ts.isIdentifier(node) && node.text === value
-    let assignment
+    const unparen = node => ts.isParenthesizedExpression(node) ? unparen(node.expression) : node
+    const functionTypeGuard = (condition, positive) => {
+      const checked = unparen(condition)
+      const operators = positive ? [ts.SyntaxKind.EqualsEqualsToken, ts.SyntaxKind.EqualsEqualsEqualsToken]
+        : [ts.SyntaxKind.ExclamationEqualsToken, ts.SyntaxKind.ExclamationEqualsEqualsToken]
+      if (!ts.isBinaryExpression(checked) || !operators.includes(checked.operatorToken.kind)) return false
+      const inspected = node => ts.isTypeOfExpression(node) && identifier(node.expression, external)
+      const functionLiteral = node => ts.isStringLiteral(node) && node.text === 'function'
+      return (inspected(checked.left) && functionLiteral(checked.right)) || (functionLiteral(checked.left) && inspected(checked.right))
+    }
+    const positiveGuard = condition => identifier(unparen(condition), external) || functionTypeGuard(condition, true)
+    const negativeGuard = condition => {
+      const checked = unparen(condition)
+      return (ts.isPrefixUnaryExpression(checked) && checked.operator === ts.SyntaxKind.ExclamationToken && identifier(checked.operand, external)) || functionTypeGuard(condition, false)
+    }
+    let assignment, helperGuard
     const body = helper.body.statements
     if (body.length === 2 && ts.isIfStatement(body[0]) && !body[0].elseStatement
-      && ts.isPrefixUnaryExpression(body[0].expression) && body[0].expression.operator === ts.SyntaxKind.ExclamationToken && identifier(body[0].expression.operand, external)) {
+      && negativeGuard(body[0].expression)) {
       const returned = ts.isBlock(body[0].thenStatement) && body[0].thenStatement.statements.length === 1 ? body[0].thenStatement.statements[0] : body[0].thenStatement
       if (!ts.isReturnStatement(returned) || returned.expression || !ts.isExpressionStatement(body[1])) return null
       assignment = body[1].expression
+      helperGuard = functionTypeGuard(body[0].expression, false) ? 'typeof-function' : 'truthy'
     } else if (body.length === 1 && ts.isExpressionStatement(body[0]) && ts.isBinaryExpression(body[0].expression)
-      && body[0].expression.operatorToken.kind === ts.SyntaxKind.AmpersandAmpersandToken && identifier(body[0].expression.left, external)) {
+      && body[0].expression.operatorToken.kind === ts.SyntaxKind.AmpersandAmpersandToken && positiveGuard(body[0].expression.left)) {
       assignment = body[0].expression.right
-    } else if (body.length === 1 && ts.isIfStatement(body[0]) && !body[0].elseStatement && identifier(body[0].expression, external)) {
+      helperGuard = functionTypeGuard(body[0].expression.left, true) ? 'typeof-function' : 'truthy'
+    } else if (body.length === 1 && ts.isIfStatement(body[0]) && !body[0].elseStatement && positiveGuard(body[0].expression)) {
       const installed = ts.isBlock(body[0].thenStatement) && body[0].thenStatement.statements.length === 1 ? body[0].thenStatement.statements[0] : body[0].thenStatement
       if (!ts.isExpressionStatement(installed)) return null
       assignment = installed.expression
+      helperGuard = functionTypeGuard(body[0].expression, true) ? 'typeof-function' : 'truthy'
     }
     while (assignment && ts.isParenthesizedExpression(assignment)) assignment = assignment.expression
     if (!assignment || !ts.isBinaryExpression(assignment) || assignment.operatorToken.kind !== ts.SyntaxKind.EqualsToken || !ts.isIdentifier(assignment.left)
@@ -372,7 +390,7 @@ export function verifyAdminResourceBundle(projectRoot = process.cwd()) {
       || rejected.operand.arguments.length !== 1 || !identifier(rejected.operand.arguments[0], key)
       || !ts.isCallExpression(forwarded) || forwarded.questionDotToken || !identifier(forwarded.expression, external)
       || forwarded.arguments.length !== 1 || !identifier(forwarded.arguments[0], key)) return null
-    return { helperName: helperName.slice(0, 80), module: '@emotion/is-prop-valid', selectedExport: 'default' }
+    return { helperName: helperName.slice(0, 80), module: '@emotion/is-prop-valid', selectedExport: 'default', helperGuard }
   }
   const find = (node, predicate) => {
     const found = []
@@ -525,13 +543,29 @@ export function verifyAdminResourceBundle(projectRoot = process.cwd()) {
         const expression = excerpt(start, node.end, 240, 1024, input)
         const surrounding = excerpt(contextStart, context.end, 600, 2400, input)
         const binding = context.name || context.parent?.name
+        let motionCandidate
+        if (requireCall(node) && node.arguments.length && ts.isStringLiteral(node.arguments[0]) && node.arguments[0].text === '@emotion/is-prop-valid') {
+          let protectedTry = node.parent
+          while (protectedTry && !ts.isTryStatement(protectedTry)) protectedTry = protectedTry.parent
+          const helperCall = node.parent && ts.isPropertyAccessExpression(node.parent) ? node.parent.parent : null
+          const helperName = helperCall && ts.isCallExpression(helperCall) && ts.isIdentifier(helperCall.expression) ? helperCall.expression.text : undefined
+          const helperScope = protectedTry?.parent
+          const helper = helperName && helperScope && (ts.isSourceFile(helperScope) || ts.isBlock(helperScope))
+            ? helperScope.statements.find(statement => ts.isFunctionDeclaration(statement) && name(statement.name) === helperName) : undefined
+          const tried = protectedTry ? excerpt(protectedTry.getStart(parsed), protectedTry.end, 600, 2400, input) : null
+          const body = helper?.body ? excerpt(helper.body.getStart(parsed), helper.body.end, 1000, 4000, input) : null
+          motionCandidate = { module: '@emotion/is-prop-valid', helperName: helperName?.slice(0, 80),
+            enclosingTry: tried?.text, enclosingTryTruncated: tried?.truncated,
+            sameScopeHelperBody: body?.text, sameScopeHelperBodyTruncated: body?.truncated }
+        }
         return { asset: asset.slice(0, 160), line: position.line + 1, column: position.character + 1,
           kind: requireCall(node) ? 'require-call' : 'dynamic-import',
           binding: requireCall(node) ? bindingDetail(localRequireBinding(node), parsed) : undefined,
           literalSpecifier: node.arguments.length === 1 && moduleLiteral(node.arguments[0]),
           expression: expression.text, expressionTruncated: expression.truncated,
           context: surrounding.text, contextTruncated: surrounding.truncated || contextStart > context.getStart(parsed),
-          contextKind: ts.SyntaxKind[context.kind], contextName: binding ? input.slice(binding.getStart(parsed), Math.min(binding.end, binding.getStart(parsed) + 80)) : undefined }
+          contextKind: ts.SyntaxKind[context.kind], contextName: binding ? input.slice(binding.getStart(parsed), Math.min(binding.end, binding.getStart(parsed) + 80)) : undefined,
+          motionCandidate }
       }
       const imports = [detail(current)]
       const stack = [ast]

@@ -90,7 +90,7 @@ is recorded as opaque: its computed target is not resolved. This
 static inspection does not prove arbitrary or remotely loaded code behavior.
 Calls to a lexically bound local function named `require` are likewise recorded
 as opaque local calls, without resolving their targets. The
-[upstream Motion optional prop-validator probe](https://github.com/motiondivision/motion/blob/v11.18.2/packages/framer-motion/src/render/dom/utils/filter-props.ts)
+[upstream Motion optional prop-validator probe](https://github.com/motiondivision/motion/blob/v12.23.24/packages/framer-motion/src/render/dom/utils/filter-props.ts)
 is recognized only for the literal `@emotion/is-prop-valid` default export passed
 to a local helper inside its protected try/empty-catch fallback. Its target also
 remains unresolved. Other unbound global `require` calls and unknown computed

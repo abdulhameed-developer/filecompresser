@@ -367,4 +367,67 @@ describe('entry-reachable generated admin structure', () => {
       expect(() => verifyAdminResourceBundle(root)).toThrow(failure)
     }
   })
+
+  it('recognizes the official Motion v12 typeof-function guard and faithful minified operand orders', () => {
+    const helpers = [
+      'let forward;function pBn(isValidProp){if(typeof isValidProp!=="function")return;forward=key=>key.startsWith("on")?!isMotion(key):isValidProp(key)}',
+      'let forward;function pBn(isValidProp){if("function"!==typeof isValidProp)return;forward=key=>key.startsWith("on")?!isMotion(key):isValidProp(key)}',
+      'let forward;function pBn(e){typeof e=="function"&&(forward=t=>t.startsWith("on")?!isMotion(t):e(t))}',
+      'let forward;function pBn(e){"function"==typeof e&&(forward=t=>t.startsWith("on")?!isMotion(t):e(t))}',
+      'let forward;function pBn(e){typeof e==="function"&&(forward=t=>t.startsWith("on")?!isMotion(t):e(t))}',
+      'let forward;function pBn(e){if("function"===typeof e){forward=t=>t.startsWith("on")?!isMotion(t):e(t)}}',
+    ]
+    for (const helper of helpers) {
+      const root = fixture({ 'index.html': '<script src="./entry.js"></script>',
+        'entry.js': guardedCode() + ';' + helper + ';try{pBn(require("@emotion/is-prop-valid").default)}catch{}' })
+      const result = verifyAdminResourceBundle(root)
+      expect(result.optionalMotionProbeCount).toBe(1)
+      expect(result.optionalMotionProbes[0].helperGuard).toBe('typeof-function')
+      expect(result.optionalMotionProbes[0].targetResolved).toBe(false)
+    }
+  })
+
+  it('rejects mutated typeof guards while reporting the literal Emotion try and local helper body', () => {
+    const canonical = 'let forward;function pBn(external){if(typeof external!=="function")return;forward=key=>key.startsWith("on")?!isMotion(key):external(key)}'
+    const mutations = [
+      canonical.replace('!=="function"', '!=="object"'),
+      canonical.replace('typeof external', 'typeof other'),
+      canonical.replace('typeof external', 'external'),
+      canonical.replace('!=="function"', '==="function"'),
+      canonical.replace('typeof external', 'typeof external.call'),
+      canonical.replace('!=="function"', '!=="Function"'),
+      'let forward;function pBn(external){typeof external!=="function"&&(forward=key=>key.startsWith("on")?!isMotion(key):external(key))}',
+    ]
+    for (const helper of mutations) {
+      const root = fixture({ 'index.html': '<script src="./entry.js"></script>',
+        'entry.js': guardedCode() + ';' + helper + ';try{pBn(require("@emotion/is-prop-valid").default)}catch{}' })
+      let failure = ''
+      try { verifyAdminResourceBundle(root) } catch (error) { failure = (error as Error).message }
+      expect(failure).toContain('unresolved CommonJS import')
+      const candidate = JSON.parse(failure.split('diagnostic=')[1]).imports[0].motionCandidate
+      expect(candidate.module).toBe('@emotion/is-prop-valid')
+      expect(candidate.helperName).toBe('pBn')
+      expect(candidate.enclosingTry).toContain('pBn(require("@emotion/is-prop-valid").default)')
+      expect(candidate.enclosingTry.length).toBeLessThanOrEqual(600)
+      expect(candidate.sameScopeHelperBody).toContain('forward=')
+      expect(candidate.sameScopeHelperBody.length).toBeLessThanOrEqual(1000)
+    }
+  })
+
+  it('bounds extra Emotion diagnostics and does not attach helper bodies to other module calls', () => {
+    const padding = JSON.stringify('x'.repeat(4000))
+    const helper = `function pBn(external){const padding=${padding};return external}`
+    const root = fixture({ 'index.html': '<script src="./entry.js"></script>',
+      'entry.js': guardedCode() + ';' + helper + `;try{pBn(require("@emotion/is-prop-valid").default);const padding=${padding}}catch{}` })
+    let failure = ''
+    try { verifyAdminResourceBundle(root) } catch (error) { failure = (error as Error).message }
+    const candidate = JSON.parse(failure.split('diagnostic=')[1]).imports[0].motionCandidate
+    expect(candidate.enclosingTry.length).toBeLessThanOrEqual(600)
+    expect(candidate.enclosingTryTruncated).toBe(true)
+    expect(candidate.sameScopeHelperBody.length).toBeLessThanOrEqual(1000)
+    expect(candidate.sameScopeHelperBodyTruncated).toBe(true)
+    const unrelated = fixture({ 'index.html': '<script src="./entry.js"></script>', 'entry.js': guardedCode() + ';require("other-module")' })
+    try { verifyAdminResourceBundle(unrelated) } catch (error) { failure = (error as Error).message }
+    expect(JSON.parse(failure.split('diagnostic=')[1]).imports[0].motionCandidate).toBeUndefined()
+  })
 })
