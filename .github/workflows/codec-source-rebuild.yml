@@ -1,4 +1,4 @@
-name: Patched codec source and single-thread rebuild probe
+name: Minimal known-source media core build
 
 on:
   push:
@@ -89,4 +89,4 @@ jobs:
         if: always()
         shell: bash
         run: |
-          printf '%s\n' 'Codec investigation only: pinned source acquisition, a newly compiled single-thread FFmpeg 5.1.10 engine and intentional old-npm difference comparison. No old installed codec binary is retained. Complete source and notices accompany any retained new binary. Main, the integration branch, DNS, website hosting and CMS accounts are not changed. No legal-clearance or production-readiness claim is made.' >> "$GITHUB_STEP_SUMMARY"
+          printf '%s\n' 'Codec investigation only: pinned source acquisition, a newly compiled single-thread FFmpeg 5.1.10+19.b5d146d17cb4 engine and intentional old-npm difference comparison. No old installed codec binary is retained. Complete source and notices accompany any retained new binary. Main, the integration branch, DNS, website hosting and CMS accounts are not changed. No legal-clearance or production-readiness claim is made.' >> "$GITHUB_STEP_SUMMARY"

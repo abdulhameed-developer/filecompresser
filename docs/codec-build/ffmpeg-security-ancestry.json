@@ -479,6 +479,20 @@
     "No claim is made that every native dependency or current FFmpeg security issue is covered by this targeted list.",
     "No app-specific exploitability or reachability claim is made.",
     "Public API/ABI compatibility policy does not prove compatibility of ffmpeg.wasm modified internal fftools or browser behavior.",
-    "The selected source intentionally differs from historical npm core5.1.4; it must be built and tested as a new core, with all source and notices retained."
-  ]
+    "The selected source intentionally differs from historical npm core5.1.4; it must be built and tested as a new core, with all source and notices retained.",
+    "Selected snapshot is maintained release/5.1 HEAD pinned after19posttag commits; base tag5.1.10 alone is not mislabeled as the entire source. No further branch chasing is performed for this build."
+  ],
+  "selectedSnapshotCommit": "b5d146d17cb45f3b00796dcf984897f1a0459945",
+  "selectedSnapshotLabel": "5.1.10+19.b5d146d17cb4",
+  "baseTagAncestorOfSnapshot": {
+    "baseTag": "n5.1.10",
+    "baseCommit": "19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb",
+    "headCommit": "b5d146d17cb45f3b00796dcf984897f1a0459945",
+    "status": "ahead",
+    "aheadBy": 19,
+    "behindBy": 0,
+    "mergeBase": "19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb",
+    "primaryCompareURL": "https://github.com/FFmpeg/FFmpeg/compare/19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb...b5d146d17cb45f3b00796dcf984897f1a0459945",
+    "method": "Official GitHub compare_commits; all22 fix checks against baseTag transitively precede selectedSnapshot."
+  }
 }

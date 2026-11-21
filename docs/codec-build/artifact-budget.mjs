@@ -28,7 +28,7 @@ try {
   candidateBytes += diagnosticBytes
   if (!failureMode) {
     const status = JSON.parse(readFileSync(path.join(diagnostics, 'probe-status.json'), 'utf8'))
-    if (status.status !== 'probe-complete-not-released' || !status.sourceCollected || !status.runtimeSourcePinsVerified || !status.built || status.ffmpegVersion !== '5.1.10' || status.ffmpegSourceCommit !== '19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb' || !status.intentionalDifferenceFromOriginalNpmCore || !status.embeddedPatchedFfmpegVersionPresent || status.originalNpmBinaryCorrespondenceVerified !== false || status.allNativeDependenciesCleared !== false || status.legalClearance !== false || status.deployed !== false || !status.artifact?.completeSourceAccompaniesNewBinary) throw Error('The patched source-accompanied build prerequisites did not all pass.')
+    if (status.status !== 'probe-complete-not-released' || !status.sourceCollected || !status.runtimeSourcePinsVerified || !status.minimalHeadlessProfileVerified || !status.built || status.ffmpegVersion !== '5.1.10' || status.ffmpegSourceCommit !== 'b5d146d17cb45f3b00796dcf984897f1a0459945' || status.ffmpegSourceLabel !== '5.1.10+19.b5d146d17cb4' || !status.intentionalDifferenceFromOriginalNpmCore || !status.embeddedPatchedFfmpegVersionPresent || status.originalNpmBinaryCorrespondenceVerified !== false || status.allNativeDependenciesCleared !== false || status.legalClearance !== false || status.deployed !== false || !status.artifact?.completeSourceAccompaniesNewBinary || status.artifact.format !== 'ustar+gzip' || status.artifact.uncompressedTarBytes > 256 * 1024 * 1024 || status.artifact.memberCount > 512) throw Error('The patched source-accompanied headless build prerequisites did not all pass.')
     const filename = path.join(root, 'codec-source-and-new-core.tar.gz')
     const info = lstatSync(filename)
     const bytes = readFileSync(filename)
@@ -36,10 +36,10 @@ try {
     candidateBytes += bytes.length
     const entries = execFileSync('tar', ['-tzf', filename], { encoding: 'utf8', maxBuffer: 4 * 1024 * 1024 }).split('\n')
     const includes = name => entries.includes(`./${name}`)
-    for (const required of ['newly-built-core/esm/ffmpeg-core.wasm', 'newly-built-core/esm/ffmpeg-core.js', 'recipe/Dockerfile.original', 'recipe/Dockerfile.controlled', 'recipe/rebuild-probe.mjs', 'recipe/artifact-budget.mjs', 'recipe/ffmpeg-security-ancestry.json', 'source-pins.json', 'collection.json', 'sdk-clang-resource-headers.tar.gz', 'official-toolchain-release-DEPS', 'official-sdk-release-mapping.json']) if (!includes(required)) throw Error(`Missing retained input: ${required}`)
+    for (const required of ['newly-built-core/esm/ffmpeg-core.wasm', 'newly-built-core/esm/ffmpeg-core.js', 'recipe/Dockerfile.original', 'recipe/Dockerfile.controlled', 'recipe/rebuild-probe.mjs', 'recipe/artifact-budget.mjs', 'recipe/ffmpeg-security-ancestry.json', 'recipe/native-dependency-review.json', 'source-pins.json', 'collection.json', 'sdk-clang-resource-headers.tar.gz', 'official-toolchain-release-DEPS', 'official-sdk-release-mapping.json', 'build-metadata/ffmpeg-core.link.map']) if (!includes(required)) throw Error(`Missing retained input: ${required}`)
     const manifest = JSON.parse(readFileSync(path.join(root, 'sources/source-pins.json'), 'utf8'))
     for (const source of manifest.sources) {
-      if (!includes(`source-archives/${source.name}-${source.commit}.tar.gz`)) throw Error(`Missing source archive: ${source.name}`)
+      if (!includes(`source-archives/${source.name}-${source.commit || source.sha256}.tar.gz`)) throw Error(`Missing source archive: ${source.name}`)
       for (const file of source.licenseFiles) if (!includes(`notices/${source.name}/${file.path}`)) throw Error(`Missing notice: ${source.name}/${file.path}`)
     }
   }

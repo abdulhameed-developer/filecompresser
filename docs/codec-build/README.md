@@ -1,83 +1,73 @@
-# Pinned codec source investigation
+# Controlled headless codec build
 
-This directory contains a source-acquisition collector and a controlled rebuild probe. The active candidate intentionally updates FFmpeg from the original npm core's 5.1.4 to patched n5.1.10 at `19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb`. It is not a cleared website release. A dedicated read-only CI job may execute the probe on its own branch; no production deployment or repository-write token is needed.
+This directory prepares and executes a new known-source media core. It does not deploy the website, certify legal compliance, or claim every native dependency is clear of vulnerabilities. The old npm core is diagnostic input only and is never packaged.
 
-## What is now resolved
+## Selected functionality and source
 
-`source-pins.json` records 24 actual GitHub commit IDs: the exact ffmpeg.wasm release recipe, its 16 codec/library repositories, the Emscripten runtime/compiler-source revision embedded in the installed binary, SDL2, zimg's GoogleTest submodule and the exact LLVM resource-header source revision. The LLVM archive intentionally includes the header, preferred definition and emitter subtrees rather than the entire compiler project. The 47 listed notice/license file blob IDs were read from those pinned source trees.
+The candidate uses maintained FFmpeg 5.1 snapshot `5.1.10+19.b5d146d17cb4` (`b5d146d17cb45f3b00796dcf984897f1a0459945`) with its native decoders and filters, plus external x264, current LAME and current zlib. The application outputs H.264/AAC MP4, MP3, PCM WAV and native GIF using scale/fps/palette filters. Native FFmpeg decoders continue to handle accepted input formats; Ogg/Opus, MOV/MP4 and other actual input/output behavior must pass browser acceptance tests before adoption.
 
-The fixed release Dockerfile and Makefile are available through the connected GitHub API. The two mutable recipe branches now resolve to x264 commit `33cac6b77d5b9259c552156013a817ab23119612` (2022) and LAME commit `2badea1974ae36cb8312afe99cff1e6b3b5decee` (2020). Both predate the January 2025 release. This strengthens the historical recipe association but does not prove the npm binary came from those inputs. FFmpeg itself is now intentionally changed to 5.1.10; the old 5.1.4 binary is not a release target.
+Unneeded external x265, libvpx, Ogg/Theora/Vorbis/Opus libraries, WebP, font/subtitle libraries and zimg are not compiled or linked. Device, SDL and network support are disabled. This changes the engine's internal dependency profile; it does not remove exposed website tools or claim unsupported WebM UI routing.
 
-The official release has no attached build-provenance/source-bundle asset. Its normal repository archive omits the external repositories pulled by the Dockerfile.
+`source-pins.json` is authoritative for exact Git commits, original-recipe aliases, whole-archive checksums, notice paths and submodules. LAME's official full release archive is authenticated by its published SHA-256; no Git commit is invented for that SVN-based release. Its original archive bytes and actual notice files are retained. Source archives from Git retain tracked files despite export-ignore rules. Unexpected or mismatched gitlinks fail acquisition.
 
-The embedded Emscripten revision's SDL2 recipe pins SDL **2.24.2** and an archive SHA-512. That port is easy to miss if only the FFmpeg Dockerfile's explicit libraries are collected. The manifest includes it. zimg's pinned GoogleTest gitlink is recorded separately; it is not claimed to be linked into the media core.
-
-## Reviewable acquisition operation
-
-The collector uses only Git and Node built-ins. It does not execute downloaded project code or build/install/publish anything.
+## Acquisition and build
 
 ```sh
 node docs/codec-build/collect-sources.mjs --validate-only
 node docs/codec-build/collect-sources.mjs /tmp/filecompresser-codec-sources
-```
-
-The output directory must not already exist. Each repository is fetched by its full commit ID. Unexpected submodules or mismatched notice blobs fail the operation. Source archives retain tracked files even when upstream export-ignore rules would omit them. Submodules are separate archives; their recorded paths must be reconstructed before building. The output `collection.json` records every acquired archive's size and SHA-256 and explicitly remains `built: false`, `published: false`, and `legalClearance: false`.
-
-The collector manifest and JavaScript syntax were validated locally. Probe results must be taken from the actual CI run and its evidence, not inferred from these preparation checks. Actual acquisition requires working GitHub network access; the local shell still cannot resolve external hosts. The connected GitHub API has verified the commit/file pins, but does not download full binary source archives to this filesystem.
-
-## Minimum controlled CI investigation
-
-Use a dedicated **read-only** job on a standard free GitHub-hosted Linux runner for the public repository. Do not pass provider/CMS secrets, enable repository-write permissions, push from the job, or deploy. A successful probe may retain one complete source-plus-new-core bundle for one day within the checked cumulative 200 MiB budget; a failed probe retains small JSON diagnostics only. Pin official workflow actions to reviewed commit IDs.
-
-1. Check out the reviewed application commit and run the collector above in the runner's temporary directory. Retain its local archives and notice files throughout the investigation.
-2. Pull `emscripten/emsdk:3.1.40`, resolve its actual repository digest and record it. Do not invent a digest or describe the mutable tag as pinned. Check the image's `emcc --version` against the embedded Emscripten revision in the manifest. Record Docker/BuildKit versions and the eventual build-tool package versions.
-3. Reconstruct the ffmpeg.wasm build working tree from commit `71aa99d37c02a7b4c435275ca9ef50e612f6efa1`. Verify its Dockerfile/Makefile/build-script blob IDs against the manifest before patching.
-4. Make a retained, reviewable Dockerfile patch: replace the base-image reference with the resolved digest; replace every dependency ref with its full commit from the manifest; for zimg, whose recipe uses `git clone -b`, keep the known tag and verify the cloned HEAD and GoogleTest gitlink exactly before compilation, or use an explicit fetch/check-out by commit. Record any Dockerfile frontend digest if using an external frontend.
-5. Preserve all original source files and all changes. For stronger isolation, populate Docker stages from the collected source rather than fetching sources during compilation. Ensure Emscripten's SDL2 port uses its pinned archive checksum and retain the matching source. Do not permit unrecorded source downloads.
-6. Build the **single-thread production** core using the reviewed Makefile's equivalent inputs: `FFMPEG_ST=yes`, `EXTRA_CFLAGS=-O3 -msimd128`, and ESM output. The stock entry point is `make prd`; use the patched recipe rather than unmodified mutable refs. Avoid overcommitting runner memory; if build parallelism must be reduced, preserve that build-script patch too.
-7. Compute SHA-256 of the ESM JS and WASM and compare with `FFMPEG-BINARY-EVIDENCE.json`. Record whether both match. The patched 5.1.10 candidate is intentionally different. Matching both old 5.1.4 outputs would fail the probe rather than count as success.
-8. Review the collected source/patches/notices for the deliberately changed known-source core, update application provenance and run full GIF/audio/video/cancellation/browser testing before adopting it. Do not call the changed binary identical to npm.
-9. Separately resolve native-code security/backport review. Rebuilding FFmpeg 5.1.4 does not by itself apply subsequent security fixes.
-10. Before any public binary release, review the complete source/notice/access arrangement and verify its durable download location. Publishing a source offer without possessing the source package is not an acceptable shortcut.
-
-## Feasibility and remaining data
-
-The technical source pins are now available; the main outstanding operation is acquisition plus a real controlled rebuild and comparison. The upstream build guide estimates about an hour depending on machine specifications. Reserve up to three hours for an initial standard-runner build plus further time for genuine browser/output QA; this is a planning allowance, not a measured duration. Use a standard runner on the public repository and verify account policy rather than selecting a paid larger runner.
-
-Still needed: actual acquired archive hashes, toolchain image/frontend digest, build environment/logs, output hashes and comparison, complete notice/source package review, native security assessment, and a tested durable source-access arrangement. No legal-clearance flag should be changed merely because this plan or collector exists.
-
-## Official references
-
-- [Exact core release recipe](https://github.com/ffmpegwasm/ffmpeg.wasm/blob/71aa99d37c02a7b4c435275ca9ef50e612f6efa1/Dockerfile)
-- [Exact production build entry point](https://github.com/ffmpegwasm/ffmpeg.wasm/blob/71aa99d37c02a7b4c435275ca9ef50e612f6efa1/Makefile)
-- [Emscripten SDL2 source/checksum recipe](https://github.com/emscripten-core/emscripten/blob/5c27e79dd0a9c4e27ef2326841698cdd4f6b5784/tools/ports/sdl2.py)
-- [Upstream build guidance](https://ffmpegwasm.netlify.app/docs/contribution/core/)
-- [FFmpeg security fixes](https://ffmpeg.org/security.html)
-
-## Executable rebuild probe
-
-```sh
 node docs/codec-build/rebuild-probe.mjs /tmp/filecompresser-codec-probe
 ```
 
-Use a new directory. This requires Docker/Buildx, Git, Python 3.12 or newer (safe tar data filter) and Node 22. It acquires the pinned sources, checks all archive/notice identities, reconstructs source trees, resolves and records the three official container digests, checks the compiler revision and SDL2 port checksum, then creates a local-source Dockerfile and bounds make to two jobs. It replaces the SDK image's Emscripten source tree with the acquired revision and uses a fresh system-library cache, so precompiled SDK runtime libraries are not reused. It exports the actual SDK Clang resource headers, verifies wasm_simd128.h byte-for-byte against the recorded LLVM source and checks the official SDK mapping plus Chromium release DEPS before compilation. The original and controlled recipes plus changed scripts are retained. The SDK's normal build-package installation and the recorded checksum-protected SDL port acquisition require network access.
+Each output directory must be new. Acquisition needs Node, Git, Python 3.12 or newer and network access to the recorded official sources. It only collects and safely inspects source data. The build probe additionally needs Docker/Buildx. It checks source/notice identities before executing upstream build code, reconstructs the selected sources, resolves the actual SDK/frontend/BuildKit image digests and records them, then compiles a single-thread ESM core with `FFMPEG_ST=yes` and `EXTRA_CFLAGS=-O3 -msimd128`. Bare make parallelism is limited to two jobs and BuildKit to two concurrent stages.
 
-Only a successful complete build can produce the retained bundle. It contains the newly built ESM core together with all 24 acquired source archives, notices, original/controlled recipes, build inputs and environment evidence. The old installed npm binary is never copied. The complete bundle must fit 195 MiB, leaving space for diagnostics below the 200 MiB total artifact budget; otherwise the probe fails before any binary upload. Retention is one day. A hash match is reported as an identity result; legal clearance and website deployment remain false.
+The fixed original recipe is ffmpeg.wasm commit `71aa99d37c02a7b4c435275ca9ef50e612f6efa1`. The controlled Dockerfile keeps only SDK, x264, LAME, zlib and FFmpeg stages, disables avdevice/SDL/network and links the exact three installed static archives by full path. zlib 1.4 uses its reviewed static-only CMake options. LAME's optional mpg123 decoder is disabled because FFmpeg handles input decoding; its reviewed encoder flush guard must be present. The final linker map and static archive checksums are retained.
 
-To reconstruct from a completed bundle, extract the `ffmpegwasm` source archive as the build context, extract each explicit codec/library archive under its `vendor/<name>/` directory, place the separate GoogleTest source at `vendor/zimg/test/extra/googletest`, extract the Emscripten and selected LLVM archives under `vendor-toolchain/<name>/`, replace the Dockerfile with `recipe/Dockerfile.controlled`, and replace each script included under `recipe/patched/build/`. Use the recorded platform, image digests, BuildKit configuration and build flags from `evidence/build-environment.json`; `recipe/rebuild-probe.mjs` records the exact Buildx command. All provided source archives and notice files must remain available together when retaining the new core. The scripts in `recipe/` include their manifest so that acquisition/build investigation can also be repeated in a new environment.
+## Runtime and toolchain source evidence
 
-## Unlinked upstream fixtures
+The SDK's original Emscripten tree and prebuilt system-library cache are removed. The acquired exact Emscripten revision replaces that tree and a fresh `EM_CACHE` is used. Only SDK Node compiler tools are preserved; their package versions and sorted content hash are recorded. These are compiler tools, not claimed as linked application runtime.
 
-The manifest also records an intentionally excluded `ffmpeg.wasm/testdata` gitlink at `c81125391a0ada7599edc6bff2da51c1a3ed38d0`. Its pinned tree contains Arial.ttf and media fixtures without an accompanying license file. The controlled core Dockerfile neither reads nor copies that test-data directory, so it is not an input to this new core and is not redistributed. The collector still verifies that gitlink's exact identity; this is not a wildcard exception for unknown submodules. The Emscripten test-code submodules are separately pinned/acquired and their notice files retained.
+The actual SDK Clang resource include tree is exported and hashed. Its `wasm_simd128.h` must match the pinned LLVM source byte-for-byte. Selected LLVM header sources, preferred generated-header definitions and emitter code plus exact license texts accompany the actual headers. This subset is not claimed to rebuild the complete LLVM compiler. The fixed official SDK mapping and Chromium release DEPS must pass their recorded Git blob identities and revision mapping checks.
 
-## Toolchain header and runtime evidence
+The image digests and resulting build-package versions are recorded. Ubuntu APT repositories are not snapshotted, so future rebuilds may obtain different native build-tool packages. Identical output across future package updates is not promised.
 
-The actual SDK Clang resource include tree is retained as `sdk-clang-resource-headers.tar.gz`; it is source input, not a compiler executable. The selected LLVM archive also retains header sources, generated-header definitions and emitter code with the exact LLVM notices. This is not a claim to rebuild LLVM itself from that selected subset. The official SDK release mapping and Chromium DEPS are fetched from their fixed revisions, checked by Git blob, and retained. The mapped LLVM revision and actual SDK SIMD header must match, or no core bundle is uploaded.
+## Security review boundaries
 
-APT packages installed during the build are recorded with exact resulting versions, but the Ubuntu package repository is not snapshotted. Future fresh builds can therefore receive different native build-tool packages. The complete controlled recipe and resulting environment inventory are retained; reproducible output across future package updates is not promised.
+`ffmpeg-security-ancestry.json` records official compare results showing all 22 distinct CVEs listed after 5.1.4 in the official 5.1.5–5.1.7 security sections have their checked fixes in base 5.1.10 ancestry, with a verified transitive 19-commit ancestry relation to the selected immutable maintained-branch snapshot. Its hash is verified before building. The official download page identifies 5.1.10 as the latest published stable 5.1 release at this review; the selected snapshot also includes 19 subsequent maintained 5.1-branch fixes. This is not a promise that every newer major/development-branch fix is backported. The snapshot is fixed for this build; no branch ref is fetched as mutable build input.
 
-## Patched FFmpeg candidate and cumulative storage gate
+`native-dependency-review.json` records retained-library source review and the removed dependency boundary. Actual native decoder/filter availability, encoding behavior, cancellation and browser compatibility require runtime QA. Source ancestry, configuration and a valid WASM module do not replace it. No app exploitability, clean-all-native or legal-certification claim is made.
 
-The source manifest pins n5.1.10. `ffmpeg-security-ancestry.json` records official compare results showing all 22 distinct CVEs listed after 5.1.4 in the official 5.1.5–5.1.7 security sections have their checked fixes in the selected source ancestry. Its byte hash is checked before compilation. This establishes the selected source includes those fixes; it does not establish app exploitability, browser compatibility, or that every native dependency is current. The old LGPLv2.1 notice changed upstream and the exact new blob is pinned. The new WASM must contain the expected5.1.10 version.
+## Paired output contract
 
-`artifact-budget.mjs` uses the ephemeral token with repository contents/Actions metadata read permissions only. Before uploading a complete bundle or failure diagnostics, it totals all unexpired codec-probe artifacts across runs and checks the cumulative 200 MiB cap with overhead reserved. It deletes nothing. A previous retained bundle can therefore block a new one until expiry or an independently reviewed removal. Both obsolete 5.1.4 probes were cancelled with no artifacts before the patched probe. No provider/CMS credentials are passed into the compilation step.
+A successful probe can retain exactly one `codec-source-and-new-core.tar.gz` plus small JSON diagnostics for one day. The tar uses USTAR with ordinary files/directories only, at most 512 outer members, at most 195 MiB compressed and at most 256 MiB for the complete gunzipped tar including end padding. Failed probes retain no core and only bounded JSON diagnostics.
+
+Relevant members:
+
+- `newly-built-core/esm/ffmpeg-core.js` and `ffmpeg-core.wasm`
+- `source-archives/`: original acquired Git/official source archives
+- `notices/`: actual notice/license file bytes
+- `source-pins.json` and `collection.json`: source identities, archive sizes/hashes and submodule paths
+- `recipe/`: this collector/probe, storage gate, reviews, original/controlled Dockerfiles, exact patched build scripts and BuildKit configuration
+- `sdk-clang-resource-headers.tar.gz`, `official-toolchain-release-DEPS`, `official-sdk-release-mapping.json`
+- `evidence/`: source/runtime/compiler/build evidence
+- `build-metadata/`: actual package inventory, static archive checksums, final linker map, compiled FFmpeg configuration/version headers and `codec-build.json`
+
+The external `diagnostics/probe-status.json` records new JS/WASM hashes and sizes, intentional old-npm difference, complete bundle SHA-256, compressed size, complete expanded tar size and member count. The embedded status predates the final bundle hash to avoid circular self-hashing. No original npm binary is copied. The expected patched FFmpeg version must be present in the new WASM and compiled headers.
+
+`artifact-budget.mjs` totals all unexpired codec-probe artifacts across repository runs before any upload, using an ephemeral Actions metadata read token only in that separate step. Existing bytes plus new inputs must fit the reserved cumulative 200 MiB cap. It never deletes old artifacts. No provider/CMS secrets reach compilation, and no job has repository-write permissions.
+
+## Reconstructing and consuming the bundle
+
+For source reconstruction, extract the ffmpegwasm archive as the build context; extract the four explicit build-library archives under `vendor/<name>/`; normalize a release archive's recorded `archiveRoot` to its source name. Extract Emscripten and the selected LLVM archive under `vendor-toolchain/<name>/`. Separate source submodules are available at their recorded paths. Replace the Dockerfile and scripts with `recipe/Dockerfile.controlled`, `.dockerignore` and `recipe/patched/build/*`. Use the recorded platform, image digests, BuildKit configuration and build flags. The probe records the exact Buildx command.
+
+QA CI may download the named one-day Actions artifact, verify the complete bundle SHA-256, safely inspect/extract the whole paired bundle and explicitly pass the ESM directory to asset preparation. Production must obtain the exact matching complete source bundle at a durable verified project release URL, retain accessible original notices and publish the correct source link and hashes. An expiring Actions artifact is not a durable public source arrangement. No public release or website deployment is performed by this probe.
+
+The original ffmpeg.wasm testdata gitlink is explicitly excluded as unlinked wrapper fixtures, not compiled input: its exact identity is checked, and unlicensed font/media fixtures are not redistributed. This is not a wildcard exception for unknown submodules.
+
+## Primary references
+
+- [Fixed original build recipe](https://github.com/ffmpegwasm/ffmpeg.wasm/blob/71aa99d37c02a7b4c435275ca9ef50e612f6efa1/Dockerfile)
+- [FFmpeg current branch releases](https://ffmpeg.org/download.html#release_5.1)
+- [FFmpeg published security fixes](https://ffmpeg.org/security.html)
+- [Official LAME release source](https://lame.sourceforge.io/download.php)
+- [Official LAME archive checksum](https://sourceforge.net/projects/lame/files/lame/4.0/lame-4.0.tar.gz/download)
+- [Official zlib release](https://github.com/madler/zlib/releases/tag/v1.4)
