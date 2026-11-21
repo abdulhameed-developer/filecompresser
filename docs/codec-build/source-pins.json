@@ -97,7 +97,7 @@
       "name": "x264",
       "repository": "mirror/x264",
       "upstreamRef": "stable; must match official ls-remote before any build",
-      "commit": "31e19f92f00c7003fa115047ce50978bc98c3a0d",
+      "commit": "b35605ace3ddf7c1a5d67a2eb553f034aef41d55",
       "licenseFiles": [
         {
           "path": "COPYING",
@@ -112,7 +112,8 @@
       "originalRecipeRepository": "ffmpegwasm/x264",
       "gitURL": "https://code.videolan.org/videolan/x264.git",
       "requireOfficialRef": "refs/heads/stable",
-      "role": "Single-thread GPL x264 encoder. Current official stable-head check is an execution prerequisite, not inferred from the GitHub mirror."
+      "role": "Single-thread GPL x264 encoder. Current official stable-head check is an execution prerequisite, not inferred from the GitHub mirror.",
+      "officialRefObservedAt": "2026-11-21T09:50:28Z"
     },
     {
       "name": "lame",
@@ -334,6 +335,6 @@
     ],
     "allNativeDependenciesCleared": false,
     "note": "No visible tool removed; accepted native decoder formats still require actual browser QA.",
-    "securityReviewSha256": "2c70d8aa2a91bf683c7f94739765f4ee0c7c01f4eaca2f52ede913a313e72cd4"
+    "securityReviewSha256": "06e239a10892e88c73919f796402278d6dfe9e17c59772d76d8aad3132975f75"
   }
 }

@@ -210,11 +210,21 @@
   ],
   "scope": "Selection removes unused external code while preserving native FFmpeg decoders/filters and exposed tools. This is not an all-native-security or legal certification.",
   "x264": {
-    "sourceCommit": "31e19f92f00c7003fa115047ce50978bc98c3a0d",
+    "sourceCommit": "b35605ace3ddf7c1a5d67a2eb553f034aef41d55",
     "officialGitURL": "https://code.videolan.org/videolan/x264.git",
     "executionPrerequisite": "Official stable ref must resolve to the selected full commit before compilation. Browser robots blocked current official-ref verification, so no current-head claim precedes this gate.",
-    "mirroredSourceReview": "COPYING/AUTHORS blobs verified and no gitlinks; no verified applicable upstream high/critical advisory established in this targeted primary review. This is not a clean claim.",
+    "mirroredSourceReview": "Exact official commit object independently inspected in mirror/x264 and ShiftMediaProject/x264: notice pins unchanged; complete recursive tree with288entries and nogitlinks. Acquisition stays official VideoLAN.",
     "oldForkAdaptation": "Old33cac patch only changed fallback CPU count1to4. Not applied to this current upstream source because the retained ST build explicitly disables threading.",
-    "actualRuntimeQARequired": true
+    "actualRuntimeQARequired": true,
+    "officialRefEvidence": {
+      "runID": 44891443852,
+      "jobID": 136807917262,
+      "checkedAt": "2026-11-21T09:50:28Z",
+      "stable": "b35605ace3ddf7c1a5d67a2eb553f034aef41d55",
+      "master": "0480cb05fa188d37ae87e8f4fd8f1aea3711f7ee",
+      "gitURL": "https://code.videolan.org/videolan/x264.git",
+      "method": "Actual official git ls-remote output in read-only CI; prior candidate failed on mismatch. New source must pass the same gate.",
+      "runURL": "https://github.com/abdulhameed-developer/filecompresser/actions/runs/44891443852"
+    }
   }
 }
