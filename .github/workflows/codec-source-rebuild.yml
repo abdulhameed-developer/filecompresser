@@ -13,7 +13,7 @@ permissions:
 
 concurrency:
   group: filecompresser-codec-source-probe
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   rebuild:
@@ -62,7 +62,7 @@ jobs:
           import path from 'node:path'
           const root = path.join(process.env.RUNNER_TEMP, 'filecompresser-codec-probe')
           const status = JSON.parse(readFileSync(path.join(root, 'diagnostics/probe-status.json'), 'utf8'))
-          if (status.status !== 'probe-complete-not-released' || !status.sourceCollected || !status.built || status.legalClearance !== false || status.deployed !== false || !status.artifact?.completeSourceAccompaniesNewBinary) throw Error('Probe did not produce a complete source-accompanied result.')
+          if (status.status !== 'probe-complete-not-released' || !status.sourceCollected || !status.runtimeSourcePinsVerified || !status.built || status.legalClearance !== false || status.deployed !== false || !status.artifact?.completeSourceAccompaniesNewBinary) throw Error('Probe did not produce a complete source-accompanied result.')
           const bundle = path.join(root, 'codec-source-and-new-core.tar.gz')
           const bytes = readFileSync(bundle)
           if (!lstatSync(bundle).isFile() || bytes.length !== status.artifact.bytes || createHash('sha256').update(bytes).digest('hex') !== status.artifact.sha256) throw Error('Complete bundle identity changed.')
@@ -78,7 +78,7 @@ jobs:
           if (total > 199 * 1024 * 1024) throw Error('Artifact inputs exceed the reserved total storage budget.')
           const entries = execFileSync('tar', ['-tzf', bundle], { encoding: 'utf8', maxBuffer: 4 * 1024 * 1024 }).split('\n')
           const includes = name => entries.includes(`./${name}`)
-          if (!includes('newly-built-core/esm/ffmpeg-core.wasm') || !includes('newly-built-core/esm/ffmpeg-core.js') || !includes('recipe/Dockerfile.original') || !includes('recipe/Dockerfile.controlled') || !includes('recipe/rebuild-probe.mjs') || !includes('source-pins.json') || !includes('collection.json')) throw Error('Missing binary, source manifest or recipe in retention bundle.')
+          if (!includes('newly-built-core/esm/ffmpeg-core.wasm') || !includes('newly-built-core/esm/ffmpeg-core.js') || !includes('recipe/Dockerfile.original') || !includes('recipe/Dockerfile.controlled') || !includes('recipe/rebuild-probe.mjs') || !includes('source-pins.json') || !includes('collection.json') || !includes('sdk-clang-resource-headers.tar.gz') || !includes('official-toolchain-release-DEPS') || !includes('official-sdk-release-mapping.json')) throw Error('Missing binary, source manifest or recipe in retention bundle.')
           const manifest = JSON.parse(readFileSync('docs/codec-build/source-pins.json', 'utf8'))
           for (const source of manifest.sources) {
             if (!includes(`source-archives/${source.name}-${source.commit}.tar.gz`)) throw Error(`Missing source archive: ${source.name}`)

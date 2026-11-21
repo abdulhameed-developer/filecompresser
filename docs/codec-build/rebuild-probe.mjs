@@ -22,7 +22,7 @@ mkdirSync(output, { recursive: true, mode: 0o700 })
 const diagnostics = path.join(output, 'diagnostics')
 mkdirSync(diagnostics)
 const writeJson = (name, value) => writeFileSync(path.join(diagnostics, name), JSON.stringify(value, null, 2) + '\n')
-const status = { status: 'started', sourcePinsSha256: sha256(manifestBytes), sourceCollected: false, built: false, originalNpmBinaryCorrespondenceVerified: false, legalClearance: false, deployed: false }
+const status = { status: 'started', sourcePinsSha256: sha256(manifestBytes), sourceCollected: false, runtimeSourcePinsVerified: false, built: false, originalNpmBinaryCorrespondenceVerified: false, legalClearance: false, deployed: false }
 writeJson('probe-status.json', status)
 let builder
 try {
@@ -54,6 +54,9 @@ try {
   if (libraries.length !== 16 || libraries.some(item => !item)) throw Error('Incomplete explicit build-library source set.')
   const vendor = path.join(context, 'vendor')
   for (const source of libraries) extract(source.name, vendor)
+  const toolchainSources = path.join(context, 'vendor-toolchain')
+  extract('emscripten', toolchainSources)
+  extract('llvm-resource-headers', toolchainSources)
   extract('googletest', path.join(output, 'submodule'))
   const googleTarget = path.join(vendor, 'zimg/test/extra/googletest')
   mkdirSync(googleTarget, { recursive: true })
@@ -75,8 +78,34 @@ try {
   }
   const compiler = command('docker', ['run', '--rm', '--platform', 'linux/amd64', '--network', 'none', images.emsdk, 'emcc', '--version'])
   if (!compiler.includes('3.1.40') || !compiler.includes(manifest.toolchain.compilerSourceCommit)) throw Error('Compiler version/revision differs from the reviewed source manifest.')
+  const sdkNodeTools = JSON.parse(command('docker', ['run', '--rm', '--platform', 'linux/amd64', '--network', 'none', images.emsdk, 'python3', '-c', 'import hashlib,json,pathlib\nroot=pathlib.Path("/emsdk/upstream/emscripten/node_modules")\nassert root.is_dir()\ndigest=hashlib.sha256(); count=0; size=0; packages=[]\nfor p in sorted(root.rglob("*")):\n if p.is_symlink():\n  digest.update(str(p.relative_to(root)).encode()+b"\\0link\\0"+str(p.readlink()).encode()+b"\\0")\n elif p.is_file():\n  b=p.read_bytes(); count+=1; size+=len(b); digest.update(str(p.relative_to(root)).encode()+b"\\0"+hashlib.sha256(b).digest())\n  if p.name=="package.json":\n   try:\n    j=json.loads(b); packages.append({"path":str(p.relative_to(root)),"name":j.get("name"),"version":j.get("version"),"license":j.get("license")})\n   except Exception: pass\nprint(json.dumps({"files":count,"bytes":size,"treeSha256":digest.hexdigest(),"packages":packages}))']))
+  writeJson('sdk-node-tooling.json', sdkNodeTools)
+  const clang = command('docker', ['run', '--rm', '--platform', 'linux/amd64', '--network', 'none', images.emsdk, 'clang', '--version'])
+  if (!clang.includes(manifest.toolchain.llvmSourceCommit)) throw Error('SDK Clang revision differs from the recorded LLVM source.')
+  const resourceDirectory = command('docker', ['run', '--rm', '--platform', 'linux/amd64', '--network', 'none', images.emsdk, 'clang', '-print-resource-dir']).trim()
+  if (!/^\/emsdk\/upstream\/lib\/clang\/[0-9.]+$/.test(resourceDirectory)) throw Error('Unexpected SDK Clang resource directory.')
+  const headerArchive = command('docker', ['run', '--rm', '--platform', 'linux/amd64', '--network', 'none', images.emsdk, 'python3', '-c', 'import sys,tarfile\nwith tarfile.open(fileobj=sys.stdout.buffer,mode="w|gz") as archive:\n archive.add(sys.argv[1]+"/include",arcname="include")', resourceDirectory], { encoding: null, maxBuffer: 64 * 1024 * 1024 })
+  if (!headerArchive.length || headerArchive.length > 32 * 1024 * 1024) throw Error('Unexpected SDK resource-header archive size.')
+  const headerArchivePath = path.join(sources, 'sdk-clang-resource-headers.tar.gz')
+  writeFileSync(headerArchivePath, headerArchive)
+  const actualHeaders = path.join(output, 'sdk-clang-resource-headers')
+  command('python3', ['-c', 'import sys,tarfile\nwith tarfile.open(sys.argv[1],"r:gz") as archive:\n archive.extractall(sys.argv[2],filter="data")', headerArchivePath, actualHeaders])
+  const simdHeader = readFileSync(path.join(actualHeaders, 'include/wasm_simd128.h'))
+  const llvmSimdHeader = readFileSync(path.join(toolchainSources, 'llvm-resource-headers/clang/lib/Headers/wasm_simd128.h'))
+  if (!simdHeader.equals(llvmSimdHeader) || gitBlob(simdHeader) !== manifest.toolchain.simdHeaderGitBlob) throw Error('Actual SDK SIMD inline source does not match the pinned LLVM source.')
+  const mappingResponse = await fetch(manifest.toolchain.sdkMappingURL, { signal: AbortSignal.timeout(120000) })
+  if (!mappingResponse.ok) throw Error('The official SDK release mapping could not be acquired.')
+  const mappingBytes = Buffer.from(await mappingResponse.arrayBuffer())
+  if (gitBlob(mappingBytes) !== manifest.toolchain.sdkMappingGitBlob || JSON.parse(mappingBytes).releases['3.1.40'] !== manifest.toolchain.releaseCommit) throw Error('Official SDK release mapping failed its exact provenance check.')
+  writeFileSync(path.join(sources, 'official-sdk-release-mapping.json'), mappingBytes)
+  const releaseResponse = await fetch(manifest.toolchain.releaseDepsURL, { signal: AbortSignal.timeout(120000) })
+  if (!releaseResponse.ok) throw Error('The official toolchain release DEPS could not be acquired.')
+  const releaseDeps = Buffer.from((await releaseResponse.text()).trim(), 'base64')
+  if (gitBlob(releaseDeps) !== manifest.toolchain.releaseDepsGitBlob || !releaseDeps.includes(Buffer.from(manifest.toolchain.llvmSourceCommit)) || !releaseDeps.includes(Buffer.from(manifest.toolchain.compilerSourceCommit))) throw Error('Official toolchain release DEPS failed its exact LLVM/Emscripten provenance check.')
+  writeFileSync(path.join(sources, 'official-toolchain-release-DEPS'), releaseDeps)
+  writeJson('runtime-source-inputs.json', { emscripten: { sourceCommit: manifest.toolchain.compilerSourceCommit, imageRuntimeReplaced: true, prebuiltCacheReused: false, cachePath: '/emsdk/filecompresser-source-cache' }, clang, resourceDirectory, sdkResourceHeaderArchive: { bytes: headerArchive.length, sha256: sha256(headerArchive) }, wasmSimdHeaderGitBlob: gitBlob(simdHeader), llvmSourceCommit: manifest.toolchain.llvmSourceCommit, officialReleaseDepsGitBlob: gitBlob(releaseDeps) })
   const environment = {
-    images, compiler, docker: command('docker', ['version']), buildx: command('docker', ['buildx', 'version']),
+    images, compiler, clang, docker: command('docker', ['version']), buildx: command('docker', ['buildx', 'version']),
     platform: 'linux/amd64', flags: { FFMPEG_ST: 'yes', EXTRA_CFLAGS: '-O3 -msimd128' },
     workerParallelism: 2, makeJobs: 2, run: process.env.GITHUB_RUN_ID || null, sourceCommit: process.env.GITHUB_SHA || null,
   }
@@ -90,7 +119,9 @@ try {
 
   const originalDockerfile = readFileSync(path.join(context, 'Dockerfile'), 'utf8')
   let dockerfile = originalDockerfile.replace(/^# syntax=.*$/m, `# syntax=${images.frontend}`)
-  dockerfile = dockerfile.replace('FROM emscripten/emsdk:3.1.40 AS emsdk-base', `FROM ${images.emsdk} AS emsdk-base`)
+  const sdkBase = 'FROM emscripten/emsdk:3.1.40 AS emsdk-base'
+  if (!dockerfile.includes(sdkBase)) throw Error('The reviewed SDK base stage changed.')
+  dockerfile = dockerfile.replace(sdkBase, `FROM ${images.emsdk} AS emsdk-base\nRUN test ! -e /emsdk/filecompresser-source-cache && test -d /emsdk/upstream/emscripten/node_modules && mv /emsdk/upstream/emscripten/node_modules /emsdk/filecompresser-sdk-node-modules && rm -rf /emsdk/upstream/emscripten\nCOPY vendor-toolchain/emscripten/ /emsdk/upstream/emscripten/\nRUN mv /emsdk/filecompresser-sdk-node-modules /emsdk/upstream/emscripten/node_modules\nENV EM_CACHE=/emsdk/filecompresser-source-cache EM_FROZEN_CACHE=0`)
   let copied = 0
   dockerfile = dockerfile.replace(/^ADD https:\/\/github\.com\/([^#]+)\.git#\$[A-Z0-9_]+ \/src\s*$/gm, (_line, repository) => {
     const source = libraries.find(item => item.repository === repository)
@@ -119,9 +150,11 @@ try {
   if (!originalScripts.length) throw Error('Expected build parallelism controls were not found.')
   writeJson('recipe-changes.json', {
     originalDockerfileGitBlob: gitBlob(Buffer.from(originalDockerfile)), controlledDockerfileSha256: sha256(Buffer.from(dockerfile)),
-    changes: ['Pinned SDK/frontend/BuildKit image digests.', 'Replaced remote library Git fetches with verified local source trees, including the pinned zimg submodule.', 'Recorded installed build-package versions.', 'Bound bare make -j commands to two jobs.'],
+    changes: ['Pinned SDK/frontend/BuildKit image digests.', 'Replaced image Emscripten runtime with the acquired pinned source and used a fresh system-library cache.', 'Verified the actual SDK SIMD header against exact LLVM source and official release DEPS; retained all actual SDK resource headers and selected preferred LLVM header/generator sources.', 'Replaced remote library Git fetches with verified local source trees, including the pinned zimg submodule.', 'Recorded installed build-package versions.', 'Bound bare make -j commands to two jobs.'],
     scripts: originalScripts.map(item => ({ path: item.path, beforeSha256: sha256(Buffer.from(item.original)), afterSha256: sha256(Buffer.from(item.changed)) })),
   })
+  status.runtimeSourcePinsVerified = true
+  writeJson('probe-status.json', status)
 
   const config = path.join(output, 'buildkit.toml')
   writeFileSync(config, '[worker.oci]\n  max-parallelism = 2\n')
@@ -151,7 +184,7 @@ try {
   mkdirSync(retained)
   cpSync(path.join(sources, 'archives'), path.join(retained, 'source-archives'), { recursive: true })
   cpSync(path.join(sources, 'notices'), path.join(retained, 'notices'), { recursive: true })
-  for (const name of ['source-pins.json', 'collection.json', 'SDL2-upstream-port.zip']) cpSync(path.join(sources, name), path.join(retained, name))
+  for (const name of ['source-pins.json', 'collection.json', 'SDL2-upstream-port.zip', 'sdk-clang-resource-headers.tar.gz', 'official-toolchain-release-DEPS', 'official-sdk-release-mapping.json']) cpSync(path.join(sources, name), path.join(retained, name))
   cpSync(diagnostics, path.join(retained, 'evidence'), { recursive: true })
   const recipe = path.join(retained, 'recipe')
   mkdirSync(recipe)

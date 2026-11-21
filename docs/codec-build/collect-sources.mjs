@@ -17,6 +17,7 @@ const names = new Set()
 for (const source of manifest.sources) {
   if (!/^[a-z0-9-]+$/.test(source.name) || names.has(source.name) || !/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(source.repository) || !gitHash.test(source.commit)) throw Error('Unsafe or duplicate source pin.')
   names.add(source.name)
+  if (source.archivePaths && (!Array.isArray(source.archivePaths) || !source.archivePaths.length || source.archivePaths.some(item => !validPath(item)))) throw Error('Unsafe selected-source path.')
   for (const file of source.licenseFiles) if (!validPath(file.path) || !gitHash.test(file.gitBlob)) throw Error('Unsafe license-file pin.')
   for (const sourceModule of [...source.submodules, ...(source.excludedSubmodules || [])]) if (!validPath(sourceModule.path) || !gitHash.test(sourceModule.commit)) throw Error('Unsafe submodule pin.')
 }
@@ -42,10 +43,11 @@ for (const source of manifest.sources) {
   mkdirSync(repository)
   git(repository, ['init', '--quiet'])
   git(repository, ['remote', 'add', 'origin', `https://github.com/${source.repository}.git`])
-  git(repository, ['fetch', '--quiet', '--no-tags', '--depth=1', 'origin', source.commit])
+  git(repository, ['fetch', '--quiet', '--no-tags', '--depth=1', ...(source.archivePaths ? ['--filter=blob:none'] : []), 'origin', source.commit])
   const commit = git(repository, ['rev-parse', 'FETCH_HEAD']).trim()
   if (commit !== source.commit) throw Error(`Source revision mismatch: ${source.name}`)
-  const links = git(repository, ['ls-tree', '-r', commit]).split('\n').filter(line => line.startsWith('160000 ')).map(line => {
+  const selectedPaths = source.archivePaths || []
+  const links = git(repository, ['ls-tree', '-r', commit, ...(selectedPaths.length ? ['--', ...selectedPaths] : [])]).split('\n').filter(line => line.startsWith('160000 ')).map(line => {
     const tab = line.indexOf('\t')
     return { path: line.slice(tab + 1), commit: line.slice(14, tab) }
   })
@@ -62,10 +64,10 @@ for (const source of manifest.sources) {
   // Override export-ignore so source files are not omitted by archive rules.
   writeFileSync(path.join(repository, '.git/info/attributes'), '* -export-ignore\n** -export-ignore\n')
   const archive = path.join(archives, `${source.name}-${source.commit}.tar.gz`)
-  git(repository, ['archive', '--format=tar.gz', `--prefix=${source.name}/`, `--output=${archive}`, commit])
+  git(repository, ['archive', '--format=tar.gz', `--prefix=${source.name}/`, `--output=${archive}`, commit, ...(selectedPaths.length ? ['--', ...selectedPaths] : [])])
   const bytes = readFileSync(archive)
   if (!lstatSync(archive).isFile() || !bytes.length) throw Error('Missing source archive.')
-  results.push({ name: source.name, repository: source.repository, commit, archive: path.basename(archive), bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex'), submodules: source.submodules, excludedUnlinkedFixtures: source.excludedSubmodules || [] })
+  results.push({ name: source.name, repository: source.repository, commit, archive: path.basename(archive), bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex'), archivePaths: selectedPaths.length ? selectedPaths : null, submodules: source.submodules, excludedUnlinkedFixtures: source.excludedSubmodules || [] })
   console.log(`Collected ${source.name} at ${source.commit}; ${bytes.length} archive bytes.`)
 }
 writeFileSync(path.join(output, 'collection.json'), JSON.stringify({

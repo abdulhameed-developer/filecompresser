@@ -31,7 +31,14 @@
     "imageTag": "emscripten/emsdk:3.1.40",
     "imageDigest": null,
     "imageDigestStatus": "Must resolve and record before controlled build; no digest has been invented.",
-    "compilerSourceCommit": "5c27e79dd0a9c4e27ef2326841698cdd4f6b5784"
+    "compilerSourceCommit": "5c27e79dd0a9c4e27ef2326841698cdd4f6b5784",
+    "llvmSourceCommit": "2922e7cd9334797c24a317d41275f1258ef9ddd3",
+    "simdHeaderGitBlob": "2327bec52522d270f5489c2fb05301694088d190",
+    "sdkMappingURL": "https://raw.githubusercontent.com/emscripten-core/emsdk/ae245715ef50e036b68a2412a323129676bf8300/emscripten-releases-tags.json",
+    "sdkMappingGitBlob": "7c1581af17ca4d08063f699812ea9de6ce7c2cd7",
+    "releaseCommit": "c3122846bb040798aab975f61008c37eb19476de",
+    "releaseDepsURL": "https://chromium.googlesource.com/emscripten-releases/+/c3122846bb040798aab975f61008c37eb19476de/DEPS?format=TEXT",
+    "releaseDepsGitBlob": "a9344914231879d94a20380516919501c10ebb9a"
   },
   "sdlPort": {
     "recipeGitBlob": "24dd8757195f7df296c60d4afce4195363ee990d",
@@ -471,6 +478,36 @@
         {
           "path": "LICENSE",
           "gitBlob": "650db9b282d2ef5b2261b2f2fa2777dabd125046"
+        }
+      ],
+      "submodules": []
+    },
+    {
+      "name": "llvm-resource-headers",
+      "repository": "llvm/llvm-project",
+      "upstreamRef": "Exact SDK3.1.40 release LLVM revision; selected source paths only",
+      "commit": "2922e7cd9334797c24a317d41275f1258ef9ddd3",
+      "role": "Clang resource inline headers and their preferred generated-header definitions/emitters; not the full LLVM compiler source",
+      "archivePaths": [
+        "clang/lib/Headers",
+        "clang/include/clang/Basic",
+        "clang/utils/TableGen",
+        "LICENSE.TXT",
+        "clang/LICENSE.TXT",
+        "llvm/LICENSE.TXT"
+      ],
+      "licenseFiles": [
+        {
+          "path": "LICENSE.TXT",
+          "gitBlob": "fa6ac540007032cbd0ec772a1c72e6cb5527a4fe"
+        },
+        {
+          "path": "clang/LICENSE.TXT",
+          "gitBlob": "24806ab4c9eb291db4d28e159901f7a0901b9fd1"
+        },
+        {
+          "path": "llvm/LICENSE.TXT",
+          "gitBlob": "fa6ac540007032cbd0ec772a1c72e6cb5527a4fe"
         }
       ],
       "submodules": []
