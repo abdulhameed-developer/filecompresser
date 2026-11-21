@@ -3,7 +3,7 @@
   "introduction": "Re-encode your JPG or JPEG photo with a lower-quality or smaller-dimension preset, then compare the result. In Maximum mode, a best-effort target can also try to fit JPG or WebP output below a chosen file size.",
   "sections": [
     {
-      "heading": "Start with a copy of the original",
+      "heading": "Keep a copy of your original JPG",
       "body": "Add the photograph and choose Recommended first. Check the result against the upload limit. If it remains too large, try Maximum or its available target-size option, then inspect the downloaded image."
     },
     {
@@ -15,9 +15,6 @@
       "body": "JPG suits photographs and many opaque web images. It cannot preserve transparency. Inspect faces, fine textures and lettering, and keep the camera or design original because repeated lossy encoding can add artifacts."
     }
   ],
-  "faq": [],
-  "seoTitle": "JPG Compressor — Reduce Photo File Size",
-  "seoDescription": "Reduce JPG and JPEG photo size in your browser. Compare presets or try a best-effort target in Maximum mode. Check quality before replacing originals.",
   "links": [
     {
       "label": "Compare image quality modes",
@@ -27,5 +24,8 @@
       "label": "Why an encoded file can become larger",
       "href": "/blog/honest-file-size-reporting"
     }
-  ]
+  ],
+  "faq": [],
+  "seoTitle": "JPG Compressor — Reduce Photo File Size",
+  "seoDescription": "Reduce JPG and JPEG photo size in your browser. Compare presets or try a best-effort target in Maximum mode. Check quality before replacing originals."
 }
