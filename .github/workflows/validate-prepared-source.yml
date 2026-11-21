@@ -59,7 +59,7 @@ jobs:
           import { execFileSync } from 'node:child_process'
           import assert from 'node:assert/strict'
           const allowed = new Set(['.github/workflows/validate-prepared-source.yml', 'package.json', 'package-lock.json', 'tina/tina-lock.json'])
-          const changed = execFileSync('git', ['diff', '--name-only', '-z', process.env.EXPECTED_SOURCE_SHA, 'HEAD']).toString('utf8').split('\0').filter(Boolean)
+          const changed = execFileSync('git', ['diff', '--name-only', '-z', '--no-renames', process.env.EXPECTED_SOURCE_SHA, 'HEAD']).toString('utf8').split('\0').filter(Boolean)
           assert.ok(changed.every(name => allowed.has(name)), 'Current HEAD differs from reviewed source outside the validator and generated locks.')
           const reviewed = JSON.parse(execFileSync('git', ['show', `${process.env.EXPECTED_SOURCE_SHA}:package.json`], { encoding: 'utf8' }))
           const current = JSON.parse(readFileSync('package.json', 'utf8'))
@@ -302,7 +302,7 @@ jobs:
           const expected = JSON.parse(execFileSync('git', ['show', `${process.env.EXPECTED_SOURCE_SHA}:package.json`], { encoding: 'utf8' }))
           expected.devDependencies = { ...expected.devDependencies, tinacms: '3.15.2', '@tinacms/cli': '4.0.5' }
           assert.deepEqual(JSON.parse(readFileSync('package.json', 'utf8')), expected)
-          for (const args of [['diff', '--name-only', '-z'], ['ls-files', '--others', '--exclude-standard', '-z']]) {
+          for (const args of [['diff', 'HEAD', '--name-only', '-z', '--no-renames'], ['ls-files', '--others', '--exclude-standard', '-z']]) {
             const changed = execFileSync('git', args).toString('utf8').split('\0').filter(Boolean)
             assert.ok(changed.every(name => files.includes(name)), 'Build modified an unexpected source file.')
           }
