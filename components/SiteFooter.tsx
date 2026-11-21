@@ -2,6 +2,7 @@ import Icon from './Icon'
 import Link from 'next/link'
 import Image from 'next/image'
 import { footerColumns } from '@/lib/nav'
+import { getSiteSettings } from '@/lib/site-settings'
 
 /**
  * The one footer, rendered once by the root layout.
@@ -12,6 +13,7 @@ import { footerColumns } from '@/lib/nav'
  */
 export default function SiteFooter() {
   const year = new Date().getFullYear()
+  const { supportEmail } = getSiteSettings()
 
   return (
     <footer className="siteFooter">
@@ -28,6 +30,7 @@ export default function SiteFooter() {
           <p className="footerContact">
             <Link href="/contact">Help & contact</Link>
           </p>
+          {supportEmail && <p className="footerContact"><a href={`mailto:${supportEmail}`}>{supportEmail}</a></p>}
         </div>
 
         {footerColumns().map((column) => (

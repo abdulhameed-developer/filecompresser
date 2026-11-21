@@ -36,6 +36,21 @@ function object(value: unknown, location: string): Record<string, unknown> {
   return value as Record<string, unknown>
 }
 
+function isBlankOptionalValue(value: unknown): boolean {
+  if (value === undefined || value === null) return true
+  if (typeof value === 'string') return value.trim().length === 0
+  if (Array.isArray(value)) return value.every(isBlankOptionalValue)
+  if (typeof value === 'object') return Object.values(value).every(isBlankOptionalValue)
+  return false
+}
+
+/** Tina can retain a cleared group as an object of empty/null fields. */
+function optionalObject(value: unknown, location: string): Record<string, unknown> | undefined {
+  if (value === undefined || value === null) return undefined
+  const item = object(value, location)
+  return isBlankOptionalValue(item) ? undefined : item
+}
+
 function text(value: unknown, location: string, optional = false): string {
   if (optional && (value === undefined || value === null || value === '')) return ''
   if (typeof value !== 'string' || !value.trim()) return fail(location, 'expected non-empty text')
@@ -157,9 +172,10 @@ export function parsePublishedPost(value: unknown, slug: string): BlogPost | und
   if (item.updated) post.updated = isoDate(item.updated, `${slug}.updated`)
   if (item.seoTitle) post.seoTitle = text(item.seoTitle, `${slug}.seoTitle`)
   if (item.seoDescription) post.seoDescription = text(item.seoDescription, `${slug}.seoDescription`)
-  if (item.featuredImage) post.featuredImage = editorialImage(item.featuredImage, `${slug}.featuredImage`)
-  if (item.author) {
-    const author = object(item.author, `${slug}.author`)
+  const featuredImage = optionalObject(item.featuredImage, `${slug}.featuredImage`)
+  if (featuredImage) post.featuredImage = editorialImage(featuredImage, `${slug}.featuredImage`)
+  const author = optionalObject(item.author, `${slug}.author`)
+  if (author) {
     if (author.kind && !['Person', 'Organization'].includes(String(author.kind))) return fail(slug, 'author kind must be Person or Organization')
     post.author = {
       name: text(author.name, `${slug}.author.name`),
@@ -222,7 +238,7 @@ export function parseEditorialContent(value: unknown, location: string): Editori
   const item = object(value, location)
   const faqMode = item.faqMode ?? 'default'
   if (!['default', 'custom', 'hidden'].includes(String(faqMode))) return fail(location, 'choose a valid FAQ mode')
-  const hero = item.hero ? object(item.hero, `${location}.hero`) : undefined
+  const hero = optionalObject(item.hero, `${location}.hero`)
   return {
     heading: text(item.heading, `${location}.heading`),
     introduction: text(item.introduction, `${location}.introduction`),

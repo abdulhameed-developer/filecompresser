@@ -1,40 +1,53 @@
 # Domain and email verification — 21 November 2026
 
-## Observed registrar state
+## Registrar and authoritative DNS
 
-Hostinger's authenticated Domains page now shows **filecompresser.com Active**, with expiration21November2027. The earlier pending-registration owner form was completed; the current status is the authority. No purchase or renewal was made by this task.
+Hostinger confirms **filecompresser.com Active**, expiring **21 November 2027**. No purchase, renewal, paid email plan or trial was activated during this setup.
 
-The DNS/Nameservers page was inspected before any changes:
+The approved nameserver change has been applied at Hostinger:
 
-| Type | Name | Value | Priority | TTL(seconds) |
+- `devin.ns.cloudflare.com`
+- `liz.ns.cloudflare.com`
+
+Cloudflare now displays **Your domain is now protected by Cloudflare** on its free plan. The earlier Hostinger nameservers were `aster.dns-parking.com` and `helios.dns-parking.com`.
+
+The original A record (`@ → 2.57.91.91`) and CNAME (`www → filecompresser.com`) were copied before migration and preserved. The A target is a parking service, not the FileCompresser application. Replace the web target only after the actual Pages deployment and release checks pass. Preserve all email records when changing the web target.
+
+DNSSEC signing is enabled at Cloudflare. The matching registrar DS record has been saved at Hostinger: key tag 2371, algorithm 13 (ECDSA P-256/SHA-256), digest type 2 (SHA-256), digest `FE125D9CBA5DEAF521107CEC5CD344E6FB72685047213A19BD4090C3A9773998`. Cloudflare was still awaiting registrar propagation at the last dashboard check. A subsequent Google Public DNS lookup returned the correct root TXT records with authenticated-data (`AD: true`); keep both observations in the evidence until the dashboard catches up.
+
+## Working business mailbox
+
+The authenticated Zoho Admin Console confirms **Mail Free**, five available user licences and one active user: **info@filecompresser.com**. Webmail is https://mail.zoho.com/. The outgoing display name is **FileCompresser Support**. Zoho verified domain ownership and all required MX, SPF and DKIM records. The free plan is a real mailbox; it does not include IMAP/POP/ActiveSync.
+
+An external Gmail message was delivered to this inbox, and a reply from the business address was delivered to the owner's connected Gmail inbox. A second outgoing message after key rotation reached the Gmail inbox with aligned DKIM (`fc2026`, 2048 bits) and DMARC both passing. Gmail still reported SPF `none`; Google Public DNS independently returns the correct SPF policy in an authenticated response. This recipient-cache discrepancy remains under observation. Do not report SPF's received-message check as passed from the provider's DNS verification alone.
+
+| Type | Host | Target/value | Priority | TTL |
 | --- | --- | --- | --- | --- |
-| CNAME | www | filecompresser.com |0|300|
-| A | @ |2.57.91.91|0|50|
+| MX | @ | mx.zoho.com |10|300 seconds|
+| MX | @ | mx2.zoho.com |20|300 seconds|
+| MX | @ | mx3.zoho.com |50|300 seconds|
+| TXT | @ | v=spf1 include:zohomail.com ~all |—|300 seconds|
+| TXT | @ | zoho-verification=zb63292129.zmverify.zoho.com |—|Auto|
+| TXT | fc2026._domainkey | Zoho-generated 2048-bit RSA public key |—|Auto|
+| TXT | zmail._domainkey | Original verified 1024-bit RSA public key, retained during rotation |—|300 seconds|
+| TXT | _dmarc | v=DMARC1; p=reject; adkim=r; aspf=r |—|300 seconds|
 
-Nameservers: `aster.dns-parking.com`, `helios.dns-parking.com`.
+The `fc2026` selector is verified and is now the primary DKIM signing selector. Both public keys remain published. DMARC now enforces `p=reject` after aligned DKIM and DMARC passed on the actual outgoing message; Zoho is the only configured sender. DMARC can pass through aligned DKIM even while a receiver has not refreshed its SPF lookup. Verify a further outgoing message after enforcement, and do not create duplicate SPF or DMARC policies. Do not add reporting destinations or forwarding services without a clear operational need.
 
-No MX, SPF, DKIM, DMARC or other TXT records were shown in this inventory. Do not infer future records from this snapshot; refresh it before migration, and preserve any records added later. The parked A record is not evidence that this application is deployed.
+Passwords, recovery codes and private signing keys are not stored in this repository. Account sign-in/recovery and MFA are managed by Zoho. Do not disable MFA or change the owner's password as part of website maintenance.
 
-## Business email
+## CMS and hosting resources
 
-The authenticated Hostinger Emails page offers paid business email plans and shows no active mailbox. No email plan or trial was purchased or activated. `info@filecompresser.com` is not a verified working mailbox and remains unpublished on the website.
+TinaCloud project **FileCompresser** is connected to `abdulhameed-developer/filecompresser`. Its public client ID is `e80a2716-65ae-4124-a250-85a481310f9a`. Allowed origins are `http://localhost:3000`, `https://filecompresser.com` and `https://www.filecompresser.com`. Add any actual preview origin before testing hosted authentication there. No content token or other credential is recorded here.
 
-Official Hostinger documentation describes limited30-day trials for selected domain offers, not a permanent free mailbox. The actual account screen has not shown an included offer. Do not enter a paid checkout or start an auto-renewing trial without explicit owner approval.
-
-Zoho Mail's official free custom-domain mailbox is a potential alternative only if its truthful signup in the user's region offers the free plan. Its published free tier has data-center restrictions and lacks IMAP/POP/ActiveSync; regional eligibility and account verification remain to be checked. Cloudflare forwarding alone does not satisfy the requested full inbound/outbound mailbox.
-
-Before publishing support details, provision a real mailbox, set sender name FileCompresser Support, obtain exact provider MX/SPF/DKIM values, configure a suitable DMARC policy, and verify inbound and outbound delivery plus received authentication headers. Do not invent provider-specific DNS targets or advertise forwarding as a mailbox.
-
-## Confirmed service resources
-
-TinaCloud project FileCompresser was created for the existing abdulhameed-developer/filecompresser repository. Its public client ID is `e80a2716-65ae-4124-a250-85a481310f9a`. Allowed origins are localhost:3000, https://filecompresser.com and https://www.filecompresser.com. No content token or other credential is recorded here.
-
-Cloudflare account sign-in is verified. A Pages project, DNS migration, deployed website, HTTPS on the custom hostname and successful CMS publishing are not implied by account sign-in or creation of the Tina project.
+The GitHub connector has working read/write access. The reviewed source was published on `work/filecompresser-production-20261121` at initial commit `c043741ed7551a44a0818f1c2118cec3e96766c9` with verified tree `1a0ea2d192416657919ab6666de5c825f17c302a`; main has not been updated. Cloudflare's GitHub integration was authorized by the owner. The Pages build form is prepared for `npm run build:cms` and output directory `out`, but no website deployment is claimed here. Domain activation and a working mailbox do not establish application deployment, HTTPS correctness or successful CMS publishing.
 
 ## References
 
-- https://www.hostinger.com/support/4625828-parameters-and-limits-of-hostinger-email/
-- https://www.hostinger.com/support/how-the-hostinger-mail-trial-works/
-- https://www.zoho.com/mail/compare/overview.html
+- https://developers.cloudflare.com/fundamentals/manage-domains/add-site/
+- https://developers.cloudflare.com/dns/dnssec/
+- https://www.hostinger.com/support/3667267-how-to-use-dnssec-records-at-hostinger/
 - https://www.zoho.com/mail/zohomail-pricing.html
-- https://developers.cloudflare.com/email-service/
+- https://www.zoho.com/mail/help/adminconsole/cloudflare.html
+- https://www.zoho.com/mail/help/adminconsole/dkim-configuration.html
+- https://www.zoho.com/mail/help/adminconsole/dmarc-policy.html

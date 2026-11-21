@@ -38,13 +38,13 @@
       "heading": "Analytics and cookies",
       "body": [
         "The public tool pages set no analytics cookies, no advertising cookies, and no tracking cookies. There is no third-party analytics script running on these pages.",
-        "The only persistent state is ordinary HTTP caching of the FFmpeg engine files, which the browser may keep to avoid re-downloading a 30 MB file. That cache holds program code, not your data."
+        "The public tools use ordinary HTTP caching of the processing-engine files, which the browser may keep to avoid downloading the code again. That cache holds program code, not your selected files."
       ]
     },
     {
-      "heading": "Contact forms",
+      "heading": "Contacting support",
       "body": [
-        "There is no contact form, and no mechanism on this site for sending us a file. The contact page provides general help and currently has no monitored support mailbox. Do not submit confidential documents through this site."
+        "The site has no file-upload contact form. If you email support, your message, email address and any attachments you choose to send are handled by our email provider, Zoho Mail, and the email services involved in delivery. This is separate from local tool processing. Please do not email private files."
       ]
     },
     {

@@ -45,6 +45,18 @@ function list(value: unknown, location: string): unknown[] {
   if (!Array.isArray(value)) return invalid(location, 'expected a list')
   return value
 }
+function clearedGroupValue(value: unknown): boolean {
+  if (value === undefined || value === null) return true
+  if (typeof value === 'string') return !value.trim()
+  if (typeof value === 'object' && !Array.isArray(value)) return Object.values(value).every(clearedGroupValue)
+  return false
+}
+/** Tina keeps an object after its child inputs are cleared; treat that as off. */
+function optionalGroup(value: unknown, location: string): Record<string, unknown> | undefined {
+  if (value === undefined || value === null) return undefined
+  const item = record(value, location)
+  return clearedGroupValue(item) ? undefined : item
+}
 function link(value: unknown, location: string): ManagedLink {
   const item = record(value, location)
   const href = text(item.href, `${location}.href`)
@@ -91,13 +103,14 @@ export function parseManagedPage(value: unknown, location: string): ManagedPage 
       }
     }),
   }
-  if (item.introCta) result.introCta = link(item.introCta, `${location}.introCta`)
-  if (item.support) {
-    const support = record(item.support, `${location}.support`)
+  const introCta = optionalGroup(item.introCta, `${location}.introCta`)
+  if (introCta) result.introCta = link(introCta, `${location}.introCta`)
+  const support = optionalGroup(item.support, `${location}.support`)
+  if (support) {
     result.support = { text: text(support.text, `${location}.support.text`), emphasis: text(support.emphasis, `${location}.support.emphasis`), link: link(support.link, `${location}.support.link`) }
   }
-  if (item.footer) {
-    const footer = record(item.footer, `${location}.footer`)
+  const footer = optionalGroup(item.footer, `${location}.footer`)
+  if (footer) {
     result.footer = { heading: text(footer.heading, `${location}.footer.heading`), introduction: text(footer.introduction, `${location}.footer.introduction`), link: link(footer.link, `${location}.footer.link`) }
   }
   return result

@@ -4,6 +4,36 @@ const link = (name, label, required = false) => ({
   type: 'object', name, label, required,
   fields: [string('label', 'Link text'), { ...string('href', 'Address'), description: 'Use a path on this site, such as /blog, or a full HTTPS address.' }],
 })
+const cleared = value => {
+  if (value === undefined || value === null) return true
+  if (typeof value === 'string') return !value.trim()
+  return typeof value === 'object' && !Array.isArray(value) && Object.values(value).every(cleared)
+}
+const atPath = (value, path) => path.split('.').reduce((item, key) => item && typeof item === 'object' && !Array.isArray(item) ? item[key] : undefined, value)
+const completeText = value => typeof value === 'string' && Boolean(value.trim())
+const optionalGroupValidator = (paths, label) => value => {
+  if (value === undefined || value === null) return
+  if (typeof value !== 'object' || Array.isArray(value)) return `${label} must be a group of fields.`
+  if (cleared(value)) return
+  if (!paths.every(path => completeText(atPath(value, path)))) return `Complete every ${label.toLowerCase()} field, or clear all of them to remove it.`
+}
+const clearableLink = (name, label) => ({
+  type: 'object', name, label,
+  description: 'Clear both fields to remove this link.',
+  ui: { validate(value) {
+    const error = optionalGroupValidator(['label', 'href'], label)(value)
+    if (error || cleared(value)) return error
+    const href = value.href
+    if (/[\u0000-\u0020\u007f\\]/.test(href)) return 'Use a site-relative or HTTPS address without whitespace or backslashes.'
+    if (!/^\/(?!\/)/.test(href)) {
+      try {
+        const url = new URL(href)
+        if (url.protocol !== 'https:' || url.username || url.password) return 'Use a site-relative or HTTPS address without credentials.'
+      } catch { return 'Use a site-relative or HTTPS address without credentials.' }
+    }
+  } },
+  fields: [string('label', 'Link text', false), { ...string('href', 'Address', false), description: 'Use a path on this site, such as /blog, or a full HTTPS address.' }],
+})
 
 export const managedPageCollection = {
   name: 'managedPage', label: 'Information pages', path: 'content/pages', format: 'json',
@@ -38,14 +68,18 @@ export const managedPageCollection = {
         { ...link('links', 'Section links'), list: true },
       ],
     },
-    link('introCta', 'Introductory action'),
+    clearableLink('introCta', 'Introductory action'),
     {
       type: 'object', name: 'support', label: 'Guide strip',
-      fields: [string('text', 'First line'), string('emphasis', 'Emphasized line'), link('link', 'Guide link', true)],
+      description: 'Complete both lines and the guide link, or clear all fields to hide this strip.',
+      ui: { validate: optionalGroupValidator(['text', 'emphasis', 'link.label', 'link.href'], 'Guide strip') },
+      fields: [string('text', 'First line', false), string('emphasis', 'Emphasized line', false), clearableLink('link', 'Guide link')],
     },
     {
       type: 'object', name: 'footer', label: 'Document footer',
-      fields: [string('heading', 'Footer heading'), string('introduction', 'Introductory word'), link('link', 'Footer link', true)],
+      description: 'Complete the heading, introduction and footer link, or clear all fields to hide this footer.',
+      ui: { validate: optionalGroupValidator(['heading', 'introduction', 'link.label', 'link.href'], 'Document footer') },
+      fields: [string('heading', 'Footer heading', false), string('introduction', 'Introductory word', false), clearableLink('link', 'Footer link')],
     },
   ],
 }

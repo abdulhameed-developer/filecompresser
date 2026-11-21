@@ -1,15 +1,17 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { getSiteSettings, parseSiteSettings, verificationToken } from '@/lib/site-settings'
+import { getSiteSettings, parseSiteSettings, parseSupportEmail, verificationToken } from '@/lib/site-settings'
+import { siteSettingsCollection } from '../tina/site-settings.mjs'
 
 afterEach(() => { vi.unstubAllEnvs(); vi.resetModules() })
 
 describe('safe editorial site settings', () => {
-  it('loads the current identity without invented contact information', () => {
+  it('loads the current identity and verified support mailbox', () => {
     const settings = getSiteSettings()
     expect(settings.siteName).toBe('FileCompresser')
     expect(settings.socialImage).toBe('/opengraph-image')
     expect(settings.sameAs).toEqual([])
     expect(settings).not.toHaveProperty('email')
+    expect(settings.supportEmail).toBe('info@filecompresser.com')
   })
 
   it('does not accept canonical, indexing or credential controls from content', async () => {
@@ -38,6 +40,18 @@ describe('safe editorial site settings', () => {
     expect(verificationToken('abcDEF_123-456', 'verification')).toBe('abcDEF_123-456')
     expect(verificationToken('', 'verification')).toBeUndefined()
     expect(() => verificationToken('<meta name="google-site-verification">', 'verification')).toThrow('not HTML')
+  })
+
+  it('supports a cleared mailbox without creating an empty mailto link', () => {
+    expect(parseSupportEmail('')).toBeUndefined()
+    expect(parseSupportEmail(undefined)).toBeUndefined()
+    expect(parseSiteSettings({ ...getSiteSettings(), supportEmail: '' }).supportEmail).toBeUndefined()
+    expect(parseSupportEmail('Support@FILECOMPRESSER.COM')).toBe('Support@filecompresser.com')
+  })
+
+  it.each(['mailto:info@filecompresser.com', 'info@filecompresser.com?subject=test', 'info@filecompresser.com\r\nBcc:other@example.com', 'info%0d%0a@example.com', 'info@example.com,other@example.com', '.info@example.com', 'info..team@example.com', 'info@example', 'info@-example.com', 'javascript:alert(1)', '\r\n'])('rejects unsafe or malformed support address %s', email => {
+    expect(() => parseSupportEmail(email)).toThrow('support email')
+    expect(siteSettingsCollection.fields.find(field => field.name === 'supportEmail')?.ui?.validate?.(email)).toMatch(/plain email address/)
   })
 })
 

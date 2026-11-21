@@ -30,11 +30,13 @@ const seoFields = () => [
   { type: 'string', name: 'seoTitle', label: 'SEO title', description: 'Optional. Aim for a clear, specific title of around 50–60 characters. Empty uses the existing page title.' },
   { ...textarea('seoDescription', 'SEO description', false), description: 'Optional. Write a useful search summary, usually around 140–160 characters. Empty uses the existing description.' },
 ]
-const postImageFields = () => [
-  { type: 'image', name: 'src', label: 'Image', required: true, description: 'Choose a raster image uploaded to this site.' },
-  { type: 'string', name: 'alt', label: 'Alternative text', required: true },
+const postImageFields = (required = true) => [
+  { type: 'image', name: 'src', label: 'Image', required, description: 'Choose a raster image uploaded to this site.' },
+  { type: 'string', name: 'alt', label: 'Alternative text', required },
   { type: 'string', name: 'caption', label: 'Caption' },
 ]
+const hasOptionalValues = value => value && Object.values(value).some(item => item !== undefined && item !== null && String(item).trim() !== '')
+const nonBlank = value => typeof value === 'string' && value.trim() !== ''
 export const collections = [
   {
     name: 'post', label: 'Blog posts', path: 'content/posts', format: 'json', match: { include: '*' },
@@ -53,9 +55,22 @@ export const collections = [
       date('date', 'Publication date', true), date('updated', 'Last updated'),
       { type: 'string', name: 'readingTime', label: 'Reading time', required: true, description: 'For example: 5 min' },
       { type: 'string', name: 'figure', label: 'Fallback illustration', options: figureOptions, required: true },
-      { type: 'object', name: 'featuredImage', label: 'Featured image (optional)', fields: postImageFields() },
-      { type: 'object', name: 'author', label: 'Author attribution', description: 'Leave empty to attribute the article to FileCompresser.', fields: [
-        { type: 'string', name: 'name', label: 'Author name', required: true },
+      {
+        type: 'object', name: 'featuredImage', label: 'Featured image (optional)',
+        description: 'Clear the image, alternative text and caption to use the fallback illustration.',
+        ui: { validate(value) {
+          if (!hasOptionalValues(value)) return
+          if (!nonBlank(value.src) || !nonBlank(value.alt)) return 'Choose an image and add alternative text, or clear all fields to use the fallback.'
+        } },
+        fields: postImageFields(false),
+      },
+      { type: 'object', name: 'author', label: 'Author attribution', description: 'Leave all fields empty to use the configured site publisher.',
+        ui: { validate(value) {
+          if (!hasOptionalValues(value)) return
+          if (!nonBlank(value.name)) return 'Add an author name, or clear every attribution field to use the site publisher.'
+        } },
+        fields: [
+        { type: 'string', name: 'name', label: 'Author name' },
         { type: 'string', name: 'kind', label: 'Author type', options: ['Person', 'Organization'] },
         { type: 'string', name: 'url', label: 'Author page', description: 'Optional site path or HTTPS address.' },
       ] },
@@ -64,6 +79,9 @@ export const collections = [
       ...seoFields(),
       {
         type: 'object', name: 'body', label: 'Article content', list: true,
+        ui: { validate(value, values = {}) {
+          if (values.published === true && values.archived !== true && (!Array.isArray(value) || value.length === 0)) return 'Add at least one content block before publishing this post.'
+        } },
         templates: [
           { name: 'p', label: 'Paragraph', fields: [textarea('text', 'Paragraph text')] },
           { name: 'h2', label: 'Section heading (H2)', fields: [{ type: 'string', name: 'text', label: 'Heading text', required: true }] },

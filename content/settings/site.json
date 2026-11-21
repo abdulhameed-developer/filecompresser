@@ -7,5 +7,6 @@
   "organizationName": "FileCompresser",
   "socialImage": "/opengraph-image",
   "socialImageAlt": "FileCompresser — compress and convert files privately in your browser",
-  "sameAs": []
+  "sameAs": [],
+  "supportEmail": "info@filecompresser.com"
 }

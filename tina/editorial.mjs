@@ -35,7 +35,15 @@ export const editorialCollections = [
     name: 'homepage', label: 'Homepage', path: 'content/home', format: 'json', match: { include: 'home' },
     ui: { global: true, allowedActions: { create: false, delete: false, createNestedFolder: false } },
     fields: [
-      { type: 'object', name: 'hero', label: 'Main introduction', fields: [text('lead', 'Headline'), text('emphasis', 'Emphasized headline'), { ...text('description', 'Short introduction', true), description: 'Keep this brief so the file tool remains easy to reach.' }] },
+      {
+        type: 'object', name: 'hero', label: 'Main introduction',
+        description: 'Complete all three fields, or clear them all to use the existing introduction.',
+        ui: { validate(value) {
+          if (!value || Object.values(value).every(item => item === undefined || item === null || String(item).trim() === '')) return
+          if (!['lead', 'emphasis', 'description'].every(key => typeof value[key] === 'string' && value[key].trim())) return 'Complete the headline, emphasized text and introduction, or clear all three.'
+        } },
+        fields: [text('lead', 'Headline', false, false), text('emphasis', 'Emphasized headline', false, false), { ...text('description', 'Short introduction', true, false), description: 'Keep this brief so the file tool remains easy to reach.' }],
+      },
       { type: 'object', name: 'steps', label: 'How it works', list: true, fields: [text('title', 'Step title'), text('description', 'Step description', true)] },
       ...editorialFields(),
     ],

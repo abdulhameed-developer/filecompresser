@@ -41,7 +41,7 @@
       "icon": "shield",
       "heading": "Document a problem without sharing private content.",
       "body": [
-        "Record the tool, input format and approximate size, browser version and exact error message. Keep confidential content out of screenshots. FileCompresser does not offer a file-submission form or advertise a monitored support mailbox."
+        "Record the tool, input format and approximate size, browser version and exact error message. Keep confidential content out of screenshots. FileCompresser does not offer a file-submission form. Send a description of the issue to support rather than private files."
       ],
       "links": [
         {
@@ -63,5 +63,6 @@
       "label": "Browse guides",
       "href": "/blog"
     }
-  }
+  },
+  "updated": "2026-11-21"
 }

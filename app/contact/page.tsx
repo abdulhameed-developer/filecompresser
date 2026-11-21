@@ -3,6 +3,7 @@ import Icon from '@/components/Icon'
 import ManagedPageSections, { ManagedSectionBody } from '@/components/ManagedPageSections'
 import { getManagedPage, managedPageMetadata } from '@/lib/managed-pages'
 import { breadcrumbJsonLd, jsonLdScript, webPageJsonLd } from '@/lib/seo'
+import { getSiteSettings } from '@/lib/site-settings'
 
 const page = getManagedPage('contact')
 export const metadata = managedPageMetadata('contact')
@@ -12,12 +13,14 @@ const structuredData = [
 ]
 
 export default function ContactPage() {
+  const { supportEmail } = getSiteSettings()
   const cards = page.sections.filter(section => section.placement === 'card')
   const details = page.sections.filter(section => section.placement === 'detail')
   return <div className="productPage helpPage">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdScript(structuredData) }} />
     <nav className="breadcrumb" aria-label="Breadcrumb"><Link href="/">Home</Link><span aria-hidden="true">/</span><span aria-current="page">Contact</span></nav>
     <div className="productIntro"><span className="sectionLabel">{page.label}</span><h1>{page.title}</h1><p>{page.introduction}</p>{page.introCta && <Link className="primaryAction" href={page.introCta.href}>{page.introCta.label}<Icon name="arrow" /></Link>}</div>
+    {supportEmail && <section className="reportGuidance" aria-labelledby="support-contact-heading"><div><h2 id="support-contact-heading">Contact FileCompresser Support</h2><p>Email <a className="editorialLink" href={`mailto:${supportEmail}`}>{supportEmail}</a> about a tool or website issue.</p><p>Include the tool name, your browser and the error message. Please do not email private files.</p></div></section>}
     <div className="helpGrid">{cards.map((section, i) => <section key={i}>{section.icon && <Icon name={section.icon} />}<h2>{section.heading}</h2><ManagedSectionBody section={section} />{section.links.map((link, j) => <Link key={j} href={link.href}>{link.label}</Link>)}</section>)}</div>
     {details.map((section, i) => <section className="reportGuidance" key={i}>{section.icon && <Icon name={section.icon} />}<div><h2>{section.heading}</h2><ManagedSectionBody section={section} /><div className="inlineActions">{section.links.map((link, j) => <Link className="tertiaryAction" href={link.href} key={j}>{link.label}<Icon name="arrow" /></Link>)}</div></div></section>)}
     <ManagedPageSections sections={page.sections.filter(section => section.placement === 'text')} />

@@ -12,6 +12,23 @@ export interface SiteSettings {
   socialImage: string
   socialImageAlt: string
   sameAs: string[]
+  supportEmail?: string
+}
+
+/** A plain mailbox only; mailto headers and encoded control input are refused. */
+export function parseSupportEmail(value: unknown): string | undefined {
+  if (value === undefined || value === null || value === '') return undefined
+  if (typeof value !== 'string' || /[\u0000-\u001f\u007f]/.test(value)) throw new Error('Invalid support email: use one plain email address.')
+  const address = value.trim()
+  if (!address) return undefined
+  const parts = address.split('@')
+  if (address.length > 254 || parts.length !== 2) throw new Error('Invalid support email: use one plain email address.')
+  const [local, domain] = parts
+  if (!/^[a-zA-Z0-9._+-]{1,64}$/.test(local) || local.startsWith('.') || local.endsWith('.') || local.includes('..') ||
+    !domain.includes('.') || domain.split('.').some(label => !/^[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?$/.test(label))) {
+    throw new Error('Invalid support email: use one plain email address without links or message headers.')
+  }
+  return `${local}@${domain.toLowerCase()}`
 }
 
 function text(value: unknown, key: string, maximum = 250): string {
@@ -55,6 +72,7 @@ export function parseSiteSettings(value: unknown): SiteSettings {
     socialImage: parseSocialImage(input.socialImage),
     socialImageAlt: text(input.socialImageAlt, 'socialImageAlt', 250),
     sameAs,
+    supportEmail: parseSupportEmail(input.supportEmail),
   }
 }
 

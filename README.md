@@ -1,6 +1,6 @@
 # FileCompresser
 
-Browser-based file compression and conversion. The owner has purchased **filecompresser.com**. This working copy is prepared for GitHub-backed content and Cloudflare Pages static hosting; no production account, DNS change or deployment is claimed.
+Browser-based file compression and conversion with a Git-backed editorial CMS. GitHub stores source and content, Cloudflare Pages serves the static export, and TinaCloud authenticates editors. Current account, DNS and mailbox verification is recorded in [DNS and email](docs/DNS-AND-EMAIL.md); the [release review](docs/RELEASE-REVIEW.md) tracks launch prerequisites.
 
 ## Start here
 
@@ -14,7 +14,7 @@ npm run dev:cms
 
 Open http://localhost:3000/admin/index.html. The first CMS run generates `tina/tina-lock.json`. Commit that file and the dependency changes made by setup before connecting TinaCloud. Local editing has no login; hosted editing requires TinaCloud authentication. Production builds must use **npm run build:cms** with the account variables configured. Never publish a CMS built in local mode.
 
-The CMS installer is a one-time explicit dependency setup. The original package lock stays valid until you run it. It adds the pinned TinaCMS/CLI dependencies and updates the lock together. It was not run successfully in the restricted preparation environment, so the generated admin application and hosted authentication still require installation and testing on your computer.
+The CMS installer selects exact TinaCMS/CLI releases and updates the package manifest and lock together. The read-only [source validation workflow](docs/CI-INGEST.md) exercises installation, local schema/admin generation, static output and browser checks. A local-mode build does not verify hosted editor authentication, roles or account recovery; those require a separate check on the production origin.
 
 ## Content
 
@@ -41,6 +41,8 @@ The build prepares same-origin FFmpeg/image workers. FFmpeg's 32.2 MB WebAssembl
 
 Images use browser encoders; GIF/video/audio use FFmpeg; PDF optimization rewrites structure and metadata rather than shrinking scans; ZIP creation/extraction has size, CRC and path limits. Existing file and queue limits remain in place.
 
-A support mailbox is not configured. The earlier [release review](docs/RELEASE-REVIEW.md) records the unresolved FFmpeg corresponding-source/notices prerequisite; the new static packaging does not resolve that item. Review it before public distribution. Preserve the runtime license inventory and exact dependency versions.
+The verified support mailbox is **info@filecompresser.com**, with outgoing name **FileCompresser Support**. The address is editable in global site settings; keep it pointed at a monitored mailbox and do not ask visitors to email private files.
+
+The [release review](docs/RELEASE-REVIEW.md) and [codec distribution record](docs/CODEC-DISTRIBUTION.md) track the FFmpeg corresponding-source/notices prerequisite. Static packaging alone does not resolve it. Preserve the runtime license inventory and exact dependency versions.
 
 Private project. All rights reserved unless otherwise stated.

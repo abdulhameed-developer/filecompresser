@@ -16,7 +16,7 @@
     "setup:cms": "node scripts/setup-cms.mjs",
     "dev:cms": "node scripts/check-cms-setup.mjs && node scripts/prepare-static-assets.mjs && tinacms dev --noTelemetry -c \"next dev -H 0.0.0.0\"",
     "build:cms": "node scripts/check-cms-setup.mjs && tinacms build --noTelemetry && npm run build",
-    "build:cms:local": "node scripts/check-cms-setup.mjs && tinacms build --local --noTelemetry -c \"npm run build\"",
+    "build:cms:local": "node scripts/check-cms-setup.mjs && tinacms build --local --skip-cloud-checks --noTelemetry -c \"npm run build\"",
     "check:export": "node scripts/check-export.mjs"
   },
   "dependencies": {

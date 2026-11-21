@@ -119,6 +119,7 @@ export function organizationJsonLd() {
     // Points at a file that exists, so the logo is resolvable by crawlers.
     logo: absoluteUrl('/favicon-192.png'),
     ...(settings.sameAs.length ? { sameAs: settings.sameAs } : {}),
+    ...(settings.supportEmail ? { contactPoint: { '@type': 'ContactPoint', contactType: 'customer support', email: settings.supportEmail } } : {}),
   }
 }
 
