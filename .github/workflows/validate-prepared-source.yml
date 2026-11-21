@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  EXPECTED_SOURCE_SHA: b1a604d27c39da1e8f4422c576816a3ee23d0c78
+  EXPECTED_SOURCE_SHA: a359dc784dbfc1e0f3d23f31a139cd8355d18741
   INTEGRATION_BRANCH: work/filecompresser-production-20261121
   NEXT_PUBLIC_SITE_URL: https://filecompresser.com
   NEXT_PUBLIC_ENABLE_INDEXING: 'false'
