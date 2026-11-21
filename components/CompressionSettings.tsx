@@ -1,9 +1,14 @@
 'use client'
 
 import { useId } from 'react'
-import type { CompressionLevel, SettingValue, ToolDefinition } from '@/lib/types'
+import type {
+  CompressionLevel,
+  SettingValue,
+  ToolDefinition,
+} from '@/lib/types'
 
 interface CompressionSettingsProps {
+  targetAllowed?: boolean
   tool: ToolDefinition
   level: CompressionLevel
   onLevel: (level: CompressionLevel) => void
@@ -38,7 +43,7 @@ const LEVEL_LABELS: Record<string, string> = {
 const LEVEL_HELP: Record<CompressionLevel, string> = {
   recommended: 'Balanced quality and file size. Best for normal use.',
   maximum:
-    'Smallest possible file. Visible quality loss, and images are capped at 1920px. You can set an exact target size below.',
+    'Stronger compression with a greater quality trade-off. Image dimensions are capped at 1920px.',
 }
 
 const KB = 1024
@@ -49,19 +54,31 @@ export default function CompressionSettings({
   onLevel,
   settings,
   onSetting,
+  targetAllowed = true,
 }: CompressionSettingsProps) {
-  const showLevel = !NO_LEVEL_ENGINES.has(tool.engine)
+  const showLevel =
+    !NO_LEVEL_ENGINES.has(tool.engine) && tool.category !== 'audio'
   const showLevelControl = showLevel
 
   // The target-size field belongs to Maximum mode only: in Recommended mode the
   // preset is already chosen, and a second conflicting dial would be confusing.
-  const showTargetSize = TARGET_SIZE_ENGINES.has(tool.engine) && level === 'maximum'
+  const showTargetSize =
+    TARGET_SIZE_ENGINES.has(tool.engine) &&
+    tool.slug !== 'compress' &&
+    targetAllowed &&
+    (settings.outputFormat || (tool.slug === 'png-compressor' ? 'png' : '')) !==
+      'png' &&
+    level === 'maximum'
 
   return (
     <div className="settings">
       {showLevelControl && (
         <fieldset className="settingBlock">
-          <legend>{tool.slug === 'wav-compressor' ? 'Encoding quality' : 'Compression level'}</legend>
+          <legend>
+            {tool.slug === 'wav-compressor'
+              ? 'Encoding quality'
+              : 'Compression level'}
+          </legend>
           <div className="pills" role="group" aria-label="Compression level">
             {(['recommended', 'maximum'] as const).map((value) => (
               <button
@@ -118,7 +135,9 @@ export default function CompressionSettings({
                   max={setting.max}
                   step={setting.step}
                   value={Number(value)}
-                  onChange={(event) => onSetting(setting.id, Number(event.target.value))}
+                  onChange={(event) =>
+                    onSetting(setting.id, Number(event.target.value))
+                  }
                 />
                 <output htmlFor={id} className="rangeValue">
                   {formatRangeValue(setting.id, Number(value), setting)}
@@ -143,7 +162,7 @@ export default function CompressionSettings({
 }
 
 /**
- * "Compress to exactly N KB".
+ * "Target size (KB) N KB".
  *
  * The field is deliberately optional: left blank, Maximum mode uses its own
  * preset. Entering a size runs a real encoder search for a quality that fits.
@@ -159,17 +178,19 @@ function TargetSizeField({
 }) {
   const id = `setting-${toolSlug}-targetSize`
   const hintId = useId()
-  const raw = value === undefined || value === '' ? '' : String(value)
+  const raw =
+    value === undefined || value === '' ? '' : String(Number(value) / KB)
 
   return (
     <div className="settingField targetSizeField">
-      <label htmlFor={id}>Compress to exactly</label>
+      <label htmlFor={id}>Target size (KB)</label>
       <div className="numberField">
         <input
           id={id}
           type="number"
           inputMode="numeric"
           min={1}
+          max={204800}
           step={1}
           value={raw}
           placeholder="e.g. 200"
@@ -192,9 +213,10 @@ function TargetSizeField({
         </span>
       </div>
       <p className="settingHelp" id={hintId}>
-        Optional. We search for the best quality that fits this exact size. If the image
-        cannot get that small without being visibly destroyed, you get the smallest honest
-        version and we tell you.
+        Optional. We search for the best quality that fits within this size. If
+        the target cannot be reached within the supported quality range, we
+        return the smallest tested version and explain the difference. PNG
+        output uses its normal preset instead.
       </p>
     </div>
   )
@@ -248,7 +270,11 @@ function NumberField({
   )
 }
 
-function formatRangeValue(id: string, value: number, setting: { max?: number }): string {
+function formatRangeValue(
+  id: string,
+  value: number,
+  setting: { max?: number },
+): string {
   void id
   // Treat the upper bound of 100 sliders as a percentage.
   if (setting.max === 100) return `${value}`

@@ -1,0 +1,31 @@
+{
+  "heading": "How can I make an existing MP3 smaller?",
+  "introduction": "Re-encode the MP3 at a lower audio bitrate. Lowering bitrate can reduce file size, but MP3 encoding is lossy, so listen to the result before replacing your recording.",
+  "sections": [
+    {
+      "heading": "Choose bitrate for the recording",
+      "body": "Add the MP3 and select an available target from 96 to 320 kbps. Compare a lower setting with the original, paying attention to speech clarity, music detail and quiet passages before keeping the download."
+    },
+    {
+      "heading": "Higher bitrate cannot restore missing detail",
+      "body": "An MP3 has already discarded some audio information. Re-encoding at the same or a higher bitrate can add generation loss without a useful size saving. Keep an uncompressed source when one is available."
+    },
+    {
+      "heading": "Keep the distinction between file size and loudness",
+      "body": "This tool changes the audio encoding; it is not a loudness or dynamic-range compressor. It accepts MP3 inputs up to 100 MB and uses the browser media engine, so long recordings can still need substantial processing time and memory."
+    }
+  ],
+  "faq": [],
+  "seoTitle": "MP3 Compressor — Choose a Lower Audio Bitrate",
+  "seoDescription": "Reduce MP3 file size by selecting a lower bitrate in your browser. Listen before keeping the result; re-encoding is lossy and does not restore detail.",
+  "links": [
+    {
+      "label": "Why re-encoding does not always save space",
+      "href": "/blog/honest-file-size-reporting"
+    },
+    {
+      "label": "How local media processing works",
+      "href": "/blog/how-browser-compression-works"
+    }
+  ]
+}

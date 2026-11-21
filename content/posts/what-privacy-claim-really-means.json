@@ -1,0 +1,77 @@
+{
+  "updated": "2026-11-04",
+  "title": "What \"your file never leaves your device\" does and does not cover",
+  "description": "A precise account of the privacy claim: what never happens, what is still fetched from the network, and how to verify it yourself.",
+  "date": "2026-09-16",
+  "readingTime": "7 min",
+  "figure": "dataflow",
+  "seoDescription": "A precise breakdown of the browser-side privacy claim: which network requests never happen, which page and engine requests still occur, and how to check.",
+  "body": [
+    {
+      "_template": "p",
+      "text": "\"Your files are never uploaded\" is a strong claim, and strong claims deserve a precise reading. Here is exactly what it covers, what it does not, and how you can check the second one yourself."
+    },
+    {
+      "_template": "figure",
+      "figure": "dataflow",
+      "caption": "Your file has one path. The code that touches it has several."
+    },
+    {
+      "_template": "h2",
+      "text": "What the claim covers"
+    },
+    {
+      "_template": "p",
+      "text": "When you add a file, it is read into the memory of your browser tab and processed there. The result is produced there and handed back to you as a download. At no point does a request carrying your file leave the page — there is no upload endpoint on this site to send it to."
+    },
+    {
+      "_template": "p",
+      "text": "This is a statement about the architecture, not a policy. There is no setting you can enable that would start uploading, and no legal arrangement that permits it. This describes the reviewed application code. Browser extensions, compromised hosting, or a different deployment can change what runs in a page."
+    },
+    {
+      "_template": "h2",
+      "text": "What still happens over the network"
+    },
+    {
+      "_template": "p",
+      "text": "The page and processing code still require network requests. Your selected file is not part of those requests:"
+    },
+    {
+      "_template": "ul",
+      "items": [
+        "Interface fonts come from your device. Page HTML, styles, JavaScript and editorial images are requested from this site; no external font service is used.",
+        "Processing engines are downloaded from this site on first use — the FFmpeg WebAssembly build for media, the image encoder for photographs. Those are program files, served from this origin, and they are code rather than data."
+      ]
+    },
+    {
+      "_template": "h2",
+      "text": "Where your file actually lives"
+    },
+    {
+      "_template": "p",
+      "text": "In the tab, as memory buffers, and as temporary object URLs that make downloads possible. Queue entries retain their input and result while you review them. Removing an entry, clearing results or closing the tab releases application references; the browser decides when to reclaim the memory."
+    },
+    {
+      "_template": "p",
+      "text": "Nothing is written to localStorage, IndexedDB, the Cache API, or cookies. The only persistent state is the browser's own caching of the engine files, which holds program code and never your data. Clearing your browser data is not necessary for your files, because none of them were persisted anywhere."
+    },
+    {
+      "_template": "callout",
+      "title": "The consequence worth knowing",
+      "text": "Because nothing is stored, nothing is recoverable. If a result is wrong or your browser crashes mid-process, the original file is the only copy. Keep a backup of anything you cannot re-download."
+    },
+    {
+      "_template": "h2",
+      "text": "How to check it yourself"
+    },
+    {
+      "_template": "p",
+      "text": "Open your browser's developer tools, switch to the Network tab, and compress a file. Every request you see will be for the page, its own JavaScript and CSS, editorial images, and the engine files. Nothing in that list will be your file, because the request that would carry it does not exist in this codebase."
+    },
+    {
+      "_template": "p",
+      "text": "That is the difference between a privacy policy and a privacy architecture. A policy tells you what someone promises not to do. The reviewed application avoids transferring selected files. That does not protect against a compromised browser, extension or hosting environment."
+    }
+  ],
+  "published": true
+}

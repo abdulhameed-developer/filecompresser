@@ -1,6 +1,15 @@
 'use client'
 
-import { useCallback, useId, useRef, useState, type DragEvent, type KeyboardEvent } from 'react'
+import Icon from './Icon'
+
+import {
+  useCallback,
+  useId,
+  useRef,
+  useState,
+  type DragEvent,
+  type KeyboardEvent,
+} from 'react'
 
 interface FileDropzoneProps {
   accept?: string
@@ -33,7 +42,11 @@ export default function FileDropzone({
   }, [disabled])
 
   const handleKeyDown = (event: KeyboardEvent) => {
-    if (event.key === 'Enter' || event.key === ' ' || event.key === 'Spacebar') {
+    if (
+      event.key === 'Enter' ||
+      event.key === ' ' ||
+      event.key === 'Spacebar'
+    ) {
       event.preventDefault()
       open()
     }
@@ -80,7 +93,9 @@ export default function FileDropzone({
       // The accessible name is static: it must not change while the pointer
       // moves over the zone, or a screen reader re-announces the control on
       // every drag event.
-      aria-label={disabled ? 'File upload is unavailable while processing' : label}
+      aria-label={
+        disabled ? 'File upload is unavailable while processing' : label
+      }
       aria-describedby={hintId}
       aria-disabled={disabled || undefined}
       onClick={open}
@@ -93,6 +108,7 @@ export default function FileDropzone({
       <input
         ref={inputRef}
         type="file"
+        hidden
         className="srOnlyInput"
         multiple={multiple}
         accept={accept}
@@ -108,7 +124,9 @@ export default function FileDropzone({
           form controls, leaving an unnamed control behind).
         */
         tabIndex={-1}
-        aria-label={disabled ? 'File upload is unavailable while processing' : label}
+        aria-label={
+          disabled ? 'File upload is unavailable while processing' : label
+        }
         onChange={(event) => {
           if (event.target.files?.length) onFiles(event.target.files)
           // Reset so choosing the same file twice still fires a change event.
@@ -116,7 +134,7 @@ export default function FileDropzone({
         }}
       />
       <div className="uploadIcon" aria-hidden="true">
-        ↑
+        <Icon name="upload" />
       </div>
       {/* A heading, not a `<p>`: it is the label for the control, and headings
           are what let screen-reader users jump straight to the upload area.

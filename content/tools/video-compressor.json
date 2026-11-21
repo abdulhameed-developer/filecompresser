@@ -1,0 +1,31 @@
+{
+  "heading": "How do I make an MP4 or MOV clip easier to share?",
+  "introduction": "Re-encode a supported clip to H.264 video in an MP4 file, with AAC audio when the source has audio. A lower resolution cap can reduce the output, while encoding remains on your device.",
+  "sections": [
+    {
+      "heading": "Start with a practical resolution",
+      "body": "Add an MP4, MOV or M4V clip and choose the original, 1080p, 720p or 480p cap. The tool does not upscale smaller inputs. Process the clip and compare both the output size and its playback quality."
+    },
+    {
+      "heading": "Check the complete download",
+      "body": "Play the resulting MP4 with sound, and inspect motion, small text and important details. The original container extension does not guarantee that the source codec is supported. Keep the source for editing or another export."
+    },
+    {
+      "heading": "Allow for browser memory and processing time",
+      "body": "The first media job downloads roughly 30 MB of engine code. Video encoding is CPU intensive; long or high-resolution clips can exceed browser memory even below the 200 MB input limit. Jobs stop after five minutes. If processing fails, try a shorter clip or a lower resolution."
+    }
+  ],
+  "faq": [],
+  "seoTitle": "Video Compressor for MP4 and MOV Clips",
+  "seoDescription": "Re-encode MP4 and MOV clips to H.264/AAC MP4 on your device. Choose a resolution cap and check playback, file size and browser processing limits.",
+  "links": [
+    {
+      "label": "How the media engine runs on your device",
+      "href": "/blog/how-browser-compression-works"
+    },
+    {
+      "label": "Why a re-encoded file can be larger",
+      "href": "/blog/honest-file-size-reporting"
+    }
+  ]
+}

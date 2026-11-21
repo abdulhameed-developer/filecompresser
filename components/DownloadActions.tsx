@@ -1,5 +1,7 @@
 'use client'
 
+import Icon from './Icon'
+
 import { useState } from 'react'
 import type { QueueItem } from '@/lib/types'
 import { downloadAllAsZip, downloadItemsIndividually } from '@/lib/downloads'
@@ -42,7 +44,7 @@ export default function DownloadActions({ items, zipName, onClear }: DownloadAct
             disabled={busy}
             onClick={() => run(() => downloadItemsIndividually(done), 'Preparing download')}
           >
-            Download ↓
+            Download <Icon name="download" />
           </button>
         ) : (
           <>
@@ -60,7 +62,7 @@ export default function DownloadActions({ items, zipName, onClear }: DownloadAct
               disabled={busy}
               onClick={() => run(() => downloadAllAsZip(done, zipName), 'Building ZIP')}
             >
-              ZIP download ↓
+              ZIP download <Icon name="download" />
             </button>
           </>
         )}
@@ -76,7 +78,7 @@ export default function DownloadActions({ items, zipName, onClear }: DownloadAct
         {done.length} file{done.length === 1 ? '' : 's'} ready · {formatTotal(totalBytes)}
       </p>
 
-      <div className="srLive" role="status" aria-live="polite">
+      <div className="downloadSummary" role="status" aria-live="polite">
         {message}
       </div>
     </div>

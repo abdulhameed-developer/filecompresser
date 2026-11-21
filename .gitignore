@@ -44,3 +44,23 @@ next-env.d.ts
 
 # TypeScript incremental build cache
 tsconfig.tsbuildinfo
+
+# Local verification evidence and independent assistant checkouts
+.qa-results/
+.claude/worktrees/
+
+!.env.example
+
+# Generated static engine assets and CMS bundles
+public/ffmpeg-core/
+public/image-worker/
+public/admin/
+tina/__generated__/
+.tina/
+# Keep tina/tina-lock.json tracked after the first CMS build.
+
+# Generated from managed redirect rules
+public/_redirects
+
+# Generated installed dependency and native codec notices
+public/THIRD-PARTY-NOTICES.txt

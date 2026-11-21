@@ -1,7 +1,8 @@
+import Icon from './Icon'
 import Link from 'next/link'
 import Image from 'next/image'
 import { footerColumns } from '@/lib/nav'
-import { CONTACT_EMAIL } from '@/lib/nav'
+import { getSiteSettings } from '@/lib/site-settings'
 
 /**
  * The one footer, rendered once by the root layout.
@@ -12,6 +13,7 @@ import { CONTACT_EMAIL } from '@/lib/nav'
  */
 export default function SiteFooter() {
   const year = new Date().getFullYear()
+  const { supportEmail } = getSiteSettings()
 
   return (
     <footer className="siteFooter">
@@ -26,8 +28,10 @@ export default function SiteFooter() {
             watermarks.
           </p>
           <p className="footerContact">
-            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+            <Link href="/contact">Help & contact</Link>
           </p>
+          {supportEmail && <p className="footerContact"><a href={`mailto:${supportEmail}`}>{supportEmail}</a></p>}
+          <p className="footerContact"><a href="/THIRD-PARTY-NOTICES.txt">Open-source notices &amp; source</a></p>
         </div>
 
         {footerColumns().map((column) => (
@@ -48,10 +52,10 @@ export default function SiteFooter() {
 
       <div className="footerBottom">
         <span>
-          © {year} filecompresser. All rights reserved.
+          © {year} filecompresser.
         </span>
         <span className="footerPrivacy">
-          <span aria-hidden="true">◉</span> Your files are processed on your device and never
+          <Icon name="shield" /> Your files are processed on your device and never
           uploaded.
         </span>
       </div>

@@ -27,21 +27,21 @@ export const TOOL_GROUPS: ToolGroup[] = [
     key: 'image',
     title: 'Images',
     blurb: 'Shrink JPG, PNG and WEBP',
-    icon: '▧',
+    icon: 'image',
     categories: ['image'],
   },
   {
     key: 'media',
     title: 'Video & Audio',
     blurb: 'Re-encode MP4/MOV, MP3 and WAV',
-    icon: '▷',
+    icon: 'media',
     categories: ['video', 'audio', 'gif'],
   },
   {
     key: 'documents',
     title: 'PDF & Archives',
     blurb: 'Optimize PDFs, build and open ZIPs',
-    icon: '▤',
+    icon: 'archive',
     categories: ['pdf', 'archive'],
   },
 ]
@@ -83,7 +83,6 @@ export const FOOTER_SITE_LINKS: SiteLink[] = SITE_LINKS.filter(
   (link) => !['/about', '/blog', '/contact'].includes(link.href)
 )
 
-export const CONTACT_EMAIL = 'hello@filecompresser.com'
 
 /** Stable href for the contact page, so every surface links the same URL. */
 export const CONTACT_HREF = '/contact'

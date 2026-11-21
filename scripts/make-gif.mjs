@@ -16,16 +16,19 @@
 import { writeFileSync, mkdirSync } from 'node:fs'
 import path from 'node:path'
 
-const PW_TOOLS = process.env.PW_TOOLS || path.join(process.env.HOME || '', 'pwtools')
+const PW_TOOLS =
+  process.env.PW_TOOLS || path.join(process.env.HOME || '', 'pwtools')
 
 let GifWriter
 try {
-  ;({ GifWriter } = await import(path.join(PW_TOOLS, 'node_modules/omggif/omggif.js')))
+  ;({ GifWriter } = await import(
+    path.join(PW_TOOLS, 'node_modules/omggif/omggif.js')
+  ))
 } catch {
   console.error(
     'omggif not found. Install it outside the project:\n' +
       `  cd ${PW_TOOLS} && npm install omggif\n` +
-      `  PW_TOOLS=${PW_TOOLS} node scripts/make-gif.mjs`
+      `  PW_TOOLS=${PW_TOOLS} node scripts/make-gif.mjs`,
   )
   process.exit(2)
 }
@@ -38,7 +41,8 @@ const FRAMES = 6
 // three times this. 128 entries keeps both checks happy.
 const PALETTE = 128
 
-const out = process.argv[2] || path.join(process.cwd(), '.qa-fixtures', 'anim.gif')
+const out =
+  process.argv[2] || path.join(process.cwd(), '.qa-fixtures', 'anim.gif')
 mkdirSync(path.dirname(out), { recursive: true })
 
 /**
@@ -50,7 +54,7 @@ mkdirSync(path.dirname(out), { recursive: true })
  */
 const palette = []
 for (let i = 0; i < PALETTE; i++) {
-  palette.push([i, (i * 5) % 256, (i * 9) % 256])
+  palette.push((i << 16) | ((i * 5) % 256 << 8) | (i * 9) % 256)
 }
 const BG = 20
 const DISC = 100
@@ -98,5 +102,7 @@ if (trailer !== 0x3b) {
   process.exit(1)
 }
 
-console.log(`anim.gif  ${bytes.length} bytes, ${FRAMES} frames, ${WIDTH}x${HEIGHT}`)
+console.log(
+  `anim.gif  ${bytes.length} bytes, ${FRAMES} frames, ${WIDTH}x${HEIGHT}`,
+)
 console.log(`written to ${out}`)

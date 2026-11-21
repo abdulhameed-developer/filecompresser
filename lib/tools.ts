@@ -9,11 +9,11 @@ const imageFaq: FaqEntry[] = [
   },
   {
     q: 'How much smaller will my image get?',
-    a: 'It depends on the source. Recommended mode typically saves 40–70% on ordinary photos with no visible difference. Images that are already heavily compressed may save much less — we show the real numbers either way.',
+    a: 'The result depends on the source image, dimensions and selected settings. Already-compressed images may save very little or become larger. Compare the actual output size and visual quality before replacing your original.',
   },
   {
     q: 'Will I lose quality?',
-    a: 'Every JPEG, PNG and WEBP re-encode is lossy. Recommended mode targets a quality that is not distinguishable in normal viewing; Maximum mode compresses harder and is more visible.',
+    a: 'JPEG and WEBP encoding can lose detail. PNG preserves pixels at the chosen dimensions, but resizing changes the image. Recommended mode targets a quality that is not distinguishable in normal viewing; Maximum mode compresses harder and is more visible.',
   },
   {
     q: 'Does this resize my image?',
@@ -62,8 +62,7 @@ const pdfFaq: FaqEntry[] = [
   },
 ]
 
-const privacyNote =
-  'Processed on your device. Nothing is uploaded.'
+const privacyNote = 'Processed on your device. Nothing is uploaded.'
 
 export const TOOLS: ToolDefinition[] = [
   // ─────────────────────────── Compression ───────────────────────────
@@ -76,7 +75,19 @@ export const TOOLS: ToolDefinition[] = [
     engine: 'image-compress',
     accept:
       'image/jpeg,image/png,image/webp,image/gif,application/pdf,video/mp4,video/quicktime,audio/mpeg,audio/wav,.jpg,.jpeg,.png,.webp,.gif,.pdf,.mp4,.mov,.mp3,.wav,.zip',
-    extensions: ['jpg', 'jpeg', 'png', 'webp', 'gif', 'pdf', 'mp4', 'mov', 'mp3', 'wav', 'zip'],
+    extensions: [
+      'jpg',
+      'jpeg',
+      'png',
+      'webp',
+      'gif',
+      'pdf',
+      'mp4',
+      'mov',
+      'mp3',
+      'wav',
+      'zip',
+    ],
     mimeTypes: [],
     maxFileSize: 200 * MB,
     privacyClientSide: true,
@@ -84,12 +95,20 @@ export const TOOLS: ToolDefinition[] = [
     seoDescription:
       'Compress images, GIF, PDF, video, audio and ZIP files directly in your browser. Real compression engines, real progress, no uploads.',
     note: privacyNote,
-    related: ['video-compressor', 'image-compressor', 'pdf-compressor', 'mp3-compressor', 'zip-compressor', 'archive-compressor'],
+    related: [
+      'video-compressor',
+      'image-compressor',
+      'pdf-compressor',
+      'mp3-compressor',
+      'zip-compressor',
+      'archive-compressor',
+    ],
   },
   {
     slug: 'image-compressor',
     title: 'Image Compressor',
-    description: 'Shrink JPG, PNG and WEBP images while keeping them usable at full resolution.',
+    description:
+      'Shrink JPG, PNG and WEBP images with clear quality and dimension limits.',
     category: 'image',
     engine: 'image-compress',
     accept: 'image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp',
@@ -101,7 +120,14 @@ export const TOOLS: ToolDefinition[] = [
       'Compress JPG, PNG and WEBP images in your browser. Batch processing, real size savings, nothing uploaded.',
     faq: imageFaq,
     note: privacyNote,
-    related: ['jpg-compressor', 'png-compressor', 'webp-compressor', 'jpeg-compressor', 'gif-compressor', 'compress'],
+    related: [
+      'jpg-compressor',
+      'png-compressor',
+      'webp-compressor',
+      'jpeg-compressor',
+      'gif-compressor',
+      'compress',
+    ],
   },
   {
     slug: 'jpg-compressor',
@@ -114,15 +140,24 @@ export const TOOLS: ToolDefinition[] = [
     mimeTypes: ['image/jpeg'],
     maxFileSize: 50 * MB,
     privacyClientSide: true,
-    seoDescription: 'Compress JPG and JPEG images locally in your browser. No upload, no account, free.',
+    seoDescription:
+      'Compress JPG and JPEG images locally in your browser. No upload, no account, free.',
     faq: imageFaq,
     note: privacyNote,
-    related: ['jpeg-compressor', 'png-compressor', 'webp-compressor', 'image-compressor', 'compress', 'gif-compressor'],
+    related: [
+      'jpeg-compressor',
+      'png-compressor',
+      'webp-compressor',
+      'image-compressor',
+      'compress',
+      'gif-compressor',
+    ],
   },
   {
     slug: 'jpeg-compressor',
     title: 'JPEG Compressor',
-    description: 'Optimize JPEG images to the same visual quality at a smaller size.',
+    description:
+      'Re-encode JPEG images with quality and dimension controls, then compare the result.',
     category: 'image',
     engine: 'image-compress',
     accept: 'image/jpeg,.jpg,.jpeg,.jfif',
@@ -130,15 +165,24 @@ export const TOOLS: ToolDefinition[] = [
     mimeTypes: ['image/jpeg'],
     maxFileSize: 50 * MB,
     privacyClientSide: true,
-    seoDescription: 'Optimize JPEG photos in your browser with a real encoder. Nothing is uploaded.',
+    seoDescription:
+      'Optimize JPEG photos in your browser with a real encoder. Nothing is uploaded.',
     faq: imageFaq,
     note: privacyNote,
-    related: ['jpg-compressor', 'webp-compressor', 'png-compressor', 'image-compressor', 'compress', 'gif-compressor'],
+    related: [
+      'jpg-compressor',
+      'webp-compressor',
+      'png-compressor',
+      'image-compressor',
+      'compress',
+      'gif-compressor',
+    ],
   },
   {
     slug: 'png-compressor',
     title: 'PNG Compressor',
-    description: 'Shrink PNG files. Transparency is preserved; colour depth is reduced where possible.',
+    description:
+      'Re-encode and resize PNG images while preserving transparency. Already efficient files may not shrink.',
     category: 'image',
     engine: 'image-compress',
     accept: 'image/png,.png',
@@ -146,15 +190,24 @@ export const TOOLS: ToolDefinition[] = [
     mimeTypes: ['image/png'],
     maxFileSize: 50 * MB,
     privacyClientSide: true,
-    seoDescription: 'Compress PNG images in your browser while preserving transparency. Free and private.',
+    seoDescription:
+      'Compress PNG images in your browser while preserving transparency. Free and private.',
     faq: imageFaq,
     note: privacyNote,
-    related: ['webp-compressor', 'jpg-compressor', 'image-compressor', 'gif-compressor', 'jpeg-compressor', 'compress'],
+    related: [
+      'webp-compressor',
+      'jpg-compressor',
+      'image-compressor',
+      'gif-compressor',
+      'jpeg-compressor',
+      'compress',
+    ],
   },
   {
     slug: 'webp-compressor',
     title: 'WEBP Compressor',
-    description: 'Compress WEBP images further, or check whether they are already efficient.',
+    description:
+      'Compress WEBP images further, or check whether they are already efficient.',
     category: 'image',
     engine: 'image-compress',
     accept: 'image/webp,.webp',
@@ -162,10 +215,18 @@ export const TOOLS: ToolDefinition[] = [
     mimeTypes: ['image/webp'],
     maxFileSize: 50 * MB,
     privacyClientSide: true,
-    seoDescription: 'Compress WEBP images in your browser with real progress and size reporting.',
+    seoDescription:
+      'Compress WEBP images in your browser with real progress and size reporting.',
     faq: imageFaq,
     note: privacyNote,
-    related: ['jpg-compressor', 'png-compressor', 'image-compressor', 'jpeg-compressor', 'gif-compressor', 'compress'],
+    related: [
+      'jpg-compressor',
+      'png-compressor',
+      'image-compressor',
+      'jpeg-compressor',
+      'gif-compressor',
+      'compress',
+    ],
   },
   {
     slug: 'gif-compressor',
@@ -183,7 +244,14 @@ export const TOOLS: ToolDefinition[] = [
       'Compress animated GIFs in your browser. Frames are re-quantized to a smaller palette, producing real size savings.',
     faq: mediaFaq,
     note: 'Maximum mode also reduces the frame rate to 15 fps, which saves more but can look choppy.',
-    related: ['image-compressor', 'webp-compressor', 'png-compressor', 'jpg-compressor', 'compress', 'video-compressor'],
+    related: [
+      'image-compressor',
+      'webp-compressor',
+      'png-compressor',
+      'jpg-compressor',
+      'compress',
+      'video-compressor',
+    ],
   },
   {
     slug: 'video-compressor',
@@ -216,12 +284,20 @@ export const TOOLS: ToolDefinition[] = [
     ],
     faq: mediaFaq,
     note: 'Output is always MP4 (H.264 + AAC). MOV files are transcoded rather than remuxed, because browsers cannot play the codecs MOV usually carries.',
-    related: ['mp3-compressor', 'wav-compressor', 'compress', 'gif-compressor', 'image-compressor', 'pdf-compressor'],
+    related: [
+      'mp3-compressor',
+      'wav-compressor',
+      'compress',
+      'gif-compressor',
+      'image-compressor',
+      'pdf-compressor',
+    ],
   },
   {
     slug: 'mp3-compressor',
     title: 'MP3 Compressor',
-    description: 'Re-encode MP3 audio at a lower bitrate for a genuinely smaller file.',
+    description:
+      'Re-encode MP3 audio at a lower bitrate for a genuinely smaller file.',
     category: 'audio',
     engine: 'audio-compress',
     accept: 'audio/mpeg,audio/mp3,.mp3',
@@ -229,16 +305,17 @@ export const TOOLS: ToolDefinition[] = [
     mimeTypes: ['audio/mpeg', 'audio/mp3'],
     maxFileSize: 100 * MB,
     privacyClientSide: true,
-    seoDescription: 'Reduce MP3 file size by lowering the bitrate, entirely inside your browser.',
+    seoDescription:
+      'Reduce MP3 file size by lowering the bitrate, entirely inside your browser.',
     settings: [
       {
         id: 'bitrate',
         label: 'Target bitrate',
         type: 'select',
-        defaultValue: '160k',
-        help: 'Higher bitrates sound closer to the original. 320 kbps only helps if the source is also 320 kbps.',
+        defaultValue: '192k',
+        help: 'Higher bitrates sound closer to the original. Increasing bitrate cannot restore detail lost in an earlier encode.',
         options: [
-          { value: '320k', label: '320 kbps — near-transparent' },
+          { value: '320k', label: '320 kbps' },
           { value: '256k', label: '256 kbps' },
           { value: '192k', label: '192 kbps — recommended' },
           { value: '128k', label: '128 kbps' },
@@ -247,14 +324,21 @@ export const TOOLS: ToolDefinition[] = [
       },
     ],
     faq: mediaFaq,
-    note: 'Re-encoding an MP3 always costs some generation loss. Choosing a bitrate at or above the source will not make the file smaller.',
-    related: ['wav-compressor', 'video-compressor', 'compress', 'gif-compressor', 'image-compressor', 'pdf-compressor'],
+    note: 'Re-encoding an MP3 always costs some generation loss. Choosing a bitrate at or above the source usually provides little size benefit.',
+    related: [
+      'wav-compressor',
+      'video-compressor',
+      'compress',
+      'gif-compressor',
+      'image-compressor',
+      'pdf-compressor',
+    ],
   },
   {
     slug: 'wav-compressor',
     title: 'WAV to MP3 Converter',
     description:
-      'Convert WAV audio to compressed MP3. WAV is uncompressed PCM, so the smaller download comes from changing format, not from "compressing" WAV.',
+      'Convert WAV audio to compressed MP3. WAV commonly contains uncompressed PCM, so a smaller download comes from changing format, not from "compressing" WAV.',
     category: 'audio',
     engine: 'audio-compress',
     accept: 'audio/wav,audio/wave,audio/x-wav,.wav',
@@ -288,11 +372,18 @@ export const TOOLS: ToolDefinition[] = [
       ...mediaFaq,
       {
         q: 'Is the WAV file itself being compressed?',
-        a: 'No. WAV is an uncompressed format, so it has no size to squeeze out. This tool converts it to MP3, which is a lossy format — that is where the reduction comes from, and the wording reflects that.',
+        a: 'This tool converts the audio in the WAV container to MP3. MP3 is lossy; the result is not a lossless rewrite of the original WAV.',
       },
     ],
     note: 'This is a format conversion, not a lossless compression of WAV.',
-    related: ['mp3-compressor', 'video-compressor', 'gif-compressor', 'image-compressor', 'pdf-compressor', 'compress'],
+    related: [
+      'mp3-compressor',
+      'video-compressor',
+      'gif-compressor',
+      'image-compressor',
+      'pdf-compressor',
+      'compress',
+    ],
   },
   {
     slug: 'pdf-compressor',
@@ -310,12 +401,20 @@ export const TOOLS: ToolDefinition[] = [
       'Optimize PDF files in your browser by removing metadata and rewriting structure. The result is validated before you download it.',
     faq: pdfFaq,
     note: 'For substantial reductions, rasterizing scanned pages at lower DPI is the usual answer — this tool deliberately does not do that, because it would visibly degrade text quality.',
-    related: ['archive-compressor', 'zip-compressor', 'compress', 'image-compressor', 'video-compressor', 'mp3-compressor'],
+    related: [
+      'archive-compressor',
+      'zip-compressor',
+      'compress',
+      'image-compressor',
+      'video-compressor',
+      'mp3-compressor',
+    ],
   },
   {
     slug: 'zip-compressor',
     title: 'ZIP Creator',
-    description: 'Bundle any files into a single ZIP archive, entirely on your device.',
+    description:
+      'Bundle any files into a single ZIP archive, entirely on your device.',
     category: 'archive',
     engine: 'zip-create',
     accept: '*/*',
@@ -323,16 +422,24 @@ export const TOOLS: ToolDefinition[] = [
     mimeTypes: [],
     maxFileSize: 200 * MB,
     privacyClientSide: true,
-    seoDescription: 'Create a ZIP archive from multiple files in your browser. Nothing is uploaded.',
+    seoDescription:
+      'Create a ZIP archive from multiple files in your browser. Nothing is uploaded.',
     faq: archiveFaq,
     note: privacyNote,
-    related: ['archive-compressor', 'compress', 'pdf-compressor', 'image-compressor', 'video-compressor', 'mp3-compressor'],
+    related: [
+      'archive-compressor',
+      'compress',
+      'pdf-compressor',
+      'image-compressor',
+      'video-compressor',
+      'mp3-compressor',
+    ],
   },
   {
     slug: 'archive-compressor',
     title: 'ZIP Extractor',
     description:
-      'Inspect and extract a ZIP archive. Unsafe paths and archive bombs are rejected before anything is written to disk.',
+      'Extract a ZIP archive. Unsafe paths and archive bombs are rejected before anything is written to disk.',
     category: 'archive',
     engine: 'zip-extract',
     accept: 'application/zip,application/x-zip-compressed,.zip',
@@ -344,7 +451,14 @@ export const TOOLS: ToolDefinition[] = [
       'Extract ZIP files in your browser with path-traversal and archive-bomb protection. Files never leave your device.',
     faq: archiveFaq,
     note: privacyNote,
-    related: ['zip-compressor', 'compress', 'pdf-compressor', 'image-compressor', 'video-compressor', 'mp3-compressor'],
+    related: [
+      'zip-compressor',
+      'compress',
+      'pdf-compressor',
+      'image-compressor',
+      'video-compressor',
+      'mp3-compressor',
+    ],
   },
 ]
 
@@ -365,7 +479,10 @@ export function getTool(slug: string): ToolDefinition | undefined {
  * format- and category-similarity only fill the remaining slots. The ranking is
  * deterministic, so the section is both relevant and stable between builds.
  */
-export function relatedTools(tool: ToolDefinition, limit = 6): ToolDefinition[] {
+export function relatedTools(
+  tool: ToolDefinition,
+  limit = 6,
+): ToolDefinition[] {
   const ranked: { tool: ToolDefinition; score: number }[] = []
 
   for (const candidate of TOOLS) {
@@ -377,7 +494,10 @@ export function relatedTools(tool: ToolDefinition, limit = 6): ToolDefinition[] 
     // single score was what pushed declared entries below incidental
     // same-format tools.
     if (tool.related?.includes(candidate.slug)) {
-      ranked.push({ tool: candidate, score: 1000 - tool.related.indexOf(candidate.slug) })
+      ranked.push({
+        tool: candidate,
+        score: 1000 - tool.related.indexOf(candidate.slug),
+      })
       continue
     }
 
@@ -389,7 +509,9 @@ export function relatedTools(tool: ToolDefinition, limit = 6): ToolDefinition[] 
     if (score > 0) ranked.push({ tool: candidate, score })
   }
 
-  ranked.sort((a, b) => b.score - a.score || a.tool.slug.localeCompare(b.tool.slug))
+  ranked.sort(
+    (a, b) => b.score - a.score || a.tool.slug.localeCompare(b.tool.slug),
+  )
 
   // Fall back to same-category tools if a tool ever declares no relations at all.
   if (ranked.length < limit) {

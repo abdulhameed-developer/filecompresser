@@ -1,0 +1,31 @@
+{
+  "heading": "How do I process a mixed batch of files?",
+  "introduction": "Add supported images, GIFs, video, audio, PDFs or ZIPs to one queue. FileCompresser identifies each file and runs the appropriate workflow on your device. ZIP inputs are extracted rather than compressed again.",
+  "sections": [
+    {
+      "heading": "Choose one queue or a specialist tool",
+      "body": "Use this page when you have several supported file types to process. Choose a dedicated tool below when you need controls such as an image output format, video resolution or MP3 bitrate."
+    },
+    {
+      "heading": "Review each result separately",
+      "body": "Select Recommended or Maximum, start processing, then compare the reported input and output sizes. Download the files you want to keep. An already efficient file can become larger; a successful encode does not guarantee a size saving."
+    },
+    {
+      "heading": "What this queue can accept",
+      "body": "Supported formats and per-file limits appear in the upload area. Queues accept up to 500 files and 300 MB in total. Files with unsupported signatures are rejected, even if their extensions look familiar."
+    }
+  ],
+  "faq": [],
+  "seoTitle": "Compress Files Online — Private Browser Tools",
+  "seoDescription": "Process supported images, video, audio, GIFs, PDFs and ZIPs in one browser queue. Compare real output sizes; selected files are not uploaded.",
+  "links": [
+    {
+      "label": "How browser-based compression works",
+      "href": "/blog/how-browser-compression-works"
+    },
+    {
+      "label": "What local processing means for privacy",
+      "href": "/blog/what-privacy-claim-really-means"
+    }
+  ]
+}

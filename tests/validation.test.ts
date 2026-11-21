@@ -10,7 +10,13 @@ import {
   validateFileAgainstTool,
 } from '@/lib/validation'
 import { createZip, extractZip, inspectZip } from '@/lib/engines/zip'
-import { formatBytes, replaceExtension, savingsLabel, savingsPercent, suffixFilename } from '@/lib/format'
+import {
+  formatBytes,
+  replaceExtension,
+  savingsLabel,
+  savingsPercent,
+  suffixFilename,
+} from '@/lib/format'
 import { getTool, canonicalSlug, toolUsesFfmpeg, TOOLS } from '@/lib/tools'
 
 const MB = 1024 * 1024
@@ -20,7 +26,9 @@ function fileFromBytes(name: string, bytes: number[], type = ''): File {
 }
 
 const JPEG_HEADER = [0xff, 0xd8, 0xff, 0xe0, 0x00, 0x10, 0x4a, 0x46]
-const PNG_HEADER = [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, 0x00, 0x00, 0x00, 0x0d]
+const PNG_HEADER = [
+  0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, 0x00, 0x00, 0x00, 0x0d,
+]
 const GIF_HEADER = [0x47, 0x49, 0x46, 0x38, 0x39, 0x61]
 const PDF_HEADER = [0x25, 0x50, 0x44, 0x46, 0x2d, 0x31, 0x2e, 0x34]
 const ZIP_HEADER = [0x50, 0x4b, 0x03, 0x04, 0x14, 0x00]
@@ -47,56 +55,133 @@ describe('magic byte detection', () => {
   })
 
   it('detects WEBP from RIFF....WEBP', async () => {
-    const bytes = [...new TextEncoder().encode('RIFF'), 0, 0, 0, 0, ...new TextEncoder().encode('WEBP'), 1, 2, 3]
+    const bytes = [
+      ...new TextEncoder().encode('RIFF'),
+      0,
+      0,
+      0,
+      0,
+      ...new TextEncoder().encode('WEBP'),
+      1,
+      2,
+      3,
+    ]
     expect(await detectFormat(fileFromBytes('a.webp', bytes))).toBe('webp')
   })
 
   it('detects WAV from RIFF....WAVE', async () => {
-    const bytes = [...new TextEncoder().encode('RIFF'), 0, 0, 0, 0, ...new TextEncoder().encode('WAVE'), 1, 2, 3]
+    const bytes = [
+      ...new TextEncoder().encode('RIFF'),
+      0,
+      0,
+      0,
+      0,
+      ...new TextEncoder().encode('WAVE'),
+      1,
+      2,
+      3,
+    ]
     expect(await detectFormat(fileFromBytes('a.wav', bytes))).toBe('wav')
   })
 
   it('detects MP4 from an ISO base media ftyp box', async () => {
-    const bytes = [0, 0, 0, 0x18, ...new TextEncoder().encode('ftypisom'), 0, 0, 0, 0, ...new TextEncoder().encode('isommp42')]
+    const bytes = [
+      0,
+      0,
+      0,
+      0x18,
+      ...new TextEncoder().encode('ftypisom'),
+      0,
+      0,
+      0,
+      0,
+      ...new TextEncoder().encode('isommp42'),
+    ]
     expect(await detectFormat(fileFromBytes('a.mp4', bytes))).toBe('mp4')
   })
 
   it('detects MOV from the qt brand', async () => {
-    const bytes = [0, 0, 0, 0x14, ...new TextEncoder().encode('ftypqt  '), 0, 0, 0, 0]
+    const bytes = [
+      0,
+      0,
+      0,
+      0x10,
+      ...new TextEncoder().encode('ftypqt  '),
+      0,
+      0,
+      0,
+      0,
+    ]
     expect(await detectFormat(fileFromBytes('a.mov', bytes))).toBe('mov')
   })
 
   it('detects HEIC from a heic brand', async () => {
-    const bytes = [0, 0, 0, 0x18, ...new TextEncoder().encode('ftypheic'), 0, 0, 0, 0, ...new TextEncoder().encode('mif1heic')]
+    const bytes = [
+      0,
+      0,
+      0,
+      0x18,
+      ...new TextEncoder().encode('ftypheic'),
+      0,
+      0,
+      0,
+      0,
+      ...new TextEncoder().encode('mif1heic'),
+    ]
     expect(await detectFormat(fileFromBytes('a.heic', bytes))).toBe('heic')
   })
 
   it('detects SVG from the root element', async () => {
-    const bytes = [...new TextEncoder().encode('<svg xmlns="http://www.w3.org/2000/svg"></svg>')]
+    const bytes = [
+      ...new TextEncoder().encode(
+        '<svg xmlns="http://www.w3.org/2000/svg"></svg>',
+      ),
+    ]
     expect(await detectFormat(fileFromBytes('a.svg', bytes))).toBe('svg')
   })
 
   it('returns null for unrecognised bytes', async () => {
-    expect(await detectFormat(fileFromBytes('a.bin', [0x00, 0x11, 0x22, 0x33, 0x44]))).toBeNull()
+    expect(
+      await detectFormat(
+        fileFromBytes('a.bin', [0x00, 0x11, 0x22, 0x33, 0x44]),
+      ),
+    ).toBeNull()
   })
 })
 
 describe('validateFileAgainstTool', () => {
   it('rejects a file whose name lies about its type', async () => {
     const result = await validateFileAgainstTool(
-      fileFromBytes('innocent.jpg', [0x7f, 0x45, 0x4c, 0x46, 0x02, 0x01], 'image/jpeg'),
-      { allowedFormats: ['jpeg'], maxSize: 50 * MB }
+      fileFromBytes(
+        'innocent.jpg',
+        [0x7f, 0x45, 0x4c, 0x46, 0x02, 0x01],
+        'image/jpeg',
+      ),
+      { allowedFormats: ['jpeg'], maxSize: 50 * MB },
     )
     expect(result.ok).toBe(false)
     // The message must be readable, not an internal code.
     expect(result.error).toMatch(/could not be verified|not supported/i)
   })
 
+  it('names the expected format when a strict-signature audio file is invalid', async () => {
+    const result = await validateFileAgainstTool(
+      fileFromBytes('broken.mp3', [0x00, 0x11, 0x22, 0x33]),
+      { allowedFormats: ['mp3', 'wav', 'm4a', 'flac', 'ogg'], maxSize: 50 * MB },
+    )
+    expect(result.ok).toBe(false)
+    expect(result.error).toContain('MP3 audio file')
+    expect(result.error).not.toMatch(/image|PDF|archive/i)
+  })
+
   it('rejects a mismatched but valid file type', async () => {
-    const result = await validateFileAgainstTool(fileFromBytes('a.png', PNG_HEADER), {
-      allowedFormats: ['jpeg'],
-      maxSize: 50 * MB,
-    })
+    const result = await validateFileAgainstTool(
+      fileFromBytes('a.png', PNG_HEADER),
+      {
+        allowedFormats: ['jpeg'],
+        maxSize: 50 * MB,
+      },
+    )
     expect(result.ok).toBe(false)
     expect(result.error).toContain('PNG')
   })
@@ -113,7 +198,9 @@ describe('validateFileAgainstTool', () => {
   it('rejects a file over the size limit', async () => {
     // Larger than the declared limit, but still a valid JPEG so that only the
     // size check can be what rejects it.
-    const oversized = new File([new Uint8Array(2048)], 'a.jpg', { type: 'image/jpeg' })
+    const oversized = new File([new Uint8Array(2048)], 'a.jpg', {
+      type: 'image/jpeg',
+    })
     Object.defineProperty(oversized, 'size', { value: 2048 })
 
     const result = await validateFileAgainstTool(oversized, {
@@ -125,29 +212,58 @@ describe('validateFileAgainstTool', () => {
   })
 
   it('accepts a valid image and reports its format', async () => {
-    const result = await validateFileAgainstTool(fileFromBytes('a.jpg', JPEG_HEADER), {
-      allowedFormats: ['jpeg'],
-      maxSize: 50 * MB,
-    })
+    const result = await validateFileAgainstTool(
+      fileFromBytes('a.jpg', JPEG_HEADER),
+      {
+        allowedFormats: ['jpeg'],
+        maxSize: 50 * MB,
+      },
+    )
     expect(result.ok).toBe(true)
     expect(result.format).toBe('jpeg')
   })
 
   it('accepts MOV on an MP4 tool (same container family)', async () => {
-    const bytes = [0, 0, 0, 0x14, ...new TextEncoder().encode('ftypqt  '), 0, 0, 0, 0]
-    const result = await validateFileAgainstTool(fileFromBytes('a.mov', bytes), {
-      allowedFormats: ['mp4', 'mov'],
-      maxSize: 50 * MB,
-    })
+    const bytes = [
+      0,
+      0,
+      0,
+      0x10,
+      ...new TextEncoder().encode('ftypqt  '),
+      0,
+      0,
+      0,
+      0,
+    ]
+    const result = await validateFileAgainstTool(
+      fileFromBytes('a.mov', bytes),
+      {
+        allowedFormats: ['mp4', 'mov'],
+        maxSize: 50 * MB,
+      },
+    )
     expect(result.ok).toBe(true)
   })
 
   it('accepts WAV on an audio tool', async () => {
-    const bytes = [...new TextEncoder().encode('RIFF'), 0, 0, 0, 0, ...new TextEncoder().encode('WAVE'), 1, 2, 3]
-    const result = await validateFileAgainstTool(fileFromBytes('a.wav', bytes), {
-      allowedFormats: ['mp3'],
-      maxSize: 50 * MB,
-    })
+    const bytes = [
+      ...new TextEncoder().encode('RIFF'),
+      0,
+      0,
+      0,
+      0,
+      ...new TextEncoder().encode('WAVE'),
+      1,
+      2,
+      3,
+    ]
+    const result = await validateFileAgainstTool(
+      fileFromBytes('a.wav', bytes),
+      {
+        allowedFormats: ['mp3'],
+        maxSize: 50 * MB,
+      },
+    )
     expect(result.ok).toBe(true)
   })
 })
@@ -198,7 +314,9 @@ describe('sanitizeArchivePath', () => {
 
 describe('archive helpers', () => {
   it('flattens separators for download filenames', () => {
-    expect(flattenArchivePath('docs/2024/report.pdf')).toBe('docs__2024__report.pdf')
+    expect(flattenArchivePath('docs/2024/report.pdf')).toBe(
+      'docs__2024__report.pdf',
+    )
   })
 
   it('flags a zip bomb ratio only above the size floor', () => {
@@ -259,13 +377,17 @@ describe('filename helpers', () => {
 describe('ZIP creation and extraction', () => {
   it('round-trips a file through create and extract', async () => {
     const payload = new Uint8Array([1, 2, 3, 4, 5])
-    const created = await createZip([new File([payload], 'hello.txt', { type: 'text/plain' })])
+    const created = await createZip([
+      new File([payload], 'hello.txt', { type: 'text/plain' }),
+    ])
 
     expect(created.mimeType).toBe('application/zip')
     expect(created.fileCount).toBe(1)
     expect(created.blob.size).toBeGreaterThan(0)
 
-    const entries = await extractZip(new File([created.blob], 'archive.zip', { type: 'application/zip' }))
+    const entries = await extractZip(
+      new File([created.blob], 'archive.zip', { type: 'application/zip' }),
+    )
     expect(entries).toHaveLength(1)
     expect(entries[0].path).toBe('hello.txt')
     expect(new Uint8Array(await entries[0].blob.arrayBuffer())).toEqual(payload)
@@ -292,12 +414,16 @@ describe('ZIP creation and extraction', () => {
 
   it('refuses a non-ZIP file', async () => {
     await expect(
-      extractZip(fileFromBytes('fake.zip', [0x00, 0x01, 0x02, 0x03], 'application/zip'))
+      extractZip(
+        fileFromBytes('fake.zip', [0x00, 0x01, 0x02, 0x03], 'application/zip'),
+      ),
     ).rejects.toThrow(/not a valid ZIP/i)
   })
 
   it('inspects entries without extracting them', async () => {
-    const created = await createZip([new File([new Uint8Array(64)], 'note.txt')])
+    const created = await createZip([
+      new File([new Uint8Array(64)], 'note.txt'),
+    ])
     const listing = await inspectZip(new File([created.blob], 'x.zip'))
     expect(listing).toHaveLength(1)
     expect(listing[0].name).toBe('note.txt')
@@ -333,7 +459,9 @@ describe('tool registry', () => {
     const slugs = new Set(TOOLS.map((t) => t.slug))
     for (const tool of TOOLS) {
       for (const alias of tool.aliases ?? []) {
-        expect(slugs.has(alias), `${alias} is both a tool and an alias`).toBe(false)
+        expect(slugs.has(alias), `${alias} is both a tool and an alias`).toBe(
+          false,
+        )
       }
     }
   })

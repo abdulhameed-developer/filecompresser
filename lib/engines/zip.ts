@@ -1,8 +1,7 @@
-import { unzip, zip, type UnzipFileInfo, type Unzipped } from 'fflate'
+import { unzip, zip, strFromU8, type Unzipped } from 'fflate'
 import {
   ARCHIVE_LIMITS,
   assertNotCancelled,
-  exceedsArchiveRatio,
   flattenArchivePath,
   sanitizeArchivePath,
 } from '../validation'
@@ -13,290 +12,330 @@ import { ProcessingError } from '../types'
 export interface ZipCreateOptions {
   compressionLevel?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 }
-
 export interface ExtractedEntry {
   path: string
   blob: Blob
   size: number
 }
-
 export interface CreateZipResult extends ProcessedResult {
   fileCount: number
   uncompressedSize: number
 }
+interface Entry {
+  name: string
+  size: number
+  compressed: number
+  crc: number
+  directory: boolean
+}
 
-/**
- * Build a ZIP from a set of files.
- *
- * fflate's async `zip` invokes its callback once with the finished archive,
- * which is the only completion signal the library exposes.
- */
+/** Async fflate operations expose a terminator. Always release the cancellation listener. */
+function cancellable<T>(
+  start: (done: (error: Error | null, value: T) => void) => () => void,
+  signal?: CancelSignal,
+): Promise<T> {
+  assertNotCancelled(signal)
+  return new Promise((resolve, reject) => {
+    let settled = false
+    let stop: (() => void) | undefined
+    let timer: ReturnType<typeof setInterval> | undefined
+    const finish = (error: Error | null, value?: T) => {
+      if (settled) return
+      settled = true
+      if (timer) clearInterval(timer)
+      if (error) reject(error)
+      else resolve(value as T)
+    }
+    try {
+      stop = start((error, value) => finish(error, value))
+      if (signal && !settled)
+        timer = setInterval(() => {
+          if (!signal.cancelled) return
+          stop?.()
+          finish(new ProcessingError('Processing was cancelled.', 'cancelled'))
+        }, 100)
+    } catch (error) {
+      finish(archiveError(error))
+    }
+  })
+}
+
+function archiveError(error: unknown): Error {
+  if (error instanceof ProcessingError) return error
+  return new ProcessingError(
+    'This ZIP could not be processed. It may be corrupted, encrypted, or use an unsupported method.',
+  )
+}
+
 export async function createZip(
   files: File[],
   options: ZipCreateOptions = {},
   onProgress?: ProgressCallback,
-  signal?: CancelSignal
+  signal?: CancelSignal,
 ): Promise<CreateZipResult> {
-  if (!files.length) throw new ProcessingError('Add at least one file to create a ZIP.')
   assertNotCancelled(signal)
-
-  const level = options.compressionLevel ?? 6
-  const entries: Record<string, [Uint8Array, { level: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 }]> = {}
+  if (!files.length)
+    throw new ProcessingError('Add at least one file to create a ZIP.')
+  const uncompressedSize = files.reduce((total, file) => total + file.size, 0)
+  if (
+    files.length > ARCHIVE_LIMITS.maxEntries ||
+    uncompressedSize > ARCHIVE_LIMITS.maxBatchBytes
+  ) {
+    throw new ProcessingError(
+      'Use at most 500 files and 300 MB in one ZIP batch.',
+    )
+  }
+  const entries: Record<string, Uint8Array> = Object.create(null)
   const used = new Set<string>()
-  let uncompressed = 0
-
   for (let i = 0; i < files.length; i++) {
     assertNotCancelled(signal)
-    const file = files[i]
-    // Duplicate basenames are common when dragging a folder; keep both rather
-    // than silently overwriting one.
-    const base = sanitizeArchivePath(flattenArchivePath(file.name)) || `file-${i + 1}`
-    let candidate = base
-    let n = 2
-    while (used.has(candidate.toLowerCase())) {
-      const dot = base.lastIndexOf('.')
-      candidate = dot > 0 ? `${base.slice(0, dot)}-${n}${base.slice(dot)}` : `${base}-${n}`
-      n++
-    }
-    used.add(candidate.toLowerCase())
-
-    uncompressed += file.size
-    entries[candidate] = [await blobToUint8Array(file), { level }]
-    onProgress?.(Math.round(((i + 1) / files.length) * 40), `Adding ${candidate}…`)
-  }
-
-  assertNotCancelled(signal)
-  onProgress?.(50, 'Compressing archive…')
-
-  // Deflate cannot be interrupted mid-pass, so a cancel races the work and
-  // discards the result rather than pretending to stop it.
-  const compressed = await Promise.race([
-    new Promise<Uint8Array>((resolve, reject) => {
-      zip(entries, { level }, (err, chunk) => {
-        if (err) reject(toArchiveError(err))
-        else resolve(chunk)
-      })
-    }),
-    rejectWhenCancelled(signal),
-  ])
-
-  assertNotCancelled(signal)
-  onProgress?.(100, 'Done')
-
-  return {
-    blob: new Blob([compressed], { type: 'application/zip' }),
-    filename: 'archive.zip',
-    mimeType: 'application/zip',
-    fileCount: files.length,
-    uncompressedSize: uncompressed,
-  }
-}
-
-function toArchiveError(e: unknown): Error {
-  if (e instanceof ProcessingError) return e
-  const message = e instanceof Error ? e.message : String(e)
-  if (/memory|allocat|out of bounds/i.test(message)) {
-    return new ProcessingError(
-      'This archive is too large for your device to build. Try fewer or smaller files.'
+    const name = uniqueArchiveName(
+      used,
+      sanitizeArchivePath(flattenArchivePath(files[i].name)) || `file-${i + 1}`,
     )
+    entries[name] = await blobToUint8Array(files[i])
+    onProgress?.(Math.round(((i + 1) / files.length) * 40), `Adding ${name}…`)
   }
-  return new ProcessingError('The archive could not be created.')
-}
-
-/**
- * A promise that rejects as soon as the signal is cancelled. Lets a cancel
- * interrupt work that cannot be stopped at its source.
- */
-function rejectWhenCancelled(signal?: CancelSignal): Promise<never> {
-  return new Promise<never>((_resolve, reject) => {
-    if (!signal) return
-    if (signal.cancelled) {
-      reject(new ProcessingError('Processing was cancelled.', 'cancelled'))
-      return
-    }
-    const poll = setInterval(() => {
-      if (!signal.cancelled) return
-      clearInterval(poll)
-      reject(new ProcessingError('Processing was cancelled.', 'cancelled'))
-    }, 200)
-  })
-}
-
-/**
- * Decompress a ZIP, reporting what it found through `filter`.
- *
- * The filter runs for every entry *before* that entry's bytes are produced, so
- * throwing from it aborts the whole archive without allocating memory for the
- * offending entry. That is what makes the bomb and path guards cheap: nothing
- * hostile is ever decompressed.
- *
- * `keepPayload` is false for inspection, where only names and sizes matter.
- */
-async function runUnzip(
-  file: File,
-  options: {
-    keepPayload: boolean
-    guard?: (info: UnzipFileInfo) => void
-    onProgress?: ProgressCallback
-    signal?: CancelSignal
-  }
-): Promise<{ files: UnzipFileInfo[]; contents: Record<string, Uint8Array> }> {
-  const buf = await blobToUint8Array(file)
-  if (!(buf[0] === 0x50 && buf[1] === 0x4b)) {
-    throw new ProcessingError('This file is not a valid ZIP archive.')
-  }
-
-  const manifest: UnzipFileInfo[] = []
-
-  const contents = await new Promise<Record<string, Uint8Array>>((resolve, reject) => {
-    unzip(
-      buf,
-      {
-        filter: (info) => {
-          if (info.name.endsWith('/')) return false
-          manifest.push(info)
-          // Throwing here aborts before any decompression happens.
-          options.guard?.(info)
-          return true
-        },
-      },
-      (err, data) => {
-        if (err) reject(toExtractionError(err))
-        else resolve(data)
-      }
+  onProgress?.(0, 'Building ZIP…')
+  try {
+    const bytes = await cancellable<Uint8Array>(
+      (done) => zip(entries, { level: options.compressionLevel ?? 6 }, done),
+      signal,
     )
-
-    // Cancellation is checked between phases; the decompress itself is atomic.
-    if (options.signal?.cancelled) {
-      reject(new ProcessingError('Processing was cancelled.', 'cancelled'))
-    }
-  })
-
-  return {
-    files: manifest,
-    contents: options.keepPayload ? contents : {},
-  }
-}
-
-/**
- * Extract every file entry from a ZIP.
- *
- * Security model:
- *  1. Entry paths are vetted inside the unzip filter, so a hostile name is
- *     rejected before its bytes are decompressed.
- *  2. Absolute paths, `..` segments, drive letters, UNC prefixes, control
- *     characters and Windows reserved device names are all refused.
- *  3. Entry count, per-entry size, total uncompressed size and a
- *     compression-ratio ceiling bound the memory an archive can demand.
- */
-export async function extractZip(
-  file: File,
-  onProgress?: ProgressCallback,
-  signal?: CancelSignal
-): Promise<ExtractedEntry[]> {
-  assertNotCancelled(signal)
-  onProgress?.(5, 'Reading archive…')
-
-  const archiveSize = file.size
-  let guarded = 0
-
-  const { files: manifest, contents } = await runUnzip(file, {
-    keepPayload: true,
-    signal,
-    guard: (info) => {
-      assertEntryWithinLimits(info, archiveSize)
-    },
-    onProgress,
-  })
-
-  if (manifest.length > ARCHIVE_LIMITS.maxEntries) {
-    throw new ProcessingError(
-      `This archive contains ${manifest.length} files, which is over the ${ARCHIVE_LIMITS.maxEntries} file limit.`
-    )
-  }
-  if (!manifest.length) {
-    throw new ProcessingError('This archive does not contain any files.')
-  }
-
-  assertNotCancelled(signal)
-  onProgress?.(60, `Extracting ${manifest.length} file${manifest.length === 1 ? '' : 's'}…`)
-
-  const entries: ExtractedEntry[] = []
-  let total = 0
-
-  for (const info of manifest) {
     assertNotCancelled(signal)
-
-    // Re-validate: the payload map is keyed by the raw name, so nothing reaches
-    // a Blob without passing the sanitiser again here.
-    const safe = sanitizeArchivePath(info.name)
-    if (!safe) {
-      throw new ProcessingError(
-        `This archive contains an unsafe file path ("${info.name.slice(0, 80)}") and was blocked for your security.`
-      )
+    onProgress?.(100, 'Done')
+    return {
+      blob: new Blob([bytes], { type: 'application/zip' }),
+      filename: 'archive.zip',
+      mimeType: 'application/zip',
+      fileCount: files.length,
+      uncompressedSize,
     }
-
-    const bytes = contents[info.name]
-    if (!bytes) {
-      throw new ProcessingError('This ZIP could not be fully extracted. It may be corrupted.')
-    }
-
-    total += bytes.length
-    if (total > ARCHIVE_LIMITS.maxUncompressedBytes) {
-      throw new ProcessingError(
-        'Extracting this archive would need more memory than this tool allows. It may be an archive bomb.'
-      )
-    }
-
-    guarded++
-    entries.push({ path: safe, blob: new Blob([bytes]), size: bytes.length })
-    onProgress?.(60 + Math.round((guarded / manifest.length) * 38), `Extracted ${safe}`)
+  } catch (error) {
+    throw archiveError(error)
   }
+}
 
-  onProgress?.(100, 'Done')
+export function uniqueArchiveName(used: Set<string>, base: string): string {
+  if (['__proto__', 'constructor', 'prototype'].includes(base))
+    base = `file-${base}`
+  let candidate = base
+  let n = 2
+  while (used.has(candidate.toLowerCase())) {
+    const dot = base.lastIndexOf('.')
+    candidate =
+      dot > 0 ? `${base.slice(0, dot)}-${n}${base.slice(dot)}` : `${base}-${n}`
+    n++
+  }
+  used.add(candidate.toLowerCase())
+  return candidate
+}
+
+/** Parse the complete central directory BEFORE asking any decoder to allocate output.
+ * ZIP64, split and encrypted archives are deliberately rejected rather than partially read.
+ * Directory/local header agreement prevents the decoder from seeing a different manifest.
+ */
+function manifest(bytes: Uint8Array, allowUnsafe = false): Entry[] {
+  const fail = (
+    message = 'This ZIP is corrupted or uses an unsupported archive structure.',
+  ): never => {
+    throw new ProcessingError(message)
+  }
+  const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength)
+  const u16 = (offset: number) => view.getUint16(offset, true)
+  const u32 = (offset: number) => view.getUint32(offset, true)
+  let end = -1
+  for (let i = bytes.length - 22; i >= Math.max(0, bytes.length - 65557); i--) {
+    if (u32(i) === 0x06054b50 && i + 22 + u16(i + 20) === bytes.length) {
+      end = i
+      break
+    }
+  }
+  if (end < 0) fail('This file is not a valid ZIP archive.')
+  const count = u16(end + 10)
+  const centralSize = u32(end + 12)
+  const central = u32(end + 16)
+  if (
+    u16(end + 4) ||
+    u16(end + 6) ||
+    u16(end + 8) !== count ||
+    count === 65535 ||
+    central === 0xffffffff ||
+    centralSize === 0xffffffff
+  )
+    fail('Split and ZIP64 archives are not supported.')
+  if (count > ARCHIVE_LIMITS.maxEntries)
+    fail('This archive exceeds the 500 file limit.')
+  if (central + centralSize !== end) fail()
+  const entries: Entry[] = []
+  const names = new Set<string>()
+  const ranges: [number, number][] = []
+  let cursor = central
+  let total = 0
+  for (let i = 0; i < count; i++) {
+    if (cursor + 46 > end || u32(cursor) !== 0x02014b50) fail()
+    const flags = u16(cursor + 8)
+    const method = u16(cursor + 10)
+    const compressed = u32(cursor + 20)
+    const size = u32(cursor + 24)
+    const nameLength = u16(cursor + 28)
+    const next = cursor + 46 + nameLength + u16(cursor + 30) + u16(cursor + 32)
+    const local = u32(cursor + 42)
+    if (
+      next > end ||
+      !nameLength ||
+      size === 0xffffffff ||
+      compressed === 0xffffffff ||
+      u16(cursor + 34)
+    )
+      fail()
+    if (flags & 1 || flags & 64)
+      fail('Password-protected ZIP files are not supported.')
+    if (method !== 0 && method !== 8)
+      fail('This ZIP uses an unsupported compression method.')
+    if (method === 0 && compressed !== size)
+      fail('Stored ZIP entry sizes are inconsistent.')
+    const raw = bytes.subarray(cursor + 46, cursor + 46 + nameLength)
+    const name = strFromU8(raw, !(flags & 2048))
+    const directory = name.endsWith('/')
+    if (
+      names.has(name) ||
+      ['__proto__', 'constructor', 'prototype'].includes(name)
+    )
+      fail('This ZIP contains duplicate or reserved entry names.')
+    names.add(name)
+    if (!allowUnsafe && sanitizeArchivePath(name) === null)
+      fail('This archive contains an unsafe file path and was blocked.')
+    if (size > ARCHIVE_LIMITS.maxSingleEntryBytes)
+      fail(
+        'A file inside this archive is larger than the 200 MB per-file limit.',
+      )
+    total += size
+    if (total > ARCHIVE_LIMITS.maxUncompressedBytes)
+      fail(
+        'This archive needs more memory than this tool allows (500 MB extracted).',
+      )
+    // A small allowance accepts highly compressible small files, but not tiny bombs.
+    if (
+      size > 5 * 1024 * 1024 &&
+      size / Math.max(1, compressed) > ARCHIVE_LIMITS.maxCompressionRatio
+    )
+      fail(
+        'A file expands to over 100 times its compressed size and was blocked.',
+      )
+    if (
+      local + 30 > central ||
+      u32(local) !== 0x04034b50 ||
+      u16(local + 6) !== flags ||
+      u16(local + 8) !== method ||
+      u16(local + 26) !== nameLength
+    )
+      fail()
+    const localName = bytes.subarray(local + 30, local + 30 + nameLength)
+    if (
+      localName.length !== raw.length ||
+      !raw.every((b, n) => b === localName[n])
+    )
+      fail()
+    const dataStart = local + 30 + nameLength + u16(local + 28)
+    const dataEnd = dataStart + compressed
+    if (dataStart > central || dataEnd > central) fail()
+    if (
+      !(flags & 8) &&
+      (u32(local + 18) !== compressed ||
+        u32(local + 22) !== size ||
+        u32(local + 14) !== u32(cursor + 16))
+    )
+      fail()
+    ranges.push([local, dataEnd])
+    entries.push({ name, size, compressed, crc: u32(cursor + 16), directory })
+    cursor = next
+  }
+  if (cursor !== end) fail()
+  ranges.sort((a, b) => a[0] - b[0])
+  for (let i = 1; i < ranges.length; i++)
+    if (ranges[i][0] < ranges[i - 1][1])
+      fail('This ZIP contains overlapping entries.')
   return entries
 }
 
-function toExtractionError(e: unknown): Error {
-  if (e instanceof ProcessingError) return e
-  const message = e instanceof Error ? e.message : String(e)
-  if (/memory|allocat/i.test(message)) {
-    return new ProcessingError(
-      'This archive needs more memory than this device can give it. Try a smaller ZIP.'
+async function readArchive(
+  file: File,
+  signal?: CancelSignal,
+): Promise<Uint8Array> {
+  assertNotCancelled(signal)
+  if (file.size > ARCHIVE_LIMITS.maxArchiveBytes)
+    throw new ProcessingError(
+      'This archive is larger than the 150 MB input limit.',
     )
-  }
-  if (/unknown compression|invalid|unexpected|corrupt|end of data/i.test(message)) {
-    return new ProcessingError(
-      'This ZIP could not be extracted. It may be corrupted, or use a compression method this tool does not support.'
-    )
-  }
-  return new ProcessingError('This ZIP could not be extracted.')
+  const bytes = await blobToUint8Array(file)
+  assertNotCancelled(signal)
+  return bytes
 }
 
-/**
- * Per-entry bomb guards, applied inside the unzip filter — before the entry's
- * data is decompressed into memory.
- */
-function assertEntryWithinLimits(info: UnzipFileInfo, archiveSize: number): void {
-  if (info.name.length > ARCHIVE_LIMITS.maxPathLength) {
-    throw new ProcessingError('This archive contains a path that is too long and was blocked.')
+// Validate integrity as well as size; the decoder alone does not check ZIP CRCs.
+const crcTable = Uint32Array.from({ length: 256 }, (_, value) => {
+  for (let i = 0; i < 8; i++)
+    value = value & 1 ? 0xedb88320 ^ (value >>> 1) : value >>> 1
+  return value >>> 0
+})
+async function crc32(
+  bytes: Uint8Array,
+  signal?: CancelSignal,
+): Promise<number> {
+  let crc = 0xffffffff
+  for (let index = 0; index < bytes.length; index++) {
+    crc = crcTable[(crc ^ bytes[index]) & 255] ^ (crc >>> 8)
+    if (index > 0 && index % (1024 * 1024) === 0) {
+      assertNotCancelled(signal)
+      await new Promise<void>((resolve) => setTimeout(resolve, 0))
+    }
   }
-  if (sanitizeArchivePath(info.name) === null) {
-    throw new ProcessingError(
-      `This archive contains an unsafe file path ("${info.name.slice(0, 80)}") and was blocked for your security.`
+  return (crc ^ 0xffffffff) >>> 0
+}
+
+export async function extractZip(
+  file: File,
+  onProgress?: ProgressCallback,
+  signal?: CancelSignal,
+): Promise<ExtractedEntry[]> {
+  onProgress?.(0, 'Checking archive paths, sizes and structure…')
+  const bytes = await readArchive(file, signal)
+  const files = manifest(bytes).filter((entry) => !entry.directory)
+  if (!files.length)
+    throw new ProcessingError('This archive does not contain any files.')
+  onProgress?.(0, `Extracting ${files.length} files…`)
+  try {
+    const contents = await cancellable<Unzipped>(
+      (done) =>
+        unzip(bytes, { filter: (info) => !info.name.endsWith('/') }, done),
+      signal,
     )
-  }
-  if (info.originalSize > ARCHIVE_LIMITS.maxSingleEntryBytes) {
-    throw new ProcessingError(
-      `A file inside this archive is larger than the ${Math.round(
-        ARCHIVE_LIMITS.maxSingleEntryBytes / (1024 * 1024)
-      )} MB per-file limit.`
-    )
-  }
-  if (exceedsArchiveRatio(archiveSize, info.originalSize)) {
-    throw new ProcessingError(
-      'A file inside this archive expands to over 100× the whole archive and was blocked to protect your device.'
-    )
+    const results: ExtractedEntry[] = []
+    for (const entry of files) {
+      assertNotCancelled(signal)
+      const data = contents[entry.name]
+      if (
+        !data ||
+        data.length !== entry.size ||
+        (await crc32(data, signal)) !== entry.crc
+      )
+        throw new ProcessingError(
+          'This ZIP failed its integrity check. No files were offered for download.',
+        )
+      results.push({
+        path: sanitizeArchivePath(entry.name)!,
+        size: data.length,
+        blob: new Blob([data]),
+      })
+      // Yield between entries so cancellation remains responsive during integrity checks.
+      await new Promise<void>((resolve) => setTimeout(resolve, 0))
+    }
+    assertNotCancelled(signal)
+    onProgress?.(100, 'Done')
+    return results
+  } catch (error) {
+    throw archiveError(error)
   }
 }
 
@@ -306,22 +345,22 @@ export interface ZipInspection {
   safe: boolean
   reason?: string
 }
-
-/**
- * List entries and their declared sizes. Names are reported as-is so the user
- * can see what an archive contains, including entries that would be refused.
- */
-export async function inspectZip(file: File, signal?: CancelSignal): Promise<ZipInspection[]> {
-  const { files: manifest } = await runUnzip(file, { keepPayload: false, signal })
-  return manifest.map((info) => {
-    const safe = sanitizeArchivePath(info.name)
-    return {
-      name: info.name,
-      size: info.originalSize,
-      safe: safe !== null,
-      reason: safe === null ? 'Unsafe path — blocked from extraction' : undefined,
-    }
-  })
+/** Metadata-only inspection: no decompression, worker or output buffer allocation. */
+export async function inspectZip(
+  file: File,
+  signal?: CancelSignal,
+): Promise<ZipInspection[]> {
+  const bytes = await readArchive(file, signal)
+  return manifest(bytes, true)
+    .filter((entry) => !entry.directory)
+    .map((entry) => {
+      const safe = sanitizeArchivePath(entry.name) !== null
+      return {
+        name: entry.name,
+        size: entry.size,
+        safe,
+        reason: safe ? undefined : 'Unsafe path — blocked from extraction',
+      }
+    })
 }
-
 export type { Unzipped }

@@ -9,7 +9,13 @@
  */
 
 import { zipSync } from 'fflate'
-import { writeFileSync, mkdirSync, copyFileSync, existsSync, readFileSync } from 'node:fs'
+import {
+  writeFileSync,
+  mkdirSync,
+  copyFileSync,
+  existsSync,
+  readFileSync,
+} from 'node:fs'
 import path from 'node:path'
 
 const out = process.argv[2] || path.join(process.cwd(), '.qa-fixtures')
@@ -19,22 +25,31 @@ const text = (s) => new TextEncoder().encode(s)
 
 const fixtures = {
   // Path traversal, hidden behind a plausible folder name.
-  'traversal.zip': zipSync({
-    'photos/../../../../root/.ssh/authorized_keys': text('pwned'),
-    'notes.txt': text('this entry is safe'),
-  }, { level: 0 }),
+  'traversal.zip': zipSync(
+    {
+      'photos/../../../../root/.ssh/authorized_keys': text('pwned'),
+      'notes.txt': text('this entry is safe'),
+    },
+    { level: 0 },
+  ),
 
   // Absolute path and a Windows drive letter in one archive.
-  'absolute.zip': zipSync({
-    '/etc/shadow': text('root:x:0:0'),
-    'C:\\Windows\\System32\\evil.dll': text('MZ'),
-  }, { level: 0 }),
+  'absolute.zip': zipSync(
+    {
+      '/etc/shadow': text('root:x:0:0'),
+      'C:\\Windows\\System32\\evil.dll': text('MZ'),
+    },
+    { level: 0 },
+  ),
 
   // A perfectly normal archive, to prove the guards are not over-blocking.
-  'normal.zip': zipSync({
-    'readme.txt': text('hello from a normal archive'),
-    'data/values.csv': text('a,b,c\n1,2,3\n'),
-  }, { level: 6 }),
+  'normal.zip': zipSync(
+    {
+      'readme.txt': text('hello from a normal archive'),
+      'data/values.csv': text('a,b,c\n1,2,3\n'),
+    },
+    { level: 6 },
+  ),
 
   // A file that is not a ZIP at all, wearing a .zip extension.
   'not-really.zip': text('this is plain text pretending to be an archive'),
@@ -71,7 +86,8 @@ function makeWav(seconds = 1, sampleRate = 8000) {
   const buf = new ArrayBuffer(44 + dataSize)
   const view = new DataView(buf)
   const ascii = (offset, s) => {
-    for (let i = 0; i < s.length; i++) view.setUint8(offset + i, s.charCodeAt(i))
+    for (let i = 0; i < s.length; i++)
+      view.setUint8(offset + i, s.charCodeAt(i))
   }
   ascii(0, 'RIFF')
   view.setUint32(4, 36 + dataSize, true)
@@ -115,9 +131,14 @@ if (existsSync(path.join(out, 'anim.gif'))) {
  * them from `public/` before shipping.
  */
 const publicDir = path.join(process.cwd(), 'public')
-if (existsSync(publicDir) && process.env.COPY_TO_PUBLIC !== '0') {
-  for (const name of Object.keys(fixtures).concat(['sample.pdf', 'tone.wav', 'anim.gif'])) {
-    copyFileSync(path.join(out, name), path.join(publicDir, name))
+if (existsSync(publicDir) && process.env.COPY_TO_PUBLIC === '1') {
+  for (const name of Object.keys(fixtures).concat([
+    'sample.pdf',
+    'tone.wav',
+    'anim.gif',
+  ])) {
+    if (existsSync(path.join(out, name)))
+      copyFileSync(path.join(out, name), path.join(publicDir, name))
   }
   console.log(`\ncopied fixtures into public/ (QA only — not for shipping)`)
 }

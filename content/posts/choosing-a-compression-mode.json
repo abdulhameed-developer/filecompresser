@@ -1,0 +1,70 @@
+{
+  "updated": "2026-11-04",
+  "title": "Recommended vs Maximum: choosing image quality",
+  "description": "The two presets differ in more than aggressiveness. Here is exactly what each one does to your file, and when the difference is worth it.",
+  "date": "2026-09-12",
+  "readingTime": "6 min",
+  "figure": "qualitycurve",
+  "seoDescription": "What the Recommended and Maximum compression modes actually do: quality settings, the 3200px and 1920px dimension caps, and when to use the target-size search.",
+  "body": [
+    {
+      "_template": "p",
+      "text": "Most compressors offer a quality slider and expect you to guess. These two modes are not a slider — they are two specific, documented configurations, and knowing which one you are getting is most of the value."
+    },
+    {
+      "_template": "figure",
+      "figure": "qualitycurve",
+      "caption": "A qualitative illustration of the size–quality trade-off, not a measured benchmark."
+    },
+    {
+      "_template": "h2",
+      "text": "Recommended: balanced quality, capped at 3200px"
+    },
+    {
+      "_template": "p",
+      "text": "Images are re-encoded at a quality around 0.82, and the longest edge is capped at 3200 pixels. That cap is the part people miss. A 6000px camera original is not re-encoded at 6000px and called compressed; it is downscaled first, which is where most of the saving on a large photo actually comes from."
+    },
+    {
+      "_template": "p",
+      "text": "Images already smaller than the cap are left at their original dimensions. Nothing is upscaled, because enlarging a photo to hit a target would cost you sharpness and buy you nothing."
+    },
+    {
+      "_template": "h2",
+      "text": "Maximum: 0.6 quality, capped at 1920px"
+    },
+    {
+      "_template": "p",
+      "text": "Harder compression and a smaller dimension cap. The saving varies with image content, dimensions and its existing encoding. Fine textures and small text can change visibly, so inspect the output before replacing the original."
+    },
+    {
+      "_template": "p",
+      "text": "Maximum mode is for files that have to fit somewhere: an upload limit, an email attachment ceiling, a form with a hard cap. It is the right mode when the constraint is real and the image is going to be viewed at thumbnail size anyway."
+    },
+    {
+      "_template": "h2",
+      "text": "The target-size search"
+    },
+    {
+      "_template": "p",
+      "text": "Maximum mode also unlocks an optional \"target size (KB)\" field. If you fill it in, the tool does not guess a quality — it runs a real binary search, encoding the image repeatedly at different quality settings and measuring each result against your byte target, keeping the highest quality that still fits."
+    },
+    {
+      "_template": "p",
+      "text": "If even the lowest quality overshoots your target, you get the smallest real encode it could produce and an explicit note saying the target was not met. It does not pad the file, truncate it, or quietly drop the constraint to make the number work."
+    },
+    {
+      "_template": "callout",
+      "title": "Which should you use?",
+      "text": "Recommended unless you have a specific size constraint. If a 300 KB photo is genuinely too big, switch to Maximum and set the target — the search will get you closer than any fixed preset."
+    },
+    {
+      "_template": "h2",
+      "text": "What the modes do not do"
+    },
+    {
+      "_template": "p",
+      "text": "Image re-encoding normally drops embedded metadata. Progress represents encoder events and named stages. If a stage cannot report a real percentage, you see the stage name instead of a number that is counting up on a timer."
+    }
+  ],
+  "published": true
+}

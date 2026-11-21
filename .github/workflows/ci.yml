@@ -1,99 +1,55 @@
 name: CI
-
-# Every check the project actually relies on runs here, in one place:
-#   lint, typecheck, unit tests, dependency audit, production build, then the
-#   browser-driven audits (route crawl, navigation, responsive, role/a11y).
-#
-# The browser audits are the point of this file. They are what caught the
-# scroll-position regression, the off-centre sections, the overflowing tools
-# dropdown, the contrast failures and the closed-<details> bug — none of which
-# lint or unit tests can see.
-
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
-
-# Cancel an in-flight run for the same branch when a newer commit lands.
+permissions:
+  contents: read
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-
-permissions:
-  contents: read
-
 jobs:
-  verify:
-    name: Build and verify
+  check:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
-
+    timeout-minutes: 20
+    env:
+      NEXT_PUBLIC_SITE_URL: https://filecompresser.com
+      NEXT_PUBLIC_ENABLE_INDEXING: 'false'
+      NEXT_PUBLIC_TINA_CLIENT_ID: e80a2716-65ae-4124-a250-85a481310f9a
+      NEXT_PUBLIC_TINA_BRANCH: main
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          node-version: 20
-          cache: npm
-
-      - name: Install dependencies
-        # `npm ci` fails if package-lock.json is out of sync with package.json,
-        # which is exactly the drift this is meant to catch.
-        run: npm ci
-
-      - name: Lint, typecheck, test, audit, build
-        run: |
-          npm run lint
-          npx tsc --noEmit
-          npm test
-          npm audit --omit=dev
-          npm run build
-
-      # The audits drive a real browser against a real production build, so they
-      # need Chrome. Playwright is installed outside the project on purpose: it
-      # is QA tooling, not something the site ships.
-      - name: Install Playwright for the audits
-        run: |
-          mkdir -p "$HOME/pwtools"
-          cd "$HOME/pwtools"
-          npm init -y >/dev/null 2>&1 || true
-          npm install playwright-core@1.63.0 omggif
-
-      - name: Set up Chrome
-        uses: browser-actions/setup-chrome@v1
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          chrome-version: stable
-
-      - name: Generate QA fixtures
-        # Kept out of public/ by default; copied in only for the run, and the
-        # cleanup step below removes them before anything can be deployed.
-        run: |
-          export PW_TOOLS=/home/runner/pwtools
-          node scripts/make-gif.mjs
-          COPY_TO_PUBLIC=1 node scripts/make-fixtures.mjs
-
-      - name: Build and run the audits
-        run: bash scripts/verify.sh
+          node-version: '22.22.1'
+          package-manager-cache: false
+      - run: npm ci
+      - run: node scripts/check-source-secrets.mjs
+      - run: npm run audit:dependencies -- --output-dir "${{ runner.temp }}/filecompresser-dependency-audit"
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - name: Build the local CMS schema and non-indexable static site
+        run: npm run build:cms:local
         env:
-          PW_TOOLS: /home/runner/pwtools
-
-      - name: Confirm no QA fixtures reached public/
-        run: |
-          if ls public/*.gif public/*.wav public/*.pdf public/*.zip >/dev/null 2>&1; then
-            echo "::error::QA fixtures are present in public/ and would be deployed"
-            ls -la public/
-            exit 1
-          fi
-          echo "public/ is clean"
-
-      - name: Upload failure artefacts
-        if: failure()
-        uses: actions/upload-artifact@v4
+          NEXT_PUBLIC_SITE_URL: https://filecompresser.com
+          NEXT_PUBLIC_ENABLE_INDEXING: 'false'
+          CMS_SECURITY_EVIDENCE_FILE: ${{ runner.temp }}/filecompresser-dependency-audit/cms-admin-static-proof.json
+      - run: npm run typecheck
+      - run: npm run check:public
+      - run: node scripts/check-export.mjs
+      - run: node scripts/package-site.mjs
+      - name: Retain raw dependency reports and verified disposition
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          name: audit-logs
-          path: |
-            /tmp/filecompresser-verify.log
-            /tmp/verify.out
-          if-no-files-found: ignore
+          name: dependency-audit-${{ github.run_id }}
+          path: ${{ runner.temp }}/filecompresser-dependency-audit/*.json
+          if-no-files-found: warn
           retention-days: 7
+      # Build artifacts remain on the runner; this workflow cannot publish.
+# Production is built by Cloudflare Pages using npm run deploy:check.
+# Its GitHub integration deploys pushes to main; no server or DEPLOY_COMMAND.

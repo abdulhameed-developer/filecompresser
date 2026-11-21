@@ -1,0 +1,31 @@
+{
+  "heading": "Can I reduce a PNG and keep its transparent background?",
+  "introduction": "PNG output retains transparency while the image is re-encoded and may be resized by the selected preset. An already optimized PNG may stay similar in size or become larger.",
+  "sections": [
+    {
+      "heading": "Use PNG for graphics that need it",
+      "body": "PNG is useful for transparent artwork, screenshots and diagrams. Add the file, retain PNG output and start with Recommended. Compare edges, lettering and transparent areas after processing."
+    },
+    {
+      "heading": "Why the file may not shrink much",
+      "body": "PNG already uses compression. Re-encoding alone does not ensure a smaller result, and this tool does not offer a fixed KB target for PNG output. Reducing dimensions can help, but changes the available image detail."
+    },
+    {
+      "heading": "Consider the intended use",
+      "body": "Keep PNG when sharp graphics or transparency matter. WebP is another available format that can retain transparency. For an opaque photograph, JPG may be appropriate, but lossy encoding can introduce artifacts around text and edges."
+    }
+  ],
+  "faq": [],
+  "seoTitle": "PNG Compressor — Keep Transparent Images",
+  "seoDescription": "Re-encode PNG images in your browser while retaining transparency. Review dimensions and real output size; already efficient files may not shrink.",
+  "links": [
+    {
+      "label": "Compare transparent image formats",
+      "href": "/blog/compressing-files-for-the-web"
+    },
+    {
+      "label": "Why some images do not get smaller",
+      "href": "/blog/honest-file-size-reporting"
+    }
+  ]
+}

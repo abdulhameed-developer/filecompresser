@@ -1,5 +1,9 @@
 import { zip } from 'fflate'
-import { flattenArchivePath } from './validation'
+import {
+  flattenArchivePath,
+  sanitizeArchivePath,
+  ARCHIVE_LIMITS,
+} from './validation'
 import type { QueueItem } from './types'
 
 /**
@@ -31,7 +35,9 @@ export function revokeItemUrl(item: QueueItem): void {
 }
 
 function completedItems(items: QueueItem[]): QueueItem[] {
-  return items.filter((item) => item.status === 'completed' && item.result?.blob)
+  return items.filter(
+    (item) => item.status === 'completed' && item.result?.blob,
+  )
 }
 
 /**
@@ -43,7 +49,8 @@ function uniqueName(used: Set<string>, candidate: string): string {
   let n = 2
   while (used.has(name.toLowerCase())) {
     const dot = name.lastIndexOf('.')
-    name = dot > 0 ? `${name.slice(0, dot)}-${n}${name.slice(dot)}` : `${name}-${n}`
+    name =
+      dot > 0 ? `${name.slice(0, dot)}-${n}${name.slice(dot)}` : `${name}-${n}`
     n++
   }
   used.add(name.toLowerCase())
@@ -70,16 +77,26 @@ async function zipEntries(entries: Record<string, Uint8Array>): Promise<Blob> {
  */
 export async function downloadAllAsZip(
   items: QueueItem[],
-  zipName = 'filecompresser-results.zip'
+  zipName = 'filecompresser-results.zip',
 ): Promise<void> {
   const done = completedItems(items)
   if (!done.length) return
 
-  const entries: Record<string, Uint8Array> = {}
+  if (
+    done.length > ARCHIVE_LIMITS.maxEntries ||
+    done.reduce((sum, item) => sum + item.result!.blob.size, 0) >
+      ARCHIVE_LIMITS.maxBatchBytes
+  )
+    throw new Error('Download fewer than 500 files and 300 MB as one ZIP.')
+  const entries: Record<string, Uint8Array> = Object.create(null)
   const used = new Set<string>()
   for (const item of done) {
     const result = item.result!
-    const name = uniqueName(used, flattenArchivePath(result.filename || item.name))
+    const name = uniqueName(
+      used,
+      sanitizeArchivePath(flattenArchivePath(result.filename || item.name)) ||
+        'result',
+    )
     entries[name] = new Uint8Array(await result.blob.arrayBuffer())
   }
 
@@ -90,7 +107,9 @@ export async function downloadAllAsZip(
  * Save each result as its own file, spaced out so the browser does not drop
  * all but the last one when many downloads are fired in quick succession.
  */
-export async function downloadItemsIndividually(items: QueueItem[]): Promise<void> {
+export async function downloadItemsIndividually(
+  items: QueueItem[],
+): Promise<void> {
   const done = completedItems(items)
   for (let i = 0; i < done.length; i++) {
     const item = done[i]

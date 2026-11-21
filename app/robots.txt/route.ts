@@ -1,14 +1,15 @@
-import { SITE_URL } from '@/lib/seo'
+import { SITE_URL, SITE_INDEXABLE } from '@/lib/seo'
 
 export const dynamic = 'force-static'
 
 export function GET() {
   const body = [
     'User-agent: *',
-    'Allow: /',
+    SITE_INDEXABLE ? 'Allow: /' : 'Disallow: /',
     // The engine assets are not content; no reason to crawl them.
     'Disallow: /ffmpeg-core/',
     'Disallow: /image-worker/',
+    'Disallow: /admin',
     '',
     `Sitemap: ${SITE_URL}/sitemap.xml`,
     '',

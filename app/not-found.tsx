@@ -1,3 +1,4 @@
+import Icon from '@/components/Icon'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { TOOL_GROUPS, toolsInGroup } from '@/lib/nav'
@@ -31,7 +32,7 @@ export default function NotFound() {
 
       <div className="notFoundActions">
         <Link className="navbtn" href="/">
-          Back home →
+          Back home <Icon name="arrow" />
         </Link>
         <Link className="navbtn secondary" href="/sitemap">
           See every tool

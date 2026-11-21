@@ -1,11 +1,11 @@
-import type { CancelSignal, EngineKind, ProcessingOptions, ProcessedResult, ProgressCallback } from './types'
+import type {
+  CancelSignal,
+  EngineKind,
+  ProcessingOptions,
+  ProcessedResult,
+  ProgressCallback,
+} from './types'
 import { ProcessingError } from './types'
-import { compressImage, isImageFormat } from './engines/image'
-import { compressGif } from './engines/gif'
-import { compressVideo } from './engines/video'
-import { processAudio } from './engines/audio'
-import { compressPdf } from './engines/pdf'
-import { createZip, extractZip } from './engines/zip'
 import { detectFormat } from './validation'
 
 export interface ProcessContext {
@@ -24,71 +24,101 @@ export interface ProcessContext {
  * Returns a single result for one-in/one-out tools, or an array for tools that
  * emit many outputs (ZIP extraction, PDF→images).
  */
-export async function processFile(ctx: ProcessContext): Promise<ProcessedResult | ProcessedResult[]> {
+export async function processFile(
+  ctx: ProcessContext,
+): Promise<ProcessedResult | ProcessedResult[]> {
   const { engine, file, options, onProgress, signal } = ctx
 
   switch (engine) {
-    case 'image-compress':
+    case 'image-compress': {
+      const { compressImage, isImageFormat } = await import('./engines/image')
       return compressImage(
         file,
         {
           level: options.level,
-          quality: typeof options.quality === 'number' ? options.quality : undefined,
+          quality:
+            typeof options.quality === 'number' ? options.quality : undefined,
           outputFormat:
-            typeof options.outputFormat === 'string' && isImageFormat(options.outputFormat)
+            typeof options.outputFormat === 'string' &&
+            isImageFormat(options.outputFormat)
               ? options.outputFormat
               : undefined,
           targetSize: optionalSize(options.targetSize),
         },
         onProgress,
-        signal
+        signal,
       )
-
-    case 'gif-compress':
-      return compressGif(file, { level: options.level }, onProgress, signal)
-
-    case 'video-compress':
-      return compressVideo(
-        file,
-        {
-          level: options.level,
-          resolution: normalizeResolution(options.resolution),
-        },
-        onProgress,
-        signal
+    }
+    case 'gif-compress': {
+      const { compressGif } = await import('./engines/gif')
+      return withMediaLock(
+        () => compressGif(file, { level: options.level }, onProgress, signal),
+        signal,
       )
+    }
 
-    case 'audio-compress':
-      return processAudio(
-        file,
-        {
-          level: options.level,
-          bitrate: typeof options.bitrate === 'string' ? options.bitrate : undefined,
-          outputFormat: 'mp3',
-        },
-        onProgress,
-        signal
+    case 'video-compress': {
+      const { compressVideo } = await import('./engines/video')
+      return withMediaLock(
+        () =>
+          compressVideo(
+            file,
+            {
+              level: options.level,
+              resolution: normalizeResolution(options.resolution),
+            },
+            onProgress,
+            signal,
+          ),
+
+        signal,
       )
+    }
+    case 'audio-compress': {
+      const { processAudio } = await import('./engines/audio')
+      return withMediaLock(
+        () =>
+          processAudio(
+            file,
+            {
+              level: options.level,
+              bitrate:
+                typeof options.bitrate === 'string'
+                  ? options.bitrate
+                  : undefined,
+              outputFormat: 'mp3',
+            },
+            onProgress,
+            signal,
+          ),
 
-    case 'pdf-compress':
+        signal,
+      )
+    }
+    case 'pdf-compress': {
+      const { compressPdf } = await import('./engines/pdf')
       return compressPdf(file, onProgress, signal)
+    }
 
     case 'zip-create': {
+      const { createZip } = await import('./engines/zip')
       const result = await createZip(
         ctx.allFiles?.length ? ctx.allFiles : [file],
         { compressionLevel: 6 },
         onProgress,
-        signal
+        signal,
       )
       return result
     }
 
     case 'zip-extract': {
+      const { extractZip, uniqueArchiveName } = await import('./engines/zip')
       const entries = await extractZip(file, onProgress, signal)
+      const used = new Set<string>()
       return entries.map((entry) => ({
         blob: entry.blob,
         // Flattened because a download cannot carry a directory structure.
-        filename: entry.path.replace(/\//g, '__'),
+        filename: uniqueArchiveName(used, entry.path.replace(/\//g, '__')),
         mimeType: entry.blob.type || 'application/octet-stream',
       }))
     }
@@ -96,12 +126,16 @@ export async function processFile(ctx: ProcessContext): Promise<ProcessedResult 
     default: {
       // Exhaustive guard: adding an EngineKind without a case is a type error.
       const unreachable: never = engine
-      throw new ProcessingError(`This tool is not available: ${String(unreachable)}`)
+      throw new ProcessingError(
+        `This tool is not available: ${String(unreachable)}`,
+      )
     }
   }
 }
 
-function normalizeResolution(value: string | undefined): 'original' | '1080' | '720' | '480' {
+function normalizeResolution(
+  value: string | undefined,
+): 'original' | '1080' | '720' | '480' {
   if (value === '1080' || value === '720' || value === '480') return value
   return 'original'
 }
@@ -141,7 +175,9 @@ export function concurrencyFor(engine: EngineKind): number {
 }
 
 /** Map a sniffed container onto the engine that can handle it. */
-export async function engineForFormat(format: string | null): Promise<EngineKind | null> {
+export async function engineForFormat(
+  format: string | null,
+): Promise<EngineKind | null> {
   switch (format) {
     case 'jpeg':
     case 'png':
@@ -168,3 +204,17 @@ export async function engineForFormat(format: string | null): Promise<EngineKind
 }
 
 export { detectFormat }
+// One media job across mounted workspaces/navigation, not only within one queue.
+let mediaTail: Promise<unknown> = Promise.resolve()
+export function withMediaLock<T>(
+  work: () => Promise<T>,
+  signal?: CancelSignal,
+): Promise<T> {
+  const result = mediaTail.then(async () => {
+    if (signal?.cancelled)
+      throw new ProcessingError('Processing was cancelled.', 'cancelled')
+    return work()
+  })
+  mediaTail = result.catch(() => undefined)
+  return result
+}

@@ -10,7 +10,8 @@
  */
 
 const BASE = (process.argv[2] || 'http://localhost:3000').replace(/\/$/, '')
-const HOST = 'filecompresser.com'
+const ORIGIN = new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000').origin
+const INDEXABLE = process.env.NEXT_PUBLIC_ENABLE_INDEXING === 'true' && Boolean(process.env.NEXT_PUBLIC_SITE_URL) && !['localhost', '127.0.0.1', '[::1]'].includes(new URL(ORIGIN).hostname)
 
 const PAGES = [
   '/',
@@ -148,7 +149,7 @@ for (const route of PAGES) {
   if (!canonical) {
     fail(route, 'no canonical')
   } else {
-    if (!canonical.includes(HOST)) fail(route, `canonical on wrong host: ${canonical}`)
+    if (new URL(canonical).origin !== ORIGIN) fail(route, `canonical on wrong host: ${canonical}`)
     if (route === '/wav-to-mp3') {
       if (!canonical.endsWith('/wav-compressor')) {
         fail(route, `alias canonical does not point at its primary: ${canonical}`)
@@ -164,9 +165,11 @@ for (const route of PAGES) {
   }
 
   const robots = pick(html, /<meta name="robots" content="([^"]*)"/)
-  if (route !== '/wav-to-mp3' && robots && /noindex/.test(robots)) {
+  if (INDEXABLE && route !== '/wav-to-mp3' && robots && /noindex/.test(robots)) {
     fail(route, `accidentally noindex: ${robots}`)
   }
+
+  if (!INDEXABLE && (!robots || !/noindex/.test(robots))) fail(route, 'local preview must be noindex')
 
   const ogTitle = pick(html, /<meta property="og:title" content="([^"]*)"/)
   const ogDesc = pick(html, /<meta property="og:description" content="([^"]*)"/)
@@ -221,10 +224,15 @@ if (sitemapLocs.some((loc) => new URL(loc).pathname === '/wav-to-mp3')) {
   fail('/sitemap.xml', 'lists the /wav-to-mp3 alias, which canonicalises elsewhere')
 }
 
+if (!INDEXABLE && new URL(ORIGIN).protocol === 'http:') {
+  const response = await fetch(BASE)
+  if ((response.headers.get('content-security-policy') || '').includes('upgrade-insecure-requests')) fail('/', 'local HTTP preview must not force assets to HTTPS')
+}
+
 const robotsRes = await fetch(`${BASE}/robots.txt`)
 const robotsTxt = await robotsRes.text()
 if (robotsRes.status !== 200) fail('/robots.txt', `HTTP ${robotsRes.status}`)
-if (!robotsTxt.includes(`Sitemap: https://${HOST}/sitemap.xml`)) {
+if (!robotsTxt.includes(`Sitemap: ${ORIGIN}/sitemap.xml`)) {
   fail('/robots.txt', 'no sitemap directive for the canonical host')
 }
 

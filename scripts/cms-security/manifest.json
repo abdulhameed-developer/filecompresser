@@ -1,0 +1,62 @@
+{
+  "policyVersion": 1,
+  "package": "zod",
+  "version": "3.25.76",
+  "advisory": "GHSA-mrhx-c7xc-m3w5",
+  "advisoryUrl": "https://github.com/advisories/GHSA-mrhx-c7xc-m3w5",
+  "npmIntegrity": "sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==",
+  "sourceGitHead": "50606616c0d291caf3210a7521da51271b918333",
+  "upstreamBoundedFix": "https://github.com/colinhacks/zod/commit/a0ebf970f2d752e5f58527cd2942ff48be4f46bd",
+  "typescriptVersion": "5.8.2",
+  "transformerSha256": "7ca15411772536c3abdb66fc63ee7206a8979b85b39a43d3bb29a87d2eeb2741",
+  "installedInventory": {
+    "repository": "abdulhameed-developer/filecompresser",
+    "runId": "44893326955",
+    "jobId": "136813621085",
+    "head": "36663a2acb0821537de236a14ad24866a6e62efa"
+  },
+  "originalFiles": {
+    "v3/types.js": {
+      "kind": "types",
+      "format": "esm",
+      "bytes": 131212,
+      "sha256": "9763a2938f0e7f983363ef4bf6530e7583e3f2d54f8a4a6684efad58febc6e8e"
+    },
+    "v3/types.cjs": {
+      "kind": "types",
+      "format": "cjs",
+      "bytes": 140100,
+      "sha256": "06487cc05ed45c5dd29789bf0aa75734d1ce06592a7f2665ba4ca90a68e8a3e1"
+    },
+    "v3/helpers/parseUtil.js": {
+      "kind": "parseUtil",
+      "format": "esm",
+      "bytes": 3601,
+      "sha256": "b57484013bb360bac2e334d58fcd5f6cbfa63ffcc7d8ff3dbbb3380ca659b956"
+    },
+    "v3/helpers/parseUtil.cjs": {
+      "kind": "parseUtil",
+      "format": "cjs",
+      "bytes": 4272,
+      "sha256": "40aaa18765f13ae1a933c6f215ecceb6d3afee89eaa23bb080997e08c30a5b00"
+    }
+  },
+  "patchedFiles": {
+    "v3/types.js": { "bytes": 162339, "sha256": "3e76aeb6ae95b1076e01fc12a2c2f008d5ac2fc21eac361fa60ea87bdd9480e9" },
+    "v3/types.cjs": { "bytes": 171273, "sha256": "befae8e1034ef5d77daa21f5018a7f442e8a6a004da1b5ee6068a0ac369fd1b9" },
+    "v3/helpers/parseUtil.js": { "bytes": 3740, "sha256": "a366d8b47c84cdff2c301569470fa8460fc2ccea3275aa64b1b9eeac85cab508" },
+    "v3/helpers/parseUtil.cjs": { "bytes": 4412, "sha256": "a6d2785b86008003a70229a3732acd8e6f15d625bb4a8e63d057315a51083759" },
+    "v3/filecompresser-resources.js": { "bytes": 8101, "sha256": "e9d7e49938bac0cbbfd5d92f01b9ecff27b1dd962a3b9bbb9dc2e320961d8d03" },
+    "v3/filecompresser-resources.cjs": { "bytes": 8231, "sha256": "d61123ea991ce84292f3a13d2e9336096e2b9b7fa5ed485371ab01900e822dc2" }
+  },
+  "consumerVersions": {
+    "tinacms": "3.15.2",
+    "@tinacms/cli": "4.0.5",
+    "@tinacms/app": "2.6.0",
+    "@tinacms/graphql": "4.1.0",
+    "@tinacms/mdx": "2.4.2",
+    "@tinacms/schema-tools": "2.11.0",
+    "@tinacms/search": "1.2.26",
+    "zod": "3.25.76"
+  }
+}

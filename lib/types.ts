@@ -56,6 +56,7 @@ export interface QueueItem {
   name: string
   mimeType: string
   originalSize: number
+  inputFormat?: string
   status: FileStatus
   /** 0–100. Engines that cannot measure progress leave this at 0 and set `indeterminate`. */
   progress: number
@@ -67,6 +68,8 @@ export interface QueueItem {
   result?: ProcessedResult
   outputSize?: number
   objectUrl?: string
+  comparison?: 'compression' | 'archive' | 'extraction'
+  sourceCount?: number
   /**
    * Set when a Maximum-mode target size could not be met, so the UI can say why
    * instead of silently handing back an oversized file.
@@ -97,7 +100,13 @@ export interface FaqEntry {
   a: string
 }
 
-export type ToolCategory = 'image' | 'video' | 'audio' | 'gif' | 'pdf' | 'archive'
+export type ToolCategory =
+  | 'image'
+  | 'video'
+  | 'audio'
+  | 'gif'
+  | 'pdf'
+  | 'archive'
 
 export type EngineKind =
   | 'image-compress'
@@ -142,7 +151,9 @@ export interface ToolDefinition {
 }
 
 /** Engines whose output is a single archive produced from the whole batch. */
-export const BATCH_ENGINES: ReadonlySet<EngineKind> = new Set<EngineKind>(['zip-create'])
+export const BATCH_ENGINES: ReadonlySet<EngineKind> = new Set<EngineKind>([
+  'zip-create',
+])
 
 export interface ProgressCallback {
   (progress: number, message?: string): void
@@ -156,12 +167,13 @@ export interface CancelSignal {
   readonly cancelled: boolean
   /** Human-readable reason shown when cancellation is requested. */
   readonly reason?: string
+  subscribe?: (listener: () => void) => () => void
 }
 
 export class ProcessingError extends Error {
   constructor(
     message: string,
-    public readonly code?: string
+    public readonly code?: string,
   ) {
     super(message)
     this.name = 'ProcessingError'
@@ -174,13 +186,46 @@ export function isCancellation(error: unknown): boolean {
   return error instanceof ProcessingError && error.code === CANCELLED_CODE
 }
 
-export function createCancelSignal(): CancelSignal & { cancel: (reason?: string) => void } {
-  const state = { cancelled: false as boolean, reason: undefined as string | undefined, cancel: (_reason?: string) => {} }
-  state.cancel = (reason?: string) => {
-    state.cancelled = true
-    state.reason = reason
+export function createCancelSignal(): CancelSignal & {
+  cancel: (reason?: string) => void
+} {
+  const listeners = new Set<() => void>()
+  const state = {
+    cancelled: false,
+    reason: undefined as string | undefined,
+    subscribe(listener: () => void) {
+      listeners.add(listener)
+      if (state.cancelled) listener()
+      return () => {
+        listeners.delete(listener)
+      }
+    },
+    cancel(reason?: string) {
+      if (state.cancelled) return
+      state.cancelled = true
+      state.reason = reason
+      listeners.forEach((listener) => listener())
+      listeners.clear()
+    },
   }
   return state
+}
+
+/** Subscribe when available; support plain cooperative signals from external callers. */
+export function listenForCancellation(
+  signal: CancelSignal | undefined,
+  listener: () => void,
+): () => void {
+  if (!signal) return () => {}
+  if (signal.subscribe) return signal.subscribe(listener)
+  if (signal.cancelled) {
+    listener()
+    return () => {}
+  }
+  const timer = setInterval(() => {
+    if (signal.cancelled) listener()
+  }, 100)
+  return () => clearInterval(timer)
 }
 
 /** Throws a user-facing cancellation error when the signal has been tripped. */

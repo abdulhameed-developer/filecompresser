@@ -1,0 +1,48 @@
+{
+  "reviewed_on": "2026-11-21",
+  "status": "unresolved-corresponding-source",
+  "package": {
+    "name": "@ffmpeg/core",
+    "version": "0.12.10",
+    "license": "GPL-2.0-or-later"
+  },
+  "artifacts": [
+    {
+      "path": "node_modules/@ffmpeg/core/dist/esm/ffmpeg-core.js",
+      "bytes": 111804,
+      "sha256": "67a48f11645f85439f3fde4f2119042c16b374b910206b7a7a24f342e28dcae3"
+    },
+    {
+      "path": "node_modules/@ffmpeg/core/dist/esm/ffmpeg-core.wasm",
+      "bytes": 32232419,
+      "sha256": "9f57947a5bd530d8f00c5b3f2cb2a3492faa7e5d823315342d6a8656d0a6b7b7"
+    }
+  ],
+  "embedded_binary_evidence": {
+    "ffmpeg_version_string": "%s version 5.1.4",
+    "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 3.1.40 (5c27e79dd0a9c4e27ef2326841698cdd4f6b5784)",
+    "configure_arguments": "--target-os=none --arch=x86_32 --enable-cross-compile --disable-asm --disable-stripping --disable-programs --disable-doc --disable-debug --disable-runtime-cpudetect --disable-autodetect --nm=emnm --ar=emar --ranlib=emranlib --cc=emcc --cxx=em++ --objcc=emcc --dep-cc=emcc --extra-cflags='-I/opt/include -O3 -msimd128' --extra-cxxflags='-I/opt/include -O3 -msimd128' --disable-pthreads --disable-w32threads --disable-os2threads --enable-gpl --enable-libx264 --enable-libx265 --enable-libvpx --enable-libmp3lame --enable-libtheora --enable-libvorbis --enable-libopus --enable-zlib --enable-libwebp --enable-libfreetype --enable-libfribidi --enable-libass --enable-libzimg"
+  },
+  "candidate_release": {
+    "tag": "v12.15",
+    "commit": "71aa99d37c02a7b4c435275ca9ef50e612f6efa1",
+    "url": "https://github.com/ffmpegwasm/ffmpeg.wasm/releases/tag/v12.15",
+    "confidence": "Official release labels core0.12.10; exact dependency snapshots and npm binary reproduction not verified."
+  },
+  "registry_audit": {
+    "attempted": "npm audit --omit=dev --json --fetch-retries=0 --fetch-timeout=8000",
+    "result": "unavailable",
+    "reason": "EAI_AGAIN resolving registry.npmjs.org; no current advisory result was returned."
+  },
+  "release_gate": "Do not mark the shipped codec distribution verified until a complete exact-source/notices package and its access method have been checked.",
+  "native_codec_security": {
+    "source": "https://ffmpeg.org/security.html",
+    "installed_reported_version": "5.1.4",
+    "later_5_1_releases_with_security_fixes": [
+      "5.1.5",
+      "5.1.6",
+      "5.1.7"
+    ],
+    "status": "Exact source/backports and app reachability not verified; no exploitability claim."
+  }
+}

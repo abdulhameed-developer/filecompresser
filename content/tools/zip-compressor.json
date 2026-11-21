@@ -1,0 +1,31 @@
+{
+  "heading": "How do I combine files into one ZIP?",
+  "introduction": "Add your files to create a ZIP archive in your browser. Extracting the archive later restores the contained file bytes; already-compressed images, audio and video may gain little additional size reduction.",
+  "sections": [
+    {
+      "heading": "Create one archive for sharing",
+      "body": "Select the files, start archive creation and download the ZIP when it is ready. The displayed original size is the combined size of the input files, so compare the archive against that total."
+    },
+    {
+      "heading": "Use ZIP to organize a delivery",
+      "body": "A ZIP can package documents and media into one attachment or download. It does not change the internal quality of the files. Check the archive contents with the ZIP Extractor before handing an important batch to someone else."
+    },
+    {
+      "heading": "Stay within browser limits",
+      "body": "The queue accepts up to 500 files and 300 MB in total, with a 200 MB per-file limit on this tool. Filenames may be normalized for the archive. Keep the originals and review the resulting names and contents before deleting any source files."
+    }
+  ],
+  "faq": [],
+  "seoTitle": "ZIP Creator — Combine Files Without Uploading",
+  "seoDescription": "Create a ZIP from multiple files on your device. Package a delivery into one download; already-compressed files may not become much smaller.",
+  "links": [
+    {
+      "label": "Why compressed media gains little from ZIP",
+      "href": "/blog/honest-file-size-reporting"
+    },
+    {
+      "label": "How files are handled on your device",
+      "href": "/blog/what-privacy-claim-really-means"
+    }
+  ]
+}

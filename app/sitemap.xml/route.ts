@@ -18,28 +18,62 @@ interface Entry {
  * changes, which has no reliable per-tool timestamp, so they are listed without
  * one rather than carrying a fabricated date.
  */
-const REVIEWED = '2026-10-01'
+const REVIEWED = '2026-11-04'
 
 export function GET() {
   const entries: Entry[] = [
     { path: '/', changefreq: 'weekly', priority: '1.0', lastmod: REVIEWED },
-    { path: '/about', changefreq: 'monthly', priority: '0.6', lastmod: REVIEWED },
+    {
+      path: '/about',
+      changefreq: 'monthly',
+      priority: '0.6',
+      lastmod: REVIEWED,
+    },
     { path: '/blog', changefreq: 'weekly', priority: '0.7', lastmod: REVIEWED },
-    { path: '/privacy', changefreq: 'yearly', priority: '0.3', lastmod: REVIEWED },
-    { path: '/terms', changefreq: 'yearly', priority: '0.2', lastmod: REVIEWED },
-    { path: '/disclaimer', changefreq: 'yearly', priority: '0.2', lastmod: REVIEWED },
-    { path: '/contact', changefreq: 'yearly', priority: '0.2', lastmod: REVIEWED },
-    { path: '/sitemap', changefreq: 'monthly', priority: '0.2', lastmod: REVIEWED },
+    {
+      path: '/privacy',
+      changefreq: 'yearly',
+      priority: '0.3',
+      lastmod: REVIEWED,
+    },
+    {
+      path: '/terms',
+      changefreq: 'yearly',
+      priority: '0.2',
+      lastmod: REVIEWED,
+    },
+    {
+      path: '/disclaimer',
+      changefreq: 'yearly',
+      priority: '0.2',
+      lastmod: REVIEWED,
+    },
+    {
+      path: '/contact',
+      changefreq: 'yearly',
+      priority: '0.2',
+      lastmod: REVIEWED,
+    },
+    {
+      path: '/sitemap',
+      changefreq: 'monthly',
+      priority: '0.2',
+      lastmod: REVIEWED,
+    },
     // Each post carries its own publication date, which is a real lastmod.
     ...BLOG_POSTS.map((post) => ({
       path: `/blog/${post.slug}`,
       changefreq: 'yearly',
       priority: '0.6',
-      lastmod: post.date,
+      lastmod: post.updated ?? post.date,
     })),
     // Only canonical tool URLs. Aliases are omitted here because they
     // canonicalise elsewhere and listing both would compete with themselves.
-    ...TOOLS.map((tool) => ({ path: `/${tool.slug}`, changefreq: 'monthly', priority: '0.8' })),
+    ...TOOLS.map((tool) => ({
+      path: `/${tool.slug}`,
+      changefreq: 'monthly',
+      priority: '0.8',
+    })),
   ]
 
   // Escape the only characters that are not legal unescaped in XML. The site
@@ -59,7 +93,9 @@ export function GET() {
     entries
       .map((entry) => {
         const loc = escapeXml(`${SITE_URL}${entry.path}`)
-        const lastmod = entry.lastmod ? `<lastmod>${entry.lastmod}</lastmod>` : ''
+        const lastmod = entry.lastmod
+          ? `<lastmod>${entry.lastmod}</lastmod>`
+          : ''
         return (
           `<url><loc>${loc}</loc>` +
           `${lastmod}` +

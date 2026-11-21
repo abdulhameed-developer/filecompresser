@@ -247,7 +247,7 @@ function QualityCurveFigure() {
 // ───────────────────────────── data flow ─────────────────────────────
 function DataFlowFigure() {
   return (
-    <Figure id="fig-dataflow" label="Diagram contrasting data flow with code flow. Your file has a single path that stays inside the browser. Engine code and web fonts travel over the network, but never carry your file." height={290}>
+    <Figure id="fig-dataflow" label="Diagram contrasting data flow with code flow. Your file has a single path that stays inside the browser. Engine code and page assets travel over the network, but never carry your file." height={290}>
       <text x={12} y={24} fill={INK} fontSize="13" fontFamily="var(--font-sans)" fontWeight="700">
         Your file
       </text>
@@ -263,21 +263,21 @@ function DataFlowFigure() {
       </text>
 
       <text x={400} y={24} fill={INK} fontSize="13" fontFamily="var(--font-sans)" fontWeight="700">
-        Code and fonts
+        Page and engines
       </text>
       <rect x={400} y={34} width={308} height={120} rx="8" fill={PAPER} stroke={LINE} />
-      <Node x={420} y={70} w={124} h={64} label="FFmpeg core" sub="~30 MB, once" />
-      <Node x={568} y={70} w={120} h={64} label="Web fonts" sub="Google Fonts" />
+      <Node x={420} y={70} w={124} h={64} label="FFmpeg core" sub="on first use" />
+      <Node x={568} y={70} w={120} h={64} label="Page assets" sub="Same origin" />
       <text x={564} y={172} textAnchor="middle" fill={MUTED} fontSize="11">
         fetched over the network, carrying no file
       </text>
 
       <rect x={12} y={196} width={696} height={72} rx="8" fill={INK} />
       <text x={360} y={222} textAnchor="middle" fill={LIME} fontSize="13" fontFamily="var(--font-sans)" fontWeight="700">
-        A policy says what someone promises not to do.
+        Page assets travel over the network.
       </text>
       <text x={360} y={248} textAnchor="middle" fill="#fff" fontSize="13" fontFamily="var(--font-sans)" fontWeight="700">
-        An architecture makes it impossible to do.
+        Your selected files are processed on your device.
       </text>
     </Figure>
   )

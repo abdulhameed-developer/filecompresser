@@ -1,326 +1,542 @@
-/**
- * Functionality audit: drives each engine with real files and reports what
- * actually happened, including failures and hangs.
- *
- * Separate from the unit tests on purpose — those call the engine functions
- * directly, while this exercises the full browser path a user takes: the React
- * queue, the engine loader, the worker, and the result UI.
- *
- *   PW_TOOLS=<dir> node scripts/functionality-audit.mjs [baseUrl]
+/** Real local inputs, downloaded outputs, independent decoders, and queue edge cases.
+ * QA dependencies live in PW_TOOLS; no fixtures are copied to public/.
  */
-
 import { createRequire } from 'node:module'
-import { existsSync } from 'node:fs'
+import {
+  mkdtempSync,
+  mkdirSync,
+  readFileSync,
+  writeFileSync,
+  existsSync,
+} from 'node:fs'
+import { tmpdir } from 'node:os'
+import { execFileSync } from 'node:child_process'
 import path from 'node:path'
-
-const PW_TOOLS = process.env.PW_TOOLS || path.join(process.env.HOME || '', 'pwtools')
-const CHROME =
+import assert from 'node:assert/strict'
+import { unzipSync, zipSync } from 'fflate'
+import { PDFDocument } from 'pdf-lib'
+const qa = createRequire(
+  path.join(
+    process.env.PW_TOOLS || path.join(process.env.HOME, 'pwtools'),
+    'qa.cjs',
+  ),
+)
+const browsers = qa('playwright-core')
+const browserName = process.env.TEST_BROWSER || 'chromium'
+if (!['chromium', 'firefox', 'webkit'].includes(browserName)) throw new Error('Unsupported TEST_BROWSER')
+const ffmpeg = process.env.FFMPEG_PATH || qa('ffmpeg-static')
+const ffprobe = process.env.FFPROBE_PATH || qa('ffprobe-static').path
+const chrome =
   process.env.CHROME_PATH ||
-  ['/usr/bin/google-chrome', '/usr/bin/chromium', '/usr/bin/chromium-browser'].find((p) =>
-    existsSync(p)
+  ['/usr/bin/google-chrome', '/usr/bin/chromium'].find(existsSync)
+const base = process.argv[2] || 'http://127.0.0.1:3198'
+const fixtures = mkdtempSync(path.join(tmpdir(), 'filecompresser-fixtures-'))
+const evidence = path.resolve('.qa-results')
+mkdirSync(evidence, { recursive: true })
+const media = (args, name) => {
+  const out = path.join(fixtures, name)
+  execFileSync(
+    ffmpeg,
+    ['-hide_banner', '-loglevel', 'error', '-y', ...args, out],
+    { timeout: 60000 },
   )
-const require = createRequire(path.join(PW_TOOLS, 'noop.js'))
-const { chromium } = require('playwright-core')
-
-const BASE = (process.argv[2] || 'http://localhost:3000').replace(/\/$/, '')
-
-/** Per-case budget. Anything still running at this point is reported as a hang. */
-const TIMEOUT_MS = Number(process.env.CASE_TIMEOUT_MS || 90_000)
-
-const browser = await chromium.launch({
-  executablePath: CHROME,
+  return out
+}
+const png = media(
+  ['-f', 'lavfi', '-i', 'testsrc=size=640x480:rate=1', '-frames:v', '1'],
+  'image.png',
+)
+const jpg = media(['-i', png, '-frames:v', '1'], 'image.jpg')
+const webp = media(['-i', png, '-frames:v', '1'], 'image.webp')
+const gif = media(
+  ['-f', 'lavfi', '-i', 'testsrc=size=160x120:rate=8', '-t', '1', '-loop', '2'],
+  'animation.gif',
+)
+const wav = media(
+  ['-f', 'lavfi', '-i', 'sine=frequency=440:sample_rate=22050', '-t', '2'],
+  'tone.wav',
+)
+const mp3 = media(['-i', wav, '-b:a', '192k'], 'tone.mp3')
+const otherAudio = ['m4a', 'flac', 'ogg'].map((ext) =>
+  media(['-i', wav], `tone.${ext}`),
+)
+// Explicit source codecs guard the native decoders when unused external codec
+// libraries are removed. These are already accepted by the audio-family check.
+const opusAudio = media(
+  ['-i', wav, '-c:a', 'libopus', '-b:a', '96k', '-ar', '48000', '-ac', '2', '-f', 'ogg'],
+  'tone-opus.ogg',
+)
+const alacAudio = media(
+  ['-i', wav, '-c:a', 'alac', '-sample_fmt', 's32p', '-ar', '44100', '-ac', '2'],
+  'tone-alac.m4a',
+)
+const transparent = media(
+  [
+    '-f',
+    'lavfi',
+    '-i',
+    'color=c=red@0.0:s=64x64,format=rgba',
+    '-frames:v',
+    '1',
+  ],
+  'alpha.png',
+)
+const video = media(
+  [
+    '-f',
+    'lavfi',
+    '-i',
+    'testsrc=size=321x241:rate=10',
+    '-f',
+    'lavfi',
+    '-i',
+    'sine=frequency=440',
+    '-t',
+    '1',
+    '-c:v',
+    'libx264',
+    '-pix_fmt',
+    'yuv444p',
+    '-c:a',
+    'aac',
+  ],
+  'video.mp4',
+)
+const mov = media(['-i', video, '-c', 'copy'], 'video.mov')
+const hevcVideo = media(
+  [
+    '-i', video, '-vf', 'scale=320:240', '-c:v', 'libx265',
+    '-preset', 'ultrafast', '-x265-params', 'pools=none:frame-threads=1',
+    '-pix_fmt', 'yuv420p', '-tag:v', 'hvc1', '-c:a', 'aac', '-threads', '1',
+  ],
+  'video-hevc.mp4',
+)
+const proresVideo = media(
+  [
+    '-i', video, '-vf', 'scale=320:240', '-c:v', 'prores_ks', '-profile:v', '0',
+    '-pix_fmt', 'yuv422p10le', '-c:a', 'pcm_s16le', '-ar', '48000', '-ac', '2', '-threads', '1',
+  ],
+  'video-prores.mov',
+)
+const vp9Video = media(
+  [
+    '-i', video, '-vf', 'scale=320:240', '-c:v', 'libvpx-vp9',
+    '-deadline', 'realtime', '-cpu-used', '8', '-pix_fmt', 'yuv420p',
+    '-c:a', 'aac', '-threads', '1',
+  ],
+  'video-vp9.mp4',
+)
+const longVideo = media(
+  [
+    '-f',
+    'lavfi',
+    '-i',
+    'testsrc2=size=1280x720:rate=24',
+    '-t',
+    '5',
+    '-c:v',
+    'libx264',
+    '-preset',
+    'ultrafast',
+  ],
+  'cancel.mp4',
+)
+const pdf = await PDFDocument.create()
+pdf.setTitle('QA document')
+pdf.addPage([300, 400]).drawText('FileCompresser verification')
+const pdfPath = path.join(fixtures, 'sample.pdf')
+writeFileSync(pdfPath, await pdf.save())
+const misnamedPdf = path.join(fixtures, 'misnamed.jpg')
+writeFileSync(misnamedPdf, readFileSync(pdfPath))
+const misnamedGif = path.join(fixtures, 'animation.bin')
+writeFileSync(misnamedGif, readFileSync(gif))
+const zipPath = path.join(fixtures, 'normal.zip')
+writeFileSync(
+  zipPath,
+  zipSync({
+    'one.txt': new TextEncoder().encode('first'),
+    'folder/two.txt': new TextEncoder().encode('second'),
+  }),
+)
+const hostile = path.join(fixtures, 'hostile.zip')
+writeFileSync(hostile, zipSync({ '../unsafe.txt': new Uint8Array([1]) }))
+const fake = path.join(fixtures, 'fake.mp3')
+writeFileSync(fake, new Uint8Array([0xff]))
+const oversized = path.join(fixtures, 'oversized.jpg')
+writeFileSync(oversized, Buffer.alloc(51 * 1024 * 1024))
+const browser = await browsers[browserName].launch(browserName === 'chromium' ? {
+  executablePath: chrome,
   args: ['--no-sandbox', '--disable-dev-shm-usage'],
+} : { headless: true, ...(process.env.TEST_BROWSER_PATH ? { executablePath: process.env.TEST_BROWSER_PATH } : {}) })
+const context = await browser.newContext({
+  acceptDownloads: true,
+  viewport: { width: 1280, height: 900 },
 })
-const page = await browser.newPage({ viewport: { width: 1280, height: 900 } })
-
-const consoleErrors = []
-page.on('console', (msg) => {
-  if (msg.type() === 'error') consoleErrors.push(msg.text())
+const page = await context.newPage()
+const errors = []
+page.on('pageerror', (error) => errors.push(error.message))
+const requests = []
+page.on('request', (request) => {
+  if (['POST', 'PUT', 'PATCH'].includes(request.method()))
+    requests.push(request.url())
 })
-page.on('pageerror', (err) => consoleErrors.push(`pageerror: ${err.message}`))
-
 const results = []
-const record = (name, ok, detail) => {
-  results.push({ name, ok, detail })
-  console.log(`${ok ? '  ok  ' : ' FAIL '} ${name}${detail ? ` — ${detail}` : ''}`)
+async function check(name, work) {
+  try {
+    const detail = await work()
+    results.push({ name, pass: true, detail })
+    console.log('PASS', name, detail || '')
+  } catch (error) {
+    results.push({ name, pass: false, error: String(error) })
+    console.error('FAIL', name, String(error))
+    await page
+      .screenshot({
+        path: path.join(evidence, `failure-${results.length}.png`),
+      })
+      .catch(() => {})
+  }
 }
-
-/**
- * Run one file through whatever tool page we are on, and report the outcome.
- * Executed inside the page, so it can build the File and watch the queue.
- */
-async function runCase({ route, fixture, filename, mime, settings, timeoutMs }) {
-  const errorsBefore = consoleErrors.length
-
-  await page.goto(`${BASE}${route}`, { waitUntil: 'networkidle' })
-  await page.evaluate(() => document.querySelectorAll('.fileActions .iconBtn').forEach((b) => b.click()))
-
-  const outcome = await page.evaluate(
-    async ({ fixture, filename, mime, settings, timeoutMs }) => {
-      const res = await fetch(fixture)
-      if (!res.ok) return { stage: 'fetch', error: `HTTP ${res.status} for ${fixture}` }
-      const buf = await res.arrayBuffer()
-
-      const dt = new DataTransfer()
-      dt.items.add(new File([buf], filename, { type: mime }))
-      const input = document.querySelector('.dropzone input[type=file]')
-      input.files = dt.files
-      input.dispatchEvent(new Event('change', { bubbles: true }))
-
-      // Wait for validation to settle.
-      for (let i = 0; i < 60; i++) {
-        await new Promise((r) => setTimeout(r, 100))
-        const li = document.querySelector('.file')
-        if (li && /queued|failed/.test(li.className)) break
-      }
-
-      const first = document.querySelector('.file')
-      if (!first) return { stage: 'validate', error: 'no row appeared' }
-      if (/failed/.test(first.className)) {
-        return { stage: 'validate', error: first.querySelector('.fileError')?.textContent || 'rejected' }
-      }
-
-      if (settings) {
-        for (const [id, value] of Object.entries(settings)) {
-          const el = document.querySelector(`select[id*="${id}"], [name="${id}"]`)
-          if (el) {
-            el.value = value
-            el.dispatchEvent(new Event('change', { bubbles: true }))
-          }
-        }
-      }
-
-      const btn = document.querySelector('.compressBtn')
-      if (!btn || btn.disabled) return { stage: 'start', error: 'primary action unavailable' }
-      btn.click()
-
-      const started = Date.now()
-      let lastStage = ''
-      for (;;) {
-        await new Promise((r) => setTimeout(r, 200))
-        if (Date.now() - started > timeoutMs) {
-          return {
-            stage: 'hang',
-            error: `still processing after ${Math.round((Date.now() - started) / 1000)}s`,
-            lastStage,
-          }
-        }
-        const rows = Array.from(document.querySelectorAll('.file'))
-        if (!rows.length) return { stage: 'done', rows: [] }
-        const st = rows[0].querySelector('.fileStatus')?.textContent || ''
-        if (st !== lastStage) lastStage = st
-        // Settled when nothing is still processing.
-        if (!rows.some((li) => /processing|validating/.test(li.className))) {
-          return {
-            stage: 'done',
-            rows: rows.map((li) => ({
-              name: li.querySelector('.fileMeta strong')?.textContent,
-              cls: li.className.replace('file status-', ''),
-              facts: li.querySelector('.fileFacts')?.textContent,
-              status: li.querySelector('.fileStatus')?.textContent,
-              error: li.querySelector('.fileError')?.textContent || null,
-              download: li.querySelector('.linkBtn')?.textContent?.trim() || null,
-            })),
-          }
-        }
-      }
-    },
-    { fixture, filename, mime, settings, timeoutMs }
+async function upload(route, files) {
+  await page.goto(base + route, { waitUntil: 'networkidle' })
+  await page.locator('input[type=file]').setInputFiles(files)
+  await page.waitForFunction(
+    () => document.querySelectorAll('.status-validating').length === 0,
   )
-
-  return { ...outcome, newConsoleErrors: consoleErrors.slice(errorsBefore) }
 }
-
-const cases = [
-  {
-    name: 'JPG compression (real re-encode)',
-    route: '/jpg-compressor',
-    // Built in-page below rather than shipped as a binary fixture.
-    inline: 'jpeg',
-  },
-  {
-    name: 'PNG compression',
-    route: '/png-compressor',
-    inline: 'png',
-  },
-  {
-    name: 'WEBP compression',
-    route: '/webp-compressor',
-    inline: 'webp',
-  },
-  {
-    name: 'GIF compression (FFmpeg WASM)',
-    route: '/gif-compressor',
-    fixture: '/anim.gif',
-    filename: 'anim.gif',
-    mime: 'image/gif',
-  },
-  {
-    name: 'MP3 compression',
-    route: '/mp3-compressor',
-    fixture: '/tone.wav',
-    filename: 'tone.mp3',
-    mime: 'audio/mpeg',
-  },
-  {
-    name: 'WAV to MP3 (FFmpeg WASM)',
-    route: '/wav-compressor',
-    fixture: '/tone.wav',
-    filename: 'tone.wav',
-    mime: 'audio/wav',
-  },
-  {
-    name: 'PDF optimization',
-    route: '/pdf-compressor',
-    fixture: '/sample.pdf',
-    filename: 'sample.pdf',
-    mime: 'application/pdf',
-  },
-  {
-    name: 'ZIP creation',
-    route: '/zip-compressor',
-    fixture: '/normal.zip',
-    filename: 'bundle.zip',
-    mime: 'application/zip',
-  },
-  {
-    name: 'ZIP extraction (safe archive)',
-    route: '/archive-compressor',
-    fixture: '/normal.zip',
-    filename: 'normal.zip',
-    mime: 'application/zip',
-  },
-  {
-    name: 'ZIP extraction (path traversal blocked)',
-    route: '/archive-compressor',
-    fixture: '/traversal.zip',
-    filename: 'traversal.zip',
-    mime: 'application/zip',
-    expectFailure: true,
-  },
-  {
-    name: 'Compress Any File auto-routes a WAV to the audio engine',
-    route: '/compress',
-    fixture: '/tone.wav',
-    filename: 'tone.wav',
-    mime: 'audio/wav',
-  },
-  {
-    name: 'Oversized file is rejected with a clear message',
-    route: '/jpg-compressor',
-    fixture: '/sample.pdf',
-    filename: 'not-an-image.jpg',
-    mime: 'image/jpeg',
-    expectFailure: true,
-  },
-]
-
-/**
- * Builds a real file of the requested kind in the page. Defined per evaluate
- * because every `goto` discards the previous page's globals.
- */
-const MAKE_FIXTURE = `
-  (async function makeFixture(kind) {
-    if (kind === 'svg') {
-      const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="240" height="160"><rect width="240" height="160" fill="#1e6b5a"/><circle cx="120" cy="80" r="60" fill="#c9ed4b"/></svg>'
-      return new File([new Blob([svg], { type: 'image/svg+xml' })], 'logo.svg', { type: 'image/svg+xml' })
-    }
-    const canvas = document.createElement('canvas')
-    canvas.width = kind === 'png' ? 800 : 1000
-    canvas.height = 600
-    const ctx = canvas.getContext('2d')
-    const img = ctx.createImageData(canvas.width, canvas.height)
-    for (let i = 0; i < img.data.length; i += 4) {
-      img.data[i] = (i * 7 + 13) % 256
-      img.data[i + 1] = (i * 31 + 77) % 256
-      img.data[i + 2] = (i * 97 + 41) % 256
-      img.data[i + 3] = 255
-    }
-    ctx.putImageData(img, 0, 0)
-    const type = kind === 'png' ? 'image/png' : kind === 'webp' ? 'image/webp' : 'image/jpeg'
-    const blob = await new Promise((r) => canvas.toBlob(r, type, 0.9))
-    const name = kind === 'png' ? 'noise.png' : kind === 'webp' ? 'noise.webp' : 'noise.jpg'
-    return new File([blob], name, { type })
+async function processAndDownload(route, source, configure) {
+  await upload(route, source)
+  if (configure) await configure()
+  await page.locator('.compressBtn').click()
+  await page
+    .locator('.file.status-completed, .file.status-failed')
+    .first()
+    .waitFor({ timeout: 180000 })
+  const failure = await page.locator('.fileError').allTextContents()
+  assert.deepEqual(failure, [])
+  assert.equal(await page.locator('.compressBtn').count(), 0, 'Completed-only queues must not offer processing zero files')
+  const promise = page.waitForEvent('download')
+  await page.locator('.fileActions .linkBtn').first().click()
+  const download = await promise
+  const out = path.join(
+    fixtures,
+    `result-${results.length}-${download.suggestedFilename()}`,
+  )
+  await download.saveAs(out)
+  assert(readFileSync(out).length > 0)
+  return out
+}
+function probe(file) {
+  return JSON.parse(
+    execFileSync(
+      ffprobe,
+      [
+        '-v',
+        'error',
+        '-count_frames',
+        '-show_streams',
+        '-show_format',
+        '-of',
+        'json',
+        file,
+      ],
+      { timeout: 30000 },
+    ).toString(),
+  )
+}
+function decode(file) {
+  execFileSync(ffmpeg, ['-v', 'error', '-i', file, '-f', 'null', '-'], {
+    timeout: 60000,
   })
-`
-
-for (const testCase of cases) {
-  let outcome
-  if (testCase.inline) {
-    await page.goto(`${BASE}${testCase.route}`, { waitUntil: 'networkidle' })
-    await page.evaluate(() => document.querySelectorAll('.fileActions .iconBtn').forEach((b) => b.click()))
-    outcome = await page.evaluate(
-      async ({ kind, timeoutMs, makeSrc }) => {
-        const makeFixture = eval(`(${makeSrc})`)
-        const file = await makeFixture(kind)
-        const dt = new DataTransfer()
-        dt.items.add(file)
-        const input = document.querySelector('.dropzone input[type=file]')
-        input.files = dt.files
-        input.dispatchEvent(new Event('change', { bubbles: true }))
-
-        for (let i = 0; i < 60; i++) {
-          await new Promise((r) => setTimeout(r, 100))
-          const li = document.querySelector('.file')
-          if (li && /queued|failed/.test(li.className)) break
-        }
-        const first = document.querySelector('.file')
-        if (!first) return { stage: 'validate', error: 'no row appeared' }
-        if (/failed/.test(first.className)) {
-          return { stage: 'validate', error: first.querySelector('.fileError')?.textContent }
-        }
-        document.querySelector('.compressBtn').click()
-
-        const started = Date.now()
-        for (;;) {
-          await new Promise((r) => setTimeout(r, 200))
-          if (Date.now() - started > timeoutMs) {
-            return {
-              stage: 'hang',
-              error: `still processing after ${Math.round((Date.now() - started) / 1000)}s`,
-              lastStage: document.querySelector('.fileStatus')?.textContent,
-            }
-          }
-          const rows = Array.from(document.querySelectorAll('.file'))
-          if (!rows.length) return { stage: 'done', rows: [] }
-          if (!rows.some((li) => /processing|validating/.test(li.className))) {
-            return {
-              stage: 'done',
-              rows: rows.map((li) => ({
-                name: li.querySelector('.fileMeta strong')?.textContent,
-                cls: li.className.replace('file status-', ''),
-                facts: li.querySelector('.fileFacts')?.textContent,
-                download: li.querySelector('.linkBtn')?.textContent?.trim() || null,
-              })),
-            }
-          }
-        }
-      },
-      { kind: testCase.inline, timeoutMs: TIMEOUT_MS, makeSrc: MAKE_FIXTURE }
+}
+function assertDurationPreserved(input, output) {
+  const before = Number(input.format.duration)
+  const after = Number(output.format.duration)
+  assert(Number.isFinite(before) && before > 0, 'The source fixture must have a real duration')
+  assert(Number.isFinite(after) && after > 0, 'The encoded output must have a real duration')
+  assert(Math.abs(after - before) < 0.25, `Unexpected duration change: ${before}s to ${after}s`)
+}
+function assertAudibleOutput(file) {
+  const pcm = execFileSync(
+    ffmpeg,
+    ['-v', 'error', '-i', file, '-map', '0:a:0', '-ac', '1', '-c:a', 'pcm_s16le', '-f', 's16le', '-'],
+    { timeout: 60000, maxBuffer: 5 * 1024 * 1024 },
+  )
+  assert(pcm.length > 16000, 'Decoded audio is unexpectedly short')
+  let absoluteTotal = 0
+  for (let offset = 0; offset + 1 < pcm.length; offset += 2) absoluteTotal += Math.abs(pcm.readInt16LE(offset))
+  assert(absoluteTotal / (pcm.length / 2) > 100, 'The sine-wave fixture became silence')
+}
+try {
+  for (const [route, input, codec] of [
+    ['/jpg-compressor', jpg, 'mjpeg'],
+    ['/png-compressor', png, 'png'],
+    ['/webp-compressor', webp, 'webp'],
+  ])
+    await check(route + ' decoded output', async () => {
+      const out = await processAndDownload(route, input)
+      assert.equal(probe(out).streams[0].codec_name, codec)
+      decode(out)
+      return path.basename(out)
+    })
+  await check('JPG target size and stable KB input', async () => {
+    const out = await processAndDownload('/jpg-compressor', jpg, async () => {
+      await page.getByRole('button', { name: 'Maximum', exact: true }).click()
+      await page.getByLabel('Target size (KB)', { exact: true }).fill('20')
+      assert.equal(
+        await page.getByLabel('Target size (KB)', { exact: true }).inputValue(),
+        '20',
+      )
+    })
+    assert(readFileSync(out).length <= 20 * 1024)
+    decode(out)
+  })
+  for (const [format, codec] of [
+    ['jpeg', 'mjpeg'],
+    ['png', 'png'],
+    ['webp', 'webp'],
+  ])
+    await check('Image conversion to ' + format, async () => {
+      const out = await processAndDownload(
+        '/image-compressor',
+        format === 'jpeg' ? png : jpg,
+        async () => {
+          await page
+            .getByLabel('Download as', { exact: true })
+            .selectOption(format)
+        },
+      )
+      assert.equal(probe(out).streams[0].codec_name, codec)
+      decode(out)
+    })
+  await check(
+    'Transparent JPG conversion is refused without losing the input',
+    async () => {
+      await upload('/image-compressor', transparent)
+      await page.getByLabel('Download as', { exact: true }).selectOption('jpeg')
+      await page.locator('.compressBtn').click()
+      await page.locator('.status-failed').waitFor()
+      assert.match(await page.locator('.fileError').innerText(), /transparency/)
+      await page.getByLabel('Download as', { exact: true }).selectOption('webp')
+      await page.getByRole('button', { name: /Retry/ }).click()
+      await page.locator('.status-completed').waitFor()
+    },
+  )
+  await check('Unreachable image target is reported honestly', async () => {
+    await processAndDownload('/jpg-compressor', jpg, async () => {
+      await page.getByRole('button', { name: 'Maximum', exact: true }).click()
+      await page.getByLabel('Target size (KB)', { exact: true }).fill('1')
+    })
+    assert(
+      (await page.locator('.fileNote').innerText()).includes(
+        'could not be reached',
+      ),
     )
-  } else {
-    outcome = await runCase({ ...testCase, timeoutMs: TIMEOUT_MS })
-  }
-
-  const detail = JSON.stringify(outcome)
-  if (testCase.expectFailure) {
-    const blocked = outcome.stage === 'validate' || (outcome.rows || []).some((r) => r.cls === 'failed')
-    record(testCase.name, blocked, detail.slice(0, 220))
-  } else if (outcome.stage === 'done' && (outcome.rows || []).length) {
-    const allOk = outcome.rows.every((r) => r.cls === 'completed')
-    record(testCase.name, allOk, detail.slice(0, 260))
-  } else {
-    record(testCase.name, false, detail.slice(0, 260))
-  }
+  })
+  await check('PNG output hides the unsupported target control', async () => {
+    await upload('/png-compressor', png)
+    await page.getByRole('button', { name: 'Maximum', exact: true }).click()
+    assert.equal(
+      await page.getByLabel('Target size (KB)', { exact: true }).count(),
+      0,
+    )
+    await page.getByLabel('Download as', { exact: true }).selectOption('png')
+    assert.equal(
+      await page.getByLabel('Target size (KB)', { exact: true }).count(),
+      0,
+    )
+  })
+  await check('GIF animation and finite loop preservation', async () => {
+    const out = await processAndDownload('/gif-compressor', misnamedGif)
+    assert(out.endsWith('.gif'))
+    decode(out)
+    assert(Number(probe(out).streams[0].nb_read_frames) > 1)
+    const bytes = readFileSync(out),
+      i = bytes.indexOf('NETSCAPE2.0')
+    assert(i >= 0)
+    assert.equal(bytes.readUInt16LE(i + 13), 2)
+  })
+  for (const [route, input] of [
+    ['/wav-compressor', wav],
+    ['/mp3-compressor', mp3],
+    ...otherAudio.map((input) => ['/mp3-compressor', input]),
+  ])
+    await check(
+      route + ' ' + path.extname(input) + ' genuine audio source/output',
+      async () => {
+        const out = await processAndDownload(route, input)
+        const metadata = probe(out)
+        assert.equal(metadata.streams[0].codec_name, 'mp3')
+        assert(Number(metadata.format.duration) > 1.5)
+        decode(out)
+      },
+    )
+  for (const [label, input, sourceCodec] of [
+    ['Ogg Opus', opusAudio, 'opus'],
+    ['ALAC in M4A', alacAudio, 'alac'],
+  ])
+    await check(label + ' input decoded to genuine audible MP3', async () => {
+      const before = probe(input)
+      const sourceAudio = before.streams.find(stream => stream.codec_type === 'audio')
+      assert.equal(sourceAudio?.codec_name, sourceCodec, 'The fixture must exercise its stated decoder')
+      const out = await processAndDownload('/mp3-compressor', input)
+      const after = probe(out)
+      const outputAudio = after.streams.find(stream => stream.codec_type === 'audio')
+      assert.equal(outputAudio?.codec_name, 'mp3')
+      assert.equal(outputAudio.channels, sourceAudio.channels)
+      assert.equal(Number(outputAudio.sample_rate), Number(sourceAudio.sample_rate))
+      assertDurationPreserved(before, after)
+      decode(out)
+      assertAudibleOutput(out)
+      return { sourceCodec, outputCodec: outputAudio.codec_name, channels: outputAudio.channels, sampleRate: outputAudio.sample_rate }
+    })
+  for (const [label, input, sourceVideoCodec, sourceAudioCodec] of [
+    ['H264/AAC MP4', video, 'h264', 'aac'],
+    ['H264/AAC MOV', mov, 'h264', 'aac'],
+    ['HEVC/AAC MP4', hevcVideo, 'hevc', 'aac'],
+    ['ProRes/PCM MOV', proresVideo, 'prores', 'pcm_s16le'],
+    ['VP9/AAC MP4', vp9Video, 'vp9', 'aac'],
+  ])
+    await check(
+      label + ' input produces decoded H264/AAC MP4',
+      async () => {
+        const before = probe(input)
+        const sourceVideo = before.streams.find(stream => stream.codec_type === 'video')
+        const sourceAudio = before.streams.find(stream => stream.codec_type === 'audio')
+        assert.equal(sourceVideo?.codec_name, sourceVideoCodec, 'The fixture must exercise its stated video decoder')
+        assert.equal(sourceAudio?.codec_name, sourceAudioCodec, 'The fixture must exercise its stated audio decoder')
+        const out = await processAndDownload('/video-compressor', input)
+        const meta = probe(out)
+        const outputVideo = meta.streams.find(stream => stream.codec_type === 'video')
+        const outputAudio = meta.streams.find(stream => stream.codec_type === 'audio')
+        assert.equal(
+          outputVideo?.codec_name,
+          'h264',
+        )
+        assert.equal(
+          outputAudio?.codec_name,
+          'aac',
+        )
+        assert.equal(outputVideo.pix_fmt, 'yuv420p')
+        assert.equal(outputVideo.width, Math.floor(sourceVideo.width / 2) * 2)
+        assert.equal(outputVideo.height, Math.floor(sourceVideo.height / 2) * 2)
+        assert(Number(outputVideo.nb_read_frames) >= Number(sourceVideo.nb_read_frames) - 1, 'Output lost source video frames')
+        assert.equal(outputAudio.channels, sourceAudio.channels)
+        assertDurationPreserved(before, meta)
+        decode(out)
+        assertAudibleOutput(out)
+        return { sourceVideoCodec, sourceAudioCodec, outputCodecs: meta.streams.map(stream => stream.codec_name), width: outputVideo.width, height: outputVideo.height }
+      },
+    )
+  await check('PDF readable content and page count', async () => {
+    const out = await processAndDownload('/pdf-compressor', misnamedPdf)
+    assert(out.endsWith('.pdf'))
+    const output = await PDFDocument.load(readFileSync(out))
+    assert.equal(output.getPageCount(), 1)
+    assert.equal(output.getTitle(), '')
+    assert(
+      execFileSync('pdftotext', [out, '-'])
+        .toString()
+        .includes('FileCompresser verification'),
+    )
+  })
+  await check('ZIP batch round trip and full original total', async () => {
+    const out = await processAndDownload('/zip-compressor', [jpg, pdfPath])
+    const entries = unzipSync(readFileSync(out))
+    assert.deepEqual(Buffer.from(entries['image.jpg']), readFileSync(jpg))
+    assert.deepEqual(Buffer.from(entries['sample.pdf']), readFileSync(pdfPath))
+    assert((await page.locator('.fileFacts').innerText()).includes('2 inputs'))
+  })
+  await check(
+    'Extraction downloads every file without compression claims',
+    async () => {
+      await upload('/archive-compressor', zipPath)
+      await page.locator('.compressBtn').click()
+      await page.locator('.file.status-completed').first().waitFor()
+      assert.equal(await page.locator('.file.status-completed').count(), 2)
+      assert.equal(await page.locator('.savings').count(), 0)
+      const promise = page.waitForEvent('download')
+      await page
+        .getByRole('button', { name: 'ZIP download', exact: false })
+        .click()
+      const downloaded = await promise
+      const bytes = readFileSync(await downloaded.path())
+      const entries = unzipSync(bytes)
+      assert.equal(new TextDecoder().decode(entries['one.txt']), 'first')
+      assert.equal(
+        new TextDecoder().decode(entries['folder__two.txt']),
+        'second',
+      )
+    },
+  )
+  await check('Unsafe archive is blocked', async () => {
+    await upload('/archive-compressor', hostile)
+    await page.locator('.compressBtn').click()
+    await page.locator('.status-failed').waitFor()
+    assert.match(await page.locator('.fileError').innerText(), /unsafe/)
+    assert.equal(await page.locator('.downloadActions').count(), 0)
+  })
+  for (const input of [fake, oversized])
+    await check('Invalid/oversized input ' + path.basename(input), async () => {
+      await upload(
+        input === fake ? '/mp3-compressor' : '/jpg-compressor',
+        input,
+      )
+      await page.locator('.status-failed').waitFor()
+      assert.equal(await page.locator('.compressBtn').count(), 0, 'Invalid-only queues must not offer processing')
+      await page.getByRole('button', { name: /Retry/ }).click()
+      await page.locator('.status-failed').waitFor()
+      assert.equal(await page.locator('.downloadActions').count(), 0)
+    })
+  await check('Mixed generic batch dispatch', async () => {
+    await upload('/compress', [jpg, wav, pdfPath])
+    await page.locator('.compressBtn').click()
+    await page.waitForFunction(
+      () => document.querySelectorAll('.file.status-completed').length === 3,
+      {},
+      { timeout: 180000 },
+    )
+    assert.equal(await page.locator('.fileError').count(), 0)
+  })
+  await check(
+    'Cancel all prevents waiting video and retry succeeds',
+    async () => {
+      await upload('/video-compressor', [longVideo, video])
+      await page.locator('.compressBtn').click()
+      await page.locator('.status-processing').waitFor()
+      await page
+        .getByRole('button', { name: 'Cancel all', exact: true })
+        .click()
+      await page.waitForFunction(
+        () => !document.querySelector('.status-processing'),
+      )
+      await page.waitForFunction(() =>
+        document.querySelector('.status')?.textContent.includes('cancelled'),
+      )
+      assert.equal(await page.locator('.file.status-cancelled').count(), 2)
+      await page
+        .locator('.fileActions button')
+        .filter({ hasText: 'Retry' })
+        .first()
+        .click()
+      await page.locator('.status-completed').waitFor({ timeout: 180000 })
+      assert.equal(await page.locator('.status-failed').count(), 0)
+    },
+  )
+  await check(
+    'No file-upload requests or unhandled browser exceptions',
+    async () => {
+      assert.deepEqual(requests, [])
+      assert.deepEqual(errors, [])
+    },
+  )
+} finally {
+  writeFileSync(
+    path.join(evidence, browserName === 'chromium' ? 'functionality.json' : `functionality-${browserName}.json`),
+    JSON.stringify({ results, errors, requests }, null, 2),
+  )
+  await browser.close()
 }
-
-await browser.close()
-
-const failed = results.filter((r) => !r.ok)
-console.log(`\n${results.length - failed.length}/${results.length} functionality checks passed`)
-if (consoleErrors.length) {
-  console.log(`\nconsole errors (${consoleErrors.length}):`)
-  for (const e of [...new Set(consoleErrors)].slice(0, 10)) console.log(`  ! ${e}`)
-}
-if (failed.length) process.exit(1)
-console.log('PASS — functionality audit clean')
+console.log(
+  `${results.filter((r) => r.pass).length}/${results.length} real-output checks passed`,
+)
+if (results.some((r) => !r.pass)) process.exitCode = 1

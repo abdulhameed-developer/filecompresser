@@ -1,0 +1,12 @@
+{
+  "siteName": "FileCompresser",
+  "wordmark": "filecompresser",
+  "tagline": "Private, browser-based file compression and conversion",
+  "titleSuffix": "filecompresser",
+  "defaultDescription": "Compress and convert images, video, audio, GIF, PDF and ZIP files directly in your browser. Processing runs on your device — files are never uploaded.",
+  "organizationName": "FileCompresser",
+  "socialImage": "/opengraph-image",
+  "socialImageAlt": "FileCompresser — compress and convert files privately in your browser",
+  "sameAs": [],
+  "supportEmail": "info@filecompresser.com"
+}

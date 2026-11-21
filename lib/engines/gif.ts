@@ -1,9 +1,20 @@
-import { getFFmpeg, terminateFFmpeg, toBytes, writeInputFile, isFFmpegLoaded } from '../ffmpeg/loader'
-import { suffixFilename } from '../format'
+import {
+  getFFmpeg,
+  terminateFFmpeg,
+  toBytes,
+  writeInputFile,
+  isFFmpegLoaded,
+} from '../ffmpeg/loader'
+import { replaceExtension, suffixFilename, uid } from '../format'
 import { assertNotCancelled, flattenArchivePath } from '../validation'
 import { attachFfmpegProgress } from './video'
-import type { CancelSignal, CompressionLevel, ProcessedResult, ProgressCallback } from '../types'
-import { ProcessingError } from '../types'
+import type {
+  CancelSignal,
+  CompressionLevel,
+  ProcessedResult,
+  ProgressCallback,
+} from '../types'
+import { ProcessingError, listenForCancellation } from '../types'
 import type { FFmpeg } from '@ffmpeg/ffmpeg'
 
 export interface GifOptions {
@@ -33,7 +44,7 @@ export async function compressGif(
   file: File,
   options: GifOptions = {},
   onProgress?: ProgressCallback,
-  signal?: CancelSignal
+  signal?: CancelSignal,
 ): Promise<ProcessedResult> {
   assertNotCancelled(signal)
   const ffmpeg = await loadEngine(onProgress)
@@ -43,21 +54,21 @@ export async function compressGif(
   // Frame thinning is lossy and visible, so it is reserved for maximum mode.
   const fps = level === 'maximum' ? 15 : 0
 
-  const stamp = Date.now().toString(36)
+  const stamp = uid()
   const inputName = `gin_${stamp}.gif`
   const outputName = `gout_${stamp}.gif`
 
   const fpsFilter = fps > 0 ? `fps=${fps},` : ''
+  const loop = await gifLoopCount(file)
+  assertNotCancelled(signal)
 
   let cancelledHere = false
-  const cancelPoll = signal
-    ? setInterval(() => {
-        if (signal.cancelled && !cancelledHere) {
-          cancelledHere = true
-          void terminateFFmpeg()
-        }
-      }, 300)
-    : null
+  const releaseCancel = listenForCancellation(signal, () => {
+    if (!cancelledHere) {
+      cancelledHere = true
+      void terminateFFmpeg()
+    }
+  })
 
   let detach: (() => void) | null = null
 
@@ -74,27 +85,42 @@ export async function compressGif(
       onProgress?.(15 + pct * 0.8, 'Optimizing frames…')
     })
 
-    await ffmpeg.exec([
-      '-i', inputName,
-      '-filter_complex',
-      `${fpsFilter}split[a][b];[a]palettegen=max_colors=${colors}:stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=3`,
-      '-gifflags', '-offsetting',
-      '-loop', '0',
-      outputName,
-    ])
+    const exit = await ffmpeg.exec(
+      [
+        '-i',
+        inputName,
+        '-filter_complex',
+        `${fpsFilter}split[a][b];[a]palettegen=max_colors=${colors}:stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=3`,
+        '-gifflags',
+        '-offsetting',
+        '-loop',
+        String(loop),
+        outputName,
+      ],
+      300_000,
+    )
+    if (exit !== 0)
+      throw new ProcessingError(
+        'GIF encoding failed or exceeded the five-minute processing limit.',
+      )
 
     assertNotCancelled(signal)
     onProgress?.(96, 'Finishing…')
 
     const bytes = toBytes(await ffmpeg.readFile(outputName))
     if (bytes.length === 0) {
-      throw new ProcessingError('The GIF could not be optimized and produced no output.')
+      throw new ProcessingError(
+        'The GIF could not be optimized and produced no output.',
+      )
     }
 
     onProgress?.(100, 'Done')
     return {
       blob: new Blob([bytes], { type: 'image/gif' }),
-      filename: suffixFilename(flattenArchivePath(file.name), '-compressed'),
+      filename: replaceExtension(
+        suffixFilename(flattenArchivePath(file.name), '-compressed'),
+        'gif',
+      ),
       mimeType: 'image/gif',
     }
   } catch (e) {
@@ -103,11 +129,11 @@ export async function compressGif(
     }
     if (e instanceof ProcessingError) throw e
     throw new ProcessingError(
-      'This GIF could not be optimized. It may be corrupted, or too large for this browser to process.'
+      'This GIF could not be optimized. It may be corrupted, or too large for this browser to process.',
     )
   } finally {
     if (detach) detach()
-    if (cancelPoll) clearInterval(cancelPoll)
+    releaseCancel()
     if (!cancelledHere && isFFmpegLoaded()) {
       for (const name of [inputName, outputName]) {
         try {
@@ -118,4 +144,20 @@ export async function compressGif(
       }
     }
   }
+}
+async function gifLoopCount(file: File): Promise<number> {
+  const bytes = new Uint8Array(await file.arrayBuffer())
+  const marker = new TextEncoder().encode('NETSCAPE2.0')
+  for (let i = 3; i + 16 < bytes.length; i++) {
+    if (
+      bytes[i - 3] === 0x21 &&
+      bytes[i - 2] === 0xff &&
+      bytes[i - 1] === 11 &&
+      marker.every((byte, n) => bytes[i + n] === byte) &&
+      bytes[i + 11] === 3 &&
+      bytes[i + 12] === 1
+    )
+      return bytes[i + 13] | (bytes[i + 14] << 8)
+  }
+  return -1
 }

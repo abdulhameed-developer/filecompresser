@@ -1,0 +1,31 @@
+{
+  "heading": "How do I convert WAV to a smaller MP3?",
+  "introduction": "Convert a supported WAV recording to MP3 at your chosen bitrate. This changes the audio encoding to a lossy format; it does not create a smaller WAV or preserve the original PCM samples exactly.",
+  "sections": [
+    {
+      "heading": "Make a sharing copy of the recording",
+      "body": "Add the WAV file, choose an MP3 bitrate from 96 to 320 kbps and process it. Play the resulting MP3 and compare the speech or music with the source before using it as an attachment or website download."
+    },
+    {
+      "heading": "Keep WAV for editing and archiving",
+      "body": "The MP3 is useful when you need a more compact sharing format. Keep the WAV when future editing, mixing or an exact copy of the source samples matters. Choosing a higher MP3 bitrate is still a lossy conversion."
+    },
+    {
+      "heading": "Understand the URL and limits",
+      "body": "The wav-compressor address and the wav-to-mp3 alias open this same conversion workflow. The input limit is 100 MB. Conversion loads the browser media engine and may need substantial time and memory for long recordings."
+    }
+  ],
+  "faq": [],
+  "seoTitle": "WAV to MP3 Converter — Smaller Audio Files",
+  "seoDescription": "Convert WAV recordings to MP3 locally at a chosen bitrate. Keep the WAV source: the smaller sharing copy uses lossy MP3 encoding.",
+  "links": [
+    {
+      "label": "How local media encoding works",
+      "href": "/blog/how-browser-compression-works"
+    },
+    {
+      "label": "What the reported file sizes mean",
+      "href": "/blog/honest-file-size-reporting"
+    }
+  ]
+}

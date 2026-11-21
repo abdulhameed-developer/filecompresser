@@ -1,0 +1,66 @@
+{
+  "title": "Why compressed files sometimes get bigger",
+  "description": "Some files genuinely cannot be made smaller. Reporting that accurately is harder than reporting a fake percentage — and far more useful.",
+  "date": "2026-09-08",
+  "updated": "2026-11-04",
+  "readingTime": "5 min",
+  "figure": "sizebars",
+  "seoDescription": "Why honest file-size reporting matters: what happens when compression makes a file bigger, and why saying so is more useful than a flattering number.",
+  "body": [
+    {
+      "_template": "p",
+      "text": "Try compressing a file that is already optimally compressed. Nothing happens. The bytes are already arranged as well as the format allows, so any re-encode is a fresh encoding of the same picture — and a fresh encoding is very often slightly larger than the one you already had."
+    },
+    {
+      "_template": "p",
+      "text": "A percentage alone can be confusing here. Compare both byte counts and look for an explicit description of whether the output is smaller, unchanged or larger."
+    },
+    {
+      "_template": "figure",
+      "figure": "sizebars",
+      "caption": "Three outcomes. Only the first is a saving, and it is the only one worth celebrating."
+    },
+    {
+      "_template": "h2",
+      "text": "Three outcomes, not one"
+    },
+    {
+      "_template": "p",
+      "text": "Every result here is described in the same line, with both real sizes and a percentage, because a percentage alone hides the absolute numbers. What changes is the wording:"
+    },
+    {
+      "_template": "ul",
+      "items": [
+        "Genuinely smaller — \"12.40 MB → 4.80 MB · 61% smaller\". A real saving, stated plainly.",
+        "The same size — \"1.30 KB → 1.30 KB · no size change\". Not a failure, but not a win either, and worth saying.",
+        "Larger — \"828 B → 847 B · 2% larger than the original\", plus a sentence explaining whether that is expected."
+      ]
+    },
+    {
+      "_template": "h2",
+      "text": "The distinction that matters: compressor or converter"
+    },
+    {
+      "_template": "p",
+      "text": "A file coming out larger is not always bad news. It depends entirely on what the tool was asked to do. An image compressor that returns a bigger file is telling you the original was already efficient. A converter that rasterises a vector into a bitmap is supposed to return a bigger file — you asked for a different format, and a different format has a different size."
+    },
+    {
+      "_template": "p",
+      "text": "Conflating those two cases is how you end up with a tool that claims your PDF-to-images conversion \"failed to compress\". It did not fail. It did what you asked, and the honest description depends on which job it was doing."
+    },
+    {
+      "_template": "callout",
+      "title": "The rule",
+      "text": "Never present growth as a saving. If the output is larger, say it is larger, and say whether that was expected."
+    },
+    {
+      "_template": "h2",
+      "text": "What this is worth to you"
+    },
+    {
+      "_template": "p",
+      "text": "A number you can trust is worth more than a number that flatters the tool. If every result reads 60% smaller regardless of input, then the one time you need the real answer — the file that is already optimal — you have no way to get it."
+    }
+  ],
+  "published": true
+}

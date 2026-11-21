@@ -1,0 +1,31 @@
+{
+  "heading": "How should I optimize a JPEG camera export?",
+  "introduction": "Use this page to re-encode a JPEG photograph for its final display or sharing size. JPEG and JPG are the same format; this page uses the same image engine as the JPG tool.",
+  "sections": [
+    {
+      "heading": "Work from the largest useful source",
+      "body": "Start from your camera or editor export rather than repeatedly recompressing a previous download. Select a preset, process the image and compare the output at its intended viewing size."
+    },
+    {
+      "heading": "Changing an extension does not compress a photograph",
+      "body": "Renaming .jpeg to .jpg leaves the encoded image data unchanged. This tool creates a new encoded image, which can change both file size and detail. Higher output quality cannot restore detail lost in an earlier export."
+    },
+    {
+      "heading": "Check the finished image",
+      "body": "Review gradients, fine textures and text, along with the output dimensions and orientation. Keep an original for printing or further editing. If the download is larger without a useful benefit, keep the original version."
+    }
+  ],
+  "faq": [],
+  "seoTitle": "JPEG Compressor — Optimize Camera Exports",
+  "seoDescription": "Optimize JPEG photographs with browser-based quality and dimension controls. JPG and JPEG use the same format; review each re-encoded result.",
+  "links": [
+    {
+      "label": "Choose a format for the final export",
+      "href": "/blog/compressing-files-for-the-web"
+    },
+    {
+      "label": "Understand image quality presets",
+      "href": "/blog/choosing-a-compression-mode"
+    }
+  ]
+}

@@ -11,6 +11,7 @@ import {
 } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import Icon from './Icon'
 import { usePathname } from 'next/navigation'
 import { TOOLS } from '@/lib/tools'
 import { FOOTER_SITE_LINKS, TOOL_GROUPS, toolsInGroup } from '@/lib/nav'
@@ -42,14 +43,21 @@ const NAV_LINKS = [
 export default function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [toolsOpen, setToolsOpen] = useState(false)
+  const [keepTools, setKeepTools] = useState(false)
+  useEffect(() => {
+    if (toolsOpen) { setKeepTools(true); return }
+    const timer = setTimeout(() => setKeepTools(false), 140)
+    return () => clearTimeout(timer)
+  }, [toolsOpen])
   const pathname = usePathname()
 
   const navRef = useRef<HTMLElement>(null)
   const toolsRef = useRef<HTMLDivElement>(null)
   const triggerRef = useRef<HTMLButtonElement>(null)
-const dropdownRef = useRef<HTMLDivElement>(null)
+  const dropdownRef = useRef<HTMLDivElement>(null)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
   const mobilePanelRef = useRef<HTMLDivElement>(null)
+  const pendingFocus = useRef<'first' | 'last' | null>(null)
   const toolsId = useId()
   const mobileId = useId()
 
@@ -58,40 +66,26 @@ const dropdownRef = useRef<HTMLDivElement>(null)
     setToolsOpen(false)
   }, [])
 
-  /**
-   * Place the Tools panel under its trigger, clamped to the viewport.
-   *
-   * The panel is much wider than its trigger, so the rule is simple: centre it
-   * on the trigger, then clamp it into the viewport. Anchoring the panel's left
-   * edge to the trigger — which is what this did before — left the panel sitting
-   * at the far left of the window with no relationship to the control that
-   * opened it, and on narrower desktops it overflowed off the right edge and
-   * gave the whole page hundreds of pixels of horizontal scroll.
-   *
-   * Re-measured on open, on resize and on scroll, because the header is sticky
-   * and the trigger moves with the viewport.
-   */
+  /** Align the compact grouped panel with the header container, clamped to the viewport. */
   const [dropdownStyle, setDropdownStyle] = useState<CSSProperties>({})
 
   useLayoutEffect(() => {
-    if (!toolsOpen) {
-      setDropdownStyle({})
-      return
-    }
+    dropdownRef.current?.toggleAttribute('inert', !toolsOpen)
+    if (!toolsOpen) return
 
     const place = () => {
       const trigger = triggerRef.current
       if (!trigger) return
       const margin = 12
       const rect = trigger.getBoundingClientRect()
-      const width = Math.min(940, window.innerWidth - margin * 2)
-      // Centre on the trigger, then clamp: the clamp is what stops the panel
-      // leaving the viewport once the viewport is narrower than the panel.
-      const centred = rect.left + rect.width / 2 - width / 2
+      const width = Math.min(720, window.innerWidth - margin * 2)
+      // Shared header alignment keeps the panel balanced as navigation moves.
+      const header = navRef.current?.getBoundingClientRect()
+      const centred = header ? header.left + (header.width - width) / 2 : (window.innerWidth - width) / 2
       const maxLeft = window.innerWidth - width - margin
       setDropdownStyle({
         left: `${Math.round(Math.max(margin, Math.min(centred, maxLeft)))}px`,
-        top: `${Math.round(rect.bottom + 14)}px`,
+        top: `${Math.round(rect.bottom + 8)}px`,
         width: `${width}px`,
       })
     }
@@ -109,10 +103,16 @@ const dropdownRef = useRef<HTMLDivElement>(null)
   // reachable without ever tabbing through the 30 links — the trigger is the
   // only tab stop, and the panel is what the arrows walk.
   const focusDropdownLink = useCallback((index: number | 'first' | 'last') => {
-    const links = dropdownRef.current?.querySelectorAll<HTMLAnchorElement>('.toolsDropdownInner a')
+    const links = dropdownRef.current?.querySelectorAll<HTMLAnchorElement>(
+      '.toolsDropdownInner a',
+    )
     if (!links?.length) return
     const target =
-      index === 'first' ? 0 : index === 'last' ? links.length - 1 : (index + links.length) % links.length
+      index === 'first'
+        ? 0
+        : index === 'last'
+          ? links.length - 1
+          : (index + links.length) % links.length
     links[target]?.focus()
   }, [])
 
@@ -122,14 +122,22 @@ const dropdownRef = useRef<HTMLDivElement>(null)
         case 'ArrowDown':
         case 'Down':
           event.preventDefault()
+          pendingFocus.current = 'first'
           setToolsOpen(true)
-          focusDropdownLink('first')
+          if (toolsOpen) {
+            focusDropdownLink('first')
+            pendingFocus.current = null
+          }
           break
         case 'ArrowUp':
         case 'Up':
           event.preventDefault()
+          pendingFocus.current = 'last'
           setToolsOpen(true)
-          focusDropdownLink('last')
+          if (toolsOpen) {
+            focusDropdownLink('last')
+            pendingFocus.current = null
+          }
           break
         case 'Escape':
           if (toolsOpen) {
@@ -141,49 +149,58 @@ const dropdownRef = useRef<HTMLDivElement>(null)
           break
       }
     },
-    [focusDropdownLink, toolsOpen]
+    [focusDropdownLink, toolsOpen],
   )
 
-  /** Arrow navigation between links, wrapping at both ends. */
-  const onDropdownKeyDown = useCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
-    const links = dropdownRef.current?.querySelectorAll<HTMLAnchorElement>('.toolsDropdownInner a')
-    if (!links?.length) return
-    const current = Array.from(links).indexOf(document.activeElement as HTMLAnchorElement)
-    if (current === -1) return
-
-    switch (event.key) {
-      case 'ArrowDown':
-      case 'Down':
-        event.preventDefault()
-        links[(current + 1) % links.length]?.focus()
-        break
-      case 'ArrowUp':
-      case 'Up':
-        event.preventDefault()
-        links[(current - 1 + links.length) % links.length]?.focus()
-        break
-      case 'Home':
-        event.preventDefault()
-        links[0]?.focus()
-        break
-      case 'End':
-        event.preventDefault()
-        links[links.length - 1]?.focus()
-        break
-      case 'Escape':
-        event.preventDefault()
-        setToolsOpen(false)
-        triggerRef.current?.focus()
-        break
-      case 'Tab':
-        // The panel is a single tab stop: Tab leaves it rather than walking 30
-        // links, matching the APG disclosure pattern for a large menu.
-        setToolsOpen(false)
-        break
-      default:
-        break
+  useEffect(() => {
+    if (toolsOpen && pendingFocus.current) {
+      focusDropdownLink(pendingFocus.current)
+      pendingFocus.current = null
     }
-  }, [])
+  }, [toolsOpen, focusDropdownLink])
+
+  /** Arrow navigation between links, wrapping at both ends. */
+  const onDropdownKeyDown = useCallback(
+    (event: React.KeyboardEvent<HTMLDivElement>) => {
+      const links = dropdownRef.current?.querySelectorAll<HTMLAnchorElement>(
+        '.toolsDropdownInner a',
+      )
+      if (!links?.length) return
+      const current = Array.from(links).indexOf(
+        document.activeElement as HTMLAnchorElement,
+      )
+      if (current === -1) return
+
+      switch (event.key) {
+        case 'ArrowDown':
+        case 'Down':
+          event.preventDefault()
+          links[(current + 1) % links.length]?.focus()
+          break
+        case 'ArrowUp':
+        case 'Up':
+          event.preventDefault()
+          links[(current - 1 + links.length) % links.length]?.focus()
+          break
+        case 'Home':
+          event.preventDefault()
+          links[0]?.focus()
+          break
+        case 'End':
+          event.preventDefault()
+          links[links.length - 1]?.focus()
+          break
+        case 'Escape':
+          event.preventDefault()
+          setToolsOpen(false)
+          triggerRef.current?.focus()
+          break
+        default:
+          break
+      }
+    },
+    [],
+  )
 
   // Close on any route change, including browser Back/Forward, so a stale panel
   // never overlays the new page.
@@ -208,10 +225,10 @@ const dropdownRef = useRef<HTMLDivElement>(null)
     }
 
     document.addEventListener('keydown', onKeyDown)
-    document.addEventListener('mousedown', onPointerDown)
+    document.addEventListener('pointerdown', onPointerDown)
     return () => {
       document.removeEventListener('keydown', onKeyDown)
-      document.removeEventListener('mousedown', onPointerDown)
+      document.removeEventListener('pointerdown', onPointerDown)
     }
   }, [toolsOpen])
 
@@ -221,17 +238,61 @@ const dropdownRef = useRef<HTMLDivElement>(null)
     if (!mobileOpen) return
 
     const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Tab') {
+        const links = Array.from(
+          mobilePanelRef.current?.querySelectorAll<HTMLElement>(
+            'a, button, summary',
+          ) ?? [],
+        ).filter(
+          (element) =>
+            element.offsetParent !== null &&
+            element.getBoundingClientRect().height > 0,
+        )
+        const focusable = [menuButtonRef.current, ...links].filter(
+          (element): element is HTMLElement => !!element,
+        )
+        const index = focusable.indexOf(document.activeElement as HTMLElement)
+        if (event.shiftKey && index <= 0) {
+          event.preventDefault()
+          focusable.at(-1)?.focus()
+        } else if (
+          !event.shiftKey &&
+          (index < 0 || index === focusable.length - 1)
+        ) {
+          event.preventDefault()
+          focusable[0]?.focus()
+        }
+        return
+      }
       if (event.key !== 'Escape') return
       setMobileOpen(false)
       menuButtonRef.current?.focus()
     }
+    const background = Array.from(
+      document.querySelectorAll<HTMLElement>('main, .siteFooter'),
+    )
+    const previousInert = background.map((element) => element.inert)
+    background.forEach((element) => {
+      element.inert = true
+    })
     const previousOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
 
+    const onResize = () => {
+      if (window.innerWidth <= 900) return
+      setMobileOpen(false)
+      triggerRef.current?.focus()
+    }
     document.addEventListener('keydown', onKeyDown)
+    window.addEventListener('resize', onResize)
+    onResize()
     return () => {
       document.removeEventListener('keydown', onKeyDown)
+      window.removeEventListener('resize', onResize)
       document.body.style.overflow = previousOverflow
+      background.forEach((element, index) => {
+        element.inert = previousInert[index]
+      })
     }
   }, [mobileOpen])
 
@@ -260,7 +321,9 @@ const dropdownRef = useRef<HTMLDivElement>(null)
         </Link>
 
         <div className="navlinks">
-          <div className="navTools" ref={toolsRef}>
+          <div className="navTools" ref={toolsRef} onBlur={(event) => {
+            if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setToolsOpen(false)
+          }}>
             <button
               ref={triggerRef}
               type="button"
@@ -274,14 +337,13 @@ const dropdownRef = useRef<HTMLDivElement>(null)
               onKeyDown={onTriggerKeyDown}
             >
               Tools
-              <span className="caret" aria-hidden="true">
-                ▾
-              </span>
+              <Icon name="chevron" className="caret" />
             </button>
 
-            {toolsOpen && (
+            {(toolsOpen || keepTools) && (
               <div
-                className="toolsDropdown"
+                className={`toolsDropdown${toolsOpen ? ' isOpen' : ' isClosing'}`}
+                aria-hidden={!toolsOpen || undefined}
                 id={toolsId}
                 style={dropdownStyle}
                 ref={dropdownRef}
@@ -293,13 +355,17 @@ const dropdownRef = useRef<HTMLDivElement>(null)
                     if (!tools.length) return null
                     return (
                       <div className="toolsCol" key={group.key}>
-                        <h2>{group.title}</h2>
+                        <h2><Icon name={group.key === 'image' ? 'image' : group.key === 'media' ? 'media' : 'archive'} />{group.title}</h2>
                         <ul>
                           {tools.map((tool) => (
                             <li key={tool.slug}>
                               <Link
                                 href={`/${tool.slug}`}
-                                aria-current={pathname === `/${tool.slug}` ? 'page' : undefined}
+                                aria-current={
+                                  pathname === `/${tool.slug}`
+                                    ? 'page'
+                                    : undefined
+                                }
                                 onClick={close}
                               >
                                 {tool.title}
@@ -313,7 +379,7 @@ const dropdownRef = useRef<HTMLDivElement>(null)
                 </div>
                 <div className="toolsDropdownFoot">
                   <Link href="/sitemap" onClick={close}>
-                    See all {TOOLS.length} tools →
+                    See all {TOOLS.length} tools <Icon name="arrow" />
                   </Link>
                 </div>
               </div>
@@ -336,7 +402,7 @@ const dropdownRef = useRef<HTMLDivElement>(null)
         </div>
 
         <Link className="navbtn" href="/#compress" onClick={close}>
-          Start compressing <span aria-hidden="true">→</span>
+          Start compressing <Icon name="arrow" />
         </Link>
 
         <button
@@ -347,8 +413,10 @@ const dropdownRef = useRef<HTMLDivElement>(null)
           aria-controls={mobileId}
           onClick={() => setMobileOpen((value) => !value)}
         >
-          <span className="srInline">{mobileOpen ? 'Close menu' : 'Open menu'}</span>
-          <span aria-hidden="true">{mobileOpen ? '✕' : '☰'}</span>
+          <span className="srInline">
+            {mobileOpen ? 'Close menu' : 'Open menu'}
+          </span>
+          <Icon name={mobileOpen ? 'close' : 'menu'} />
         </button>
       </nav>
 
@@ -357,7 +425,7 @@ const dropdownRef = useRef<HTMLDivElement>(null)
           <div className="mobileMenuInner">
             <Link className="mobileCta" href="/#compress" onClick={close}>
               Start compressing
-              <span aria-hidden="true">→</span>
+              <Icon name="arrow" />
             </Link>
 
             {/*
@@ -383,7 +451,9 @@ const dropdownRef = useRef<HTMLDivElement>(null)
               <Link
                 className="mobileTopLink"
                 href="/about"
-                aria-current={pathname.startsWith('/about') ? 'page' : undefined}
+                aria-current={
+                  pathname.startsWith('/about') ? 'page' : undefined
+                }
                 onClick={close}
               >
                 About
@@ -391,7 +461,9 @@ const dropdownRef = useRef<HTMLDivElement>(null)
               <Link
                 className="mobileTopLink"
                 href="/contact"
-                aria-current={pathname.startsWith('/contact') ? 'page' : undefined}
+                aria-current={
+                  pathname.startsWith('/contact') ? 'page' : undefined
+                }
                 onClick={close}
               >
                 Contact
@@ -407,18 +479,20 @@ const dropdownRef = useRef<HTMLDivElement>(null)
                   <details className="mobileGroup" key={group.key}>
                     <summary>
                       <span className="mobileGroupIcon" aria-hidden="true">
-                        {group.icon}
+                        <Icon name={group.key === 'image' ? 'image' : group.key === 'media' ? 'media' : 'archive'} />
                       </span>
                       <span className="mobileGroupTitle">{group.title}</span>
                       <span className="mobileGroupCount">{tools.length}</span>
-                      <span className="mobileChevron" aria-hidden="true" />
+                      <Icon className="mobileChevron" name="chevron" />
                     </summary>
                     <ul id={panelId}>
                       {tools.map((tool) => (
                         <li key={tool.slug}>
                           <Link
                             href={`/${tool.slug}`}
-                            aria-current={pathname === `/${tool.slug}` ? 'page' : undefined}
+                            aria-current={
+                              pathname === `/${tool.slug}` ? 'page' : undefined
+                            }
                             onClick={close}
                           >
                             {tool.title}

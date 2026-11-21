@@ -1,8 +1,19 @@
-import { getFFmpeg, terminateFFmpeg, toBytes, writeInputFile, isFFmpegLoaded } from '../ffmpeg/loader'
-import { replaceExtension, suffixFilename } from '../format'
+import {
+  getFFmpeg,
+  terminateFFmpeg,
+  toBytes,
+  writeInputFile,
+  isFFmpegLoaded,
+} from '../ffmpeg/loader'
+import { replaceExtension, suffixFilename, uid } from '../format'
 import { assertNotCancelled } from '../validation'
-import type { CancelSignal, CompressionLevel, ProcessedResult, ProgressCallback } from '../types'
-import { ProcessingError } from '../types'
+import type {
+  CancelSignal,
+  CompressionLevel,
+  ProcessedResult,
+  ProgressCallback,
+} from '../types'
+import { ProcessingError, listenForCancellation } from '../types'
 import type { FFmpeg } from '@ffmpeg/ffmpeg'
 
 export interface VideoOptions {
@@ -18,7 +29,10 @@ export interface VideoOptions {
  * expects to see. Returns a detach function — callers must invoke it so a
  * finished job stops writing into a dead component.
  */
-export function attachFfmpegProgress(ffmpeg: FFmpeg, onPercent: (pct: number) => void): () => void {
+export function attachFfmpegProgress(
+  ffmpeg: FFmpeg,
+  onPercent: (pct: number) => void,
+): () => void {
   const handler = ({ progress }: { progress: number }) => {
     // FFmpeg reports 0..1 against the *output* duration. Guard NaN and clamp.
     if (typeof progress !== 'number' || !Number.isFinite(progress)) return
@@ -48,7 +62,7 @@ async function runFfmpeg(
   ffmpeg: FFmpeg,
   spec: RunSpec,
   onProgress?: ProgressCallback,
-  signal?: CancelSignal
+  signal?: CancelSignal,
 ): Promise<ProcessedResult> {
   assertNotCancelled(signal)
 
@@ -62,14 +76,12 @@ async function runFfmpeg(
 
   // We own the instance for the duration of this run, so a cancel can terminate it.
   let cancelledHere = false
-  const cancelPoll = signal
-    ? setInterval(() => {
-        if (signal.cancelled && !cancelledHere) {
-          cancelledHere = true
-          void terminateFFmpeg()
-        }
-      }, 300)
-    : null
+  const releaseCancel = listenForCancellation(signal, () => {
+    if (!cancelledHere) {
+      cancelledHere = true
+      void terminateFFmpeg()
+    }
+  })
 
   let detach: (() => void) | null = null
 
@@ -84,12 +96,20 @@ async function runFfmpeg(
       onProgress?.(start + (pct / 100) * span * weight, spec.stage)
     })
 
-    await ffmpeg.exec(spec.args)
+    if ((await ffmpeg.exec(spec.args, 300_000)) !== 0)
+      throw new ProcessingError(
+        'Video encoding failed or exceeded the five-minute processing limit.',
+      )
     assertNotCancelled(signal)
 
     onProgress?.(end, 'Finishing…')
     const data = await ffmpeg.readFile(spec.outputName)
     const bytes = toBytes(data)
+    if (
+      bytes.length < 12 ||
+      String.fromCharCode(...bytes.slice(4, 8)) !== 'ftyp'
+    )
+      throw new ProcessingError('The video encoder returned an invalid MP4.')
 
     onProgress?.(100, 'Done')
     return {
@@ -103,11 +123,11 @@ async function runFfmpeg(
     }
     if (e instanceof ProcessingError) throw e
     throw new ProcessingError(
-      'This video could not be processed. It may be corrupted, or use a codec this browser engine cannot decode.'
+      'This video could not be processed. It may be corrupted, or use a codec this browser engine cannot decode.',
     )
   } finally {
     if (detach) detach()
-    if (cancelPoll) clearInterval(cancelPoll)
+    releaseCancel()
     // Best-effort cleanup of the virtual FS so a long session does not grow.
     if (!cancelledHere && isFFmpegLoaded()) {
       try {
@@ -128,24 +148,39 @@ async function runFfmpeg(
  * H.264 + AAC in an MP4 container with `+faststart` so the result is seekable
  * on the web. `yuv420p` keeps it playable on iOS and Android browsers.
  */
-function buildEncodeArgs(inputName: string, outputName: string, level: CompressionLevel, resolution: VideoOptions['resolution']): string[] {
+function buildEncodeArgs(
+  inputName: string,
+  outputName: string,
+  level: CompressionLevel,
+  resolution: VideoOptions['resolution'],
+): string[] {
   const crf = level === 'maximum' ? '32' : '28'
   const preset = level === 'maximum' ? 'veryfast' : 'faster'
   const audioBitrate = level === 'maximum' ? '96k' : '128k'
   const scale = scaleFilter(resolution)
 
   const args = [
-    '-i', inputName,
+    '-i',
+    inputName,
     // Skip cover art / non-video attachments some MOVs carry.
-    '-map', '0:v:0',
-    '-map', '0:a?',
-    '-c:v', 'libx264',
-    '-preset', preset,
-    '-crf', crf,
-    '-pix_fmt', 'yuv420p',
-    '-c:a', 'aac',
-    '-b:a', audioBitrate,
-    '-movflags', '+faststart',
+    '-map',
+    '0:v:0',
+    '-map',
+    '0:a?',
+    '-c:v',
+    'libx264',
+    '-preset',
+    preset,
+    '-crf',
+    crf,
+    '-pix_fmt',
+    'yuv420p',
+    '-c:a',
+    'aac',
+    '-b:a',
+    audioBitrate,
+    '-movflags',
+    '+faststart',
   ]
 
   if (scale) args.push('-vf', scale)
@@ -156,16 +191,17 @@ function buildEncodeArgs(inputName: string, outputName: string, level: Compressi
 
 /** `scale=-2:min(H,ih)` keeps the aspect ratio and never upscales. */
 function scaleFilter(resolution: VideoOptions['resolution']): string | null {
-  if (!resolution || resolution === 'original') return null
+  if (!resolution || resolution === 'original')
+    return 'scale=trunc(iw/2)*2:trunc(ih/2)*2'
   const height = resolution === '1080' ? 1080 : resolution === '480' ? 480 : 720
-  return `scale=-2:'min(${height},ih)'`
+  return `scale=-2:'trunc(min(${height},ih)/2)*2'`
 }
 
 export async function compressVideo(
   file: File,
   options: VideoOptions = {},
   onProgress?: ProgressCallback,
-  signal?: CancelSignal
+  signal?: CancelSignal,
 ): Promise<ProcessedResult> {
   assertNotCancelled(signal)
 
@@ -182,7 +218,7 @@ export async function compressVideo(
 
   assertNotCancelled(signal)
 
-  const stamp = Date.now().toString(36)
+  const stamp = uid()
   const inputName = `in_${stamp}${guessExt(file.name)}`
   const outputName = `out_${stamp}.mp4`
   const level = options.level ?? 'recommended'
@@ -197,10 +233,13 @@ export async function compressVideo(
       stage: 'Compressing video…',
       outputMime: 'video/mp4',
       outputExtension: 'mp4',
-      outputFilename: replaceExtension(suffixFilename(file.name, '-compressed'), 'mp4'),
+      outputFilename: replaceExtension(
+        suffixFilename(file.name, '-compressed'),
+        'mp4',
+      ),
     },
     onProgress,
-    signal
+    signal,
   )
 }
 

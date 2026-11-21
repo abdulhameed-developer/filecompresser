@@ -1,5 +1,6 @@
 'use client'
 
+import Icon from './Icon'
 import type { QueueItem, ToolDefinition } from '@/lib/types'
 import { formatBytes, savingsLabel } from '@/lib/format'
 import { downloadBlob } from '@/lib/downloads'
@@ -10,6 +11,7 @@ interface FileItemProps {
   onRemove: (id: string) => void
   onRetry: (id: string) => void
   onCancel: (id: string) => void
+  busy?: boolean
 }
 
 /**
@@ -27,27 +29,44 @@ const COMPRESSION_ENGINES = new Set([
   'pdf-compress',
 ])
 
-export default function FileItem({ item, tool, onRemove, onRetry, onCancel }: FileItemProps) {
+export default function FileItem({
+  item,
+  tool,
+  onRemove,
+  onRetry,
+  onCancel,
+  busy,
+}: FileItemProps) {
   const extension = item.name.split('.').pop()?.toUpperCase() || 'FILE'
   const canDownload = item.status === 'completed' && !!item.result
   const canRetry = item.status === 'failed' || item.status === 'cancelled'
-  const canCancel = item.status === 'processing'
+  const canCancel =
+    item.status === 'processing' ||
+    item.status === 'queued' ||
+    item.status === 'validating'
+  const compare = item.comparison !== 'extraction'
   const isCompression = COMPRESSION_ENGINES.has(tool.engine)
 
   return (
     <li className={`file status-${item.status}`}>
       <span className="fileIcon" aria-hidden="true">
-        {extension.slice(0, 4)}
+        <Icon name="file" /><span>{extension.slice(0, 4)}</span>
       </span>
 
       <div className="fileMeta">
         <strong title={item.name}>{item.name}</strong>
 
         <small className="fileFacts">
-          <span>{formatBytes(item.originalSize)}</span>
+          <span>
+            {item.comparison === 'extraction'
+              ? 'Extracted file'
+              : item.sourceCount && item.sourceCount > 1
+                ? `${item.sourceCount} inputs · ${formatBytes(item.originalSize)}`
+                : formatBytes(item.originalSize)}
+          </span>
           {item.outputSize != null && (
             <>
-              <span aria-hidden="true"> → </span>
+              <Icon name="arrow" className="sizeArrow" />
               <span className="srInline">{item.name} is now</span>
               <span>{formatBytes(item.outputSize)}</span>
             </>
@@ -55,8 +74,11 @@ export default function FileItem({ item, tool, onRemove, onRetry, onCancel }: Fi
         </small>
 
         <small className="fileStatus">
-          {item.outputSize != null && item.originalSize > 0 && (
-            <span className={`savings ${savingsTone(item.originalSize, item.outputSize)}`}>
+          <Icon className={item.status === 'processing' || item.status === 'validating' ? 'activityIcon' : ''} name={item.status === 'completed' ? 'check' : item.status === 'failed' ? 'error' : item.status === 'cancelled' ? 'close' : 'clock'} />
+          {compare && item.outputSize != null && item.originalSize > 0 && (
+            <span
+              className={`savings ${savingsTone(item.originalSize, item.outputSize)}`}
+            >
               {savingsLabel(item.originalSize, item.outputSize)}
             </span>
           )}
@@ -72,25 +94,34 @@ export default function FileItem({ item, tool, onRemove, onRetry, onCancel }: Fi
             was "already efficiently compressed" there would be nonsense. Only
             the compression tools get that explanation.
           */}
-          {item.outputSize != null &&
+          {compare &&
+            item.outputSize != null &&
             item.originalSize > 0 &&
             item.outputSize > item.originalSize * 1.05 && (
               <span className="savingsWords">
                 Output is larger than the original
                 {isCompression
-                  ? ' — this file was already efficiently compressed.'
+                  ? ' — try a lower quality setting or a different output format.'
                   : ' — expected, because this tool converts into a different format.'}
               </span>
             )}
-          {item.status === 'processing' && item.stage && <span>{item.stage}</span>}
+          {item.status === 'processing' && item.stage && (
+            <span>{item.stage}</span>
+          )}
           {item.status === 'processing' && !item.stage && (
-            <span>{item.progress > 0 ? `Processing ${item.progress}%` : 'Processing…'}</span>
+            <span>
+              {item.progress > 0
+                ? `Processing ${item.progress}%`
+                : 'Processing…'}
+            </span>
           )}
           {item.status === 'queued' && <span>Ready</span>}
           {item.status === 'validating' && <span>Checking…</span>}
           {item.status === 'completed' && <span>Done</span>}
           {item.status === 'cancelled' && <span>Cancelled</span>}
-          {item.status === 'failed' && <span className="failedLabel">Failed</span>}
+          {item.status === 'failed' && (
+            <span className="failedLabel">Failed</span>
+          )}
         </small>
 
         {item.status === 'processing' && (
@@ -101,13 +132,17 @@ export default function FileItem({ item, tool, onRemove, onRetry, onCancel }: Fi
             aria-valuemax={100}
             // FFmpeg reports against output duration; when a stage has no
             // measurable percentage we say so rather than inventing one.
-            aria-valuenow={item.progress > 0 ? Math.round(item.progress) : undefined}
+            aria-valuenow={
+              item.progress > 0 ? Math.round(item.progress) : undefined
+            }
             aria-valuetext={item.stage ?? 'Processing'}
             aria-label={`Processing ${item.name}`}
           >
             <div
               className={`progressBar${item.progress > 0 ? '' : ' indeterminate'}`}
-              style={item.progress > 0 ? { width: `${item.progress}%` } : undefined}
+              style={
+                item.progress > 0 ? { width: `${item.progress}%` } : undefined
+              }
             />
           </div>
         )}
@@ -128,20 +163,31 @@ export default function FileItem({ item, tool, onRemove, onRetry, onCancel }: Fi
           <button
             type="button"
             className="linkBtn"
-            onClick={() => downloadBlob(item.result!.blob, item.result!.filename)}
+            onClick={() =>
+              downloadBlob(item.result!.blob, item.result!.filename)
+            }
           >
             Download
             <span className="srInline"> {item.result!.filename}</span>
           </button>
         )}
         {canRetry && (
-          <button type="button" className="linkBtn" onClick={() => onRetry(item.id)}>
+          <button
+            type="button"
+            className="linkBtn"
+            disabled={busy}
+            onClick={() => onRetry(item.id)}
+          >
             Retry
             <span className="srInline"> {item.name}</span>
           </button>
         )}
         {canCancel && (
-          <button type="button" className="linkBtn" onClick={() => onCancel(item.id)}>
+          <button
+            type="button"
+            className="linkBtn"
+            onClick={() => onCancel(item.id)}
+          >
             Cancel
             <span className="srInline"> processing of {item.name}</span>
           </button>
@@ -152,7 +198,7 @@ export default function FileItem({ item, tool, onRemove, onRetry, onCancel }: Fi
           aria-label={`Remove ${item.name}`}
           onClick={() => onRemove(item.id)}
         >
-          <span aria-hidden="true">×</span>
+          <Icon name="close" />
         </button>
       </div>
     </li>

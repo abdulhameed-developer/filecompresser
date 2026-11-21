@@ -3,15 +3,26 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -H 0.0.0.0",
-    "build": "next build",
-    "start": "next start",
+    "postinstall": "node scripts/cms-security.mjs --apply-if-present",
+    "dev": "node scripts/prepare-static-assets.mjs && next dev -H 0.0.0.0",
+    "build": "node scripts/prepare-static-assets.mjs && node scripts/collect-third-party-notices.mjs && node scripts/build-site.mjs",
+    "start": "node scripts/serve-static.mjs",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "verify": "npm run lint && npm run typecheck && npm run test && npm run build"
+    "verify": "bash scripts/verify.sh",
+    "check:public": "node scripts/check-public.mjs",
+    "setup:cms": "node scripts/setup-cms.mjs",
+    "dev:cms": "node scripts/check-cms-setup.mjs && node scripts/cms-security.mjs --verify && node scripts/check-cms-inputs.mjs && node scripts/prepare-static-assets.mjs && tinacms dev --noTelemetry -c \"next dev -H 0.0.0.0\"",
+    "build:cms": "node scripts/check-cms-setup.mjs && node scripts/cms-security.mjs --verify && node scripts/check-cms-inputs.mjs && tinacms build --noTelemetry && npm run build && node scripts/cms-security.mjs --verify-admin",
+    "build:cms:local": "node scripts/check-cms-setup.mjs && node scripts/cms-security.mjs --verify && node scripts/check-cms-inputs.mjs && tinacms build --local --skip-cloud-checks --noTelemetry -c \"npm run build\" && node scripts/cms-security.mjs --verify-admin",
+    "deploy:check": "node scripts/check-codec-release.mjs && node scripts/check-source-secrets.mjs && npm run audit:dependencies && npm run lint && npm run typecheck && npm test && npm run build:cms && npm run typecheck && npm run check:public && npm run check:export && node scripts/package-site.mjs",
+    "check:cms-security": "node scripts/cms-security.mjs --verify",
+    "check:cms-inputs": "node scripts/check-cms-inputs.mjs",
+    "audit:dependencies": "node scripts/audit-dependencies.mjs",
+    "check:export": "node scripts/check-export.mjs"
   },
   "dependencies": {
     "@ffmpeg/core": "^0.12.10",
@@ -19,20 +30,32 @@
     "@ffmpeg/util": "^0.12.2",
     "browser-image-compression": "^2.0.2",
     "fflate": "^0.8.3",
-    "next": "^16.3.7",
+    "next": "^16.4.5",
     "pdf-lib": "^1.17.1",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.7",
+    "@tinacms/cli": "4.0.5",
     "@types/node": "^22.13.10",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "eslint": "^9.39.5",
-    "eslint-config-next": "^15.2.2",
-    "jsdom": "^30.1.1",
+    "eslint-config-next": "^15.5.29",
+    "jsdom": "^26.1.0",
+    "tinacms": "3.15.2",
     "typescript": "^5.8.2",
+    "vite": "8.3.3",
     "vitest": "^5.0.3"
+  },
+  "allowScripts": {
+    "unrs-resolver@1.12.2": true
+  },
+  "overrides": {
+    "zod": "3.25.76"
+  },
+  "engines": {
+    "node": ">=22.12.0"
   }
 }
