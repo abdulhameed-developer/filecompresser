@@ -1,0 +1,67 @@
+{
+  "title": "Get back to your file.",
+  "label": "HELP & CONTACT",
+  "introduction": "A few checks solve most processing and download problems. Start with the situation that matches yours.",
+  "seoTitle": "Contact",
+  "seoDescription": "Help with FileCompresser: troubleshoot unsupported formats, large files, processing errors and downloads without sharing private files.",
+  "sections": [
+    {
+      "icon": "file",
+      "heading": "A file will not process",
+      "body": [
+        "Check the accepted formats and per-file limit. Renaming an extension does not convert a file. Encrypted PDFs, detected signed PDFs and unsupported archive structures need a different workflow."
+      ],
+      "placement": "card"
+    },
+    {
+      "icon": "clock",
+      "heading": "Processing is slow",
+      "body": [
+        "Try fewer queued files, a shorter clip or a smaller resolution cap. Keep the tab open. Cancel a job before changing settings, then retry the input."
+      ],
+      "placement": "card"
+    },
+    {
+      "icon": "image",
+      "heading": "The result is larger",
+      "body": [
+        "Already compressed files can have little room to shrink. Compare byte counts and review the output. A format conversion can legitimately increase size."
+      ],
+      "placement": "card"
+    },
+    {
+      "icon": "download",
+      "heading": "A download did not start",
+      "body": [
+        "Try the individual Download button or a ZIP for several results. Check browser download permissions and device storage. Results stay in the tab until cleared or closed."
+      ],
+      "placement": "card"
+    },
+    {
+      "icon": "shield",
+      "heading": "Document a problem without sharing private content.",
+      "body": [
+        "Record the tool, input format and approximate size, browser version and exact error message. Keep confidential content out of screenshots. FileCompresser does not offer a file-submission form or advertise a monitored support mailbox."
+      ],
+      "links": [
+        {
+          "label": "Check tool limits",
+          "href": "/sitemap"
+        },
+        {
+          "label": "File privacy explained",
+          "href": "/privacy"
+        }
+      ],
+      "placement": "detail"
+    }
+  ],
+  "support": {
+    "text": "Choosing a format or quality setting?",
+    "emphasis": "Find a practical answer in the file guides.",
+    "link": {
+      "label": "Browse guides",
+      "href": "/blog"
+    }
+  }
+}

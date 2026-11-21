@@ -1,0 +1,65 @@
+{
+  "title": "Useful file tools.\nBuilt around your device.",
+  "label": "ABOUT FILECOMPRESSER",
+  "introduction": "Compress, convert and organize files in your browser. No account, upload queue or watermark between you and your result.",
+  "seoTitle": "About",
+  "seoDescription": "What filecompresser is, how browser-based processing works, what the tools genuinely do, and where their honest limits are.",
+  "updated": "2026-11-04",
+  "introCta": {
+    "label": "Choose your files",
+    "href": "/#compress"
+  },
+  "sections": [
+    {
+      "icon": "shield",
+      "heading": "Processing stays here",
+      "body": [
+        "Your selected files are processed in this browser tab. The page and engine code are downloaded from the application."
+      ],
+      "placement": "card"
+    },
+    {
+      "icon": "file",
+      "heading": "See the actual result",
+      "body": [
+        "Original and output sizes are shown together. Already efficient files may not shrink; format changes can increase size."
+      ],
+      "placement": "card"
+    },
+    {
+      "icon": "check",
+      "heading": "Keep control of your files",
+      "body": [
+        "Review settings, cancel work and save the results you need. Keep originals until you have checked the download."
+      ],
+      "placement": "card"
+    },
+    {
+      "label": "PRACTICAL LIMITS",
+      "heading": "Your device does the work.",
+      "body": [
+        "Browser memory and processing speed vary. Each tool lists its input limits; very large or complex files may fail even within those limits. Media jobs have a five-minute processing limit.",
+        "13 tools cover supported images, GIF, video, audio, PDF and ZIP workflows. Some formats are lossy; PDF optimization is structural and ZIP extraction supports a defined subset of archives."
+      ],
+      "links": [
+        {
+          "label": "Explore formats and tools",
+          "href": "/sitemap"
+        },
+        {
+          "label": "Read the limitations",
+          "href": "/disclaimer"
+        }
+      ],
+      "placement": "detail"
+    }
+  ],
+  "support": {
+    "text": "Want to understand the trade-offs?",
+    "emphasis": "Our guides explain formats, quality and file size.",
+    "link": {
+      "label": "Read the guides",
+      "href": "/blog"
+    }
+  }
+}

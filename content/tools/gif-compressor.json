@@ -1,0 +1,31 @@
+{
+  "heading": "How can I reduce an animated GIF?",
+  "introduction": "FileCompresser re-encodes animated GIF frames with a reduced color palette. Maximum mode also limits animation to 15 frames per second, trading smoothness for a possible size reduction.",
+  "sections": [
+    {
+      "heading": "Choose a mode for the animation",
+      "body": "Add the GIF and start with Recommended. Use Maximum when a lower frame rate is acceptable. Process the animation, then play the complete download rather than checking a single frame."
+    },
+    {
+      "heading": "Review motion, colors and looping",
+      "body": "A smaller palette can affect gradients and subtle colors. A lower frame rate can make motion look less smooth. Recognized finite loop counts are preserved, but check the downloaded animation in the place where it will be used."
+    },
+    {
+      "heading": "When browser processing needs a smaller input",
+      "body": "GIF encoding uses the media engine and can consume substantial memory. This tool accepts files up to 50 MB, but a long or complex animation may still exceed the resources available to your browser. Keep the source and try a shorter animation if processing fails."
+    }
+  ],
+  "faq": [],
+  "seoTitle": "GIF Compressor — Reduce Animated GIF Size",
+  "seoDescription": "Optimize animated GIFs in your browser with palette reduction and an optional 15 fps limit. Review motion, colors, looping and actual output size.",
+  "links": [
+    {
+      "label": "How the browser processing pipeline works",
+      "href": "/blog/how-browser-compression-works"
+    },
+    {
+      "label": "Understand actual size reporting",
+      "href": "/blog/honest-file-size-reporting"
+    }
+  ]
+}

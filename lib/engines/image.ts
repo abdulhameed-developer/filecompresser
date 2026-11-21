@@ -1,6 +1,10 @@
 import imageCompression from 'browser-image-compression'
 import { suffixFilename, replaceExtension, mimeForExt } from '../format'
-import { assertNotCancelled, detectFormat } from '../validation'
+import {
+  assertNotCancelled,
+  detectFormat,
+  assertImagePixelLimit,
+} from '../validation'
 import type {
   CancelSignal,
   CompressionLevel,
@@ -8,7 +12,7 @@ import type {
   ProcessedResult,
   ProgressCallback,
 } from '../types'
-import { ProcessingError } from '../types'
+import { ProcessingError, listenForCancellation } from '../types'
 
 export type ImageFormat = 'jpeg' | 'png' | 'webp'
 
@@ -65,10 +69,10 @@ export function defaultOutputFormatFor(fileName: string): ImageFormat {
  */
 export async function availableOutputFormats(
   file: File,
-  signal?: CancelSignal
+  signal?: CancelSignal,
 ): Promise<ImageFormat[]> {
   try {
-    const bitmap = await createImageBitmap(file)
+    const bitmap = await boundedBitmap(file)
     const hasAlpha = hasAlphaChannel(bitmap)
     bitmap.close()
     assertNotCancelled(signal)
@@ -80,27 +84,59 @@ export async function availableOutputFormats(
     // Detection is a nicety; if it fails, offer everything and let the encoder
     // decide. An unsatisfiable encode surfaces as a clear error, not a crash.
     assertNotCancelled(signal)
-    return ['jpeg', 'png', 'webp']
+    return ['png', 'webp']
   }
 }
 
-/** True when any pixel is not fully opaque. */
+/** Exact alpha scan in small tiles; a single transparent pixel must not disappear in a downsample. */
 function hasAlphaChannel(bitmap: ImageBitmap): boolean {
+  const canvas = document.createElement('canvas')
+  canvas.width = canvas.height = 256
+  const ctx = canvas.getContext('2d', { willReadFrequently: true })
+  if (!ctx)
+    throw new ProcessingError('This browser cannot inspect image transparency.')
   try {
-    const canvas = document.createElement('canvas')
-    canvas.width = 1
-    canvas.height = 1
-    const ctx = canvas.getContext('2d', { willReadFrequently: true })
-    if (!ctx) return false
-    // Sampling a 1x1 downscale of the whole image is enough: if any pixel is
-    // translucent, the resampled alpha at this one pixel is below 255.
-    ctx.drawImage(bitmap, 0, 0, 1, 1)
-    const data = ctx.getImageData(0, 0, 1, 1).data
-    canvas.width = 0
-    canvas.height = 0
-    return data[3] < 255
-  } catch {
+    for (let y = 0; y < bitmap.height; y += 256)
+      for (let x = 0; x < bitmap.width; x += 256) {
+        const width = Math.min(256, bitmap.width - x),
+          height = Math.min(256, bitmap.height - y)
+        ctx.clearRect(0, 0, 256, 256)
+        ctx.drawImage(bitmap, x, y, width, height, 0, 0, width, height)
+        const data = ctx.getImageData(0, 0, width, height).data
+        for (let i = 3; i < data.length; i += 4) if (data[i] < 255) return true
+      }
     return false
+  } finally {
+    canvas.width = canvas.height = 0
+  }
+}
+
+async function boundedBitmap(file: File): Promise<ImageBitmap> {
+  await assertImagePixelLimit(file)
+  const bitmap = await createImageBitmap(file)
+  if (bitmap.width * bitmap.height > 32_000_000) {
+    bitmap.close()
+    throw new ProcessingError(
+      'This image exceeds the 32 megapixel processing limit. Resize it first.',
+    )
+  }
+  return bitmap
+}
+
+async function encodeWithCancellation(
+  file: File,
+  options: Parameters<typeof imageCompression>[1],
+  signal?: CancelSignal,
+): Promise<File> {
+  const controller = new AbortController()
+  const release = listenForCancellation(signal, () => controller.abort())
+  try {
+    return await imageCompression(file, {
+      ...options,
+      signal: controller.signal,
+    })
+  } finally {
+    release()
   }
 }
 
@@ -125,7 +161,9 @@ function presetFor(level: CompressionLevel, quality?: number): Preset {
     level === 'maximum'
       ? { maxSizeMB: 0.5, maxWidthOrHeight: 1920, quality: 0.6 }
       : { maxSizeMB: 1.5, maxWidthOrHeight: 3200, quality: 0.82 }
-  return typeof quality === 'number' ? { ...base, quality: clampQuality(quality) } : base
+  return typeof quality === 'number'
+    ? { ...base, quality: clampQuality(quality) }
+    : base
 }
 
 function clampQuality(q: number): number {
@@ -149,7 +187,7 @@ export async function compressImage(
   file: File,
   options: ImageCompressOptions = {},
   onProgress?: ProgressCallback,
-  signal?: CancelSignal
+  signal?: CancelSignal,
 ): Promise<ImageCompressResult> {
   assertNotCancelled(signal)
   onProgress?.(3, 'Preparing image…')
@@ -162,38 +200,86 @@ export async function compressImage(
   // whether the result is a *compression* of what they uploaded or a *conversion*
   // to something else — which changes both the wording and the filename.
   const detected = await detectFormat(file)
-  const sourceFormat = detected && isImageFormat(detected) ? detected : undefined
-  const isConversion = Boolean(targetFormat && sourceFormat && targetFormat !== sourceFormat)
+  const sourceFormat =
+    detected && isImageFormat(detected) ? detected : undefined
+  const isConversion = Boolean(
+    targetFormat && sourceFormat && targetFormat !== sourceFormat,
+  )
 
   assertNotCancelled(signal)
+  // Check decoded dimensions and transparency for every item, not only the first batch file.
+  try {
+    const bitmap = await boundedBitmap(file)
+    try {
+      if (
+        targetFormat === 'jpeg' &&
+        sourceFormat !== 'jpeg' &&
+        hasAlphaChannel(bitmap)
+      ) {
+        throw new ProcessingError(
+          'This image has transparency. Choose PNG, WEBP, or keep its original format.',
+        )
+      }
+    } finally {
+      bitmap.close()
+    }
+  } catch (error) {
+    throw describeImageError(error, signal)
+  }
 
   // A target size only makes sense when we control the encoder quality, which
   // is the lossy formats. PNG is lossless: its size is driven by dimensions and
   // colour depth, not a quality dial, so a search would be theatre.
   if (options.targetSize && options.targetSize > 0) {
-    if (!targetFormat || targetFormat !== 'png') {
-      return compressToTargetSize(file, options, preset, isConversion, onProgress, signal)
+    if ((targetFormat ?? sourceFormat) !== 'png') {
+      try {
+        return await compressToTargetSize(
+          file,
+          options,
+          preset,
+          isConversion,
+          onProgress,
+          signal,
+        )
+      } catch (error) {
+        throw describeImageError(error, signal)
+      }
     }
   }
 
   try {
-    const compressed = await imageCompression(file, {
-      maxSizeMB: preset.maxSizeMB,
-      maxWidthOrHeight: preset.maxWidthOrHeight,
-      initialQuality: preset.quality,
-      useWebWorker: true,
-      libURL: WORKER_URL,
-      // Only steer the encoder when the output container is known; otherwise keep
-      // the source format so a PNG stays a PNG.
-      fileType: targetFormat ? mimeForExt(targetFormat === 'jpeg' ? 'jpg' : targetFormat) : undefined,
-      onProgress: (p) => {
-        if (signal?.cancelled) return
-        onProgress?.(Math.max(3, Math.min(97, Math.round(p))), 'Compressing image…')
+    const compressed = await encodeWithCancellation(
+      file,
+      {
+        maxSizeMB: preset.maxSizeMB,
+        maxWidthOrHeight: preset.maxWidthOrHeight,
+        initialQuality: preset.quality,
+        useWebWorker: true,
+        libURL: WORKER_URL,
+        // Only steer the encoder when the output container is known; otherwise keep
+        // the source format so a PNG stays a PNG.
+        fileType: mimeForExt(
+          (targetFormat ?? sourceFormat) === 'jpeg'
+            ? 'jpg'
+            : (targetFormat ?? sourceFormat ?? 'jpeg'),
+        ),
+        onProgress: (p) => {
+          if (signal?.cancelled) return
+          onProgress?.(
+            Math.max(3, Math.min(97, Math.round(p))),
+            'Compressing image…',
+          )
+        },
       },
-    })
+      signal,
+    )
 
     assertNotCancelled(signal)
 
+    if ((await detectFormat(compressed)) !== (targetFormat ?? sourceFormat))
+      throw new ProcessingError(
+        'This browser could not encode the requested image format.',
+      )
     const outType = compressed.type || file.type || 'image/jpeg'
     const ext = extensionForMime(outType)
 
@@ -202,6 +288,10 @@ export async function compressImage(
       blob: compressed,
       filename: nameOutput(file, ext, isConversion),
       mimeType: outType,
+      targetNote:
+        options.targetSize && (targetFormat ?? sourceFormat) === 'png'
+          ? 'PNG output has no quality target. Choose JPG or WEBP to search for a target size.'
+          : undefined,
     }
   } catch (e) {
     throw describeImageError(e, signal)
@@ -231,8 +321,8 @@ const MAX_ATTEMPTS = 9
  *
  * This is a real binary search over the encoder's quality parameter: each step
  * produces an actual encoded image and is measured against the real byte target.
- * Quality falls monotonically as size falls for every codec here, so the search
- * terminates at a genuine optimum rather than an arbitrary one.
+ * The bounded search keeps the highest-quality candidate it finds within the target;
+ * encoder rounding means this is not a guarantee of a mathematical optimum.
  *
  * If even the lowest quality overshoots, we return that smallest result *and say
  * so* — we never claim the target was hit when it was not, and we never pad or
@@ -244,11 +334,16 @@ async function compressToTargetSize(
   preset: Preset,
   isConversion: boolean,
   onProgress?: ProgressCallback,
-  signal?: CancelSignal
+  signal?: CancelSignal,
 ): Promise<ImageCompressResult> {
   const target = options.targetSize as number
   const targetFormat = options.outputFormat
-  const fileType = targetFormat ? mimeForExt(targetFormat === 'jpeg' ? 'jpg' : targetFormat) : undefined
+  const detected = await detectFormat(file)
+  const sourceFormat = detected && isImageFormat(detected) ? detected : 'jpeg'
+  const effectiveFormat = targetFormat ?? sourceFormat
+  const fileType = mimeForExt(
+    effectiveFormat === 'jpeg' ? 'jpg' : effectiveFormat,
+  )
 
   let lo = MIN_QUALITY
   let hi = MAX_QUALITY
@@ -271,8 +366,12 @@ async function compressToTargetSize(
       onProgress: (p) => {
         if (signal?.cancelled) return
         onProgress?.(
-          Math.round(progressFloor + (Math.max(0, Math.min(100, p)) / 100) * (progressCeil - progressFloor)),
-          `Trying to reach your target size (attempt ${attempts} of ${MAX_ATTEMPTS})…`
+          Math.round(
+            progressFloor +
+              (Math.max(0, Math.min(100, p)) / 100) *
+                (progressCeil - progressFloor),
+          ),
+          `Trying to reach your target size (attempt ${attempts} of ${MAX_ATTEMPTS})…`,
         )
       },
       signal,
@@ -314,7 +413,7 @@ async function compressToTargetSize(
       blob: smallest,
       filename: nameOutput(file, ext, isConversion),
       mimeType: outType,
-      targetNote: `We compressed this as far as possible, but the smallest version is still ${formatKb(smallest.size)}. This image cannot reach ${formatKb(target)} without visibly destroying it.`,
+      targetNote: `We compressed this as far as possible, but the smallest version is still ${formatKb(smallest.size)}. The target of ${formatKb(target)} could not be reached within the supported quality and dimension limits.`,
     }
   }
 
@@ -322,7 +421,11 @@ async function compressToTargetSize(
   const ext = extensionForMime(outType)
 
   onProgress?.(100, 'Done')
-  return { blob: best, filename: nameOutput(file, ext, isConversion), mimeType: outType }
+  return {
+    blob: best,
+    filename: nameOutput(file, ext, isConversion),
+    mimeType: outType,
+  }
 }
 
 /**
@@ -340,41 +443,45 @@ async function encodeAtQuality(
     fileType?: string
     onProgress?: (p: number) => void
     signal?: CancelSignal
-  }
+  },
 ): Promise<File> {
-  return imageCompression(file, {
-    quality: config.quality,
-    initialQuality: config.quality,
-    maxSizeMB: Number.POSITIVE_INFINITY,
-    maxWidthOrHeight: config.maxWidthOrHeight,
-    useWebWorker: true,
-    libURL: WORKER_URL,
-    fileType: config.fileType,
-    onProgress: config.onProgress,
-    preserveExif: false,
-    signal: toAbortSignal(config.signal),
-  })
-}
-
-/**
- * Bridge the engine's cooperative cancel signal into the AbortSignal the
- * image library understands, so cancelling a target search stops the encode
- * instead of merely discarding it at the end.
- */
-function toAbortSignal(signal?: CancelSignal): AbortSignal | undefined {
-  if (!signal || typeof AbortController === 'undefined') return undefined
-  const controller = new AbortController()
-  const onCheck = () => {
-    if (signal.cancelled) controller.abort()
+  assertNotCancelled(config.signal)
+  const bitmap = await boundedBitmap(file)
+  const canvas = document.createElement('canvas')
+  try {
+    const scale = Math.min(
+      1,
+      config.maxWidthOrHeight / Math.max(bitmap.width, bitmap.height),
+    )
+    canvas.width = Math.max(1, Math.round(bitmap.width * scale))
+    canvas.height = Math.max(1, Math.round(bitmap.height * scale))
+    const ctx = canvas.getContext('2d')
+    if (!ctx) throw new ProcessingError('This browser cannot encode images.')
+    ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height)
+    const type = config.fileType ?? file.type
+    const blob = await new Promise<Blob>((resolve, reject) =>
+      canvas.toBlob(
+        (value) =>
+          value
+            ? resolve(value)
+            : reject(
+                new ProcessingError('The image encoder produced no output.'),
+              ),
+        type,
+        config.quality,
+      ),
+    )
+    assertNotCancelled(config.signal)
+    if (blob.type !== type)
+      throw new ProcessingError(
+        'This browser does not support the requested output format.',
+      )
+    config.onProgress?.(100)
+    return new File([blob], file.name, { type: blob.type })
+  } finally {
+    bitmap.close()
+    canvas.width = canvas.height = 0
   }
-  onCheck()
-  const timer = setInterval(onCheck, 150)
-  // Release the poller once the encode settles.
-  const clear = () => clearInterval(timer)
-  if (typeof controller.signal.addEventListener === 'function') {
-    controller.signal.addEventListener('abort', clear, { once: true })
-  }
-  return controller.signal
 }
 
 function formatKb(bytes: number): string {
@@ -384,7 +491,8 @@ function formatKb(bytes: number): string {
 }
 
 function describeImageError(e: unknown, signal?: CancelSignal): Error {
-  if (signal?.cancelled) return new ProcessingError('Processing was cancelled.', 'cancelled')
+  if (signal?.cancelled)
+    return new ProcessingError('Processing was cancelled.', 'cancelled')
   if (e instanceof ProcessingError) return e
 
   const message = e instanceof Error ? e.message : ''
@@ -393,15 +501,17 @@ function describeImageError(e: unknown, signal?: CancelSignal): Error {
   }
   if (/memory|allocation|heap|out of bounds/i.test(message)) {
     return new ProcessingError(
-      'This image is too large for this device to process in the browser. Try a smaller file, or a device with more memory.'
+      'This image is too large for this device to process in the browser. Try a smaller file, or a device with more memory.',
     )
   }
   if (/decode|unsupported|invalid|not supported/i.test(message)) {
     return new ProcessingError(
-      'This image could not be compressed. It may be corrupted, or use a format this browser cannot decode.'
+      'This image could not be compressed. It may be corrupted, or use a format this browser cannot decode.',
     )
   }
-  return new ProcessingError('This image could not be compressed in your browser.')
+  return new ProcessingError(
+    'This image could not be compressed in your browser.',
+  )
 }
 
 function extensionForMime(mime: string): string {

@@ -1,9 +1,20 @@
-import { getFFmpeg, terminateFFmpeg, toBytes, writeInputFile, isFFmpegLoaded } from '../ffmpeg/loader'
-import { replaceExtension, suffixFilename } from '../format'
+import {
+  getFFmpeg,
+  terminateFFmpeg,
+  toBytes,
+  writeInputFile,
+  isFFmpegLoaded,
+} from '../ffmpeg/loader'
+import { replaceExtension, suffixFilename, uid } from '../format'
 import { assertNotCancelled } from '../validation'
 import { attachFfmpegProgress } from './video'
-import type { CancelSignal, CompressionLevel, ProcessedResult, ProgressCallback } from '../types'
-import { ProcessingError } from '../types'
+import type {
+  CancelSignal,
+  CompressionLevel,
+  ProcessedResult,
+  ProgressCallback,
+} from '../types'
+import { ProcessingError, listenForCancellation } from '../types'
 import type { FFmpeg } from '@ffmpeg/ffmpeg'
 
 export interface AudioOptions {
@@ -23,7 +34,7 @@ export async function processAudio(
   file: File,
   options: AudioOptions = {},
   onProgress?: ProgressCallback,
-  signal?: CancelSignal
+  signal?: CancelSignal,
 ): Promise<ProcessedResult> {
   assertNotCancelled(signal)
   onProgress?.(1, 'Loading the audio engine (first run downloads ~30 MB)…')
@@ -41,23 +52,26 @@ export async function processAudio(
 
   const outFmt = options.outputFormat ?? 'mp3'
   const level = options.level ?? 'recommended'
-  const bitrate = options.bitrate ?? (level === 'maximum' ? '96k' : '160k')
+  const bitrate = options.bitrate ?? (level === 'maximum' ? '96k' : '192k')
+  if (!['96k', '128k', '160k', '192k', '256k', '320k'].includes(bitrate))
+    throw new ProcessingError('Choose a supported audio bitrate.')
 
-  const stamp = Date.now().toString(36)
+  const stamp = uid()
   const inputName = `ain_${stamp}${extOf(file.name)}`
   const outputName = `aout_${stamp}.${outFmt}`
 
-  onProgress?.(6, outFmt === 'mp3' ? 'Re-encoding audio…' : 'Converting to WAV…')
+  onProgress?.(
+    6,
+    outFmt === 'mp3' ? 'Re-encoding audio…' : 'Converting to WAV…',
+  )
 
   let cancelledHere = false
-  const cancelPoll = signal
-    ? setInterval(() => {
-        if (signal.cancelled && !cancelledHere) {
-          cancelledHere = true
-          void terminateFFmpeg()
-        }
-      }, 300)
-    : null
+  const releaseCancel = listenForCancellation(signal, () => {
+    if (!cancelledHere) {
+      cancelledHere = true
+      void terminateFFmpeg()
+    }
+  })
 
   let detach: (() => void) | null = null
 
@@ -68,25 +82,46 @@ export async function processAudio(
     const args =
       outFmt === 'mp3'
         ? [
-            '-i', inputName,
+            '-i',
+            inputName,
             '-vn',
-            '-map', '0:a:0',
-            '-c:a', 'libmp3lame',
-            '-b:a', bitrate,
+            '-map',
+            '0:a:0',
+            '-c:a',
+            'libmp3lame',
+            '-b:a',
+            bitrate,
             outputName,
           ]
-        : ['-i', inputName, '-vn', '-map', '0:a:0', '-c:a', 'pcm_s16le', outputName]
+        : [
+            '-i',
+            inputName,
+            '-vn',
+            '-map',
+            '0:a:0',
+            '-c:a',
+            'pcm_s16le',
+            outputName,
+          ]
 
     detach = attachFfmpegProgress(ffmpeg, (pct) => {
       if (signal?.cancelled) return
-      onProgress?.(10 + pct * 0.85, outFmt === 'mp3' ? 'Re-encoding audio…' : 'Converting to WAV…')
+      onProgress?.(
+        10 + pct * 0.85,
+        outFmt === 'mp3' ? 'Re-encoding audio…' : 'Converting to WAV…',
+      )
     })
 
-    await ffmpeg.exec(args)
+    if ((await ffmpeg.exec(args, 300_000)) !== 0)
+      throw new ProcessingError(
+        'Audio encoding failed or exceeded the five-minute processing limit.',
+      )
     assertNotCancelled(signal)
 
     onProgress?.(96, 'Finishing…')
     const bytes = toBytes(await ffmpeg.readFile(outputName))
+    if (bytes.length < 4)
+      throw new ProcessingError('The audio encoder produced no usable output.')
 
     const mime = outFmt === 'mp3' ? 'audio/mpeg' : 'audio/wav'
     // Only claim "compressed" when we actually produced a lossy encode of a
@@ -104,11 +139,11 @@ export async function processAudio(
     }
     if (e instanceof ProcessingError) throw e
     throw new ProcessingError(
-      'This audio file could not be processed. It may be corrupted, or use a codec this browser engine cannot decode.'
+      'This audio file could not be processed. It may be corrupted, or use a codec this browser engine cannot decode.',
     )
   } finally {
     if (detach) detach()
-    if (cancelPoll) clearInterval(cancelPoll)
+    releaseCancel()
     if (!cancelledHere && isFFmpegLoaded()) {
       try {
         await ffmpeg.deleteFile(inputName)

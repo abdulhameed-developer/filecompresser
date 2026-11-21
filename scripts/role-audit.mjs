@@ -52,7 +52,8 @@ for (const [name, pattern] of REQUIRED_HEADERS) {
 
 // The engine routes serve executable and binary payloads, so their own headers
 // are checked separately — a bad Content-Type there is how a wasm download breaks.
-for (const asset of ['/ffmpeg-core/ffmpeg-core.wasm', '/image-worker/browser-image-compression.js']) {
+const engineManifest = await (await fetch(`${BASE}/ffmpeg-core/wasm-manifest.json`)).json()
+for (const asset of [...engineManifest.chunks.map(chunk => `/ffmpeg-core/${chunk.file}`), '/image-worker/browser-image-compression.js']) {
   const r = await fetch(BASE + asset, { redirect: 'manual' })
   if (r.status !== 200) {
     fail('Security', `${asset} returns ${r.status}`)

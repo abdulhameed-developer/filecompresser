@@ -1,0 +1,31 @@
+{
+  "heading": "How can I make website images smaller?",
+  "introduction": "Re-encode JPG, PNG or WebP images in your browser, keeping the input format or choosing another supported output. The result depends on image content, dimensions and quality settings.",
+  "sections": [
+    {
+      "heading": "Prepare a mixed image batch",
+      "body": "Add your images, choose an available output format and start with Recommended. Process the batch, then check the download at the size it will actually appear on your website or in your attachment."
+    },
+    {
+      "heading": "Match the format to the image",
+      "body": "JPG is useful for photographs. PNG and WebP can retain transparent backgrounds. JPG output is unavailable for transparent images so that a background is not silently flattened."
+    },
+    {
+      "heading": "Check dimensions as well as file size",
+      "body": "The presets may resize large images. Resizing changes the available detail even when the output is PNG. Inspect small text, edges and transparency before replacing the original; keep a source copy for future edits."
+    }
+  ],
+  "faq": [],
+  "seoTitle": "Image Compressor for JPG, PNG and WebP",
+  "seoDescription": "Compress JPG, PNG and WebP images locally. Choose a supported format, review quality and dimensions, then compare the actual download size.",
+  "links": [
+    {
+      "label": "Choose a format for website images",
+      "href": "/blog/compressing-files-for-the-web"
+    },
+    {
+      "label": "Compare Recommended and Maximum",
+      "href": "/blog/choosing-a-compression-mode"
+    }
+  ]
+}

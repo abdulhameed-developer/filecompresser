@@ -11,6 +11,8 @@ import { SITE_WORDMARK } from '@/lib/seo'
 export const alt = 'filecompresser — compress and convert files privately in your browser'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
+// Image routes need an explicit static declaration with output: 'export'.
+export const dynamic = 'force-static'
 
 export default function OpengraphImage() {
   return new ImageResponse(

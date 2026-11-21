@@ -1,9 +1,10 @@
 'use client'
 
+import Icon from './Icon'
+
 import { useCallback, useMemo, useState } from 'react'
 import type { ToolDefinition } from '@/lib/types'
 import { useFileQueue } from '@/lib/useFileQueue'
-import { toolUsesFfmpeg } from '@/lib/tools'
 import { savingsSummary } from '@/lib/format'
 import FileDropzone from './FileDropzone'
 import FileItem from './FileItem'
@@ -16,7 +17,10 @@ interface ToolWorkspaceProps {
   formatsLabel?: string
 }
 
-export default function ToolWorkspace({ tool, formatsLabel }: ToolWorkspaceProps) {
+export default function ToolWorkspace({
+  tool,
+  formatsLabel,
+}: ToolWorkspaceProps) {
   const queue = useFileQueue(tool)
   const {
     items,
@@ -29,6 +33,7 @@ export default function ToolWorkspace({ tool, formatsLabel }: ToolWorkspaceProps
     runAll,
     retryItem,
     pendingCount,
+    validatingCount,
     completedCount,
     failedCount,
   } = queue
@@ -47,41 +52,69 @@ export default function ToolWorkspace({ tool, formatsLabel }: ToolWorkspaceProps
   }, [items])
 
   const totalOriginal = useMemo(
-    () => items.reduce((sum, item) => sum + item.originalSize, 0),
-    [items]
+    () =>
+      items
+        .filter(
+          (item) =>
+            item.status === 'completed' && item.comparison !== 'extraction',
+        )
+        .reduce((sum, item) => sum + item.originalSize, 0),
+    [items],
   )
   const totalOutput = useMemo(
-    () => items.reduce((sum, item) => sum + (item.outputSize ?? 0), 0),
-    [items]
+    () =>
+      items
+        .filter(
+          (item) =>
+            item.status === 'completed' && item.comparison !== 'extraction',
+        )
+        .reduce((sum, item) => sum + (item.outputSize ?? 0), 0),
+    [items],
   )
 
   // The batch headline must never imply a saving that did not happen. A batch
   // whose output is larger says so, in words.
   const batchSavings = useMemo(
-    () => (completedCount > 0 ? savingsSummary(totalOriginal, totalOutput) : ''),
-    [completedCount, totalOriginal, totalOutput]
+    () =>
+      completedCount > 0 ? savingsSummary(totalOriginal, totalOutput) : '',
+    [completedCount, totalOriginal, totalOutput],
   )
 
   const handleFiles = useCallback(
     (files: FileList | File[]) => {
       addFiles(files)
     },
-    [addFiles]
+    [addFiles],
   )
 
   const actionLabel = actionVerb(tool)
-  const canStart = pendingCount > 0 && !busyDisabled
+  const canStart = pendingCount > 0 && !busyDisabled && validatingCount === 0
   const hasItems = items.length > 0
+  const hasSettings = !['pdf-compress', 'zip-create', 'zip-extract'].includes(tool.engine) || Boolean(tool.settings?.length) || Boolean(formatSource && supportsOutputPicker(tool))
 
   return (
-    <section className="compressCard toolCard" aria-label={`${tool.title} upload area`}>
+    <section
+      className="compressCard toolCard"
+      aria-label={`${tool.title} upload area`}
+    >
+      <ol className="workspaceSteps" aria-label="File processing steps">
+        {['Select files', 'Configure', 'Process', 'Download'].map((label, index) => {
+          const current = busyDisabled ? 2 : pendingCount > 0 ? 1 : completedCount > 0 ? 3 : 0
+          return <li key={label} aria-current={index === current ? 'step' : undefined}><b aria-hidden="true">{index + 1}</b>{label}</li>
+        })}
+      </ol>
       <div className="cardTop">
         <div>
           {/* No heading here: the page's H1 is the tool title, and a second
               heading repeating it was read twice by every screen reader. */}
-          <p className="cardIntro">{tool.description}</p>
+          <p className="cardIntro">
+            Choose files, review settings, then process privately on this
+            device.
+          </p>
         </div>
-        <span className="limit">MAX {formatLimit(tool.maxFileSize)} PER FILE</span>
+        <span className="limit">
+          MAX {formatLimit(tool.maxFileSize)} PER FILE
+        </span>
       </div>
 
       <FileDropzone
@@ -97,19 +130,23 @@ export default function ToolWorkspace({ tool, formatsLabel }: ToolWorkspaceProps
         onFiles={handleFiles}
       />
 
+      <p className="queueLimit">Up to 500 files / 300 MB per queue{tool.category === 'image' ? ' · 32 megapixels per image' : ''}.</p>
+
       {hasItems && (
         <>
-          <div className="queueSummary" aria-live="polite">
+          <div className="queueSummary">
             <span>
               {items.length} file{items.length === 1 ? '' : 's'}
             </span>
             {completedCount > 0 && (
-              <span className="summarySavings">{batchSavings}</span>
+              <span className="summarySavings">
+                {totalOriginal > 0
+                  ? batchSavings
+                  : `${completedCount} extracted files ready`}
+              </span>
             )}
             {failedCount > 0 && (
-              <span className="summaryFailed">
-                {failedCount} failed
-              </span>
+              <span className="summaryFailed">{failedCount} failed</span>
             )}
           </div>
 
@@ -122,29 +159,49 @@ export default function ToolWorkspace({ tool, formatsLabel }: ToolWorkspaceProps
                 onRemove={removeItem}
                 onRetry={retryItem}
                 onCancel={cancelItem}
+                busy={busyDisabled}
               />
             ))}
           </ul>
         </>
       )}
 
-      <CompressionSettings
-        tool={tool}
-        level={queue.level}
-        onLevel={queue.setLevel}
-        settings={queue.settings}
-        onSetting={queue.setSetting}
-      />
-
-      {formatSource && supportsOutputPicker(tool) && (
-        <OutputFormatPicker
-          file={formatSource}
-          value={String(queue.settings.outputFormat ?? '')}
-          onChange={(next) => queue.setSetting('outputFormat', next)}
+      {hasSettings && <fieldset className="workspaceSettings" disabled={busyDisabled}>
+        <legend className="srInline">Processing settings</legend>
+        <CompressionSettings
+          tool={tool}
+          level={queue.level}
+          onLevel={queue.setLevel}
+          settings={queue.settings}
+          onSetting={queue.setSetting}
+          targetAllowed={
+            queue.settings.outputFormat === 'jpeg' ||
+            queue.settings.outputFormat === 'webp' ||
+            (!queue.settings.outputFormat &&
+              (items.length
+                ? items.every(
+                    (item) =>
+                      item.inputFormat === 'jpeg' ||
+                      item.inputFormat === 'webp',
+                  )
+                : [
+                    'jpg-compressor',
+                    'jpeg-compressor',
+                    'webp-compressor',
+                  ].includes(tool.slug)))
+          }
         />
-      )}
 
-      {hasItems && (
+        {formatSource && supportsOutputPicker(tool) && (
+          <OutputFormatPicker
+            file={formatSource}
+            value={String(queue.settings.outputFormat ?? '')}
+            onChange={(next) => queue.setSetting('outputFormat', next)}
+          />
+        )}
+      </fieldset>}
+
+      {(pendingCount > 0 || busyDisabled || validatingCount > 0) && (
         <div className="actions">
           <button
             type="button"
@@ -154,14 +211,20 @@ export default function ToolWorkspace({ tool, formatsLabel }: ToolWorkspaceProps
           >
             {busyDisabled
               ? 'Processing…'
-              : isCollective
-                ? `${actionLabel} ${pendingCount} file${pendingCount === 1 ? '' : 's'}`
-                : `${actionLabel} ${pendingCount} file${pendingCount === 1 ? '' : 's'}`}
-            <span aria-hidden="true">→</span>
+              : validatingCount > 0
+                ? 'Checking files…'
+                : isCollective
+                  ? `${actionLabel} ${pendingCount} file${pendingCount === 1 ? '' : 's'}`
+                  : `${actionLabel} ${pendingCount} file${pendingCount === 1 ? '' : 's'}`}
+            <Icon name="arrow" />
           </button>
 
           {processing && (
-            <button type="button" className="downloadBtn secondary" onClick={cancelAll}>
+            <button
+              type="button"
+              className="downloadBtn secondary"
+              onClick={cancelAll}
+            >
               Cancel all
             </button>
           )}
@@ -185,20 +248,12 @@ export default function ToolWorkspace({ tool, formatsLabel }: ToolWorkspaceProps
         <p className={`status status-${status.kind}`}>{status.text}</p>
       )}
 
-      {tool.note && (
-        <p className="toolNote">
-          <span aria-hidden="true">◉</span> {tool.note}
-        </p>
-      )}
-
-      {toolUsesFfmpeg(tool) && (
-        <p className="engineNote">
-          Uses a WebAssembly build of FFmpeg, downloaded once from this site on first use.
-        </p>
-      )}
-
-      <details className="howItWorks" open={summaryOpen} onToggle={(e) => setSummaryOpen(e.currentTarget.open)}>
-        <summary>How your file is handled</summary>
+      <details
+        className="howItWorks"
+        open={summaryOpen}
+        onToggle={(e) => setSummaryOpen(e.currentTarget.open)}
+      >
+        <summary><span>How your file is handled</span><Icon name="chevron" /></summary>
         <p>
           {tool.privacyClientSide
             ? 'Your file is read into this browser tab, processed on your own device, and never sent to a filecompresser server. Closing the tab releases it. Clearing your browser cache is not needed, because nothing is stored.'
@@ -233,5 +288,5 @@ function actionVerb(tool: ToolDefinition): string {
  * pick the container is a genuine choice rather than a repackage.
  */
 function supportsOutputPicker(tool: ToolDefinition): boolean {
-  return tool.engine === 'image-compress'
+  return tool.engine === 'image-compress' && tool.slug !== 'compress'
 }

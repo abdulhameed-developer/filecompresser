@@ -1,0 +1,31 @@
+{
+  "heading": "What does this PDF optimizer actually reduce?",
+  "introduction": "This tool removes selected PDF metadata and rewrites the document structure. It does not downsample scanned pages or recompress embedded photographs, so image-heavy or already optimized PDFs may barely shrink.",
+  "sections": [
+    {
+      "heading": "Try a structural rewrite",
+      "body": "Add an unsigned, unencrypted PDF within the 50 MB input limit and start processing. The output is parsed again and its page count checked before a download is offered. Compare the reported size with the original."
+    },
+    {
+      "heading": "Know when another approach is needed",
+      "body": "Large scanned PDFs often need image or scan-resolution changes for a substantial reduction. Those operations are not offered here. The optimizer does not perform OCR, remove passwords or promise a particular percentage saving."
+    },
+    {
+      "heading": "Inspect the document before keeping it",
+      "body": "Open the download in your PDF reader and review pages, forms, links and appearance. Detected digitally signed and encrypted PDFs are refused. Keep the original because a successful parse and matching page count do not prove every document feature is unchanged."
+    }
+  ],
+  "faq": [],
+  "seoTitle": "PDF Optimizer — Rewrite Structure and Metadata",
+  "seoDescription": "Optimize PDF structure and remove selected metadata locally. Embedded images are not recompressed, and scanned PDFs may see little size reduction.",
+  "links": [
+    {
+      "label": "Why some PDFs barely shrink",
+      "href": "/blog/honest-file-size-reporting"
+    },
+    {
+      "label": "What the local-processing privacy claim covers",
+      "href": "/blog/what-privacy-claim-really-means"
+    }
+  ]
+}

@@ -1,161 +1,46 @@
-# FileCompresser.com
+# FileCompresser
 
-Private, browser-based file compression.
+Browser-based file compression and conversion. The owner has purchased **filecompresser.com**. This working copy is prepared for GitHub-backed content and Cloudflare Pages static hosting; no production account, DNS change or deployment is claimed.
 
-Website: [https://filecompresser.com](https://filecompresser.com)
+## Start here
 
-## Overview
+Read [SEO and hosting setup](docs/SEO-AND-HOSTING.md) for the complete first-time setup, editor accounts/password recovery, GitHub publishing and custom domain instructions.
 
-FileCompresser processes files **in your browser**. No supported tool uploads your
-files to a server — there is no upload endpoint in this codebase, so there is
-nothing for a file to be sent to. Heavy engines (the FFmpeg WebAssembly build
-and the image encoder) are lazy-loaded only on the pages that need them and are
-served from this site's own origin.
-
-## Tools
-
-### Compression
-
-| Tool | Route | What it actually does |
-| --- | --- | --- |
-| Compress Any File | `/compress` | Detects the format and routes to the right engine |
-| Image Compressor | `/image-compressor` | Real codec encode, JPG/PNG/WEBP |
-| JPG Compressor | `/jpg-compressor` | Re-encodes JPEG (also serves `/wav-to-mp3`-style aliases) |
-| JPEG Compressor | `/jpeg-compressor` | Same engine, distinct landing page |
-| PNG Compressor | `/png-compressor` | Preserves transparency |
-| WEBP Compressor | `/webp-compressor` | Re-compresses WEBP |
-| GIF Compressor | `/gif-compressor` | Re-quantizes every frame via FFmpeg |
-| Video Compressor | `/video-compressor` | H.264 + AAC in MP4, with a resolution cap |
-| MP3 Compressor | `/mp3-compressor` | Re-encodes at a chosen bitrate |
-| WAV to MP3 | `/wav-compressor` | A format conversion, not lossless compression |
-| PDF Compressor | `/pdf-compressor` | Strips metadata, rewrites structure, validates the output |
-| ZIP Creator | `/zip-compressor` | Builds an archive from any files |
-| ZIP Extractor | `/archive-compressor` | Extracts with traversal and bomb protection |
-
-### Also on the site
-
-- `/about` — what the site is, how a file is handled, and where the limits are
-- `/blog` — five posts on the mechanics, with diagrams
-- `/privacy`, `/terms`, `/disclaimer`, `/contact`, `/sitemap`
-
-### Deliberately not offered
-
-The converter tools (image format conversion, HEIC, SVG, PDF→JPG, images→PDF,
-audio extraction) were removed. They worked, but the product is compression;
-keeping them made the site read as a generic file utility. The engine code that
-only they used was removed with them, along with the `heic2any` and `pdfjs-dist`
-dependencies.
-
-## Architecture
-
-```
-app/                 Next.js App Router pages; one header and footer, in layout
-  blog/              Blog index and posts
-  [tool]/            Tool page, generated from the registry
-  ffmpeg-core/       Serves the WASM core and its worker module
-  image-worker/      Serves the image encoder's Web Worker
-components/          Dropzone, queue, workspace, chrome
-lib/
-  engines/           image, gif, video, audio, pdf, zip
-  ffmpeg/loader.ts   Lazy, memoised FFmpeg WASM loader
-  validation.ts      Magic-byte validation + archive path safety
-  process.ts         Engine dispatcher
-  useFileQueue.ts    Batch queue: validate -> process -> download
-  tools.ts           Tool registry — the single source of truth
-  nav.ts             Navigation: groups, header/footer link lists
-  blog.ts            Blog posts, same one-source-of-truth pattern
-scripts/             QA tooling (see below)
-tests/               Unit tests (vitest)
+```sh
+npm ci
+npm run setup:cms
+npm run dev:cms
 ```
 
-### Processing states
+Open http://localhost:3000/admin/index.html. The first CMS run generates `tina/tina-lock.json`. Commit that file and the dependency changes made by setup before connecting TinaCloud. Local editing has no login; hosted editing requires TinaCloud authentication. Production builds must use **npm run build:cms** with the account variables configured. Never publish a CMS built in local mode.
 
-`validating` → `queued` → `processing` → `completed` | `failed` | `cancelled`
+The CMS installer is a one-time explicit dependency setup. The original package lock stays valid until you run it. It adds the pinned TinaCMS/CLI dependencies and updates the lock together. It was not run successfully in the restricted preparation environment, so the generated admin application and hosted authentication still require installation and testing on your computer.
 
-Concurrency: 2 for image work, 1 for FFmpeg, PDF and ZIP.
+## Content
 
-## Development
+- `content/posts/*.json`: five migrated posts, structured content blocks, drafts, dates, reading time and SEO fields. File name becomes the post URL; keep published URLs stable.
+- `content/tools/*.json`: content below all 13 tools, SEO titles/descriptions and optional replacement FAQs. The WAV alias uses its canonical page's content.
+- `content/home/home.json`: homepage content and SEO fields.
+- `tina/collections.mjs`: editor forms. `tina/config.js`: hosted editor configuration.
 
-```bash
-npm install
-npm run dev
-```
+Published content is read during the build and emitted as HTML. Drafts never enter public pages, related articles, metadata or sitemaps. Saving through TinaCloud commits to GitHub; Cloudflare rebuilds the website. A successful build is required before edits appear live. A malformed published document fails the new build instead of replacing the last good site. Editorial text is escaped, not executed as HTML.
 
-Open `http://localhost:3000`.
+## Development and checks
 
-## Verification
+Use Node 22.12 or newer. `npm run dev` serves the public site without the editor. `npm run build` prepares worker files and exports static HTML to `out/`. `npm start` serves that export locally. `npm run typecheck`, `npm test`, `npm run check:public`, and `node scripts/package-site.mjs` validate the project. With read-only symlinked dependencies, use `npm test -- --configLoader runner`.
 
-```bash
-npm run verify     # lint, typecheck, tests, audit, build
-```
+`npm run verify` additionally requires the external browser/media QA dependencies described in `scripts/verify.sh`. It audits only its own static preview server. A unit test pass does not prove every browser can encode every file.
 
-The browser-driven audits are what catch the defects unit tests cannot see —
-scroll positions, off-centre sections, overflowing menus, contrast failures.
-They need Chrome and `playwright-core`, installed **outside** the project
-because they are QA tooling and not something the site ships:
+## Free hosting architecture
 
-```bash
-mkdir -p ~/pwtools && cd ~/pwtools && npm install playwright-core omggif
-bash scripts/verify.sh
-```
+GitHub stores the source and content. Cloudflare Pages hosts the static website, HTTPS and the domain. TinaCloud authenticates editors and saves content to GitHub. Visitors need no accounts. There is no application server or database to buy or maintain. Service free tiers have usage and collaborator limits; see the setup guide.
 
-`verify.sh` builds, starts a server, and **refuses to audit a stale one** — it
-compares the content-hashed stylesheet on disk against the one being served.
+The build prepares same-origin FFmpeg/image workers. FFmpeg's 32.2 MB WebAssembly engine is split into two content-addressed static chunks below Cloudflare's per-file limit, then verified and reassembled on the visitor's device. No visitor files are sent to a server. Configure the custom response headers in `public/_headers`; GitHub Pages does not honor them, so use the Cloudflare Pages instructions.
 
-| Script | Checks |
-| --- | --- |
-| `route-crawl.mjs` | Status, metadata, canonicals, sitemap, internal links |
-| `navigation-audit.mjs` | Header/footer/menu navigation and scroll restoration |
-| `responsive-audit.mjs` | 10 widths × 12 routes: overflow, touch targets, dropdown |
-| `role-audit.mjs` | Security headers, path traversal, contrast, payload weight |
-| `a11y-manual-audit.mjs` | Keyboard operation, 400% reflow, motion, target size |
-| `functionality-audit.mjs` | Real files through the real engines, end to end |
-| `make-logo.py` | Rebuilds `public/logo*.png` from the source wordmark |
-| `make-gif.mjs` | Builds the animated GIF fixture |
+## Processing and release scope
 
-### QA fixtures
+Images use browser encoders; GIF/video/audio use FFmpeg; PDF optimization rewrites structure and metadata rather than shrinking scans; ZIP creation/extraction has size, CRC and path limits. Existing file and queue limits remain in place.
 
-The functionality audit needs real files served from `public/`. They are QA
-assets and are **never site content**:
+A support mailbox is not configured. The earlier [release review](docs/RELEASE-REVIEW.md) records the unresolved FFmpeg corresponding-source/notices prerequisite; the new static packaging does not resolve that item. Review it before public distribution. Preserve the runtime license inventory and exact dependency versions.
 
-```bash
-PW_TOOLS=~/pwtools node scripts/make-gif.mjs
-COPY_TO_PUBLIC=1 node scripts/make-fixtures.mjs
-```
-
-`verify.sh` removes them again afterwards and fails if any remain, so a passing
-run always leaves `public/` deployable. `.gitignore` also excludes them.
-
-## CI/CD
-
-- `.github/workflows/ci.yml` — runs `verify.sh` on every push and pull request,
-  so no regression can merge.
-- `.github/workflows/deploy.yml` — runs only after CI passes, builds once, and
-  refuses to deploy if QA fixtures are present. Set a `DEPLOY_COMMAND` repository
-  variable to point it at a host; without one it validates and stops rather than
-  pretending to have deployed.
-
-## Environment variables
-
-- `NEXT_PUBLIC_SITE_URL` — canonical origin (defaults to `https://filecompresser.com`)
-- `PORT` — port for `verify.sh` (defaults to 3000)
-- `PW_TOOLS` — directory containing `playwright-core`
-
-## Known limitations
-
-- **Legal pages have not been reviewed by a lawyer.** They describe the software
-  accurately and say so on the page. Review them before relying on them.
-- **Accessibility is not WCAG-certified.** The mechanical checks pass, but
-  automated tooling covers roughly a third of WCAG. Screen-reader testing with a
-  real user is still outstanding; `a11y-manual-audit.mjs` prints the checklist.
-- **Dev-dependency advisories.** `eslint-config-next` is pinned to v15 while
-  Next is v16, because v16 dropped the `FlatCompat` API this config uses.
-  Production dependencies audit clean.
-- Large videos may exhaust browser memory. The tools say so rather than failing
-  silently.
-- The first media job downloads the FFmpeg core (~30 MB) from this site.
-  Engine code only — never your file.
-
-## License
-
-Private project — all rights reserved unless otherwise stated.
+Private project. All rights reserved unless otherwise stated.

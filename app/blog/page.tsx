@@ -1,16 +1,17 @@
-import type { Metadata } from 'next'
 import Link from 'next/link'
-import { BLOG_POSTS, postsByDate } from '@/lib/blog'
-import { absoluteUrl, breadcrumbJsonLd, jsonLdScript, webPageJsonLd } from '@/lib/seo'
-import BlogFigure from '@/components/BlogFigure'
+import Image from 'next/image'
+import { BLOG_POSTS, postImage, postsByDate } from '@/lib/blog'
+import { absoluteUrl, breadcrumbJsonLd, jsonLdScript, webPageJsonLd, SITE_NAME } from '@/lib/seo'
+import BlogImage from '@/components/BlogImage'
+import { BLOG_ART } from '@/lib/blog-art'
+import ManagedPageSections from '@/components/ManagedPageSections'
+import { getManagedPage, managedPageMetadata } from '@/lib/managed-pages'
 
-const DESCRIPTION =
-  'Notes on how browser-based compression works, why honest size reporting matters, and what these tools do and do not promise.'
-
-export const metadata: Metadata = {
-  title: 'Blog',
-  description: DESCRIPTION,
-  alternates: { canonical: absoluteUrl('/blog') },
+const page = getManagedPage('blog')
+const DESCRIPTION = page.seoDescription
+export const metadata = {
+  ...managedPageMetadata('blog'),
+  openGraph: { type: 'website' as const, url: absoluteUrl('/blog'), siteName: SITE_NAME, title: page.seoTitle, description: DESCRIPTION, images: [{ url: absoluteUrl('/blog/formattree.jpg'), width: 1200, height: 800 }] },
 }
 
 const structuredData = [
@@ -31,6 +32,8 @@ const structuredData = [
       headline: post.title,
       url: absoluteUrl(`/blog/${post.slug}`),
       datePublished: post.date,
+      dateModified: post.updated ?? post.date,
+      image: absoluteUrl(postImage(post).src),
     })),
   },
 ]
@@ -51,11 +54,10 @@ export default function BlogIndexPage() {
         <span aria-current="page">Blog</span>
       </nav>
 
-      <div className="sectionLabel">BLOG</div>
-      <h1>Notes on how this actually works</h1>
+      <div className="sectionLabel">{page.label}</div>
+      <h1>{page.title}</h1>
       <p className="toolIntro">
-        Everything here is about the tools on this site: how they compress, what they refuse
-        to claim, and where their limits are. No growth-hacking, no listicles.
+        {page.introduction}
       </p>
 
       <ul className="postList">
@@ -63,9 +65,10 @@ export default function BlogIndexPage() {
           <li key={post.slug} className="postCard">
             <Link className="postCardLink" href={`/blog/${post.slug}`}>
               <div className="postCardArt">
-                <BlogFigure figure={post.figure} />
+                {post.featuredImage ? <Image src={post.featuredImage.src} alt={post.featuredImage.alt} width={1200} height={800} sizes="(max-width: 760px) 100vw, 540px" style={{ width: '100%', height: 'auto' }} /> : <BlogImage figure={post.figure} sizes="(max-width: 760px) 100vw, 540px" />}
               </div>
               <div className="postCardBody">
+                <span className="articleCategory">{post.category ?? BLOG_ART[post.figure].category}</span>
                 <h2>{post.title}</h2>
                 <p>{post.description}</p>
                 <div className="postMeta">
@@ -78,6 +81,7 @@ export default function BlogIndexPage() {
           </li>
         ))}
       </ul>
+      <ManagedPageSections sections={page.sections} />
     </div>
   )
 }

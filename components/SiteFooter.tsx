@@ -1,7 +1,7 @@
+import Icon from './Icon'
 import Link from 'next/link'
 import Image from 'next/image'
 import { footerColumns } from '@/lib/nav'
-import { CONTACT_EMAIL } from '@/lib/nav'
 
 /**
  * The one footer, rendered once by the root layout.
@@ -26,7 +26,7 @@ export default function SiteFooter() {
             watermarks.
           </p>
           <p className="footerContact">
-            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+            <Link href="/contact">Help & contact</Link>
           </p>
         </div>
 
@@ -51,7 +51,7 @@ export default function SiteFooter() {
           © {year} filecompresser. All rights reserved.
         </span>
         <span className="footerPrivacy">
-          <span aria-hidden="true">◉</span> Your files are processed on your device and never
+          <Icon name="shield" /> Your files are processed on your device and never
           uploaded.
         </span>
       </div>

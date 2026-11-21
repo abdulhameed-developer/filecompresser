@@ -1,0 +1,31 @@
+{
+  "heading": "How do I open a ZIP archive in my browser?",
+  "introduction": "Add a supported ZIP to extract its contents on your device. Download the individual results, or use the combined ZIP option for several extracted files. Extraction is not counted as compression savings.",
+  "sections": [
+    {
+      "heading": "Inspect the extracted files",
+      "body": "Select the ZIP and start extraction. Review the result filenames and sizes before downloading. Keep the original archive until you have confirmed that the files you need open correctly."
+    },
+    {
+      "heading": "Which archives are supported?",
+      "body": "This tool opens supported ZIP archives, not RAR or 7z files. Encrypted, split and ZIP64 archives are unsupported. Renaming a different archive format to .zip does not make it compatible."
+    },
+    {
+      "heading": "Why an archive may be refused",
+      "body": "The tool rejects unsafe paths, duplicate entry names, invalid integrity data and excessive expansion before offering output. Compressed input is limited to 150 MB, with additional limits on entries and extracted size. These checks reduce risk but cannot guarantee that any untrusted file inside an archive is safe to open."
+    }
+  ],
+  "faq": [],
+  "seoTitle": "ZIP Extractor — Open Archives in Your Browser",
+  "seoDescription": "Open supported ZIP archives locally and download their contents. Encrypted, split and ZIP64 files are unsupported; unsafe archives are refused.",
+  "links": [
+    {
+      "label": "How local files are processed",
+      "href": "/blog/how-browser-compression-works"
+    },
+    {
+      "label": "What local extraction means for privacy",
+      "href": "/blog/what-privacy-claim-really-means"
+    }
+  ]
+}

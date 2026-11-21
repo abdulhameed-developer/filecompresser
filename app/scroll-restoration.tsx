@@ -35,12 +35,18 @@ function headerOffset(): number {
 
 function scrollToHash(hash: string): boolean {
   if (!hash) return false
-  const id = decodeURIComponent(hash.replace(/^#/, ''))
+  let id: string
+  try {
+    id = decodeURIComponent(hash.replace(/^#/, ''))
+  } catch {
+    return false
+  }
   if (!id) return false
   const target = document.getElementById(id)
   if (!target) return false
 
-  const top = target.getBoundingClientRect().top + window.scrollY - headerOffset() - 16
+  const top =
+    target.getBoundingClientRect().top + window.scrollY - headerOffset() - 16
   window.scrollTo({ top: Math.max(0, top), behavior: 'auto' })
   return true
 }
@@ -55,6 +61,15 @@ export default function ScrollRestoration() {
   const isFirstRender = useRef(true)
   // The offset we last saw, used to detect "the page can no longer scroll here".
   const offsetRef = useRef(0)
+  const historyNavigation = useRef(false)
+  useEffect(() => {
+    const onPopState = () => {
+      historyNavigation.current = true
+      offsetRef.current = 0
+    }
+    window.addEventListener('popstate', onPopState)
+    return () => window.removeEventListener('popstate', onPopState)
+  }, [])
 
   useEffect(() => {
     if (isFirstRender.current) {
@@ -62,6 +77,10 @@ export default function ScrollRestoration() {
       return
     }
 
+    if (historyNavigation.current) {
+      historyNavigation.current = false
+      return
+    }
     offsetRef.current = window.scrollY
 
     const hash = window.location.hash

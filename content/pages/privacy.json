@@ -1,0 +1,83 @@
+{
+  "title": "Privacy Policy",
+  "introduction": "",
+  "seoTitle": "Privacy Policy",
+  "seoDescription": "How filecompresser handles your files: browser-side processing, no uploads, what the third-party engines do and do not receive, and what we do not collect.",
+  "updated": "2026-11-21",
+  "sections": [
+    {
+      "heading": "Where your files are processed",
+      "body": [
+        "Every tool on this site runs in your browser. When you add a file, it is read into the memory of that browser tab and processed by code executing on your own device. The result is produced there too, and handed straight back to you as a download.",
+        "filecompresser does not operate an upload endpoint for these tools. Your files are not transmitted to us, and we have no copy of them. We also do not claim to delete your files after a period of time, because they never arrive anywhere for us to delete."
+      ]
+    },
+    {
+      "heading": "What we can and cannot see",
+      "body": [
+        "Like any website, our hosting provider records standard web server logs — IP address, timestamp, requested URL, user agent — so the site can be delivered and protected from abuse. Those logs describe the request for a web page, not the contents of your file, because your file never travels with the request.",
+        "We do not collect file contents, filenames used in the tools, or the results of processing. We do not build a profile of what you compress."
+      ]
+    },
+    {
+      "heading": "Third-party code, not your data",
+      "body": [
+        "Some tools download an open-source processing engine the first time you use them: a WebAssembly build of FFmpeg for video, audio and GIF work, and a Web Worker build of the image encoder. These are program files, served by this site, and they execute inside your browser tab.",
+        "The engines receive the selected file only inside your browser. This application contains no file-upload workflow.",
+        "The interface uses fonts available on your device. It does not request fonts from Google Fonts or another font service. Processing engines are served from this application when needed."
+      ]
+    },
+    {
+      "heading": "Browser storage",
+      "body": [
+        "While a tool is running, your file and its output exist as memory buffers in the browser tab, and as temporary Object URLs that make downloads possible. Results remain in the queue after downloading. Remove or clear them, or close the tab, to release their memory.",
+        "We do not write your files to localStorage, IndexedDB, the Cache API or cookies. Clearing your browser data is not necessary for your files, because none of them were persisted anywhere."
+      ]
+    },
+    {
+      "heading": "Analytics and cookies",
+      "body": [
+        "The public tool pages set no analytics cookies, no advertising cookies, and no tracking cookies. There is no third-party analytics script running on these pages.",
+        "The only persistent state is ordinary HTTP caching of the FFmpeg engine files, which the browser may keep to avoid re-downloading a 30 MB file. That cache holds program code, not your data."
+      ]
+    },
+    {
+      "heading": "Contact forms",
+      "body": [
+        "There is no contact form, and no mechanism on this site for sending us a file. The contact page provides general help and currently has no monitored support mailbox. Do not submit confidential documents through this site."
+      ]
+    },
+    {
+      "heading": "Administrator accounts and editorial content",
+      "body": [
+        "The separate /admin editor uses TinaCloud to authenticate authorized editors and save website content to our GitHub repository. Administrator account details, sign-in sessions and editorial content are handled by those services. Administrator sessions may use browser storage or cookies, and the editor provider may collect product-analytics data under its own privacy policy. Tool users do not need an account, and files selected in the public tools are not sent to the editor or repository."
+      ]
+    },
+    {
+      "heading": "Children",
+      "body": [
+        "This site is a general-purpose utility and is not directed at children under 13."
+      ]
+    },
+    {
+      "heading": "Changes to this policy",
+      "body": [
+        "If this policy changes — for example if a tool ever needed server-side processing — the tool page would say so explicitly, and this page would be updated. A tool that stops running client-side would stop claiming that your files never leave your device."
+      ]
+    },
+    {
+      "heading": "About this document",
+      "body": [
+        "This policy describes the software on this site as it is actually built, rather than being copied from a template. It has not been reviewed by a qualified lawyer or a privacy professional. If you need advice about how a service like this complies with the law where you live, speak to a lawyer — the technical facts below are accurate, but the legal conclusions drawn from them depend on your situation."
+      ]
+    }
+  ],
+  "footer": {
+    "heading": "Questions",
+    "introduction": "Visit",
+    "link": {
+      "label": "the help and contact page",
+      "href": "/contact"
+    }
+  }
+}

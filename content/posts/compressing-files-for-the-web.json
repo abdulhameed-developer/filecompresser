@@ -1,0 +1,79 @@
+{
+  "references": [
+    {
+      "title": "MDN: image file types and format selection",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats/Image_types"
+    },
+    {
+      "title": "MDN: web video codecs",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats/Video_codecs"
+    }
+  ],
+  "title": "Choosing the right format for smaller web files",
+  "description": "A practical guide to image formats, audio bitrate, video codecs and the limits of PDF optimization.",
+  "date": "2026-09-20",
+  "updated": "2026-11-04",
+  "readingTime": "5 min",
+  "figure": "formattree",
+  "seoDescription": "Choose JPG, PNG, WebP, MP3 or MP4 for your task. Understand transparency, lossy encoding, audio bitrate and PDF optimization limits.",
+  "body": [
+    {
+      "_template": "p",
+      "text": "Start with what your file needs to do: display a photograph, preserve a transparent logo, play a clip or keep a document readable. A smaller file is useful only when its format and quality still suit that job."
+    },
+    {
+      "_template": "h2",
+      "text": "JPG, PNG or WebP?"
+    },
+    {
+      "_template": "ul",
+      "items": [
+        "JPG/JPEG: a practical choice for photographs. Re-encoding is lossy, and JPEG cannot store transparency.",
+        "PNG: useful for screenshots, diagrams and transparent artwork. Lossless encoding does not mean every processing pipeline leaves dimensions or colour representation unchanged. Keep the original when exact pixel preservation matters.",
+        "WebP: supports transparency and can be useful for compact web images. FileCompresser offers JPG, PNG and WebP output for supported still images; compare the downloaded result before publishing."
+      ]
+    },
+    {
+      "_template": "figure",
+      "figure": "formattree",
+      "caption": "Choose a format for the job, then compare the actual output."
+    },
+    {
+      "_template": "h2",
+      "text": "Audio: estimate size from bitrate"
+    },
+    {
+      "_template": "p",
+      "text": "For constant-bitrate audio, approximate payload size is bitrate multiplied by duration, divided by eight. For example, 60 seconds at 128 kbps is about 960,000 bytes before container and tag overhead. This is arithmetic, not a FileCompresser benchmark. Actual encoded size can differ."
+    },
+    {
+      "_template": "p",
+      "text": "WAV-to-MP3 conversion can reduce uncompressed PCM audio substantially. Re-encoding an existing MP3 at a lower bitrate may save space but adds another lossy generation. Increasing bitrate cannot recover detail lost earlier."
+    },
+    {
+      "_template": "h2",
+      "text": "Video: distinguish the container from the codec"
+    },
+    {
+      "_template": "p",
+      "text": "MP4 and MOV describe containers, not a single video codec. FileCompresser accepts supported MP4/MOV inputs and re-encodes to H.264 video with AAC audio when an audio track is present. A smaller resolution cap can help, but high-motion scenes and long clips still take time and memory. Unsupported codecs fail rather than becoming playable just by changing the extension."
+    },
+    {
+      "_template": "h2",
+      "text": "PDF: structural optimization has limits"
+    },
+    {
+      "_template": "p",
+      "text": "The PDF tool removes selected document metadata and rewrites the file structure. It does not downsample scanned pages or recompress embedded photos. Image-heavy or already optimized PDFs may barely shrink or become larger. Detected digitally signed and encrypted documents are refused rather than silently rewritten."
+    },
+    {
+      "_template": "h2",
+      "text": "Keep the result that suits your task"
+    },
+    {
+      "_template": "p",
+      "text": "Check dimensions, transparency, text readability, playback and the reported output size. Keep the original until you have verified the download. A larger result can be reasonable when changing format; it should never be described as a saving."
+    }
+  ],
+  "published": true
+}

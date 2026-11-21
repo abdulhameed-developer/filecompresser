@@ -1,0 +1,62 @@
+{
+  "title": "How browser-based file compression works",
+  "description": "From the moment you drop a file to the moment you download the result, every step runs on your own device. Here is the real pipeline, without the marketing.",
+  "date": "2026-09-04",
+  "updated": "2026-11-04",
+  "readingTime": "6 min",
+  "figure": "pipeline",
+  "seoDescription": "A walkthrough of the real client-side compression pipeline: magic-byte validation, worker and WebAssembly engines, and why no step needs a server.",
+  "body": [
+    {
+      "_template": "p",
+      "text": "FileCompresser reads and processes selected files in your browser tab. The page downloads its interface and processing code, while the file itself stays on your device during processing."
+    },
+    {
+      "_template": "h2",
+      "text": "Step one: the file is checked before anything is processed"
+    },
+    {
+      "_template": "p",
+      "text": "The first thing that happens is not compression. Before an encoder is even loaded, the file is inspected: its size is checked against the limit for that tool, and its first bytes are compared against known file signatures — the PNG magic number, the JPEG SOI marker, the ZIP local file header."
+    },
+    {
+      "_template": "p",
+      "text": "This matters more than it sounds. A file called photo.jpg could be anything. Renaming a program to .jpg is trivial, and a tool that trusts the extension will happily hand it to a decoder. Checking the actual bytes is what makes \"this looks like a PDF, which this tool does not support\" a real answer rather than a guess."
+    },
+    {
+      "_template": "h2",
+      "text": "Step two: an engine is loaded, and only the one you need"
+    },
+    {
+      "_template": "p",
+      "text": "Image compression uses a Web Worker where supported, with browser canvas operations also used for decoding and target-size encoding. Heavy work can still affect responsiveness on constrained devices. Video, audio and GIF work uses a WebAssembly build of FFmpeg — roughly 30 MB of code, downloaded once and cached, and never loaded on a page you are not using it on."
+    },
+    {
+      "_template": "p",
+      "text": "None of that engine code is fetched until you actually start a job. A page view costs you the site's own JavaScript and nothing else. The distinction matters for the same reason the compression does: the work happens on your machine, and the code that does it is only ever code."
+    },
+    {
+      "_template": "figure",
+      "figure": "pipeline",
+      "caption": "The full path of a file, from selection to download."
+    },
+    {
+      "_template": "h2",
+      "text": "Step three: the output is a real file, or an honest failure"
+    },
+    {
+      "_template": "p",
+      "text": "When the encoder finishes, you get a Blob — an actual file in memory, with a real byte count and a real MIME type. If the result came out larger than the input, the tool says so in words rather than presenting a bigger file as a success."
+    },
+    {
+      "_template": "p",
+      "text": "Some outputs are validated before you are offered them. A compressed PDF is parsed again and its page count compared against the original; if the round trip does not hold, you get an error instead of a broken download. ZIP entries are checked for path traversal before a single byte is written to disk."
+    },
+    {
+      "_template": "callout",
+      "title": "The whole point",
+      "text": "No step in that pipeline needs a server. That is not a feature toggle — it is the reason the tools are built this way."
+    }
+  ],
+  "published": true
+}

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Suspense } from 'react'
 import './globals.css'
+import './product-system.css'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import ScrollRestoration from './scroll-restoration'
@@ -8,39 +9,51 @@ import {
   DEFAULT_DESCRIPTION,
   SITE_TAGLINE,
   SITE_URL,
+  SITE_INDEXABLE,
   SITE_WORDMARK,
+  SITE_NAME,
+  SITE_TITLE_SUFFIX,
+  DEFAULT_SOCIAL_IMAGE,
+  DEFAULT_SOCIAL_IMAGE_ALT,
+  DEFAULT_SOCIAL_DIMENSIONS,
+  ORGANIZATION_NAME,
+  SEARCH_VERIFICATION,
+  absoluteUrl,
 } from '@/lib/seo'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: `${SITE_WORDMARK} — ${SITE_TAGLINE}`,
-    template: `%s | ${SITE_WORDMARK}`,
+    template: `%s | ${SITE_TITLE_SUFFIX}`,
   },
   description: DEFAULT_DESCRIPTION,
   applicationName: SITE_WORDMARK,
-  authors: [{ name: SITE_WORDMARK }],
+  authors: [{ name: ORGANIZATION_NAME }],
   creator: SITE_WORDMARK,
-  publisher: SITE_WORDMARK,
+  publisher: ORGANIZATION_NAME,
+  verification: SEARCH_VERIFICATION,
   formatDetection: { telephone: false, address: false, email: false },
   alternates: { canonical: SITE_URL },
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: SITE_URL,
-    siteName: SITE_WORDMARK,
+    siteName: SITE_NAME,
     title: `${SITE_WORDMARK} — ${SITE_TAGLINE}`,
     description: DEFAULT_DESCRIPTION,
+    images: [{ url: absoluteUrl(DEFAULT_SOCIAL_IMAGE), ...DEFAULT_SOCIAL_DIMENSIONS, alt: DEFAULT_SOCIAL_IMAGE_ALT }],
   },
   twitter: {
     card: 'summary_large_image',
     title: `${SITE_WORDMARK} — ${SITE_TAGLINE}`,
     description: DEFAULT_DESCRIPTION,
+    images: [{ url: absoluteUrl(DEFAULT_SOCIAL_IMAGE), alt: DEFAULT_SOCIAL_IMAGE_ALT }],
   },
   robots: {
-    index: true,
+    index: SITE_INDEXABLE,
     follow: true,
-    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
+    googleBot: { index: SITE_INDEXABLE, follow: true, 'max-image-preview': 'large' },
   },
   icons: {
     icon: [

@@ -5,6 +5,8 @@ const MB = 1024 * 1024
 
 export const ARCHIVE_LIMITS = {
   maxEntries: 500,
+  maxArchiveBytes: 150 * MB,
+  maxBatchBytes: 300 * MB,
   maxUncompressedBytes: 500 * MB,
   maxSingleEntryBytes: 200 * MB,
   maxCompressionRatio: 100,
@@ -26,14 +28,52 @@ const SIGNATURES: Record<string, number[]> = {
 
 /** ISO base media brands that map to a container we can act on. */
 const MP4_BRANDS = new Set([
-  'isom', 'iso2', 'iso4', 'iso5', 'iso6', 'mp41', 'mp42', 'avc1', 'dash', 'mmp4', 'M4V ', 'M4A ', 'M4B ',
+  'isom',
+  'iso2',
+  'iso4',
+  'iso5',
+  'iso6',
+  'mp41',
+  'mp42',
+  'avc1',
+  'dash',
+  'mmp4',
+  'M4V ',
+  'M4A ',
+  'M4B ',
 ])
 
 /** HEIF-family brands → we surface these as "heic". */
-const HEIF_BRANDS = new Set(['heic', 'heix', 'hevc', 'hevx', 'heim', 'heis', 'hevm', 'hevs', 'mif1', 'msf1', 'avif'])
+const HEIF_BRANDS = new Set([
+  'heic',
+  'heix',
+  'hevc',
+  'hevx',
+  'heim',
+  'heis',
+  'hevm',
+  'hevs',
+  'mif1',
+  'msf1',
+  'avif',
+])
 
-/** JPEG frame markers that legitimately follow SOI (JFIF/Exif/APPn). */
-const MP3_FRAME_SYNC = [0xff, 0xfb, 0xfa, 0xf3, 0xf2, 0xe3, 0xe2]
+/** A complete MPEG Layer III frame header, not a single sync byte. */
+function isMp3Frame(buf: Uint8Array): boolean {
+  if (buf.length < 4 || buf[0] !== 0xff || (buf[1] & 0xe0) !== 0xe0)
+    return false
+  const version = (buf[1] >> 3) & 3
+  const layer = (buf[1] >> 1) & 3
+  const bitrate = (buf[2] >> 4) & 15
+  const sampleRate = (buf[2] >> 2) & 3
+  return (
+    version !== 1 &&
+    layer === 1 &&
+    bitrate > 0 &&
+    bitrate < 15 &&
+    sampleRate !== 3
+  )
+}
 
 function matchesAt(buf: Uint8Array, offset: number, bytes: number[]): boolean {
   if (bytes.length === 0) return false
@@ -44,7 +84,11 @@ function matchesAt(buf: Uint8Array, offset: number, bytes: number[]): boolean {
   return true
 }
 
-function matchesAnyAt(buf: Uint8Array, offset: number, options: number[][]): boolean {
+function matchesAnyAt(
+  buf: Uint8Array,
+  offset: number,
+  options: number[][],
+): boolean {
   return options.some((sig) => matchesAt(buf, offset, sig))
 }
 
@@ -85,15 +129,25 @@ async function readHeader(file: Blob, length = 128): Promise<Uint8Array> {
  * trusting its extension.
  */
 export async function detectFormat(file: Blob): Promise<string | null> {
-  const buf = await readHeader(file)
+  const buf = await readHeader(file, 4096)
 
   // Order matters: these prefixes are mutually exclusive except RIFF, which is
   // disambiguated by the form type at offset 8.
   if (matchesAt(buf, 0, SIGNATURES.png)) return 'png'
   if (matchesAt(buf, 0, SIGNATURES.jpeg)) return 'jpeg'
-  if (matchesAt(buf, 0, SIGNATURES.gif87a) || matchesAt(buf, 0, SIGNATURES.gif89a)) return 'gif'
+  if (
+    matchesAt(buf, 0, SIGNATURES.gif87a) ||
+    matchesAt(buf, 0, SIGNATURES.gif89a)
+  )
+    return 'gif'
   if (matchesAt(buf, 0, SIGNATURES.pdf)) return 'pdf'
-  if (matchesAnyAt(buf, 0, [SIGNATURES.zip, [0x50, 0x4b, 0x05, 0x06], [0x50, 0x4b, 0x07, 0x08]])) {
+  if (
+    matchesAnyAt(buf, 0, [
+      SIGNATURES.zip,
+      [0x50, 0x4b, 0x05, 0x06],
+      [0x50, 0x4b, 0x07, 0x08],
+    ])
+  ) {
     return 'zip'
   }
 
@@ -107,34 +161,41 @@ export async function detectFormat(file: Blob): Promise<string | null> {
 
   // ISO base media (MP4 / MOV / M4A / HEIC): a 'ftyp' box at offset 4.
   if (ascii(buf, 4, 4) === 'ftyp') {
-    // Major brand sits at offset 8; the compatible-brand list follows the
-    // minor version and a 32-bit count.
+    const boxSize = readUint32(buf, 0)
+    if (boxSize < 16 || boxSize > file.size || boxSize % 4 !== 0) return null
     const major = ascii(buf, 8, 4)
     if (major === 'qt  ') return 'mov'
-
-    // ftyp.major_brand(4) ftyp.minor_version(4) ftyp.compatible_brands(4*n)
-    const declaredCount = readUint32(buf, 16)
     const compat: string[] = []
-    if (declaredCount > 0 && declaredCount <= 64) {
-      for (let i = 0; i < declaredCount; i++) {
-        compat.push(ascii(buf, 20 + i * 4, 4))
-      }
+    for (
+      let offset = 16;
+      offset + 4 <= Math.min(boxSize, buf.length);
+      offset += 4
+    ) {
+      compat.push(ascii(buf, offset, 4))
     }
 
     const allBrands = [major, ...compat]
     if (allBrands.some((b) => HEIF_BRANDS.has(b.trim()))) return 'heic'
-    if (allBrands.some((b) => b.trim() === 'M4A' || b.trim() === 'M4B')) return 'm4a'
-    if (allBrands.some((b) => MP4_BRANDS.has(b.trim()))) return 'mp4'
+    if (allBrands.some((b) => b.trim() === 'M4A' || b.trim() === 'M4B'))
+      return 'm4a'
+    if (allBrands.some((b) => MP4_BRANDS.has(b) || MP4_BRANDS.has(b.trim())))
+      return 'mp4'
     // Recognisable container, unknown brand — treat as MP4-family rather than
     // reject a file that is plainly a media container.
-    return 'mp4'
+    return null
   }
 
   // Matroska / WebM: EBML magic.
   if (matchesAt(buf, 0, [0x1a, 0x45, 0xdf, 0xa3])) return 'matroska'
 
-  if (matchesAt(buf, 0, SIGNATURES.mp3)) return 'mp3'
-  if (matchesAnyAt(buf, 0, MP3_FRAME_SYNC.map((b) => [b]))) return 'mp3'
+  if (
+    matchesAt(buf, 0, SIGNATURES.mp3) &&
+    buf.length >= 10 &&
+    [2, 3, 4].includes(buf[3]) &&
+    buf.slice(6, 10).every((b) => b < 128)
+  )
+    return 'mp3'
+  if (isMp3Frame(buf)) return 'mp3'
 
   // FLAC ("fLaC"), Ogg ("OggS").
   if (matchesAt(buf, 0, [0x66, 0x4c, 0x61, 0x43])) return 'flac'
@@ -150,6 +211,56 @@ export async function detectFormat(file: Blob): Promise<string | null> {
   if (head.startsWith('<svg') || head.startsWith('<!DOCTYPE svg')) return 'svg'
 
   return null
+}
+
+/** Bound common image headers before decoding a potentially huge bitmap. */
+export async function assertImagePixelLimit(file: Blob): Promise<void> {
+  const header = await readHeader(file, 65536)
+  let width = 0,
+    height = 0
+  if (matchesAt(header, 0, SIGNATURES.png) && header.length >= 24) {
+    width = readUint32(header, 16)
+    height = readUint32(header, 20)
+  } else if (matchesAt(header, 0, SIGNATURES.jpeg)) {
+    let offset = 2
+    while (offset + 9 < header.length && header[offset] === 0xff) {
+      const marker = header[offset + 1]
+      if (marker === 0xff) {
+        offset++
+        continue
+      }
+      const length = header[offset + 2] * 256 + header[offset + 3]
+      if (length < 2) break
+      if (
+        [
+          192, 193, 194, 195, 197, 198, 199, 201, 202, 203, 205, 206, 207,
+        ].includes(marker)
+      ) {
+        height = header[offset + 5] * 256 + header[offset + 6]
+        width = header[offset + 7] * 256 + header[offset + 8]
+        break
+      }
+      offset += length + 2
+    }
+  } else if (ascii(header, 8, 4) === 'WEBP' && header.length >= 30) {
+    const chunk = ascii(header, 12, 4)
+    if (chunk === 'VP8X') {
+      width = 1 + header[24] + header[25] * 256 + header[26] * 65536
+      height = 1 + header[27] + header[28] * 256 + header[29] * 65536
+    } else if (chunk === 'VP8 ') {
+      width = (header[26] + header[27] * 256) & 16383
+      height = (header[28] + header[29] * 256) & 16383
+    } else if (chunk === 'VP8L') {
+      width = 1 + ((header[21] + header[22] * 256) & 16383)
+      height =
+        1 +
+        (((header[22] >> 6) | (header[23] << 2) | (header[24] << 10)) & 16383)
+    }
+  }
+  if (width * height > 32_000_000)
+    throw new Error(
+      'This image exceeds the 32 megapixel processing limit. Resize it first.',
+    )
 }
 
 export function extensionOf(name: string): string {
@@ -176,10 +287,28 @@ const EXT_TO_FORMAT: Record<string, string> = {
   heif: 'heic',
   svg: 'svg',
   m4a: 'm4a',
+  flac: 'flac',
+  ogg: 'ogg',
 }
 
 /** Formats whose signature is unambiguous — extension fallback is never allowed. */
-const STRICT_SIGNATURE_FORMATS = new Set(['jpeg', 'png', 'gif', 'webp', 'pdf', 'zip'])
+const STRICT_SIGNATURE_FORMATS = new Set([
+  'jpeg',
+  'png',
+  'gif',
+  'webp',
+  'pdf',
+  'zip',
+  'mp3',
+  'wav',
+  'mp4',
+  'mov',
+  'm4a',
+  'heic',
+  'svg',
+  'flac',
+  'ogg',
+])
 
 export function formatFromExtension(name: string): string | null {
   return EXT_TO_FORMAT[extensionOf(name)] || null
@@ -219,9 +348,18 @@ const HEIF_FAMILY = new Set(['heic'])
 
 function familiesIntersect(detected: string, allowed: Set<string>): boolean {
   if (allowed.has(detected)) return true
-  if (VIDEO_FAMILY.has(detected) && [...allowed].some((a) => VIDEO_FAMILY.has(a))) return true
-  if (AUDIO_FAMILY.has(detected) && [...allowed].some((a) => AUDIO_FAMILY.has(a))) return true
-  if (HEIF_FAMILY.has(detected) && [...allowed].some((a) => HEIF_FAMILY.has(a))) return true
+  if (
+    VIDEO_FAMILY.has(detected) &&
+    [...allowed].some((a) => VIDEO_FAMILY.has(a))
+  )
+    return true
+  if (
+    AUDIO_FAMILY.has(detected) &&
+    [...allowed].some((a) => AUDIO_FAMILY.has(a))
+  )
+    return true
+  if (HEIF_FAMILY.has(detected) && [...allowed].some((a) => HEIF_FAMILY.has(a)))
+    return true
   return false
 }
 
@@ -232,7 +370,7 @@ export async function validateFileAgainstTool(
     maxSize: number
     requireSignature?: boolean
   },
-  signal?: CancelSignal
+  signal?: CancelSignal,
 ): Promise<ValidationResult> {
   assertNotCancelled(signal)
 
@@ -241,7 +379,10 @@ export async function validateFileAgainstTool(
   }
   if (file.size > options.maxSize) {
     const mb = Math.round(options.maxSize / MB)
-    return { ok: false, error: `This file is larger than ${mb} MB, which this tool allows.` }
+    return {
+      ok: false,
+      error: `This file is larger than ${mb} MB, which this tool allows.`,
+    }
   }
 
   const detected = await detectFormat(file)
@@ -257,6 +398,19 @@ export async function validateFileAgainstTool(
         format: detected,
       }
     }
+    if (['jpeg', 'png', 'webp'].includes(detected)) {
+      try {
+        await assertImagePixelLimit(file)
+      } catch (error) {
+        return {
+          ok: false,
+          error:
+            error instanceof Error
+              ? error.message
+              : 'Image dimensions are too large.',
+        }
+      }
+    }
     return { ok: true, format: detected }
   }
 
@@ -264,11 +418,16 @@ export async function validateFileAgainstTool(
   // pass on extension alone — otherwise a renamed .exe or .html would sail
   // through just by being called photo.jpg.
   const extFormat = formatFromExtension(file.name)
-  if (extFormat && STRICT_SIGNATURE_FORMATS.has(extFormat) && options.requireSignature !== false) {
+  if (
+    extFormat &&
+    STRICT_SIGNATURE_FORMATS.has(extFormat) &&
+    options.requireSignature !== false
+  ) {
+    const expectedFormat =
+      FRIENDLY_FORMAT_NAMES[extFormat] ?? extFormat.toUpperCase()
     return {
       ok: false,
-      error:
-        'This file could not be verified as a valid image, PDF or archive. It may be corrupted, or renamed from another format.',
+      error: `This file could not be verified as a valid ${expectedFormat} file. It may be corrupted, or renamed from another format.`,
       format: null,
     }
   }
@@ -276,7 +435,11 @@ export async function validateFileAgainstTool(
   // Extension fallback for formats we cannot cheaply sniff (or that legitimately
   // have no magic number). Accepting these is still far better than failing a
   // legitimate HEIC, and they are never the basis of a dangerous operation.
-  if (extFormat && allowed.has(extFormat) && familiesIntersect(extFormat, allowed)) {
+  if (
+    extFormat &&
+    allowed.has(extFormat) &&
+    familiesIntersect(extFormat, allowed)
+  ) {
     return { ok: true, format: extFormat }
   }
 
@@ -321,7 +484,8 @@ export function sanitizeArchivePath(entryName: string): string | null {
     if (!cleaned || cleaned === '.' || cleaned === '..') return null
     // Windows reserved device names would still be dangerous if a user
     // later writes the archive to disk.
-    if (/^(con|prn|aux|nul|com[1-9]|lpt[1-9])(\..*)?$/i.test(cleaned)) return null
+    if (/^(con|prn|aux|nul|com[1-9]|lpt[1-9])(\..*)?$/i.test(cleaned))
+      return null
     safe.push(cleaned)
   }
 
@@ -344,7 +508,10 @@ export function flattenArchivePath(entryName: string): string {
  * check only fires above a floor, so a small archive containing a few KB of
  * text is never rejected for a trivial ratio.
  */
-export function exceedsArchiveRatio(archiveSize: number, uncompressedSize: number): boolean {
+export function exceedsArchiveRatio(
+  archiveSize: number,
+  uncompressedSize: number,
+): boolean {
   if (archiveSize <= 0 || uncompressedSize <= 0) return false
   // Under this, the archive is tiny and there is nothing to protect against.
   const MIN_BYTES_FOR_RATIO_CHECK = 5 * 1024 * 1024

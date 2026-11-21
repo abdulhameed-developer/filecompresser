@@ -1,5 +1,6 @@
 import type { FFmpeg } from '@ffmpeg/ffmpeg'
 import { ProcessingError } from '../types'
+import { loadWasmCoreURL } from './wasm'
 
 /**
  * Single-instance FFmpeg WASM manager.
@@ -58,11 +59,13 @@ export async function getFFmpeg(): Promise<FFmpeg> {
 
   loading = (async () => {
     if (typeof window === 'undefined') {
-      throw new FFmpegUnavailableError('The media engine can only run in a browser.')
+      throw new FFmpegUnavailableError(
+        'The media engine can only run in a browser.',
+      )
     }
     if (typeof WebAssembly === 'undefined') {
       throw new FFmpegUnavailableError(
-        'This browser does not support WebAssembly, which the video and audio engines require.'
+        'This browser does not support WebAssembly, which the video and audio engines require.',
       )
     }
 
@@ -70,15 +73,23 @@ export async function getFFmpeg(): Promise<FFmpeg> {
     const { toBlobURL } = await utilModule()
 
     const ffmpeg = new FFmpegClass()
-    await ffmpeg.load({
-      // Absolute, same-origin URL for the class worker. Passing this explicitly
-      // is what keeps the engine startable under Turbopack: without it the
-      // library resolves `./worker.js` against `import.meta.url` at runtime,
-      // which the bundler rejects as a dynamic expression.
-      classWorkerURL: `${location.origin}${CORE_BASE}/worker.js`,
-      coreURL: await toBlobURL(`${CORE_BASE}/ffmpeg-core.js`, 'text/javascript'),
-      wasmURL: await toBlobURL(`${CORE_BASE}/ffmpeg-core.wasm`, 'application/wasm'),
-    })
+    const urls: string[] = []
+    try {
+      urls.push(
+        await toBlobURL(`${CORE_BASE}/ffmpeg-core.js`, 'text/javascript'),
+      )
+      urls.push(await loadWasmCoreURL(CORE_BASE))
+      await ffmpeg.load({
+        classWorkerURL: `${location.origin}${CORE_BASE}/worker.js`,
+        coreURL: urls[0],
+        wasmURL: urls[1],
+      })
+    } catch (error) {
+      ffmpeg.terminate()
+      throw error
+    } finally {
+      urls.forEach((url) => URL.revokeObjectURL(url))
+    }
 
     ffmpegInstance = ffmpeg
     return ffmpeg
@@ -95,10 +106,10 @@ export async function getFFmpeg(): Promise<FFmpeg> {
     // is diagnosable in the console without ever reaching the page.
     console.warn(
       '[filecompresser] media engine failed to start:',
-      e instanceof Error ? e.stack || e.message : e
+      e instanceof Error ? e.stack || e.message : e,
     )
     throw new FFmpegUnavailableError(
-      'The media engine could not start in this browser. Try Chrome, Edge or Safari with enough free memory.'
+      'The media engine could not start in this browser. Try Chrome, Edge or Safari with enough free memory.',
     )
   } finally {
     loading = null
@@ -132,7 +143,8 @@ export function isFFmpegLoaded(): boolean {
 export function toBytes(data: unknown): Uint8Array {
   if (data instanceof Uint8Array) return data
   if (data instanceof ArrayBuffer) return new Uint8Array(data)
-  if (ArrayBuffer.isView(data)) return new Uint8Array(data.buffer, data.byteOffset, data.byteLength)
+  if (ArrayBuffer.isView(data))
+    return new Uint8Array(data.buffer, data.byteOffset, data.byteLength)
   throw new ProcessingError('The media engine returned an unexpected result.')
 }
 
@@ -140,13 +152,17 @@ export function toBytes(data: unknown): Uint8Array {
  * Read a file into the FFmpeg virtual FS. Kept as a helper so engines share
  * the same failure message for a copy failure.
  */
-export async function writeInputFile(ffmpeg: FFmpeg, name: string, file: Blob): Promise<void> {
+export async function writeInputFile(
+  ffmpeg: FFmpeg,
+  name: string,
+  file: Blob,
+): Promise<void> {
   const { fetchFile } = await utilModule()
   try {
     await ffmpeg.writeFile(name, await fetchFile(file))
   } catch {
     throw new ProcessingError(
-      'This file could not be loaded into the media engine. It may be too large for this device to process.'
+      'This file could not be loaded into the media engine. It may be too large for this device to process.',
     )
   }
 }
