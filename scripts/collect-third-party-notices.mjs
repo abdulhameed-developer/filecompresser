@@ -90,6 +90,26 @@ function resolveLocked(packages, from, name) {
   }
 }
 
+function lockedIdentity(packages, key, entry) {
+  const alias = packageName(key)
+  if (entry.name === undefined || entry.name === alias) return alias
+  // npm aliases retain the real package name in the lock entry and installed
+  // metadata. Require an explicit declaration that resolves to this exact node.
+  const target = entry.name
+  if (typeof target !== 'string' || !NPM_NAME.test(target) || ['.', '..'].includes(target)) fail(`invalid locked alias target: ${key}`)
+  const declared = Object.entries(packages).some(([owner, metadata]) =>
+    ['dependencies', 'optionalDependencies', 'peerDependencies', 'devDependencies'].some(group => {
+      const spec = metadata[group]?.[alias]
+      if (typeof spec !== 'string' || !spec.startsWith('npm:')) return false
+      const separator = spec.lastIndexOf('@')
+      return separator > 4 && spec.slice(4, separator) === target
+        && spec.slice(separator + 1).trim().length > 0
+        && resolveLocked(packages, owner, alias) === key
+    }))
+  if (!declared) fail(`locked alias has no matching npm declaration: ${key}`)
+  return target
+}
+
 /** Conservative notice inventory, not a claim that every listed package ships. */
 export async function collectThirdPartyNotices(root = process.cwd()) {
   const lock = JSON.parse((await boundedRead(root, 'package-lock.json', NOTICE_LIMITS.lock)).toString('utf8'))
@@ -162,7 +182,9 @@ export async function collectThirdPartyNotices(root = process.cwd()) {
     }
     if (!info.isDirectory()) fail(`installed package is not a directory: ${key}`)
     const metadata = JSON.parse((await boundedRead(root, `${key}/package.json`, 512 * 1024)).toString('utf8'))
-    if (metadata.name !== name || metadata.version !== entry.version) fail(`installed identity differs from package-lock: ${key}`)
+    const identity = lockedIdentity(packages, key, entry)
+    if (metadata.name !== identity || metadata.version !== entry.version) fail(`installed identity differs from package-lock: ${key}`)
+    const label = `${identity}@${entry.version}${identity === name ? '' : ` (npm alias ${name})`}`
     installed++
     const files = await scan(key, false)
     if (name === 'next') files.push(...await scan(`${key}/dist/compiled`, true))
@@ -172,7 +194,7 @@ export async function collectThirdPartyNotices(root = process.cwd()) {
     for (const filename of sorted(new Set(files))) {
       const bytes = await boundedRead(root, filename, NOTICE_LIMITS.file)
       if (!bytes.length) fail(`empty notice file: ${filename}`)
-      append(`${name}@${entry.version} — ${filename}`, bytes)
+      append(`${label} — ${filename}`, bytes)
     }
     if (!files.length && Object.hasOwn(FALLBACK_PACKAGES, name)) {
       const approved = FALLBACK_PACKAGES[name]

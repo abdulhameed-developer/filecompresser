@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os'
 import path from 'node:path'
 import { collectThirdPartyNotices, NOTICE_LIMITS } from '../scripts/collect-third-party-notices.mjs'
 
-type LockedPackage = { version?: string; resolved?: string; integrity?: string; dependencies?: Record<string, string>; devDependencies?: Record<string, string>; optionalDependencies?: Record<string, string> }
+type LockedPackage = { name?: string; version?: string; resolved?: string; integrity?: string; dependencies?: Record<string, string>; devDependencies?: Record<string, string>; optionalDependencies?: Record<string, string> }
 const roots: string[] = []
 const original = Buffer.from('Synthetic original copyright (c) Fixture Author.\r\nPermission and original terms stay here.\r\n')
 const native = Buffer.from('Synthetic native notice.\nCorresponding source: https://example.test/fixed-source.tar.gz\nArchive SHA-256: fixture only.\n')
@@ -35,6 +35,17 @@ async function basic() {
   const packages: Record<string, LockedPackage> = { '': { dependencies: { react: '18.3.1' } }, 'node_modules/react': { version: '18.3.1' } }
   await configure(root, packages)
   return { root, packages }
+}
+async function aliasFixture(alias = 'legacy-parser', target = 'actual-parser') {
+  const { root, packages } = await basic()
+  const key = `node_modules/${alias}`
+  const license = Buffer.from(`Original ${target} author copyright.\r\nThe original alias target license terms remain unchanged.\r\n`)
+  packages[''].dependencies![alias] = `npm:${target}@^1.2.0`
+  packages[key] = { name: target, version: '1.2.3' }
+  await install(root, key, '1.2.3', license)
+  await put(root, `${key}/package.json`, JSON.stringify({ name: target, version: '1.2.3', license: 'MIT' }))
+  await configure(root, packages)
+  return { root, packages, key, alias, target, license }
 }
 
 describe('bounded original third-party notice inventory', () => {
@@ -159,5 +170,56 @@ describe('bounded original third-party notice inventory', () => {
     packages[''].dependencies = { '../outside': '1.0.0' }
     await configure(root, packages)
     await expect(collectThirdPartyNotices(root)).rejects.toThrow('invalid locked dependency name')
+  })
+
+  it.each([
+    ['legacy-parser', 'actual-parser'],
+    ['@compat/parser', '@vendor/parser'],
+  ])('preserves original LICENSE bytes for explicitly locked npm alias %s -> %s', async (alias, target) => {
+    const { root, key, license } = await aliasFixture(alias, target)
+    const result = await collectThirdPartyNotices(root)
+    expect(result.installedPackages).toBe(2)
+    expect((await readFile(path.join(root, 'public/THIRD-PARTY-NOTICES.txt'))).includes(license)).toBe(true)
+    expect(await readFile(path.join(root, `${key}/LICENSE`))).toEqual(license)
+  })
+
+  it.each([
+    { scenario: 'missing lock target', error: /installed identity differs/ },
+    { scenario: 'empty lock target', error: /invalid locked alias target/ },
+    { scenario: 'mismatched lock target', error: /installed identity differs/ },
+    { scenario: 'missing npm alias declaration', error: /locked alias has no matching npm declaration/ },
+    { scenario: 'mismatched declaration target', error: /locked alias has no matching npm declaration/ },
+  ])('rejects aliases with $scenario', async ({ scenario, error }) => {
+    const { root, packages, key, alias } = await aliasFixture()
+    if (scenario === 'missing lock target') delete packages[key].name
+    if (scenario === 'empty lock target') packages[key].name = ''
+    if (scenario === 'mismatched lock target') {
+      packages[key].name = 'unrelated-parser'
+      packages[''].dependencies![alias] = 'npm:unrelated-parser@^1.2.0'
+    }
+    if (scenario === 'missing npm alias declaration') packages[''].dependencies![alias] = '^1.2.0'
+    if (scenario === 'mismatched declaration target') packages[''].dependencies![alias] = 'npm:unrelated-parser@^1.2.0'
+    await configure(root, packages)
+    await expect(collectThirdPartyNotices(root)).rejects.toThrow(error)
+  })
+
+  it('does not authorize an outer alias using a declaration that resolves to a different nested package', async () => {
+    const { root, packages, key, alias, target } = await aliasFixture()
+    packages[''].dependencies![alias] = '^1.2.0'
+    packages[''].dependencies!.unrelated = '1.0.0'
+    const nested = `node_modules/unrelated/node_modules/${alias}`
+    packages['node_modules/unrelated'] = { version: '1.0.0', dependencies: { [alias]: `npm:${target}@^1.2.0` } }
+    packages[nested] = { name: target, version: '1.2.3' }
+    await install(root, 'node_modules/unrelated', '1.0.0')
+    await install(root, nested, '1.2.3')
+    await put(root, `${nested}/package.json`, JSON.stringify({ name: target, version: '1.2.3', license: 'MIT' }))
+    await configure(root, packages)
+    await expect(collectThirdPartyNotices(root)).rejects.toThrow(`locked alias has no matching npm declaration: ${key}`)
+  })
+
+  it('rejects installed version drift even when both alias target identities and the declaration match', async () => {
+    const { root, key, target } = await aliasFixture()
+    await put(root, `${key}/package.json`, JSON.stringify({ name: target, version: '1.2.4', license: 'MIT' }))
+    await expect(collectThirdPartyNotices(root)).rejects.toThrow('installed identity differs')
   })
 })

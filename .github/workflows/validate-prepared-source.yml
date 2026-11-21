@@ -180,6 +180,14 @@ jobs:
             walk(directory)
             return { name, version: metadata.version, declaredZod: metadata.dependencies?.zod, license: metadata.license, npmIntegrity: lock.packages[directory]?.integrity, licenseFiles, references }
           })
+          const aliasKey = 'node_modules/web-vitals-soft-navs'
+          const aliasMetadata = JSON.parse(readFileSync(aliasKey + '/package.json', 'utf8'))
+          console.log('NOTICE_ALIAS_IDENTITY', JSON.stringify({ key: aliasKey, lock: lock.packages[aliasKey],
+            installed: { name: aliasMetadata.name, version: aliasMetadata.version, license: aliasMetadata.license },
+            requiredBy: Object.entries(lock.packages).flatMap(([path, item]) => {
+              const dependencies = { ...item.dependencies, ...item.optionalDependencies, ...item.peerDependencies, ...item.devDependencies }
+              return dependencies['web-vitals-soft-navs'] ? [{ path, version: item.version, requirement: dependencies['web-vitals-soft-navs'] }] : []
+            }) }))
           console.log('CMS_VALIDATION_RUNTIME_BEGIN')
           console.log(JSON.stringify({ runtime, packages }))
           console.log('CMS_VALIDATION_RUNTIME_END')
