@@ -65,8 +65,11 @@ copies and aliases, before changing any runtime file. It preserves authenticated
 originals, refuses unknown bytes and refuses to modify shared dependencies
 outside the checkout. The initial pre-CMS or production-only install may defer
 the patch when both CMS packages are absent; deferral produces no verified
-evidence. `setup:cms` installs the exact CMS releases and triggers installation
-again. Do not use `--ignore-scripts` for a CMS build.
+evidence. `setup:cms` installs the exact CMS releases and explicitly applies and
+verifies the patch immediately afterward: npm's named-package install does not
+run the root project's postinstall. A failed installation or security proof
+fails setup before any CMS test or build. Do not use `--ignore-scripts` for a
+CMS build.
 
 `npm run check:cms-security` does not trust a saved attestation. It rechecks the
 original and patched hashes and starts fresh, memory-bounded Node workers with
