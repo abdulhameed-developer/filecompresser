@@ -80,13 +80,19 @@ collections, an invalid schema and an oversized schema. Existing Zod APIs,
 ordinary error identities and normal configuration behavior are retained.
 
 CMS development and builds require this verification and content preflight.
-The production CMS build also follows the generated admin HTML entry's local
-JavaScript imports and checks the structure of its shipped Zod roots and parser
-guards. Unknown or unguarded shapes fail. This is explicitly reported as static
-entry-reachable code coverage, separate from Node runtime/schema probes. Hosted
-login, password reset, authenticated editor writes and editor browser runtime
-behavior require separate account/browser checks; these probes do not assert
-those actions occurred.
+The production CMS build follows the generated admin HTML entry's literal local
+JavaScript imports and separately checks all emitted local JavaScript assets for
+recognizable Zod roots and parser guards. The entry graph must itself contain
+guarded Zod code; an unreferenced file cannot satisfy that requirement. Unknown
+or unguarded shapes fail. A narrowly recognized
+[upstream React Router cached route loader](https://github.com/remix-run/react-router/blob/main/packages/react-router/lib/dom/ssr/routeModules.ts)
+is recorded as opaque: its computed target is not resolved. This
+static inspection does not prove arbitrary or remotely loaded code behavior.
+Its fixed 8-million-node, 256-file and 64 MiB inspection bounds concern trusted
+generated assets; runtime input and issue limits above remain unchanged.
+Hosted login, password reset, authenticated editor writes and editor browser
+runtime behavior require separate account/browser checks; these probes do not
+assert those actions occurred.
 
 ## Audit decision and maintenance
 

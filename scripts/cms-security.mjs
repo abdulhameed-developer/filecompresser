@@ -31,7 +31,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     if (evidence.skipped) console.log(`CMS security patch deferred: ${evidence.reason}.`)
     else {
       console.log(`CMS security verified: ${evidence.instances.length} exact zod@${evidence.version} instance(s), ESM/CJS hashes and real runtime/schema probes passed. Raw npm advisory ${evidence.advisory} is retained with an explicit local-patch disposition.`)
-      if (evidence.adminBundle) console.log(`Admin bundle static coverage: ${evidence.adminBundle.roots} guarded Zod root(s), ${evidence.adminBundle.parsers} guarded parser(s), ${evidence.adminBundle.files.length} entry-reachable JavaScript files. Browser runtime behavior is a separate check.`)
+      if (evidence.adminBundle) console.log(`Admin bundle static coverage: ${evidence.adminBundle.roots} guarded Zod root(s), ${evidence.adminBundle.parsers} guarded parser(s), ${evidence.adminBundle.files.length} inspected local JavaScript files. Browser runtime behavior is a separate check.`)
       if (args[0] === '--verify-admin' && process.env.CMS_SECURITY_EVIDENCE_FILE) {
         const filename = path.resolve(process.env.CMS_SECURITY_EVIDENCE_FILE)
         mkdirSync(path.dirname(filename), { recursive: true })

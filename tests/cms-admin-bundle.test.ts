@@ -31,13 +31,19 @@ function guardedCode() {
       if(e===s&&i.parent.common.async)return observe(Promise.reject(e));throw e}}}`
 }
 
+const reactRouterLoader = [
+  'async function qrn(e,t){if(e.id in t)return t[e.id];try{let n=await import(e.module);return t[e.id]=n,n}catch(n){return console.error(',
+  '`Error loading route module \\`${e.module}\\`, reloading page...`',
+  '),console.error(n),window.__reactRouterContext&&window.__reactRouterContext.isSpaMode,window.location.reload(),new Promise(()=>{})}}',
+].join('')
+
 describe('entry-reachable generated admin structure', () => {
   it('reports bounded static coverage and file hashes, with browser runtime explicitly unverified', () => {
     const root = fixture({ 'index.html': '<script type="module" src="./entry.js"></script>',
       'entry.js': 'import "./chunks/guard.mjs"', 'chunks/guard.mjs': guardedCode() })
     const result = verifyAdminResourceBundle(root)
     expect(result).toEqual(expect.objectContaining({ verified: true, browserRuntimeVerified: false,
-      coverage: 'static entry-reachable JavaScript structure', roots: 1, parsers: 1 }))
+      coverage: 'static all-emitted-local-JS guard structure with guarded entry graph', roots: 1, parsers: 1 }))
     expect(result.files.map((file: { path: string }) => file.path).sort()).toEqual(['chunks/guard.mjs', 'entry.js'])
     expect(result.files.every((file: { sha256: string }) => /^[a-f0-9]{64}$/.test(file.sha256))).toBe(true)
   })
@@ -175,5 +181,62 @@ describe('entry-reachable generated admin structure', () => {
     expect(diagnostic.generatedInventory.classRecordsOmitted).toBe(true)
     expect(JSON.stringify(diagnostic.generatedInventory.classes)).not.toContain('CLASS_BODY_NOT_IN_RECORD')
     expect(diagnostic.generatedInventory.classes.every((item: { methods: string[] }) => item.methods.length === 1 && item.methods[0] === '_parse')).toBe(true)
+  })
+
+  it('recognizes only the complete cached React Router loader and reports its target as opaque', () => {
+    for (const loader of [reactRouterLoader, reactRouterLoader.replace(/\be\b/g, 'route').replace(/\bt\b/g, 'cache').replace(/\bn\b/g, 'loaded')]) {
+      const main = guardedCode() + '\n' + loader
+      const optional = 'console.log("emitted optional module")'
+      const root = fixture({ 'index.html': '<script src="./entry.js"></script>', 'entry.js': main, 'chunks/optional.js': optional })
+      const result = verifyAdminResourceBundle(root)
+      expect(result.opaqueLoaderCount).toBe(1)
+      expect(result.computedModuleTargetsResolved).toBe(false)
+      expect(result.browserRuntimeVerified).toBe(false)
+      expect(result.opaqueLoaders[0]).toEqual(expect.objectContaining({ asset: 'entry.js', functionName: 'qrn', targetResolved: false,
+        contract: 'React Router cached route-module loader AST v1' }))
+      expect(result.opaqueLoaders[0].sha256).toMatch(/^[a-f0-9]{64}$/)
+      expect(result.entryGraph).toEqual(expect.objectContaining({ roots: 1, parsers: 1, files: 1, bytes: Buffer.byteLength(main) }))
+      expect(result.emittedFilesystem).toEqual(expect.objectContaining({ files: 2, bytes: Buffer.byteLength(main) + Buffer.byteLength(optional), inventoryComplete: true, inspectionComplete: true }))
+      expect(result.inspectionLimits.maxAstNodes).toBe(8000000)
+      expect(result.files.map((item: { path: string }) => item.path).sort()).toEqual(['chunks/optional.js', 'entry.js'])
+    }
+  })
+
+  it('rejects near-match loader mutations instead of permitting arbitrary property imports', () => {
+    const mutations = [
+      reactRouterLoader.replace('import(e.module)', 'import(e.other)'),
+      reactRouterLoader.replace('await import(e.module)', 'import(e.module)'),
+      reactRouterLoader.replace('if(e.id in t)', 'if(e.other in t)'),
+      reactRouterLoader.replace('t[e.id]=n,n', 't[e.other]=n,n'),
+      reactRouterLoader.replace('t[e.id]=n,n', 't[e.id]=n,e'),
+      reactRouterLoader.replace('window.location.reload()', 'window.location.assign()'),
+      reactRouterLoader.replace('window.location.reload()', 'window.location?.reload()'),
+      reactRouterLoader.replace('new Promise(()=>{})', 'new Promise(()=>{return 1})'),
+      reactRouterLoader.replace('console.error(n)', 'console.error(e)'),
+      reactRouterLoader.replace('try{let n', 'try{console.log("extra");let n'),
+      reactRouterLoader.replace('catch(n){return', 'catch(n){throw n;return'),
+      reactRouterLoader.replace('window.__reactRouterContext.isSpaMode', 'window.__reactRouterContext.isSpaMode()'),
+      reactRouterLoader.replace(/\be\b/g, 'window'),
+      'async function unrelated(e){return await import(e.module)}',
+    ]
+    for (const loader of mutations) {
+      const root = fixture({ 'index.html': '<script src="./entry.js"></script>', 'entry.js': guardedCode() + '\n' + loader })
+      expect(() => verifyAdminResourceBundle(root)).toThrow('unresolved dynamic module import')
+    }
+  })
+
+  it('keeps unrelated computed imports blocked beside a recognized loader', () => {
+    const root = fixture({ 'index.html': '<script src="./entry.js"></script>',
+      'entry.js': guardedCode() + '\n' + reactRouterLoader + ';function unrelated(target){return import(target)}' })
+    expect(() => verifyAdminResourceBundle(root)).toThrow('unresolved dynamic module import')
+  })
+
+  it('checks unreferenced emitted JavaScript for unguarded Zod code without letting it establish entry coverage', () => {
+    const unguarded = fixture({ 'index.html': '<script src="./entry.js"></script>', 'entry.js': guardedCode() + '\n' + reactRouterLoader,
+      'chunks/old.js': guardedCode().replaceAll('fileCompresserBudget', 'removedBudget') })
+    expect(() => verifyAdminResourceBundle(unguarded)).toThrow('graph preflight/shared budget')
+    const decoy = fixture({ 'index.html': '<script src="./entry.js"></script>', 'entry.js': reactRouterLoader,
+      'chunks/stale.js': guardedCode() })
+    expect(() => verifyAdminResourceBundle(decoy)).toThrow('entry-reachable')
   })
 })

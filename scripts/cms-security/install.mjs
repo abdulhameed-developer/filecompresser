@@ -214,6 +214,32 @@ export function verifyAdminResourceBundle(projectRoot = process.cwd()) {
   const visited = new Set()
   let totalBytes = 0, edges = 0, astNodes = 0, roots = 0, parsers = 0, marker = false, message = false
   const assets = []
+  const inspectionLimits = Object.freeze({ maxFiles: 256, maxBytes: 64 * 1024 * 1024,
+    maxFileBytes: 16 * 1024 * 1024, maxAstNodes: 8000000, maxDirectoryEntries: 4096, maxDirectoryDepth: 16 })
+  const emitted = [], emittedByPath = new Map(), opaqueLoaders = []
+  let emittedBytes = 0, directoryEntries = 0, directoryCount = 0, opaqueLoaderCount = 0
+  const inventoryDirectories = [{ relative: '', depth: 0 }]
+  while (inventoryDirectories.length) {
+    const current = inventoryDirectories.pop()
+    directoryCount++
+    for (const item of readdirSync(path.join(directory, current.relative), { withFileTypes: true })) {
+      if (++directoryEntries > inspectionLimits.maxDirectoryEntries) fail('admin emitted files exceed the directory inspection budget')
+      const relative = path.join(current.relative, item.name)
+      if (item.isSymbolicLink()) fail('admin emitted files contain an unsupported symbolic link')
+      if (item.isDirectory()) {
+        if (current.depth >= inspectionLimits.maxDirectoryDepth) fail('admin emitted files exceed the directory depth budget')
+        inventoryDirectories.push({ relative, depth: current.depth + 1 })
+      } else if (/\.(?:mjs|cjs|js)$/.test(item.name)) {
+        const info = lstatSync(path.join(directory, relative))
+        if (!info.isFile() || info.size > inspectionLimits.maxFileBytes) fail('admin emitted JavaScript has an unsupported file type or size')
+        if (emitted.length >= inspectionLimits.maxFiles || emittedBytes + info.size > inspectionLimits.maxBytes) fail('admin emitted JavaScript exceeds the inspection file or byte budget')
+        emittedBytes += info.size
+        const asset = { relative, bytes: info.size, url: new URL(`/admin/${relative}`, origin).href }
+        emitted.push(asset)
+        emittedByPath.set(relative, asset)
+      }
+    }
+  }
   const name = node => !node ? undefined : ts.isIdentifier(node) || ts.isStringLiteral(node) ? node.text
     : ts.isComputedPropertyName(node) && ts.isStringLiteral(node.expression) ? node.expression.text : undefined
   const moduleLiteral = node => ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node)
@@ -245,6 +271,72 @@ export function verifyAdminResourceBundle(projectRoot = process.cwd()) {
       expression = ts.isParenthesizedExpression(expression) ? expression.expression : expression.right
     }
     return expression
+  }
+  // One reviewed React Router routeModules loader contract. Its route.module
+  // target remains opaque: recognition never resolves or verifies that target.
+  const cachedReactRouterLoader = imported => {
+    let loader = imported.parent
+    while (loader && !ts.isFunctionDeclaration(loader) && !ts.isFunctionExpression(loader) && !ts.isArrowFunction(loader)) loader = loader.parent
+    if (!loader || !ts.isFunctionDeclaration(loader) || !loader.body || loader.asteriskToken
+      || !loader.modifiers?.some(modifier => modifier.kind === ts.SyntaxKind.AsyncKeyword)
+      || loader.parameters.length !== 2 || loader.parameters.some(parameter => !ts.isIdentifier(parameter.name) || parameter.initializer || parameter.dotDotDotToken || parameter.questionToken)) return null
+    const [route, cache] = loader.parameters.map(parameter => parameter.name.text)
+    const globals = ['console', 'window', 'Promise']
+    if (route === cache || [route, cache, name(loader.name)].some(identifier => globals.includes(identifier))) return null
+    const identifier = (node, text) => ts.isIdentifier(node) && node.text === text
+    const member = (node, object, key) => ts.isPropertyAccessExpression(node) && !node.questionDotToken
+      && identifier(node.expression, object) && node.name.text === key
+    const routeId = node => member(node, route, 'id')
+    const routeModule = node => member(node, route, 'module')
+    const cached = node => ts.isElementAccessExpression(node) && !node.questionDotToken
+      && identifier(node.expression, cache) && node.argumentExpression && routeId(node.argumentExpression)
+    const sequence = expression => ts.isParenthesizedExpression(expression) ? sequence(expression.expression)
+      : ts.isBinaryExpression(expression) && expression.operatorToken.kind === ts.SyntaxKind.CommaToken
+        ? [...sequence(expression.left), ...sequence(expression.right)] : [expression]
+    const [hit, attempt] = loader.body.statements
+    if (loader.body.statements.length !== 2 || !hit || !ts.isIfStatement(hit) || hit.elseStatement
+      || !ts.isBinaryExpression(hit.expression) || hit.expression.operatorToken.kind !== ts.SyntaxKind.InKeyword
+      || !routeId(hit.expression.left) || !identifier(hit.expression.right, cache)) return null
+    const hitReturn = ts.isBlock(hit.thenStatement) && hit.thenStatement.statements.length === 1 ? hit.thenStatement.statements[0] : hit.thenStatement
+    if (!ts.isReturnStatement(hitReturn) || !hitReturn.expression || !cached(hitReturn.expression)
+      || !attempt || !ts.isTryStatement(attempt) || attempt.finallyBlock || !attempt.catchClause
+      || !attempt.catchClause.variableDeclaration || !ts.isIdentifier(attempt.catchClause.variableDeclaration.name)) return null
+    const failure = attempt.catchClause.variableDeclaration.name.text
+    const [declaration, returned] = attempt.tryBlock.statements
+    if (attempt.tryBlock.statements.length !== 2 || !declaration || !ts.isVariableStatement(declaration)
+      || !(declaration.declarationList.flags & ts.NodeFlags.Let) || declaration.declarationList.declarations.length !== 1) return null
+    const loaded = declaration.declarationList.declarations[0]
+    if (!ts.isIdentifier(loaded.name) || !loaded.initializer || !ts.isAwaitExpression(loaded.initializer)
+      || loaded.initializer.expression !== imported || imported.arguments.length !== 1 || !routeModule(imported.arguments[0])) return null
+    const value = loaded.name.text
+    if ([value, failure].some(binding => [route, cache, ...globals].includes(binding))) return null
+    const results = returned && ts.isReturnStatement(returned) && returned.expression ? sequence(returned.expression) : []
+    if (results.length !== 2 || !ts.isBinaryExpression(results[0]) || results[0].operatorToken.kind !== ts.SyntaxKind.EqualsToken
+      || !cached(results[0].left) || !identifier(results[0].right, value) || !identifier(results[1], value)) return null
+    const catchReturn = attempt.catchClause.block.statements[0]
+    const effects = attempt.catchClause.block.statements.length === 1 && catchReturn && ts.isReturnStatement(catchReturn) && catchReturn.expression
+      ? sequence(catchReturn.expression) : []
+    const log = node => ts.isCallExpression(node) && !node.questionDotToken && member(node.expression, 'console', 'error') && node.arguments.length === 1
+    if (effects.length !== 5 || !log(effects[0]) || !log(effects[1]) || !identifier(effects[1].arguments[0], failure)) return null
+    const logMessage = effects[0].arguments[0]
+    if (!ts.isTemplateExpression(logMessage) || logMessage.head.text !== 'Error loading route module `'
+      || logMessage.templateSpans.length !== 1 || !routeModule(logMessage.templateSpans[0].expression)
+      || logMessage.templateSpans[0].literal.text !== '`, reloading page...') return null
+    const context = node => member(node, 'window', '__reactRouterContext')
+    if (!ts.isBinaryExpression(effects[2]) || effects[2].operatorToken.kind !== ts.SyntaxKind.AmpersandAmpersandToken
+      || !context(effects[2].left) || !ts.isPropertyAccessExpression(effects[2].right) || effects[2].right.questionDotToken
+      || effects[2].right.name.text !== 'isSpaMode' || !context(effects[2].right.expression)) return null
+    if (!ts.isCallExpression(effects[3]) || effects[3].questionDotToken || effects[3].arguments.length
+      || !ts.isPropertyAccessExpression(effects[3].expression) || effects[3].expression.questionDotToken || effects[3].expression.name.text !== 'reload'
+      || !member(effects[3].expression.expression, 'window', 'location')) return null
+    const pendingPromise = effects[4]
+    if (!ts.isNewExpression(pendingPromise) || !identifier(pendingPromise.expression, 'Promise')
+      || pendingPromise.arguments?.length !== 1 || !ts.isArrowFunction(pendingPromise.arguments[0])) return null
+    const executor = pendingPromise.arguments[0]
+    if (executor.parameters.length || executor.modifiers?.length || !ts.isBlock(executor.body) || executor.body.statements.length) return null
+    const targetExpression = `${route}.module`
+    return { functionName: (name(loader.name) || '<anonymous>').slice(0, 80),
+      targetExpression: targetExpression.slice(0, 160), targetExpressionTruncated: targetExpression.length > 160 }
   }
   const observer = (identifier, from) => {
     if (!ts.isIdentifier(identifier)) return false
@@ -364,7 +456,7 @@ export function verifyAdminResourceBundle(projectRoot = process.cwd()) {
             if (generated.errors.length < 5) generated.errors.push({ asset: relative.slice(0, 160), reason: 'unsupported generated syntax' })
             continue
           }
-          if (diagnosticScheduled >= 2000000) { generated.truncated = true; break }
+          if (diagnosticScheduled >= inspectionLimits.maxAstNodes) { generated.truncated = true; break }
           const nodes = [parsed]
           diagnosticScheduled++
           while (nodes.length) {
@@ -388,7 +480,7 @@ export function verifyAdminResourceBundle(projectRoot = process.cwd()) {
               }
             }
             ts.forEachChild(node, child => {
-              if (diagnosticScheduled >= 2000000) { generated.truncated = true; return true }
+              if (diagnosticScheduled >= inspectionLimits.maxAstNodes) { generated.truncated = true; return true }
               diagnosticScheduled++
               nodes.push(child)
               return undefined
@@ -402,11 +494,12 @@ export function verifyAdminResourceBundle(projectRoot = process.cwd()) {
       const diagnostic = { asset: filename.slice(0, 160), imports,
         additionalImportsOmitted: generated.computedImports + generated.literalImports > imports.length,
         generatedInventory: generated, candidateScan: { roots: candidateRoots, parsers: candidateParsers, nodes: scanned, truncated: scanTruncated },
-        partialInspection: { roots, parsers, files: visited.size, bytes: totalBytes } }
+        partialInspection: { roots, parsers, files: visited.size, bytes: totalBytes },
+        emittedFilesystem: { files: emitted.length, bytes: emittedBytes, directoryEntries, directories: directoryCount, inventoryComplete: true }, inspectionLimits }
       fail(`admin bundle contains an unresolved dynamic module import; diagnostic=${JSON.stringify(diagnostic)}`)
     }
     const walk = node => {
-      if (++astNodes > 2000000) fail('admin JavaScript exceeds the AST inspection budget')
+      if (++astNodes > inspectionLimits.maxAstNodes) fail('admin JavaScript exceeds the AST inspection budget')
       if (ts.isStringLiteral(node)) {
         if (node.text === 'filecompresser.cms-zod.issue-limit.v1') marker = true
         if (node.text.startsWith('$Zod')) fail('admin bundle contains an unsupported Zod4 constructor')
@@ -414,8 +507,17 @@ export function verifyAdminResourceBundle(projectRoot = process.cwd()) {
       if ((ts.isStringLiteral(node) || ts.isTemplateHead(node)) && node.text.includes('CMS validation stopped at')) message = true
       if ((ts.isImportDeclaration(node) || ts.isExportDeclaration(node)) && node.moduleSpecifier && ts.isStringLiteral(node.moduleSpecifier)) enqueue(node.moduleSpecifier.text, url)
       if (ts.isCallExpression(node) && node.expression.kind === ts.SyntaxKind.ImportKeyword) {
-        if (node.arguments.length !== 1 || !moduleLiteral(node.arguments[0])) unresolvedImport(node)
-        enqueue(node.arguments[0].text, url)
+        if (node.arguments.length !== 1 || !moduleLiteral(node.arguments[0])) {
+          const recognized = cachedReactRouterLoader(node)
+          if (!recognized) unresolvedImport(node)
+          opaqueLoaderCount++
+          if (opaqueLoaders.length < 20) {
+            const position = ast.getLineAndCharacterOfPosition(node.getStart(ast))
+            opaqueLoaders.push({ asset: filename.slice(0, 160), sha256: assets.find(asset => asset.path === filename)?.sha256 || digest(Buffer.from(source)),
+              line: position.line + 1, column: position.character + 1,
+              contract: 'React Router cached route-module loader AST v1', ...recognized, targetResolved: false })
+          }
+        } else enqueue(node.arguments[0].text, url)
       }
       if (ts.isCallExpression(node) && name(node.expression) === 'require') fail('admin bundle contains an unsupported unresolved CommonJS import')
       if (ts.isBinaryExpression(node) && node.operatorToken.kind === ts.SyntaxKind.EqualsToken) {
@@ -483,23 +585,37 @@ export function verifyAdminResourceBundle(projectRoot = process.cwd()) {
     if (source) enqueue(source, entryUrl)
     else if (match[2].trim()) inspect(match[2], 'inline-admin.js', entryUrl)
   }
-  while (pending.length) {
-    const next = pending.pop()
-    if (visited.has(next.url)) continue
-    if (visited.size >= 256) fail('admin module graph exceeds the inspection file budget')
-    const filename = path.join(directory, next.relative)
-    const real = realpathSync(filename)
-    const inside = path.relative(realpathSync(directory), real)
-    if (inside.startsWith('..') || path.isAbsolute(inside)) fail('admin module escapes its output directory')
-    const bytes = regularBytes(filename, 16 * 1024 * 1024)
-    if ((totalBytes += bytes.length) > 64 * 1024 * 1024) fail('admin module graph exceeds the inspection byte budget')
-    visited.add(next.url)
-    assets.push({ path: next.relative, sha256: digest(bytes), bytes: bytes.length })
-    inspect(bytes.toString('utf8'), next.relative, next.url)
+  const drainPending = () => {
+    while (pending.length) {
+      const next = pending.pop()
+      if (visited.has(next.url)) continue
+      if (visited.size >= inspectionLimits.maxFiles) fail('admin module graph exceeds the inspection file budget')
+      const filename = path.join(directory, next.relative)
+      const real = realpathSync(filename)
+      const inside = path.relative(realpathSync(directory), real)
+      if (inside.startsWith('..') || path.isAbsolute(inside)) fail('admin module escapes its output directory')
+      const expected = emittedByPath.get(next.relative)
+      if (!expected) fail('admin module is not an inventoried emitted JavaScript asset')
+      const bytes = regularBytes(filename, inspectionLimits.maxFileBytes)
+      if (bytes.length !== expected.bytes) fail('admin JavaScript changed during static inspection')
+      if ((totalBytes += bytes.length) > inspectionLimits.maxBytes) fail('admin module graph exceeds the inspection byte budget')
+      visited.add(next.url)
+      assets.push({ path: next.relative, sha256: digest(bytes), bytes: bytes.length })
+      inspect(bytes.toString('utf8'), next.relative, next.url)
+    }
   }
+  drainPending()
   if (!roots || !parsers || !marker || !message) fail('the entry-reachable admin code does not contain recognizable guarded Zod roots and parsers')
-  return { verified: true, coverage: 'static entry-reachable JavaScript structure', browserRuntimeVerified: false,
-    roots, parsers, files: assets, totalBytes }
+  const entryGraph = { roots, parsers, files: assets.length, bytes: totalBytes }
+  for (const asset of emitted) if (!visited.has(asset.url)) pending.push(asset)
+  drainPending()
+  if (assets.length !== emitted.length || totalBytes !== emittedBytes) fail('the emitted JavaScript inspection is incomplete')
+  return { verified: true, coverage: 'static all-emitted-local-JS guard structure with guarded entry graph', browserRuntimeVerified: false,
+    roots, parsers, files: assets, totalBytes, astNodes, entryGraph,
+    emittedFilesystem: { files: emitted.length, bytes: emittedBytes, directoryEntries, directories: directoryCount, inventoryComplete: true, inspectionComplete: true },
+    inspectionLimits, opaqueLoaders, opaqueLoaderCount, opaqueLoaderRecordsOmitted: opaqueLoaderCount > opaqueLoaders.length,
+    computedModuleTargetsResolved: false,
+    limitation: 'Recognized React Router route.module targets remain opaque; absent or external route modules and browser/editor execution are not verified.' }
 }
 
 export async function applyCmsSecurity({ projectRoot = process.cwd(), ifPresent = false } = {}) {
