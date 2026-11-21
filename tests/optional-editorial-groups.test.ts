@@ -12,6 +12,8 @@ const article = {
 const editorial = { heading: 'About these tools', introduction: 'Process a supported file on your device.' }
 type GroupField = {
   name: string
+  type?: string
+  list?: boolean
   required?: boolean
   fields?: GroupField[]
   templates?: { name: string; fields: GroupField[] }[]
@@ -25,6 +27,26 @@ const group = (collectionName: string, fieldName: string): GroupField => {
 }
 
 describe('clearing optional editor groups', () => {
+  it('keeps shared body-template scalar types compatible with Tina generated GraphQL fragments', () => {
+    const signatures = new Map<string, Set<string>>()
+    for (const template of group('post', 'body').templates ?? []) {
+      for (const field of template.fields) {
+        if (field.type === 'object') continue
+        const scalar = ['string', 'image', 'datetime', 'reference'].includes(field.type || '') ? 'String' : field.type
+        const signature = `${field.list ? `[${scalar}]` : scalar}${field.required ? '!' : ''}`
+        const variants = signatures.get(field.name) ?? new Set<string>()
+        variants.add(signature)
+        signatures.set(field.name, variants)
+      }
+    }
+    for (const [name, variants] of signatures) expect([...variants], `GraphQL types for body field ${name}`).toHaveLength(1)
+    expect([...signatures.get('caption')!]).toEqual(['String'])
+    const caption = group('post', 'body').templates?.find(template => template.name === 'figure')?.fields.find(field => field.name === 'caption')
+    expect(caption?.ui?.validate?.('')).toMatch(/caption/)
+    expect(caption?.ui?.validate?.('A real illustration caption.')).toBeUndefined()
+    expect(() => parsePublishedPost({ ...article, body: [{ _template: 'figure', figure: 'pipeline', caption: '' }] }, 'missing-figure-caption')).toThrow('caption')
+  })
+
   it('requires article content when publishing while allowing unfinished drafts and archived posts', () => {
     const validate = group('post', 'body').ui?.validate
     expect(validate).toBeTypeOf('function')

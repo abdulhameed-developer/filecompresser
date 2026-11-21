@@ -96,7 +96,19 @@ export const collections = [
             { type: 'object', name: 'rows', label: 'Rows', list: true, required: true, fields: [{ type: 'string', name: 'cells', label: 'Cells (one for each column)', list: true, required: true }] },
           ] },
           { name: 'callout', label: 'Highlighted note', fields: [{ type: 'string', name: 'title', label: 'Note title', required: true }, textarea('text', 'Note text')] },
-          { name: 'figure', label: 'Illustration', fields: [{ type: 'string', name: 'figure', label: 'Illustration', options: figureOptions, required: true }, { type: 'string', name: 'caption', label: 'Caption', required: true }] },
+          { name: 'figure', label: 'Illustration', fields: [
+            { type: 'string', name: 'figure', label: 'Illustration', options: figureOptions, required: true },
+            {
+              type: 'string', name: 'caption', label: 'Caption',
+              // Tina selects identically named scalar fields together across
+              // body templates. Keep GraphQL nullability aligned with image
+              // and table captions, while requiring illustration captions in
+              // the editor and the published-content reader.
+              ui: { validate(value) {
+                if (!nonBlank(value)) return 'Add a caption for this illustration.'
+              } },
+            },
+          ] },
         ],
       },
       {
