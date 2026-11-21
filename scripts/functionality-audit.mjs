@@ -60,6 +60,16 @@ const mp3 = media(['-i', wav, '-b:a', '192k'], 'tone.mp3')
 const otherAudio = ['m4a', 'flac', 'ogg'].map((ext) =>
   media(['-i', wav], `tone.${ext}`),
 )
+// Explicit source codecs guard the native decoders when unused external codec
+// libraries are removed. These are already accepted by the audio-family check.
+const opusAudio = media(
+  ['-i', wav, '-c:a', 'libopus', '-b:a', '96k', '-ar', '48000', '-ac', '2', '-f', 'ogg'],
+  'tone-opus.ogg',
+)
+const alacAudio = media(
+  ['-i', wav, '-c:a', 'alac', '-sample_fmt', 's32p', '-ar', '44100', '-ac', '2'],
+  'tone-alac.m4a',
+)
 const transparent = media(
   [
     '-f',
@@ -93,6 +103,29 @@ const video = media(
   'video.mp4',
 )
 const mov = media(['-i', video, '-c', 'copy'], 'video.mov')
+const hevcVideo = media(
+  [
+    '-i', video, '-vf', 'scale=320:240', '-c:v', 'libx265',
+    '-preset', 'ultrafast', '-x265-params', 'pools=none:frame-threads=1',
+    '-pix_fmt', 'yuv420p', '-tag:v', 'hvc1', '-c:a', 'aac', '-threads', '1',
+  ],
+  'video-hevc.mp4',
+)
+const proresVideo = media(
+  [
+    '-i', video, '-vf', 'scale=320:240', '-c:v', 'prores_ks', '-profile:v', '0',
+    '-pix_fmt', 'yuv422p10le', '-c:a', 'pcm_s16le', '-ar', '48000', '-ac', '2', '-threads', '1',
+  ],
+  'video-prores.mov',
+)
+const vp9Video = media(
+  [
+    '-i', video, '-vf', 'scale=320:240', '-c:v', 'libvpx-vp9',
+    '-deadline', 'realtime', '-cpu-used', '8', '-pix_fmt', 'yuv420p',
+    '-c:a', 'aac', '-threads', '1',
+  ],
+  'video-vp9.mp4',
+)
 const longVideo = media(
   [
     '-f',
@@ -215,6 +248,24 @@ function decode(file) {
     timeout: 60000,
   })
 }
+function assertDurationPreserved(input, output) {
+  const before = Number(input.format.duration)
+  const after = Number(output.format.duration)
+  assert(Number.isFinite(before) && before > 0, 'The source fixture must have a real duration')
+  assert(Number.isFinite(after) && after > 0, 'The encoded output must have a real duration')
+  assert(Math.abs(after - before) < 0.25, `Unexpected duration change: ${before}s to ${after}s`)
+}
+function assertAudibleOutput(file) {
+  const pcm = execFileSync(
+    ffmpeg,
+    ['-v', 'error', '-i', file, '-map', '0:a:0', '-ac', '1', '-c:a', 'pcm_s16le', '-f', 's16le', '-'],
+    { timeout: 60000, maxBuffer: 5 * 1024 * 1024 },
+  )
+  assert(pcm.length > 16000, 'Decoded audio is unexpectedly short')
+  let absoluteTotal = 0
+  for (let offset = 0; offset + 1 < pcm.length; offset += 2) absoluteTotal += Math.abs(pcm.readInt16LE(offset))
+  assert(absoluteTotal / (pcm.length / 2) > 100, 'The sine-wave fixture became silence')
+}
 try {
   for (const [route, input, codec] of [
     ['/jpg-compressor', jpg, 'mjpeg'],
@@ -319,24 +370,61 @@ try {
         decode(out)
       },
     )
-  for (const input of [video, mov])
+  for (const [label, input, sourceCodec] of [
+    ['Ogg Opus', opusAudio, 'opus'],
+    ['ALAC in M4A', alacAudio, 'alac'],
+  ])
+    await check(label + ' input decoded to genuine audible MP3', async () => {
+      const before = probe(input)
+      const sourceAudio = before.streams.find(stream => stream.codec_type === 'audio')
+      assert.equal(sourceAudio?.codec_name, sourceCodec, 'The fixture must exercise its stated decoder')
+      const out = await processAndDownload('/mp3-compressor', input)
+      const after = probe(out)
+      const outputAudio = after.streams.find(stream => stream.codec_type === 'audio')
+      assert.equal(outputAudio?.codec_name, 'mp3')
+      assert.equal(outputAudio.channels, sourceAudio.channels)
+      assert.equal(Number(outputAudio.sample_rate), Number(sourceAudio.sample_rate))
+      assertDurationPreserved(before, after)
+      decode(out)
+      assertAudibleOutput(out)
+      return { sourceCodec, outputCodec: outputAudio.codec_name, channels: outputAudio.channels, sampleRate: outputAudio.sample_rate }
+    })
+  for (const [label, input, sourceVideoCodec, sourceAudioCodec] of [
+    ['H264/AAC MP4', video, 'h264', 'aac'],
+    ['H264/AAC MOV', mov, 'h264', 'aac'],
+    ['HEVC/AAC MP4', hevcVideo, 'hevc', 'aac'],
+    ['ProRes/PCM MOV', proresVideo, 'prores', 'pcm_s16le'],
+    ['VP9/AAC MP4', vp9Video, 'vp9', 'aac'],
+  ])
     await check(
-      'Video encode ' + path.extname(input) + ' decoded H264/AAC output',
+      label + ' input produces decoded H264/AAC MP4',
       async () => {
+        const before = probe(input)
+        const sourceVideo = before.streams.find(stream => stream.codec_type === 'video')
+        const sourceAudio = before.streams.find(stream => stream.codec_type === 'audio')
+        assert.equal(sourceVideo?.codec_name, sourceVideoCodec, 'The fixture must exercise its stated video decoder')
+        assert.equal(sourceAudio?.codec_name, sourceAudioCodec, 'The fixture must exercise its stated audio decoder')
         const out = await processAndDownload('/video-compressor', input)
         const meta = probe(out)
+        const outputVideo = meta.streams.find(stream => stream.codec_type === 'video')
+        const outputAudio = meta.streams.find(stream => stream.codec_type === 'audio')
         assert.equal(
-          meta.streams.find((s) => s.codec_type === 'video').codec_name,
+          outputVideo?.codec_name,
           'h264',
         )
         assert.equal(
-          meta.streams.find((s) => s.codec_type === 'audio').codec_name,
+          outputAudio?.codec_name,
           'aac',
         )
-        assert.equal(meta.streams[0].width % 2, 0)
-        assert.equal(meta.streams[0].height % 2, 0)
+        assert.equal(outputVideo.pix_fmt, 'yuv420p')
+        assert.equal(outputVideo.width, Math.floor(sourceVideo.width / 2) * 2)
+        assert.equal(outputVideo.height, Math.floor(sourceVideo.height / 2) * 2)
+        assert(Number(outputVideo.nb_read_frames) >= Number(sourceVideo.nb_read_frames) - 1, 'Output lost source video frames')
+        assert.equal(outputAudio.channels, sourceAudio.channels)
+        assertDurationPreserved(before, meta)
         decode(out)
-        return meta.streams.map((s) => s.codec_name).join('/')
+        assertAudibleOutput(out)
+        return { sourceVideoCodec, sourceAudioCodec, outputCodecs: meta.streams.map(stream => stream.codec_name), width: outputVideo.width, height: outputVideo.height }
       },
     )
   await check('PDF readable content and page count', async () => {

@@ -19,7 +19,7 @@ DNSSEC signing is enabled at Cloudflare. The matching registrar DS record has be
 
 The authenticated Zoho Admin Console confirms **Mail Free**, five available user licences and one active user: **info@filecompresser.com**. Webmail is https://mail.zoho.com/. The outgoing display name is **FileCompresser Support**. Zoho verified domain ownership and all required MX, SPF and DKIM records. The free plan is a real mailbox; it does not include IMAP/POP/ActiveSync.
 
-An external Gmail message was delivered to this inbox, and a reply from the business address was delivered to the owner's connected Gmail inbox. A second outgoing message after key rotation reached the Gmail inbox with aligned DKIM (`fc2026`, 2048 bits) and DMARC both passing. Gmail still reported SPF `none`; Google Public DNS independently returns the correct SPF policy in an authenticated response. This recipient-cache discrepancy remains under observation. Do not report SPF's received-message check as passed from the provider's DNS verification alone.
+An external Gmail message was delivered to this inbox, and a reply from the business address was delivered to the owner's connected Gmail inbox. After DNS propagation, a further outgoing message on **21 November 2026 at 14:23 PKT** reached that Gmail inbox with **SPF pass, aligned DKIM pass (`fc2026`, 2048 bits), and DMARC pass with `p=REJECT`** in Gmail's actual `Authentication-Results`. The earlier temporary SPF `none` result has therefore been resolved by a received-message check, rather than inferred from the provider's DNS verification.
 
 | Type | Host | Target/value | Priority | TTL |
 | --- | --- | --- | --- | --- |
@@ -32,7 +32,7 @@ An external Gmail message was delivered to this inbox, and a reply from the busi
 | TXT | zmail._domainkey | Original verified 1024-bit RSA public key, retained during rotation |—|300 seconds|
 | TXT | _dmarc | v=DMARC1; p=reject; adkim=r; aspf=r |—|300 seconds|
 
-The `fc2026` selector is verified and is now the primary DKIM signing selector. Both public keys remain published. DMARC now enforces `p=reject` after aligned DKIM and DMARC passed on the actual outgoing message; Zoho is the only configured sender. DMARC can pass through aligned DKIM even while a receiver has not refreshed its SPF lookup. Verify a further outgoing message after enforcement, and do not create duplicate SPF or DMARC policies. Do not add reporting destinations or forwarding services without a clear operational need.
+The `fc2026` selector is verified and is now the primary DKIM signing selector. Both public keys remain published. DMARC enforces `p=reject`; Zoho is the only configured sender. The subsequent real outgoing test passed SPF, DKIM and DMARC after enforcement. Do not create duplicate SPF or DMARC policies, or add reporting destinations or forwarding services without a clear operational need.
 
 Passwords, recovery codes and private signing keys are not stored in this repository. Account sign-in/recovery and MFA are managed by Zoho. Do not disable MFA or change the owner's password as part of website maintenance.
 
