@@ -88,6 +88,9 @@ or unguarded shapes fail. A narrowly recognized
 [upstream React Router cached route loader](https://github.com/remix-run/react-router/blob/main/packages/react-router/lib/dom/ssr/routeModules.ts)
 is recorded as opaque: its computed target is not resolved. This
 static inspection does not prove arbitrary or remotely loaded code behavior.
+Calls to a lexically bound local function named `require` are likewise recorded
+as opaque local calls, without resolving their targets. Unbound global
+`require` calls and other unknown computed imports remain rejected.
 Its fixed 8-million-node, 256-file and 64 MiB inspection bounds concern trusted
 generated assets; runtime input and issue limits above remain unchanged.
 Hosted login, password reset, authenticated editor writes and editor browser

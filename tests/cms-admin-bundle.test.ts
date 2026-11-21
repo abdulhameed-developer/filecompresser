@@ -239,4 +239,78 @@ describe('entry-reachable generated admin structure', () => {
       'chunks/stale.js': guardedCode() })
     expect(() => verifyAdminResourceBundle(decoy)).toThrow('entry-reachable')
   })
+
+  it('distinguishes lexical local require calls from unresolved global CommonJS without executing targets', () => {
+    const cases = [
+      ['function', 'require("value"); function require(value){return value}'],
+      ['var', 'function factory(){require("value");if(true){var require=value=>value}}'],
+      ['var', 'require("value");if(true){var require=value=>value}'],
+      ['let', '{require("value");let require=value=>value}'],
+      ['const', '{const require=value=>value;require("value")}'],
+      ['parameter', 'function factory(require){require("value")}'],
+      ['parameter', 'function factory({shim:require}){require("value")}'],
+      ['import', 'import require from "./shim.js";require("value")'],
+      ['import', 'import {shim as require} from "./shim.js";require("value")'],
+      ['named-function', 'const factory=function require(){return require("value")}'],
+      ['catch', 'try{throw value=>value}catch(require){require("value")}'],
+      ['loop-lexical', 'for(let require of []){require("value")}'],
+    ]
+    for (const [kind, code] of cases) {
+      const root = fixture({ 'index.html': '<script src="./entry.js"></script>', 'entry.js': guardedCode() + '\n' + code,
+        'shim.js': 'export default value=>value;export function shim(value){return value}' })
+      const result = verifyAdminResourceBundle(root)
+      expect(result.localRequireCallCount).toBe(1)
+      expect(result.localRequireCalls[0]).toEqual(expect.objectContaining({ asset: 'entry.js', targetResolved: false,
+        binding: expect.objectContaining({ status: 'lexically-bound-local', kind }) }))
+      expect(result.localRequireCalls[0].sha256).toMatch(/^[a-f0-9]{64}$/)
+      expect(result.browserRuntimeVerified).toBe(false)
+      expect(result.emittedFilesystem.inspectionComplete).toBe(true)
+    }
+  })
+
+  it('does not leak sibling, nested, loop, catch, destructuring-property or function-name bindings', () => {
+    const cases = [
+      '{let require=value=>value}require("global")',
+      'function sibling(require){}require("global")',
+      'function sibling(){var require=value=>value}require("global")',
+      'for(let require of []){}require("global")',
+      'const {require:alias}=object;require("global")',
+      'import {require as alias} from "./shim.js";require("global")',
+      'function factory(value=require("global")){var require=value=>value}',
+      'function factory(value=require("global")){function require(){}}',
+      'try{}catch(require){}require("global")',
+      'const factory=function require(){};require("global")',
+      'const object={require(){}};require("global")',
+      'function factory(){{const require=value=>value}return require("global")}',
+    ]
+    for (const code of cases) {
+      const root = fixture({ 'index.html': '<script src="./entry.js"></script>', 'entry.js': guardedCode() + '\n' + code,
+        'shim.js': 'export function require(value){return value}' })
+      expect(() => verifyAdminResourceBundle(root)).toThrow('unresolved CommonJS import')
+    }
+  })
+
+  it('reports bounded require expressions with binding hints across generated assets', () => {
+    const root = fixture({ 'index.html': '<script src="./entry.js"></script>', 'entry.js': guardedCode() + ';require("global")',
+      'chunks/local.js': 'function factory(require){return require("opaque")}' })
+    let failure = ''
+    try { verifyAdminResourceBundle(root) } catch (error) { failure = (error as Error).message }
+    expect(failure).toContain('unresolved CommonJS import')
+    const diagnostic = JSON.parse(failure.split('diagnostic=')[1])
+    expect(diagnostic.imports[0]).toEqual(expect.objectContaining({ asset: 'entry.js', kind: 'require-call',
+      expression: 'require("global")', binding: { status: 'unbound-global' } }))
+    expect(diagnostic.generatedInventory.requireCalls).toBe(2)
+    expect(diagnostic.imports).toEqual(expect.arrayContaining([expect.objectContaining({ asset: 'chunks/local.js', kind: 'require-call',
+      binding: expect.objectContaining({ status: 'lexically-bound-local', kind: 'parameter' }) })]))
+    for (const item of diagnostic.imports) { expect(item.expression.length).toBeLessThanOrEqual(240); expect(item.context.length).toBeLessThanOrEqual(600) }
+  })
+
+  it('keeps unknown ESM imports and Zod guard validation mandatory inside local require shims', () => {
+    const dynamic = fixture({ 'index.html': '<script src="./entry.js"></script>',
+      'entry.js': guardedCode() + ';function require(target){return import(target)}require("opaque")' })
+    expect(() => verifyAdminResourceBundle(dynamic)).toThrow('unresolved dynamic module import')
+    const unguarded = fixture({ 'index.html': '<script src="./entry.js"></script>', 'entry.js': guardedCode(),
+      'chunks/local.js': 'function require(target){' + guardedCode().replaceAll('fileCompresserBudget', 'removedBudget') + '}require("opaque")' })
+    expect(() => verifyAdminResourceBundle(unguarded)).toThrow('graph preflight/shared budget')
+  })
 })

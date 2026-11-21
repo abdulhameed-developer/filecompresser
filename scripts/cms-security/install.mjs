@@ -216,8 +216,8 @@ export function verifyAdminResourceBundle(projectRoot = process.cwd()) {
   const assets = []
   const inspectionLimits = Object.freeze({ maxFiles: 256, maxBytes: 64 * 1024 * 1024,
     maxFileBytes: 16 * 1024 * 1024, maxAstNodes: 8000000, maxDirectoryEntries: 4096, maxDirectoryDepth: 16 })
-  const emitted = [], emittedByPath = new Map(), opaqueLoaders = []
-  let emittedBytes = 0, directoryEntries = 0, directoryCount = 0, opaqueLoaderCount = 0
+  const emitted = [], emittedByPath = new Map(), opaqueLoaders = [], localRequireCalls = []
+  let emittedBytes = 0, directoryEntries = 0, directoryCount = 0, opaqueLoaderCount = 0, localRequireCallCount = 0
   const inventoryDirectories = [{ relative: '', depth: 0 }]
   while (inventoryDirectories.length) {
     const current = inventoryDirectories.pop()
@@ -243,6 +243,84 @@ export function verifyAdminResourceBundle(projectRoot = process.cwd()) {
   const name = node => !node ? undefined : ts.isIdentifier(node) || ts.isStringLiteral(node) ? node.text
     : ts.isComputedPropertyName(node) && ts.isStringLiteral(node.expression) ? node.expression.text : undefined
   const moduleLiteral = node => ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node)
+  const requireCall = node => ts.isCallExpression(node) && ts.isIdentifier(node.expression) && node.expression.text === 'require'
+  const bindingName = node => node && (ts.isIdentifier(node) ? node.text === 'require'
+    : ts.isObjectBindingPattern(node) || ts.isArrayBindingPattern(node) ? node.elements.some(element => ts.isBindingElement(element) && bindingName(element.name)) : false)
+  const functionScope = node => ts.isFunctionDeclaration(node) || ts.isFunctionExpression(node) || ts.isArrowFunction(node)
+    || ts.isMethodDeclaration(node) || ts.isConstructorDeclaration(node) || ts.isGetAccessorDeclaration(node) || ts.isSetAccessorDeclaration(node)
+  const declarationCache = new WeakMap(), hoistedCache = new WeakMap()
+  const declaredRequire = scope => {
+    if (declarationCache.has(scope)) return declarationCache.get(scope)
+    const statements = ts.isCaseBlock(scope) ? scope.clauses.flatMap(clause => [...clause.statements]) : scope.statements || []
+    let result = null
+    for (const statement of statements) {
+      if (ts.isVariableStatement(statement)) {
+        const declaration = statement.declarationList.declarations.find(item => bindingName(item.name))
+        if (declaration) { result = { declaration, scope, kind: statement.declarationList.flags & ts.NodeFlags.Const ? 'const' : statement.declarationList.flags & ts.NodeFlags.Let ? 'let' : 'var' }; break }
+      }
+      if ((ts.isFunctionDeclaration(statement) || ts.isClassDeclaration(statement)) && name(statement.name) === 'require') {
+        result = { declaration: statement, scope, kind: ts.isFunctionDeclaration(statement) ? 'function' : 'class' }; break
+      }
+      if (ts.isImportDeclaration(statement) && statement.importClause) {
+        const clause = statement.importClause, named = clause.namedBindings
+        if (bindingName(clause.name) || (named && (ts.isNamespaceImport(named) ? bindingName(named.name)
+          : named.elements.some(element => bindingName(element.name))))) { result = { declaration: clause, scope, kind: 'import' }; break }
+      }
+    }
+    declarationCache.set(scope, result)
+    return result
+  }
+  const hoistedRequire = scope => {
+    if (hoistedCache.has(scope)) return hoistedCache.get(scope)
+    let result = null
+    const visit = node => {
+      if (node !== scope && (functionScope(node) || ts.isClassDeclaration(node) || ts.isClassExpression(node))) return
+      if (ts.isVariableDeclarationList(node) && !(node.flags & ts.NodeFlags.BlockScoped)) {
+        const declaration = node.declarations.find(item => bindingName(item.name))
+        if (declaration) { result = { declaration, scope, kind: 'var' }; return }
+      }
+      if (!result) ts.forEachChild(node, visit)
+    }
+    visit(scope)
+    hoistedCache.set(scope, result)
+    return result
+  }
+  const localRequireBinding = call => {
+    for (let scope = call.parent; scope; scope = scope.parent) {
+      if (functionScope(scope)) {
+        const parameter = scope.parameters.find(item => bindingName(item.name))
+        if (parameter) return { declaration: parameter, scope, kind: 'parameter' }
+        if (ts.isFunctionExpression(scope) && name(scope.name) === 'require') return { declaration: scope, scope, kind: 'named-function' }
+        // Default parameter expressions cannot see declarations in the body.
+        if (scope.body && call.pos >= scope.body.pos && call.end <= scope.body.end) {
+          const hoisted = hoistedRequire(scope.body)
+          if (hoisted) return hoisted
+        }
+      }
+      if ((ts.isClassDeclaration(scope) || ts.isClassExpression(scope)) && name(scope.name) === 'require') return { declaration: scope, scope, kind: 'class' }
+      if (ts.isCatchClause(scope) && scope.variableDeclaration && bindingName(scope.variableDeclaration.name)) return { declaration: scope.variableDeclaration, scope, kind: 'catch' }
+      if ((ts.isForStatement(scope) || ts.isForInStatement(scope) || ts.isForOfStatement(scope))
+        && scope.initializer && ts.isVariableDeclarationList(scope.initializer)) {
+        const declaration = scope.initializer.declarations.find(item => bindingName(item.name))
+        if (declaration) return { declaration, scope, kind: scope.initializer.flags & ts.NodeFlags.BlockScoped ? 'loop-lexical' : 'var' }
+      }
+      if (ts.isBlock(scope) || ts.isSourceFile(scope) || ts.isCaseBlock(scope)) {
+        const declaration = declaredRequire(scope)
+        if (declaration) return declaration
+        if (ts.isSourceFile(scope) || (scope.parent && ts.isClassStaticBlockDeclaration(scope.parent))) {
+          const hoisted = hoistedRequire(scope)
+          if (hoisted) return hoisted
+        }
+      }
+    }
+    return null
+  }
+  const bindingDetail = (binding, ast) => {
+    if (!binding) return { status: 'unbound-global' }
+    const position = ast.getLineAndCharacterOfPosition(binding.declaration.getStart(ast))
+    return { status: 'lexically-bound-local', kind: binding.kind, scopeKind: ts.SyntaxKind[binding.scope.kind],
+      line: position.line + 1, column: position.character + 1 }
+  }
   const find = (node, predicate) => {
     const found = []
     const visit = current => { if (predicate(current)) found.push(current); ts.forEachChild(current, visit) }
@@ -373,7 +451,7 @@ export function verifyAdminResourceBundle(projectRoot = process.cwd()) {
   const inspect = (source, filename, url) => {
     const ast = ts.createSourceFile(filename, source, ts.ScriptTarget.Latest, true, ts.ScriptKind.JS)
     if (ast.parseDiagnostics.length) fail('generated admin JavaScript has unsupported syntax')
-    const unresolvedImport = current => {
+    const unresolvedImport = (current, kind = 'dynamic-import') => {
       const excerpt = (start, end, maximum, rawMaximum, input = source) => {
         const raw = input.slice(start, Math.min(end, start + rawMaximum))
         const normalized = raw.replace(/[\u0000-\u001f\u007f-\u009f\u202a-\u202e\u2066-\u2069]/g, ' ').replace(/\s+/g, ' ').trim()
@@ -395,6 +473,8 @@ export function verifyAdminResourceBundle(projectRoot = process.cwd()) {
         const surrounding = excerpt(contextStart, context.end, 600, 2400, input)
         const binding = context.name || context.parent?.name
         return { asset: asset.slice(0, 160), line: position.line + 1, column: position.character + 1,
+          kind: requireCall(node) ? 'require-call' : 'dynamic-import',
+          binding: requireCall(node) ? bindingDetail(localRequireBinding(node), parsed) : undefined,
           literalSpecifier: node.arguments.length === 1 && moduleLiteral(node.arguments[0]),
           expression: expression.text, expressionTruncated: expression.truncated,
           context: surrounding.text, contextTruncated: surrounding.truncated || contextStart > context.getStart(parsed),
@@ -421,7 +501,7 @@ export function verifyAdminResourceBundle(projectRoot = process.cwd()) {
       // This inventory is diagnostic only: unreferenced generated assets never
       // become accepted graph edges. Preserve the original fail-closed result.
       const generated = { scope: 'generated admin JS assets, including unreferenced diagnostics only',
-        files: 0, bytes: 0, nodes: 0, computedImports: 0, literalImports: 0, truncated: false, errors: [], classes: [], classRecordsOmitted: false }
+        files: 0, bytes: 0, nodes: 0, computedImports: 0, literalImports: 0, requireCalls: 0, truncated: false, errors: [], classes: [], classRecordsOmitted: false }
       const computed = [], literal = [], directories = [{ relative: '', depth: 0 }]
       let diagnosticEdges = 0, diagnosticScheduled = 0
       while (directories.length && !generated.truncated) {
@@ -471,9 +551,10 @@ export function verifyAdminResourceBundle(projectRoot = process.cwd()) {
                 else generated.classRecordsOmitted = true
               }
             }
-            if (ts.isCallExpression(node) && node.expression.kind === ts.SyntaxKind.ImportKeyword) {
-              const conventional = node.arguments.length === 1 && moduleLiteral(node.arguments[0])
-              generated[conventional ? 'literalImports' : 'computedImports']++
+            if ((ts.isCallExpression(node) && node.expression.kind === ts.SyntaxKind.ImportKeyword) || requireCall(node)) {
+              const commonjs = requireCall(node)
+              const conventional = !commonjs && node.arguments.length === 1 && moduleLiteral(node.arguments[0])
+              generated[commonjs ? 'requireCalls' : conventional ? 'literalImports' : 'computedImports']++
               if (!(relative === filename && node.getStart(parsed) === current.getStart(ast))) {
                 const collection = conventional ? literal : computed
                 if (collection.length < 20) collection.push(detail(node, parsed, input, relative))
@@ -492,11 +573,11 @@ export function verifyAdminResourceBundle(projectRoot = process.cwd()) {
       imports.push(...computed.slice(0, 19))
       imports.push(...literal.slice(0, 20 - imports.length))
       const diagnostic = { asset: filename.slice(0, 160), imports,
-        additionalImportsOmitted: generated.computedImports + generated.literalImports > imports.length,
+        additionalImportsOmitted: generated.computedImports + generated.literalImports + generated.requireCalls > imports.length,
         generatedInventory: generated, candidateScan: { roots: candidateRoots, parsers: candidateParsers, nodes: scanned, truncated: scanTruncated },
         partialInspection: { roots, parsers, files: visited.size, bytes: totalBytes },
         emittedFilesystem: { files: emitted.length, bytes: emittedBytes, directoryEntries, directories: directoryCount, inventoryComplete: true }, inspectionLimits }
-      fail(`admin bundle contains an unresolved dynamic module import; diagnostic=${JSON.stringify(diagnostic)}`)
+      fail(`admin bundle contains an ${kind === 'require-call' ? 'unsupported unresolved CommonJS import' : 'unresolved dynamic module import'}; diagnostic=${JSON.stringify(diagnostic)}`)
     }
     const walk = node => {
       if (++astNodes > inspectionLimits.maxAstNodes) fail('admin JavaScript exceeds the AST inspection budget')
@@ -519,7 +600,16 @@ export function verifyAdminResourceBundle(projectRoot = process.cwd()) {
           }
         } else enqueue(node.arguments[0].text, url)
       }
-      if (ts.isCallExpression(node) && name(node.expression) === 'require') fail('admin bundle contains an unsupported unresolved CommonJS import')
+      if (requireCall(node)) {
+        const binding = localRequireBinding(node)
+        if (!binding) unresolvedImport(node, 'require-call')
+        localRequireCallCount++
+        if (localRequireCalls.length < 20) {
+          const position = ast.getLineAndCharacterOfPosition(node.getStart(ast))
+          localRequireCalls.push({ asset: filename.slice(0, 160), sha256: assets.find(asset => asset.path === filename)?.sha256 || digest(Buffer.from(source)),
+            line: position.line + 1, column: position.character + 1, binding: bindingDetail(binding, ast), targetResolved: false })
+        }
+      }
       if (ts.isBinaryExpression(node) && node.operatorToken.kind === ts.SyntaxKind.EqualsToken) {
         const memberName = member => ts.isPropertyAccessExpression(member) ? member.name.text
           : ts.isElementAccessExpression(member) && member.argumentExpression && ts.isStringLiteral(member.argumentExpression) ? member.argumentExpression.text : undefined
@@ -614,8 +704,9 @@ export function verifyAdminResourceBundle(projectRoot = process.cwd()) {
     roots, parsers, files: assets, totalBytes, astNodes, entryGraph,
     emittedFilesystem: { files: emitted.length, bytes: emittedBytes, directoryEntries, directories: directoryCount, inventoryComplete: true, inspectionComplete: true },
     inspectionLimits, opaqueLoaders, opaqueLoaderCount, opaqueLoaderRecordsOmitted: opaqueLoaderCount > opaqueLoaders.length,
+    localRequireCalls, localRequireCallCount, localRequireRecordsOmitted: localRequireCallCount > localRequireCalls.length,
     computedModuleTargetsResolved: false,
-    limitation: 'Recognized React Router route.module targets remain opaque; absent or external route modules and browser/editor execution are not verified.' }
+    limitation: 'Recognized React Router route.module targets and lexically bound require calls remain opaque; absent or external modules and browser/editor execution are not verified.' }
 }
 
 export async function applyCmsSecurity({ projectRoot = process.cwd(), ifPresent = false } = {}) {
