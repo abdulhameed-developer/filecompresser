@@ -84,6 +84,35 @@ jobs:
           assert.equal(JSON.parse(readFileSync('node_modules/tinacms/package.json', 'utf8')).version, '3.15.2')
           assert.equal(JSON.parse(readFileSync('node_modules/@tinacms/cli/package.json', 'utf8')).version, '4.0.5')
           NODE
+      - name: Report high-severity dependency advisory paths
+        shell: bash
+        run: |
+          set -euo pipefail
+          set +e
+          npm audit --json > "$VALIDATION_EVIDENCE/diagnostic-audit-all.json"
+          set -e
+          node --input-type=module <<'NODE'
+          import { readFileSync } from 'node:fs'
+          import path from 'node:path'
+          const audit = JSON.parse(readFileSync(path.join(process.env.VALIDATION_EVIDENCE, 'diagnostic-audit-all.json'), 'utf8'))
+          if (audit.error || !audit.metadata?.vulnerabilities) throw Error('Dependency diagnostic did not receive a usable npm audit report.')
+          const lock = JSON.parse(readFileSync('package-lock.json', 'utf8'))
+          const packages = lock.packages || {}
+          const advisories = Object.entries(audit.vulnerabilities || {})
+            .filter(([, value]) => value.severity === 'high' || value.severity === 'critical')
+            .map(([name, value]) => ({
+              name, severity: value.severity, isDirect: value.isDirect, range: value.range,
+              via: value.via, effects: value.effects, fixAvailable: value.fixAvailable,
+              nodes: (value.nodes || []).map(node => ({ path: node, version: packages[node]?.version, dev: packages[node]?.dev === true })),
+              requiredBy: Object.entries(packages).flatMap(([node, metadata]) => {
+                const dependencies = { ...metadata.dependencies, ...metadata.devDependencies, ...metadata.optionalDependencies }
+                return Object.hasOwn(dependencies, name) ? [{ path: node || '(root)', version: metadata.version, range: dependencies[name], dev: metadata.dev === true }] : []
+              }),
+            }))
+          console.log('DEPENDENCY_DIAGNOSTIC_BEGIN')
+          console.log(JSON.stringify({ vulnerabilities: audit.metadata.vulnerabilities, advisories }))
+          console.log('DEPENDENCY_DIAGNOSTIC_END')
+          NODE
       - name: Validate types, lint and tests
         run: |
           set -euo pipefail
