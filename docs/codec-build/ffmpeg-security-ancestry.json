@@ -1,0 +1,484 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-11-21",
+  "repository": "FFmpeg/FFmpeg",
+  "selectedTag": "n5.1.10",
+  "selectedCommit": "19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb",
+  "tagResolvedUsing": "Official GitHub mirror fetch_commit at n5.1.10",
+  "primaryTagURL": "https://github.com/FFmpeg/FFmpeg/tree/n5.1.10",
+  "primarySelectedCommitURL": "https://github.com/FFmpeg/FFmpeg/commit/19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb",
+  "previousCandidateSourceCommit": "4729204c17f756e186d622060088371d10b34f7e",
+  "primarySecurityListingURL": "https://ffmpeg.org/security.html",
+  "primaryBranchReleaseURL": "https://ffmpeg.org/download.html#release_5.1",
+  "primaryCompatibilityPolicyURL": "https://ffmpeg.org/developer.html#Release-process",
+  "verificationMethod": "Official GitHub compare_commits for each full branch fix commit against selected full release commit. Ancestry accepted only if status=ahead, behind_by=0, and merge_base_commit.sha equals fix commit.",
+  "comparisonCount": 22,
+  "distinctCveCount": 22,
+  "allCheckedFixesAreAncestors": true,
+  "licenseFiles": [
+    {
+      "path": "COPYING.GPLv2",
+      "gitBlob": "d159169d1050894d3ea3b98e1c965c4058208fe1",
+      "previousCandidateGitBlob": "d159169d1050894d3ea3b98e1c965c4058208fe1",
+      "changedSincePreviousCandidate": false,
+      "primaryURL": "https://github.com/FFmpeg/FFmpeg/blob/19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb/COPYING.GPLv2"
+    },
+    {
+      "path": "COPYING.GPLv3",
+      "gitBlob": "94a9ed024d3859793618152ea559a168bbcbb5e2",
+      "previousCandidateGitBlob": "94a9ed024d3859793618152ea559a168bbcbb5e2",
+      "changedSincePreviousCandidate": false,
+      "primaryURL": "https://github.com/FFmpeg/FFmpeg/blob/19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb/COPYING.GPLv3"
+    },
+    {
+      "path": "COPYING.LGPLv2.1",
+      "gitBlob": "40924c2a6da76a2b0c639f6fe7ef0b2d095a6adb",
+      "previousCandidateGitBlob": "58af0d3787aec7d6f8d833535d64879156e7ec23",
+      "changedSincePreviousCandidate": true,
+      "primaryURL": "https://github.com/FFmpeg/FFmpeg/blob/19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb/COPYING.LGPLv2.1"
+    },
+    {
+      "path": "COPYING.LGPLv3",
+      "gitBlob": "65c5ca88a67c30becee01c5a8816d964b03862f9",
+      "previousCandidateGitBlob": "65c5ca88a67c30becee01c5a8816d964b03862f9",
+      "changedSincePreviousCandidate": false,
+      "primaryURL": "https://github.com/FFmpeg/FFmpeg/blob/19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb/COPYING.LGPLv3"
+    },
+    {
+      "path": "LICENSE.md",
+      "gitBlob": "613070e1b631a919a74c862f2a75a0f249a631ff",
+      "previousCandidateGitBlob": "613070e1b631a919a74c862f2a75a0f249a631ff",
+      "changedSincePreviousCandidate": false,
+      "primaryURL": "https://github.com/FFmpeg/FFmpeg/blob/19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb/LICENSE.md"
+    }
+  ],
+  "checks": [
+    {
+      "cves": [
+        "CVE-2024-35366"
+      ],
+      "listedFixedRelease": "5.1.5",
+      "fixCommit": "4db0eb4653efad967ddcf71f564fd2f1169bafcb",
+      "status": "ahead",
+      "aheadBy": 713,
+      "behindBy": 0,
+      "mergeBase": "4db0eb4653efad967ddcf71f564fd2f1169bafcb",
+      "ancestorConfirmed": true,
+      "sourceFixSubject": "avformat/sbgdec: Check for negative duration",
+      "sourceFiles": [
+        "libavformat/sbgdec.c"
+      ],
+      "primaryFixURL": "https://github.com/FFmpeg/FFmpeg/commit/4db0eb4653efad967ddcf71f564fd2f1169bafcb",
+      "primaryCompareAPIURL": "https://api.github.com/repos/FFmpeg/FFmpeg/compare/4db0eb4653efad967ddcf71f564fd2f1169bafcb...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb",
+      "primaryCompareURL": "https://github.com/FFmpeg/FFmpeg/compare/4db0eb4653efad967ddcf71f564fd2f1169bafcb...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb"
+    },
+    {
+      "cves": [
+        "CVE-2024-36613"
+      ],
+      "listedFixedRelease": "5.1.5",
+      "fixCommit": "1f6fcc64179377114b4ecc3b9f63bd5774a64edf",
+      "status": "ahead",
+      "aheadBy": 725,
+      "behindBy": 0,
+      "mergeBase": "1f6fcc64179377114b4ecc3b9f63bd5774a64edf",
+      "ancestorConfirmed": true,
+      "sourceFixSubject": "avformat/dxa: Adjust order of operations around block align",
+      "sourceFiles": [
+        "libavformat/dxa.c"
+      ],
+      "primaryFixURL": "https://github.com/FFmpeg/FFmpeg/commit/1f6fcc64179377114b4ecc3b9f63bd5774a64edf",
+      "primaryCompareAPIURL": "https://api.github.com/repos/FFmpeg/FFmpeg/compare/1f6fcc64179377114b4ecc3b9f63bd5774a64edf...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb",
+      "primaryCompareURL": "https://github.com/FFmpeg/FFmpeg/compare/1f6fcc64179377114b4ecc3b9f63bd5774a64edf...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb"
+    },
+    {
+      "cves": [
+        "CVE-2024-36616"
+      ],
+      "listedFixedRelease": "5.1.5",
+      "fixCommit": "a8beef67993aa267de87599007143d9f0ba67c23",
+      "status": "ahead",
+      "aheadBy": 710,
+      "behindBy": 0,
+      "mergeBase": "a8beef67993aa267de87599007143d9f0ba67c23",
+      "ancestorConfirmed": true,
+      "sourceFixSubject": "avformat/westwood_vqa: Fix 2g packets",
+      "sourceFiles": [
+        "libavformat/westwood_vqa.c"
+      ],
+      "primaryFixURL": "https://github.com/FFmpeg/FFmpeg/commit/a8beef67993aa267de87599007143d9f0ba67c23",
+      "primaryCompareAPIURL": "https://api.github.com/repos/FFmpeg/FFmpeg/compare/a8beef67993aa267de87599007143d9f0ba67c23...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb",
+      "primaryCompareURL": "https://github.com/FFmpeg/FFmpeg/compare/a8beef67993aa267de87599007143d9f0ba67c23...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb"
+    },
+    {
+      "cves": [
+        "CVE-2024-36617"
+      ],
+      "listedFixedRelease": "5.1.5",
+      "fixCommit": "f0e780370cc1c437d64f10d326b1d656ef490b5f",
+      "status": "ahead",
+      "aheadBy": 726,
+      "behindBy": 0,
+      "mergeBase": "f0e780370cc1c437d64f10d326b1d656ef490b5f",
+      "ancestorConfirmed": true,
+      "sourceFixSubject": "avformat/cafdec: dont seek beyond 64bit",
+      "sourceFiles": [
+        "libavformat/cafdec.c"
+      ],
+      "primaryFixURL": "https://github.com/FFmpeg/FFmpeg/commit/f0e780370cc1c437d64f10d326b1d656ef490b5f",
+      "primaryCompareAPIURL": "https://api.github.com/repos/FFmpeg/FFmpeg/compare/f0e780370cc1c437d64f10d326b1d656ef490b5f...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb",
+      "primaryCompareURL": "https://github.com/FFmpeg/FFmpeg/compare/f0e780370cc1c437d64f10d326b1d656ef490b5f...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb"
+    },
+    {
+      "cves": [
+        "CVE-2024-7055"
+      ],
+      "listedFixedRelease": "5.1.6",
+      "fixCommit": "5372bfe01e4a04357ab4465c1426cf8c6412dfd5",
+      "status": "ahead",
+      "aheadBy": 550,
+      "behindBy": 0,
+      "mergeBase": "5372bfe01e4a04357ab4465c1426cf8c6412dfd5",
+      "ancestorConfirmed": true,
+      "sourceFixSubject": "avcodec/pnmdec: Use 64bit for input size check",
+      "sourceFiles": [
+        "libavcodec/pnmdec.c"
+      ],
+      "primaryFixURL": "https://github.com/FFmpeg/FFmpeg/commit/5372bfe01e4a04357ab4465c1426cf8c6412dfd5",
+      "primaryCompareAPIURL": "https://api.github.com/repos/FFmpeg/FFmpeg/compare/5372bfe01e4a04357ab4465c1426cf8c6412dfd5...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb",
+      "primaryCompareURL": "https://github.com/FFmpeg/FFmpeg/compare/5372bfe01e4a04357ab4465c1426cf8c6412dfd5...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb"
+    },
+    {
+      "cves": [
+        "CVE-2024-7272"
+      ],
+      "listedFixedRelease": "5.1.6",
+      "fixCommit": "a937b3c58babae893fb46b286a4792cd24a01d3d",
+      "status": "ahead",
+      "aheadBy": 515,
+      "behindBy": 0,
+      "mergeBase": "a937b3c58babae893fb46b286a4792cd24a01d3d",
+      "ancestorConfirmed": true,
+      "sourceFixSubject": "swsresample/swresample: error out on invalid layouts",
+      "sourceFiles": [
+        "libswresample/swresample.c"
+      ],
+      "primaryFixURL": "https://github.com/FFmpeg/FFmpeg/commit/a937b3c58babae893fb46b286a4792cd24a01d3d",
+      "primaryCompareAPIURL": "https://api.github.com/repos/FFmpeg/FFmpeg/compare/a937b3c58babae893fb46b286a4792cd24a01d3d...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb",
+      "primaryCompareURL": "https://github.com/FFmpeg/FFmpeg/compare/a937b3c58babae893fb46b286a4792cd24a01d3d...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb"
+    },
+    {
+      "cves": [
+        "CVE-2023-49502"
+      ],
+      "listedFixedRelease": "5.1.7",
+      "fixCommit": "8e6c82cefb45372dee069236f08d272117d81421",
+      "status": "ahead",
+      "aheadBy": 380,
+      "behindBy": 0,
+      "mergeBase": "8e6c82cefb45372dee069236f08d272117d81421",
+      "ancestorConfirmed": true,
+      "sourceFixSubject": "avfilter/bwdif: account for chroma sub-sampling in min size calculation",
+      "sourceFiles": [
+        "libavfilter/vf_bwdif.c"
+      ],
+      "primaryFixURL": "https://github.com/FFmpeg/FFmpeg/commit/8e6c82cefb45372dee069236f08d272117d81421",
+      "primaryCompareAPIURL": "https://api.github.com/repos/FFmpeg/FFmpeg/compare/8e6c82cefb45372dee069236f08d272117d81421...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb",
+      "primaryCompareURL": "https://github.com/FFmpeg/FFmpeg/compare/8e6c82cefb45372dee069236f08d272117d81421...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb"
+    },
+    {
+      "cves": [
+        "CVE-2023-50007"
+      ],
+      "listedFixedRelease": "5.1.7",
+      "fixCommit": "3a8f94cf7b29ed4b8531306f11a6bb94fbbaf936",
+      "status": "ahead",
+      "aheadBy": 381,
+      "behindBy": 0,
+      "mergeBase": "3a8f94cf7b29ed4b8531306f11a6bb94fbbaf936",
+      "ancestorConfirmed": true,
+      "sourceFixSubject": "avfilter/af_afwtdn: fix crash with EOF handling",
+      "sourceFiles": [
+        "libavfilter/af_afwtdn.c"
+      ],
+      "primaryFixURL": "https://github.com/FFmpeg/FFmpeg/commit/3a8f94cf7b29ed4b8531306f11a6bb94fbbaf936",
+      "primaryCompareAPIURL": "https://api.github.com/repos/FFmpeg/FFmpeg/compare/3a8f94cf7b29ed4b8531306f11a6bb94fbbaf936...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb",
+      "primaryCompareURL": "https://github.com/FFmpeg/FFmpeg/compare/3a8f94cf7b29ed4b8531306f11a6bb94fbbaf936...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb"
+    },
+    {
+      "cves": [
+        "CVE-2023-50008"
+      ],
+      "listedFixedRelease": "5.1.7",
+      "fixCommit": "28a7db723971c73f02ab5ad5f0a45fa288775e0a",
+      "status": "ahead",
+      "aheadBy": 382,
+      "behindBy": 0,
+      "mergeBase": "28a7db723971c73f02ab5ad5f0a45fa288775e0a",
+      "ancestorConfirmed": true,
+      "sourceFixSubject": "avfilter/vf_colorcorrect: fix memory leaks",
+      "sourceFiles": [
+        "libavfilter/vf_colorcorrect.c"
+      ],
+      "primaryFixURL": "https://github.com/FFmpeg/FFmpeg/commit/28a7db723971c73f02ab5ad5f0a45fa288775e0a",
+      "primaryCompareAPIURL": "https://api.github.com/repos/FFmpeg/FFmpeg/compare/28a7db723971c73f02ab5ad5f0a45fa288775e0a...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb",
+      "primaryCompareURL": "https://github.com/FFmpeg/FFmpeg/compare/28a7db723971c73f02ab5ad5f0a45fa288775e0a...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb"
+    },
+    {
+      "cves": [
+        "CVE-2023-6602",
+        "CVE-2023-6604"
+      ],
+      "listedFixedRelease": "5.1.7",
+      "fixCommit": "9803800e0e8cd8e1e7695f77cfbf4e0db0abfe57",
+      "status": "ahead",
+      "aheadBy": 378,
+      "behindBy": 0,
+      "mergeBase": "9803800e0e8cd8e1e7695f77cfbf4e0db0abfe57",
+      "ancestorConfirmed": true,
+      "sourceFixSubject": "avformat/hls: Be more picky on extensions",
+      "sourceFiles": [
+        "doc/demuxers.texi",
+        "libavformat/hls.c"
+      ],
+      "primaryFixURL": "https://github.com/FFmpeg/FFmpeg/commit/9803800e0e8cd8e1e7695f77cfbf4e0db0abfe57",
+      "primaryCompareAPIURL": "https://api.github.com/repos/FFmpeg/FFmpeg/compare/9803800e0e8cd8e1e7695f77cfbf4e0db0abfe57...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb",
+      "primaryCompareURL": "https://github.com/FFmpeg/FFmpeg/compare/9803800e0e8cd8e1e7695f77cfbf4e0db0abfe57...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb"
+    },
+    {
+      "cves": [
+        "CVE-2023-6605"
+      ],
+      "listedFixedRelease": "5.1.7",
+      "fixCommit": "097131a6474bd6294ff337fa92025df60dff907a",
+      "status": "ahead",
+      "aheadBy": 395,
+      "behindBy": 0,
+      "mergeBase": "097131a6474bd6294ff337fa92025df60dff907a",
+      "ancestorConfirmed": true,
+      "sourceFixSubject": "avformat/dashdec: Check whitelist",
+      "sourceFiles": [
+        "libavformat/dashdec.c"
+      ],
+      "primaryFixURL": "https://github.com/FFmpeg/FFmpeg/commit/097131a6474bd6294ff337fa92025df60dff907a",
+      "primaryCompareAPIURL": "https://api.github.com/repos/FFmpeg/FFmpeg/compare/097131a6474bd6294ff337fa92025df60dff907a...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb",
+      "primaryCompareURL": "https://github.com/FFmpeg/FFmpeg/compare/097131a6474bd6294ff337fa92025df60dff907a...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb"
+    },
+    {
+      "cves": [
+        "CVE-2024-31582"
+      ],
+      "listedFixedRelease": "5.1.7",
+      "fixCommit": "785a6df0e477f408c3e939a043b8608acf071964",
+      "status": "ahead",
+      "aheadBy": 383,
+      "behindBy": 0,
+      "mergeBase": "785a6df0e477f408c3e939a043b8608acf071964",
+      "ancestorConfirmed": true,
+      "sourceFixSubject": "avfilter/vf_codecview: fix heap buffer overflow",
+      "sourceFiles": [
+        "libavfilter/vf_codecview.c"
+      ],
+      "primaryFixURL": "https://github.com/FFmpeg/FFmpeg/commit/785a6df0e477f408c3e939a043b8608acf071964",
+      "primaryCompareAPIURL": "https://api.github.com/repos/FFmpeg/FFmpeg/compare/785a6df0e477f408c3e939a043b8608acf071964...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb",
+      "primaryCompareURL": "https://github.com/FFmpeg/FFmpeg/compare/785a6df0e477f408c3e939a043b8608acf071964...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb"
+    },
+    {
+      "cves": [
+        "CVE-2024-35367"
+      ],
+      "listedFixedRelease": "5.1.7",
+      "fixCommit": "1a874e645d4a0adef9b494482fc67d12d35395cd",
+      "status": "ahead",
+      "aheadBy": 349,
+      "behindBy": 0,
+      "mergeBase": "1a874e645d4a0adef9b494482fc67d12d35395cd",
+      "ancestorConfirmed": true,
+      "sourceFixSubject": "avcodec/ppc/vp8dsp_altivec: Fix out-of-bounds access",
+      "sourceFiles": [
+        "libavcodec/ppc/vp8dsp_altivec.c"
+      ],
+      "primaryFixURL": "https://github.com/FFmpeg/FFmpeg/commit/1a874e645d4a0adef9b494482fc67d12d35395cd",
+      "primaryCompareAPIURL": "https://api.github.com/repos/FFmpeg/FFmpeg/compare/1a874e645d4a0adef9b494482fc67d12d35395cd...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb",
+      "primaryCompareURL": "https://github.com/FFmpeg/FFmpeg/compare/1a874e645d4a0adef9b494482fc67d12d35395cd...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb"
+    },
+    {
+      "cves": [
+        "CVE-2024-35368"
+      ],
+      "listedFixedRelease": "5.1.7",
+      "fixCommit": "d45964ac04a83f02cb6ddc63af6d0b646c7d9082",
+      "status": "ahead",
+      "aheadBy": 348,
+      "behindBy": 0,
+      "mergeBase": "d45964ac04a83f02cb6ddc63af6d0b646c7d9082",
+      "ancestorConfirmed": true,
+      "sourceFixSubject": "avcodec/rkmppdec: Fix double-free on error",
+      "sourceFiles": [
+        "libavcodec/rkmppdec.c"
+      ],
+      "primaryFixURL": "https://github.com/FFmpeg/FFmpeg/commit/d45964ac04a83f02cb6ddc63af6d0b646c7d9082",
+      "primaryCompareAPIURL": "https://api.github.com/repos/FFmpeg/FFmpeg/compare/d45964ac04a83f02cb6ddc63af6d0b646c7d9082...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb",
+      "primaryCompareURL": "https://github.com/FFmpeg/FFmpeg/compare/d45964ac04a83f02cb6ddc63af6d0b646c7d9082...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb"
+    },
+    {
+      "cves": [
+        "CVE-2025-0518"
+      ],
+      "listedFixedRelease": "5.1.7",
+      "fixCommit": "edfcade702b41de4417e2597ba2aff6ecbdead0e",
+      "status": "ahead",
+      "aheadBy": 403,
+      "behindBy": 0,
+      "mergeBase": "edfcade702b41de4417e2597ba2aff6ecbdead0e",
+      "ancestorConfirmed": true,
+      "sourceFixSubject": "avfilter/af_pan: Fix sscanf() use",
+      "sourceFiles": [
+        "libavfilter/af_pan.c"
+      ],
+      "primaryFixURL": "https://github.com/FFmpeg/FFmpeg/commit/edfcade702b41de4417e2597ba2aff6ecbdead0e",
+      "primaryCompareAPIURL": "https://api.github.com/repos/FFmpeg/FFmpeg/compare/edfcade702b41de4417e2597ba2aff6ecbdead0e...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb",
+      "primaryCompareURL": "https://github.com/FFmpeg/FFmpeg/compare/edfcade702b41de4417e2597ba2aff6ecbdead0e...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb"
+    },
+    {
+      "cves": [
+        "CVE-2025-9951"
+      ],
+      "listedFixedRelease": "5.1.7",
+      "fixCommit": "eaf748ec88ada50d40ff533d9f2d9515b583b839",
+      "status": "ahead",
+      "aheadBy": 306,
+      "behindBy": 0,
+      "mergeBase": "eaf748ec88ada50d40ff533d9f2d9515b583b839",
+      "ancestorConfirmed": true,
+      "sourceFixSubject": "avcodec/jpeg2000dec: move cdef default check into get_siz()",
+      "sourceFiles": [
+        "libavcodec/jpeg2000dec.c"
+      ],
+      "primaryFixURL": "https://github.com/FFmpeg/FFmpeg/commit/eaf748ec88ada50d40ff533d9f2d9515b583b839",
+      "primaryCompareAPIURL": "https://api.github.com/repos/FFmpeg/FFmpeg/compare/eaf748ec88ada50d40ff533d9f2d9515b583b839...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb",
+      "primaryCompareURL": "https://github.com/FFmpeg/FFmpeg/compare/eaf748ec88ada50d40ff533d9f2d9515b583b839...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb"
+    },
+    {
+      "cves": [
+        "CVE-2025-9951"
+      ],
+      "listedFixedRelease": "5.1.7",
+      "fixCommit": "1f03c050e4e37f96968d1ffa4d720ed20810fdf6",
+      "status": "ahead",
+      "aheadBy": 305,
+      "behindBy": 0,
+      "mergeBase": "1f03c050e4e37f96968d1ffa4d720ed20810fdf6",
+      "ancestorConfirmed": true,
+      "sourceFixSubject": "avcodec/jpeg2000dec: implement cdef remapping during pixel format matching",
+      "sourceFiles": [
+        "libavcodec/jpeg2000dec.c"
+      ],
+      "primaryFixURL": "https://github.com/FFmpeg/FFmpeg/commit/1f03c050e4e37f96968d1ffa4d720ed20810fdf6",
+      "primaryCompareAPIURL": "https://api.github.com/repos/FFmpeg/FFmpeg/compare/1f03c050e4e37f96968d1ffa4d720ed20810fdf6...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb",
+      "primaryCompareURL": "https://github.com/FFmpeg/FFmpeg/compare/1f03c050e4e37f96968d1ffa4d720ed20810fdf6...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb"
+    },
+    {
+      "cves": [
+        "CVE-2025-22919"
+      ],
+      "listedFixedRelease": "5.1.7",
+      "fixCommit": "a01eaecf6325cefab5b26e0d905df6662db37be1",
+      "status": "ahead",
+      "aheadBy": 370,
+      "behindBy": 0,
+      "mergeBase": "a01eaecf6325cefab5b26e0d905df6662db37be1",
+      "ancestorConfirmed": true,
+      "sourceFixSubject": "avfilter/buffersrc: check for valid sample rate",
+      "sourceFiles": [
+        "libavfilter/buffersrc.c"
+      ],
+      "primaryFixURL": "https://github.com/FFmpeg/FFmpeg/commit/a01eaecf6325cefab5b26e0d905df6662db37be1",
+      "primaryCompareAPIURL": "https://api.github.com/repos/FFmpeg/FFmpeg/compare/a01eaecf6325cefab5b26e0d905df6662db37be1...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb",
+      "primaryCompareURL": "https://github.com/FFmpeg/FFmpeg/compare/a01eaecf6325cefab5b26e0d905df6662db37be1...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb"
+    },
+    {
+      "cves": [
+        "CVE-2025-59728"
+      ],
+      "listedFixedRelease": "5.1.7",
+      "fixCommit": "6e9758a4e7f983d67a63218021c5b9002264355e",
+      "status": "ahead",
+      "aheadBy": 328,
+      "behindBy": 0,
+      "mergeBase": "6e9758a4e7f983d67a63218021c5b9002264355e",
+      "ancestorConfirmed": true,
+      "sourceFixSubject": "avformat/dashdec: Allocate space for appended \"/\"",
+      "sourceFiles": [
+        "libavformat/dashdec.c"
+      ],
+      "primaryFixURL": "https://github.com/FFmpeg/FFmpeg/commit/6e9758a4e7f983d67a63218021c5b9002264355e",
+      "primaryCompareAPIURL": "https://api.github.com/repos/FFmpeg/FFmpeg/compare/6e9758a4e7f983d67a63218021c5b9002264355e...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb",
+      "primaryCompareURL": "https://github.com/FFmpeg/FFmpeg/compare/6e9758a4e7f983d67a63218021c5b9002264355e...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb"
+    },
+    {
+      "cves": [
+        "CVE-2025-59731"
+      ],
+      "listedFixedRelease": "5.1.7",
+      "fixCommit": "ec959281897aa29076f3083edbc2306357342d7c",
+      "status": "ahead",
+      "aheadBy": 292,
+      "behindBy": 0,
+      "mergeBase": "ec959281897aa29076f3083edbc2306357342d7c",
+      "ancestorConfirmed": true,
+      "sourceFixSubject": "avcodec/exr: Check rle_raw_data and surroundings",
+      "sourceFiles": [
+        "libavcodec/exr.c"
+      ],
+      "primaryFixURL": "https://github.com/FFmpeg/FFmpeg/commit/ec959281897aa29076f3083edbc2306357342d7c",
+      "primaryCompareAPIURL": "https://api.github.com/repos/FFmpeg/FFmpeg/compare/ec959281897aa29076f3083edbc2306357342d7c...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb",
+      "primaryCompareURL": "https://github.com/FFmpeg/FFmpeg/compare/ec959281897aa29076f3083edbc2306357342d7c...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb"
+    },
+    {
+      "cves": [
+        "CVE-2025-59732"
+      ],
+      "listedFixedRelease": "5.1.7",
+      "fixCommit": "20708b957e8d4d57801c0b7ac52131988b093a49",
+      "status": "ahead",
+      "aheadBy": 307,
+      "behindBy": 0,
+      "mergeBase": "20708b957e8d4d57801c0b7ac52131988b093a49",
+      "ancestorConfirmed": true,
+      "sourceFixSubject": "avcodec/exr: Dont access outside xsize/ysize",
+      "sourceFiles": [
+        "libavcodec/exr.c"
+      ],
+      "primaryFixURL": "https://github.com/FFmpeg/FFmpeg/commit/20708b957e8d4d57801c0b7ac52131988b093a49",
+      "primaryCompareAPIURL": "https://api.github.com/repos/FFmpeg/FFmpeg/compare/20708b957e8d4d57801c0b7ac52131988b093a49...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb",
+      "primaryCompareURL": "https://github.com/FFmpeg/FFmpeg/compare/20708b957e8d4d57801c0b7ac52131988b093a49...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb"
+    },
+    {
+      "cves": [
+        "CVE-2025-59733"
+      ],
+      "listedFixedRelease": "5.1.7",
+      "fixCommit": "1080d0e3cded6d8e177c2ce8b6649bc238be2ff6",
+      "status": "ahead",
+      "aheadBy": 294,
+      "behindBy": 0,
+      "mergeBase": "1080d0e3cded6d8e177c2ce8b6649bc238be2ff6",
+      "ancestorConfirmed": true,
+      "sourceFixSubject": "avcodec/exr: Check for pixel type consistency in DWA",
+      "sourceFiles": [
+        "libavcodec/exr.c"
+      ],
+      "primaryFixURL": "https://github.com/FFmpeg/FFmpeg/commit/1080d0e3cded6d8e177c2ce8b6649bc238be2ff6",
+      "primaryCompareAPIURL": "https://api.github.com/repos/FFmpeg/FFmpeg/compare/1080d0e3cded6d8e177c2ce8b6649bc238be2ff6...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb",
+      "primaryCompareURL": "https://github.com/FFmpeg/FFmpeg/compare/1080d0e3cded6d8e177c2ce8b6649bc238be2ff6...19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb"
+    }
+  ],
+  "scopeLimitations": [
+    "This records source ancestry and exact notice-file identities, not a completed controlled build or a binary provenance result.",
+    "No claim is made that every native dependency or current FFmpeg security issue is covered by this targeted list.",
+    "No app-specific exploitability or reachability claim is made.",
+    "Public API/ABI compatibility policy does not prove compatibility of ffmpeg.wasm modified internal fftools or browser behavior.",
+    "The selected source intentionally differs from historical npm core5.1.4; it must be built and tested as a new core, with all source and notices retained."
+  ]
+}
