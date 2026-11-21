@@ -1,0 +1,504 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-11-21",
+  "status": "candidate-pinned-source-closure-not-rebuilt",
+  "originalNpmBinaryCorrespondenceVerified": false,
+  "legalClearance": false,
+  "corePackage": "@ffmpeg/core@0.12.10",
+  "upstreamRecipe": {
+    "repository": "ffmpegwasm/ffmpeg.wasm",
+    "commit": "71aa99d37c02a7b4c435275ca9ef50e612f6efa1",
+    "files": [
+      {
+        "path": "Dockerfile",
+        "gitBlob": "51275c46464831a9d8460ece519f83cdc4d42db4"
+      },
+      {
+        "path": "Makefile",
+        "gitBlob": "8e260bc5bbeb1d6461267e1cefa20fad1d6c564b"
+      },
+      {
+        "path": "build/ffmpeg.sh",
+        "gitBlob": "da89c451aea5e09e36222fb069728d282661559d"
+      },
+      {
+        "path": "build/ffmpeg-wasm.sh",
+        "gitBlob": "d36b1742995e1cb91771626f451e9db19992f8ff"
+      }
+    ]
+  },
+  "toolchain": {
+    "imageTag": "emscripten/emsdk:3.1.40",
+    "imageDigest": null,
+    "imageDigestStatus": "Must resolve and record before controlled build; no digest has been invented.",
+    "compilerSourceCommit": "5c27e79dd0a9c4e27ef2326841698cdd4f6b5784"
+  },
+  "sdlPort": {
+    "recipeGitBlob": "24dd8757195f7df296c60d4afce4195363ee990d",
+    "archiveURL": "https://github.com/libsdl-org/SDL/archive/release-2.24.2.zip",
+    "sha512": "b178bdc8f7c40271e09a72f639649d1d61953dda4dc12b77437259667b63b961fd3b2c67b0de6fdc5f9f9c80c49bfafd164e4c13715bc1056e550acc8bad5a3c"
+  },
+  "sources": [
+    {
+      "name": "ffmpegwasm",
+      "repository": "ffmpegwasm/ffmpeg.wasm",
+      "upstreamRef": "v12.15",
+      "commit": "71aa99d37c02a7b4c435275ca9ef50e612f6efa1",
+      "role": "Core bindings, modified fftools and build recipes",
+      "licenseFiles": [
+        {
+          "path": "LICENSE",
+          "gitBlob": "3032c67441859d69c3b02d150c5abdfbdef2a919"
+        }
+      ],
+      "submodules": [],
+      "excludedSubmodules": [
+        {
+          "path": "testdata",
+          "repository": "ffmpegwasm/testdata",
+          "commit": "c81125391a0ada7599edc6bff2da51c1a3ed38d0",
+          "reason": "Unlinked wrapper test fixtures, not read or copied by the core build Dockerfile. Contains Arial.ttf/media with no accompanying license in that pinned tree; not redistributed in a codec source bundle."
+        }
+      ]
+    },
+    {
+      "name": "ffmpeg",
+      "repository": "FFmpeg/FFmpeg",
+      "upstreamRef": "n5.1.4",
+      "commit": "4729204c17f756e186d622060088371d10b34f7e",
+      "committedAt": "2023-11-09T23:32:27Z",
+      "licenseFiles": [
+        {
+          "path": "COPYING.GPLv2",
+          "gitBlob": "d159169d1050894d3ea3b98e1c965c4058208fe1"
+        },
+        {
+          "path": "COPYING.GPLv3",
+          "gitBlob": "94a9ed024d3859793618152ea559a168bbcbb5e2"
+        },
+        {
+          "path": "COPYING.LGPLv2.1",
+          "gitBlob": "58af0d3787aec7d6f8d833535d64879156e7ec23"
+        },
+        {
+          "path": "COPYING.LGPLv3",
+          "gitBlob": "65c5ca88a67c30becee01c5a8816d964b03862f9"
+        },
+        {
+          "path": "LICENSE.md",
+          "gitBlob": "613070e1b631a919a74c862f2a75a0f249a631ff"
+        }
+      ],
+      "submodules": []
+    },
+    {
+      "name": "x264",
+      "repository": "ffmpegwasm/x264",
+      "upstreamRef": "4-cores",
+      "commit": "33cac6b77d5b9259c552156013a817ab23119612",
+      "committedAt": "2022-08-22T01:45:45Z",
+      "licenseFiles": [
+        {
+          "path": "AUTHORS",
+          "gitBlob": "d7fda64a9176514feae1cc1f95473143eb337a19"
+        },
+        {
+          "path": "COPYING",
+          "gitBlob": "d60c31a97a544b53039088d14fe9114583c0efc3"
+        }
+      ],
+      "submodules": []
+    },
+    {
+      "name": "x265",
+      "repository": "ffmpegwasm/x265",
+      "upstreamRef": "3.4",
+      "commit": "2bb5520e9596f361bf0ed81b3b8da0d7fd999069",
+      "committedAt": "2020-05-29T17:39:35Z",
+      "licenseFiles": [
+        {
+          "path": "COPYING",
+          "gitBlob": "d5457c93678be27ffeeef24195cfea5d201549e2"
+        }
+      ],
+      "submodules": []
+    },
+    {
+      "name": "libvpx",
+      "repository": "ffmpegwasm/libvpx",
+      "upstreamRef": "v1.13.1",
+      "commit": "10b9492dcf05b652e2e4b370e205bd605d421972",
+      "committedAt": "2023-09-29T22:06:14Z",
+      "licenseFiles": [
+        {
+          "path": "AUTHORS",
+          "gitBlob": "2db4a113e4cac72cd5551409757a33e90a4a185c"
+        },
+        {
+          "path": "LICENSE",
+          "gitBlob": "1ce44343c4a325e9e1189fd98bb44a9f2f096da9"
+        },
+        {
+          "path": "PATENTS",
+          "gitBlob": "caedf607e95ae4c3dc84d057fddcc301cd0e4863"
+        }
+      ],
+      "submodules": []
+    },
+    {
+      "name": "lame",
+      "repository": "ffmpegwasm/lame",
+      "upstreamRef": "master",
+      "commit": "2badea1974ae36cb8312afe99cff1e6b3b5decee",
+      "committedAt": "2020-10-29T03:19:54Z",
+      "licenseFiles": [
+        {
+          "path": "COPYING",
+          "gitBlob": "f5030495bf6ed4609db75324b1b6e94f97790d6a"
+        },
+        {
+          "path": "LICENSE",
+          "gitBlob": "430a6a0e66bef7afd80de03966791c241d00e137"
+        }
+      ],
+      "submodules": []
+    },
+    {
+      "name": "ogg",
+      "repository": "ffmpegwasm/Ogg",
+      "upstreamRef": "v1.3.4",
+      "commit": "bada45718453ac27b56773ae663f7e65112f6a6e",
+      "committedAt": "2019-08-30T23:05:52Z",
+      "licenseFiles": [
+        {
+          "path": "AUTHORS",
+          "gitBlob": "a0023f2c15b76b7462a8268433ae86e14e1a565f"
+        },
+        {
+          "path": "COPYING",
+          "gitBlob": "6111c6c5a6b95057e43d36b7c217b073bf5f9b22"
+        }
+      ],
+      "submodules": []
+    },
+    {
+      "name": "theora",
+      "repository": "ffmpegwasm/theora",
+      "upstreamRef": "v1.1.1",
+      "commit": "7ffd8b2ecfc2d93ae5e16028e7528e609266bfbf",
+      "committedAt": "2009-10-01T18:00:57Z",
+      "licenseFiles": [
+        {
+          "path": "AUTHORS",
+          "gitBlob": "493eef38746d1e80bf8d4c7627dafb82f93b1e3a"
+        },
+        {
+          "path": "COPYING",
+          "gitBlob": "c8ccce4ffb5d7a7574bac87429ec1d2a7b90686d"
+        },
+        {
+          "path": "LICENSE",
+          "gitBlob": "5e5ec08469b0528b857b039c8d27d309f5ad0a12"
+        }
+      ],
+      "submodules": []
+    },
+    {
+      "name": "opus",
+      "repository": "ffmpegwasm/opus",
+      "upstreamRef": "v1.3.1",
+      "commit": "e85ed7726db5d677c9c0677298ea0cb9c65bdd23",
+      "committedAt": "2019-04-12T20:26:57Z",
+      "licenseFiles": [
+        {
+          "path": "AUTHORS",
+          "gitBlob": "b3d22a20c908ed21d42ceac81ec2255b0d7f55dc"
+        },
+        {
+          "path": "COPYING",
+          "gitBlob": "9c739c34a3a9dd39729587eb6b1f9dd4344e58f6"
+        },
+        {
+          "path": "LICENSE_PLEASE_READ.txt",
+          "gitBlob": "bc88efa6cb05789a6a6e697577ae6d8e5532e5df"
+        }
+      ],
+      "submodules": []
+    },
+    {
+      "name": "vorbis",
+      "repository": "ffmpegwasm/vorbis",
+      "upstreamRef": "v1.3.3",
+      "commit": "7798164043197d7e33f02de4353ce2aa5b248225",
+      "committedAt": "2012-02-03T22:20:36Z",
+      "licenseFiles": [
+        {
+          "path": "AUTHORS",
+          "gitBlob": "0da10363c0cbaa09350bda3f3a6a6bf762cf536e"
+        },
+        {
+          "path": "COPYING",
+          "gitBlob": "28de72a9705bfa6b2aa777c608feade0ef6bcb26"
+        }
+      ],
+      "submodules": []
+    },
+    {
+      "name": "zlib",
+      "repository": "ffmpegwasm/zlib",
+      "upstreamRef": "v1.2.11",
+      "commit": "cacf7f1d4e3d44d871b605da3b647f07d718623f",
+      "committedAt": "2017-01-15T17:29:40Z",
+      "licenseFiles": [
+        {
+          "path": "zlib.h",
+          "gitBlob": "f09cdaf1e0543de911d8220befdb51fa8632a9e6"
+        }
+      ],
+      "submodules": []
+    },
+    {
+      "name": "libwebp",
+      "repository": "ffmpegwasm/libwebp",
+      "upstreamRef": "v1.3.2",
+      "commit": "ca332209cb5567c9b249c86788cb2dbf8847e760",
+      "committedAt": "2023-09-13T22:11:07Z",
+      "licenseFiles": [
+        {
+          "path": "AUTHORS",
+          "gitBlob": "8359b20da9d527278766f6599aabe6dc34d767e2"
+        },
+        {
+          "path": "COPYING",
+          "gitBlob": "7a6f99547d4d6b4c5e6d5321acfaeba313e08de3"
+        },
+        {
+          "path": "PATENTS",
+          "gitBlob": "caedf607e95ae4c3dc84d057fddcc301cd0e4863"
+        }
+      ],
+      "submodules": []
+    },
+    {
+      "name": "freetype2",
+      "repository": "ffmpegwasm/freetype2",
+      "upstreamRef": "VER-2-10-4",
+      "commit": "6a2b3e4007e794bfc6c91030d0ed987f925164a8",
+      "committedAt": "2020-10-20T05:13:33Z",
+      "licenseFiles": [
+        {
+          "path": "docs/LICENSE.TXT",
+          "gitBlob": "af5a1c50f65b81b864410b76e5cfcbac0847f467"
+        },
+        {
+          "path": "docs/FTL.TXT",
+          "gitBlob": "c406d150fa57aaf7a5b950b6cf302daeba1d0bb9"
+        },
+        {
+          "path": "docs/GPLv2.TXT",
+          "gitBlob": "b2fe7b6af3535ebc1e018dd2fe6c993330c031fa"
+        }
+      ],
+      "submodules": []
+    },
+    {
+      "name": "fribidi",
+      "repository": "fribidi/fribidi",
+      "upstreamRef": "v1.0.9",
+      "commit": "f9e8e71a6fbf4a4619481284c9f484d10e559995",
+      "committedAt": "2020-03-02T16:04:18Z",
+      "licenseFiles": [
+        {
+          "path": "AUTHORS",
+          "gitBlob": "a47e0dc93650dfa93410a389b6eff84787e6d7cb"
+        },
+        {
+          "path": "COPYING",
+          "gitBlob": "ae23fcfda2da8599b52baff4c257847205d78c56"
+        }
+      ],
+      "submodules": []
+    },
+    {
+      "name": "harfbuzz",
+      "repository": "harfbuzz/harfbuzz",
+      "upstreamRef": "5.2.0",
+      "commit": "4a1d891c6317d2c83e5f3c2607ec5f5ccedffcde",
+      "committedAt": "2022-09-17T01:19:29Z",
+      "licenseFiles": [
+        {
+          "path": "AUTHORS",
+          "gitBlob": "83c0c66f99e967fa669854f1837f656a705e6ba0"
+        },
+        {
+          "path": "COPYING",
+          "gitBlob": "48d1b30f90dc3c3d72e0293d60a313f7b046ee24"
+        }
+      ],
+      "submodules": []
+    },
+    {
+      "name": "libass",
+      "repository": "libass/libass",
+      "upstreamRef": "0.15.0",
+      "commit": "d149636f502f5774ae1a8fb4c554b122674393b2",
+      "committedAt": "2020-10-27T04:08:29Z",
+      "licenseFiles": [
+        {
+          "path": "COPYING",
+          "gitBlob": "3ff0e11457a6edccfab065cae0f905a6e1ed80ee"
+        }
+      ],
+      "submodules": []
+    },
+    {
+      "name": "zimg",
+      "repository": "sekrit-twc/zimg",
+      "upstreamRef": "release-3.0.5",
+      "commit": "e5b0de6bebbcbc66732ed5afaafef6b2c7dfef87",
+      "committedAt": "2023-06-30T17:55:27Z",
+      "licenseFiles": [
+        {
+          "path": "COPYING",
+          "gitBlob": "5a8e332545f667aab9bf3a17f11dba27c70b656a"
+        }
+      ],
+      "submodules": [
+        {
+          "path": "test/extra/googletest",
+          "source": "googletest",
+          "commit": "703bd9caab50b139428cea1aaff9974ebee5742e"
+        }
+      ]
+    },
+    {
+      "name": "emscripten",
+      "repository": "emscripten-core/emscripten",
+      "upstreamRef": "3.1.40",
+      "commit": "5c27e79dd0a9c4e27ef2326841698cdd4f6b5784",
+      "role": "Runtime/system source and SDL port recipe matching embedded compiler",
+      "licenseFiles": [
+        {
+          "path": "LICENSE",
+          "gitBlob": "70cabe388d27da221bd769c50b427a35354f4f1d"
+        }
+      ],
+      "submodules": [
+        {
+          "path": "test/third_party/googletest",
+          "source": "emscripten-googletest",
+          "commit": "4fb7039fda3f6588c7ca9664176f8c9e0a023b4a"
+        },
+        {
+          "path": "test/third_party/posixtestsuite",
+          "source": "posixtestsuite",
+          "commit": "869e266b090a8d44e51bb040904c942556b1e4ab"
+        },
+        {
+          "path": "test/third_party/wasi-test-suite",
+          "source": "wasi-test-suite",
+          "commit": "ac9371207fc61972a21d7d086074ca690a99d14d"
+        }
+      ]
+    },
+    {
+      "name": "sdl2",
+      "repository": "libsdl-org/SDL",
+      "upstreamRef": "release-2.24.2",
+      "commit": "55b03c7493a7abed33cf803d1380a40fa8af903f",
+      "role": "Emscripten SDL2 port source",
+      "licenseFiles": [
+        {
+          "path": "LICENSE.txt",
+          "gitBlob": "728a3d7087fd965ad6c1fd9c8e900d1834dfc70d"
+        }
+      ],
+      "submodules": []
+    },
+    {
+      "name": "googletest",
+      "repository": "google/googletest",
+      "upstreamRef": "zimg gitlink",
+      "commit": "703bd9caab50b139428cea1aaff9974ebee5742e",
+      "role": "Pinned zimg test submodule; not claimed linked into the media core",
+      "licenseFiles": [
+        {
+          "path": "LICENSE",
+          "gitBlob": "1941a11f8ce94389160b458927a29ba217542818"
+        }
+      ],
+      "submodules": []
+    },
+    {
+      "name": "emscripten-googletest",
+      "repository": "google/googletest",
+      "upstreamRef": "Emscripten test gitlink",
+      "commit": "4fb7039fda3f6588c7ca9664176f8c9e0a023b4a",
+      "role": "Pinned Emscripten test submodule, not claimed linked into media core",
+      "licenseFiles": [
+        {
+          "path": "LICENSE",
+          "gitBlob": "1941a11f8ce94389160b458927a29ba217542818"
+        }
+      ],
+      "submodules": []
+    },
+    {
+      "name": "posixtestsuite",
+      "repository": "emscripten-core/posixtestsuite",
+      "upstreamRef": "Emscripten test gitlink",
+      "commit": "869e266b090a8d44e51bb040904c942556b1e4ab",
+      "role": "Pinned Emscripten test submodule, not claimed linked into media core",
+      "licenseFiles": [
+        {
+          "path": "AUTHORS",
+          "gitBlob": "dd6ccbd89c822c54a21ed1a14256ccd54f9e496d"
+        },
+        {
+          "path": "COPYING",
+          "gitBlob": "d60c31a97a544b53039088d14fe9114583c0efc3"
+        }
+      ],
+      "submodules": []
+    },
+    {
+      "name": "wasi-test-suite",
+      "repository": "khronosproject/wasi-test-suite",
+      "upstreamRef": "Emscripten test gitlink",
+      "commit": "ac9371207fc61972a21d7d086074ca690a99d14d",
+      "role": "Pinned Emscripten test submodule, not claimed linked into media core",
+      "licenseFiles": [
+        {
+          "path": "LICENSE",
+          "gitBlob": "650db9b282d2ef5b2261b2f2fa2777dabd125046"
+        }
+      ],
+      "submodules": []
+    }
+  ],
+  "unresolved": [
+    "No source archive has yet been acquired and hashed by the collector.",
+    "The historical npm build has not been reproduced or matched byte-for-byte.",
+    "The controlled build's Docker image digest and build-environment inventory must be captured.",
+    "Native-code security fixes/backports and actual app reachability remain to be assessed.",
+    "Complete notices/source-access arrangement must be reviewed before public binary distribution."
+  ],
+  "buildLibrarySources": [
+    "ffmpeg",
+    "x264",
+    "x265",
+    "libvpx",
+    "lame",
+    "ogg",
+    "theora",
+    "opus",
+    "vorbis",
+    "zlib",
+    "libwebp",
+    "freetype2",
+    "fribidi",
+    "harfbuzz",
+    "libass",
+    "zimg"
+  ]
+}
