@@ -216,8 +216,8 @@ export function verifyAdminResourceBundle(projectRoot = process.cwd()) {
   const assets = []
   const inspectionLimits = Object.freeze({ maxFiles: 256, maxBytes: 64 * 1024 * 1024,
     maxFileBytes: 16 * 1024 * 1024, maxAstNodes: 8000000, maxDirectoryEntries: 4096, maxDirectoryDepth: 16 })
-  const emitted = [], emittedByPath = new Map(), opaqueLoaders = [], localRequireCalls = []
-  let emittedBytes = 0, directoryEntries = 0, directoryCount = 0, opaqueLoaderCount = 0, localRequireCallCount = 0
+  const emitted = [], emittedByPath = new Map(), opaqueLoaders = [], localRequireCalls = [], optionalMotionProbes = []
+  let emittedBytes = 0, directoryEntries = 0, directoryCount = 0, opaqueLoaderCount = 0, localRequireCallCount = 0, optionalMotionProbeCount = 0
   const inventoryDirectories = [{ relative: '', depth: 0 }]
   while (inventoryDirectories.length) {
     const current = inventoryDirectories.pop()
@@ -320,6 +320,59 @@ export function verifyAdminResourceBundle(projectRoot = process.cwd()) {
     const position = ast.getLineAndCharacterOfPosition(binding.declaration.getStart(ast))
     return { status: 'lexically-bound-local', kind: binding.kind, scopeKind: ts.SyntaxKind[binding.scope.kind],
       line: position.line + 1, column: position.character + 1 }
+  }
+  // Motion's reviewed optional Emotion probe intentionally has an empty ESM
+  // fallback. This recognizes one literal protected probe, never a CJS target.
+  const optionalMotionProbe = imported => {
+    if (imported.arguments.length !== 1 || !ts.isStringLiteral(imported.arguments[0]) || imported.arguments[0].text !== '@emotion/is-prop-valid' || imported.questionDotToken) return null
+    const selected = imported.parent, call = selected?.parent, statement = call?.parent, block = statement?.parent, attempt = block?.parent
+    if (!selected || !ts.isPropertyAccessExpression(selected) || selected.expression !== imported || selected.name.text !== 'default' || selected.questionDotToken
+      || !call || !ts.isCallExpression(call) || !ts.isIdentifier(call.expression) || call.questionDotToken || call.arguments.length !== 1 || call.arguments[0] !== selected
+      || !statement || !ts.isExpressionStatement(statement) || statement.expression !== call
+      || !block || !ts.isBlock(block) || block.statements.length !== 1 || block.statements[0] !== statement
+      || !attempt || !ts.isTryStatement(attempt) || attempt.tryBlock !== block || attempt.finallyBlock || !attempt.catchClause || attempt.catchClause.block.statements.length
+      || (attempt.catchClause.variableDeclaration && !ts.isIdentifier(attempt.catchClause.variableDeclaration.name))) return null
+    const scope = attempt.parent
+    if (!ts.isSourceFile(scope) && !ts.isBlock(scope)) return null
+    const helperName = call.expression.text
+    const declarations = scope.statements.filter(node => ts.isFunctionDeclaration(node) && name(node.name) === helperName)
+    if (declarations.length !== 1) return null
+    const helper = declarations[0]
+    if (!helper.body || helper.asteriskToken || helper.modifiers?.some(modifier => modifier.kind === ts.SyntaxKind.AsyncKeyword)
+      || helper.parameters.length !== 1 || !ts.isIdentifier(helper.parameters[0].name) || helper.parameters[0].initializer || helper.parameters[0].dotDotDotToken) return null
+    const external = helper.parameters[0].name.text
+    const identifier = (node, value) => ts.isIdentifier(node) && node.text === value
+    let assignment
+    const body = helper.body.statements
+    if (body.length === 2 && ts.isIfStatement(body[0]) && !body[0].elseStatement
+      && ts.isPrefixUnaryExpression(body[0].expression) && body[0].expression.operator === ts.SyntaxKind.ExclamationToken && identifier(body[0].expression.operand, external)) {
+      const returned = ts.isBlock(body[0].thenStatement) && body[0].thenStatement.statements.length === 1 ? body[0].thenStatement.statements[0] : body[0].thenStatement
+      if (!ts.isReturnStatement(returned) || returned.expression || !ts.isExpressionStatement(body[1])) return null
+      assignment = body[1].expression
+    } else if (body.length === 1 && ts.isExpressionStatement(body[0]) && ts.isBinaryExpression(body[0].expression)
+      && body[0].expression.operatorToken.kind === ts.SyntaxKind.AmpersandAmpersandToken && identifier(body[0].expression.left, external)) {
+      assignment = body[0].expression.right
+    } else if (body.length === 1 && ts.isIfStatement(body[0]) && !body[0].elseStatement && identifier(body[0].expression, external)) {
+      const installed = ts.isBlock(body[0].thenStatement) && body[0].thenStatement.statements.length === 1 ? body[0].thenStatement.statements[0] : body[0].thenStatement
+      if (!ts.isExpressionStatement(installed)) return null
+      assignment = installed.expression
+    }
+    while (assignment && ts.isParenthesizedExpression(assignment)) assignment = assignment.expression
+    if (!assignment || !ts.isBinaryExpression(assignment) || assignment.operatorToken.kind !== ts.SyntaxKind.EqualsToken || !ts.isIdentifier(assignment.left)
+      || assignment.left.text === external || !ts.isArrowFunction(assignment.right)) return null
+    const filter = assignment.right
+    if (filter.modifiers?.length || filter.parameters.length !== 1 || !ts.isIdentifier(filter.parameters[0].name)
+      || filter.parameters[0].initializer || filter.parameters[0].dotDotDotToken || !ts.isConditionalExpression(filter.body)) return null
+    const key = filter.parameters[0].name.text, condition = filter.body.condition, rejected = filter.body.whenTrue, forwarded = filter.body.whenFalse
+    if (key === external || assignment.left.text === key || !ts.isCallExpression(condition) || condition.questionDotToken
+      || !ts.isPropertyAccessExpression(condition.expression) || condition.expression.questionDotToken || condition.expression.name.text !== 'startsWith'
+      || !identifier(condition.expression.expression, key) || condition.arguments.length !== 1 || !ts.isStringLiteral(condition.arguments[0]) || condition.arguments[0].text !== 'on'
+      || !ts.isPrefixUnaryExpression(rejected) || rejected.operator !== ts.SyntaxKind.ExclamationToken || !ts.isCallExpression(rejected.operand)
+      || rejected.operand.questionDotToken || !ts.isIdentifier(rejected.operand.expression) || [external, key].includes(rejected.operand.expression.text)
+      || rejected.operand.arguments.length !== 1 || !identifier(rejected.operand.arguments[0], key)
+      || !ts.isCallExpression(forwarded) || forwarded.questionDotToken || !identifier(forwarded.expression, external)
+      || forwarded.arguments.length !== 1 || !identifier(forwarded.arguments[0], key)) return null
+    return { helperName: helperName.slice(0, 80), module: '@emotion/is-prop-valid', selectedExport: 'default' }
   }
   const find = (node, predicate) => {
     const found = []
@@ -602,12 +655,23 @@ export function verifyAdminResourceBundle(projectRoot = process.cwd()) {
       }
       if (requireCall(node)) {
         const binding = localRequireBinding(node)
-        if (!binding) unresolvedImport(node, 'require-call')
-        localRequireCallCount++
-        if (localRequireCalls.length < 20) {
+        const optionalProbe = binding ? null : optionalMotionProbe(node)
+        if (!binding && !optionalProbe) unresolvedImport(node, 'require-call')
+        if (optionalProbe) {
+          optionalMotionProbeCount++
+          if (optionalMotionProbes.length < 20) {
+            const position = ast.getLineAndCharacterOfPosition(node.getStart(ast))
+            optionalMotionProbes.push({ asset: filename.slice(0, 160), sha256: assets.find(asset => asset.path === filename)?.sha256 || digest(Buffer.from(source)),
+              line: position.line + 1, column: position.character + 1, contract: 'Motion optional Emotion prop-filter probe AST v1',
+              ...optionalProbe, targetResolved: false, fallback: 'empty catch' })
+          }
+        } else {
+          localRequireCallCount++
+          if (localRequireCalls.length < 20) {
           const position = ast.getLineAndCharacterOfPosition(node.getStart(ast))
           localRequireCalls.push({ asset: filename.slice(0, 160), sha256: assets.find(asset => asset.path === filename)?.sha256 || digest(Buffer.from(source)),
             line: position.line + 1, column: position.character + 1, binding: bindingDetail(binding, ast), targetResolved: false })
+          }
         }
       }
       if (ts.isBinaryExpression(node) && node.operatorToken.kind === ts.SyntaxKind.EqualsToken) {
@@ -705,8 +769,9 @@ export function verifyAdminResourceBundle(projectRoot = process.cwd()) {
     emittedFilesystem: { files: emitted.length, bytes: emittedBytes, directoryEntries, directories: directoryCount, inventoryComplete: true, inspectionComplete: true },
     inspectionLimits, opaqueLoaders, opaqueLoaderCount, opaqueLoaderRecordsOmitted: opaqueLoaderCount > opaqueLoaders.length,
     localRequireCalls, localRequireCallCount, localRequireRecordsOmitted: localRequireCallCount > localRequireCalls.length,
+    optionalMotionProbes, optionalMotionProbeCount, optionalMotionProbeRecordsOmitted: optionalMotionProbeCount > optionalMotionProbes.length,
     computedModuleTargetsResolved: false,
-    limitation: 'Recognized React Router route.module targets and lexically bound require calls remain opaque; absent or external modules and browser/editor execution are not verified.' }
+    limitation: 'Recognized React Router route.module targets, lexical require calls and Motion optional Emotion probes remain opaque; absent or external modules and browser/editor execution are not verified.' }
 }
 
 export async function applyCmsSecurity({ projectRoot = process.cwd(), ifPresent = false } = {}) {

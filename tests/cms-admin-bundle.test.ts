@@ -313,4 +313,58 @@ describe('entry-reachable generated admin structure', () => {
       'chunks/local.js': 'function require(target){' + guardedCode().replaceAll('fileCompresserBudget', 'removedBudget') + '}require("opaque")' })
     expect(() => verifyAdminResourceBundle(unguarded)).toThrow('graph preflight/shared budget')
   })
+
+  it('recognizes only the protected optional Motion Emotion probe and leaves its target unresolved', () => {
+    const helpers = [
+      'let forward;function pBn(external){if(!external)return;forward=key=>key.startsWith("on")?!isMotion(key):external(key)}',
+      'let forward;function pBn(external){external&&(forward=key=>key.startsWith("on")?!isMotion(key):external(key))}',
+      'let forward;function pBn(external){if(external){forward=key=>key.startsWith("on")?!isMotion(key):external(key)}}',
+    ]
+    for (const helper of helpers) {
+      const code = guardedCode() + ';' + helper + ';try{pBn(require("@emotion/is-prop-valid").default)}catch{}'
+      const root = fixture({ 'index.html': '<script src="./entry.js"></script>', 'entry.js': code })
+      const result = verifyAdminResourceBundle(root)
+      expect(result.optionalMotionProbeCount).toBe(1)
+      expect(result.localRequireCallCount).toBe(0)
+      expect(result.optionalMotionProbes[0]).toEqual(expect.objectContaining({ asset: 'entry.js', helperName: 'pBn',
+        module: '@emotion/is-prop-valid', selectedExport: 'default', targetResolved: false, fallback: 'empty catch',
+        contract: 'Motion optional Emotion prop-filter probe AST v1' }))
+      expect(result.optionalMotionProbes[0].sha256).toMatch(/^[a-f0-9]{64}$/)
+      expect(result.browserRuntimeVerified).toBe(false)
+      expect(result.computedModuleTargetsResolved).toBe(false)
+      expect(result.emittedFilesystem.inspectionComplete).toBe(true)
+    }
+  })
+
+  it('keeps near-match optional require probes blocking rather than accepting protected arbitrary imports', () => {
+    const profile = 'let forward;function pBn(external){external&&(forward=key=>key.startsWith("on")?!isMotion(key):external(key))};try{pBn(require("@emotion/is-prop-valid").default)}catch{}'
+    const mutations = [
+      profile.replace('@emotion/is-prop-valid', '@emotion/other'),
+      profile.replace('.default)', '.named)'),
+      profile.replace('try{pBn(require("@emotion/is-prop-valid").default)}catch{}', 'pBn(require("@emotion/is-prop-valid").default)'),
+      profile.replace('try{pBn', 'try{extra();pBn'),
+      profile.replace('catch{}', 'catch{extra()}'),
+      profile.replace('catch{}', 'catch{}finally{}'),
+      profile.replace('try{pBn', 'try{different'),
+      profile.replace('startsWith("on")', 'startsWith("data")'),
+      profile.replace('function pBn(external){', 'function pBn(external){extra();'),
+      profile.replace('try{pBn(', 'try{object.pBn('),
+      profile.replace('.default)', '.default,extra)'),
+      profile.replace('external(key)', 'external()'),
+      profile.replace('!isMotion(key)', 'isMotion(key)'),
+    ]
+    for (const code of mutations) {
+      const root = fixture({ 'index.html': '<script src="./entry.js"></script>', 'entry.js': guardedCode() + ';' + code })
+      expect(() => verifyAdminResourceBundle(root)).toThrow('unresolved CommonJS import')
+    }
+  })
+
+  it('does not let an accepted Motion probe admit another global require or unknown ESM import', () => {
+    const profile = 'let forward;function pBn(external){external&&(forward=key=>key.startsWith("on")?!isMotion(key):external(key))};try{pBn(require("@emotion/is-prop-valid").default)}catch{}'
+    for (const [extra, failure] of [[';require("other-module")', 'unresolved CommonJS import'],
+      [';async function unrelated(target){return import(target)}', 'unresolved dynamic module import']]) {
+      const root = fixture({ 'index.html': '<script src="./entry.js"></script>', 'entry.js': guardedCode() + ';' + profile + extra })
+      expect(() => verifyAdminResourceBundle(root)).toThrow(failure)
+    }
+  })
 })
