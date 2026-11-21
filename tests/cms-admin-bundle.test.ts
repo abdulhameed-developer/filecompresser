@@ -100,4 +100,80 @@ describe('entry-reachable generated admin structure', () => {
         + '\n// filecompresser.cms-zod.issue-limit.v1\n' })
     expect(() => verifyAdminResourceBundle(root)).toThrow('entry-reachable')
   })
+
+  it('reports the generated asset, import position and bounded loader context without permitting it', () => {
+    const root = fixture({ 'index.html': '<script type="module" src="./assets/entry.js"></script>',
+      'assets/entry.js': `const loader = target => import(target);\n${guardedCode()}` })
+    let failure = ''
+    try { verifyAdminResourceBundle(root) } catch (error) { failure = (error as Error).message }
+    expect(failure).toContain('unresolved dynamic module import')
+    const diagnostic = JSON.parse(failure.split('diagnostic=')[1])
+    expect(diagnostic.asset).toBe('assets/entry.js')
+    expect(diagnostic.imports[0]).toEqual(expect.objectContaining({ line: 1, column: 26,
+      expression: 'import(target)', context: 'target => import(target)', contextName: 'loader' }))
+    expect(diagnostic.candidateScan).toEqual(expect.objectContaining({ roots: 1, parsers: 1, truncated: false }))
+    expect(diagnostic.generatedInventory.classes).toEqual(expect.arrayContaining([
+      expect.objectContaining({ asset: 'assets/entry.js', className: 'a', methods: expect.arrayContaining(['safeParse', 'safeParseAsync']) }),
+      expect.objectContaining({ asset: 'assets/entry.js', className: 'b', methods: ['_parse'] }),
+    ]))
+    expect(diagnostic.partialInspection).toEqual(expect.objectContaining({ roots: 0, parsers: 0, files: 1 }))
+  })
+
+  it('caps import expressions, surrounding code and the same-file diagnostic list', () => {
+    const code = `function dependencyLoader(target) { return import(target + ${JSON.stringify('x'.repeat(4000))}); }\n`
+      + Array.from({ length: 25 }, (_, index) => `function loader${index}(target) { return import(target); }`).join('\n')
+    const root = fixture({ 'index.html': '<script src="./entry.js"></script>', 'entry.js': code })
+    let failure = ''
+    try { verifyAdminResourceBundle(root) } catch (error) { failure = (error as Error).message }
+    const diagnostic = JSON.parse(failure.split('diagnostic=')[1])
+    expect(diagnostic.imports).toHaveLength(20)
+    expect(diagnostic.additionalImportsOmitted).toBe(true)
+    expect(diagnostic.imports[0].expressionTruncated).toBe(true)
+    expect(diagnostic.imports[0].contextTruncated).toBe(true)
+    expect(diagnostic.imports[0].contextKind).toBe('FunctionDeclaration')
+    expect(diagnostic.imports[0].contextName).toBe('dependencyLoader')
+    for (const item of diagnostic.imports) {
+      expect(item.expression.length).toBeLessThanOrEqual(240)
+      expect(item.context.length).toBeLessThanOrEqual(600)
+      expect(item.expression).not.toMatch(/[\r\n]/)
+      expect(item.context).not.toMatch(/[\r\n]/)
+    }
+    expect(failure.length).toBeLessThan(14000)
+  })
+
+  it('inventories computed and literal imports in other generated assets on failure without following them', () => {
+    const root = fixture({ 'index.html': '<script src="./entry.js"></script>',
+      'entry.js': 'function loader(target) { return import(target) }',
+      'chunks/unreferenced.js': 'function optional(target) { return import(target) }; import(`./missing-optional.js`)' })
+    let failure = ''
+    try { verifyAdminResourceBundle(root) } catch (error) { failure = (error as Error).message }
+    expect(failure).toContain('unresolved dynamic module import')
+    const diagnostic = JSON.parse(failure.split('diagnostic=')[1])
+    expect(diagnostic.generatedInventory).toEqual(expect.objectContaining({ files: 2, computedImports: 2, literalImports: 1, truncated: false }))
+    expect(diagnostic.imports).toHaveLength(3)
+    expect(diagnostic.imports[0].asset).toBe('entry.js')
+    expect(diagnostic.imports.filter((item: { asset: string }) => item.asset === 'chunks/unreferenced.js')).toHaveLength(2)
+    expect(diagnostic.partialInspection.files).toBe(1)
+  })
+
+  it('accepts conventional no-substitution template imports while keeping interpolated imports blocked', () => {
+    const root = fixture({ 'index.html': '<script type="module">import(`./entry.js`)</script>', 'entry.js': guardedCode() })
+    expect(verifyAdminResourceBundle(root).verified).toBe(true)
+    const dynamic = fixture({ 'index.html': '<script src="./entry.js"></script>',
+      'entry.js': 'const target="optional"; import(`./${target}.js`)' })
+    expect(() => verifyAdminResourceBundle(dynamic)).toThrow('unresolved dynamic module import')
+  })
+
+  it('caps diagnostic class records and lists method names without class bodies', () => {
+    const code = 'function loader(target) { return import(target) };'
+      + Array.from({ length: 60 }, (_, index) => `class Parser${index} { _parse() { return "CLASS_BODY_NOT_IN_RECORD" } }`).join('\n')
+    const root = fixture({ 'index.html': '<script src="./entry.js"></script>', 'entry.js': code })
+    let failure = ''
+    try { verifyAdminResourceBundle(root) } catch (error) { failure = (error as Error).message }
+    const diagnostic = JSON.parse(failure.split('diagnostic=')[1])
+    expect(diagnostic.generatedInventory.classes).toHaveLength(50)
+    expect(diagnostic.generatedInventory.classRecordsOmitted).toBe(true)
+    expect(JSON.stringify(diagnostic.generatedInventory.classes)).not.toContain('CLASS_BODY_NOT_IN_RECORD')
+    expect(diagnostic.generatedInventory.classes.every((item: { methods: string[] }) => item.methods.length === 1 && item.methods[0] === '_parse')).toBe(true)
+  })
 })

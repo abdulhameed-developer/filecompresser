@@ -216,6 +216,7 @@ export function verifyAdminResourceBundle(projectRoot = process.cwd()) {
   const assets = []
   const name = node => !node ? undefined : ts.isIdentifier(node) || ts.isStringLiteral(node) ? node.text
     : ts.isComputedPropertyName(node) && ts.isStringLiteral(node.expression) ? node.expression.text : undefined
+  const moduleLiteral = node => ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node)
   const find = (node, predicate) => {
     const found = []
     const visit = current => { if (predicate(current)) found.push(current); ts.forEachChild(current, visit) }
@@ -280,6 +281,130 @@ export function verifyAdminResourceBundle(projectRoot = process.cwd()) {
   const inspect = (source, filename, url) => {
     const ast = ts.createSourceFile(filename, source, ts.ScriptTarget.Latest, true, ts.ScriptKind.JS)
     if (ast.parseDiagnostics.length) fail('generated admin JavaScript has unsupported syntax')
+    const unresolvedImport = current => {
+      const excerpt = (start, end, maximum, rawMaximum, input = source) => {
+        const raw = input.slice(start, Math.min(end, start + rawMaximum))
+        const normalized = raw.replace(/[\u0000-\u001f\u007f-\u009f\u202a-\u202e\u2066-\u2069]/g, ' ').replace(/\s+/g, ' ').trim()
+        const truncated = end - start > rawMaximum || normalized.length > maximum
+        return { text: truncated ? `${normalized.slice(0, maximum - 1)}…` : normalized, truncated }
+      }
+      const detail = (node, parsed = ast, input = source, asset = filename) => {
+        const start = node.getStart(parsed)
+        const position = parsed.getLineAndCharacterOfPosition(start)
+        let context = node.parent, statement
+        while (context && !ts.isFunctionDeclaration(context) && !ts.isFunctionExpression(context)
+          && !ts.isArrowFunction(context) && !ts.isMethodDeclaration(context) && !ts.isConstructorDeclaration(context)) {
+          if (!statement && ts.isStatement(context)) statement = context
+          context = context.parent
+        }
+        context ||= statement || node
+        const contextStart = Math.max(context.getStart(parsed), start - 200)
+        const expression = excerpt(start, node.end, 240, 1024, input)
+        const surrounding = excerpt(contextStart, context.end, 600, 2400, input)
+        const binding = context.name || context.parent?.name
+        return { asset: asset.slice(0, 160), line: position.line + 1, column: position.character + 1,
+          literalSpecifier: node.arguments.length === 1 && moduleLiteral(node.arguments[0]),
+          expression: expression.text, expressionTruncated: expression.truncated,
+          context: surrounding.text, contextTruncated: surrounding.truncated || contextStart > context.getStart(parsed),
+          contextKind: ts.SyntaxKind[context.kind], contextName: binding ? input.slice(binding.getStart(parsed), Math.min(binding.end, binding.getStart(parsed) + 80)) : undefined }
+      }
+      const imports = [detail(current)]
+      const stack = [ast]
+      let scheduled = 1, scanned = 0, candidateRoots = 0, candidateParsers = 0, scanTruncated = false
+      while (stack.length) {
+        const node = stack.pop()
+        scanned++
+        if (ts.isClassDeclaration(node) || ts.isClassExpression(node)) {
+          const methods = node.members.filter(ts.isMethodDeclaration)
+          if (methods.some(member => ['safeParse', 'safeParseAsync'].includes(name(member.name)))) candidateRoots++
+          if (methods.some(member => name(member.name) === '_parse')) candidateParsers++
+        }
+        ts.forEachChild(node, child => {
+          if (scheduled >= 50000) { scanTruncated = true; return true }
+          scheduled++
+          stack.push(child)
+          return undefined
+        })
+      }
+      // This inventory is diagnostic only: unreferenced generated assets never
+      // become accepted graph edges. Preserve the original fail-closed result.
+      const generated = { scope: 'generated admin JS assets, including unreferenced diagnostics only',
+        files: 0, bytes: 0, nodes: 0, computedImports: 0, literalImports: 0, truncated: false, errors: [], classes: [], classRecordsOmitted: false }
+      const computed = [], literal = [], directories = [{ relative: '', depth: 0 }]
+      let diagnosticEdges = 0, diagnosticScheduled = 0
+      while (directories.length && !generated.truncated) {
+        const directoryEntry = directories.pop()
+        let entries
+        try { entries = readdirSync(path.join(directory, directoryEntry.relative), { withFileTypes: true }) } catch {
+          generated.truncated = true; break
+        }
+        for (const entry of entries) {
+          if (++diagnosticEdges > 4096) { generated.truncated = true; break }
+          const relative = path.join(directoryEntry.relative, entry.name)
+          if (entry.isDirectory()) {
+            if (directoryEntry.depth >= 16) { generated.truncated = true; break }
+            directories.push({ relative, depth: directoryEntry.depth + 1 })
+            continue
+          }
+          if (!/\.(?:mjs|js)$/.test(entry.name)) continue
+          if (generated.files >= 256) { generated.truncated = true; break }
+          let bytes, parsed, input
+          try {
+            bytes = regularBytes(path.join(directory, relative), 16 * 1024 * 1024)
+            if (generated.bytes + bytes.length > 64 * 1024 * 1024) { generated.truncated = true; break }
+            input = bytes.toString('utf8')
+            parsed = relative === filename ? ast : ts.createSourceFile(relative, input, ts.ScriptTarget.Latest, true, ts.ScriptKind.JS)
+          } catch {
+            if (generated.errors.length < 5) generated.errors.push({ asset: relative.slice(0, 160), reason: 'unreadable or unsupported generated asset' })
+            continue
+          }
+          generated.files++
+          generated.bytes += bytes.length
+          if (parsed.parseDiagnostics.length) {
+            if (generated.errors.length < 5) generated.errors.push({ asset: relative.slice(0, 160), reason: 'unsupported generated syntax' })
+            continue
+          }
+          if (diagnosticScheduled >= 2000000) { generated.truncated = true; break }
+          const nodes = [parsed]
+          diagnosticScheduled++
+          while (nodes.length) {
+            const node = nodes.pop()
+            generated.nodes++
+            if (ts.isClassDeclaration(node) || ts.isClassExpression(node)) {
+              const methods = node.members.filter(ts.isMethodDeclaration).map(member => name(member.name))
+              if (methods.some(method => ['safeParse', 'safeParseAsync', '_parse'].includes(method))) {
+                if (generated.classes.length < 50) generated.classes.push({ asset: relative.slice(0, 160),
+                  className: (name(node.name) || name(node.parent?.name) || '<anonymous>').slice(0, 80),
+                  methods: [...new Set(methods.filter(method => ['safeParse', 'safeParseAsync', '_parse', '_parseAsync', 'parse', 'parseAsync', '~validate'].includes(method)))] })
+                else generated.classRecordsOmitted = true
+              }
+            }
+            if (ts.isCallExpression(node) && node.expression.kind === ts.SyntaxKind.ImportKeyword) {
+              const conventional = node.arguments.length === 1 && moduleLiteral(node.arguments[0])
+              generated[conventional ? 'literalImports' : 'computedImports']++
+              if (!(relative === filename && node.getStart(parsed) === current.getStart(ast))) {
+                const collection = conventional ? literal : computed
+                if (collection.length < 20) collection.push(detail(node, parsed, input, relative))
+              }
+            }
+            ts.forEachChild(node, child => {
+              if (diagnosticScheduled >= 2000000) { generated.truncated = true; return true }
+              diagnosticScheduled++
+              nodes.push(child)
+              return undefined
+            })
+          }
+          if (generated.truncated) break
+        }
+      }
+      imports.push(...computed.slice(0, 19))
+      imports.push(...literal.slice(0, 20 - imports.length))
+      const diagnostic = { asset: filename.slice(0, 160), imports,
+        additionalImportsOmitted: generated.computedImports + generated.literalImports > imports.length,
+        generatedInventory: generated, candidateScan: { roots: candidateRoots, parsers: candidateParsers, nodes: scanned, truncated: scanTruncated },
+        partialInspection: { roots, parsers, files: visited.size, bytes: totalBytes } }
+      fail(`admin bundle contains an unresolved dynamic module import; diagnostic=${JSON.stringify(diagnostic)}`)
+    }
     const walk = node => {
       if (++astNodes > 2000000) fail('admin JavaScript exceeds the AST inspection budget')
       if (ts.isStringLiteral(node)) {
@@ -289,7 +414,7 @@ export function verifyAdminResourceBundle(projectRoot = process.cwd()) {
       if ((ts.isStringLiteral(node) || ts.isTemplateHead(node)) && node.text.includes('CMS validation stopped at')) message = true
       if ((ts.isImportDeclaration(node) || ts.isExportDeclaration(node)) && node.moduleSpecifier && ts.isStringLiteral(node.moduleSpecifier)) enqueue(node.moduleSpecifier.text, url)
       if (ts.isCallExpression(node) && node.expression.kind === ts.SyntaxKind.ImportKeyword) {
-        if (node.arguments.length !== 1 || !ts.isStringLiteral(node.arguments[0])) fail('admin bundle contains an unresolved dynamic module import')
+        if (node.arguments.length !== 1 || !moduleLiteral(node.arguments[0])) unresolvedImport(node)
         enqueue(node.arguments[0].text, url)
       }
       if (ts.isCallExpression(node) && name(node.expression) === 'require') fail('admin bundle contains an unsupported unresolved CommonJS import')
