@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "state": "verified",
+  "archiveUrl": "https://github.com/abdulhameed-developer/filecompresser/releases/download/codec-2026-11-21.1/codec-source-and-new-core.tar.gz",
+  "archiveBytes": 63253833,
+  "archiveSha256": "6d3326d6e2456fdf7973ac7ab1d83620a41a99acc5b65b316d139ffbfc148818",
+  "tarBytes": 81541120,
+  "core": {
+    "js": {
+      "member": "newly-built-core/esm/ffmpeg-core.js",
+      "bytes": 86526,
+      "sha256": "cea5a18a8ef99258fa2299b8feb57ca641c0222e88de077fd0562b4eeef7bfed"
+    },
+    "wasm": {
+      "member": "newly-built-core/esm/ffmpeg-core.wasm",
+      "bytes": 20752732,
+      "sha256": "584febef0d37a76379d5c2c53539250e78c250e2c5f2710493301ea55198d5ab"
+    }
+  }
+}

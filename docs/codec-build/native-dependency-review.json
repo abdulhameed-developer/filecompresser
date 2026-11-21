@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-11-21",
+  "status": "source-selection-reviewed-not-built-or-runtime-cleared",
+  "zlib": {
+    "schemaVersion": 1,
+    "reviewedOn": "2026-11-21",
+    "status": "candidate-pinned-source-not-built-or-adopted",
+    "activated": false,
+    "built": false,
+    "legalClearance": false,
+    "allNativeDependenciesCleared": false,
+    "source": {
+      "name": "zlib",
+      "repository": "madler/zlib",
+      "originalRecipeRepository": "ffmpegwasm/zlib",
+      "upstreamRef": "v1.4",
+      "commit": "99623ef7097352da7993ba614161fd6a311e046e",
+      "releaseDate": "2026-11-04",
+      "role": "Current security-reviewed external zlib for compressed MOV metadata and native PNG handling; no all-native clearance claim",
+      "licenseFiles": [
+        {
+          "path": "zlib.h",
+          "gitBlob": "c7e50b834dbb03b8d30fe5dee3e5172e743ff8bd"
+        },
+        {
+          "path": "LICENSE",
+          "gitBlob": "b7a69d058e616651eae27b3f90c0b7fd36c099b2"
+        }
+      ],
+      "submodules": [],
+      "recursiveGitlinks": [],
+      "recursiveTreeAudit": {
+        "entryCount": 309,
+        "truncated": false,
+        "gitlinks": [],
+        "verifiedBy": "Parent primary GitHub recursive tree read, as supplied in the task; no archive has yet been acquired by this candidate file."
+      },
+      "primaryTagURL": "https://github.com/madler/zlib/tree/v1.4",
+      "primaryCommitURL": "https://github.com/madler/zlib/commit/99623ef7097352da7993ba614161fd6a311e046e",
+      "previousSource": {
+        "repository": "ffmpegwasm/zlib",
+        "upstreamRef": "v1.2.11",
+        "commit": "cacf7f1d4e3d44d871b605da3b647f07d718623f",
+        "equalsOfficialUpstreamTag": true,
+        "upstreamRepository": "madler/zlib"
+      }
+    },
+    "historicalFixAncestry": [
+      {
+        "source": "zlib",
+        "cves": [
+          "CVE-2018-25032"
+        ],
+        "fixCommit": "5c44459c3b28a9bd3283aaceab7c615f8020c531",
+        "selectedCommit": "99623ef7097352da7993ba614161fd6a311e046e",
+        "status": "ahead",
+        "aheadBy": 767,
+        "behindBy": 0,
+        "mergeBase": "5c44459c3b28a9bd3283aaceab7c615f8020c531",
+        "ancestorConfirmed": true,
+        "primaryFixURL": "https://github.com/madler/zlib/commit/5c44459c3b28a9bd3283aaceab7c615f8020c531",
+        "primaryCompareAPIURL": "https://api.github.com/repos/madler/zlib/compare/5c44459c3b28a9bd3283aaceab7c615f8020c531...99623ef7097352da7993ba614161fd6a311e046e",
+        "primaryCompareURL": "https://github.com/madler/zlib/compare/5c44459c3b28a9bd3283aaceab7c615f8020c531...99623ef7097352da7993ba614161fd6a311e046e"
+      },
+      {
+        "source": "zlib",
+        "cves": [
+          "CVE-2022-37434"
+        ],
+        "fixCommit": "eff308af425b67093bab25f80f1ae950166bece1",
+        "selectedCommit": "99623ef7097352da7993ba614161fd6a311e046e",
+        "status": "ahead",
+        "aheadBy": 719,
+        "behindBy": 0,
+        "mergeBase": "eff308af425b67093bab25f80f1ae950166bece1",
+        "ancestorConfirmed": true,
+        "primaryFixURL": "https://github.com/madler/zlib/commit/eff308af425b67093bab25f80f1ae950166bece1",
+        "primaryCompareAPIURL": "https://api.github.com/repos/madler/zlib/compare/eff308af425b67093bab25f80f1ae950166bece1...99623ef7097352da7993ba614161fd6a311e046e",
+        "primaryCompareURL": "https://github.com/madler/zlib/compare/eff308af425b67093bab25f80f1ae950166bece1...99623ef7097352da7993ba614161fd6a311e046e"
+      },
+      {
+        "source": "zlib",
+        "cves": [
+          "CVE-2022-37434"
+        ],
+        "fixCommit": "1eb7682f845ac9e9bf9ae35bbfb3bad5dacbd91d",
+        "selectedCommit": "99623ef7097352da7993ba614161fd6a311e046e",
+        "status": "ahead",
+        "aheadBy": 717,
+        "behindBy": 0,
+        "mergeBase": "1eb7682f845ac9e9bf9ae35bbfb3bad5dacbd91d",
+        "ancestorConfirmed": true,
+        "primaryFixURL": "https://github.com/madler/zlib/commit/1eb7682f845ac9e9bf9ae35bbfb3bad5dacbd91d",
+        "primaryCompareAPIURL": "https://api.github.com/repos/madler/zlib/compare/1eb7682f845ac9e9bf9ae35bbfb3bad5dacbd91d...99623ef7097352da7993ba614161fd6a311e046e",
+        "primaryCompareURL": "https://github.com/madler/zlib/compare/1eb7682f845ac9e9bf9ae35bbfb3bad5dacbd91d...99623ef7097352da7993ba614161fd6a311e046e"
+      }
+    ],
+    "historicalFixNotes": [
+      {
+        "cve": "CVE-2018-25032",
+        "firstFixedTag": "v1.2.12",
+        "firstFixedCommit": "21767c654d31d2dccdde4330529775c6c5fd5389",
+        "primaryURL": "https://github.com/madler/zlib/issues/605",
+        "description": "Deflate pending buffer could overwrite the symbol table on particular distant-match inputs."
+      },
+      {
+        "cve": "CVE-2022-37434",
+        "firstFixedTag": "v1.2.13",
+        "firstFixedCommit": "04f42ceca40f73e2978b50e93806c2a18c1281fc",
+        "primaryURL": "https://github.com/madler/zlib/commit/eff308af425b67093bab25f80f1ae950166bece1",
+        "description": "Gzip extra-header handling can overflow caller-provided storage when inflateGetHeader is used; the subsequent NULL-state fix is included in ancestry evidence. No application reachability claim."
+      }
+    ],
+    "release14SecurityNotes": {
+      "primaryURL": "https://www.zlib.net/",
+      "fixedReleaseURL": "https://github.com/madler/zlib/releases/tag/v1.4",
+      "releaseDate": "2026-11-04",
+      "verification": "Official release-note statements; individual 2026 fix commits have not been separately mapped in this file.",
+      "selectedCoreLibraryFixes": [
+        {
+          "identifier": "CVE-2026-85091 / TOB-ZLIB-003",
+          "description": "Buffer overflow in non-blocking gzwrite."
+        },
+        {
+          "identifier": "THM-ZLIB-001",
+          "description": "inflateGetDictionary could overwrite caller storage after an invalid-window-size header followed by inflateReset or inflateSync.",
+          "upstreamAffectedRange": "1.2.8 through 1.3.2"
+        },
+        {
+          "identifier": "TOB-ZLIB-004",
+          "description": "inflateSync before window size was known could allocate an undersized window later overrun."
+        },
+        {
+          "identifier": "TOB-ZLIB-014",
+          "description": "inflatePrime could allow an input under-read."
+        },
+        {
+          "identifier": "TOB-ZLIB-013",
+          "description": "Repeated deflatePrime calls could write past pending buffer."
+        },
+        {
+          "identifier": "upstream inflateBack fix",
+          "description": "Too-far-back distances could copy uninitialized memory to output."
+        },
+        {
+          "identifier": "upstream deflateResetKeep fix",
+          "description": "Mid-stream use could read outside the window."
+        }
+      ],
+      "appSpecificReachabilityVerified": false
+    },
+    "buildRecipeReview": {
+      "primaryOriginalBuildScriptURL": "https://github.com/ffmpegwasm/ffmpeg.wasm/blob/71aa99d37c02a7b4c435275ca9ef50e612f6efa1/build/zlib.sh",
+      "originalBuildScriptGitBlob": "c325ae84961316a946521e6cb107263062744d1c",
+      "primaryCandidateCMakeURL": "https://github.com/madler/zlib/blob/99623ef7097352da7993ba614161fd6a311e046e/CMakeLists.txt",
+      "candidateCMakeGitBlob": "2ccbab95d09783366dfa95872d453f596b919b0b",
+      "minimumCMakeVersion": "3.15",
+      "requiredReviewedCMakeFlags": [
+        "-DZLIB_BUILD_SHARED=OFF",
+        "-DZLIB_BUILD_STATIC=ON",
+        "-DZLIB_BUILD_TESTING=OFF",
+        "-DZLIB_INSTALL=ON"
+      ],
+      "importantDifference": "The old BUILD_SHARED_LIBS=OFF and SKIP_INSTALL_FILES options are not used by this v1.4 CMakeLists.txt. Do not assume the old static-only intent survives without the explicit ZLIB_BUILD_* options.",
+      "preserve": [
+        "Emscripten CMake toolchain file",
+        "Install prefix /opt (or explicitly recorded controlled equivalent)",
+        "Recorded compiler flags",
+        "Original-recipe repository alias ffmpegwasm/zlib when replacing original Dockerfile ADD instructions"
+      ],
+      "forkOnlySourcePatchesToPreserve": [],
+      "sourceIdentityReason": "The old ffmpegwasm/zlib pinned commit is exactly the official madler/zlib v1.2.11 tag commit.",
+      "buildTested": false
+    },
+    "integrationNotes": [
+      "The current remote-ADD replacement finds entries by original Dockerfile repository. Preserve originalRecipeRepository when acquiring from madler/zlib.",
+      "If any other retained library embeds its own zlib, upgrading this external source alone does not update that nested copy.",
+      "FreeType 2.15.0 has a bundled zlib1.3.1 copy; if that library is retained, explicitly link the newly built external zlib or separately resolve its bundled copy.",
+      "Any new core must retain this exact source, notices, controlled patches and recipe together. This candidate file is not deployment or security clearance."
+    ]
+  },
+  "lame": {
+    "version": "4.0",
+    "archiveSha256": "3df5124d5ad3a98312ffd7ba6a9b36230e4f8a3e66d3ce0f425e336c32d216eb",
+    "primaryReleaseURL": "https://lame.sourceforge.io/download.php",
+    "primaryChecksumURL": "https://sourceforge.net/projects/lame/files/lame/4.0/lame-4.0.tar.gz/download",
+    "primaryHistoryURL": "https://lame.sourceforge.io/history.php",
+    "encoderTicket500": "Official history lists encoder buffer overflow fix in3.101; new source must contain reviewed flush guard before compilation. App exploitability is not asserted.",
+    "mpg123Decoder": "Explicitly disabled; native FFmpeg decodes accepted inputs.",
+    "reviewedNoticeBlobs": {
+      "COPYING": "102c4081e241697020df9c5005d6c070abba03a5",
+      "LICENSE": "349fd5f62f9be646cebeed83e0dbc8f810f06bdd"
+    }
+  },
+  "removedExternalDependencies": [
+    "x265",
+    "libvpx",
+    "ogg",
+    "theora",
+    "opus",
+    "vorbis",
+    "libwebp",
+    "freetype2",
+    "fribidi",
+    "harfbuzz",
+    "libass",
+    "zimg",
+    "sdl2"
+  ],
+  "scope": "Selection removes unused external code while preserving native FFmpeg decoders/filters and exposed tools. This is not an all-native-security or legal certification.",
+  "x264": {
+    "sourceCommit": "b35605ace3ddf7c1a5d67a2eb553f034aef41d55",
+    "officialGitURL": "https://code.videolan.org/videolan/x264.git",
+    "executionPrerequisite": "Official stable ref must resolve to the selected full commit before compilation. Browser robots blocked current official-ref verification, so no current-head claim precedes this gate.",
+    "mirroredSourceReview": "Exact official commit object independently inspected in mirror/x264 and ShiftMediaProject/x264: notice pins unchanged; complete recursive tree with288entries and nogitlinks. Acquisition stays official VideoLAN.",
+    "oldForkAdaptation": "Old33cac patch only changed fallback CPU count1to4. Not applied to this current upstream source because the retained ST build explicitly disables threading.",
+    "actualRuntimeQARequired": true,
+    "officialRefEvidence": {
+      "runID": 44891443852,
+      "jobID": 136807917262,
+      "checkedAt": "2026-11-21T09:50:28Z",
+      "stable": "b35605ace3ddf7c1a5d67a2eb553f034aef41d55",
+      "master": "0480cb05fa188d37ae87e8f4fd8f1aea3711f7ee",
+      "gitURL": "https://code.videolan.org/videolan/x264.git",
+      "method": "Actual official git ls-remote output in read-only CI; prior candidate failed on mismatch. New source must pass the same gate.",
+      "runURL": "https://github.com/abdulhameed-developer/filecompresser/actions/runs/44891443852"
+    }
+  }
+}

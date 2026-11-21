@@ -25,6 +25,10 @@
   Cross-Origin-Resource-Policy: same-origin
   X-Robots-Tag: noindex
 
+/THIRD-PARTY-NOTICES.txt
+  Cache-Control: public, max-age=0, must-revalidate
+  X-Robots-Tag: noindex
+
 # Uploaded media is limited to verified raster images. Direct image responses
 # cannot load scripts, embed documents or inherit the admin authentication policy.
 /uploads/*

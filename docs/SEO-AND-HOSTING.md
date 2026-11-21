@@ -83,7 +83,7 @@ For a local build of the website without activating the hosted CMS, run `npm run
 | Framework preset | Next.js (Static HTML Export), or None with the values below |
 | Production branch | `main` |
 | Root directory | Repository root; leave empty |
-| Build command | `npm run build:cms` |
+| Build command | `npm run deploy:check` |
 | Build output directory | `out` |
 | Node version | `22` using `NODE_VERSION` |
 
@@ -93,12 +93,12 @@ For a local build of the website without activating the hosted CMS, run `npm run
 | --- | --- |
 | `NODE_VERSION` | `22` |
 | `NEXT_PUBLIC_TINA_CLIENT_ID` | Client ID from your TinaCloud project |
-| `TINA_TOKEN` | The project's Content/read-only token |
+| `TINA_TOKEN` | The project's Content/read-only token, stored as an encrypted Production Secret |
 | `NEXT_PUBLIC_TINA_BRANCH` | `main` |
 | `NEXT_PUBLIC_SITE_URL` | `https://filecompresser.com` |
 | `NEXT_PUBLIC_ENABLE_INDEXING` | `false` for the initial review; change to `true` only when launching the public domain |
 
-The `NEXT_PUBLIC_` values are public configuration. Never put a GitHub personal access token or an admin password in one of them. Store `TINA_TOKEN` using the host's encrypted/secret environment-value option where available. It is a CMS content-read token, not a write-enabled GitHub credential; use the restricted token type specified above.
+The `NEXT_PUBLIC_` values are public configuration. Never put a GitHub personal access token or an admin password in one of them. In Cloudflare, add `TINA_TOKEN` through the existing project's **Settings → Variables and secrets**, choose **Secret**, and select the Production environment. Do not put it in an ordinary Text row. It is a CMS content-read token, not a write-enabled GitHub credential. The deployment checks scan every exported file for the active token and stop publication if it is found.
 
 6. Deploy and wait for a successful build. Cloudflare gives you a `https://YOUR-PROJECT.pages.dev` address. Add that exact origin to the allowed URLs in TinaCloud if it was not known earlier.
 7. Visit the public homepage, a tool, a blog article and `/admin/index.html`. Try image compression and a media conversion. A successful build does not replace testing those tools in the browser.
@@ -152,6 +152,8 @@ Use the actual project hostname Cloudflare assigned, without `https://`. A root/
 
 An unpublished/draft post should remain unpublished until it is ready. Changing an existing blog slug changes its address; plan an appropriate redirect rather than breaking an indexed URL. Content edits cannot guarantee SEO results, and a meta description may be rewritten by a search engine.
 
+Draft and archived posts are excluded from the exported website and sitemap. The GitHub repository itself is public: committed draft source and its version history remain visible there. These states provide editorial publishing control, not confidential document storage.
+
 If the editor reports a successful save but the website is unchanged, check the latest commit on GitHub and the latest Cloudflare Pages deployment. Common causes are a failed build, mismatched branch, missing environment variables, unpublished content, or an old browser tab. A content save and a public deployment are separate events.
 
 To undo an accidental content edit, review and revert the corresponding GitHub commit, then let Cloudflare rebuild. Cloudflare also offers deployment rollbacks for a fast temporary recovery; reverting the source keeps the next build consistent.
@@ -162,11 +164,11 @@ Cloudflare Pages Free currently includes 500 builds per month, one concurrent bu
 
 TinaCloud Free currently includes two users. Additional seats/features or exceeding a provider's current allowances may require a different plan. Keep using your registrar's normal domain renewal. Check the linked pricing pages when provisioning rather than assuming the free allowances can never change.
 
-## What still needs your account access
+## Verified resources and release checks
 
-The remaining activation steps are the real TinaCloud project, its GitHub authorization, two account invitations/roles, Cloudflare GitHub connection, build variables, the purchased domain's exact hostname and registrar DNS changes. Until those steps and the public browser checks are complete, the CMS integration is prepared locally and must not be described as a working deployed admin login/password reset.
+The real FileCompresser TinaCloud project and Cloudflare Pages project have been created and connected to this repository. The requested CMS account is already the Active Owner; no duplicate invitation or role downgrade was needed. Cloudflare holds the read-only content token as an encrypted Production Secret. Domain DNS, the working business mailbox and Google/Bing ownership are verified; see `docs/DNS-AND-EMAIL.md`.
 
-Before public release, complete the existing project's release review, including the FFmpeg notices/corresponding-source distribution requirements recorded in `docs/RELEASE-REVIEW.md` and `docs/DEPENDENCY-LICENSES.md`.
+The new media engine and its matching source/notices/recipe package are published at the fixed `codec-2026-11-21.1` GitHub release and pinned by SHA-256 in `scripts/codec-release.json`. The package has passed actual source/archive/core integrity checks. Application browser acceptance, the installed Tina security checks, production domain/TLS and real CMS publishing still require their separate release evidence; publication of a codec package is not a website deployment.
 
 ## Official references
 

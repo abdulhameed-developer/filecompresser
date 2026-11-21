@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-21T10:06:22Z",
+  "scope": "Actual compiled source-paired codec result; browser acceptance, public source availability and website deployment are separate checks.",
+  "repository": "abdulhameed-developer/filecompresser",
+  "branch": "work/codec-source-rebuild-20261121",
+  "workflowPath": ".github/workflows/codec-source-rebuild.yml",
+  "workflowCommit": "8834c97516c24b930c9d5d1c7cba8141661612b1",
+  "runId": 44891737690,
+  "jobId": 136808825440,
+  "runURL": "https://github.com/abdulhameed-developer/filecompresser/actions/runs/44891737690",
+  "conclusion": "success",
+  "artifact": {
+    "id": 14703065764,
+    "name": "codec-source-and-new-core-44891737690",
+    "size_in_bytes": 63314725,
+    "url": "https://api.github.com/repos/abdulhameed-developer/filecompresser/actions/artifacts/14703065764",
+    "archive_download_url": "https://api.github.com/repos/abdulhameed-developer/filecompresser/actions/artifacts/14703065764/zip",
+    "expired": false,
+    "created_at": "2026-11-21T10:06:22Z",
+    "expires_at": "2026-11-22T10:06:19Z",
+    "updated_at": "2026-11-21T10:06:22Z",
+    "digest": "sha256:81f16165029b0b274c74533602878947d35a177bce669d0a518d688e6a625cec",
+    "workflow_run": {
+      "id": 44891737690,
+      "repository_id": 1402802401,
+      "head_repository_id": 1402802401,
+      "head_branch": "work/codec-source-rebuild-20261121",
+      "head_sha": "8834c97516c24b930c9d5d1c7cba8141661612b1"
+    }
+  },
+  "proof": {
+    "status": "probe-complete-not-released",
+    "sourcePinsSha256": "e25ff55c61088a636a5703a40eb3ea6a222cf2b5957477df0a75129f75809d75",
+    "ffmpegVersion": "5.1.10",
+    "ffmpegSourceLabel": "5.1.10+19.b5d146d17cb4",
+    "ffmpegSourceCommit": "b5d146d17cb45f3b00796dcf984897f1a0459945",
+    "intentionalDifferenceFromOriginalNpmCore": true,
+    "sourceCollected": true,
+    "runtimeSourcePinsVerified": true,
+    "minimalHeadlessProfileVerified": true,
+    "built": true,
+    "originalNpmBinaryCorrespondenceVerified": false,
+    "allNativeDependenciesCleared": false,
+    "legalClearance": false,
+    "deployed": false,
+    "embeddedPatchedFfmpegVersionPresent": true,
+    "outputs": {
+      "js": {
+        "filename": "ffmpeg-core.js",
+        "bytes": 86526,
+        "sha256": "cea5a18a8ef99258fa2299b8feb57ca641c0222e88de077fd0562b4eeef7bfed",
+        "matchesInstalledNpmCore": false
+      },
+      "wasm": {
+        "filename": "ffmpeg-core.wasm",
+        "bytes": 20752732,
+        "sha256": "584febef0d37a76379d5c2c53539250e78c250e2c5f2710493301ea55198d5ab",
+        "matchesInstalledNpmCore": false
+      }
+    },
+    "artifact": {
+      "filename": "codec-source-and-new-core.tar.gz",
+      "format": "ustar+gzip",
+      "bytes": 63253833,
+      "uncompressedTarBytes": 81541120,
+      "memberCount": 92,
+      "sha256": "6d3326d6e2456fdf7973ac7ab1d83620a41a99acc5b65b316d139ffbfc148818",
+      "retentionDays": 1,
+      "completeSourceAccompaniesNewBinary": true
+    }
+  },
+  "distribution": {
+    "publicReleasePublished": true,
+    "browserAcceptancePassed": false,
+    "websiteDeployed": false,
+    "releaseTag": "codec-2026-11-21.1",
+    "releaseId": 453612581,
+    "releaseURL": "https://github.com/abdulhameed-developer/filecompresser/releases/tag/codec-2026-11-21.1",
+    "sourceURL": "https://github.com/abdulhameed-developer/filecompresser/releases/download/codec-2026-11-21.1/codec-source-and-new-core.tar.gz",
+    "publicReleaseEvidence": {
+      "id": 453612581,
+      "tag": "codec-2026-11-21.1",
+      "url": "https://github.com/abdulhameed-developer/filecompresser/releases/tag/codec-2026-11-21.1",
+      "draft": false,
+      "prerelease": true,
+      "publishedAt": "2026-11-21T10:34:57Z",
+      "targetCommit": "8834c97516c24b930c9d5d1c7cba8141661612b1",
+      "assets": [
+        {
+          "id": 775216647,
+          "name": "codec-source-and-new-core.tar.gz",
+          "bytes": 63253833,
+          "state": "uploaded",
+          "digest": "sha256:6d3326d6e2456fdf7973ac7ab1d83620a41a99acc5b65b316d139ffbfc148818",
+          "url": "https://github.com/abdulhameed-developer/filecompresser/releases/download/codec-2026-11-21.1/codec-source-and-new-core.tar.gz"
+        },
+        {
+          "id": 775218223,
+          "name": "release-evidence.json",
+          "bytes": 1673,
+          "state": "uploaded",
+          "digest": "sha256:133bb3eba318d5c5c335d1497061dd278a09e9f6652ce23acfd236bca68555bf",
+          "url": "https://github.com/abdulhameed-developer/filecompresser/releases/download/codec-2026-11-21.1/release-evidence.json"
+        },
+        {
+          "id": 775218255,
+          "name": "SHA256SUMS",
+          "bytes": 187,
+          "state": "uploaded",
+          "digest": "sha256:83d548eaea2947573e86f2a77663db380f2c46a1c191aaaecfbbdc70d13d41bf",
+          "url": "https://github.com/abdulhameed-developer/filecompresser/releases/download/codec-2026-11-21.1/SHA256SUMS"
+        }
+      ]
+    },
+    "serverAssetDigestsMatchLocallyReviewedBytes": true,
+    "anonymousApplicationCIDownloadVerified": false,
+    "publisherWorkflowActivated": false,
+    "publicationMethod": "Actual GitHub release UI; no temporary writer workflow activated."
+  },
+  "noLegalCertification": true,
+  "noAllNativeSecurityCertification": true,
+  "independentDataReview": {
+    "passed": true,
+    "report": "outputs/codec-independent-review-44891737690.json",
+    "artifactCodeExecuted": false,
+    "sourceArchivesVerified": 10,
+    "outerNoticeFilesVerified": 20,
+    "compiledNativeDecoderEncoderFilterConfigurationVerified": true,
+    "runtimeBrowserQASeparate": true
+  }
+}

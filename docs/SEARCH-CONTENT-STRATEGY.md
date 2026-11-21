@@ -1,6 +1,6 @@
 # Search and editorial strategy
 
-Reviewed on 21 November 2026. This document records live primary-source research and its application to the actual FileCompresser code. Keyword phrases below are qualitative intent candidates, not measured demand, rankings or keyword-volume estimates. No Search Console property, third-party keyword dataset or production analytics account was available to this research task.
+Reviewed on 21 November 2026. This document records live primary-source research and its application to the actual FileCompresser code. Keyword phrases below are qualitative intent candidates, not measured demand, rankings or keyword-volume estimates. Initial research had no Search Console data or third-party keyword dataset. Google and Bing ownership have since been verified; their new-property dashboards do not yet establish production indexing or search performance. See DNS-AND-EMAIL.md for account-setup evidence.
 
 ## Evidence and decisions
 

@@ -1,0 +1,340 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-11-21",
+  "status": "patched-known-source-candidate-not-rebuilt",
+  "originalNpmBinaryCorrespondenceVerified": false,
+  "legalClearance": false,
+  "corePackage": "@ffmpeg/core@0.12.10",
+  "upstreamRecipe": {
+    "repository": "ffmpegwasm/ffmpeg.wasm",
+    "commit": "71aa99d37c02a7b4c435275ca9ef50e612f6efa1",
+    "files": [
+      {
+        "path": "Dockerfile",
+        "gitBlob": "51275c46464831a9d8460ece519f83cdc4d42db4"
+      },
+      {
+        "path": "Makefile",
+        "gitBlob": "8e260bc5bbeb1d6461267e1cefa20fad1d6c564b"
+      },
+      {
+        "path": "build/ffmpeg.sh",
+        "gitBlob": "da89c451aea5e09e36222fb069728d282661559d"
+      },
+      {
+        "path": "build/ffmpeg-wasm.sh",
+        "gitBlob": "d36b1742995e1cb91771626f451e9db19992f8ff"
+      }
+    ]
+  },
+  "toolchain": {
+    "imageTag": "emscripten/emsdk:3.1.40",
+    "imageDigest": null,
+    "imageDigestStatus": "Must resolve and record before controlled build; no digest has been invented.",
+    "compilerSourceCommit": "5c27e79dd0a9c4e27ef2326841698cdd4f6b5784",
+    "llvmSourceCommit": "2922e7cd9334797c24a317d41275f1258ef9ddd3",
+    "simdHeaderGitBlob": "2327bec52522d270f5489c2fb05301694088d190",
+    "sdkMappingURL": "https://raw.githubusercontent.com/emscripten-core/emsdk/ae245715ef50e036b68a2412a323129676bf8300/emscripten-releases-tags.json",
+    "sdkMappingGitBlob": "7c1581af17ca4d08063f699812ea9de6ce7c2cd7",
+    "releaseCommit": "c3122846bb040798aab975f61008c37eb19476de",
+    "releaseDepsURL": "https://chromium.googlesource.com/emscripten-releases/+/c3122846bb040798aab975f61008c37eb19476de/DEPS?format=TEXT",
+    "releaseDepsGitBlob": "a9344914231879d94a20380516919501c10ebb9a"
+  },
+  "sources": [
+    {
+      "name": "ffmpegwasm",
+      "repository": "ffmpegwasm/ffmpeg.wasm",
+      "upstreamRef": "v12.15",
+      "commit": "71aa99d37c02a7b4c435275ca9ef50e612f6efa1",
+      "role": "Core bindings, modified fftools and build recipes",
+      "licenseFiles": [
+        {
+          "path": "LICENSE",
+          "gitBlob": "3032c67441859d69c3b02d150c5abdfbdef2a919"
+        }
+      ],
+      "submodules": [],
+      "excludedSubmodules": [
+        {
+          "path": "testdata",
+          "repository": "ffmpegwasm/testdata",
+          "commit": "c81125391a0ada7599edc6bff2da51c1a3ed38d0",
+          "reason": "Unlinked wrapper test fixtures, not read or copied by the core build Dockerfile. Contains Arial.ttf/media with no accompanying license in that pinned tree; not redistributed in a codec source bundle."
+        }
+      ]
+    },
+    {
+      "name": "ffmpeg",
+      "repository": "FFmpeg/FFmpeg",
+      "upstreamRef": "release/5.1 immutable +19 snapshot after n5.1.10",
+      "commit": "b5d146d17cb45f3b00796dcf984897f1a0459945",
+      "licenseFiles": [
+        {
+          "path": "COPYING.GPLv2",
+          "gitBlob": "d159169d1050894d3ea3b98e1c965c4058208fe1"
+        },
+        {
+          "path": "COPYING.GPLv3",
+          "gitBlob": "94a9ed024d3859793618152ea559a168bbcbb5e2"
+        },
+        {
+          "path": "COPYING.LGPLv2.1",
+          "gitBlob": "40924c2a6da76a2b0c639f6fe7ef0b2d095a6adb"
+        },
+        {
+          "path": "COPYING.LGPLv3",
+          "gitBlob": "65c5ca88a67c30becee01c5a8816d964b03862f9"
+        },
+        {
+          "path": "LICENSE.md",
+          "gitBlob": "613070e1b631a919a74c862f2a75a0f249a631ff"
+        }
+      ],
+      "submodules": [],
+      "baseReleaseDate": "2026-06-21"
+    },
+    {
+      "name": "x264",
+      "repository": "mirror/x264",
+      "upstreamRef": "stable; must match official ls-remote before any build",
+      "commit": "b35605ace3ddf7c1a5d67a2eb553f034aef41d55",
+      "licenseFiles": [
+        {
+          "path": "COPYING",
+          "gitBlob": "d60c31a97a544b53039088d14fe9114583c0efc3"
+        },
+        {
+          "path": "AUTHORS",
+          "gitBlob": "d7fda64a9176514feae1cc1f95473143eb337a19"
+        }
+      ],
+      "submodules": [],
+      "originalRecipeRepository": "ffmpegwasm/x264",
+      "gitURL": "https://code.videolan.org/videolan/x264.git",
+      "requireOfficialRef": "refs/heads/stable",
+      "role": "Single-thread GPL x264 encoder. Current official stable-head check is an execution prerequisite, not inferred from the GitHub mirror.",
+      "officialRefObservedAt": "2026-11-21T09:50:28Z"
+    },
+    {
+      "name": "lame",
+      "sourceType": "archive",
+      "upstreamRef": "4.0",
+      "originalRecipeRepository": "ffmpegwasm/lame",
+      "archiveURL": "https://downloads.sourceforge.net/project/lame/lame/4.0/lame-4.0.tar.gz",
+      "sha256": "3df5124d5ad3a98312ffd7ba6a9b36230e4f8a3e66d3ce0f425e336c32d216eb",
+      "archiveRoot": "lame-4.0",
+      "maxBytes": 10485760,
+      "role": "Official current LAME encoding library; disable optional mpg123 decoding because FFmpeg native decoder handles inputs",
+      "primaryReleaseURL": "https://lame.sourceforge.io/download.php",
+      "primaryChecksumURL": "https://sourceforge.net/projects/lame/files/lame/4.0/lame-4.0.tar.gz/download",
+      "licenseFiles": [
+        {
+          "path": "COPYING",
+          "protectedByArchiveSha256": true,
+          "gitBlob": "102c4081e241697020df9c5005d6c070abba03a5"
+        },
+        {
+          "path": "LICENSE",
+          "protectedByArchiveSha256": true,
+          "gitBlob": "349fd5f62f9be646cebeed83e0dbc8f810f06bdd"
+        }
+      ],
+      "submodules": []
+    },
+    {
+      "name": "zlib",
+      "repository": "madler/zlib",
+      "originalRecipeRepository": "ffmpegwasm/zlib",
+      "upstreamRef": "v1.4",
+      "commit": "99623ef7097352da7993ba614161fd6a311e046e",
+      "releaseDate": "2026-11-04",
+      "role": "Current security-reviewed external zlib for compressed MOV metadata and native PNG handling; no all-native clearance claim",
+      "licenseFiles": [
+        {
+          "path": "zlib.h",
+          "gitBlob": "c7e50b834dbb03b8d30fe5dee3e5172e743ff8bd"
+        },
+        {
+          "path": "LICENSE",
+          "gitBlob": "b7a69d058e616651eae27b3f90c0b7fd36c099b2"
+        }
+      ],
+      "submodules": [],
+      "recursiveGitlinks": [],
+      "recursiveTreeAudit": {
+        "entryCount": 309,
+        "truncated": false,
+        "gitlinks": [],
+        "verifiedBy": "Parent primary GitHub recursive tree read, as supplied in the task; no archive has yet been acquired by this candidate file."
+      },
+      "primaryTagURL": "https://github.com/madler/zlib/tree/v1.4",
+      "primaryCommitURL": "https://github.com/madler/zlib/commit/99623ef7097352da7993ba614161fd6a311e046e",
+      "previousSource": {
+        "repository": "ffmpegwasm/zlib",
+        "upstreamRef": "v1.2.11",
+        "commit": "cacf7f1d4e3d44d871b605da3b647f07d718623f",
+        "equalsOfficialUpstreamTag": true,
+        "upstreamRepository": "madler/zlib"
+      }
+    },
+    {
+      "name": "emscripten",
+      "repository": "emscripten-core/emscripten",
+      "upstreamRef": "3.1.40",
+      "commit": "5c27e79dd0a9c4e27ef2326841698cdd4f6b5784",
+      "role": "Runtime/system source and SDL port recipe matching embedded compiler",
+      "licenseFiles": [
+        {
+          "path": "LICENSE",
+          "gitBlob": "70cabe388d27da221bd769c50b427a35354f4f1d"
+        }
+      ],
+      "submodules": [
+        {
+          "path": "test/third_party/googletest",
+          "source": "emscripten-googletest",
+          "commit": "4fb7039fda3f6588c7ca9664176f8c9e0a023b4a"
+        },
+        {
+          "path": "test/third_party/posixtestsuite",
+          "source": "posixtestsuite",
+          "commit": "869e266b090a8d44e51bb040904c942556b1e4ab"
+        },
+        {
+          "path": "test/third_party/wasi-test-suite",
+          "source": "wasi-test-suite",
+          "commit": "ac9371207fc61972a21d7d086074ca690a99d14d"
+        }
+      ]
+    },
+    {
+      "name": "emscripten-googletest",
+      "repository": "google/googletest",
+      "upstreamRef": "Emscripten test gitlink",
+      "commit": "4fb7039fda3f6588c7ca9664176f8c9e0a023b4a",
+      "role": "Pinned Emscripten test submodule, not claimed linked into media core",
+      "licenseFiles": [
+        {
+          "path": "LICENSE",
+          "gitBlob": "1941a11f8ce94389160b458927a29ba217542818"
+        }
+      ],
+      "submodules": []
+    },
+    {
+      "name": "posixtestsuite",
+      "repository": "emscripten-core/posixtestsuite",
+      "upstreamRef": "Emscripten test gitlink",
+      "commit": "869e266b090a8d44e51bb040904c942556b1e4ab",
+      "role": "Pinned Emscripten test submodule, not claimed linked into media core",
+      "licenseFiles": [
+        {
+          "path": "AUTHORS",
+          "gitBlob": "dd6ccbd89c822c54a21ed1a14256ccd54f9e496d"
+        },
+        {
+          "path": "COPYING",
+          "gitBlob": "d60c31a97a544b53039088d14fe9114583c0efc3"
+        }
+      ],
+      "submodules": []
+    },
+    {
+      "name": "wasi-test-suite",
+      "repository": "khronosproject/wasi-test-suite",
+      "upstreamRef": "Emscripten test gitlink",
+      "commit": "ac9371207fc61972a21d7d086074ca690a99d14d",
+      "role": "Pinned Emscripten test submodule, not claimed linked into media core",
+      "licenseFiles": [
+        {
+          "path": "LICENSE",
+          "gitBlob": "650db9b282d2ef5b2261b2f2fa2777dabd125046"
+        }
+      ],
+      "submodules": []
+    },
+    {
+      "name": "llvm-resource-headers",
+      "repository": "llvm/llvm-project",
+      "upstreamRef": "Exact SDK3.1.40 release LLVM revision; selected source paths only",
+      "commit": "2922e7cd9334797c24a317d41275f1258ef9ddd3",
+      "role": "Clang resource inline headers and their preferred generated-header definitions/emitters; not the full LLVM compiler source",
+      "archivePaths": [
+        "clang/lib/Headers",
+        "clang/include/clang/Basic",
+        "clang/utils/TableGen",
+        "LICENSE.TXT",
+        "clang/LICENSE.TXT",
+        "llvm/LICENSE.TXT"
+      ],
+      "licenseFiles": [
+        {
+          "path": "LICENSE.TXT",
+          "gitBlob": "fa6ac540007032cbd0ec772a1c72e6cb5527a4fe"
+        },
+        {
+          "path": "clang/LICENSE.TXT",
+          "gitBlob": "24806ab4c9eb291db4d28e159901f7a0901b9fd1"
+        },
+        {
+          "path": "llvm/LICENSE.TXT",
+          "gitBlob": "fa6ac540007032cbd0ec772a1c72e6cb5527a4fe"
+        }
+      ],
+      "submodules": []
+    }
+  ],
+  "unresolved": [
+    "No source archive has yet been acquired and hashed by the collector.",
+    "The historical npm build has not been reproduced or matched byte-for-byte.",
+    "The controlled build's Docker image digest and build-environment inventory must be captured.",
+    "Native-code security fixes/backports and actual app reachability remain to be assessed.",
+    "Complete notices/source-access arrangement must be reviewed before public binary distribution."
+  ],
+  "buildLibrarySources": [
+    "ffmpeg",
+    "x264",
+    "lame",
+    "zlib"
+  ],
+  "patchedFfmpeg": {
+    "version": "5.1.10",
+    "upstreamRef": "release/5.1 immutable snapshot",
+    "commit": "b5d146d17cb45f3b00796dcf984897f1a0459945",
+    "originalNpmVersion": "5.1.4",
+    "intentionalDifferenceFromOriginalNpmCore": true,
+    "purpose": "Use the patched 5.1 release branch rather than release a new binary with known later FFmpeg fixes absent. This is not a clean-all-native-dependencies or exploitability claim.",
+    "securityAncestryEvidence": {
+      "path": "ffmpeg-security-ancestry.json",
+      "sha256": "f2f562b8ca741a5da2b5f2759e1ecd992515720b0321610f2e5fdb30724745a7",
+      "distinctCVEsWithVerifiedFixAncestry": 22,
+      "scope": "Source ancestry only; no app exploitability or all-native-dependencies-cleared claim."
+    },
+    "sourceLabel": "5.1.10+19.b5d146d17cb4",
+    "baseTag": "n5.1.10",
+    "baseTagCommit": "19feb712f5c1821d8a3fa1ad63c5bd2e3b9672eb",
+    "postTagCommitCount": 19
+  },
+  "headlessProfile": {
+    "externalLibraries": [
+      "x264",
+      "lame",
+      "zlib"
+    ],
+    "nativeDecodersAndFiltersPreserved": true,
+    "disabledComponents": [
+      "avdevice",
+      "sdl2",
+      "network"
+    ],
+    "outputs": [
+      "H.264/AAC MP4",
+      "MP3",
+      "PCM WAV",
+      "native GIF"
+    ],
+    "allNativeDependenciesCleared": false,
+    "note": "No visible tool removed; accepted native decoder formats still require actual browser QA.",
+    "securityReviewSha256": "06e239a10892e88c73919f796402278d6dfe9e17c59772d76d8aad3132975f75"
+  }
+}

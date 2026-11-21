@@ -61,3 +61,6 @@ tina/__generated__/
 
 # Generated from managed redirect rules
 public/_redirects
+
+# Generated installed dependency and native codec notices
+public/THIRD-PARTY-NOTICES.txt

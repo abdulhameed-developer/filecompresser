@@ -31,6 +31,7 @@ export default function SiteFooter() {
             <Link href="/contact">Help & contact</Link>
           </p>
           {supportEmail && <p className="footerContact"><a href={`mailto:${supportEmail}`}>{supportEmail}</a></p>}
+          <p className="footerContact"><a href="/THIRD-PARTY-NOTICES.txt">Open-source notices &amp; source</a></p>
         </div>
 
         {footerColumns().map((column) => (
@@ -51,7 +52,7 @@ export default function SiteFooter() {
 
       <div className="footerBottom">
         <span>
-          © {year} filecompresser. All rights reserved.
+          © {year} filecompresser.
         </span>
         <span className="footerPrivacy">
           <Icon name="shield" /> Your files are processed on your device and never

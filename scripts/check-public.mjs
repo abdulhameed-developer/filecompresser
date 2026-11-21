@@ -10,6 +10,7 @@ const allowed = new Set([
   'favicon-192.png',
   'apple-touch-icon.png',
   'site.webmanifest',
+  'THIRD-PARTY-NOTICES.txt',
   'blog',
   '_headers',
   '_redirects',

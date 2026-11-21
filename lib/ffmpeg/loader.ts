@@ -21,17 +21,10 @@ let loading: Promise<FFmpeg> | null = null
 const CORE_BASE = '/ffmpeg-core'
 
 /**
- * The `@ffmpeg/*` packages are loaded through static dynamic-import specifiers at
- * module scope, deliberately.
- *
- * Writing these as `await import('@ffmpeg/ffmpeg')` inside the async factory
- * below looks equivalent, but it is not: a dynamic import whose specifier sits
- * inside a closure is not statically analysable, and Turbopack fails the build
- * at runtime with "Cannot find module as expression is too dynamic". The result
- * is that every media tool fails to start at the moment of use — which is
- * exactly when the user is least able to work around it. Hoisting the specifiers
- * to a top-level binding gives the bundler a literal to code-split against, and
- * still keeps the ~30 MB engine out of any route that never starts a media job.
+ * Literal dynamic imports let Webpack split the small wrapper packages and
+ * load them only when a media job starts. The worker and verified core assets
+ * are served separately from our own origin. Production builds use Webpack
+ * for compatibility with the FFmpeg wrapper's worker construction.
  */
 const ffmpegModule = () => import('@ffmpeg/ffmpeg')
 const utilModule = () => import('@ffmpeg/util')
@@ -46,7 +39,7 @@ export class FFmpegUnavailableError extends ProcessingError {
 /**
  * Load (and memoise) FFmpeg.
  *
- * The first call downloads and compiles a ~30 MB WebAssembly core. Callers
+ * The first call downloads and compiles the WebAssembly core. Callers
  * should show a "loading engine" state before awaiting this, since there is no
  * progress reporting available through the ffmpeg.wasm API itself.
  *
