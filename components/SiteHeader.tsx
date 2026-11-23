@@ -300,24 +300,15 @@ export default function SiteHeader() {
     <header className="siteHeader">
       <nav className="nav" aria-label="Primary" ref={navRef}>
         <Link className="brand" href="/" onClick={close}>
-          {/*
-            The wordmark image already spells the name, so `alt=""` keeps a
-            screen reader from announcing "filecompresser" twice; the
-            visually-hidden label gives the link its accessible name instead.
-
-            `next/image` rather than a bare `<img>` because the logo is the
-            largest contentful paint on every page — it is the first thing that
-            renders, and it should not block on a 23 KB download.
-          */}
+          {/* The logo's alternative text also names this home link. */}
           <Image
             className="brandMark"
             src="/logo.png"
-            alt=""
+            alt="FileCompresser — home"
             width={223}
             height={68}
             priority
           />
-          <span className="srInline">filecompresser — home</span>
         </Link>
 
         <div className="navlinks">

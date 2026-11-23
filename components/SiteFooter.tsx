@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { footerColumns } from '@/lib/nav'
 import { getSiteSettings } from '@/lib/site-settings'
+import SupportEmailLink from './SupportEmailLink'
 
 /**
  * The one footer, rendered once by the root layout.
@@ -20,8 +21,7 @@ export default function SiteFooter() {
       <div className="footerTop">
         <div className="footerBrand">
           <Link className="brand" href="/">
-            <Image className="brandMark" src="/logo.png" alt="" width={223} height={68} />
-            <span className="srInline">filecompresser — home</span>
+            <Image className="brandMark" src="/logo.png" alt="FileCompresser — home" width={223} height={68} />
           </Link>
           <p>
             Smaller files, processed privately in your browser. No uploads, no accounts, no
@@ -30,7 +30,7 @@ export default function SiteFooter() {
           <p className="footerContact">
             <Link href="/contact">Help & contact</Link>
           </p>
-          {supportEmail && <p className="footerContact"><a href={`mailto:${supportEmail}`}>{supportEmail}</a></p>}
+          {supportEmail && <p className="footerContact"><SupportEmailLink email={supportEmail} /></p>}
           <p className="footerContact"><a href="/THIRD-PARTY-NOTICES.txt">Open-source notices &amp; source</a></p>
         </div>
 
