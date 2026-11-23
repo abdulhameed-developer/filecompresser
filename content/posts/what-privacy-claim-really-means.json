@@ -5,6 +5,7 @@
   "date": "2026-09-16",
   "readingTime": "7 min",
   "figure": "dataflow",
+  "seoTitle": "File Privacy: What Stays on Your Device",
   "seoDescription": "A precise breakdown of the browser-side privacy claim: which network requests never happen, which page and engine requests still occur, and how to check.",
   "body": [
     {
