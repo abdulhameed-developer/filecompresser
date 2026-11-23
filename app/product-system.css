@@ -230,6 +230,11 @@ details[open] > summary > svg { transform: rotate(180deg); }
 .editorialContent h2 { font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.25; margin: 0 0 1rem; }
 .editorialContent h3 { font-size: 1.15rem; margin: 1.6rem 0 .5rem; }
 .editorialContent p { font-size: 1rem; line-height: 1.8; margin: .7rem 0; white-space: pre-line; }
+.homePage > .editorialContent { max-width: var(--content); margin-inline: auto; padding-inline: 24px; }
+.homePage > .editorialContent > :is(p,section,nav) { max-width: 76ch; }
+@media(max-width:760px) {
+  .homePage > .editorialContent { padding-inline: 20px; }
+}
 
 .postTableWrap { margin: 1.5rem 0; border: 1px solid #dce4df; border-radius: 12px; max-width: 100%; }
 .postTableWrap table { border-collapse: collapse; min-width: 100%; font-size: 1rem; }
