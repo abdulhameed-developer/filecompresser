@@ -20,9 +20,18 @@ describe('verified public support contact', () => {
   it('uses the configured mailbox consistently without requesting private files', async () => {
     const result = await renderSupport('info@filecompresser.com')
     expect(result.contact).toContain('href="mailto:info@filecompresser.com"')
+    expect(result.contact).toContain('<!--email_off--><a class="editorialLink" href="mailto:info@filecompresser.com">info@filecompresser.com</a><!--/email_off-->')
     expect(result.contact).toContain('Please do not email private files.')
     expect(result.footer).toContain('href="mailto:info@filecompresser.com"')
+    expect(result.footer).toContain('<!--email_off--><a href="mailto:info@filecompresser.com">info@filecompresser.com</a><!--/email_off-->')
     expect(result.organization).toMatchObject({ contactPoint: { '@type': 'ContactPoint', contactType: 'customer support', email: 'info@filecompresser.com' } })
+  })
+
+  it('rejects markup or message headers before rendering the support link', async () => {
+    const { default: SupportEmailLink } = await import('@/components/SupportEmailLink')
+    for (const email of ['info@example.com" onclick="alert(1)', '<script>@example.com', 'info@example.com?subject=test', 'info@example.com\r\nBcc:other@example.com']) {
+      expect(() => renderToStaticMarkup(<SupportEmailLink email={email} />)).toThrow('support email')
+    }
   })
 
   it('hides email links and contact schema when the optional mailbox is cleared', async () => {
