@@ -2,11 +2,11 @@
 
 The setup uses **GitHub for source and content, Cloudflare Pages Free for the static website, and TinaCloud for editor accounts**. The chosen primary address is **https://filecompresser.com**. You do not need to buy shared hosting or rent an application server. Domain registration and renewal remain separate.
 
-## Existing setup and remaining launch work
+## Your live setup
 
 The repository, TinaCloud **FileCompresser** project and Cloudflare Pages **filecompresser** project already exist and are connected. Your requested CMS account is already **Active Owner**. Domain DNS/DNSSEC, the working **info@filecompresser.com** mailbox and Google/Bing ownership are verified. Keep these existing resources; no duplicate project, account invitation or role downgrade is needed. [DNS and email](DNS-AND-EMAIL.md) records the actual setup evidence.
 
-**The website is not yet deployed.** Cloudflare already has `npm run deploy:check` configured, but production `main` still contains the older source. The successful CMS installation's package files/schema lock must be preserved in GitHub and validated before production `main` changes. The complete release pipeline, real browser media/security acceptance, custom-domain/TLS activation and authenticated CMS publishing remain pending. The published source-paired codec package is a component release, not a website launch.
+**The website is deployed at https://filecompresser.com.** The reviewed source and reproduced CMS locks are on `main`; the connected Cloudflare production build succeeded with 436 tests and the private-token export scan. Both root and `www` hostnames have Active SSL, and root HTTPS serves the actual application. Hosted CMS login loaded all 13 tool documents. The authorized JPG save is now visible publicly as “Keep a copy of your original JPG,” and its main-branch CI passed. Public robots are index/follow and the canonical uses the HTTPS root. Logout and existing-SSO re-entry to all six collections are verified. Google/Bing sitemap rows both show Success with 26 discovered URLs; the Google live homepage eligibility/indexing request is recorded. Complete live validation [45117263085](https://github.com/abdulhameed-developer/filecompresser/actions/runs/45117263085) passed on **23 November 2026 at 10:22 PKT**: 16 HTTP checks, 27 public addresses, published article/image assertions and three selected PNG/WAV/no-upload browser checks. Native chooser upload and reset-email delivery were not exercised; search-engine indexing is not claimed. [The release review](RELEASE-REVIEW.md) identifies the exact deployment and save commits.
 
 ## What the editor manages
 
@@ -23,9 +23,9 @@ The public site reads saved content during a build and emits HTML. Search engine
 
 ## 1. Preserve the reviewed source on GitHub
 
-Use the existing repository, [abdulhameed-developer/filecompresser](https://github.com/abdulhameed-developer/filecompresser). Keep the latest reviewed files and existing Git history. The prepared work is reviewed before updating production `main`; do not replace it with an older Downloads copy.
+Use the existing repository, [abdulhameed-developer/filecompresser](https://github.com/abdulhameed-developer/filecompresser). Keep the latest reviewed files and existing Git history. The reviewed application and CMS locks have already merged into production `main`. Preserve subsequent CMS commits when making maintenance changes; publish only the intended changes against fresh `main`, rather than replacing it with an older Downloads or prepared copy.
 
-The first CMS installation updates `package.json` and `package-lock.json`; its first schema generation produces `tina/tina-lock.json`. Publish those actual generated files together with the source and content, then validate that final source. A temporary CI installation does not commit those files automatically.
+The committed `package.json`, `package-lock.json` and `tina/tina-lock.json` were reproduced byte for byte in the final cold validation run. Keep those files together for future CMS dependency/schema changes. A temporary CI installation by itself does not publish changed files.
 
 Commit project source, `content/`, Tina configuration and the required lockfiles. Keep `.env`, `.env.local`, passwords/tokens, `node_modules`, `.next`, `out` and generated admin/engine bundles out of Git. GitHub stores the code; Cloudflare hosts this deployment. GitHub Pages is not required.
 
@@ -35,7 +35,7 @@ Commit project source, `content/`, Tina configuration and the required lockfiles
 2. Keep production branch `main`. Tina configuration is at the repository root, so the optional **Path To Tina** value stays empty.
 3. The allowed origins currently include `http://localhost:3000`, `https://filecompresser.com` and `https://www.filecompresser.com`. Origins have no `/admin` path. Preview/`pages.dev` origins have not been given editor access. Add a separate exact origin only if editing there is intentionally required; otherwise use the primary custom domain for hosted login.
 4. Use the existing project's public Client ID. Its Content/read-only token is already an encrypted Cloudflare **Production Secret** named `TINA_TOKEN`; keep the value out of source, screenshots and ordinary Text settings.
-5. After the final configuration/schema lock reaches `main`, let TinaCloud finish indexing that branch. An indexing error must be resolved before hosted editing is accepted.
+5. The hosted editor has successfully loaded the 13 tool documents from `main`. After future schema changes, allow TinaCloud to finish indexing that branch and resolve any indexing error before editing.
 
 ### Future access for a different SEO colleague
 
@@ -45,35 +45,34 @@ This setup publishes from `main`: editor saves can become public after a success
 
 ### Login, logout and password recovery
 
-After the custom domain is deployed and verified, open **https://filecompresser.com/admin/index.html** and use the CMS sign-in control with your existing authorized account. The public admin page does not give unauthenticated visitors permission to edit GitHub.
+Open **https://filecompresser.com/admin/index.html** and use the CMS sign-in control with your existing authorized account. Hosted login has worked and loaded the tool documents. The public admin page does not give unauthenticated visitors permission to edit GitHub.
 
-Use the same sign-in method as account creation. For an email/password account, use the recovery option offered by TinaCloud's hosted sign-in flow and complete it yourself through the recovery email. For provider-based sign-in, recover that provider account instead. The website stores no independent admin password and operates no reset-email server.
+Use the same sign-in method as account creation. The actual `auth.tina.io` email flow was inspected: enter your email and choose **Continue**; the hosted form then shows **Reset password** and Password. Use the reset link if needed. GitHub sign-in is also available. Follow your original account method; for provider-based sign-in, recover that provider account instead. No reset email was issued, password changed or new credential entered during this inspection. Normal GitHub sign-in restored the FileCompresser project dashboard. The website stores no independent admin password and operates no reset-email server.
 
-Check spam and the original sign-in method if recovery fails, then use [Tina support](https://tina.io/docs/support). Hosted login, logout, password recovery and a real editor save need their own account/browser evidence; this guide does not claim those checks have already occurred. Log out when finished on a shared device.
+Check spam and the original sign-in method if recovery fails, then use [Tina support](https://tina.io/docs/support). Hosted login and a real save reaching GitHub are verified. The corresponding public JPG heading is also verified. Logout showed **Log In**, and signing back in with the existing SSO session returned the six-collection dashboard. The reset link is verified; reset-email delivery and a password change have not been tested. Log out when finished on a shared device.
 
-## 3. Local editing and the first installation
+## 3. Local editing and maintenance
 
 Use Node.js **22.12 or later within the Node 22 series**. From the project directory:
 
 ```sh
 npm ci
-npm run setup:cms
 npm run dev:cms
 ```
 
-`setup:cms` is the first-install step: it installs the pinned CMS/CLI and immediately applies/verifies the reviewed CMS security changes. Keep install scripts enabled. Once those dependencies and their lockfile are committed, later clean installations use `npm ci`.
+The exact CMS dependencies and schema lock are already committed, so a clean checkout uses `npm ci`. Keep install scripts enabled so the reviewed CMS security changes are applied/verified. `setup:cms` remains available for deliberate setup or dependency maintenance; daily content edits do not require reinstalling the editor.
 
 Open **http://localhost:3000/admin/index.html**. If another project already uses port 3000, stop that old server or deliberately configure a different port and allowed origin. Local mode edits your local files without a production login. Keep its ports on your own computer; local edits reach GitHub only after a commit and push.
 
-Check the collections in the table above. Make a temporary local content edit, inspect the affected page and restore test-only changes before publishing. Preserve the generated schema lock and package changes as described in step 1.
+Check the collections in the table above. Make a temporary local content edit, inspect the affected page and restore test-only changes before publishing. If you deliberately change CMS dependencies/schema, preserve the resulting package/schema locks and validate the source as described in step 1.
 
 `npm run build` builds the website and prepared notices. `npm run build:cms` also generates the production-connected editor. **Cloudflare production uses `npm run deploy:check`**, which includes the connected CMS build and release gates. Never deploy a local-mode editor or bypass a failed gate by switching to a smaller build command. Tina CLI local configuration normally comes from `.env`; `.env.local` alone is not a substitute for the hosting variables.
 
-## 4. Activate the existing Cloudflare Pages build
+## 4. Existing Cloudflare Pages production settings
 
-Open [dash.cloudflare.com](https://dash.cloudflare.com/), then **Workers & Pages → filecompresser**. Its GitHub connection, production branch `main`, assigned hostname **filecompresser.pages.dev** and output directory `out` already exist. Its confirmed build command is `npm run deploy:check`, with automatic production deployments from `main` enabled and non-production preview branches set to none. The earlier source remains on `main`, so there is no successful application deployment yet.
+Open [dash.cloudflare.com](https://dash.cloudflare.com/), then **Workers & Pages → filecompresser**. Its GitHub connection, production branch `main`, assigned hostname **filecompresser.pages.dev** and output directory `out` already exist. Its confirmed build command is `npm run deploy:check`, with automatic production deployments from `main` enabled and non-production preview branches set to none. The reviewed source has merged into `main`, and production deployment `ac6226f3-0be4-4eb5-8243-de37cc82cd5d` succeeded for merge commit `8b1a9439cf1d1f981f169691d280794173e255ac`.
 
-Keep these confirmed settings while the final dependency/schema locks and reviewed source complete release checks:
+Keep these confirmed production settings:
 
 | Setting | Value |
 | --- | --- |
@@ -84,7 +83,7 @@ Keep these confirmed settings while the final dependency/schema locks and review
 | Build output directory | `out` |
 | Node version | `22` using `NODE_VERSION` |
 
-Verify the **Production** variables before the first real build:
+Maintain the existing **Production** variables:
 
 | Variable | Value |
 | --- | --- |
@@ -93,33 +92,29 @@ Verify the **Production** variables before the first real build:
 | `TINA_TOKEN` | Existing Content/read-only token, stored as an encrypted Production Secret |
 | `NEXT_PUBLIC_TINA_BRANCH` | `main` |
 | `NEXT_PUBLIC_SITE_URL` | `https://filecompresser.com` |
-| `NEXT_PUBLIC_ENABLE_INDEXING` | `false` during initial review; `true` only for the approved public launch, followed by a rebuild |
+| `NEXT_PUBLIC_ENABLE_INDEXING` | `true`, saved and applied; public robots are index/follow |
 
 The `NEXT_PUBLIC_` values are public configuration. Keep passwords, GitHub credentials and the content-read token out of them. The release packaging check scans every exported file for the active content token and fails if it appears.
 
-Wait for the actual Pages build to succeed, then inspect public pages and tools. Test hosted CMS access on the allowed primary origin after domain/TLS activation. A successful build does not replace browser output, security or publishing checks.
+The first connected production build succeeded, including TinaCloud schema/index checks, 436 tests and the active-token export scan. Hosted login has also worked. The subsequent JPG CMS edit passed main-branch CI run 44908685680 and is visible on its public page. Its public canonical and index/follow directives are verified. Continue checking future deployments rather than treating an earlier success as proof of a later save.
 
 The pinned new WebAssembly engine is **20,752,732 bytes**. It is split into content-addressed chunks below Pages' 25 MiB per-file limit and reconstructed/verified in the visitor's browser. Its matching source/notices/recipe package is published at the fixed codec release. Preserve the generated aggregate notices and source access.
 
 Keep preview indexing off. Give untrusted preview branches no production token. A basic public-site preview can use `npm run build`; hosted editor acceptance must use the connected production editor and its approved origin.
 
-## 5. Attach the domain and launch indexing
+## 5. Domain, redirects and search verification
 
-The domain already uses Cloudflare's Free DNS zone and its assigned nameservers. DNSSEC is confirmed active. The current root A record still points to the registrar's parking service; that is not the FileCompresser application. Keep the existing zone and registrar setup.
+The domain uses the existing Cloudflare Free DNS zone and assigned nameservers; DNSSEC is confirmed active. Both **filecompresser.com** and **www.filecompresser.com** show **Active SSL**. Root HTTPS serves the actual Pages application. Keep the existing zone, registrar, mailbox and search-verification records; the earlier registrar parking description is historical.
 
-After the release passes and Pages has a successful application deployment:
+The verified domain and search settings are:
 
-1. Open **Workers & Pages → filecompresser → Custom domains → Set up a domain** and attach **filecompresser.com**. Let Pages create the appropriate web DNS target in the existing Cloudflare zone; replace the parked web target as part of that setup.
-2. Attach **www.filecompresser.com** if it will be used, then configure a permanent redirect to **https://filecompresser.com**. Preserve paths and query strings.
-3. Preserve all Zoho MX/SPF/DKIM/DMARC and Google/Bing verification records. These are separate from the application's web target.
-4. Wait for the actual custom-domain status and HTTPS certificate to become active. Verify the homepage, representative tool/article URLs and `/admin/index.html` on the primary address.
-5. To redirect the production **filecompresser.pages.dev** hostname, use Cloudflare's documented Bulk Redirect configuration. Match that exact hostname, preserve subpaths/path suffixes and query strings, and leave **Include subdomains off** so branch previews are unaffected. Test the redirects before relying on them.
-6. Set production `NEXT_PUBLIC_SITE_URL=https://filecompresser.com` and, for launch, `NEXT_PUBLIC_ENABLE_INDEXING=true`. Trigger a fresh production build; dashboard changes alone do not rewrite an existing deployment.
-7. Inspect `/robots.txt`, `/sitemap.xml`, canonical URLs, page titles/descriptions and the rendered content. Use the already verified Google Search Console Domain property and Bing site property to submit **https://filecompresser.com/sitemap.xml** and inspect representative URLs. Keep their verification DNS records. Sitemap submission does not guarantee indexing or rankings.
+1. The public JPG page now shows **“Keep a copy of your original JPG”**, matching the actual CMS save. Its main-branch CI run [44908685680](https://github.com/abdulhameed-developer/filecompresser/actions/runs/44908685680) passed. Use the same commit/build/public-page check for future edits.
+2. Bulk Redirect rule `fe003ec0743f42ad995d0b8ba2168f8b` is **Enabled**, using list `8f839775e5ab458d8b6f1cbde1623307`. Its exact `www.filecompresser.com` and `filecompresser.pages.dev` sources target the HTTPS root with status 301, query/path preservation on and Include subdomains off. Live HTTP checks verified 301 responses to the HTTPS root from HTTP root, HTTPS `www` and the production Pages hostname, preserving the tested path and query.
+3. Production `NEXT_PUBLIC_ENABLE_INDEXING=true` is saved and applied: the public robots directive is **index, follow** and the inspected canonical uses **https://filecompresser.com**. These crawl/index settings do not establish that Google or Bing has indexed the site. The live sitemap XML is browser-verified with 26 URLs; the separate search-dashboard observations are recorded next.
+4. **https://filecompresser.com/sitemap.xml** has been submitted in the existing Google/Bing properties. The Google retry now shows **Success**, last read **21 November 2026**, with **26 discovered URLs**; the initial Couldn't fetch status is resolved. Bing also shows **Success**, last crawl **21 November 2026**, with **26 discovered URLs** and zero errors/warnings. A real Google homepage live inspection at **18:51 PKT** reported **URL is available to Google / Page can be indexed**, and the actual **Indexing requested** dialog confirmed the priority crawl request. At the 21 November inspection, the blog URL was discovered through the submitted sitemap but not yet indexed. Its actual Google live inspection at **18:58 PKT** reported **URL is available to Google / Page can be indexed**, with **one valid Breadcrumbs item**, and its Request indexing dialog was accepted. Successful sitemap fetching, eligibility and queued requests do not establish indexing or rankings.
+5. Keep all Zoho MX/SPF/DKIM/DMARC and Google/Bing verification records published. No new hosting purchase or nameserver migration is needed. Normal domain registration/renewal continues with the registrar.
 
-No paid registrar hosting package or nameserver migration is needed for these remaining steps. The domain registration/renewal continues with its registrar.
-
-## 6. Daily content editing after launch
+## 6. Daily content editing
 
 1. Open **https://filecompresser.com/admin/index.html** and sign in with your existing authorized account.
 2. Choose the collection from the table near the top. Use **Tool pages** for text below a tool; use **Information pages** for policy/contact/about or blog-index text. Brand-wide SEO defaults and the monitored support address belong in **Site identity and SEO defaults**.
@@ -130,6 +125,8 @@ No paid registrar hosting package or nameserver migration is needed for these re
 7. Review the draft, switch **Publish this post** on only when ready, then save. Tina commits to GitHub `main`; wait for the corresponding successful Cloudflare deployment, then inspect the public article, image, links, table and SEO output.
 
 Saving a draft still commits its source. Drafts and archived posts are excluded from the exported website and sitemap, but the repository and committed history are public; they are not confidential storage.
+
+The Tina media sync completed with branch `main`, public folder `public` and media root `uploads`. A real library **Insert → alternative text → Save** flow succeeded for `/uploads/pipeline.webp`, using the existing 65,252-byte pipeline asset supplied through GitHub. Its exact saved alternative text is “Folders pass through a green press inside a browser-shaped frame.” The blog save set the reviewed update date to `2026-11-21`, preserved the original publication date `2026-09-04` and changed the engine paragraph to about 21 MB. Save commit `716d06b7432f1ec5200f8a77b6c60b1747bc0a5e` passed main CI [44910849172](https://github.com/abdulhameed-developer/filecompresser/actions/runs/44910849172); its Cloudflare deployment `b65c94cd-62cf-49f6-8292-d51667dca6b4` succeeded at **18:56 PKT on 21 November** in **2m 47s**. A production browser check verified the published about-21-MB paragraph, 21 November update date, local featured image, exact alternative text and 1,200-pixel natural image width; the 65,252-byte asset also matched its reviewed SHA-256. Native file-chooser automation did not open, so this verifies existing-library selection and saving, not a successful native UI upload.
 
 ### Archive, change a URL or undo an edit
 
@@ -149,7 +146,7 @@ TinaCloud Free currently includes two users. The existing owner uses a seat; che
 
 ## Release evidence
 
-The [release review](RELEASE-REVIEW.md) separates completed account/source steps from pending browser, installed-security, hosted-login, CMS-save, domain/TLS and live-site checks. The [codec distribution record](CODEC-DISTRIBUTION.md) records the actual published matching source package. A passed source check, a published component prerelease and a working mailbox are separate from application deployment and acceptance.
+The [release review](RELEASE-REVIEW.md) records the passed full/cold static CI runs, successful connected production deployment, Active SSL hostnames and hosted login/save-to-GitHub evidence. The public JPG save and applied index/follow/canonical settings are verified. Logout/re-entry, sitemap submission and Google live eligibility/indexing-request observations are now recorded. The complete corrected live run [45117263085](https://github.com/abdulhameed-developer/filecompresser/actions/runs/45117263085) passed all 16 HTTP checks, the 27-address route crawl, actual article/image assertions and three selected PNG/WAV/no-upload browser checks on 23 November. Genuine public-site screenshots and reports were retained with the run. Native chooser upload and reset-email delivery were not exercised. Search-engine indexing is not claimed. The [codec distribution record](CODEC-DISTRIBUTION.md) records the actual published matching source package. A passed source check, a published component prerelease and a working mailbox are separate from application deployment and acceptance.
 
 ## Official references
 

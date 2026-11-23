@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "recordedAt": "2026-11-21T10:06:22Z",
-  "scope": "Actual compiled source-paired codec result; browser acceptance, public source availability and website deployment are separate checks.",
+  "scope": "Actual compiled source-paired codec, static CI, production/CMS publication, account-flow, successful sitemap-fetch observations and complete live-production validation on 23 November 2026. Native chooser upload/reset delivery were not exercised; completed search-engine indexing is not claimed. Original build/proof timestamps and identities are retained.",
   "repository": "abdulhameed-developer/filecompresser",
   "branch": "work/codec-source-rebuild-20261121",
   "workflowPath": ".github/workflows/codec-source-rebuild.yml",
@@ -72,8 +72,8 @@
   },
   "distribution": {
     "publicReleasePublished": true,
-    "browserAcceptancePassed": false,
-    "websiteDeployed": false,
+    "browserAcceptancePassed": true,
+    "websiteDeployed": true,
     "releaseTag": "codec-2026-11-21.1",
     "releaseId": 453612581,
     "releaseURL": "https://github.com/abdulhameed-developer/filecompresser/releases/tag/codec-2026-11-21.1",
@@ -114,9 +114,287 @@
       ]
     },
     "serverAssetDigestsMatchLocallyReviewedBytes": true,
-    "anonymousApplicationCIDownloadVerified": false,
+    "anonymousApplicationCIDownloadVerified": true,
     "publisherWorkflowActivated": false,
-    "publicationMethod": "Actual GitHub release UI; no temporary writer workflow activated."
+    "publicationMethod": "Actual GitHub release UI; no temporary writer workflow activated.",
+    "browserAcceptanceScope": "Isolated Chrome against the generated static application; not hosted CMS login, live content publication or production domain acceptance.",
+    "staticExportAggregateNoticesVerified": true,
+    "applicationAcceptanceEvidence": {
+      "workflowPath": ".github/workflows/validate-prepared-source.yml",
+      "runs": [
+        {
+          "runId": 44905424560,
+          "runURL": "https://github.com/abdulhameed-developer/filecompresser/actions/runs/44905424560",
+          "kind": "full-application-validation",
+          "conclusion": "success",
+          "testsPassed": 436,
+          "genuineOutputChecks": {
+            "passed": 32,
+            "total": 32
+          },
+          "adminStaticProof": {
+            "javascriptFiles": 91,
+            "guardedZodRoots": 1,
+            "parsers": 36
+          }
+        },
+        {
+          "runId": 44906697751,
+          "runURL": "https://github.com/abdulhameed-developer/filecompresser/actions/runs/44906697751",
+          "kind": "final-cold-validation",
+          "conclusion": "success",
+          "testsPassed": 436,
+          "genuineOutputChecks": {
+            "passed": 32,
+            "total": 32
+          },
+          "adminStaticProof": {
+            "javascriptFiles": 91,
+            "guardedZodRoots": 1,
+            "parsers": 36
+          },
+          "approvedSource": "f9b59ee8014a28dc80623e1d8c411bfe20185400",
+          "approvedSourceTree": "99b796cf450ece6d8000df29d5586e1dac2413fd",
+          "validatedHead": "29b7763aabf1396e07ed25593760302fd84b4eeb",
+          "validatedHeadTree": "a158cbcbdd5541aab163f4f5f4471ddbeda084c0"
+        }
+      ],
+      "rawJsonLocksReproducedByteForByte": true,
+      "reproducedFiles": [
+        "package.json",
+        "package-lock.json",
+        "tina/tina-lock.json"
+      ],
+      "mainMerge": {
+        "pullRequest": 1,
+        "mergeCommit": "8b1a9439cf1d1f981f169691d280794173e255ac"
+      },
+      "remainingProductionEvidence": {
+        "cloudflareBuildStatus": "success",
+        "successfulApplicationDeploymentVerified": true,
+        "hostedCmsLoginVerified": true,
+        "hostedContentPublishingVerified": true,
+        "customDomainTlsVerified": true,
+        "customDomainTlsScope": "Root HTTPS serves the actual application; root and www show Active SSL. Live strict-TLS HTTP checks verified canonical 301 destinations and tested path/query preservation.",
+        "indexingVerified": true,
+        "indexingScope": "Saved true production setting is applied; inspected public page is index/follow with an HTTPS-root canonical. Search-engine indexing is not claimed.",
+        "redirectHttpResponsesVerified": true,
+        "actualMediaUploadVerified": false,
+        "liveOriginCodecChecksVerified": true,
+        "sitemapSubmissionVerified": true,
+        "hostedLogoutVerified": true,
+        "searchEngineIndexingVerified": false,
+        "publicSitemapXmlVerified": true,
+        "googleSitemapFetchVerified": true,
+        "bingSitemapFetchVerified": true,
+        "googleLiveHomepageEligibilityVerified": true,
+        "googleLiveArticleEligibilityVerified": true,
+        "publicBlogImageAndCopyVerified": true,
+        "sitemapScope": "Live XML and Google/Bing sitemap rows each show 26 URLs, current fetch/crawl status Success. Successful fetching/discovery and accepted indexing requests do not establish completed indexing.",
+        "liveOriginCodecScope": "Representative PNG and WAV-to-MP3 outputs plus no-upload/unhandled-exception check passed; not arbitrary input/device compatibility.",
+        "liveSuiteOverallPassed": true,
+        "publicRouteCrawlVerified": true,
+        "liveProductionVerifiedAt": "2026-11-23T05:22:26Z"
+      },
+      "productionDeployment": {
+        "id": "ac6226f3-0be4-4eb5-8243-de37cc82cd5d",
+        "sourceCommit": "8b1a9439cf1d1f981f169691d280794173e255ac",
+        "conclusion": "success",
+        "connectedTinaCloudChecksPassed": true,
+        "testsPassed": 436,
+        "activeTokenExportScanPassed": true,
+        "activeSslHostnames": [
+          "filecompresser.com",
+          "www.filecompresser.com"
+        ],
+        "rootHttpsApplicationVerified": true
+      },
+      "hostedContentPublication": {
+        "sourceCommit": "91789f48430fe0dbd091fe011d6e7912a6c31392",
+        "ciRunId": 44908685680,
+        "ciRunURL": "https://github.com/abdulhameed-developer/filecompresser/actions/runs/44908685680",
+        "ciConclusion": "success",
+        "publicURL": "https://filecompresser.com/jpg-compressor",
+        "publicHeading": "Keep a copy of your original JPG",
+        "publicHeadingVerified": true,
+        "pageRobotsDirective": "index, follow",
+        "canonicalOrigin": "https://filecompresser.com",
+        "productionEnableIndexing": true,
+        "productionEnableIndexingApplied": true,
+        "productionDeploymentId": "d1c76902-1c22-4fe2-9041-ea48d56757e2",
+        "productionDeploymentConclusion": "success"
+      },
+      "canonicalRedirectConfiguration": {
+        "ruleId": "fe003ec0743f42ad995d0b8ba2168f8b",
+        "listId": "8f839775e5ab458d8b6f1cbde1623307",
+        "ruleStatus": "Enabled",
+        "exactSourceHostnames": [
+          "www.filecompresser.com",
+          "filecompresser.pages.dev"
+        ],
+        "target": "https://filecompresser.com/",
+        "statusCode": 301,
+        "preserveQuery": true,
+        "preservePath": true,
+        "includeSubdomains": false,
+        "httpResponsesVerified": true
+      },
+      "tinaMediaSync": {
+        "completed": true,
+        "branch": "main",
+        "publicFolder": "public",
+        "mediaRoot": "uploads",
+        "uploadControlsVisible": true,
+        "libraryControlsVisible": true,
+        "actualUploadVerified": false,
+        "existingLibrarySelectionVerified": true,
+        "insertAlternativeTextSaveVerified": true,
+        "nativeChooserAutomationOpened": false,
+        "verificationScope": "Existing asset provisioned through GitHub, then selected/inserted with alternative text and saved in the actual Tina UI. Native file chooser automation did not open."
+      },
+      "hostedBlogSave": {
+        "sourceCommit": "716d06b7432f1ec5200f8a77b6c60b1747bc0a5e",
+        "ciRunId": 44910849172,
+        "ciRunURL": "https://github.com/abdulhameed-developer/filecompresser/actions/runs/44910849172",
+        "ciConclusion": "success",
+        "featuredImage": {
+          "src": "/uploads/pipeline.webp",
+          "alt": "Folders pass through a green press inside a browser-shaped frame."
+        },
+        "updated": "2026-11-21",
+        "originalPublicationDate": "2026-09-04",
+        "engineParagraph": "about 21 MB",
+        "assetBytes": 65252,
+        "assetReusesOriginalPipelineBlob": true,
+        "assetProvisionMethod": "GitHub API; no native UI-upload success claimed",
+        "actualLibraryInsertAltSaveVerified": true,
+        "productionDeployment": {
+          "id": "b65c94cd-62cf-49f6-8292-d51667dca6b4",
+          "conclusion": "success",
+          "observedCompletionLocal": "21 November 2026, 18:56 PKT",
+          "durationSeconds": 167
+        },
+        "publicImageAndCopyVerified": true,
+        "publicImageNaturalWidth": 1200,
+        "assetSha256": "678779be62eda16f550140fab0970d1fd7323b21f281e37073954de41ba4dde6"
+      },
+      "hostedAccountFlow": {
+        "logoutShowsLogIn": true,
+        "existingSsoLoginReturnsDashboard": true,
+        "dashboardCollections": 6,
+        "emailContinueFormObserved": true,
+        "passwordFieldObserved": true,
+        "resetPasswordLinkObserved": true,
+        "githubSignInAvailable": true,
+        "normalGithubSignInRestoredFileCompresserProject": true,
+        "resetEmailIssued": false,
+        "passwordChanged": false,
+        "newCredentialEntered": false
+      },
+      "searchSubmissionEvidence": {
+        "publicSitemapURL": "https://filecompresser.com/sitemap.xml",
+        "publicXmlBrowserVerified": true,
+        "publicXmlUrls": 26,
+        "google": {
+          "submittedDate": "2026-11-21",
+          "sitemapType": "Sitemap",
+          "currentSitemapStatus": "Success",
+          "lastRead": "2026-11-21",
+          "discoveredUrls": 26,
+          "initialSitemapFetchErrorResolved": true,
+          "homepageLiveInspection": {
+            "observedLocal": "21 November 2026, 18:51 PKT",
+            "urlAvailableToGoogle": true,
+            "pageCanBeIndexed": true,
+            "indexingRequestedDialogAccepted": true,
+            "priorityCrawlRequestAccepted": true
+          },
+          "blogInspection": {
+            "discoveredViaSubmittedSitemap": true,
+            "indexStatus": "Discovered, currently not indexed",
+            "liveInspectionObservedLocal": "21 November 2026, 18:58 PKT",
+            "urlAvailableToGoogle": true,
+            "pageCanBeIndexed": true,
+            "validBreadcrumbsItems": 1,
+            "indexingRequestedDialogAccepted": true
+          }
+        },
+        "bing": {
+          "submitted": true,
+          "currentSitemapStatus": "Success",
+          "lastCrawl": "2026-11-21",
+          "discoveredUrls": 26,
+          "overviewKnownSitemaps": 1,
+          "overviewTotalUrls": 26,
+          "errors": 0,
+          "warnings": 0
+        },
+        "completedSearchEngineIndexingClaimed": false
+      },
+      "liveProductionProbeEvidence": {
+        "reviewedSourceCommit": "716d06b7432f1ec5200f8a77b6c60b1747bc0a5e",
+        "origin": "https://filecompresser.com",
+        "initialRun": {
+          "runId": 44911822157,
+          "runURL": "https://github.com/abdulhameed-developer/filecompresser/actions/runs/44911822157",
+          "overallConclusion": "failure",
+          "httpChecks": {
+            "passed": 16,
+            "total": 16
+          },
+          "selectedBrowserChecks": {
+            "passed": 3,
+            "total": 3,
+            "cases": [
+              "PNG independently decoded output",
+              "Genuine WAV-to-MP3 output",
+              "No file-upload requests or unhandled browser exceptions"
+            ]
+          },
+          "publicArticleImageAndCopyAssertionsPassed": true,
+          "homeBlogArticleCapturesPassed": true,
+          "strictTlsVerification": true,
+          "routeCrawlerIssue": "Cloudflare generated /cdn-cgi/l/email-protection mail-link action was counted as a public page and returned 404.",
+          "artifactRetentionIssue": "Hidden .qa-results paths omitted by artifact upload default."
+        },
+        "correctedOverallRunVerified": true,
+        "scope": "Corrected isolated live validation passed completely on 23 November 2026. The original failed probe and its individually passed checks remain historical evidence. Native chooser upload/reset delivery and completed search-engine indexing are not claimed.",
+        "latestRun": {
+          "runId": 45117263085,
+          "runURL": "https://github.com/abdulhameed-developer/filecompresser/actions/runs/45117263085",
+          "headCommit": "275d82231a5031861ad6d3865b1ce47d92e08875",
+          "reviewedSourceCommit": "716d06b7432f1ec5200f8a77b6c60b1747bc0a5e",
+          "completedAt": "2026-11-23T05:22:26Z",
+          "completedLocal": "23 November 2026, 10:22 PKT",
+          "overallConclusion": "success",
+          "httpChecks": {
+            "passed": 16,
+            "total": 16
+          },
+          "publicRouteAddressesPassed": 27,
+          "selectedBrowserChecks": {
+            "passed": 3,
+            "total": 3,
+            "cases": [
+              "PNG independently decoded output",
+              "Genuine WAV-to-MP3 output",
+              "No file-upload requests or unhandled browser exceptions"
+            ]
+          },
+          "publicArticleImageAndCopyAssertionsPassed": true,
+          "homeBlogArticleCapturesPassed": true,
+          "decodedBusinessMailtoVerifiedInBrowser": true,
+          "strictTlsVerification": true,
+          "productionSourceOrSecuritySettingsChanged": false,
+          "artifact": {
+            "id": 14791963027,
+            "name": "live-site-smoke-45117263085",
+            "bytes": 2915230,
+            "sha256": "7234d9ba4b27bce83b2e924218967388bdea16c9c4d872c2476b261b0743257e"
+          }
+        }
+      }
+    }
   },
   "noLegalCertification": true,
   "noAllNativeSecurityCertification": true,

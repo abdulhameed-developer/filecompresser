@@ -12,7 +12,7 @@
     },
     {
       "heading": "Allow for browser memory and processing time",
-      "body": "The first media job downloads roughly 30 MB of engine code. Video encoding is CPU intensive; long or high-resolution clips can exceed browser memory even below the 200 MB input limit. Jobs stop after five minutes. If processing fails, try a shorter clip or a lower resolution."
+      "body": "The first media job downloads about 21 MB of engine code. Video encoding is CPU intensive; long or high-resolution clips can exceed browser memory even below the 200 MB input limit. Jobs stop after five minutes. If processing fails, try a shorter clip or a lower resolution."
     }
   ],
   "faq": [],
