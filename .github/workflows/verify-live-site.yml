@@ -141,7 +141,16 @@ jobs:
         continue-on-error: true
         run: |
           set -euo pipefail
-          timeout 180s node scripts/route-crawl.mjs "$SITE_ORIGIN" 2>&1 | tee .qa-results/live-route-crawl.log
+          node --input-type=module <<'NODE'
+          import { readFileSync, writeFileSync } from 'node:fs'
+          import assert from 'node:assert/strict'
+          const source = readFileSync('scripts/route-crawl.mjs', 'utf8')
+          const marker = '  if (!href) return null'
+          assert.equal(source.split(marker).length, 2)
+          const filtered = source.replace(marker, marker + '\n  if (/^\\/cdn-cgi\\/l\\/email-protection(?:#|$)/.test(href)) return null')
+          writeFileSync('.qa-results/production-route-crawl.mjs', filtered)
+          NODE
+          timeout 180s node .qa-results/production-route-crawl.mjs "$SITE_ORIGIN" 2>&1 | tee .qa-results/live-route-crawl.log
       - name: Install only production modules and isolated decoder/browser tools
         run: |
           set -euo pipefail
@@ -177,6 +186,10 @@ jobs:
               const response = await page.goto(origin + route, {waitUntil:'networkidle', timeout:45000})
               assert.equal(response.status(), 200)
               await page.locator('main h1').waitFor({state:'visible'})
+              const mail = page.locator('footer a[href="mailto:info@filecompresser.com"]').first()
+              await mail.waitFor({state:'visible'})
+              assert.equal(await mail.getAttribute('href'), 'mailto:info@filecompresser.com')
+              evidence.checks.push({name:'Decoded browser support mail link', route, href:'mailto:info@filecompresser.com', pass:true})
               await page.screenshot({path:path.join('.qa-results',filename), fullPage:true})
               evidence.checks.push({name:'Public page screenshot', route, filename, pass:true})
             }
@@ -258,6 +271,7 @@ jobs:
             .qa-results/functionality.json
             .qa-results/failure-*.png
           if-no-files-found: warn
+          include-hidden-files: true
           retention-days: 7
       - name: Require every production check to pass
         if: always()
