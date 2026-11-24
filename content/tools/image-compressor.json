@@ -1,10 +1,10 @@
 {
   "heading": "How can I make website images smaller?",
-  "introduction": "Re-encode JPG, PNG or WebP images in your browser, keeping the input format or choosing another supported output. The result depends on image content, dimensions and quality settings.",
+  "introduction": "Compress supported JPG, PNG and WebP still images while keeping their original display dimensions by default. Choose a quality mode, a separate maximum-size target or an explicit format conversion.",
   "sections": [
     {
       "heading": "Prepare a mixed image batch",
-      "body": "Add your images, choose an available output format and start with Recommended. Process the batch, then check the download at the size it will actually appear on your website or in your attachment."
+      "body": "Add your images, keep their formats or choose a supported output, and review the default Maximum mode. JPEG and WebP use a stronger quality trade-off; PNG may reduce colors while preserving transparency. Choose Balanced, High quality or PNG Lossless when you need more detail. Review every result at the same scale as its original."
     },
     {
       "heading": "Match the format to the image",
@@ -12,7 +12,7 @@
     },
     {
       "heading": "Check dimensions as well as file size",
-      "body": "The presets may resize large images. Resizing changes the available detail even when the output is PNG. Inspect small text, edges and transparency before replacing the original; keep a source copy for future edits."
+      "body": "No preset silently resizes an image. Enable Resize this image only when you want different dimensions; the original aspect ratio is retained and smaller images are not enlarged. Check text, edges and transparency before keeping the download."
     }
   ],
   "faq": [],
@@ -24,7 +24,7 @@
       "href": "/blog/compressing-files-for-the-web"
     },
     {
-      "label": "Compare Recommended and Maximum",
+      "label": "Choose an image mode or target size",
       "href": "/blog/choosing-a-compression-mode"
     }
   ]

@@ -1,18 +1,18 @@
 {
   "heading": "How should I optimize a JPEG camera export?",
-  "introduction": "Use this page to re-encode a JPEG photograph for its final display or sharing size. JPEG and JPG are the same format; this page uses the same image engine as the JPG tool.",
+  "introduction": "Use this page to re-encode a JPEG photograph while keeping original display dimensions by default. JPEG and JPG are the same format, and both pages use the same image engine.",
   "sections": [
     {
       "heading": "Work from the largest useful source",
-      "body": "Start from your camera or editor export rather than repeatedly recompressing a previous download. Select a preset, process the image and compare the output at its intended viewing size."
+      "body": "Work from your camera or editor export rather than repeatedly recompressing a previous download. Choose Balanced, High quality, Maximum or a separate Target size, then compare the output at the same scale. Enable resizing only when different dimensions are wanted."
     },
     {
       "heading": "Changing an extension does not compress a photograph",
-      "body": "Renaming .jpeg to .jpg leaves the encoded image data unchanged. This tool creates a new encoded image, which can change both file size and detail. Higher output quality cannot restore detail lost in an earlier export."
+      "body": "Renaming .jpeg to .jpg leaves the encoded image data unchanged. Re-encoding changes size and detail, while a higher quality setting cannot recover detail lost earlier. If ordinary same-format compression finds no smaller result, the original file is returned unchanged with 0% reduction."
     },
     {
       "heading": "Check the finished image",
-      "body": "Review gradients, fine textures and text, along with the output dimensions and orientation. Keep an original for printing or further editing. If the download is larger without a useful benefit, keep the original version."
+      "body": "Review gradients, fine textures, text, dimensions and orientation. Re-encoding may normalize colors to sRGB and remove metadata; a retained original keeps its bytes and metadata. Keep an original for printing or further editing."
     }
   ],
   "faq": [],

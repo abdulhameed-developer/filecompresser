@@ -1,23 +1,23 @@
 {
   "heading": "Can I reduce a PNG and keep its transparent background?",
-  "introduction": "PNG output retains transparency while the image is re-encoded and may be resized by the selected preset. An already optimized PNG may stay similar in size or become larger.",
+  "introduction": "Maximum is the default for PNG and may reduce colors while preserving transparency. Choose Lossless to preserve decoded pixels, or Smart for more conservative color reduction. Dimensions stay unchanged unless you enable resizing.",
   "sections": [
     {
       "heading": "Use PNG for graphics that need it",
-      "body": "PNG is useful for transparent artwork, screenshots and diagrams. Add the file, retain PNG output and start with Recommended. Compare edges, lettering and transparent areas after processing."
+      "body": "PNG is useful for transparent artwork, screenshots and diagrams. Choose Lossless to preserve the decoded image pixels. Optional resizing changes pixels and is off by default. Keep your original and check lettering, edges and transparent areas after processing."
     },
     {
-      "heading": "Why the file may not shrink much",
-      "body": "PNG already uses compression. Re-encoding alone does not ensure a smaller result, and this tool does not offer a fixed KB target for PNG output. Reducing dimensions can help, but changes the available image detail."
+      "heading": "Choose whether colors may change",
+      "body": "Smart, Maximum and Target size may reduce the number of colors while preserving transparency values. Color changes can be visible, especially in gradients, text and fine detail. Quality checks limit measured color error but do not guarantee an invisible change; a suitable lossless result or the original may be kept instead."
     },
     {
-      "heading": "Consider the intended use",
-      "body": "Keep PNG when sharp graphics or transparency matter. WebP is another available format that can retain transparency. For an opaque photograph, JPG may be appropriate, but lossy encoding can introduce artifacts around text and edges."
+      "heading": "Check the actual size and target result",
+      "body": "Target size tries real PNG encodes, including color-reduced candidates, and checks their bytes against your maximum. An oversized result is marked Target not met. Ordinary same-format compression returns the original unchanged with 0% reduction if no smaller suitable result is found. If a target cannot be reached, consider a less restrictive limit, supported WebP conversion or explicitly enabled resizing; these are separate trade-offs."
     }
   ],
   "faq": [],
   "seoTitle": "PNG Compressor — Keep Transparent Images",
-  "seoDescription": "Re-encode PNG images in your browser while retaining transparency. Review dimensions and real output size; already efficient files may not shrink.",
+  "seoDescription": "Compress PNG files with Maximum by default or choose Lossless to preserve decoded pixels. Preserve transparency and default dimensions; verify actual size and unmet targets.",
   "links": [
     {
       "label": "Compare transparent image formats",

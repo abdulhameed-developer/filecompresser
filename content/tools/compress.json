@@ -8,7 +8,7 @@
     },
     {
       "heading": "Review each result separately",
-      "body": "Select Recommended or Maximum, start processing, then compare the reported input and output sizes. Download the files you want to keep. An already efficient file can become larger; a successful encode does not guarantee a size saving."
+      "body": "Review the controls available for your selection, start processing, then compare each input and output. Ordinary compression retains the original unchanged when a candidate is not smaller. Explicit conversions, resizing and ZIP creation are separate operations and may increase bytes; extraction is not a compression saving."
     },
     {
       "heading": "What this queue can accept",

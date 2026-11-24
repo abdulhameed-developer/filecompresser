@@ -4,7 +4,7 @@
   "sections": [
     {
       "heading": "Start with a practical resolution",
-      "body": "Add an MP4, MOV or M4V clip and choose the original, 1080p, 720p or 480p cap. The tool does not upscale smaller inputs. Process the clip and compare both the output size and its playback quality."
+      "body": "Keep original preserves the video dimensions. Choose a 1080p, 720p or 480p cap only when resizing is acceptable; smaller inputs are not upscaled. H.264 output may require even dimensions, so an odd-sized input can require an explicitly selected cap rather than a silent resize."
     },
     {
       "heading": "Check the complete download",
@@ -24,7 +24,7 @@
       "href": "/blog/how-browser-compression-works"
     },
     {
-      "label": "Why a re-encoded file can be larger",
+      "label": "Understand size savings and unchanged results",
       "href": "/blog/honest-file-size-reporting"
     }
   ]

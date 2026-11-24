@@ -1,31 +1,31 @@
 {
   "heading": "How do I reduce a JPG for an upload or email?",
-  "introduction": "Re-encode your JPG or JPEG photo with a lower-quality or smaller-dimension preset, then compare the result. In Maximum mode, a best-effort target can also try to fit JPG or WebP output below a chosen file size.",
+  "introduction": "Reduce a JPG or JPEG photo with Balanced, High quality or Maximum while preserving original display dimensions. Use the separate Target size mode when an upload form requires a maximum number of bytes.",
   "sections": [
     {
       "heading": "Keep a copy of your original JPG",
-      "body": "Add the photograph and choose Recommended first. Check the result against the upload limit. If it remains too large, try Maximum or its available target-size option, then inspect the downloaded image."
+      "body": "Add the photograph and review the default Maximum mode. Choose Balanced for a more moderate trade-off. Compare faces, textures and text at the same scale. High quality retains more detail at a potentially larger size; Maximum prioritizes smaller output with a greater risk of visible artifacts."
     },
     {
       "heading": "A target size is a limit, not an exact byte count",
-      "body": "The bounded search tries to produce a file below your threshold. It can report that a target could not be met, and it does not promise an exact number of bytes. A lower target can reduce visible detail."
+      "body": "Target size searches actual encodes and verifies the final byte count. A 50 KB maximum means 50,000 bytes, not a promise of exactly that size. If no supported encode fits, the result is marked Target not met. Resizing remains off unless you explicitly enable it."
     },
     {
       "heading": "Where JPG works well",
       "body": "JPG suits photographs and many opaque web images. It cannot preserve transparency. Inspect faces, fine textures and lettering, and keep the camera or design original because repeated lossy encoding can add artifacts."
     }
   ],
+  "faq": [],
+  "seoTitle": "JPG Compressor — Reduce Photo File Size",
+  "seoDescription": "Compress JPG and JPEG photos with original dimensions by default. Choose quality modes or a verified maximum-byte target, then inspect the real result.",
   "links": [
     {
       "label": "Compare image quality modes",
       "href": "/blog/choosing-a-compression-mode"
     },
     {
-      "label": "Why an encoded file can become larger",
+      "label": "Why an efficient file may stay unchanged",
       "href": "/blog/honest-file-size-reporting"
     }
-  ],
-  "faq": [],
-  "seoTitle": "JPG Compressor — Reduce Photo File Size",
-  "seoDescription": "Reduce JPG and JPEG photo size in your browser. Compare presets or try a best-effort target in Maximum mode. Check quality before replacing originals."
+  ]
 }

@@ -1,14 +1,14 @@
 {
   "heading": "How can I reduce an animated GIF?",
-  "introduction": "FileCompresser re-encodes animated GIF frames with a reduced color palette. Maximum mode also limits animation to 15 frames per second, trading smoothness for a possible size reduction.",
+  "introduction": "FileCompresser tries a reduced color palette while preserving animation dimensions, frame delays and loop count. Maximum changes the palette size rather than applying a fixed frame rate.",
   "sections": [
     {
       "heading": "Choose a mode for the animation",
-      "body": "Add the GIF and start with Recommended. Use Maximum when a lower frame rate is acceptable. Process the animation, then play the complete download rather than checking a single frame."
+      "body": "Start with Recommended, which uses up to 128 colors. Maximum uses up to 64 and can change subtle colors more visibly. Process the animation, then play the complete download rather than checking a single frame."
     },
     {
       "heading": "Review motion, colors and looping",
-      "body": "A smaller palette can affect gradients and subtle colors. A lower frame rate can make motion look less smooth. Recognized finite loop counts are preserved, but check the downloaded animation in the place where it will be used."
+      "body": "Palette reduction can affect gradients and edges. Frame timing, frame count, dimensions, transparency and loop count are checked before a smaller candidate is offered. If timing cannot be safely preserved or no smaller result is found, the original is retained unchanged."
     },
     {
       "heading": "When browser processing needs a smaller input",
@@ -17,7 +17,7 @@
   ],
   "faq": [],
   "seoTitle": "GIF Compressor — Reduce Animated GIF Size",
-  "seoDescription": "Optimize animated GIFs in your browser with palette reduction and an optional 15 fps limit. Review motion, colors, looping and actual output size.",
+  "seoDescription": "Optimize animated GIF palettes locally while preserving frame timing, dimensions and looping. Compare actual size; retain the original when no suitable saving is found.",
   "links": [
     {
       "label": "How the browser processing pipeline works",
