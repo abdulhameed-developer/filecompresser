@@ -1,4 +1,4 @@
-/** Public editorial data is read from versioned JSON at build time. */
+/** Production editorial data is read at build time; development helpers reread JSON. */
 import { readPublishedPosts } from './content'
 import { BLOG_ART, articleImage } from './blog-art'
 import { ORGANIZATION_NAME } from './seo'
@@ -48,17 +48,22 @@ export const BLOG_POSTS: BlogPost[] = readPublishedPosts()
 
 const bySlug = new Map(BLOG_POSTS.map((post) => [post.slug, post]))
 
+function currentPosts(): BlogPost[] {
+  return process.env.NODE_ENV === 'development' ? readPublishedPosts() : BLOG_POSTS
+}
+
 export function getPost(slug: string): BlogPost | undefined {
+  if (process.env.NODE_ENV === 'development') return readPublishedPosts().find((post) => post.slug === slug)
   return bySlug.get(slug)
 }
 
 export function allPostSlugs(): string[] {
-  return BLOG_POSTS.map((post) => post.slug)
+  return currentPosts().map((post) => post.slug)
 }
 
 /** Newest first; only published documents enter discovery or sitemaps. */
 export function postsByDate(): BlogPost[] {
-  return [...BLOG_POSTS].sort((a, b) => b.date.localeCompare(a.date))
+  return [...currentPosts()].sort((a, b) => b.date.localeCompare(a.date))
 }
 
 /** A custom image is optional; the five existing illustrations stay intact. */

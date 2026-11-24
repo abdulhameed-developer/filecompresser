@@ -50,7 +50,9 @@ The build prepares same-origin FFmpeg/image workers. The pinned source-paired We
 
 ## Processing and release scope
 
-Images use browser encoders; GIF/video/audio use FFmpeg; PDF optimization rewrites structure and metadata rather than shrinking scans; ZIP creation/extraction has size, CRC and path limits. Existing file and queue limits remain in place.
+JPEG uses a lazy same-origin MozJPEG worker; PNG uses lossless Oxipng; WebP uses the browser encoder. Original display dimensions are preserved unless resizing is explicitly enabled. Ordinary same-format compression returns the original if no smaller valid candidate is found. Target size checks actual bytes and can report an unmet limit; it never silently resizes to reach a target. The comparison dialog uses the same pixel scale for both images.
+
+GIF/video/audio use FFmpeg; PDF optimization rewrites structure and current document metadata rather than shrinking scans or sanitizing embedded content; ZIP creation/extraction has size, CRC and path limits. Batch downloads prepare one ZIP and expose a native Save ZIP link, which remains available for repeat downloads. Existing file and queue limits remain in place.
 
 The verified support mailbox is **info@filecompresser.com**, with outgoing name **FileCompresser Support**. The address is editable in global site settings; keep it pointed at a monitored mailbox and do not ask visitors to email private files.
 

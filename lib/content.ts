@@ -270,6 +270,12 @@ export function parseEditorialContent(value: unknown, location: string): Editori
   }
 }
 
+/** An explicit editor display mode wins over retained custom FAQ rows. */
+export function resolveEditorialFaq(content: Pick<EditorialContent, 'faqMode' | 'faq'>, fallback: { q: string; a: string }[]) {
+  if (content.faqMode === 'hidden') return []
+  return content.faqMode === 'custom' ? content.faq : fallback
+}
+
 export function getToolContent(slug: string): EditorialContent {
   const canonical = canonicalSlug(slug)
   if (!canonical || !TOOLS.some(tool => tool.slug === canonical)) return fail(slug, 'unknown tool')

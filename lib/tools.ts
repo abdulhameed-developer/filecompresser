@@ -9,22 +9,22 @@ const imageFaq: FaqEntry[] = [
   },
   {
     q: 'How much smaller will my image get?',
-    a: 'The result depends on the source image, dimensions and selected settings. Already-compressed images may save very little or become larger. Compare the actual output size and visual quality before replacing your original.',
+    a: 'Savings depend on the source and selected settings. In ordinary same-format compression, a candidate that is not smaller is discarded and your original is returned unchanged with 0% reduction. Conversions and explicit resizing are reported separately. Compare the actual bytes and image quality before keeping a result.',
   },
   {
     q: 'Will I lose quality?',
-    a: 'JPEG and WEBP encoding can lose detail. PNG preserves pixels at the chosen dimensions, but resizing changes the image. Recommended mode targets a quality that is not distinguishable in normal viewing; Maximum mode compresses harder and is more visible.',
+    a: 'JPEG and WEBP encoding is lossy. Balanced, High quality and Maximum use different quality settings, but no setting guarantees invisible changes. PNG Lossless preserves decoded pixels; Smart, Maximum and Target size can reduce colors and change pixels while preserving transparency. Explicit resizing also changes pixels. Inspect text, edges and fine detail before replacing an original.',
   },
   {
     q: 'Does this resize my image?',
-    a: 'Recommended mode caps the longest edge at 3200px, and Maximum mode at 1920px, to keep the output practical for web use. Images already smaller than that are left at their original dimensions.',
+    a: 'No. Original display dimensions are kept unless you enable Resize this image and enter a maximum width or height. Aspect ratio is preserved and smaller images are not enlarged. EXIF orientation may be normalized, so an upright image can have different stored width and height from its camera file.',
   },
 ]
 
 const mediaFaq: FaqEntry[] = [
   {
     q: 'Why does the first file take much longer?',
-    a: 'Video, audio and GIF tools load a WebAssembly build of FFmpeg — roughly 30 MB — the first time you use them on a page. It is served from this site, cached by your browser, and shared by every media tool afterwards.',
+    a: 'Video, audio and GIF tools load the WebAssembly media engine on first use. It is served from this site and can be cached by your browser. Loading and processing time depend on your connection, file and device.',
   },
   {
     q: 'Will this freeze my phone?',
@@ -32,7 +32,7 @@ const mediaFaq: FaqEntry[] = [
   },
   {
     q: 'How accurate is the progress bar?',
-    a: 'It is measured from the encoder itself as it writes output, not estimated from a timer.',
+    a: 'Percentages use encoder events where available. Stages without a measurable percentage show their current task instead of a timer-based estimate. A completed encode is checked before its result is offered.',
   },
 ]
 
@@ -50,7 +50,7 @@ const archiveFaq: FaqEntry[] = [
 const pdfFaq: FaqEntry[] = [
   {
     q: 'Why did my PDF not get smaller?',
-    a: 'Most PDFs are already compressed. We remove document metadata and rewrite the file structure, which typically saves a few percent. If a PDF is already optimized, the result can be the same size or marginally larger — we will not damage a document to make the number smaller.',
+    a: 'Many PDFs are already compressed. The optimizer tries a structural rewrite with selected metadata removed. If the candidate is not smaller, your original is returned unchanged with 0% reduction, including its existing metadata. This tool does not downsample scanned pages or promise a percentage saving.',
   },
   {
     q: 'Is the output still a valid PDF?',
@@ -108,7 +108,7 @@ export const TOOLS: ToolDefinition[] = [
     slug: 'image-compressor',
     title: 'Image Compressor',
     description:
-      'Shrink JPG, PNG and WEBP images with clear quality and dimension limits.',
+      'Compress JPG, PNG and WEBP images while keeping original dimensions by default.',
     category: 'image',
     engine: 'image-compress',
     accept: 'image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp',
@@ -157,7 +157,7 @@ export const TOOLS: ToolDefinition[] = [
     slug: 'jpeg-compressor',
     title: 'JPEG Compressor',
     description:
-      'Re-encode JPEG images with quality and dimension controls, then compare the result.',
+      'Re-encode JPEG images with quality controls and optional resizing, then compare the result.',
     category: 'image',
     engine: 'image-compress',
     accept: 'image/jpeg,.jpg,.jpeg,.jfif',
@@ -182,7 +182,7 @@ export const TOOLS: ToolDefinition[] = [
     slug: 'png-compressor',
     title: 'PNG Compressor',
     description:
-      'Re-encode and resize PNG images while preserving transparency. Already efficient files may not shrink.',
+      'Optimize PNG files with Maximum by default, or choose Lossless to preserve decoded pixels. Keep dimensions and transparency; efficient originals may be retained unchanged.',
     category: 'image',
     engine: 'image-compress',
     accept: 'image/png,.png',
@@ -232,7 +232,7 @@ export const TOOLS: ToolDefinition[] = [
     slug: 'gif-compressor',
     title: 'GIF Compressor',
     description:
-      'Optimize animated GIFs by re-quantizing every frame to an optimal palette. The output is a genuinely re-encoded animation.',
+      'Try a smaller color palette for animated GIFs while preserving dimensions, frame timing and looping.',
     category: 'gif',
     engine: 'gif-compress',
     accept: 'image/gif,.gif',
@@ -241,9 +241,9 @@ export const TOOLS: ToolDefinition[] = [
     maxFileSize: 50 * MB,
     privacyClientSide: true,
     seoDescription:
-      'Compress animated GIFs in your browser. Frames are re-quantized to a smaller palette, producing real size savings.',
+      'Optimize animated GIF palettes in your browser. Compare actual savings while preserving frame timing, dimensions and looping.',
     faq: mediaFaq,
-    note: 'Maximum mode also reduces the frame rate to 15 fps, which saves more but can look choppy.',
+    note: 'Recommended uses up to 128 colors; Maximum uses up to 64. Frame delays and loop count are preserved. If a smaller candidate cannot preserve the checked animation properties, the original is retained.',
     related: [
       'image-compressor',
       'webp-compressor',
@@ -270,20 +270,20 @@ export const TOOLS: ToolDefinition[] = [
     settings: [
       {
         id: 'resolution',
-        label: 'Max resolution',
+        label: 'Max resolution (height)',
         type: 'select',
         defaultValue: 'original',
-        help: 'Never upscales. Lower caps shrink tall videos further.',
+        help: 'Keep original preserves display dimensions. A height cap explicitly allows resizing without upscaling, including portrait video. Odd dimensions may require a cap for H.264 output.',
         options: [
-          { value: 'original', label: 'Keep original' },
-          { value: '1080', label: 'Max 1080p' },
-          { value: '720', label: 'Max 720p' },
-          { value: '480', label: 'Max 480p' },
+          { value: 'original', label: 'Keep original dimensions' },
+          { value: '1080', label: 'Max height 1080 px' },
+          { value: '720', label: 'Max height 720 px' },
+          { value: '480', label: 'Max height 480 px' },
         ],
       },
     ],
     faq: mediaFaq,
-    note: 'Output is always MP4 (H.264 + AAC). MOV files are transcoded rather than remuxed, because browsers cannot play the codecs MOV usually carries.',
+    note: 'Encoded output is MP4 (H.264, with AAC when audio is present). Keep original does not silently resize odd dimensions; choose a resolution cap explicitly if the encoder requires even dimensions. Unsupported source codecs produce an error.',
     related: [
       'mp3-compressor',
       'wav-compressor',
@@ -297,7 +297,7 @@ export const TOOLS: ToolDefinition[] = [
     slug: 'mp3-compressor',
     title: 'MP3 Compressor',
     description:
-      'Re-encode MP3 audio at a lower bitrate for a genuinely smaller file.',
+      'Try a lower MP3 bitrate, then compare actual size and audio quality.',
     category: 'audio',
     engine: 'audio-compress',
     accept: 'audio/mpeg,audio/mp3,.mp3',
@@ -310,16 +310,16 @@ export const TOOLS: ToolDefinition[] = [
     settings: [
       {
         id: 'bitrate',
-        label: 'Target bitrate',
+        label: 'MP3 bitrate',
         type: 'select',
         defaultValue: '192k',
-        help: 'Higher bitrates sound closer to the original. Increasing bitrate cannot restore detail lost in an earlier encode.',
+        help: 'Lower bitrates can reduce size but lose more detail. If an MP3 encode is not smaller, the original is retained. Increasing bitrate cannot restore detail lost earlier.',
         options: [
           { value: '320k', label: '320 kbps' },
           { value: '256k', label: '256 kbps' },
-          { value: '192k', label: '192 kbps — recommended' },
+          { value: '192k', label: '192 kbps' },
           { value: '128k', label: '128 kbps' },
-          { value: '96k', label: '96 kbps — smallest' },
+          { value: '96k', label: '96 kbps' },
         ],
       },
     ],
@@ -359,12 +359,13 @@ export const TOOLS: ToolDefinition[] = [
         label: 'MP3 bitrate',
         type: 'select',
         defaultValue: '192k',
+        help: 'MP3 encoding is lossy. Lower bitrates trade detail for size; a tiny WAV can still produce a larger MP3. Keep the WAV for editing or archiving.',
         options: [
           { value: '320k', label: '320 kbps' },
           { value: '256k', label: '256 kbps' },
-          { value: '192k', label: '192 kbps — recommended' },
+          { value: '192k', label: '192 kbps' },
           { value: '128k', label: '128 kbps' },
-          { value: '96k', label: '96 kbps — smallest' },
+          { value: '96k', label: '96 kbps' },
         ],
       },
     ],
@@ -389,7 +390,7 @@ export const TOOLS: ToolDefinition[] = [
     slug: 'pdf-compressor',
     title: 'PDF Compressor',
     description:
-      'Strip document metadata and rewrite the file structure. Already-optimized PDFs may not shrink — that is the honest outcome.',
+      'Try a PDF structure rewrite with selected metadata removed. Retain the original unchanged when no smaller result is found.',
     category: 'pdf',
     engine: 'pdf-compress',
     accept: 'application/pdf,.pdf',

@@ -11,11 +11,17 @@ export function savingsPercent(original: number, output: number): number | null 
 }
 
 export function savingsLabel(original: number, output: number): string {
-  const pct = savingsPercent(original, output)
-  if (pct === null) return ''
-  if (pct > 0) return `${pct}% smaller`
-  if (pct < 0) return `${Math.abs(pct)}% larger`
-  return 'Similar size'
+  if (!Number.isFinite(original) || original <= 0 || !Number.isFinite(output) || output < 0) return ''
+  const pct = percentageMagnitude(original, output)
+  if (output < original) return `${pct} smaller`
+  if (output > original) return `${pct} larger`
+  return '0% reduction'
+}
+
+function percentageMagnitude(original: number, output: number): string {
+  const percent = Math.abs((original - output) / original * 100)
+  if (output > 0 && output < original && percent > 99.9) return '>99.9%'
+  return percent > 0 && percent < 0.1 ? '<0.1%' : `${Number(percent.toFixed(1))}%`
 }
 
 /**
@@ -37,12 +43,12 @@ export function savingsOutcome(original: number, output: number): 'reduced' | 's
  */
 export function savingsSummary(original: number, output: number): string {
   if (!original || original <= 0) return formatBytes(output)
-  const pct = savingsPercent(original, output)
   const arrow = `${formatBytes(original)} → ${formatBytes(output)}`
-  if (pct === null) return arrow
-  if (pct > 0) return `${arrow} · ${pct}% smaller`
-  if (pct < 0) return `${arrow} · ${Math.abs(pct)}% larger than the original`
-  return `${arrow} · no size change`
+  if (!Number.isFinite(output) || output < 0) return arrow
+  const pct = percentageMagnitude(original, output)
+  if (output < original) return `${arrow} · ${pct} smaller`
+  if (output > original) return `${arrow} · ${pct} larger than the original`
+  return `${arrow} · 0% reduction`
 }
 
 export function replaceExtension(filename: string, newExt: string): string {

@@ -36,6 +36,8 @@ Declared package metadata; not a certification of bundled codec compliance.
 | @img/sharp-win32-arm64 | 0.35.5 | Apache-2.0 AND LGPL-3.0-or-later |
 | @img/sharp-win32-ia32 | 0.35.5 | Apache-2.0 AND LGPL-3.0-or-later |
 | @img/sharp-win32-x64 | 0.35.5 | Apache-2.0 AND LGPL-3.0-or-later |
+| @jsquash/jpeg | 1.6.0 | Apache-2.0; packaged native codec notices apply separately |
+| @jsquash/oxipng | 2.3.0 | Apache-2.0; packaged native codec notices apply separately |
 | @next/env | 16.4.5 | MIT |
 | @next/swc-darwin-arm64 | 16.4.5 | Not declared / platform package not installed |
 | @next/swc-darwin-x64 | 16.4.5 | Not declared / platform package not installed |
@@ -72,3 +74,4 @@ Declared package metadata; not a certification of bundled codec compliance.
 | styled-jsx | 5.1.6 | MIT |
 | tslib | 2.8.1 | 0BSD |
 | uzip | 0.20201231.0 | MIT |
+| wasm-feature-detect | 1.10.1 | Apache-2.0 |

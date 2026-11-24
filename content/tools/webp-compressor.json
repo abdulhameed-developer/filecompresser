@@ -1,10 +1,10 @@
 {
   "heading": "Should I recompress an existing WebP image?",
-  "introduction": "A new WebP encode can reduce a large website image, but an already efficient WebP may become larger. Compare the actual size and appearance before replacing the version already in use.",
+  "introduction": "Try a new encode for a supported still WebP image, with original dimensions kept by default. If ordinary same-format compression finds no smaller result, the original is returned unchanged with 0% reduction.",
   "sections": [
     {
-      "heading": "Optimize for the display size",
-      "body": "Add the WebP file, keep WebP output and choose a preset. After processing, inspect the download at the size used by your website. Avoid keeping dimensions far beyond what the page needs."
+      "heading": "Choose quality separately from dimensions",
+      "body": "Keep WebP output and choose Balanced, High quality, Maximum or a separate Target size. Compare the output at the same scale as the original. Enable Resize this image only when you intentionally want smaller dimensions."
     },
     {
       "heading": "Keep transparency when you need it",
@@ -12,7 +12,7 @@
     },
     {
       "heading": "Keep a result only when it suits the page",
-      "body": "Compare file size, dimensions and visible detail together. A smaller file with unreadable text may be unsuitable, while an unchanged or larger file may provide no benefit. Preserve the source image for later edits."
+      "body": "Compare actual file size, dimensions and visible detail together. A smaller image with unreadable text may be unsuitable. A requested conversion or resize can increase bytes and is reported separately; it is never described as a saving."
     }
   ],
   "faq": [],
@@ -24,7 +24,7 @@
       "href": "/blog/compressing-files-for-the-web"
     },
     {
-      "label": "Decide whether a larger result is useful",
+      "label": "Understand original-retained results",
       "href": "/blog/honest-file-size-reporting"
     }
   ]

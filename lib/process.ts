@@ -32,18 +32,28 @@ export async function processFile(
   switch (engine) {
     case 'image-compress': {
       const { compressImage, isImageFormat } = await import('./engines/image')
+      const resizeMaxWidth = options.resizeEnabled === true ? optionalDimension(options.resizeMaxWidth) : undefined
+      const resizeMaxHeight = options.resizeEnabled === true ? optionalDimension(options.resizeMaxHeight) : undefined
+      if (options.resizeEnabled === true && !resizeMaxWidth && !resizeMaxHeight)
+        throw new ProcessingError('Enter a positive maximum width or height, or turn resizing off.')
       return compressImage(
         file,
         {
           level: options.level,
+          pngMode: options.pngMode,
+          mode: ['balanced', 'high-quality', 'maximum', 'target'].includes(String(options.imageMode))
+            ? options.imageMode
+            : undefined,
           quality:
-            typeof options.quality === 'number' ? options.quality : undefined,
+            options.imageMode !== 'target' && typeof options.quality === 'number' ? options.quality : undefined,
           outputFormat:
             typeof options.outputFormat === 'string' &&
             isImageFormat(options.outputFormat)
               ? options.outputFormat
               : undefined,
           targetSize: optionalSize(options.targetSize),
+          resizeMaxWidth,
+          resizeMaxHeight,
         },
         onProgress,
         signal,
@@ -148,7 +158,13 @@ function normalizeResolution(
 function optionalSize(value: unknown): number | undefined {
   const parsed = typeof value === 'number' ? value : Number(value)
   if (!Number.isFinite(parsed) || parsed <= 0) return undefined
-  return Math.min(parsed, 200 * 1024 * 1024)
+  const bytes = Math.floor(Math.min(parsed, 200 * 1024 * 1024))
+  return bytes > 0 ? bytes : undefined
+}
+
+function optionalDimension(value: unknown): number | undefined {
+  const number = typeof value === 'number' ? value : Number(value)
+  return Number.isFinite(number) && number >= 1 && number <= 32768 ? Math.floor(number) : undefined
 }
 
 /**
@@ -168,7 +184,9 @@ export function concurrencyFor(engine: EngineKind): number {
     case 'zip-extract':
       return 1
     case 'image-compress':
-      return 2
+      // One decoded raster plus a codec heap can already be substantial at 32MP.
+      // Sequential jobs bound peak memory on mobile; cancellation terminates the worker.
+      return 1
     default:
       return 2
   }

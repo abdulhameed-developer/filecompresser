@@ -6,18 +6,42 @@ import {
 } from './validation'
 import type { QueueItem } from './types'
 
+/** A download gets a basename, never an input-supplied path or platform device name. */
+export function safeDownloadFilename(filename: string, mimeType = ''): string {
+  const extensions: Record<string, string> = {
+    'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp', 'image/gif': 'gif',
+    'application/pdf': 'pdf', 'application/zip': 'zip', 'video/mp4': 'mp4',
+    'audio/mpeg': 'mp3', 'audio/wav': 'wav', 'text/plain': 'txt',
+  }
+  const fallback = `download${extensions[mimeType] ? `.${extensions[mimeType]}` : ''}`
+  const visible = filename.replace(/[\u061c\u200e\u200f\u202a-\u202e\u2066-\u2069]/g, '')
+  const safe = sanitizeArchivePath(flattenArchivePath(visible))?.replace(/[. ]+$/g, '')
+  if (!safe || safe === '.' || safe === '..') return fallback
+  const dot = safe.lastIndexOf('.')
+  const suffix = dot > 0 && safe.length - dot <= 20 ? safe.slice(dot) : ''
+  const base = suffix ? safe.slice(0, -suffix.length) : safe
+  const encoder = new TextEncoder()
+  let shortened = ''
+  // Bound UTF-8 bytes, so non-Latin filenames fit common filesystem component limits too.
+  for (const character of base) {
+    if (encoder.encode(shortened + character + suffix).length > 200) break
+    shortened += character
+  }
+  return shortened ? shortened + suffix : fallback
+}
+
 /**
  * Trigger a browser download for a blob.
  *
- * The temporary Object URL is revoked on the next tick *and* after a longer
- * grace period — Safari needs the URL to still be alive when the download
+ * The temporary Object URL is revoked after a grace period — Safari needs
+ * the URL to still be alive when the download
  * starts, so an immediate revoke can cancel the save.
  */
 export function downloadBlob(blob: Blob, filename: string): void {
   const url = URL.createObjectURL(blob)
   const anchor = document.createElement('a')
   anchor.href = url
-  anchor.download = filename
+  anchor.download = safeDownloadFilename(filename, blob.type)
   anchor.rel = 'noopener'
   anchor.style.display = 'none'
   document.body.appendChild(anchor)
@@ -75,12 +99,9 @@ async function zipEntries(entries: Record<string, Uint8Array>): Promise<Blob> {
  * Failed and cancelled items are deliberately excluded — the archive contains
  * only files that actually exist as real output.
  */
-export async function downloadAllAsZip(
-  items: QueueItem[],
-  zipName = 'filecompresser-results.zip',
-): Promise<void> {
+export async function prepareDownloadZip(items: QueueItem[]): Promise<Blob> {
   const done = completedItems(items)
-  if (!done.length) return
+  if (!done.length) throw new Error('No completed results are available to prepare as a ZIP.')
 
   if (
     done.length > ARCHIVE_LIMITS.maxEntries ||
@@ -94,13 +115,21 @@ export async function downloadAllAsZip(
     const result = item.result!
     const name = uniqueName(
       used,
-      sanitizeArchivePath(flattenArchivePath(result.filename || item.name)) ||
-        'result',
+      safeDownloadFilename(result.filename || item.name, result.mimeType),
     )
     entries[name] = new Uint8Array(await result.blob.arrayBuffer())
   }
 
-  downloadBlob(await zipEntries(entries), zipName)
+  return zipEntries(entries)
+}
+
+/** Legacy immediate-save API. Interactive batch UI prepares before a real save link is clicked. */
+export async function downloadAllAsZip(
+  items: QueueItem[],
+  zipName = 'filecompresser-results.zip',
+): Promise<void> {
+  if (!completedItems(items).length) return
+  downloadBlob(await prepareDownloadZip(items), zipName)
 }
 
 /**

@@ -1,9 +1,11 @@
 import { Writable } from 'node:stream'
 import { createStaticHandler } from './serve-static.mjs'
+import { checkImageCodecs, checkImageCodecDelivery } from './check-image-codecs.mjs'
 
 // Exercise the existing crawler against the actual export and preview handler,
 // without opening a network socket. This is not a browser/encoding test.
 const handler = await createStaticHandler('out')
+const imageManifest = await checkImageCodecs('out/image-worker')
 const base = 'http://127.0.0.1:3198'
 globalThis.fetch = async (input, init = {}) => {
   const url = new URL(typeof input === 'string' ? input : input.url, base)
@@ -28,5 +30,7 @@ globalThis.fetch = async (input, init = {}) => {
   await done
   return new Response([204, 304].includes(output.status) ? null : Buffer.concat(output.parts), { status: output.status, headers: output.headers })
 }
+await checkImageCodecDelivery(base, imageManifest)
+console.log('Exported image codec bytes, JavaScript/WASM MIME types and same-origin security headers passed.')
 process.argv[2] = base
 await import('./route-crawl.mjs')

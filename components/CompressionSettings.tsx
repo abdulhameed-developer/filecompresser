@@ -1,14 +1,19 @@
 'use client'
 
 import { useId } from 'react'
-import type {
-  CompressionLevel,
-  SettingValue,
-  ToolDefinition,
-} from '@/lib/types'
+import type { CompressionLevel, SettingValue, ToolDefinition } from '@/lib/types'
+import { MAX_IMAGE_TARGET_BYTES } from '@/lib/image-settings'
+
+export interface DimensionPreview { name: string; inputWidth: number; inputHeight: number; width: number; height: number }
 
 interface CompressionSettingsProps {
   targetAllowed?: boolean
+  imageSettings?: boolean
+  imageFormat?: string
+  hasPng?: boolean
+  hasLossy?: boolean
+  resizePreviews?: DimensionPreview[]
+  resizePreviewMissing?: number
   tool: ToolDefinition
   level: CompressionLevel
   onLevel: (level: CompressionLevel) => void
@@ -16,267 +21,98 @@ interface CompressionSettingsProps {
   onSetting: (id: string, value: SettingValue) => void
 }
 
-/** Engines where "compression level" has no meaningful meaning. */
-const NO_LEVEL_ENGINES = new Set([
-  'zip-extract',
-  'zip-create',
-  // PDF optimization is a fixed pipeline, not a quality/size tradeoff, so
-  // offering a "Maximum" that does nothing different would be a fake control.
-  'pdf-compress',
-])
+const NO_LEVEL_ENGINES = new Set(['zip-extract', 'zip-create', 'pdf-compress'])
+const IMAGE_MODES = [
+  { value: 'balanced', label: 'Balanced', description: 'A balance of file size and detail.' },
+  { value: 'high-quality', label: 'High quality', description: 'More detail, usually a larger file.' },
+  { value: 'maximum', label: 'Maximum', description: 'Smaller files with a stronger quality trade-off.' },
+  { value: 'target', label: 'Target size', description: 'Find a quality setting that fits your limit.' },
+] as const
+const PNG_MODES = [
+  { value: 'smart', label: 'Smart', description: 'May reduce colors. Keeps a lossless result when color changes are too large.' },
+  { value: 'lossless', label: 'Lossless', description: 'Preserve every image pixel and transparency value.' },
+  { value: 'maximum', label: 'Maximum', description: 'Try smaller color palettes. Color changes may be visible.' },
+  { value: 'target', label: 'Target size', description: 'Search real color palettes for your size limit. The target may not be achievable.' },
+] as const
+const TARGET_PRESETS = [20_000, 50_000, 100_000, 200_000, 500_000, 1_000_000]
 
-/**
- * Engines that can genuinely hit a user-specified target size.
- *
- * A target is only offered where we control a lossy quality dial and the result
- * is still a real encoding. PNG is excluded because it is lossless: its size is
- * driven by dimensions, not by a quality parameter, so "compress to 200 KB"
- * could only be satisfied by degrading the image without telling you.
- */
-const TARGET_SIZE_ENGINES = new Set(['image-compress'])
+export default function CompressionSettings({ tool, level, onLevel, settings, onSetting, targetAllowed = true, imageSettings = tool.engine === 'image-compress', imageFormat, hasPng = imageFormat === 'png', hasLossy = imageFormat !== 'png', resizePreviews = [], resizePreviewMissing = 0 }: CompressionSettingsProps) {
+  const prefix = useId()
+  const mode = String(settings.imageMode || 'balanced')
+  const pngMode = String(settings.pngMode || (mode === 'target' || mode === 'maximum' ? mode : 'lossless'))
+  const quality = typeof settings.quality === 'number' ? Math.round(settings.quality * 100) : mode === 'high-quality' ? 93 : mode === 'maximum' ? 60 : 82
+  const presetQuality = mode === 'high-quality' ? 93 : mode === 'maximum' ? 60 : 82
+  const customQuality = mode !== 'target' && typeof settings.quality === 'number' && quality !== presetQuality
+  const resizeEnabled = settings.resizeEnabled === true
+  const targeting = (hasLossy && mode === 'target') || (hasPng && pngMode === 'target')
 
-const LEVEL_LABELS: Record<string, string> = {
-  recommended: 'Recommended',
-  maximum: 'Maximum',
-}
+  return <div className={`settings${imageSettings ? ' imageSettings' : ''}`}>
+    {imageSettings ? <>
+      {hasLossy && <fieldset className="settingBlock imageModeBlock">
+        <legend>{hasPng ? 'JPG / WEBP mode' : 'Compression mode'}{customQuality && <span className="customQualityLabel">Custom quality</span>}</legend>
+        <div className="imageModeGrid" role="group" aria-label="Image compression mode">
+          {IMAGE_MODES.map(option => <button key={option.value} type="button" className={`imageModeOption${mode === option.value && !customQuality ? ' active' : ''}`} aria-pressed={mode === option.value && !customQuality} disabled={option.value === 'target' && !targetAllowed} onClick={() => { onSetting('imageMode', option.value); onSetting('quality', '') }}><span>{option.label}</span></button>)}
+        </div>
+        <p className="settingHelp modeDescription">{customQuality ? 'Using your quality setting. Choose a mode to restore its preset.' : IMAGE_MODES.find(option => option.value === mode)?.description}</p>
+      </fieldset>}
+      {hasPng && <fieldset className="settingBlock imageModeBlock pngModeBlock">
+        <legend>PNG mode</legend>
+        <div className="imageModeGrid" role="group" aria-label="PNG compression mode">
+          {PNG_MODES.map(option => <button key={option.value} type="button" className={`imageModeOption${pngMode === option.value ? ' active' : ''}`} aria-pressed={pngMode === option.value} disabled={option.value === 'target' && !targetAllowed} onClick={() => onSetting('pngMode', option.value)}><span>{option.label}</span></button>)}
+        </div>
+        <p className="settingHelp modeDescription">{PNG_MODES.find(option => option.value === pngMode)?.description} Transparency is preserved.</p>
+      </fieldset>}
 
-const LEVEL_HELP: Record<CompressionLevel, string> = {
-  recommended: 'Balanced quality and file size. Best for normal use.',
-  maximum:
-    'Stronger compression with a greater quality trade-off. Image dimensions are capped at 1920px.',
-}
+      {targeting && <TargetSizeField prefix={prefix} value={settings.targetSize} enabled={targetAllowed} pngOnly={!hasLossy} onChange={next => onSetting('targetSize', next)} />}
 
-const KB = 1024
-
-export default function CompressionSettings({
-  tool,
-  level,
-  onLevel,
-  settings,
-  onSetting,
-  targetAllowed = true,
-}: CompressionSettingsProps) {
-  const showLevel =
-    !NO_LEVEL_ENGINES.has(tool.engine) && tool.category !== 'audio'
-  const showLevelControl = showLevel
-
-  // The target-size field belongs to Maximum mode only: in Recommended mode the
-  // preset is already chosen, and a second conflicting dial would be confusing.
-  const showTargetSize =
-    TARGET_SIZE_ENGINES.has(tool.engine) &&
-    tool.slug !== 'compress' &&
-    targetAllowed &&
-    (settings.outputFormat || (tool.slug === 'png-compressor' ? 'png' : '')) !==
-      'png' &&
-    level === 'maximum'
-
-  return (
-    <div className="settings">
-      {showLevelControl && (
-        <fieldset className="settingBlock">
-          <legend>
-            {tool.slug === 'wav-compressor'
-              ? 'Encoding quality'
-              : 'Compression level'}
-          </legend>
-          <div className="pills" role="group" aria-label="Compression level">
-            {(['recommended', 'maximum'] as const).map((value) => (
-              <button
-                key={value}
-                type="button"
-                className={level === value ? 'active' : ''}
-                aria-pressed={level === value}
-                onClick={() => onLevel(value)}
-              >
-                {LEVEL_LABELS[value]}
-              </button>
-            ))}
-          </div>
-          <p className="settingHelp">{LEVEL_HELP[level]}</p>
-        </fieldset>
-      )}
-
-      {(tool.settings ?? []).map((setting) => {
-        const id = `setting-${tool.slug}-${setting.id}`
-        const value = settings[setting.id] ?? setting.defaultValue
-
-        return (
-          <div className="settingField" key={setting.id}>
-            <label htmlFor={id}>{setting.label}</label>
-
-            {setting.type === 'select' ? (
-              <select
-                id={id}
-                value={String(value)}
-                onChange={(event) => onSetting(setting.id, event.target.value)}
-              >
-                {(setting.options ?? []).map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-            ) : setting.type === 'number' ? (
-              <NumberField
-                id={id}
-                suffix={setting.suffix}
-                placeholder={setting.placeholder}
-                min={setting.min}
-                max={setting.max}
-                value={value}
-                onChange={(next) => onSetting(setting.id, next)}
-              />
-            ) : (
-              <div className="rangeField">
-                <input
-                  id={id}
-                  type="range"
-                  min={setting.min}
-                  max={setting.max}
-                  step={setting.step}
-                  value={Number(value)}
-                  onChange={(event) =>
-                    onSetting(setting.id, Number(event.target.value))
-                  }
-                />
-                <output htmlFor={id} className="rangeValue">
-                  {formatRangeValue(setting.id, Number(value), setting)}
-                </output>
-              </div>
-            )}
-
-            {setting.help && <p className="settingHelp">{setting.help}</p>}
-          </div>
-        )
-      })}
-
-      {showTargetSize && (
-        <TargetSizeField
-          toolSlug={tool.slug}
-          value={settings.targetSize}
-          onChange={(next) => onSetting('targetSize', next)}
-        />
-      )}
-    </div>
-  )
-}
-
-/**
- * "Target size (KB) N KB".
- *
- * The field is deliberately optional: left blank, Maximum mode uses its own
- * preset. Entering a size runs a real encoder search for a quality that fits.
- */
-function TargetSizeField({
-  toolSlug,
-  value,
-  onChange,
-}: {
-  toolSlug: string
-  value: SettingValue | undefined
-  onChange: (value: SettingValue) => void
-}) {
-  const id = `setting-${toolSlug}-targetSize`
-  const hintId = useId()
-  const raw =
-    value === undefined || value === '' ? '' : String(Number(value) / KB)
-
-  return (
-    <div className="settingField targetSizeField">
-      <label htmlFor={id}>Target size (KB)</label>
-      <div className="numberField">
-        <input
-          id={id}
-          type="number"
-          inputMode="numeric"
-          min={1}
-          max={204800}
-          step={1}
-          value={raw}
-          placeholder="e.g. 200"
-          aria-describedby={hintId}
-          // Keep the field as text while empty so the number input does not
-          // coerce a blank value into 0, which reads as "target zero bytes".
-          onChange={(event) => {
-            const next = event.target.value
-            if (next === '') {
-              onChange('')
-              return
-            }
-            const parsed = Number(next)
-            if (!Number.isFinite(parsed) || parsed <= 0) return
-            onChange(Math.round(parsed * KB))
-          }}
-        />
-        <span className="numberSuffix" aria-hidden="true">
-          KB
-        </span>
+      {hasLossy && mode !== 'target' && <div className="settingField qualityControl">
+        <label htmlFor={`${prefix}-quality`}>Quality <output htmlFor={`${prefix}-quality`}>{quality}%</output></label>
+        <input id={`${prefix}-quality`} type="range" min={10} max={100} step={1} value={quality} onChange={event => onSetting('quality', Number(event.target.value) / 100)} aria-describedby={`${prefix}-quality-hint`} />
+        <p className="settingHelp" id={`${prefix}-quality-hint`}>Higher keeps more detail, usually in a larger file. Encoder setting, not a measured quality score.</p>
+      </div>}
+      <div className="resizeChoice">
+        <label className="resizeToggle" htmlFor={`${prefix}-resize`}><input id={`${prefix}-resize`} type="checkbox" checked={resizeEnabled} onChange={event => onSetting('resizeEnabled', event.target.checked)} />Resize{!resizeEnabled && <span>Original dimensions</span>}</label>
+        {resizeEnabled && <fieldset className="resizeFields">
+          <legend className="srInline">Fit within maximum dimensions</legend>
+          <NumberField id={`${prefix}-width`} label="Maximum width (px)" value={settings.resizeMaxWidth ?? ''} placeholder="e.g. 1920" min={1} max={32768} onChange={next => onSetting('resizeMaxWidth', next)} />
+          <NumberField id={`${prefix}-height`} label="Maximum height (px)" value={settings.resizeMaxHeight ?? ''} placeholder="e.g. 1080" min={1} max={32768} onChange={next => onSetting('resizeMaxHeight', next)} />
+          <p className="settingHelp">Fit within either bound. No cropping or upscaling.</p>
+        </fieldset>}
+        {resizeEnabled && resizePreviews.length > 0 && <div className="resizePreview" tabIndex={resizePreviews.length > 3 ? 0 : undefined} role="region" aria-label="Expected image dimensions"><table><caption>Expected dimensions</caption><thead><tr><th scope="col">File</th><th scope="col">Original (px)</th><th scope="col">Output (px)</th></tr></thead><tbody>{resizePreviews.map((preview, index) => <tr key={`${index}:${preview.name}`}><th scope="row">{preview.name}</th><td>{preview.inputWidth.toLocaleString('en-US')} × {preview.inputHeight.toLocaleString('en-US')}</td><td>{preview.width.toLocaleString('en-US')} × {preview.height.toLocaleString('en-US')}</td></tr>)}</tbody></table></div>}
+        {resizeEnabled && resizePreviewMissing > 0 && <p className="settingHelp">Dimensions could not be read for {resizePreviewMissing} selected file{resizePreviewMissing === 1 ? '' : 's'}; a preview is unavailable for {resizePreviewMissing === 1 ? 'it' : 'them'}.</p>}
       </div>
-      <p className="settingHelp" id={hintId}>
-        Optional. We search for the best quality that fits within this size. If
-        the target cannot be reached within the supported quality range, we
-        return the smallest tested version and explain the difference. PNG
-        output uses its normal preset instead.
-      </p>
-    </div>
-  )
+    </> : tool.engine !== 'image-compress' && !NO_LEVEL_ENGINES.has(tool.engine) && tool.category !== 'audio' && <fieldset className="settingBlock">
+      <legend>Compression level</legend>
+      <div className="pills" role="group" aria-label="Compression level">{(['recommended', 'maximum'] as const).map(value => <button key={value} type="button" className={level === value ? 'active' : ''} aria-pressed={level === value} onClick={() => onLevel(value)}>{value === 'recommended' ? 'Recommended' : 'Maximum'}</button>)}</div>
+    </fieldset>}
+
+    {(tool.settings ?? []).map(setting => {
+      const id = `${prefix}-${setting.id}`
+      const value = settings[setting.id] ?? setting.defaultValue
+      return <div className="settingField" key={setting.id}>
+        {setting.type === 'number' ? <NumberField id={id} label={setting.label} suffix={setting.suffix} placeholder={setting.placeholder} min={setting.min} max={setting.max} value={value} onChange={next => onSetting(setting.id, next)} /> : <>
+          <label htmlFor={id}>{setting.label}</label>
+          {setting.type === 'select' ? <select id={id} value={String(value)} onChange={event => onSetting(setting.id, event.target.value)}>{(setting.options ?? []).map(option => <option key={option.value} value={option.value}>{option.label}</option>)}</select> : <div className="rangeField"><input id={id} type="range" min={setting.min} max={setting.max} step={setting.step} value={Number(value)} onChange={event => onSetting(setting.id, Number(event.target.value))} /><output htmlFor={id} className="rangeValue">{String(value)}</output></div>}
+        </>}
+        {setting.help && <p className="settingHelp">{setting.help}</p>}
+      </div>
+    })}
+  </div>
 }
 
-/**
- * A number input with a unit suffix, announced properly to assistive tech.
- *
- * The suffix is `aria-hidden` because the label already says the unit; repeating
- * it in the accessible name makes screen readers announce "KB" twice.
- */
-function NumberField({
-  id,
-  suffix,
-  placeholder,
-  min,
-  max,
-  value,
-  onChange,
-}: {
-  id: string
-  suffix?: string
-  placeholder?: string
-  min?: number
-  max?: number
-  value: SettingValue
-  onChange: (value: SettingValue) => void
-}) {
-  return (
-    <div className="numberField">
-      <input
-        id={id}
-        type="number"
-        inputMode="numeric"
-        min={min}
-        max={max}
-        step={1}
-        value={String(value ?? '')}
-        placeholder={placeholder}
-        onChange={(event) => {
-          const next = event.target.value
-          onChange(next === '' ? '' : Number(next))
-        }}
-      />
-      {suffix && (
-        <span className="numberSuffix" aria-hidden="true">
-          {suffix}
-        </span>
-      )}
-    </div>
-  )
+function TargetSizeField({ prefix, value, enabled, pngOnly, onChange }: { prefix: string; value: SettingValue | undefined; enabled: boolean; pngOnly: boolean; onChange: (value: SettingValue) => void }) {
+  const bytes = typeof value === 'number' && Number.isFinite(value) ? value : 0
+  const raw = value === undefined || value === '' ? '' : String(Number(value) / 1000)
+  const invalid = value !== undefined && value !== '' && (!Number.isInteger(bytes) || bytes < 1 || bytes > MAX_IMAGE_TARGET_BYTES)
+  return <fieldset className="targetSizeBlock" disabled={!enabled}>
+    <legend>Maximum output size</legend>
+    <div className="targetPresets" role="group" aria-label="Target size presets">{TARGET_PRESETS.map(preset => <button key={preset} type="button" aria-pressed={bytes === preset} className={bytes === preset ? 'active' : ''} onClick={() => onChange(preset)}>{preset === 1_000_000 ? '1 MB' : `${preset / 1000} KB`}</button>)}</div>
+    <div className="targetCustomRow"><div className="settingField"><label htmlFor={`${prefix}-target`}>Custom maximum (KB)</label><div className="numberField"><input id={`${prefix}-target`} type="number" inputMode="decimal" min={0.001} max={MAX_IMAGE_TARGET_BYTES / 1000} step={0.001} value={raw} placeholder="e.g. 50" aria-invalid={invalid || undefined} aria-describedby={`${prefix}-target-hint`} onChange={event => { const next = event.target.value; if (next === '') onChange(''); else { const parsed = Number(next); if (Number.isFinite(parsed)) onChange(Math.round(parsed * 1000)) } }} /><span className="numberSuffix" aria-hidden="true">KB</span></div></div><p className="exactTarget" aria-live="polite">{invalid ? 'Enter 0.001 to 200,000 KB.' : bytes > 0 ? <><strong>{bytes.toLocaleString('en-US')} bytes</strong> maximum</> : 'Choose a preset or enter a maximum.'}</p></div>
+    <p className="settingHelp" id={`${prefix}-target-hint`}>1 KB = 1,000 bytes. {pngOnly ? 'PNG may reduce colors to fit.' : 'JPG / WEBP adjust quality; PNG may reduce colors.'} Results above your limit are marked “Target not met”.</p>
+    {!enabled && <p className="targetWarning" role="status">Target size is unavailable for this selection.</p>}
+  </fieldset>
 }
 
-function formatRangeValue(
-  id: string,
-  value: number,
-  setting: { max?: number },
-): string {
-  void id
-  // Treat the upper bound of 100 sliders as a percentage.
-  if (setting.max === 100) return `${value}`
-  return `${value}`
+function NumberField({ id, label, suffix, placeholder, min, max, value, onChange }: { id: string; label: string; suffix?: string; placeholder?: string; min?: number; max?: number; value: SettingValue; onChange: (value: SettingValue) => void }) {
+  return <div className="settingField"><label htmlFor={id}>{label}</label><div className="numberField"><input id={id} type="number" inputMode="numeric" min={min} max={max} step={1} value={String(value ?? '')} placeholder={placeholder} onChange={event => onChange(event.target.value === '' ? '' : Number(event.target.value))} />{suffix && <span className="numberSuffix" aria-hidden="true">{suffix}</span>}</div></div>
 }

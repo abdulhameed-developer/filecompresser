@@ -11,6 +11,7 @@ const config = [
     ignores: [
       '.claude/**',
       '.next/**',
+      '.qa-results/**',
       'out/**',
       'tina/__generated__/**',
       'node_modules/**',

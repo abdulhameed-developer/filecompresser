@@ -20,7 +20,7 @@
     {
       "heading": "Compression is not always compression",
       "body": [
-        "Some formats cannot be made smaller without losing data. A PDF that is already optimized, or an image already encoded at a low quality, may come out the same size or marginally larger. Where that happens, these tools report it rather than manufacturing a smaller number by truncating a file or changing an extension without converting.",
+        "Some formats cannot be made meaningfully smaller at the selected settings. For ordinary compression, a candidate that is not smaller is discarded and the original is returned unchanged with 0% reduction, including its existing metadata. Explicit format conversions, resizing and ZIP creation can increase bytes and are reported separately. No result is padded, truncated or renamed to manufacture a saving.",
         "Audio re-encoded to MP3 and video re-encoded to H.264 are genuinely lossy. They are appropriate for web delivery and email, but they are not archival replacements for the original."
       ]
     },

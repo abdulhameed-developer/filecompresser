@@ -1,70 +1,103 @@
 {
-  "updated": "2026-11-04",
-  "title": "Recommended vs Maximum: choosing image quality",
-  "description": "The two presets differ in more than aggressiveness. Here is exactly what each one does to your file, and when the difference is worth it.",
+  "updated": "2026-11-24",
+  "title": "Choosing image compression modes and target sizes",
+  "description": "Compare JPEG/WebP quality and PNG Lossless, Smart, Maximum or Target size. Understand preserved dimensions and when an original stays unchanged.",
   "date": "2026-09-12",
   "readingTime": "6 min",
   "figure": "qualitycurve",
-  "seoDescription": "What the Recommended and Maximum compression modes actually do: quality settings, the 3200px and 1920px dimension caps, and when to use the target-size search.",
+  "seoDescription": "Choose image modes or a maximum-byte target. Understand PNG lossless and color-reduction modes, optional resizing and truthful unmet targets.",
   "body": [
     {
       "_template": "p",
-      "text": "Most compressors offer a quality slider and expect you to guess. These two modes are not a slider — they are two specific, documented configurations, and knowing which one you are getting is most of the value."
+      "text": "Choose settings for the job you need the image to do. A quality setting changes how a lossy encoder represents detail; a size target sets a maximum number of bytes. Resizing changes dimensions and is a separate, optional choice."
     },
     {
       "_template": "figure",
       "figure": "qualitycurve",
-      "caption": "A qualitative illustration of the size–quality trade-off, not a measured benchmark."
+      "caption": "A qualitative illustration of the size–quality trade-off, not a measured benchmark or a guarantee for a particular image."
     },
     {
       "_template": "h2",
-      "text": "Recommended: balanced quality, capped at 3200px"
+      "text": "Balanced: a useful starting point"
     },
     {
       "_template": "p",
-      "text": "Images are re-encoded at a quality around 0.82, and the longest edge is capped at 3200 pixels. That cap is the part people miss. A 6000px camera original is not re-encoded at 6000px and called compressed; it is downscaled first, which is where most of the saving on a large photo actually comes from."
-    },
-    {
-      "_template": "p",
-      "text": "Images already smaller than the cap are left at their original dimensions. Nothing is upscaled, because enlarging a photo to hit a target would cost you sharpness and buy you nothing."
+      "text": "Maximum is the default for images. Balanced is available for JPEG and WebP when you prefer a more moderate quality trade-off. It aims for a practical compromise between encoded size and visible detail. Results depend on the image and its existing encoding, so inspect faces, text, gradients and fine textures at the same scale."
     },
     {
       "_template": "h2",
-      "text": "Maximum: 0.6 quality, capped at 1920px"
+      "text": "High quality: keep more detail"
     },
     {
       "_template": "p",
-      "text": "Harder compression and a smaller dimension cap. The saving varies with image content, dimensions and its existing encoding. Fine textures and small text can change visibly, so inspect the output before replacing the original."
-    },
-    {
-      "_template": "p",
-      "text": "Maximum mode is for files that have to fit somewhere: an upload limit, an email attachment ceiling, a form with a hard cap. It is the right mode when the constraint is real and the image is going to be viewed at thumbnail size anyway."
+      "text": "High quality uses a higher encoding-quality setting. It can preserve more fine detail while providing a smaller size reduction, or none at all. A high setting cannot recover information already lost from the source. The displayed quality value is an encoder control, not a percentage score for visual fidelity."
     },
     {
       "_template": "h2",
-      "text": "The target-size search"
+      "text": "Maximum: prioritize smaller output"
     },
     {
       "_template": "p",
-      "text": "Maximum mode also unlocks an optional \"target size (KB)\" field. If you fill it in, the tool does not guess a quality — it runs a real binary search, encoding the image repeatedly at different quality settings and measuring each result against your byte target, keeping the highest quality that still fits."
+      "text": "Maximum uses a lower encoding-quality setting for JPEG and WebP. Artifacts can be more visible around lettering, edges and textures. It does not silently resize the image. Keep the result only when the quality is suitable for its intended use."
+    },
+    {
+      "_template": "h2",
+      "text": "Target size: a verified maximum in bytes"
     },
     {
       "_template": "p",
-      "text": "If even the lowest quality overshoots your target, you get the smallest real encode it could produce and an explicit note saying the target was not met. It does not pad the file, truncate it, or quietly drop the constraint to make the number work."
+      "text": "Target size is a separate mode rather than an option hidden inside Maximum. Choose a preset or enter a custom maximum. Here, 1 KB means 1,000 bytes: a 50 KB limit is 50,000 bytes. The tool measures actual encoded outputs and verifies the final byte count before marking a target as met."
+    },
+    {
+      "_template": "p",
+      "text": "For JPEG and WebP, a bounded quality search keeps the highest-quality candidate it finds within the limit. This is not a mathematical guarantee of the best possible encoding. If the original already fits and no transformation was requested, keeping it avoids an unnecessary lossy generation."
+    },
+    {
+      "_template": "p",
+      "text": "Some limits cannot be reached within the supported quality, dimensions and format. An output over the maximum is marked Target not met. The tool does not pad or truncate a file, quietly resize it, or call a near miss a success. Consider a different format, a less restrictive target or explicitly enabled resizing."
+    },
+    {
+      "_template": "h2",
+      "text": "PNG: Maximum by default, with a Lossless choice"
+    },
+    {
+      "_template": "p",
+      "text": "Lossless preserves the decoded PNG pixels and transparency. Smart, Maximum and Target size may reduce colors while preserving transparency values; their color changes can be visible. Dimensions stay unchanged unless you explicitly enable resizing. PNG uses these named modes rather than the JPEG/WebP quality slider."
+    },
+    {
+      "_template": "p",
+      "text": "Smart uses more conservative color-error checks than Maximum or Target size. These checks are numerical heuristics, not a guarantee of invisible changes. Target size measures actual PNG candidates, including color-reduced ones, against your maximum. A lossless result or unchanged original may be retained, and an output above the maximum is marked Target not met."
+    },
+    {
+      "_template": "h2",
+      "text": "Dimensions stay unchanged unless you choose resizing"
+    },
+    {
+      "_template": "p",
+      "text": "Ordinary image compression preserves original display dimensions. Resize this image is off by default. When enabled, your maximum width or height is applied without changing aspect ratio or enlarging smaller inputs. EXIF orientation can be normalized: an upright image may have different stored width and height from the camera file, without changing its displayed orientation."
     },
     {
       "_template": "callout",
-      "title": "Which should you use?",
-      "text": "Recommended unless you have a specific size constraint. If a 300 KB photo is genuinely too big, switch to Maximum and set the target — the search will get you closer than any fixed preset."
+      "title": "When the original is already efficient",
+      "text": "In ordinary same-format compression, a candidate that is not smaller is discarded. The original is returned unchanged with 0% reduction. A conversion or requested resize is reported as a separate transformation and may increase bytes; growth is never presented as a saving."
     },
     {
       "_template": "h2",
-      "text": "What the modes do not do"
+      "text": "Apply changed settings to your original"
     },
     {
       "_template": "p",
-      "text": "Image re-encoding normally drops embedded metadata. Progress represents encoder events and named stages. If a stage cannot report a real percentage, you see the stage name instead of a number that is counting up on a timer."
+      "text": "Changing settings does not change an existing download. Choose Recompress to apply the new setup to the retained original, rather than repeatedly encoding a previous result. The previous download stays available until a new run succeeds. Afterward, review the applied setup, output dimensions, quality and actual size before keeping the new result."
+    },
+    {
+      "_template": "h2",
+      "text": "Check color, metadata and the actual download"
+    },
+    {
+      "_template": "p",
+      "text": "Re-encoding may normalize color to sRGB and remove embedded metadata. That is different from a guarantee of perfect ICC-profile preservation or metadata sanitization. A retained original keeps its bytes and metadata. Compare dimensions, transparency, byte counts and visible detail, and keep your source for future editing."
     }
   ],
-  "published": true
+  "published": true,
+  "seoTitle": "Image Compression Modes and Target Sizes"
 }

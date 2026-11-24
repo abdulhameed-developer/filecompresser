@@ -16,6 +16,9 @@ import type {
 } from '../types'
 import { ProcessingError, listenForCancellation } from '../types'
 import type { FFmpeg } from '@ffmpeg/ffmpeg'
+import { detectFormat } from '../validation'
+import { applyResultPolicy } from '../result-policy'
+import { inspectMedia, verifyMediaDuration } from './media-inspection'
 
 export interface AudioOptions {
   level?: CompressionLevel
@@ -37,7 +40,10 @@ export async function processAudio(
   signal?: CancelSignal,
 ): Promise<ProcessedResult> {
   assertNotCancelled(signal)
-  onProgress?.(1, 'Loading the audio engine (first run downloads ~30 MB)…')
+  if (file.size > 100 * 1024 * 1024) throw new ProcessingError('This audio file exceeds the 100 MB input limit.')
+  const inputFormat = await detectFormat(file)
+  if (!inputFormat || !['mp3', 'wav', 'm4a', 'flac', 'ogg'].includes(inputFormat)) throw new ProcessingError('Choose a verified MP3, WAV, M4A, FLAC or Ogg audio file.')
+  onProgress?.(1, 'Loading the audio engine…')
 
   let ffmpeg: FFmpeg
   try {
@@ -60,10 +66,7 @@ export async function processAudio(
   const inputName = `ain_${stamp}${extOf(file.name)}`
   const outputName = `aout_${stamp}.${outFmt}`
 
-  onProgress?.(
-    6,
-    outFmt === 'mp3' ? 'Re-encoding audio…' : 'Converting to WAV…',
-  )
+  onProgress?.(6, 'Inspecting audio streams…')
 
   let cancelledHere = false
   const releaseCancel = listenForCancellation(signal, () => {
@@ -78,6 +81,10 @@ export async function processAudio(
   try {
     await writeInputFile(ffmpeg, inputName, file)
     assertNotCancelled(signal)
+    const source = await inspectMedia(ffmpeg, inputName, signal)
+    const sourceAudio = source.streams.filter(stream => stream.codec_type === 'audio')
+    if (sourceAudio.length !== 1) throw new ProcessingError('This tool needs exactly one audio stream. Your original file is unchanged.')
+    onProgress?.(10, outFmt === 'mp3' ? 'Re-encoding audio…' : 'Converting to WAV…')
 
     const args =
       outFmt === 'mp3'
@@ -117,6 +124,8 @@ export async function processAudio(
         'Audio encoding failed or exceeded the five-minute processing limit.',
       )
     assertNotCancelled(signal)
+    detach()
+    detach = null
 
     onProgress?.(96, 'Finishing…')
     const bytes = toBytes(await ffmpeg.readFile(outputName))
@@ -124,15 +133,24 @@ export async function processAudio(
       throw new ProcessingError('The audio encoder produced no usable output.')
 
     const mime = outFmt === 'mp3' ? 'audio/mpeg' : 'audio/wav'
+    const blob = new Blob([bytes], { type: mime })
+    if (await detectFormat(blob) !== outFmt) throw new ProcessingError('The audio encoder returned the wrong output format. The original file is unchanged.')
+    const output = await inspectMedia(ffmpeg, outputName, signal)
+    const outputAudio = output.streams.filter(stream => stream.codec_type === 'audio')
+    if (outputAudio.length !== 1 || outputAudio[0].codec_name !== (outFmt === 'mp3' ? 'mp3' : 'pcm_s16le') || (sourceAudio[0].channels && sourceAudio[0].channels !== outputAudio[0].channels)) throw new ProcessingError('The audio output failed its stream integrity check. The original file is unchanged.')
+    verifyMediaDuration(source, output)
     // Only claim "compressed" when we actually produced a lossy encode of a
     // same-format source; otherwise the honest verb is "converted".
     const filename =
-      outFmt === 'mp3' && file.name.toLowerCase().endsWith('.mp3')
-        ? suffixFilename(file.name, '-compressed')
+      outFmt === 'mp3' && inputFormat === 'mp3'
+        ? replaceExtension(suffixFilename(file.name, '-compressed'), 'mp3')
         : replaceExtension(file.name, outFmt)
 
     onProgress?.(100, 'Done')
-    return { blob: new Blob([bytes], { type: mime }), filename, mimeType: mime }
+    return applyResultPolicy(file, {
+      blob, filename, mimeType: mime,
+      note: outFmt === 'mp3' ? `Encoded as MP3 at ${bitrate.replace('k', '')} kbps. MP3 encoding is lossy.` : 'Converted to 16-bit PCM WAV. WAV output can be larger than compressed audio.',
+    }, outFmt === 'mp3' && inputFormat === 'mp3' ? 'reduce' : 'convert')
   } catch (e) {
     if (signal?.cancelled || cancelledHere) {
       throw new ProcessingError('Processing was cancelled.', 'cancelled')

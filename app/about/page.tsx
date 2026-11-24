@@ -6,14 +6,14 @@ import ManagedPageSections, { ManagedSectionBody } from '@/components/ManagedPag
 import { getManagedPage, managedPageMetadata } from '@/lib/managed-pages'
 import { breadcrumbJsonLd, jsonLdScript, webPageJsonLd } from '@/lib/seo'
 
-const page = getManagedPage('about')
-export const metadata = managedPageMetadata('about')
-const structuredData = [
-  webPageJsonLd({ name: 'About filecompresser', description: page.seoDescription, path: '/about', dateModified: page.updated }),
-  breadcrumbJsonLd([{ name: 'Home', path: '/' }, { name: 'About', path: '/about' }]),
-]
+export function generateMetadata() { return managedPageMetadata('about') }
 
 export default function AboutPage() {
+  const page = getManagedPage('about')
+  const structuredData = [
+    webPageJsonLd({ name: 'About filecompresser', description: page.seoDescription, path: '/about', dateModified: page.updated }),
+    breadcrumbJsonLd([{ name: 'Home', path: '/' }, { name: 'About', path: '/about' }]),
+  ]
   const cards = page.sections.filter(section => section.placement === 'card')
   const details = page.sections.filter(section => section.placement === 'detail')
   return <div className="productPage aboutPage">

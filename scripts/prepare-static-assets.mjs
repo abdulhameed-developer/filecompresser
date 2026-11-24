@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url'
 import { checkUploads } from './check-uploads.mjs'
 import { prepareRedirects } from './prepare-redirects.mjs'
 import { createCodecNotice, resolveCodecCore } from './codec-assets.mjs'
+import { prepareImageCodecs } from './prepare-image-codecs.mjs'
 
 // Cloudflare Pages permits at most 25 MiB per asset. Keep engine chunks below
 // that limit without changing the WASM bytes. The browser reconstructs a Blob.
@@ -24,7 +25,6 @@ export async function prepareStaticAssets(root = process.cwd(), options = {}) {
   }
   const selectedCore = await resolveCodecCore(root, options)
   const worker = path.join(root, 'node_modules/@ffmpeg/ffmpeg/dist/esm')
-  const image = path.join(root, 'node_modules/browser-image-compression/dist')
   const wasm = selectedCore.wasm
   if (wasm.length === 0 || wasm.length > 64 * 1024 * 1024)
     throw new Error('Unexpected FFmpeg core size; review the engine before release.')
@@ -42,7 +42,7 @@ export async function prepareStaticAssets(root = process.cwd(), options = {}) {
   await writeFile(path.join(output, 'NOTICE.txt'), notice)
   for (const name of ['worker.js', 'const.js', 'errors.js', 'utils.js', 'types.js'])
     await copyFile(path.join(worker, name), path.join(output, name))
-  await copyFile(path.join(image, 'browser-image-compression.js'), path.join(imageOutput, 'browser-image-compression.js'))
+  await prepareImageCodecs(root, imageOutput)
 
   const chunks = []
   for (let offset = 0; offset < wasm.length; offset += WASM_CHUNK_SIZE) {

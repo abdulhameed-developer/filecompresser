@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { readCodecReleaseManifest, verifyExportedCodec } from './codec-assets.mjs'
+import { checkImageCodecs } from './check-image-codecs.mjs'
 
 /** Check only the exact active build token, and never include it in an error. */
 export function assertNoExportedToken(bytes, filename, token = process.env.TINA_TOKEN) {
@@ -13,8 +14,9 @@ export function assertNoExportedToken(bytes, filename, token = process.env.TINA_
 
 export async function packageSite(root = process.cwd()) {
   const target = path.join(root, 'out')
-  for (const asset of ['index.html', '404.html', '_headers', 'THIRD-PARTY-NOTICES.txt', 'ffmpeg-core/wasm-manifest.json', 'ffmpeg-core/worker.js', 'ffmpeg-core/NOTICE.txt', 'image-worker/browser-image-compression.js'])
+  for (const asset of ['index.html', '404.html', '_headers', 'THIRD-PARTY-NOTICES.txt', 'ffmpeg-core/wasm-manifest.json', 'ffmpeg-core/worker.js', 'ffmpeg-core/NOTICE.txt', 'image-worker/codec-manifest.json', 'image-worker/image-engine.mjs'])
     await access(path.join(target, asset))
+  await checkImageCodecs(path.join(target, 'image-worker'))
   const manifest = JSON.parse(await readFile(path.join(target, 'ffmpeg-core/wasm-manifest.json'), 'utf8'))
   const chunks = []
   for (const chunk of manifest.chunks) {

@@ -160,7 +160,7 @@ details[open] > summary > svg { transform: rotate(180deg); }
   .categoryFilters { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 3px; }.categoryFilters button { flex-shrink: 0; font-size: 12px; padding-inline: 10px; }
   .processingStory { grid-template-columns: 1fr; padding-block: 32px; gap: 28px; }.storyCopy h2 { font-size: 29px; }
   .flowCanvas { padding-block: 24px; }.flowFile,.flowEngine { min-width: 62px; padding: 13px 8px; }.flowCanvas { gap: 8px; }.flowCanvas > svg { width: 12px; }
-  .guideRail { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 18px; padding: 0 0 12px; scrollbar-width: thin; overscroll-behavior-x: contain; }
+  .guideRail { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 18px; padding: 0 0 12px; scrollbar-width: thin; overscroll-behavior: auto; }
   .editorialCard { flex: 0 0 100%; scroll-snap-align: start; scroll-snap-stop: always; }.editorialCard h3 { font-size: 18px; }
   .railControls { display: flex; justify-content: end; align-items: center; gap: 8px; margin-top: 6px; }.railControls > span { margin-right: auto; font-size: 12px; color: var(--muted); }.railControls button { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid #cad6c2; background: white; color: var(--ink); border-radius: 50%; cursor: pointer; }.railControls button:disabled { opacity: .35; cursor: default; }
   .relatedTools ul { grid-template-columns: repeat(2,minmax(0,1fr)); }.relatedTools a { font-size: 12px; }.guideDisclosures details > div { padding-right: 0; padding-left: 0; }.toolGuideCompact .sectionHeading { align-items: center; }.toolGuideCompact h2 { font-size: 24px; }
@@ -230,6 +230,8 @@ details[open] > summary > svg { transform: rotate(180deg); }
 .editorialContent h2 { font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.25; margin: 0 0 1rem; }
 .editorialContent h3 { font-size: 1.15rem; margin: 1.6rem 0 .5rem; }
 .editorialContent p { font-size: 1rem; line-height: 1.8; margin: .7rem 0; white-space: pre-line; }
+.editorialContent nav a { display: inline-flex; align-items: center; min-height: 44px; padding-block: 8px; line-height: 1.5; text-underline-offset: 3px; }
+.editorialContent nav li + li { margin-top: 4px; }
 .homePage > .editorialContent { max-width: var(--content); margin-inline: auto; padding-inline: 24px; }
 .homePage > .editorialContent > :is(p,section,nav) { max-width: 76ch; }
 @media(max-width:760px) {
@@ -243,3 +245,440 @@ details[open] > summary > svg { transform: rotate(180deg); }
 .postTableWrap caption { text-align: left; padding: 1rem; font-weight: 600; }
 .postTags { display: flex; flex-wrap: wrap; gap: .5rem; padding: 0; list-style: none; margin: 1.5rem 0; }
 .postTags li { padding: .3rem .7rem; background: #edf3ee; border-radius: 8px; font-size: .9rem; }
+.compressionModeGuide { color: var(--ink); }
+.compressionModeGuide .modeGuideIntro { margin: 0 0 18px; font-size: 17px; font-weight: 650; line-height: 1.5; }
+.compressionModeGuide dl { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; margin: 0; }
+.compressionModeGuide dl > div { padding: 17px; border: 1px solid #d3dfce; border-radius: 9px; background: white; }
+.compressionModeGuide dt { font-size: 15px; font-weight: 700; margin-bottom: 7px; }
+.compressionModeGuide dd { margin: 0; color: #52655a; font-size: 14px; line-height: 1.7; }
+.compressionModeGuide .modeGuideNote { margin: 17px 0 0; font-size: 14px; line-height: 1.7; color: #52655a; }
+@media(max-width:600px) { .compressionModeGuide dl { grid-template-columns: minmax(0,1fr); } }
+
+/* The working compression interface: real controls and inspectable results. */
+.toolCard .workspaceSettings { padding: 20px; border: 1px solid #dce6db; background: #f7faf6; border-radius: 12px; }
+.toolCard .settings { margin: 0; gap: 20px; }
+.toolCard .imageSettings { display: grid; grid-template-columns: minmax(0,1fr); }
+.toolCard .imageSettings legend,.toolCard .settingField label { color: #263f34; font: 650 14px var(--font-sans); letter-spacing: 0; text-transform: none; }
+.toolCard .settingHelp { color: #52655a; font-size: 14px; line-height: 1.6; margin-top: 9px; }
+.toolCard .dimensionPromise { color: #325638; font-weight: 600; }
+.toolCard .imageModeGrid { display: grid; grid-template-columns: repeat(auto-fit,minmax(145px,1fr)); gap: 9px; }
+.toolCard .imageModeOption { position: relative; text-align: left; min-height: 104px; padding: 15px; border: 1px solid #cbd7ca; border-radius: 9px; background: white; color: var(--ink); cursor: pointer; font-family: var(--font-sans); }
+.toolCard .imageModeOption > span { display: block; font-size: 15px; font-weight: 700; margin-bottom: 7px; }
+.toolCard .imageModeOption > small { display: block; font-size: 13px; line-height: 1.5; color: #52655a; }
+.toolCard .imageModeOption:hover { border-color: #789362; background: #fcfef9; }
+.toolCard .imageModeOption.active { background: #eef7e4; border-color: #6b8b49; box-shadow: inset 0 0 0 1px #6b8b49; }
+.toolCard .imageModeOption:disabled { opacity: .6; cursor: not-allowed; }
+.toolCard .imageAdvancedSettings { border-top: 1px solid #dce6db; margin: 0; }
+.toolCard .imageAdvancedSettings > summary { cursor: pointer; padding: 16px 0 0; color: var(--ink); font-size: 14px; font-weight: 650; min-height: 44px; }
+.toolCard .imageAdvancedSettings > summary > span { font-weight: 400; color: #52655a; margin-left: 9px; }
+.toolCard .imageAdvancedBody { display: grid; gap: 20px; padding-top: 20px; }
+.toolCard .imageAdvancedBody .settingField { margin: 0; min-width: 0; }
+.toolCard .settingField label > output { float: right; color: #42612d; }
+.toolCard .imageAdvancedBody input[type=range] { width: 100%; min-height: 34px; accent-color: #527438; }
+.toolCard .resizeChoice { border-top: 1px solid #dce6db; padding-top: 16px; }
+.toolCard .resizeToggle { display: flex; align-items: center; gap: 10px; min-height: 44px; font-size: 14px; font-weight: 650; cursor: pointer; }
+.toolCard .resizeToggle input { width: 20px; height: 20px; accent-color: #527438; }
+.toolCard .resizeFields { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; margin: 16px 0 0; border: 0; padding: 0; }
+.toolCard .resizeFields > legend { margin-bottom: 14px; }
+.toolCard .resizeFields > p { grid-column: 1/-1; margin: 0; }
+.toolCard .numberField { min-width: 0; }
+.toolCard .numberField input,.toolCard .settingField select { min-height: 48px; width: 100%; color: var(--ink); background: white; border: 1px solid #bacbbd; border-radius: 7px; padding: 11px 13px; font: 400 16px var(--font-sans); }
+.toolCard .numberField input { padding-right: 48px; }
+.toolCard .numberSuffix { color: #52655a; font-size: 14px; right: 13px; }
+.toolCard .targetSizeBlock { min-width: 0; border: 1px solid #cbdabf; border-radius: 10px; background: white; padding: 17px; margin: 0; }
+.toolCard .targetSizeBlock > legend { padding: 0 6px; margin-left: -6px; }
+.toolCard .targetPresets { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 18px; }
+.toolCard .targetPresets button { min-height: 44px; padding: 9px 13px; border: 1px solid #c9d6c7; border-radius: 7px; background: white; color: var(--ink); cursor: pointer; font: 600 14px var(--font-sans); }
+.toolCard .targetPresets button.active { border-color: #6b8b49; background: #eef7e4; }
+.toolCard .targetCustomRow { display: grid; grid-template-columns: minmax(180px,1fr) minmax(160px,1fr); align-items: center; gap: 20px; }
+.toolCard .targetCustomRow .settingField { margin: 0; min-width: 0; }
+.toolCard .exactTarget { font-size: 14px; color: #52655a; line-height: 1.6; margin: 18px 0 0; }
+.toolCard .exactTarget strong { display: block; color: var(--ink); font-size: 18px; font-variant-numeric: tabular-nums; }
+.toolCard .targetWarning { color: #775017; }
+.toolCard .outputFormatField { margin: 0; min-width: 0; width: 100%; padding-top: 20px; }
+.toolCard .formatNotice { padding: 11px 13px; border-radius: 7px; background: #fff4dc; color: #775017; font-size: 14px; line-height: 1.6; margin-bottom: 0; }
+.toolCard :is(button,input,select,summary):focus-visible,.imageComparison :is(button,select,[tabindex]):focus-visible { outline: 3px solid #789a4c; outline-offset: 3px; }
+
+.toolCard .fileList { padding: 2px; margin: 16px -2px 0; scrollbar-gutter: stable; }
+.toolCard .resultFile { display: grid; grid-template-columns: 42px minmax(0,1fr); align-items: start; gap: 13px; padding: 18px; margin-bottom: 11px; background: white; border: 1px solid #dce5df; border-radius: 11px; }
+.toolCard .resultFile:last-child { border-bottom: 1px solid #dce5df; margin-bottom: 0; }
+.toolCard .resultFile.targetUnmetFile { border-color: #d8bc83; background: #fffefb; }
+.toolCard .fileIcon { width: 42px; min-height: 50px; padding: 8px 3px; display: grid; justify-items: center; align-content: center; gap: 4px; border-radius: 7px; font-size: 10px; }
+.toolCard .fileIcon .uiIcon { width: 19px; height: 19px; }
+.toolCard .fileTitle { display: flex; align-items: start; gap: 12px; flex-wrap: wrap; }
+.toolCard .fileTitle > strong { font-size: 15px; line-height: 1.5; overflow-wrap: anywhere; flex: 1 1 180px; }
+.toolCard .resultBadge { display: inline-flex; align-items: center; border-radius: 6px; padding: 5px 8px; font-size: 12px; line-height: 1.35; font-weight: 650; white-space: nowrap; }
+.toolCard .resultBadge.tone-good { color: #3b5722; background: #edf5e5; }
+.toolCard .resultBadge.tone-neutral { color: #465b50; background: #eff3f0; }
+.toolCard .resultBadge.tone-warning { color: #755019; background: #fff0cf; }
+.toolCard .fileMetrics { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; margin: 14px 0 0; padding: 13px 0; border-block: 1px solid #e7ece8; }
+.toolCard .fileMetrics dt { font-size: 14px; color: #52655a; margin-bottom: 6px; }
+.toolCard .fileMetrics dd { margin: 0; display: grid; gap: 4px; }
+.toolCard .fileMetrics dd strong { font-size: 18px; line-height: 1.25; font-weight: 650; font-variant-numeric: tabular-nums; }
+.toolCard .fileMetrics dd span { font-size: 14px; line-height: 1.5; color: #52655a; overflow-wrap: anywhere; }
+.toolCard .fileMetrics > div:only-child { grid-column: 1/-1; }
+.toolCard .filePendingFacts { color: #52655a; font-size: 13px; line-height: 1.6; margin: 5px 0; }
+.toolCard .fileStatus { font-size: 14px; line-height: 1.5; margin-top: 7px; }
+.toolCard .fileResultSummary { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 12px; color: #52655a; font-size: 14px; line-height: 1.5; }
+.toolCard .fileTarget,.toolCard .fileNote,.toolCard .fileError { margin: 12px 0 0; font-size: 14px; line-height: 1.6; }
+.toolCard .fileTarget { padding: 10px 12px; border-radius: 7px; background: #f1f6eb; color: #3d5a2c; }
+.toolCard .fileTarget.targetWarning { background: #fff1d7; color: #755019; }
+.toolCard .fileNote { color: #52655a; }
+.toolCard .fileNote.targetWarning,.toolCard .largerNote { color: #755019; }
+.toolCard .resultDetails { margin-top: 12px; color: #52655a; font-size: 13px; }
+.toolCard .resultDetails summary { cursor: pointer; min-height: 32px; padding: 7px 0; color: #36503d; font-weight: 600; }
+.toolCard .resultDetails p { margin: 7px 0 0; font-size: 13px; line-height: 1.6; overflow-wrap: anywhere; }
+.toolCard .fileActions { grid-column: 2; display: flex; gap: 7px; align-items: center; justify-content: flex-end; flex-wrap: wrap; }
+.toolCard .fileActions .linkBtn { min-height: 44px; padding: 10px 12px; font-size: 14px; line-height: 1.5; }
+.toolCard .fileActions .compareButton { border: 1px solid #c7d5c6; background: white; }
+.toolCard .fileActions .fileDownloadButton { background: #eef5e6; color: #3e5a25; }
+.toolCard .fileActions .iconBtn { width: 44px; height: 44px; display: grid; place-items: center; }
+.toolCard .progress { height: 6px; }
+.toolCard .downloadActionsWrap { padding: 20px; margin-top: 20px; background: #f0f7e9; border-color: #c7d8bd; }
+.toolCard .downloadResultsHeading h3 { font-size: 18px; line-height: 1.4; margin: 0 0 6px; }
+.toolCard .downloadResultsHeading p { font-size: 13px; line-height: 1.6; color: #52655a; margin: 0 0 16px; }
+.toolCard .downloadActions { gap: 12px; flex-wrap: wrap; }
+.toolCard .downloadActions .downloadBtn { min-height: 48px; font-size: 14px; }
+.toolCard .downloadActions .linkBtn { min-height: 44px; font-size: 14px; }
+.toolCard .downloadSummary { font-size: 13px; line-height: 1.6; }
+
+.imageComparison { position: fixed; inset: 0; margin: auto; padding: 0; width: min(1240px,calc(100vw - 32px)); max-width: none; max-height: calc(100dvh - 32px); overflow: auto; color: var(--ink); background: white; border: 1px solid #b9c9be; border-radius: 15px; box-shadow: 0 24px 90px #081d1a55; }
+.imageComparison::backdrop { background: #10291fe0; backdrop-filter: blur(2px); }
+.comparisonShell { min-width: 0; }
+.comparisonHeader { display: flex; justify-content: space-between; align-items: start; gap: 20px; padding: 22px 24px; border-bottom: 1px solid #dce5df; }
+.comparisonEyebrow { color: #5c7157; font: 600 11px var(--font-sans); letter-spacing: 1.3px; }
+.comparisonHeader h2 { font-size: 25px; margin: 7px 0; letter-spacing: -.5px; line-height: 1.25; }
+.comparisonHeader p { font-size: 14px; line-height: 1.6; color: #52655a; margin: 0; }
+.comparisonHeader .iconBtn { width: 44px; height: 44px; flex: 0 0 44px; display: grid; place-items: center; }
+.comparisonToolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; padding: 13px 24px; }
+.comparisonToolbar label { font-size: 14px; font-weight: 650; }
+.comparisonToolbar select { background: white; border: 1px solid #bacbbd; border-radius: 7px; padding: 10px 12px; min-height: 44px; color: var(--ink); font: 400 14px var(--font-sans); }
+.comparisonToolbar > span { color: #52655a; margin-left: auto; font-size: 13px; line-height: 1.5; }
+.comparisonColumns { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1px; background: #dce5df; border-block: 1px solid #dce5df; }
+.comparisonColumns section { min-width: 0; background: white; }
+.comparisonFacts { padding: 15px 20px; min-height: 104px; }
+.comparisonFacts > div { display: flex; align-items: baseline; gap: 12px; }
+.comparisonFacts strong { font-size: 14px; }
+.comparisonFacts small { color: #52655a; font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.comparisonFacts p { margin: 8px 0 0; color: #36503d; font-size: 13px; line-height: 1.5; }
+.comparisonFacts p span { display: block; color: #52655a; font-size: 12px; margin-top: 3px; }
+.comparisonPane { overflow: auto; height: min(46vh,420px); min-height: 230px; overscroll-behavior: contain; scrollbar-gutter: stable; background-color: #fff; background-image: linear-gradient(45deg,#e7ebe8 25%,transparent 25%),linear-gradient(-45deg,#e7ebe8 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#e7ebe8 75%),linear-gradient(-45deg,transparent 75%,#e7ebe8 75%); background-size: 20px 20px; background-position: 0 0,0 10px,10px -10px,-10px 0; }
+.comparisonCanvas { min-width: 100%; min-height: 100%; display: grid; place-items: center; }
+.comparisonCanvas img { display: block; max-width: none; max-height: none; flex-shrink: 0; }
+.comparisonFooter { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 16px 24px; }
+.comparisonFooter p { color: #52655a; font-size: 13px; line-height: 1.6; margin: 0; max-width: 650px; }
+.comparisonFooter button { white-space: nowrap; min-height: 44px; }
+@media(max-width:760px) {
+  .toolCard .workspaceSettings { padding: 15px; }
+  .toolCard .imageModeGrid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .toolCard .imageModeOption { min-height: 116px; padding: 12px; }
+  .toolCard .imageModeOption > span { font-size: 14px; }
+  .toolCard .imageModeOption > small { font-size: 12px; }
+  .toolCard .targetSizeBlock { padding: 13px; }
+  .toolCard .targetPresets { gap: 6px; }
+  .toolCard .targetPresets button { padding-inline: 11px; }
+  .toolCard .targetCustomRow { grid-template-columns: minmax(0,1fr); gap: 10px; }
+  .toolCard .exactTarget { margin: 0; }
+  .toolCard .exactTarget strong { display: inline; margin-left: 5px; font-size: 16px; }
+  .toolCard .imageAdvancedSettings > summary > span { display: block; margin: 6px 0 0 15px; }
+  .toolCard .resizeFields { grid-template-columns: minmax(0,1fr); }
+  .toolCard .resultFile { grid-template-columns: 34px minmax(0,1fr); padding: 14px; gap: 10px; }
+  .toolCard .fileIcon { width: 34px; min-width: 34px; min-height: 44px; }
+  .toolCard .fileTitle > strong { flex-basis: 100%; font-size: 14px; }
+  .toolCard .fileTitle { gap: 7px; }
+  .toolCard .fileMetrics { gap: 12px; margin-top: 12px; }
+  .toolCard .fileMetrics dd strong { font-size: 16px; }
+  .toolCard .fileActions { grid-column: 1/-1; }
+  .toolCard .fileActions .linkBtn { padding-inline: 10px; }
+  .toolCard .downloadActionsWrap { padding: 16px; }
+  .toolCard .downloadActions .downloadBtn { width: 100%; }
+  .imageComparison { width: calc(100vw - 16px); max-height: calc(100dvh - 16px); border-radius: 11px; }
+  .comparisonHeader { padding: 16px; gap: 12px; }
+  .comparisonHeader h2 { font-size: 21px; }
+  .comparisonHeader p { font-size: 13px; }
+  .comparisonToolbar { padding: 12px 16px; }
+  .comparisonToolbar > span { width: 100%; margin: 0; font-size: 12px; }
+  .comparisonColumns { grid-template-columns: minmax(0,1fr); }
+  .comparisonFacts { min-height: 0; padding: 12px 16px; }
+  .comparisonPane { height: 32vh; min-height: 200px; }
+  .comparisonFooter { padding: 16px; flex-direction: column; align-items: stretch; gap: 13px; }
+}
+
+/* Contextual local workflow: source, draft, active run and saved artifact. */
+.workflowWorkspace { padding: 22px; }
+.workspaceIntro { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 15px; }
+.workspaceIntro p { margin: 0; color: var(--ink); font-size: 16px; font-weight: 650; }
+.workspaceIntro > span { color: #52655a; font-size: 12px; white-space: nowrap; }
+.emptyWorkspace .dropzone { padding: 42px 20px; background: #f8fbf6; border: 1.5px dashed #a6b99e; border-radius: 11px; }
+.emptyWorkspace .dropzone h2 { margin: 0 0 10px; font-size: 21px; letter-spacing: -.5px; }
+.emptyWorkspace .dropzone .uploadIcon { width: 47px; height: 47px; margin-bottom: 16px; border-radius: 12px; }
+.workspacePrivacy { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 7px; margin: 14px 0 0; color: #536656; font-size: 12px; line-height: 1.5; }
+.workspacePrivacy .uiIcon { width: 15px; height: 15px; }
+.workspacePrivacy > span { margin-left: 6px; color: #66756c; }
+.hasFiles .dropzone { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 5px 12px; padding: 10px 16px; min-height: 64px; background: #f8faf6; border: 1px dashed #b4c5ac; }
+.hasFiles .dropzone .uploadIcon { background: transparent; color: #54703b; width: 23px; height: 23px; margin: 0; border-radius: 0; }
+.hasFiles .dropzone .uploadIcon .uiIcon { width: 20px; height: 20px; }
+.hasFiles .dropzone h2 { font-size: 14px; margin: 0; }
+.hasFiles .dropzone p { font-size: 12px; margin: 0; }
+.hasFiles .workspacePrivacy { justify-content: flex-start; margin-block: 10px 15px; }
+.workspaceScope { display: flex; align-items: center; gap: 12px; padding-block: 10px; border-top: 1px solid #e3eae1; font-size: 13px; color: #52655a; }
+.workspaceScope > strong { color: var(--ink); font-size: 14px; }
+.workspaceScope .scopeRemove { margin-left: auto; min-height: 44px; font-size: 12px; padding: 8px; }
+.selectAllFiles,.fileSelect { display: flex; align-items: center; gap: 9px; min-height: 44px; cursor: pointer; color: var(--ink); font-size: 13px; font-weight: 600; }
+.selectAllFiles input,.fileSelect input { width: 19px; height: 19px; accent-color: #506c32; margin: 0; }
+.fileSelect { justify-content: center; min-width: 38px; }
+.workflowForm { min-width: 0; }
+.selectedSourceSummary { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 14px; margin: 1px 0 14px; font-size: 13px; line-height: 1.5; }
+.selectedSourceSummary strong { overflow-wrap: anywhere; min-width: 0; }
+.selectedSourceSummary span { color: #52655a; white-space: nowrap; }
+.workflowWorkspace .workspaceSettings { margin: 0; padding: 16px; border-radius: 10px; background: #f7f9f5; border: 1px solid #dae3d6; }
+.settingsHeading { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 12px; }
+.settingsHeading > div { display: flex; align-items: center; flex-wrap: wrap; gap: 2px 12px; min-width: 0; }
+.settingsHeading strong { font-size: 15px; }
+.settingsHeading span { color: #5a6c5b; font-size: 12px; }
+.settingsHeading .linkBtn { font-size: 12px; padding: 6px 9px; min-height: 44px; }
+.workflowWorkspace .settings { display: grid; grid-template-columns: minmax(0,1fr); gap: 15px; }
+.workflowWorkspace .settingBlock { margin: 0; padding: 0; border: 0; min-width: 0; }
+.workflowWorkspace .settingBlock > legend { margin: 0 0 8px; padding: 0; font-size: 13px; line-height: 1.5; }
+.workflowWorkspace .imageModeGrid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 5px; }
+.workflowWorkspace .imageModeOption { min-height: 44px; padding: 10px 8px; border: 1px solid #cbd6c7; border-radius: 6px; box-shadow: none; text-align: center; }
+.workflowWorkspace .imageModeOption > span { margin: 0; font-size: 13px; line-height: 1.5; font-weight: 600; }
+.workflowWorkspace .imageModeOption.active { background: #e8f2da; border-color: #7d9956; box-shadow: inset 0 0 0 1px #7d9956; }
+.workflowWorkspace .settingHelp { margin: 6px 0 0; font-size: 12px; line-height: 1.55; color: #536650; }
+.customQualityLabel { margin-left: 10px; padding: 3px 7px; border-radius: 4px; background: #edf1e7; color: #58713e; font-size: 11px; font-weight: 600; }
+.workflowWorkspace .qualityControl { margin: 0; }
+.workflowWorkspace .qualityControl label { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 13px; margin: 0; }
+.workflowWorkspace .qualityControl input { width: 100%; min-height: 44px; margin: 0; accent-color: #537236; }
+.workflowWorkspace .qualityControl .settingHelp { margin-top: -3px; }
+.workflowWorkspace .resizeChoice { border-top: 1px solid #dce4d7; margin: 0; padding-top: 7px; }
+.workflowWorkspace .resizeToggle { font-size: 13px; margin: 0; min-height: 44px; }
+.workflowWorkspace .resizeToggle > span { margin-left: auto; color: #64745e; font-weight: 400; font-size: 12px; }
+.workflowWorkspace .resizeFields { margin-top: 7px; gap: 12px; }
+.workflowWorkspace .settingField label { font-size: 13px; margin-bottom: 7px; }
+.workflowWorkspace .numberField input,.workflowWorkspace .settingField select { min-height: 44px; font-size: 15px; padding-block: 9px; }
+.workflowWorkspace .outputFormatField { padding: 0 0 14px; margin: 0 0 14px; max-width: none; border-bottom: 1px solid #dce4d7; display: grid; grid-template-columns: 78px minmax(180px,320px) minmax(0,1fr); align-items: center; gap: 5px 12px; }
+.workflowWorkspace .outputFormatField > label { margin: 0; }
+.workflowWorkspace .outputFormatField > .settingHelp { grid-column: 3; margin: 0; }
+.workflowWorkspace .outputFormatField > .formatNotice { grid-column: 2/-1; }
+.workflowWorkspace .formatNotice { font-size: 12px; padding: 8px 10px; }
+.workflowWorkspace .targetSizeBlock { padding: 12px; border-radius: 8px; }
+.workflowWorkspace .targetSizeBlock legend { font-size: 13px; }
+.workflowWorkspace .targetPresets { gap: 5px; margin-bottom: 12px; }
+.workflowWorkspace .targetPresets button { min-height: 44px; padding: 8px 11px; font-size: 12px; }
+.workflowWorkspace .targetCustomRow { grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 14px; }
+.workflowWorkspace .exactTarget { margin: 16px 0 0; font-size: 12px; line-height: 1.6; }
+.workflowWorkspace .exactTarget strong { display: inline; font-size: 14px; }
+.settingsValidation { padding: 11px 13px; margin: 12px 0 0; border-radius: 7px; border: 1px solid #dabd8e; color: #755017; background: #fff8e9; font-size: 13px; line-height: 1.6; }
+.selectionHint,.mixedBatchHint { color: #576853; font-size: 13px; line-height: 1.6; margin: 8px 0 16px; }
+.workflowActionBar { position: sticky; top: 76px; z-index: 5; display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 15px 0; margin-top: 5px; border-bottom: 1px solid #dce5d8; background: #fff; box-shadow: 0 9px 12px -14px #19332388; }
+.workflowActionBar + .workspaceSettings,.workflowActionBar + .selectedSourceSummary { margin-top: 16px; }
+.workflowPhase { color: var(--ink); font-size: 14px; font-weight: 650; line-height: 1.5; }
+.workflowPhase.isDirty { color: #806020; }
+.workflowActionContext { min-width: 0; flex: 1 1 180px; }
+.workflowActionContext > p { color: #61705c; margin: 4px 0 0; font-size: 12px; line-height: 1.5; }
+.workflowPrimaryActions { display: flex; justify-content: flex-end; align-items: center; flex-wrap: wrap; gap: 8px; flex: 0 1 auto; }
+.workflowPrimaryActions > .compressBtn,.workflowPrimaryActions > .downloadBtn { min-height: 46px; font-size: 14px; padding: 11px 16px; white-space: nowrap; }
+.workflowWorkspace .compactDownloads { margin: 0; padding: 0; border: 0; background: transparent; }
+.compactDownloads .downloadActions { margin: 0; }
+.workflowWorkspace .compactDownloads .downloadBtn { width: auto; min-height: 46px; font-size: 14px; padding: 11px 15px; }
+.compactDownloads .downloadSummary { max-width: 240px; margin: 6px 0 0; font-size: 11px; }
+.workflowWorkspace .secondary { border: 1px solid #bbcbb0; background: #fff; color: #36502c; }
+.workspaceResultsHeading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 20px; }
+.workspaceResultsHeading h3 { margin: 0; font-size: 14px; font-weight: 650; }
+.workspaceResultsHeading > span { font-size: 12px; }
+.workflowWorkspace .fileList { max-height: none; overflow: visible; margin-top: 12px; padding: 0; }
+.workflowWorkspace .resultFile { grid-template-columns: 30px minmax(0,1fr); gap: 10px; padding: 15px; margin-bottom: 10px; border-radius: 9px; }
+.workflowWorkspace .fileLeading { width: 30px; }
+.workflowWorkspace .fileIcon { width: 30px; min-height: 34px; background: #eef3e9; padding: 6px; }
+.workflowWorkspace .fileIcon .uiIcon { width: 18px; height: 18px; }
+.workflowWorkspace .fileTitle > strong { font-size: 14px; flex-basis: 150px; }
+.workflowWorkspace .filePendingFacts { font-size: 12px; margin: 4px 0 0; }
+.workflowWorkspace .resultBadge { font-size: 11px; padding: 4px 7px; }
+.workflowWorkspace .fileMetrics { gap: 14px; padding-block: 11px; margin-top: 11px; }
+.workflowWorkspace .fileMetrics dt { font-size: 12px; }
+.workflowWorkspace .fileMetrics dd strong { font-size: 18px; }
+.workflowWorkspace .fileMetrics dd span { font-size: 12px; }
+.workflowWorkspace .fileResultSummary { gap: 5px 13px; margin-top: 10px; font-size: 12px; }
+.workflowWorkspace .fileTarget,.workflowWorkspace .fileNote,.workflowWorkspace .fileError { font-size: 12px; line-height: 1.6; margin-top: 10px; }
+.workflowWorkspace .fileStatus { font-size: 13px; }
+.workflowWorkspace .fileActions { gap: 3px 6px; }
+.workflowWorkspace .fileActions .linkBtn { font-size: 12px; padding: 9px 10px; min-height: 44px; }
+.workflowWorkspace .resultDetails { margin-top: 6px; }
+.workflowWorkspace .resultDetails summary { min-height: 44px; padding-block: 12px; font-size: 12px; }
+.workflowWorkspace .resultDetails p { font-size: 12px; margin: 5px 0; }
+.workflowConfig { display: flex; flex-wrap: wrap; gap: 3px 8px; margin: 9px 0 0; font-size: 12px; line-height: 1.6; color: #5b6b55; }
+.workflowConfig strong { color: #3d5535; font-weight: 600; }
+.previousResultNotice { display: grid; gap: 3px; padding: 10px 12px; margin: 11px 0 0; border-left: 3px solid #c6a152; background: #fff8e9; color: #7c5d24; font-size: 12px; line-height: 1.5; }
+.previousResultNotice strong { font-weight: 650; }
+.workflowWorkspace .dirtyResultFile { border-color: #d5c49c; }
+.workflowWorkspace .unselectedFile { background: #fafcf9; }
+.pngResultKind { color: #476137; }
+.extractedFiles { padding: 0; margin: 14px 0 0; list-style: none; border-top: 1px solid #e2e8df; }
+.extractedFiles > li { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 7px 0; border-bottom: 1px solid #e2e8df; }
+.extractedFiles > li > span { display: grid; gap: 3px; min-width: 0; }
+.extractedFiles strong { font-size: 12px; font-weight: 500; overflow-wrap: anywhere; }
+.extractedFiles small { font-size: 11px; color: #5b6b55; }
+.extractedFiles .linkBtn { min-height: 44px; font-size: 12px; flex-shrink: 0; }
+.workflowStatus { margin: 15px 0 0; color: #5b6b55; font-size: 12px; line-height: 1.7; }
+.workflowStatus.status-error { color: #9b4535; }
+@media(max-width:760px) {
+  .workflowWorkspace { padding: 15px; }
+  .workspaceIntro p { font-size: 14px; }
+  .workspaceIntro > span { font-size: 11px; }
+  .emptyWorkspace .dropzone { padding: 34px 12px; }
+  .emptyWorkspace .dropzone h2 { font-size: 18px; }
+  .workspacePrivacy { font-size: 11px; gap: 5px; }
+  .workspacePrivacy > span { display: block; width: 100%; margin: 3px 0 0; text-align: center; }
+  .hasFiles .workspacePrivacy > span { text-align: left; }
+  .hasFiles .dropzone { gap: 4px 8px; min-height: 56px; }
+  .hasFiles .dropzone p { display: none; }
+  .workspaceScope { gap: 7px 10px; flex-wrap: wrap; }
+  .workspaceScope > span { font-size: 11px; }
+  .workspaceScope .scopeRemove { margin-left: auto; font-size: 11px; padding-inline: 4px; }
+  .workflowWorkspace .workspaceSettings { padding: 12px; }
+  .settingsHeading { align-items: flex-start; gap: 8px; margin-bottom: 10px; }
+  .settingsHeading > div { gap: 2px 6px; }
+  .settingsHeading span { font-size: 11px; width: 100%; }
+  .settingsHeading .linkBtn { padding: 8px 5px; font-size: 11px; }
+  .workflowWorkspace .imageModeGrid { gap: 4px; grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .workflowWorkspace .imageModeOption { min-height: 44px; padding: 9px 7px; }
+  .workflowWorkspace .imageModeOption > span { font-size: 12px; }
+  .workflowWorkspace .resizeFields { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; }
+  .workflowWorkspace .resizeFields label { font-size: 11px; }
+  .workflowWorkspace .resizeToggle > span { font-size: 11px; }
+  .workflowWorkspace .outputFormatField { grid-template-columns: 54px minmax(0,1fr); gap: 4px 9px; }
+  .workflowWorkspace .outputFormatField > .settingHelp { grid-column: 2; margin-top: 3px; }
+  .workflowWorkspace .settingField select { font-size: 14px; }
+  .workflowWorkspace .targetPresets { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); }
+  .workflowWorkspace .targetPresets button { padding-inline: 6px; }
+  .workflowWorkspace .targetCustomRow { gap: 10px; grid-template-columns: minmax(0,1.2fr) minmax(0,1fr); }
+  .workflowWorkspace .targetCustomRow label { font-size: 11px; }
+  .workflowWorkspace .exactTarget { margin-top: 15px; font-size: 11px; }
+  .workflowWorkspace .exactTarget strong { display: block; margin: 0; font-size: 13px; }
+  .workflowActionBar { top: 66px; flex-wrap: wrap; gap: 10px; padding-block: 12px; }
+  .workflowActionContext { flex-basis: 100%; }
+  .workflowActionContext > p { font-size: 11px; margin-top: 2px; }
+  .workflowPrimaryActions { width: 100%; justify-content: flex-start; flex-wrap: wrap; }
+  .workflowPrimaryActions > .compressBtn,.workflowPrimaryActions > .downloadBtn { flex: 1 1 auto; font-size: 13px; }
+  .workflowWorkspace .compactDownloads { flex: 1 1 auto; }
+  .workflowWorkspace .compactDownloads .downloadBtn { width: 100%; font-size: 13px; }
+  .compactDownloads .downloadActions { display: flex; }
+  .compactDownloads .downloadSummary { max-width: none; }
+  .workspaceResultsHeading { margin-top: 17px; }
+  .workflowWorkspace .resultFile { grid-template-columns: 24px minmax(0,1fr); gap: 8px; padding: 12px; }
+  .workflowWorkspace .fileLeading,.workflowWorkspace .fileIcon { width: 24px; }
+  .fileSelect { min-width: 24px; }
+  .workflowWorkspace .fileTitle > strong { font-size: 13px; }
+  .workflowWorkspace .fileMetrics { gap: 9px; }
+  .workflowWorkspace .fileMetrics dd strong { font-size: 16px; }
+  .workflowWorkspace .fileMetrics dd span { font-size: 11px; }
+  .workflowWorkspace .fileActions { grid-column: 1/-1; }
+  .workflowConfig { gap: 2px; }
+  .workflowConfig strong { display: block; width: 100%; }
+}
+
+/* A draft dimension preview reuses source inspection, never the saved result. */
+.workflowWorkspace .resizePreview { margin-top: 12px; max-height: 190px; overflow: auto; border: 1px solid #d8e2d1; border-radius: 7px; background: #fff; }
+.resizePreview table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 12px; line-height: 1.5; }
+.resizePreview caption { text-align: left; padding: 10px 12px 7px; color: #36512d; font-size: 13px; font-weight: 600; }
+.resizePreview th,.resizePreview td { padding: 8px 12px; text-align: left; vertical-align: top; border-top: 1px solid #e3e9de; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+.resizePreview thead th { color: #5e6d56; font-weight: 500; background: #f9fbf6; }
+.resizePreview th:first-child { width: 38%; }
+.resizePreview tbody th { font-weight: 500; }
+@media(max-width:760px) { .resizePreview table { font-size: 11px; }.resizePreview th,.resizePreview td { padding: 8px; }.resizePreview caption { font-size: 12px; padding: 9px 8px 6px; } }
+
+/* Compact, bounded file gallery shared by every tool. */
+.workflowBody { display: grid; gap: 20px; padding-top: 16px; align-items: start; }
+.workspaceGallery,.workspaceConfiguration { min-width: 0; }
+.workflowBody .workspaceResultsHeading { margin-top: 0; }
+.workflowWorkspace .fileGallery { display: grid; grid-template-columns: repeat(auto-fit,minmax(170px,1fr)); gap: 10px; margin: 10px 0 0; max-height: none; overflow: visible; }
+.workflowWorkspace .fileGallery:focus-visible { outline: 2px solid #547238; outline-offset: 4px; }
+.workflowWorkspace .fileCard { position: relative; display: flex; flex-direction: column; align-items: stretch; gap: 0; min-width: 0; margin: 0; padding: 10px; border-radius: 10px; }
+.workflowWorkspace .fileCard:last-child { margin-bottom: 0; }
+.filePreview { position: relative; display: grid; place-items: center; height: 88px; width: 100%; margin-bottom: 9px; border-radius: 6px; color: #55733b; background: #f0f4eb; overflow: hidden; }
+.filePreview.hasPreview { background: repeating-conic-gradient(#edf0eb 0% 25%,#fff 0% 50%) 50% / 12px 12px; }
+.filePreview > img { width: 100%; height: 100%; object-fit: contain; }
+.filePreview > .uiIcon { width: 30px; height: 30px; }
+.filePreview > span { position: absolute; bottom: 4px; right: 5px; font: 650 10px var(--font-sans); padding: 3px 6px; background: #fff; color: #294a37; border: 1px solid #d5dfd0; border-radius: 4px; }
+.workflowWorkspace .fileCard .fileLeading { position: absolute; z-index: 1; top: 4px; left: 4px; width: 44px; }
+.workflowWorkspace .fileCard .fileLeading > .fileIcon { display: none; }
+.workflowWorkspace .fileCard .fileSelect { width: 44px; height: 44px; min-width: 44px; border-radius: 6px; background: #fffffff2; }
+.workflowWorkspace .fileCard .fileRemoveButton { position: absolute; z-index: 1; top: 4px; right: 4px; width: 44px; height: 44px; border-radius: 6px; background: #fffffff2; color: #47624c; }
+.workflowWorkspace .fileCard .fileMeta { flex: 0 1 auto; width: 100%; min-width: 0; }
+.workflowWorkspace .fileCard .fileTitle { display: block; }
+.workflowWorkspace .fileCard .fileTitle > strong { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; font-size: 12px; line-height: 1.5; min-height: 36px; overflow-wrap: anywhere; }
+.workflowWorkspace .fileCard .resultBadge { display: inline-block; margin-top: 5px; padding: 3px 6px; font-size: 10px; }
+.workflowWorkspace .fileCard .filePendingFacts { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 11px; margin-top: 3px; }
+.workflowWorkspace .fileCard .fileStatus { display: flex; gap: 5px; font-size: 11px; line-height: 1.5; margin-top: 6px; }
+.workflowWorkspace .fileCard .fileStatus .uiIcon { width: 14px; height: 16px; flex-shrink: 0; }
+.fileCardResult { display: grid; gap: 3px; margin-top: 7px; font-size: 11px; line-height: 1.5; font-variant-numeric: tabular-nums; color: #476044; }
+.fileCardResult > span:first-child { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; color: #52655a; }
+.fileCardResult .uiIcon { width: 12px; height: 12px; }
+.fileCardResult strong { color: var(--ink); font-size: 13px; }
+.cardPreviousNotice { margin: 6px 0 0; color: #78551b; background: #fff5df; border-radius: 4px; padding: 5px 6px; font-size: 11px; line-height: 1.5; }
+.fileCardDetails { margin-top: 5px; border-top: 1px solid #e4ebe0; }
+.fileCardDetails > summary { display: flex; align-items: center; justify-content: space-between; min-height: 44px; cursor: pointer; list-style: none; font-size: 11px; font-weight: 600; }
+.fileCardDetails > summary::-webkit-details-marker { display: none; }
+.fileCardDetails > summary .uiIcon { width: 14px; height: 14px; }
+.fileCardDetails[open] > summary .uiIcon { transform: rotate(180deg); }
+.cardFullName { overflow-wrap: anywhere; font-size: 12px; line-height: 1.5; margin: 0 0 8px; }
+.workflowWorkspace .fileCard .fileCardDetailBody .fileMetrics { grid-template-columns: minmax(0,1fr); gap: 10px; }
+.workflowWorkspace .fileCard .fileCardDetailBody .linkBtn { min-height: 44px; padding: 8px 0; font-size: 12px; }
+.workflowWorkspace .fileCard .fileActions { grid-column: auto; margin-top: auto; justify-content: flex-start; gap: 4px; }
+.workflowWorkspace .fileCard .fileActions > .linkBtn { flex: 1 1 auto; justify-content: center; padding: 7px 5px; font-size: 11px; min-height: 44px; }
+.workflowWorkspace .fileCard .fileActions > .linkBtn .uiIcon { width: 14px; height: 14px; }
+.galleryPagination { display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; gap: 8px; color: #52655a; font-size: 12px; margin-top: 9px; }
+.galleryPagination > div { display: flex; align-items: center; gap: 8px; }
+.galleryPagination button { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #ccd8c5; background: #fff; color: var(--ink); border-radius: 6px; cursor: pointer; }
+.galleryPagination button:disabled { opacity: .4; cursor: default; }
+.gallerySwipeHint { display: none; }
+.settingsDisclosure { border: 1px solid #dae3d6; background: #f7f9f5; border-radius: 10px; }
+.settingsDisclosure > summary { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 10px; padding: 12px 14px; min-height: 48px; cursor: pointer; font-size: 14px; font-weight: 650; list-style: none; }
+.settingsDisclosure > summary::-webkit-details-marker { display: none; }
+.settingsDisclosure > summary > span { color: #52655a; font-size: 11px; font-weight: 400; }
+.settingsDisclosure > summary > .uiIcon { margin-left: auto; width: 16px; height: 16px; }
+.settingsDisclosure[open] > summary > .uiIcon { transform: rotate(180deg); }
+.workflowWorkspace .settingsDisclosure .workspaceSettings { min-width: 0; border: 0; padding: 0 14px 14px; background: transparent; border-radius: 0; }
+.settingsDisclosure .settingsHeading { justify-content: flex-end; margin-bottom: 5px; }
+.workflowActionContext { flex: 1 1 auto; }
+@media(min-width:761px) {
+  .workspaceConfiguration .imageSettings { grid-template-columns: repeat(2,minmax(0,1fr)); align-items: start; gap: 16px 24px; }
+  .workspaceConfiguration .targetSizeBlock { grid-column: 1/-1; }
+}
+@media(max-width:760px) {
+  .workflowWorkspace .fileGallery { display: flex; align-items: flex-start; overflow-x: auto; overflow-y: visible; scroll-snap-type: x proximity; scroll-padding: 2px; padding: 3px 2px 10px; margin-inline: -2px; overscroll-behavior: auto; }
+  .workflowWorkspace .fileCard { flex: 0 0 178px; scroll-snap-align: start; }
+  .gallerySwipeHint { display: inline; font-size: 11px; }
+  .workflowBody { gap: 14px; }
+}
+
+.workflowWorkspace .fileGallery { display: flex; align-items: flex-start; overflow-x: auto; scroll-snap-type: x proximity; scroll-padding: 2px; padding: 3px 2px 10px; margin-inline: -2px; overscroll-behavior: auto; }
+.workflowWorkspace .fileCard { flex: 0 0 170px; scroll-snap-align: start; }
+.gallerySwipeHint { display: inline; font-size: 11px; }
+.galleryScrollControls { display: flex; gap: 5px; margin-left: auto; }
+.galleryScrollControls button { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #ccd8c5; background: white; border-radius: 6px; color: var(--ink); cursor: pointer; }
+.workspaceResultsHeading .summaryFailed { margin-right: 4px; }
+.settingsDisclosure { position: relative; }
+.settingsDisclosure > summary { padding-right: 112px; }
+.settingsDisclosure > summary > .uiIcon { position: absolute; right: 14px; top: 16px; }
+.settingsDisclosure .settingsHeading { position: absolute; top: 2px; right: 40px; margin: 0; }
+.hasFiles .dropzone { min-height: 48px; padding-block: 6px; }
+.workspaceScope .clearQueue { min-height: 44px; padding: 8px; margin-left: auto; color: #73523a; font-size: 12px; }
+.workspaceScope .scopeRemove + .clearQueue { margin-left: 0; }
+.cardSourceDetails { font-size: 11px; line-height: 1.6; color: #52655a; overflow-wrap: anywhere; }
+@media(max-width:480px) { .workspaceScope { flex-wrap: wrap; gap: 4px 8px; }.workspaceScope > span { font-size: 11px; } }
+.workflowWorkspace .fileCard .fileSelect,.workflowWorkspace .fileCard .fileRemoveButton { background: transparent; }
+.workflowWorkspace .fileCard .fileRemoveButton > .uiIcon { width: 26px; height: 26px; padding: 3px; background: white; border-radius: 4px; }
+.galleryScrollControls button:disabled { opacity: .35; cursor: default; }
+.workspaceConfiguration:empty { display: none; }
+
+/* Let vertical wheel and touch gestures continue to the document. */
+.workflowWorkspace .fileGallery { overscroll-behavior: auto; }
+.workflowSettingsShortcut { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 46px; padding: 10px 13px; border: 1px solid #b8c9ac; border-radius: 7px; background: #fff; color: #294c33; font: 600 13px var(--font-sans); cursor: pointer; white-space: nowrap; }
+.workflowSettingsShortcut:hover { background: #f0f6e9; border-color: #759258; }
+.workflowSettingsShortcut:focus-visible { outline: 2px solid #547238; outline-offset: 3px; }
+.workflowSettingsShortcut .uiIcon { width: 18px; height: 18px; }
+@media(max-width:760px) {
+  .workflowPrimaryActions > .workflowSettingsShortcut { flex: 0 0 auto; }
+  .workflowWorkspace .workflowPrimaryActions > .compressBtn,.workflowWorkspace .workflowPrimaryActions > .downloadBtn { width: auto; min-width: 0; flex: 1 1 140px; }
+}
