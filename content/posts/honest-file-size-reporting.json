@@ -1,65 +1,73 @@
 {
   "title": "Why compressed files sometimes get bigger",
-  "description": "Some files genuinely cannot be made smaller. Reporting that accurately is harder than reporting a fake percentage — and far more useful.",
+  "description": "An efficient file may have little room to shrink. Learn why compression can retain the original, and how conversions and resizing differ.",
   "date": "2026-09-08",
-  "updated": "2026-11-04",
+  "updated": "2026-11-23",
   "readingTime": "5 min",
   "figure": "sizebars",
-  "seoDescription": "Why honest file-size reporting matters: what happens when compression makes a file bigger, and why saying so is more useful than a flattering number.",
+  "seoDescription": "Understand real file-size savings, original-retained 0% results, and why an explicit format conversion or resize may produce a larger output.",
   "body": [
     {
       "_template": "p",
-      "text": "Try compressing a file that is already optimally compressed. Nothing happens. The bytes are already arranged as well as the format allows, so any re-encode is a fresh encoding of the same picture — and a fresh encoding is very often slightly larger than the one you already had."
+      "text": "A file may already be efficiently encoded for the quality you need. Re-encoding it can produce little benefit or a larger candidate. A smaller file is useful only if its dimensions, format and visible quality still suit the job."
     },
     {
       "_template": "p",
-      "text": "A percentage alone can be confusing here. Compare both byte counts and look for an explicit description of whether the output is smaller, unchanged or larger."
+      "text": "A percentage alone can be confusing. Compare actual byte counts and the result label: smaller, original retained, larger transformation, or target not met."
     },
     {
       "_template": "figure",
       "figure": "sizebars",
-      "caption": "Three outcomes. Only the first is a saving, and it is the only one worth celebrating."
+      "caption": "Illustrative size outcomes, not measured benchmarks. Ordinary compression retains the original when no smaller candidate is found."
     },
     {
       "_template": "h2",
-      "text": "Three outcomes, not one"
+      "text": "Three size outcomes"
     },
     {
       "_template": "p",
-      "text": "Every result here is described in the same line, with both real sizes and a percentage, because a percentage alone hides the absolute numbers. What changes is the wording:"
+      "text": "The following examples illustrate reporting rather than product performance. Savings are calculated from the actual input and output bytes, not a promised compression percentage."
     },
     {
       "_template": "ul",
       "items": [
-        "Genuinely smaller — \"12.40 MB → 4.80 MB · 61% smaller\". A real saving, stated plainly.",
-        "The same size — \"1.30 KB → 1.30 KB · no size change\". Not a failure, but not a win either, and worth saying.",
-        "Larger — \"828 B → 847 B · 2% larger than the original\", plus a sentence explaining whether that is expected."
+        "Smaller: an output below the original size provides a real, measurable reduction. Inspect quality as well as bytes before keeping it.",
+        "Original retained: an ordinary compression candidate that is not smaller is discarded. The unchanged original has 0% reduction and retains its existing metadata.",
+        "Larger transformation: a requested format conversion, resize or new ZIP archive can increase bytes. Growth is labelled larger rather than as a saving."
       ]
     },
     {
       "_template": "h2",
-      "text": "The distinction that matters: compressor or converter"
+      "text": "Compression and conversion have different goals"
     },
     {
       "_template": "p",
-      "text": "A file coming out larger is not always bad news. It depends entirely on what the tool was asked to do. An image compressor that returns a bigger file is telling you the original was already efficient. A converter that rasterises a vector into a bitmap is supposed to return a bigger file — you asked for a different format, and a different format has a different size."
+      "text": "Ordinary same-format compression tries to reduce file size while keeping the format and default dimensions. FileCompresser keeps the original if the candidate is not smaller. Explicitly choosing another format is a conversion, and a different encoding can require more bytes."
     },
     {
       "_template": "p",
-      "text": "Conflating those two cases is how you end up with a tool that claims your PDF-to-images conversion \"failed to compress\". It did not fail. It did what you asked, and the honest description depends on which job it was doing."
+      "text": "Resizing is also a separate choice. Image dimensions are preserved unless you enable resizing. A smaller image may save bytes by containing fewer pixels; that change should never be hidden inside a compression preset."
+    },
+    {
+      "_template": "h2",
+      "text": "A maximum-size target is a separate requirement"
+    },
+    {
+      "_template": "p",
+      "text": "Target size verifies the actual byte count against your maximum. A result over the limit is marked Target not met. A target does not authorize silent resizing, and a valid output alone does not mean the requested size was achieved."
     },
     {
       "_template": "callout",
       "title": "The rule",
-      "text": "Never present growth as a saving. If the output is larger, say it is larger, and say whether that was expected."
+      "text": "Never present growth as a saving. Keep the original when ordinary compression cannot reduce it, and clearly describe larger transformations or an unmet target."
     },
     {
       "_template": "h2",
-      "text": "What this is worth to you"
+      "text": "Check the actual download"
     },
     {
       "_template": "p",
-      "text": "A number you can trust is worth more than a number that flatters the tool. If every result reads 60% smaller regardless of input, then the one time you need the real answer — the file that is already optimal — you have no way to get it."
+      "text": "Review the downloaded file, not just a thumbnail or a percentage. Check dimensions, format, transparency, text readability, playback and byte counts. A retained original is unchanged, including its metadata; an encoded result can remove metadata or normalize color. Keep your source until you have verified the result."
     }
   ],
   "published": true

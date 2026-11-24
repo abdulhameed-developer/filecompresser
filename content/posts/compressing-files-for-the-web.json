@@ -12,7 +12,7 @@
   "title": "Choosing the right format for smaller web files",
   "description": "A practical guide to image formats, audio bitrate, video codecs and the limits of PDF optimization.",
   "date": "2026-09-20",
-  "updated": "2026-11-04",
+  "updated": "2026-11-24",
   "readingTime": "5 min",
   "figure": "formattree",
   "seoDescription": "Choose JPG, PNG, WebP, MP3 or MP4 for your task. Understand transparency, lossy encoding, audio bitrate and PDF optimization limits.",
@@ -29,7 +29,7 @@
       "_template": "ul",
       "items": [
         "JPG/JPEG: a practical choice for photographs. Re-encoding is lossy, and JPEG cannot store transparency.",
-        "PNG: useful for screenshots, diagrams and transparent artwork. Lossless encoding does not mean every processing pipeline leaves dimensions or colour representation unchanged. Keep the original when exact pixel preservation matters.",
+        "PNG: useful for screenshots, diagrams and transparent artwork. Maximum is the default and may reduce colors. Choose Lossless to preserve decoded pixels. Smart, Maximum and Target size may reduce colors while preserving transparency; visible color changes are possible. Original dimensions are kept unless you explicitly resize. Re-encoding can also normalize color or remove metadata.",
         "WebP: supports transparency and can be useful for compact web images. FileCompresser offers JPG, PNG and WebP output for supported still images; compare the downloaded result before publishing."
       ]
     },
@@ -64,7 +64,7 @@
     },
     {
       "_template": "p",
-      "text": "The PDF tool removes selected document metadata and rewrites the file structure. It does not downsample scanned pages or recompress embedded photos. Image-heavy or already optimized PDFs may barely shrink or become larger. Detected digitally signed and encrypted documents are refused rather than silently rewritten."
+      "text": "The PDF tool tries a structure rewrite with selected document metadata removed. It does not downsample scanned pages or recompress embedded photos. If the candidate is not smaller, the unchanged original is retained with its metadata. Detected digitally signed and encrypted documents are refused rather than silently rewritten."
     },
     {
       "_template": "h2",
@@ -72,7 +72,7 @@
     },
     {
       "_template": "p",
-      "text": "Check dimensions, transparency, text readability, playback and the reported output size. Keep the original until you have verified the download. A larger result can be reasonable when changing format; it should never be described as a saving."
+      "text": "Check dimensions, transparency, text readability, playback and the reported output size. Ordinary compression retains the original if no smaller candidate is found. An explicit format conversion or resize can increase bytes, but growth is never described as a saving. Keep your source until you have verified the download."
     }
   ],
   "published": true
