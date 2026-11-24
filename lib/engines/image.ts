@@ -1,522 +1,208 @@
-import imageCompression from 'browser-image-compression'
-import { suffixFilename, replaceExtension, mimeForExt } from '../format'
-import {
-  assertNotCancelled,
-  detectFormat,
-  assertImagePixelLimit,
-} from '../validation'
-import type {
-  CancelSignal,
-  CompressionLevel,
-  OutputFormatOption,
-  ProcessedResult,
-  ProgressCallback,
-} from '../types'
-import { ProcessingError, listenForCancellation } from '../types'
+import { suffixFilename, replaceExtension } from '../format'
+import type { CancelSignal, CompressionLevel, ImageInspection, ImageMode, ImageOutcome, OutputFormatOption, PngMode, ProcessedResult, ProgressCallback } from '../types'
+import { assertNotCancelled, listenForCancellation, ProcessingError } from '../types'
+import { imageGeometry, inspectImageHeader } from '../../workers/image-metadata.mjs'
 
 export type ImageFormat = 'jpeg' | 'png' | 'webp'
 
-/**
- * Output containers this engine can genuinely produce.
- *
- * GIF is deliberately absent: re-encoding a still image as an animated GIF would
- * be a repackage, not a conversion, so it is not offered.
- */
 export const IMAGE_OUTPUT_FORMATS: Record<ImageFormat, OutputFormatOption> = {
   jpeg: { value: 'jpeg', label: 'JPG', mimeType: 'image/jpeg' },
   png: { value: 'png', label: 'PNG', mimeType: 'image/png' },
   webp: { value: 'webp', label: 'WEBP', mimeType: 'image/webp' },
 }
 
-/** Format identifiers a dropped file can be, for defaulting the output picker. */
-const FORMAT_ALIASES: Record<string, ImageFormat> = {
-  jpeg: 'jpeg',
-  jpg: 'jpeg',
-  jfif: 'jpeg',
-  jpe: 'jpeg',
-  png: 'png',
-  webp: 'webp',
-}
+const FORMAT_ALIASES: Record<string, ImageFormat> = { jpeg: 'jpeg', jpg: 'jpeg', jfif: 'jpeg', jpe: 'jpeg', png: 'png', webp: 'webp' }
+const WORKER_URL = '/image-worker/image-engine.mjs'
+const JOB_TIMEOUT_MS = 180_000
 
 export function isImageFormat(value: unknown): value is ImageFormat {
   return value === 'jpeg' || value === 'png' || value === 'webp'
 }
 
-/**
- * Where the library's Web Worker is served from.
- *
- * Left unset, `browser-image-compression` fetches its worker from
- * cdn.jsdelivr.net. Our CSP allows same-origin scripts only, so that request is
- * blocked and the library quietly reverts to encoding on the main thread — the
- * jank the worker exists to prevent. We host it ourselves instead, so the
- * encode really does stay off the UI thread and the image never leaves the page.
- */
-const WORKER_URL = '/image-worker/browser-image-compression.js'
-
-/** Best-effort default so the picker opens on the format the user uploaded. */
+/** Filename-only hint; the encoder always verifies the real container bytes. */
 export function defaultOutputFormatFor(fileName: string): ImageFormat {
-  const i = fileName.lastIndexOf('.')
-  const ext = i >= 0 ? fileName.slice(i + 1).toLowerCase() : ''
-  return FORMAT_ALIASES[ext] ?? 'jpeg'
-}
-
-/**
- * Which output formats may be offered for a given input.
- *
- * JPEG is excluded when the source has an alpha channel, because encoding it
- * would silently flatten transparency to black. Detection needs the decoded
- * image, so the caller may pass a hint it already has.
- */
-export async function availableOutputFormats(
-  file: File,
-  signal?: CancelSignal,
-): Promise<ImageFormat[]> {
-  try {
-    const bitmap = await boundedBitmap(file)
-    const hasAlpha = hasAlphaChannel(bitmap)
-    bitmap.close()
-    assertNotCancelled(signal)
-    const all: ImageFormat[] = ['jpeg', 'png', 'webp']
-    // JPEG cannot store transparency, so offering it for an alpha source would
-    // hand back a file with black backgrounds.
-    return hasAlpha ? all.filter((f) => f !== 'jpeg') : all
-  } catch {
-    // Detection is a nicety; if it fails, offer everything and let the encoder
-    // decide. An unsatisfiable encode surfaces as a clear error, not a crash.
-    assertNotCancelled(signal)
-    return ['png', 'webp']
-  }
-}
-
-/** Exact alpha scan in small tiles; a single transparent pixel must not disappear in a downsample. */
-function hasAlphaChannel(bitmap: ImageBitmap): boolean {
-  const canvas = document.createElement('canvas')
-  canvas.width = canvas.height = 256
-  const ctx = canvas.getContext('2d', { willReadFrequently: true })
-  if (!ctx)
-    throw new ProcessingError('This browser cannot inspect image transparency.')
-  try {
-    for (let y = 0; y < bitmap.height; y += 256)
-      for (let x = 0; x < bitmap.width; x += 256) {
-        const width = Math.min(256, bitmap.width - x),
-          height = Math.min(256, bitmap.height - y)
-        ctx.clearRect(0, 0, 256, 256)
-        ctx.drawImage(bitmap, x, y, width, height, 0, 0, width, height)
-        const data = ctx.getImageData(0, 0, width, height).data
-        for (let i = 3; i < data.length; i += 4) if (data[i] < 255) return true
-      }
-    return false
-  } finally {
-    canvas.width = canvas.height = 0
-  }
-}
-
-async function boundedBitmap(file: File): Promise<ImageBitmap> {
-  await assertImagePixelLimit(file)
-  const bitmap = await createImageBitmap(file)
-  if (bitmap.width * bitmap.height > 32_000_000) {
-    bitmap.close()
-    throw new ProcessingError(
-      'This image exceeds the 32 megapixel processing limit. Resize it first.',
-    )
-  }
-  return bitmap
-}
-
-async function encodeWithCancellation(
-  file: File,
-  options: Parameters<typeof imageCompression>[1],
-  signal?: CancelSignal,
-): Promise<File> {
-  const controller = new AbortController()
-  const release = listenForCancellation(signal, () => controller.abort())
-  try {
-    return await imageCompression(file, {
-      ...options,
-      signal: controller.signal,
-    })
-  } finally {
-    release()
-  }
+  const index = fileName.lastIndexOf('.')
+  return FORMAT_ALIASES[index >= 0 ? fileName.slice(index + 1).toLowerCase() : ''] ?? 'jpeg'
 }
 
 export interface ImageCompressOptions {
+  /** Legacy media-compatible level, used only when an image mode is absent. */
   level?: CompressionLevel
-  /** 0–1. Overrides the level's default when the tool exposes a slider. */
+  mode?: ImageMode
+  /** Independent PNG policy; numeric JPEG/WebP quality never controls PNG. */
+  pngMode?: PngMode
+  /** Explicit 0–1 override in ordinary modes. Target mode has its own search. */
   quality?: number
-  /** Re-encode to a different container instead of shrinking in place. */
   outputFormat?: ImageFormat
-  /** Hard target size in bytes. The encoder searches for a quality that fits. */
+  /** Strict maximum bytes, never a rounded display value. */
   targetSize?: number
-}
-
-interface Preset {
-  maxSizeMB: number
-  maxWidthOrHeight: number
-  quality: number
-}
-
-function presetFor(level: CompressionLevel, quality?: number): Preset {
-  const base =
-    level === 'maximum'
-      ? { maxSizeMB: 0.5, maxWidthOrHeight: 1920, quality: 0.6 }
-      : { maxSizeMB: 1.5, maxWidthOrHeight: 3200, quality: 0.82 }
-  return typeof quality === 'number'
-    ? { ...base, quality: clampQuality(quality) }
-    : base
-}
-
-function clampQuality(q: number): number {
-  if (!Number.isFinite(q)) return 0.8
-  return Math.min(1, Math.max(0.1, q))
+  /** Explicit maximum dimensions. Omitted/zero bounds never resize an image. */
+  resizeMaxWidth?: number
+  resizeMaxHeight?: number
 }
 
 export interface ImageCompressResult extends ProcessedResult {
-  /** Populated when a target size was requested but could not be reached. */
+  inspection: ImageInspection
+  outcome: ImageOutcome
+}
+
+interface PipelineResult {
+  blob: Blob
+  inspection: ImageInspection
+  outcome: ImageOutcome
+  targetBytes?: number
   targetNote?: string
 }
 
-/**
- * Compress an image with a real codec.
- *
- * `browser-image-compression` runs the decode/resize/re-encode loop in a Web
- * Worker and reports the bytes it has written, so the percentage shown is
- * genuine work completed rather than a timer.
- */
-export async function compressImage(
-  file: File,
-  options: ImageCompressOptions = {},
-  onProgress?: ProgressCallback,
-  signal?: CancelSignal,
-): Promise<ImageCompressResult> {
+interface ImageProbe {
+  format: ImageFormat
+  width: number
+  height: number
+  hasAlpha: boolean
+  jpegSafe?: boolean
+}
+
+export interface ImageSourceProbe {
+  readonly file: File
+  readonly format: ImageFormat
+  /** Original display dimensions, after EXIF orientation is applied. */
+  readonly width: number
+  readonly height: number
+  readonly hasAlpha: boolean
+  /** False when full-depth opacity cannot be proved by the8-bit preview. */
+  readonly jpegSafe?: boolean
+}
+
+/** The same fit/rounding policy used by the actual encoder; never upsamples. */
+export function expectedImageGeometry(width: number, height: number, maxWidth?: number, maxHeight?: number) {
+  return imageGeometry(width, height, maxWidth, maxHeight)
+}
+
+type WorkerOutput = PipelineResult | ImageProbe
+type WorkerMessage =
+  | { type: 'progress'; progress: number; message: string }
+  | { type: 'result' | 'probe'; result: WorkerOutput }
+  | { type: 'error'; message: string; code?: string }
+
+function describeImageError(error: unknown, signal?: CancelSignal): Error {
+  if (signal?.cancelled) return new ProcessingError('Processing was cancelled.', 'cancelled')
+  if (error instanceof ProcessingError) return error
+  const candidate = error instanceof Error ? error : new Error('The image could not be processed.')
+  const code = (error as { code?: string } | null)?.code
+  if (code) return new ProcessingError(candidate.message, code)
+  if (/memory|allocation|heap|out of bounds/i.test(candidate.message))
+    return new ProcessingError('This image needs more memory than this device can provide. Try one file at a time, a smaller image, or another device. No downscaled output was returned.', 'image-memory')
+  if (/decode|invalid|corrupt|encodingerror/i.test(candidate.message))
+    return new ProcessingError('This image could not be decoded or encoded safely. It may be corrupted or unsupported by this browser.', 'invalid-image')
+  return new ProcessingError(candidate.message || 'This image could not be compressed in your browser.')
+}
+
+/** Each job owns its worker. Cancellation terminates the decoder/WASM immediately. */
+function runWorker(file: File, options: ImageCompressOptions, onProgress?: ProgressCallback, signal?: CancelSignal, probe = false): Promise<WorkerOutput> {
   assertNotCancelled(signal)
-  onProgress?.(3, 'Preparing image…')
+  if (typeof Worker === 'undefined') return Promise.reject(new ProcessingError('Image workers are unavailable.', 'worker-unavailable'))
+  return new Promise((resolve, reject) => {
+    let worker: Worker
+    try { worker = new Worker(WORKER_URL, { type: 'module', name: 'FileCompresser image encoder' }) }
+    catch { reject(new ProcessingError('Image workers are unavailable.', 'worker-unavailable')); return }
+    let settled = false
+    let release = () => {}
+    const finish = (error?: Error, result?: WorkerOutput) => {
+      if (settled) return
+      settled = true
+      clearTimeout(timer)
+      release()
+      worker.terminate()
+      if (error) reject(error)
+      else if (result) resolve(result)
+      else reject(new ProcessingError('The image worker produced no output.'))
+    }
+    const timer = setTimeout(() => finish(new ProcessingError('This image took too long to process on this device. Try one file at a time, another format, or another device. No partial output was returned.', 'image-timeout')), JOB_TIMEOUT_MS)
+    release = listenForCancellation(signal, () => finish(new ProcessingError('Processing was cancelled.', 'cancelled')))
+    worker.onmessage = (event: MessageEvent<WorkerMessage>) => {
+      const data = event.data
+      if (signal?.cancelled) { finish(new ProcessingError('Processing was cancelled.', 'cancelled')); return }
+      if (!data || typeof data.type !== 'string') { finish(new ProcessingError('The image worker returned an invalid response.')); return }
+      if (data.type === 'progress') onProgress?.(data.progress, data.message)
+      else if (data.type === 'error') finish(new ProcessingError(data.message, data.code))
+      else if (data.type === 'result' || data.type === 'probe') finish(undefined, data.result)
+    }
+    worker.onerror = () => finish(new ProcessingError('The image worker could not start in this browser.', 'worker-unavailable'))
+    try { worker.postMessage({ file, options, probe }) }
+    catch (error) { finish(describeImageError(error, signal)) }
+  })
+}
 
-  const level = options.level ?? 'recommended'
-  const preset = presetFor(level, options.quality)
-  const targetFormat = options.outputFormat
-
-  // The real container, from the file's bytes rather than its name. This decides
-  // whether the result is a *compression* of what they uploaded or a *conversion*
-  // to something else — which changes both the wording and the filename.
-  const detected = await detectFormat(file)
-  const sourceFormat =
-    detected && isImageFormat(detected) ? detected : undefined
-  const isConversion = Boolean(
-    targetFormat && sourceFormat && targetFormat !== sourceFormat,
-  )
-
+async function runFallback(file: File, options: ImageCompressOptions, onProgress?: ProgressCallback, signal?: CancelSignal, probe = false): Promise<WorkerOutput> {
+  const [{ createImageCanvasAdapter }, { runImagePipeline }] = await Promise.all([
+    import('../../workers/image-canvas.mjs'), import('../../workers/image-pipeline.mjs'),
+  ])
   assertNotCancelled(signal)
-  // Check decoded dimensions and transparency for every item, not only the first batch file.
-  try {
-    const bitmap = await boundedBitmap(file)
-    try {
-      if (
-        targetFormat === 'jpeg' &&
-        sourceFormat !== 'jpeg' &&
-        hasAlphaChannel(bitmap)
-      ) {
-        throw new ProcessingError(
-          'This image has transparency. Choose PNG, WEBP, or keep its original format.',
-        )
-      }
-    } finally {
-      bitmap.close()
-    }
-  } catch (error) {
-    throw describeImageError(error, signal)
+  const cancelled = () => Boolean(signal?.cancelled)
+  const adapter = createImageCanvasAdapter({ mainThread: true, cancelled })
+  if (probe) {
+    const header = await inspectImageHeader(file, cancelled)
+    const decoded = await adapter.decode(file, header, { width: header.width, height: header.height })
+    try { return { format: header.format as ImageFormat, width: header.width, height: header.height, hasAlpha: decoded.hasAlpha, jpegSafe: !decoded.hasAlpha && header.jpegPrecisionSafe !== false } }
+    finally { decoded.close() }
   }
+  onProgress?.(0, 'Worker unavailable; using this browser’s fallback encoder…')
+  return await runImagePipeline(file, options, adapter, { cancelled, progress: onProgress }) as PipelineResult
+}
 
-  // A target size only makes sense when we control the encoder quality, which
-  // is the lossy formats. PNG is lossless: its size is driven by dimensions and
-  // colour depth, not a quality dial, so a search would be theatre.
-  if (options.targetSize && options.targetSize > 0) {
-    if ((targetFormat ?? sourceFormat) !== 'png') {
-      try {
-        return await compressToTargetSize(
-          file,
-          options,
-          preset,
-          isConversion,
-          onProgress,
-          signal,
-        )
-      } catch (error) {
-        throw describeImageError(error, signal)
-      }
-    }
-  }
-
-  try {
-    const compressed = await encodeWithCancellation(
-      file,
-      {
-        maxSizeMB: preset.maxSizeMB,
-        maxWidthOrHeight: preset.maxWidthOrHeight,
-        initialQuality: preset.quality,
-        useWebWorker: true,
-        libURL: WORKER_URL,
-        // Only steer the encoder when the output container is known; otherwise keep
-        // the source format so a PNG stays a PNG.
-        fileType: mimeForExt(
-          (targetFormat ?? sourceFormat) === 'jpeg'
-            ? 'jpg'
-            : (targetFormat ?? sourceFormat ?? 'jpeg'),
-        ),
-        onProgress: (p) => {
-          if (signal?.cancelled) return
-          onProgress?.(
-            Math.max(3, Math.min(97, Math.round(p))),
-            'Compressing image…',
-          )
-        },
-      },
-      signal,
-    )
-
+async function runImageJob(file: File, options: ImageCompressOptions, onProgress?: ProgressCallback, signal?: CancelSignal, probe = false): Promise<WorkerOutput> {
+  try { return await runWorker(file, options, onProgress, signal, probe) }
+  catch (error) {
     assertNotCancelled(signal)
-
-    if ((await detectFormat(compressed)) !== (targetFormat ?? sourceFormat))
-      throw new ProcessingError(
-        'This browser could not encode the requested image format.',
-      )
-    const outType = compressed.type || file.type || 'image/jpeg'
-    const ext = extensionForMime(outType)
-
-    onProgress?.(100, 'Done')
-    return {
-      blob: compressed,
-      filename: nameOutput(file, ext, isConversion),
-      mimeType: outType,
-      targetNote:
-        options.targetSize && (targetFormat ?? sourceFormat) === 'png'
-          ? 'PNG output has no quality target. Choose JPG or WEBP to search for a target size.'
-          : undefined,
-    }
-  } catch (e) {
-    throw describeImageError(e, signal)
+    if (error instanceof ProcessingError && error.code === 'worker-unavailable') return runFallback(file, options, onProgress, signal, probe)
+    throw error
   }
 }
 
-/**
- * Name the result honestly.
- *
- * Re-encoding a JPG to another JPG is compression, so it keeps the original
- * stem plus "-compressed". Only a genuine change of container earns
- * "-converted", which is what tells the user the format actually moved.
- */
-function nameOutput(file: File, ext: string, isConversion: boolean): string {
-  return isConversion
-    ? replaceExtension(suffixFilename(file.name, '-converted'), ext)
-    : suffixFilename(replaceExtension(file.name, ext), '-compressed')
-}
-
-/** Lowest and highest quality the search will consider, and how many attempts. */
-const MIN_QUALITY = 0.12
-const MAX_QUALITY = 0.95
-const MAX_ATTEMPTS = 9
-
-/**
- * Find the highest quality whose encoded size fits the user's target.
- *
- * This is a real binary search over the encoder's quality parameter: each step
- * produces an actual encoded image and is measured against the real byte target.
- * The bounded search keeps the highest-quality candidate it finds within the target;
- * encoder rounding means this is not a guarantee of a mathematical optimum.
- *
- * If even the lowest quality overshoots, we return that smallest result *and say
- * so* — we never claim the target was hit when it was not, and we never pad or
- * truncate output to make the number look right.
- */
-async function compressToTargetSize(
-  file: File,
-  options: ImageCompressOptions,
-  preset: Preset,
-  isConversion: boolean,
-  onProgress?: ProgressCallback,
-  signal?: CancelSignal,
-): Promise<ImageCompressResult> {
-  const target = options.targetSize as number
-  const targetFormat = options.outputFormat
-  const detected = await detectFormat(file)
-  const sourceFormat = detected && isImageFormat(detected) ? detected : 'jpeg'
-  const effectiveFormat = targetFormat ?? sourceFormat
-  const fileType = mimeForExt(
-    effectiveFormat === 'jpeg' ? 'jpg' : effectiveFormat,
-  )
-
-  let lo = MIN_QUALITY
-  let hi = MAX_QUALITY
-  let best: File | null = null
-  let attempts = 0
-
-  while (attempts < MAX_ATTEMPTS) {
+/** Inspect alpha off the UI thread before offering a JPEG conversion. */
+export async function availableOutputFormats(file: File, signal?: CancelSignal, onProbe?: (probe: ImageSourceProbe) => void): Promise<ImageFormat[]> {
+  let probe: ImageProbe
+  try {
+    const result = await runImageJob(file, {}, undefined, signal, true)
     assertNotCancelled(signal)
-    attempts++
-
-    const mid = (lo + hi) / 2
-    // Each attempt is a genuine encode, so the bar reflects real work done.
-    const progressFloor = 3 + ((attempts - 1) / MAX_ATTEMPTS) * 90
-    const progressCeil = 3 + (attempts / MAX_ATTEMPTS) * 90
-
-    const encoded = await encodeAtQuality(file, {
-      quality: mid,
-      maxWidthOrHeight: preset.maxWidthOrHeight,
-      fileType,
-      onProgress: (p) => {
-        if (signal?.cancelled) return
-        onProgress?.(
-          Math.round(
-            progressFloor +
-              (Math.max(0, Math.min(100, p)) / 100) *
-                (progressCeil - progressFloor),
-          ),
-          `Trying to reach your target size (attempt ${attempts} of ${MAX_ATTEMPTS})…`,
-        )
-      },
-      signal,
-    })
-
+    if (!('hasAlpha' in result) || !isImageFormat(result.format) || typeof result.hasAlpha !== 'boolean' ||
+        !Number.isInteger(result.width) || !Number.isInteger(result.height) || result.width <= 0 || result.height <= 0 || result.width * result.height > 32_000_000 ||
+        result.jpegSafe !== undefined && typeof result.jpegSafe !== 'boolean')
+      throw new ProcessingError('Image inspection did not return valid source dimensions and transparency information.')
+    probe = result
+  } catch {
     assertNotCancelled(signal)
-
-    if (encoded.size <= target) {
-      // Fits — keep it and try to claw quality back.
-      best = encoded
-      lo = mid
-    } else {
-      // Too big — drop quality.
-      hi = mid
-    }
-
-    // No meaningful room left to search.
-    if (hi - lo < 0.01) break
+    // A failed optional preview never permits a destructive JPEG conversion.
+    // Actual processing validates again and provides the actionable error.
+    return ['png', 'webp']
   }
-
+  // An optional UI observer cannot downgrade a valid format decision. The
+  // caller's cancellation/generation token still governs stale probe handling.
+  try { onProbe?.(Object.freeze({ file, ...probe })) } catch {}
   assertNotCancelled(signal)
-
-  // Nothing reached the target. Return the smallest real encode we made, and be
-  // explicit that the target was not met.
-  if (!best) {
-    const smallest = await encodeAtQuality(file, {
-      quality: MIN_QUALITY,
-      maxWidthOrHeight: preset.maxWidthOrHeight,
-      fileType,
-      signal,
-    })
-    assertNotCancelled(signal)
-
-    const outType = smallest.type || file.type || 'image/jpeg'
-    const ext = extensionForMime(outType)
-
-    onProgress?.(100, 'Done')
-    return {
-      blob: smallest,
-      filename: nameOutput(file, ext, isConversion),
-      mimeType: outType,
-      targetNote: `We compressed this as far as possible, but the smallest version is still ${formatKb(smallest.size)}. The target of ${formatKb(target)} could not be reached within the supported quality and dimension limits.`,
-    }
-  }
-
-  const outType = best.type || file.type || 'image/jpeg'
-  const ext = extensionForMime(outType)
-
-  onProgress?.(100, 'Done')
-  return {
-    blob: best,
-    filename: nameOutput(file, ext, isConversion),
-    mimeType: outType,
-  }
+  return probe.hasAlpha || probe.jpegSafe === false ? ['png', 'webp'] : ['jpeg', 'png', 'webp']
 }
 
-/**
- * One encode at a fixed quality.
- *
- * `maxSizeMB` is left unbounded so the library does not run its own extra
- * quality-reduction loop: we need each attempt's size to reflect exactly the
- * quality we asked for, or the search would be measuring the wrong thing.
- */
-async function encodeAtQuality(
-  file: File,
-  config: {
-    quality: number
-    maxWidthOrHeight: number
-    fileType?: string
-    onProgress?: (p: number) => void
-    signal?: CancelSignal
-  },
-): Promise<File> {
-  assertNotCancelled(config.signal)
-  const bitmap = await boundedBitmap(file)
-  const canvas = document.createElement('canvas')
+export async function compressImage(file: File, options: ImageCompressOptions = {}, onProgress?: ProgressCallback, signal?: CancelSignal): Promise<ImageCompressResult> {
+  const started = performance.now()
+  assertNotCancelled(signal)
+  const mode = options.mode ?? (options.targetSize && options.targetSize > 0 ? 'target' : options.level === 'maximum' ? 'maximum' : 'balanced')
   try {
-    const scale = Math.min(
-      1,
-      config.maxWidthOrHeight / Math.max(bitmap.width, bitmap.height),
-    )
-    canvas.width = Math.max(1, Math.round(bitmap.width * scale))
-    canvas.height = Math.max(1, Math.round(bitmap.height * scale))
-    const ctx = canvas.getContext('2d')
-    if (!ctx) throw new ProcessingError('This browser cannot encode images.')
-    ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height)
-    const type = config.fileType ?? file.type
-    const blob = await new Promise<Blob>((resolve, reject) =>
-      canvas.toBlob(
-        (value) =>
-          value
-            ? resolve(value)
-            : reject(
-                new ProcessingError('The image encoder produced no output.'),
-              ),
-        type,
-        config.quality,
-      ),
-    )
-    assertNotCancelled(config.signal)
-    if (blob.type !== type)
-      throw new ProcessingError(
-        'This browser does not support the requested output format.',
-      )
-    config.onProgress?.(100)
-    return new File([blob], file.name, { type: blob.type })
-  } finally {
-    bitmap.close()
-    canvas.width = canvas.height = 0
-  }
-}
-
-function formatKb(bytes: number): string {
-  const kb = bytes / 1024
-  if (kb < 1024) return `${kb.toFixed(0)} KB`
-  return `${(kb / 1024).toFixed(2)} MB`
-}
-
-function describeImageError(e: unknown, signal?: CancelSignal): Error {
-  if (signal?.cancelled)
-    return new ProcessingError('Processing was cancelled.', 'cancelled')
-  if (e instanceof ProcessingError) return e
-
-  const message = e instanceof Error ? e.message : ''
-  if (/abort/i.test(message)) {
-    return new ProcessingError('Processing was cancelled.', 'cancelled')
-  }
-  if (/memory|allocation|heap|out of bounds/i.test(message)) {
-    return new ProcessingError(
-      'This image is too large for this device to process in the browser. Try a smaller file, or a device with more memory.',
-    )
-  }
-  if (/decode|unsupported|invalid|not supported/i.test(message)) {
-    return new ProcessingError(
-      'This image could not be compressed. It may be corrupted, or use a format this browser cannot decode.',
-    )
-  }
-  return new ProcessingError(
-    'This image could not be compressed in your browser.',
-  )
-}
-
-function extensionForMime(mime: string): string {
-  if (mime.includes('png')) return 'png'
-  if (mime.includes('webp')) return 'webp'
-  if (mime.includes('gif')) return 'gif'
-  return 'jpg'
+    // Reject animation and pathological headers before allocating any worker bitmap.
+    onProgress?.(0, 'Checking image…')
+    await inspectImageHeader(file, () => Boolean(signal?.cancelled))
+    const result = await runImageJob(file, { ...options, mode }, onProgress, signal)
+    assertNotCancelled(signal)
+    if (!('blob' in result)) throw new ProcessingError('The image worker produced no encoded file.')
+    const elapsedMs = Math.max(0, Math.round(performance.now() - started))
+    const format = result.inspection.outputFormat as ImageFormat
+    const ext = format === 'jpeg' ? 'jpg' : format
+    const unchanged = result.inspection.encoder === 'Original file'
+    const transformed = result.inspection.inputFormat !== result.inspection.outputFormat
+    const resized = result.inspection.inputWidth !== result.inspection.outputWidth || result.inspection.inputHeight !== result.inspection.outputHeight
+    const filename = unchanged
+      ? replaceExtension(file.name, ext)
+      : suffixFilename(replaceExtension(file.name, ext), transformed ? '-converted' : resized ? '-resized' : '-compressed')
+    return { ...result, inspection: { ...result.inspection, elapsedMs }, durationMs: elapsedMs, filename, mimeType: IMAGE_OUTPUT_FORMATS[format].mimeType }
+  } catch (error) { throw describeImageError(error, signal) }
 }

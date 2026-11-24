@@ -16,13 +16,15 @@ import type {
 } from '../types'
 import { ProcessingError, listenForCancellation } from '../types'
 import type { FFmpeg } from '@ffmpeg/ffmpeg'
+import { inspectGif, inspectGifBytes } from './gif-inspection'
+import { applyResultPolicy, unchangedResult } from '../result-policy'
 
 export interface GifOptions {
   level?: CompressionLevel
 }
 
 async function loadEngine(onProgress?: ProgressCallback): Promise<FFmpeg> {
-  onProgress?.(2, 'Loading the GIF engine (first run downloads ~30 MB)…')
+  onProgress?.(2, 'Loading the GIF engine…')
   try {
     return await getFFmpeg()
   } catch (e) {
@@ -47,19 +49,24 @@ export async function compressGif(
   signal?: CancelSignal,
 ): Promise<ProcessedResult> {
   assertNotCancelled(signal)
+  const started = performance.now()
+  onProgress?.(0, 'Checking animation dimensions, frames and timing…')
+  const source = await inspectGif(file, signal)
+  if (source.frames > 1 && source.delays.some(delay => delay === 0)) {
+    onProgress?.(100, 'Original retained')
+    return unchangedResult(file, 'image/gif', 'This animation contains unspecified frame delays. Your original was retained so its playback timing is not changed (0% reduction).')
+  }
   const ffmpeg = await loadEngine(onProgress)
 
   const level = options.level ?? 'recommended'
   const colors = level === 'maximum' ? 64 : 128
-  // Frame thinning is lossy and visible, so it is reserved for maximum mode.
-  const fps = level === 'maximum' ? 15 : 0
+  // A fixed fps=15 filter also UPsamples slower animations. Preserve the input
+  // timestamps in both modes; Maximum differs through its smaller palette.
 
   const stamp = uid()
   const inputName = `gin_${stamp}.gif`
   const outputName = `gout_${stamp}.gif`
 
-  const fpsFilter = fps > 0 ? `fps=${fps},` : ''
-  const loop = await gifLoopCount(file)
   assertNotCancelled(signal)
 
   let cancelledHere = false
@@ -80,6 +87,7 @@ export async function compressGif(
     // One libgif pass: palettegen is folded into the frame decode so the
     // animation is quantised exactly once instead of through an intermediate
     // palette file (which is what made the old two-pass version lossy twice).
+    onProgress?.(15, 'Optimizing frames…')
     detach = attachFfmpegProgress(ffmpeg, (pct) => {
       if (signal?.cancelled) return
       onProgress?.(15 + pct * 0.8, 'Optimizing frames…')
@@ -87,14 +95,20 @@ export async function compressGif(
 
     const exit = await ffmpeg.exec(
       [
+        '-min_delay',
+        '0',
         '-i',
         inputName,
         '-filter_complex',
-        `${fpsFilter}split[a][b];[a]palettegen=max_colors=${colors}:stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=3`,
+        `split[a][b];[a]palettegen=max_colors=${colors}:stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=3`,
+        '-fps_mode',
+        'passthrough',
         '-gifflags',
         '-offsetting',
         '-loop',
-        String(loop),
+        String(source.loopCount),
+        '-final_delay',
+        String(source.delays[source.delays.length - 1]),
         outputName,
       ],
       300_000,
@@ -105,6 +119,8 @@ export async function compressGif(
       )
 
     assertNotCancelled(signal)
+    detach()
+    detach = null
     onProgress?.(96, 'Finishing…')
 
     const bytes = toBytes(await ffmpeg.readFile(outputName))
@@ -114,15 +130,31 @@ export async function compressGif(
       )
     }
 
-    onProgress?.(100, 'Done')
-    return {
+    const candidate: ProcessedResult = {
       blob: new Blob([bytes], { type: 'image/gif' }),
       filename: replaceExtension(
         suffixFilename(flattenArchivePath(file.name), '-compressed'),
         'gif',
       ),
       mimeType: 'image/gif',
+      note: 'Animation dimensions, frame delays and loop count preserved. Maximum mode uses a smaller color palette; other metadata may be removed.',
     }
+    if (bytes.length < file.size) {
+      const output = inspectGifBytes(bytes, signal)
+      if (output.width !== source.width || output.height !== source.height || output.frames !== source.frames || output.loopCount !== source.loopCount || output.delays.some((delay, index) => delay !== source.delays[index]) || (source.hasTransparency && !output.hasTransparency)) {
+        onProgress?.(100, 'Original retained')
+        return unchangedResult(file, 'image/gif', 'The optimized candidate changed animation timing, dimensions or transparency. Your original was retained unchanged (0% reduction).')
+      }
+      candidate.inspection = {
+        inputWidth: source.width, inputHeight: source.height, outputWidth: output.width, outputHeight: output.height,
+        inputFormat: 'gif', outputFormat: 'gif', elapsedMs: performance.now() - started,
+        encoder: `FFmpeg GIF palette (${colors} colors)`,
+        metadataNote: 'Animation dimensions, frame delays and loop count retained; other metadata may be removed.',
+        inputHasAlpha: source.hasTransparency, outputHasAlpha: output.hasTransparency,
+      }
+    }
+    onProgress?.(100, 'Done')
+    return applyResultPolicy(file, candidate)
   } catch (e) {
     if (signal?.cancelled || cancelledHere) {
       throw new ProcessingError('Processing was cancelled.', 'cancelled')
@@ -144,20 +176,4 @@ export async function compressGif(
       }
     }
   }
-}
-async function gifLoopCount(file: File): Promise<number> {
-  const bytes = new Uint8Array(await file.arrayBuffer())
-  const marker = new TextEncoder().encode('NETSCAPE2.0')
-  for (let i = 3; i + 16 < bytes.length; i++) {
-    if (
-      bytes[i - 3] === 0x21 &&
-      bytes[i - 2] === 0xff &&
-      bytes[i - 1] === 11 &&
-      marker.every((byte, n) => bytes[i + n] === byte) &&
-      bytes[i + 11] === 3 &&
-      bytes[i + 12] === 1
-    )
-      return bytes[i + 13] | (bytes[i + 14] << 8)
-  }
-  return -1
 }
