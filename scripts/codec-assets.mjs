@@ -1,7 +1,6 @@
 import { createHash } from 'node:crypto'
-import { createReadStream } from 'node:fs'
-import { lstat, mkdtemp, open, readFile, rm } from 'node:fs/promises'
-import { tmpdir } from 'node:os'
+import { constants, createReadStream } from 'node:fs'
+import { copyFile, link, lstat, mkdir, mkdtemp, open, readFile, rm } from 'node:fs/promises'
 import path from 'node:path'
 import { createGunzip } from 'node:zlib'
 
@@ -294,6 +293,64 @@ function provenance(mode, pins, archiveUrl, assets) {
   }
 }
 
+async function codecCacheDirectory(root) {
+  // Cache identity is derived only from reviewed manifest pins. Never follow
+  // cache-directory symlinks or accept an environment/URL cache override.
+  let directory = root
+  for (const component of ['node_modules', '.cache', 'filecompresser-codecs']) {
+    directory = path.join(directory, component)
+    try { await mkdir(directory, { mode: 0o700 }) }
+    catch (error) { if (error.code !== 'EEXIST') throw error }
+    const info = await lstat(directory)
+    if (!info.isDirectory() || info.isSymbolicLink()) fail('the codec cache must use real local directories, not symbolic links')
+  }
+  return directory
+}
+
+async function readCachedArchive(filename, pins) {
+  try { await lstat(filename) }
+  catch (error) { if (error.code === 'ENOENT') return null; throw error }
+  try {
+    // A cache hit is not trust: perform the same complete source/core/archive
+    // verification used for a newly downloaded release on every reuse.
+    return await readPairedCodecArchive(filename, pins)
+  } catch (error) {
+    fail(`cached pinned archive failed verification; remove or restore the corrupted cache explicitly. ${error instanceof Error ? error.message : 'Invalid cached archive.'}`)
+  }
+}
+
+async function publishVerifiedArchive(filename, destination, pins, assets) {
+  try {
+    // Exclusive hard-link publication is atomic on this same filesystem. It
+    // exposes a complete verified inode without replacing a racing cache file.
+    await link(filename, destination)
+    return assets
+  } catch (error) {
+    if (error.code !== 'EEXIST') throw error
+    const cached = await readCachedArchive(destination, pins)
+    if (!cached) fail('the codec cache changed while a verified archive was being published')
+    return cached
+  }
+}
+
+/** Seed an offline checkout using bytes that still must match every release pin. */
+export async function seedCodecReleaseCache(root, sourceFilename) {
+  const manifest = await assertVerifiedCodecRelease(root)
+  const directory = await codecCacheDirectory(root)
+  const destination = path.join(directory, `${manifest.archiveSha256}.tar.gz`)
+  const cached = await readCachedArchive(destination, manifest)
+  if (!cached) {
+    const temporary = await mkdtemp(path.join(directory, '.seed-'))
+    try {
+      const filename = path.join(temporary, ARCHIVE_NAME)
+      await copyFile(sourceFilename, filename, constants.COPYFILE_EXCL)
+      const assets = await readPairedCodecArchive(filename, manifest)
+      await publishVerifiedArchive(filename, destination, manifest, assets)
+    } finally { await rm(temporary, { recursive: true, force: true }) }
+  }
+  return { filename: destination, archiveBytes: manifest.archiveBytes, archiveSha256: manifest.archiveSha256 }
+}
+
 /** Candidate overrides are internal QA arguments, never URLs/env bypasses. */
 export async function resolveCodecCore(root = process.cwd(), options = {}) {
   const manifest = await readCodecReleaseManifest(root)
@@ -313,12 +370,17 @@ export async function resolveCodecCore(root = process.cwd(), options = {}) {
       js: { bytes: js.length, sha256: digest(js) }, wasm: { bytes: wasm.length, sha256: digest(wasm) },
     } } }
   }
-  const temporary = await mkdtemp(path.join(tmpdir(), 'filecompresser-codec-'))
+  const directory = await codecCacheDirectory(root)
+  const destination = path.join(directory, `${manifest.archiveSha256}.tar.gz`)
+  const cached = await readCachedArchive(destination, manifest)
+  if (cached) return { ...cached, provenance: provenance('paired-release', manifest, manifest.archiveUrl, cached) }
+  const temporary = await mkdtemp(path.join(directory, '.download-'))
   try {
     const filename = path.join(temporary, ARCHIVE_NAME)
     await downloadArchive(manifest.archiveUrl, filename, manifest)
     const assets = await readPairedCodecArchive(filename, manifest)
-    return { ...assets, provenance: provenance('paired-release', manifest, manifest.archiveUrl, assets) }
+    const selected = await publishVerifiedArchive(filename, destination, manifest, assets)
+    return { ...selected, provenance: provenance('paired-release', manifest, manifest.archiveUrl, selected) }
   } finally { await rm(temporary, { recursive: true, force: true }) }
 }
 

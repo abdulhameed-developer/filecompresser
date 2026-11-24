@@ -1,5 +1,6 @@
 import { readFile, readdir } from 'node:fs/promises'
 import { checkUploads } from './check-uploads.mjs'
+import { checkImageCodecs } from './check-image-codecs.mjs'
 import { readPublicRoutes, validateRedirectRules } from './prepare-redirects.mjs'
 import { fileURLToPath } from 'node:url'
 const root = fileURLToPath(new URL('../', import.meta.url))
@@ -30,10 +31,11 @@ if (unexpected.length) {
   process.exit(1)
 }
 await checkUploads(root)
+await checkImageCodecs(fileURLToPath(new URL('../public/image-worker/', import.meta.url)))
 validateRedirectRules(JSON.parse(await readFile(new URL('../content/redirects/rules.json', import.meta.url), 'utf8')), await readPublicRoutes(root))
-console.log('Public asset allowlist, raster uploads and URL redirects passed.')
 
 const blogAssets = new Set(['pipeline', 'sizebars', 'qualitycurve', 'dataflow', 'formattree'].flatMap(name => [`${name}.webp`, `${name}-640.webp`, `${name}.jpg`]))
 for (const entry of await readdir(new URL('../public/blog/', import.meta.url), { withFileTypes: true })) {
   if (!entry.isFile() || !blogAssets.has(entry.name)) throw new Error(`Unreviewed editorial asset: ${entry.name}`)
 }
+console.log('Public asset allowlist, image codec integrity, raster uploads and URL redirects passed.')

@@ -11,6 +11,7 @@
 import { createRequire } from 'node:module'
 import { existsSync } from 'node:fs'
 import path from 'node:path'
+import { checkImageCodecDelivery } from './check-image-codecs.mjs'
 
 const PW_TOOLS = process.env.PW_TOOLS || path.join(process.env.HOME || '', 'pwtools')
 const CHROME =
@@ -53,7 +54,7 @@ for (const [name, pattern] of REQUIRED_HEADERS) {
 // The engine routes serve executable and binary payloads, so their own headers
 // are checked separately — a bad Content-Type there is how a wasm download breaks.
 const engineManifest = await (await fetch(`${BASE}/ffmpeg-core/wasm-manifest.json`)).json()
-for (const asset of [...engineManifest.chunks.map(chunk => `/ffmpeg-core/${chunk.file}`), '/image-worker/browser-image-compression.js']) {
+for (const asset of engineManifest.chunks.map(chunk => `/ffmpeg-core/${chunk.file}`)) {
   const r = await fetch(BASE + asset, { redirect: 'manual' })
   if (r.status !== 200) {
     fail('Security', `${asset} returns ${r.status}`)
@@ -66,6 +67,11 @@ for (const asset of [...engineManifest.chunks.map(chunk => `/ffmpeg-core/${chunk
   if (!r.headers.get('x-content-type-options')?.includes('nosniff')) {
     fail('Security', `${asset} is missing nosniff`)
   }
+}
+try {
+  await checkImageCodecDelivery(BASE)
+} catch (error) {
+  fail('Security', error.message)
 }
 
 // Path traversal on the asset routes must not read arbitrary files.
