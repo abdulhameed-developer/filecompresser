@@ -1,5 +1,6 @@
 import { TOOLS } from '@/lib/tools'
-import { BLOG_POSTS } from '@/lib/blog'
+import { postsByDate } from '@/lib/blog'
+import { getManagedPage } from '@/lib/managed-pages'
 import { SITE_URL } from '@/lib/seo'
 
 export const dynamic = 'force-static'
@@ -12,56 +13,47 @@ interface Entry {
   lastmod?: string
 }
 
-/**
- * The date the content was last meaningfully reviewed. Static pages are legal
- * and policy text that changes rarely; tool pages change when the registry
- * changes, which has no reliable per-tool timestamp, so they are listed without
- * one rather than carrying a fabricated date.
- */
-const REVIEWED = '2026-11-04'
-
 export function GET() {
   const entries: Entry[] = [
-    { path: '/', changefreq: 'weekly', priority: '1.0', lastmod: REVIEWED },
+    { path: '/', changefreq: 'weekly', priority: '1.0' },
     {
       path: '/about',
       changefreq: 'monthly',
       priority: '0.6',
-      lastmod: REVIEWED,
+      lastmod: getManagedPage('about').updated,
     },
-    { path: '/blog', changefreq: 'weekly', priority: '0.7', lastmod: REVIEWED },
+    { path: '/blog', changefreq: 'weekly', priority: '0.7', lastmod: getManagedPage('blog').updated },
     {
       path: '/privacy',
       changefreq: 'yearly',
       priority: '0.3',
-      lastmod: REVIEWED,
+      lastmod: getManagedPage('privacy').updated,
     },
     {
       path: '/terms',
       changefreq: 'yearly',
       priority: '0.2',
-      lastmod: REVIEWED,
+      lastmod: getManagedPage('terms').updated,
     },
     {
       path: '/disclaimer',
       changefreq: 'yearly',
       priority: '0.2',
-      lastmod: REVIEWED,
+      lastmod: getManagedPage('disclaimer').updated,
     },
     {
       path: '/contact',
       changefreq: 'yearly',
       priority: '0.2',
-      lastmod: REVIEWED,
+      lastmod: getManagedPage('contact').updated,
     },
     {
       path: '/sitemap',
       changefreq: 'monthly',
       priority: '0.2',
-      lastmod: REVIEWED,
     },
     // Each post carries its own publication date, which is a real lastmod.
-    ...BLOG_POSTS.map((post) => ({
+    ...postsByDate().map((post) => ({
       path: `/blog/${post.slug}`,
       changefreq: 'yearly',
       priority: '0.6',
