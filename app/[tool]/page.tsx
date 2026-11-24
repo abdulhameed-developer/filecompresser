@@ -12,7 +12,7 @@ import {
 import { pageMetadata, breadcrumbJsonLd, faqJsonLd, jsonLdScript, toolJsonLd } from '@/lib/seo'
 import Icon from '@/components/Icon'
 import EditorialContent from '@/components/EditorialContent'
-import { getToolContent } from '@/lib/content'
+import { getToolContent, resolveEditorialFaq } from '@/lib/content'
 
 export function generateStaticParams() {
   return [...allToolSlugs(), 'wav-to-mp3'].map((tool) => ({ tool }))
@@ -55,7 +55,7 @@ export default async function ToolPage({ params }: { params: Promise<{ tool: str
   const canonical = canonicalSlug(slug)
   const isAlias = canonical !== slug
   const content = getToolContent(tool.slug)
-  const faq = content.faqMode === 'hidden' ? [] : content.faqMode === 'custom' || content.faq.length ? content.faq : tool.faq
+  const faq = resolveEditorialFaq(content, tool.faq ?? [])
   const related = content.relatedTools.length ? content.relatedTools.map(slug => getTool(slug)!).filter(other => other.slug !== tool.slug) : relatedTools(tool)
 
   const structuredData = [
