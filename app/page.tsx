@@ -16,14 +16,12 @@ import {
 import ToolDirectory from '@/components/ToolDirectory'
 import type { Metadata } from 'next'
 import EditorialContent from '@/components/EditorialContent'
-import { getHomeContent } from '@/lib/content'
+import { getHomeContent, resolveEditorialFaq } from '@/lib/content'
 
-const homeContent = getHomeContent()
-export const metadata: Metadata = pageMetadata({
-  title: homeContent.seoTitle ?? DEFAULT_SITE_TITLE,
-  description: homeContent.seoDescription ?? DEFAULT_DESCRIPTION,
-  path: '/', absoluteTitle: true,
-})
+export function generateMetadata(): Metadata {
+  const content = getHomeContent()
+  return pageMetadata({ title: content.seoTitle ?? DEFAULT_SITE_TITLE, description: content.seoDescription ?? DEFAULT_DESCRIPTION, path: '/', absoluteTitle: true })
+}
 
 const FAQ = [
   {
@@ -32,7 +30,7 @@ const FAQ = [
   },
   {
     q: 'Which file types can I process?',
-    a: 'Image compression (JPG, PNG, WEBP), GIF optimization, MP3 re-encoding, WAV to MP3, video re-encoding to MP4, PDF optimization, and ZIP creation and extraction. Every tool runs a real encoder on your device and produces a real, downloadable file.',
+    a: 'Image compression (JPG, PNG, WEBP), GIF optimization, MP3 re-encoding, WAV to MP3, video re-encoding to MP4, PDF optimization, and ZIP creation and extraction. Processing runs on your device, and each tool explains whether it compresses, converts, packages or extracts files.',
   },
   {
     q: 'Why might my file not get smaller?',
@@ -44,12 +42,13 @@ const FAQ = [
   },
   {
     q: 'Why does the first video take so long?',
-    a: 'Video, audio and GIF tools load a WebAssembly build of FFmpeg from this site on first use — about 30 MB, cached by your browser afterwards. Later jobs can reuse the loaded engine while the tab remains open.',
+    a: 'Video, audio and GIF tools load a WebAssembly build of FFmpeg from this site on first use — about 21 MB, cached by your browser afterwards. Later jobs can reuse the loaded engine while the tab remains open.',
   },
 ]
 
 export default function HomePage() {
-  const faq = homeContent.faqMode === 'hidden' ? [] : homeContent.faqMode === 'custom' || homeContent.faq.length ? homeContent.faq : FAQ
+  const homeContent = getHomeContent()
+  const faq = resolveEditorialFaq(homeContent, FAQ)
   const hero = homeContent.hero ?? { lead: 'Smaller files.', emphasis: 'On your device.', description: 'Compress images, video, audio, GIFs, PDFs and ZIP archives with real encoders, running entirely on your device. No uploads, no accounts, no watermarks.' }
   const structuredData = [websiteJsonLd(), organizationJsonLd(), ...(faq.length ? [faqJsonLd(faq)] : [])]
 
@@ -105,7 +104,7 @@ export default function HomePage() {
 
         <ProcessingStory steps={homeContent.steps} />
         <EditorialContent content={homeContent} />
-        <FeaturedGuides posts={postsByDate().slice(0, 3).map(({ slug, title, figure, readingTime }) => ({ slug, title, figure, readingTime }))} />
+        <FeaturedGuides posts={postsByDate().slice(0, 3).map(({ slug, title, figure, readingTime, featuredImage }) => ({ slug, title, figure, readingTime, featuredImage }))} />
 
         {faq.length > 0 && <section className="homeFaq" aria-labelledby="faq-heading">
           <div className="sectionLabel">FAQ</div>

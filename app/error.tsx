@@ -32,8 +32,8 @@ export default function Error({
       <p className="notFoundCode">Something went wrong</p>
       <h1>This page could not finish.</h1>
       <p className="notFoundLead">
-        An unexpected error interrupted the page. Nothing you uploaded has been sent anywhere —
-        these tools run entirely in your browser — so trying again is safe.
+        An unexpected error interrupted this page. Try again, or return home to choose a tool.
+        Your original files stay on your device.
       </p>
 
       {error.digest && (
