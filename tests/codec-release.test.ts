@@ -1,10 +1,11 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { createHash, randomBytes } from 'node:crypto'
-import { access, mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'
+import { access, mkdir, mkdtemp, readFile, readdir, rm, symlink, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import path from 'node:path'
 import { gzipSync } from 'node:zlib'
-import { CODEC_LIMITS, CORE_MEMBERS, assertVerifiedCodecRelease, createCodecNotice, readPairedCodecArchive, resolveCodecCore, validateCodecPins, validateCodecReleaseManifest, verifyExportedCodec } from '../scripts/codec-assets.mjs'
+import { CODEC_LIMITS, CORE_MEMBERS, assertVerifiedCodecRelease, createCodecNotice, readPairedCodecArchive, resolveCodecCore, seedCodecReleaseCache, validateCodecPins, validateCodecReleaseManifest, verifyExportedCodec } from '../scripts/codec-assets.mjs'
+import { reviewedImageCodecFiles } from '../scripts/check-image-codecs.mjs'
 import { assertNoExportedToken, packageSite } from '../scripts/package-site.mjs'
 
 const hash = (bytes: Uint8Array) => createHash('sha256').update(bytes).digest('hex')
@@ -245,6 +246,113 @@ describe('development, candidate and deployment separation', () => {
   })
 })
 
+describe('verified local paired-release cache', () => {
+  const cacheDirectory = (root: string) => path.join(root, 'node_modules/.cache/filecompresser-codecs')
+
+  it('downloads once, publishes only verified bytes, then reuses the complete pair without networking', async () => {
+    const fixture = await bundle()
+    await configure(fixture.root, { version: 1, state: 'verified', archiveUrl: sourceUrl, ...fixture.pins })
+    const fetcher = vi.fn().mockImplementation(async () => new Response(fixture.compressed))
+    vi.stubGlobal('fetch', fetcher)
+    const downloaded = await resolveCodecCore(fixture.root)
+    expect(fetcher).toHaveBeenCalledTimes(1)
+    const expectedName = `${fixture.pins.archiveSha256}.tar.gz`
+    expect(await readdir(cacheDirectory(fixture.root))).toEqual([expectedName])
+    expect(await readFile(path.join(cacheDirectory(fixture.root), expectedName))).toEqual(fixture.compressed)
+    fetcher.mockRejectedValue(new Error('Offline'))
+    const cached = await resolveCodecCore(fixture.root)
+    expect(fetcher).toHaveBeenCalledTimes(1)
+    expect(cached.js).toEqual(downloaded.js)
+    expect(cached.wasm).toEqual(downloaded.wasm)
+    expect(cached.provenance).toEqual(downloaded.provenance)
+    expect(cached.provenance.mode).toBe('paired-release')
+    expect('archiveUrl' in cached.provenance && cached.provenance.archiveUrl).toBe(sourceUrl)
+  })
+
+  it('can seed a verified offline archive without weakening production provenance', async () => {
+    const fixture = await bundle()
+    await configure(fixture.root, { version: 1, state: 'verified', archiveUrl: sourceUrl, ...fixture.pins })
+    const fetcher = vi.fn().mockRejectedValue(new Error('No network permitted'))
+    vi.stubGlobal('fetch', fetcher)
+    const seeded = await seedCodecReleaseCache(fixture.root, fixture.filename)
+    expect(seeded.archiveSha256).toBe(fixture.pins.archiveSha256)
+    expect(seeded.archiveBytes).toBe(fixture.pins.archiveBytes)
+    expect(await readFile(seeded.filename)).toEqual(fixture.compressed)
+    vi.stubEnv('CF_PAGES', '1')
+    const selected = await resolveCodecCore(fixture.root)
+    expect(selected.provenance.mode).toBe('paired-release')
+    expect(selected.js).toEqual(js)
+    expect(selected.buildMetadata).toEqual(expect.objectContaining(buildMetadata))
+    expect(fetcher).not.toHaveBeenCalled()
+  })
+
+  it('fails explicitly for a same-size corrupted cache without downloading or replacing it', async () => {
+    const fixture = await bundle()
+    await configure(fixture.root, { version: 1, state: 'verified', archiveUrl: sourceUrl, ...fixture.pins })
+    const seeded = await seedCodecReleaseCache(fixture.root, fixture.filename)
+    const changed = Buffer.from(fixture.compressed)
+    changed[0] ^= 1
+    await writeFile(seeded.filename, changed)
+    const fetcher = vi.fn().mockResolvedValue(new Response(fixture.compressed))
+    vi.stubGlobal('fetch', fetcher)
+    await expect(resolveCodecCore(fixture.root)).rejects.toThrow(/cached pinned archive failed verification.*archive SHA-256/)
+    expect(fetcher).not.toHaveBeenCalled()
+    expect(await readFile(seeded.filename)).toEqual(changed)
+  })
+
+  it('rechecks inner assets on cache hits, not only the archive filename and outer hash', async () => {
+    const fixture = await bundle()
+    const pins = { ...fixture.pins, core: { ...fixture.pins.core, js: { ...fixture.pins.core.js, sha256: hash(Buffer.alloc(js.length)) } } }
+    await configure(fixture.root, { version: 1, state: 'verified', archiveUrl: sourceUrl, ...pins })
+    await mkdir(cacheDirectory(fixture.root), { recursive: true })
+    await writeFile(path.join(cacheDirectory(fixture.root), `${pins.archiveSha256}.tar.gz`), fixture.compressed)
+    const fetcher = vi.fn().mockRejectedValue(new Error('Offline'))
+    vi.stubGlobal('fetch', fetcher)
+    await expect(resolveCodecCore(fixture.root)).rejects.toThrow(/cached pinned archive failed verification.*js asset hash/)
+    expect(fetcher).not.toHaveBeenCalled()
+  })
+
+  it('does not leave a cache entry or temporary archive after failed download or seeding', async () => {
+    const fixture = await bundle()
+    await configure(fixture.root, { version: 1, state: 'verified', archiveUrl: sourceUrl, ...fixture.pins })
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(Buffer.alloc(fixture.compressed.length))))
+    await expect(resolveCodecCore(fixture.root)).rejects.toThrow('downloaded archive hash')
+    expect(await readdir(cacheDirectory(fixture.root))).toEqual([])
+    await writeFile(fixture.filename, Buffer.alloc(fixture.compressed.length))
+    await expect(seedCodecReleaseCache(fixture.root, fixture.filename)).rejects.toThrow('archive SHA-256')
+    expect(await readdir(cacheDirectory(fixture.root))).toEqual([])
+  })
+
+  it('atomically handles concurrent verified downloads without exposing partial cache files', async () => {
+    const fixture = await bundle()
+    await configure(fixture.root, { version: 1, state: 'verified', archiveUrl: sourceUrl, ...fixture.pins })
+    vi.stubGlobal('fetch', vi.fn().mockImplementation(async () => new Response(fixture.compressed)))
+    const [first, second] = await Promise.all([resolveCodecCore(fixture.root), resolveCodecCore(fixture.root)])
+    expect(first.provenance).toEqual(second.provenance)
+    expect(await readdir(cacheDirectory(fixture.root))).toEqual([`${fixture.pins.archiveSha256}.tar.gz`])
+    expect(await readFile(path.join(cacheDirectory(fixture.root), `${fixture.pins.archiveSha256}.tar.gz`))).toEqual(fixture.compressed)
+  })
+
+  it('rejects symlinked cache entries and directories instead of following them', async () => {
+    const fixture = await bundle()
+    await configure(fixture.root, { version: 1, state: 'verified', archiveUrl: sourceUrl, ...fixture.pins })
+    await mkdir(cacheDirectory(fixture.root), { recursive: true })
+    const filename = path.join(cacheDirectory(fixture.root), `${fixture.pins.archiveSha256}.tar.gz`)
+    await symlink(fixture.filename, filename)
+    const fetcher = vi.fn().mockRejectedValue(new Error('Offline'))
+    vi.stubGlobal('fetch', fetcher)
+    await expect(resolveCodecCore(fixture.root)).rejects.toThrow(/cached pinned archive failed verification.*regular file/)
+    const other = await temporary()
+    await configure(other, { version: 1, state: 'verified', archiveUrl: sourceUrl, ...fixture.pins })
+    await mkdir(path.join(other, 'node_modules'))
+    const outside = await temporary()
+    await symlink(outside, path.join(other, 'node_modules/.cache'))
+    await expect(resolveCodecCore(other)).rejects.toThrow('real local directories')
+    expect(await readdir(outside)).toEqual([])
+    expect(fetcher).not.toHaveBeenCalled()
+  })
+})
+
 describe('exported CMS credential guard', () => {
   it('fails for the exact active build token without revealing it in the error', () => {
     const canary = ['fixture', 'build', 'token', 'keep', 'private'].join('-')
@@ -268,9 +376,14 @@ describe('exported CMS credential guard', () => {
       'index.html': Buffer.from('<h1>Test export</h1>'), '404.html': Buffer.from('Missing'), '_headers': Buffer.from('/*\n'),
       'ffmpeg-core/wasm-manifest.json': Buffer.from(JSON.stringify(manifest)), 'ffmpeg-core/ffmpeg-core.js': js,
       [`ffmpeg-core/${chunk}`]: wasm, 'ffmpeg-core/worker.js': Buffer.from(''), 'ffmpeg-core/NOTICE.txt': notice,
-      'image-worker/browser-image-compression.js': Buffer.from(''),
       'admin/assets/app.js': Buffer.from('const credential="fixture-production-read-token"'),
     }
+    const imageFiles = reviewedImageCodecFiles.map(entry => {
+      const bytes = Buffer.from(`Synthetic image asset fixture: ${entry.file}\n`)
+      files[`image-worker/${entry.file}`] = bytes
+      return { ...entry, bytes: bytes.length, sha256: hash(bytes) }
+    })
+    files['image-worker/codec-manifest.json'] = Buffer.from(JSON.stringify({ version: 1, files: imageFiles }))
     for (const [filename, bytes] of Object.entries(files)) {
       const target = path.join(root, 'out', filename)
       await mkdir(path.dirname(target), { recursive: true })

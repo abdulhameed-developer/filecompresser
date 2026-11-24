@@ -355,7 +355,7 @@ describe('filename helpers', () => {
   it('computes savings honestly, including growth', () => {
     expect(savingsPercent(100, 60)).toBe(40)
     expect(savingsPercent(100, 120)).toBe(-20)
-    expect(savingsLabel(100, 100)).toBe('Similar size')
+    expect(savingsLabel(100, 100)).toBe('0% reduction')
     expect(savingsLabel(100, 120)).toBe('20% larger')
     expect(savingsPercent(0, 10)).toBeNull()
   })

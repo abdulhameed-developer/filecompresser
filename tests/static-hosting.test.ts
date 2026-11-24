@@ -42,6 +42,9 @@ describe('static media engine loading', () => {
     const headers = await readFile('public/_headers', 'utf8')
     const publicRules = headers.split('/ffmpeg-core/*')[0]
     expect(publicRules).toContain("connect-src 'self' blob: data:")
+    expect(publicRules).toContain("worker-src 'self' blob:")
+    expect(publicRules).toContain("'wasm-unsafe-eval'")
+    expect(publicRules).not.toContain("'unsafe-eval'")
     expect(publicRules).not.toContain('tina.io')
     expect(headers).toContain('/admin/*\n  ! Content-Security-Policy')
     expect(headers).toContain('Cross-Origin-Opener-Policy: same-origin-allow-popups')
@@ -59,6 +62,7 @@ describe('exported-site preview', () => {
       writeFile(path.join(directory, 'tool.html'), '<h1>Tool</h1>'),
       writeFile(path.join(directory, '404.html'), '<h1>Missing</h1>'),
       writeFile(path.join(directory, 'engine.wasm'), bytes),
+      writeFile(path.join(directory, 'image-engine.mjs'), 'export const ready = true;'),
       writeFile(path.join(directory, '_headers'), "/*\n  X-Content-Type-Options: nosniff\n  Content-Security-Policy: default-src 'self'; upgrade-insecure-requests\n/admin/*\n  ! Content-Security-Policy\n  Content-Security-Policy: default-src 'self'; connect-src https://example.test\n"),
     ])
     handler = await createStaticHandler(directory)
@@ -94,6 +98,14 @@ describe('exported-site preview', () => {
     expect(result.headers.get('x-content-type-options')).toBe('nosniff')
     expect(result.headers.get('content-security-policy')).not.toContain('upgrade-insecure-requests')
     expect((await request('/engine.wasm', { range: 'bytes=300-999' })).status).toBe(416)
+  })
+  it('serves module workers as JavaScript under nosniff rather than a binary download', async () => {
+    const result = await request('/image-engine.mjs')
+    expect(result.status).toBe(200)
+    expect(result.body.toString()).toBe('export const ready = true;')
+    expect(result.headers.get('content-type')).toBe('text/javascript; charset=utf-8')
+    expect(result.headers.get('x-content-type-options')).toBe('nosniff')
+    expect(result.headers.get('content-security-policy')).toContain("default-src 'self'")
   })
   it('does not expose hosting configuration or paths outside the export', async () => {
     expect((await request('/_headers')).status).toBe(404)

@@ -267,10 +267,15 @@ describe('blog', () => {
 })
 
 describe('honest savings reporting', () => {
+  it('does not report complete removal for a nonempty extreme reduction', () => {
+    expect(savingsSummary(52_428_801, 3133)).toContain('>99.9% smaller')
+    expect(savingsSummary(1000, 0)).toContain('100% smaller')
+  })
+
   const size = (mb: number) => mb * MB
 
   it('describes a genuine reduction with both sizes and a percentage', () => {
-    expect(savingsSummary(size(12.4), size(4.8))).toBe('12.40 MB → 4.80 MB · 61% smaller')
+    expect(savingsSummary(size(12.4), size(4.8))).toBe('12.40 MB → 4.80 MB · 61.3% smaller')
   })
 
   it('never presents growth as a saving', () => {
@@ -280,8 +285,13 @@ describe('honest savings reporting', () => {
     expect(savingsOutcome(100, 120)).toBe('larger')
   })
 
+  it('keeps the direction truthful for a one-byte difference', () => {
+    expect(savingsSummary(100000, 100001)).toContain('<0.1% larger')
+    expect(savingsSummary(100000, 99999)).toContain('<0.1% smaller')
+  })
+
   it('states plainly when nothing changed', () => {
-    expect(savingsSummary(100, 100)).toContain('no size change')
+    expect(savingsSummary(100, 100)).toContain('0% reduction')
     expect(savingsOutcome(100, 100)).toBe('similar')
   })
 
