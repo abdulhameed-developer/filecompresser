@@ -1,9 +1,9 @@
-/** Known public documents, read once at build time and rendered as escaped text. */
+/** Known public documents, read for rendering and emitted as escaped text. */
 import { readFileSync } from 'node:fs'
 import path from 'node:path'
 import type { Metadata } from 'next'
 import type { IconName } from '@/components/Icon'
-import { absoluteUrl, SITE_INDEXABLE, SITE_NAME } from './seo'
+import { pageMetadata } from './seo'
 
 export const MANAGED_PAGE_SLUGS = ['about', 'contact', 'privacy', 'terms', 'disclaimer', 'blog'] as const
 export type ManagedPageSlug = typeof MANAGED_PAGE_SLUGS[number]
@@ -127,15 +127,7 @@ export function getManagedPage(slug: ManagedPageSlug): ManagedPage {
 
 export function managedPageMetadata(slug: ManagedPageSlug): Metadata {
   const page = getManagedPage(slug)
-  const url = absoluteUrl(`/${slug}`)
-  return {
-    title: page.seoTitle,
-    description: page.seoDescription,
-    alternates: { canonical: url },
-    openGraph: { type: 'website', title: page.seoTitle, description: page.seoDescription, url, siteName: SITE_NAME },
-    twitter: { card: 'summary_large_image', title: page.seoTitle, description: page.seoDescription },
-    robots: { index: SITE_INDEXABLE, follow: true },
-  }
+  return pageMetadata({ title: page.seoTitle, description: page.seoDescription, path: `/${slug}` })
 }
 
 export function managedDateLabel(iso: string): string {

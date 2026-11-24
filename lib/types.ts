@@ -8,6 +8,29 @@ export type FileStatus =
 
 export type CompressionLevel = 'recommended' | 'maximum'
 
+/** Image modes have separate encoder policies; media retain their existing levels. */
+export type ImageMode = 'balanced' | 'high-quality' | 'maximum' | 'target'
+export type PngMode = 'lossless' | 'smart' | 'maximum' | 'target'
+export type ImageOutcome = 'reduced' | 'unchanged' | 'converted' | 'resized' | 'target-met' | 'target-unmet'
+
+/** Dimensions are decoded, orientation-normalized display pixels. */
+export interface ImageInspection {
+  inputWidth: number
+  inputHeight: number
+  outputWidth: number
+  outputHeight: number
+  inputFormat: string
+  outputFormat: string
+  elapsedMs: number
+  encoder: string
+  metadataNote: string
+  qualityUsed?: number
+  inputHasAlpha?: boolean
+  outputHasAlpha?: boolean
+  compressionKind?: 'lossless' | 'lossy' | 'original'
+  colorLimit?: number
+}
+
 /** Output containers an engine can genuinely re-encode to. */
 export type OutputFormat =
   | 'jpeg'
@@ -34,11 +57,16 @@ export type SettingValue = string | number | boolean
 
 export interface ProcessingOptions {
   level?: CompressionLevel
+  imageMode?: ImageMode
+  pngMode?: PngMode
+  resizeEnabled?: boolean
+  resizeMaxWidth?: number
+  resizeMaxHeight?: number
   quality?: number
   bitrate?: string
   resolution?: string
   outputFormat?: string
-  /** User's hard target size in bytes, from the Maximum-mode size field. */
+  /** Explicit maximum output bytes, independent from display units. */
   targetSize?: number
   asPdf?: boolean
   [key: string]: SettingValue | undefined
@@ -48,10 +76,41 @@ export interface ProcessedResult {
   blob: Blob
   filename: string
   mimeType: string
+  outcome?: ImageOutcome
+  inspection?: ImageInspection
+  durationMs?: number
+  targetBytes?: number
+  targetNote?: string
+  note?: string
+}
+
+/** A frozen run snapshot, including the UI values needed to restore its settings. */
+export interface WorkflowConfig {
+  toolSlug: string
+  engine: EngineKind
+  level: CompressionLevel
+  settings: Readonly<Record<string, SettingValue>>
+  /** Only options that affect this engine and source format. */
+  options: Readonly<ProcessingOptions>
+  fingerprint: string
+}
+
+/** Last successful output is independent of a subsequent attempt's state. */
+export interface WorkflowArtifact {
+  id: string
+  runId: string
+  config: WorkflowConfig
+  outputs: ProcessedResult[]
+  sourceIds: string[]
+  /** Snapshot denominator for collective archives, independent of later removals. */
+  sourceBytes: number
+  createdAt: number
 }
 
 export interface QueueItem {
   id: string
+  /** Present on derived download rows; identifies their original upload. */
+  sourceId?: string
   file: File
   name: string
   mimeType: string
@@ -77,6 +136,15 @@ export interface QueueItem {
   targetNote?: string
   /** For multi-output tools (ZIP extraction, PDF→images): the output files this item produced. */
   outputs?: ProcessedResult[]
+  /** Original upload fields above never become generated/extracted files. */
+  draftConfig?: WorkflowConfig
+  runConfig?: WorkflowConfig
+  appliedConfig?: WorkflowConfig
+  activeRunId?: string
+  artifact?: WorkflowArtifact
+  /** ZIP creation shares a collective artifact, owned by one original row. */
+  batchOwnerId?: string
+  dirty?: boolean
 }
 
 export interface ToolSetting {
