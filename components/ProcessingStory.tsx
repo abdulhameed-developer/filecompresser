@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Icon from './Icon'
 const DEFAULT_STEPS = [
   { title: 'Select your files', description: 'Formats and limits are checked first.' },
-  { title: 'Choose your settings', description: 'Start with Recommended. Adjust when needed.' },
+  { title: 'Choose your settings', description: 'Review quality, format and size options.' },
   { title: 'Review and download', description: 'Check quality and size before replacing an original.' },
 ]
 export default function ProcessingStory({ steps = DEFAULT_STEPS }: { steps?: { title: string; description: string }[] }) {

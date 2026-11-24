@@ -191,56 +191,21 @@ function SizeBarsFigure() {
   )
 }
 
-// ───────────────────────────── quality curve ─────────────────────────────
+// ───────────────────────────── image mode guide ─────────────────────────────
 function QualityCurveFigure() {
-  // An illustrative curve: bytes fall steeply at first, then flatten out.
-  const x0 = 70
-  const y0 = 200
-  const w = 420
-  const h = 140
-  const pts: string[] = []
-  for (let i = 0; i <= 40; i++) {
-    const q = i / 40
-    const bytes = Math.exp(-2.6 * q) * (1 - q * 0.15)
-    pts.push(`${(x0 + q * w).toFixed(1)},${(y0 - bytes * h).toFixed(1)}`)
-  }
-  const recommendedQ = 0.72
-  const maximumQ = 0.92
-  const yAt = (q: number) => y0 - Math.exp(-2.6 * q) * (1 - q * 0.15) * h
-  const xAt = (q: number) => x0 + q * w
+  // Preserve the stored figure ID, but do not imply an unmeasured numeric curve.
+  const modes = [
+    { name: 'Balanced', description: 'Balance detail and file size for a general starting point.' },
+    { name: 'High quality', description: 'Favor fine detail. A higher quality setting may save fewer bytes.' },
+    { name: 'Maximum', description: 'Prioritize a smaller output. Check for visible artifacts before using it.' },
+    { name: 'Target size', description: 'Try to meet a maximum byte size. An unreachable limit is reported clearly.' },
+  ]
   return (
-    <Figure id="fig-qualitycurve" label="Quality versus file size curve, showing that file size falls steeply at low quality then flattens. Recommended and Maximum modes are marked on the curve." height={250}>
-      <line x1={x0} y1={y0} x2={x0 + w} y2={y0} stroke={INK} />
-      <line x1={x0} y1={y0} x2={x0} y2={y0 - h} stroke={INK} />
-      <polyline points={pts.join(' ')} fill="none" stroke={DEEP} strokeWidth="2.5" />
-      <text x={x0 - 10} y={y0 + 16} textAnchor="end" fill={MUTED} fontSize="11">
-        more size
-      </text>
-      <text x={x0 - 10} y={y0 - h} textAnchor="end" fill={MUTED} fontSize="11">
-        less
-      </text>
-      <text x={x0 + w / 2} y={y0 + 34} textAnchor="middle" fill={MUTED} fontSize="11">
-        encoder quality
-      </text>
-
-      <g>
-        <line x1={xAt(maximumQ)} y1={yAt(maximumQ)} x2={xAt(maximumQ)} y2={y0} stroke={MUTED} strokeDasharray="3 3" />
-        <circle cx={xAt(maximumQ)} cy={yAt(maximumQ)} r="4" fill={INK} />
-        <text x={xAt(maximumQ) + 8} y={yAt(maximumQ) - 4} fill={INK} fontSize="11" fontFamily="var(--font-sans)" fontWeight="700">
-          Maximum · 0.6
-        </text>
-      </g>
-      <g>
-        <line x1={xAt(recommendedQ)} y1={yAt(recommendedQ)} x2={xAt(recommendedQ)} y2={y0} stroke={MUTED} strokeDasharray="3 3" />
-        <circle cx={xAt(recommendedQ)} cy={yAt(recommendedQ)} r="4" fill={DEEP} />
-        <text x={xAt(recommendedQ) - 8} y={yAt(recommendedQ) - 8} textAnchor="end" fill={INK} fontSize="11" fontFamily="var(--font-sans)" fontWeight="700">
-          Recommended · 0.82
-        </text>
-      </g>
-      <text x={12} y={24} fill={MUTED} fontSize="11">
-        The presets pick a point on this curve. Lower is smaller, and visibly so.
-      </text>
-    </Figure>
+    <div className="compressionModeGuide" id="fig-qualitycurve" role="group" aria-label="Qualitative guide to the four image compression modes">
+      <p className="modeGuideIntro">Choose for your actual output requirement</p>
+      <dl>{modes.map(mode => <div key={mode.name}><dt>{mode.name}</dt><dd>{mode.description}</dd></div>)}</dl>
+      <p className="modeGuideNote">This is qualitative guidance, not a measured size or quality chart. Original dimensions are kept unless you enable resizing. PNG starts with Maximum and has no quality slider. Maximum may reduce colors; choose Lossless when every decoded pixel must stay unchanged.</p>
+    </div>
   )
 }
 

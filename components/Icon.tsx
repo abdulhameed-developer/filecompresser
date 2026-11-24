@@ -1,7 +1,8 @@
 import type { CSSProperties } from 'react'
 
-export type IconName = 'chevron' | 'upload' | 'download' | 'image' | 'media' | 'archive' | 'shield' | 'check' | 'close' | 'menu' | 'arrow' | 'file' | 'error' | 'clock' | 'spark' | 'search' | 'arrow-left'
+export type IconName = 'chevron' | 'upload' | 'download' | 'image' | 'media' | 'archive' | 'shield' | 'check' | 'close' | 'menu' | 'arrow' | 'file' | 'error' | 'clock' | 'spark' | 'search' | 'arrow-left' | 'settings'
 const paths: Record<IconName, string> = {
+  settings: 'M10 2h4l.5 3 2 1.2 2.8-1.1 2 3.5-2.3 1.9v3l2.3 1.9-2 3.5-2.8-1.1-2 1.2-.5 3h-4l-.5-3-2-1.2-2.8 1.1-2-3.5L5 13.5v-3L2.7 8.6l2-3.5 2.8 1.1 2-1.2zM15.5 12a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0',
   search: 'M21 21l-5-5M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0', 'arrow-left': 'M20 12H4m6-6-6 6 6 6',
   chevron: 'm6 9 6 6 6-6', upload: 'M12 16V4m-5 5 5-5 5 5M4 16v4h16v-4',
   download: 'M12 4v12m-5-5 5 5 5-5M4 17v3h16v-3', image: 'M3 4h18v16H3zM3 16l5-5 4 4 3-3 6 6M16 8h.01',

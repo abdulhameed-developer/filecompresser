@@ -321,9 +321,6 @@ export default function SiteHeader() {
               className="navDropTrigger"
               aria-expanded={toolsOpen}
               aria-controls={toolsId}
-              // `aria-haspopup` tells assistive tech the trigger opens a region
-              // whose contents the button controls.
-              aria-haspopup="true"
               onClick={() => setToolsOpen((value) => !value)}
               onKeyDown={onTriggerKeyDown}
             >
