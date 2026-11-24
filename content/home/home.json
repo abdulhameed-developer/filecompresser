@@ -4,7 +4,7 @@
   "sections": [
     {
       "heading": "Choose the right output",
-      "body": "Use JPG or WebP for photographs, PNG for transparent graphics, MP4 for video and MP3 for smaller audio files. PDF optimization and ZIP tools have their own limits; check the guidance on each tool before you start."
+      "body": "Use JPG or WebP for photographs, PNG for transparent graphics, MP4 for video and MP3 for smaller audio files. PNG starts with Maximum, which may reduce colors while preserving transparency. Choose Lossless to preserve decoded pixels. PDF optimization and ZIP tools have their own limits; check each tool before you start."
     },
     {
       "heading": "Check the result before replacing your original",
@@ -17,7 +17,7 @@
   "hero": {
     "lead": "Smaller files.",
     "emphasis": "On your device.",
-    "description": "Compress images, video, audio, GIFs, PDFs and ZIP archives with real encoders, running entirely on your device. No uploads, no accounts, no watermarks."
+    "description": "Compress and convert images, video, audio, GIFs, PDFs and ZIP archives with browser tools running on your device. No uploads, no accounts, no watermarks."
   },
   "steps": [
     {
@@ -26,7 +26,7 @@
     },
     {
       "title": "Choose your settings",
-      "description": "Start with Recommended. Adjust when needed."
+      "description": "Review settings before processing."
     },
     {
       "title": "Review and download",
@@ -40,7 +40,7 @@
     },
     {
       "q": "Which file types can I process?",
-      "a": "Image compression (JPG, PNG, WEBP), GIF optimization, MP3 re-encoding, WAV to MP3, video re-encoding to MP4, PDF optimization, and ZIP creation and extraction. Every tool runs a real encoder on your device and produces a real, downloadable file."
+      "a": "Image compression (JPG, PNG, WebP), GIF optimization, MP3 re-encoding, WAV to MP3, video re-encoding to MP4, PDF optimization, and ZIP creation and extraction. Processing runs on your device; each tool explains whether it compresses, converts, packages or extracts your files."
     },
     {
       "q": "Why might my file not get smaller?",
