@@ -1,45 +1,46 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
-import { BLOG_POSTS, postImage, postsByDate } from '@/lib/blog'
+import { postImage, postsByDate } from '@/lib/blog'
 import { absoluteUrl, breadcrumbJsonLd, jsonLdScript, webPageJsonLd, SITE_NAME } from '@/lib/seo'
 import BlogImage from '@/components/BlogImage'
 import { BLOG_ART } from '@/lib/blog-art'
 import ManagedPageSections from '@/components/ManagedPageSections'
 import { getManagedPage, managedPageMetadata } from '@/lib/managed-pages'
 
-const page = getManagedPage('blog')
-const DESCRIPTION = page.seoDescription
-export const metadata = {
-  ...managedPageMetadata('blog'),
-  openGraph: { type: 'website' as const, url: absoluteUrl('/blog'), siteName: SITE_NAME, title: page.seoTitle, description: DESCRIPTION, images: [{ url: absoluteUrl('/blog/formattree.jpg'), width: 1200, height: 800 }] },
+export function generateMetadata(): Metadata {
+  const metadata = managedPageMetadata('blog')
+  const image = { url: absoluteUrl('/blog/formattree.jpg'), width: 1200, height: 800, alt: BLOG_ART.formattree.alt }
+  return { ...metadata, openGraph: { ...metadata.openGraph, images: [image] }, twitter: { ...metadata.twitter, images: [image] } }
 }
 
-const structuredData = [
-  webPageJsonLd({ name: 'filecompresser blog', description: DESCRIPTION, path: '/blog' }),
-  breadcrumbJsonLd([
-    { name: 'Home', path: '/' },
-    { name: 'Blog', path: '/blog' },
-  ]),
-  {
-    '@context': 'https://schema.org',
-    '@type': 'Blog',
-    name: 'filecompresser blog',
-    description: DESCRIPTION,
-    url: absoluteUrl('/blog'),
-    inLanguage: 'en',
-    blogPost: BLOG_POSTS.map((post) => ({
-      '@type': 'BlogPosting',
-      headline: post.title,
-      url: absoluteUrl(`/blog/${post.slug}`),
-      datePublished: post.date,
-      dateModified: post.updated ?? post.date,
-      image: absoluteUrl(postImage(post).src),
-    })),
-  },
-]
 
 export default function BlogIndexPage() {
+  const page = getManagedPage('blog')
   const posts = postsByDate()
+  const structuredData = [
+    webPageJsonLd({ name: `${SITE_NAME} blog`, description: page.seoDescription, path: '/blog' }),
+    breadcrumbJsonLd([
+      { name: 'Home', path: '/' },
+      { name: 'Blog', path: '/blog' },
+    ]),
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Blog',
+      name: `${SITE_NAME} blog`,
+      description: page.seoDescription,
+      url: absoluteUrl('/blog'),
+      inLanguage: 'en',
+      blogPost: posts.map((post) => ({
+        '@type': 'BlogPosting',
+        headline: post.title,
+        url: absoluteUrl(`/blog/${post.slug}`),
+        datePublished: post.date,
+        dateModified: post.updated ?? post.date,
+        image: absoluteUrl(postImage(post).src),
+      })),
+    },
+  ]
 
   return (
     <div className="blogPage">
@@ -60,6 +61,7 @@ export default function BlogIndexPage() {
         {page.introduction}
       </p>
 
+      {posts.length === 0 && <p>No published guides yet. <Link href="/#tools">Explore the file tools</Link>.</p>}
       <ul className="postList">
         {posts.map((post) => (
           <li key={post.slug} className="postCard">
