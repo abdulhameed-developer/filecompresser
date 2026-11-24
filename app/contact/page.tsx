@@ -6,14 +6,14 @@ import { breadcrumbJsonLd, jsonLdScript, webPageJsonLd } from '@/lib/seo'
 import { getSiteSettings } from '@/lib/site-settings'
 import SupportEmailLink from '@/components/SupportEmailLink'
 
-const page = getManagedPage('contact')
-export const metadata = managedPageMetadata('contact')
-const structuredData = [
-  webPageJsonLd({ name: 'Contact filecompresser', description: page.seoDescription, path: '/contact', dateModified: page.updated }),
-  breadcrumbJsonLd([{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact' }]),
-]
+export function generateMetadata() { return managedPageMetadata('contact') }
 
 export default function ContactPage() {
+  const page = getManagedPage('contact')
+  const structuredData = [
+    webPageJsonLd({ name: 'Contact filecompresser', description: page.seoDescription, path: '/contact', dateModified: page.updated }),
+    breadcrumbJsonLd([{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact' }]),
+  ]
   const { supportEmail } = getSiteSettings()
   const cards = page.sections.filter(section => section.placement === 'card')
   const details = page.sections.filter(section => section.placement === 'detail')
