@@ -6,7 +6,10 @@
       "heading": "What Is the Compress Any File Tool?",
       "body": "Compress Any File is a browser-based file processing tool that recognizes supported file formats and applies the relevant workflow. Instead of asking you to select an individual compressor for every file, it identifies the file type and prepares the appropriate operation.\n\nFor example, a JPG image follows an image compression process, while an MP4 video uses the video processing engine. A WAV recording can be converted into MP3, and a PDF can go through structural optimization.\n\nZIP files follow a different process. When you add a ZIP archive to this tool, its contents are extracted rather than compressed again. This distinction is important because extraction and compression are two separate file operations.\n\nThe tool is useful when you have a mixed collection of supported files and want to manage them from one interface.\n"
     },
-    {},
+    {
+      "heading": "Which File Formats Can You Process?",
+      "body": "File Compresser supports several commonly used formats. Each format has its own processing method and limitations.\n"
+    },
     {},
     {},
     {},
