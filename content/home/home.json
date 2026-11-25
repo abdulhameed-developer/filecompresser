@@ -53,7 +53,10 @@
       "heading": "Your Files Stay on Your Device",
       "body": "File Compresser processes selected files inside your browser. The files are read into the browser tab, processed using the required tools and made available for download. They are not sent to File Compresser servers for compression.\n\nBecause the work takes place in your browser, your device's memory and processing power can affect performance. Keep an original copy of important files before starting any compression task."
     },
-    {},
+    {
+      "heading": "Why Use an Online File Compression Tool?",
+      "body": "A useful file compressor should make everyday file tasks easier without hiding important details. File Compresser offers several practical benefits:\n\nFree access: Use the available tools without creating an account or paying a subscription.\nNo installation: Open the website in a supported browser instead of installing separate compression software.\nPrivate processing: Selected files are processed on your own device rather than uploaded to the website's servers.\nMultiple formats: Work with supported images, videos, audio files, PDFs and ZIP archives.\nNo watermarks: Download processed files without an added File Compresser watermark.\nActual size comparison: Review the original and output sizes to understand whether compression made a difference.\nDedicated tools: Choose a format-specific tool when you need more control over the result.\n"
+    },
     {},
     {},
     {},
