@@ -64,6 +64,10 @@
     {
       "heading": "Does Compression Always Make Files Smaller?",
       "body": "No. The result depends on the original file, its format and the selected settings. Some images are already optimized, while certain PDFs contain data that cannot be reduced through structural optimization alone.\n\nFile Compresser reports the actual result instead of promising a fixed percentage reduction. When ordinary same-format compression does not produce a smaller file, the original can be retained unchanged. Explicit conversions, resizing and ZIP creation may also increase the final file size.\n\nFor this reason, compare the actual output size and check the file quality before replacing your original.\n"
+    },
+    {
+      "heading": "Start Compressing Your Files Online",
+      "body": "You do not need several applications for common file compression and conversion tasks. File Compresser brings image, video, audio, PDF and ZIP tools together in one accessible platform.\n\nChoose the tool that matches your file and compare the result before downloading. See the Privacy Policy at https://File Compresser.com/privacy for how files are handled.\n"
     }
   ],
   "links": [
@@ -94,8 +98,7 @@
     {
       "q": "Why is my compressed file not smaller?",
       "a": "Your original file may already be efficiently compressed. The tool may retain the original if a new version does not provide a smaller result."
-    },
-    {}
+    }
   ],
   "seoTitle": "Free Online File Compressor – Compress Files Privately",
   "seoDescription": "Compress images, videos, audio and PDF files online for free. Reduce file sizes directly in your browser without uploading files or creating an account."
