@@ -15,9 +15,6 @@
       "body": "Supported formats and per-file limits appear in the upload area. Queues accept up to 500 files and 300 MB in total. Files with unsupported signatures are rejected, even if their extensions look familiar."
     }
   ],
-  "faq": [],
-  "seoTitle": "Compress Files Online — Private Browser Tools",
-  "seoDescription": "Process supported images, video, audio, GIFs, PDFs and ZIPs in one browser queue. Compare real output sizes; selected files are not uploaded.",
   "links": [
     {
       "label": "How browser-based compression works",
@@ -27,5 +24,8 @@
       "label": "What local processing means for privacy",
       "href": "/blog/what-privacy-claim-really-means"
     }
-  ]
+  ],
+  "faq": [],
+  "seoTitle": "Compress Any File Online Free Without Uploading",
+  "seoDescription": "Compress files online for free, including images, videos, audio, PDFs and ZIP files. Process multiple file types privately in your browser."
 }
