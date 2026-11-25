@@ -74,6 +74,10 @@
     {
       "q": "Is File Compresser free to use?",
       "a": "Yes. The available compression and conversion tools can be used without creating an account or paying a subscription."
+    },
+    {
+      "q": "Do I need to install any software?",
+      "a": "No. You can open File Compresser in your web browser, select a tool and process supported files directly on your device.\n"
     }
   ],
   "seoTitle": "Free Online File Compressor – Compress Files Privately",
