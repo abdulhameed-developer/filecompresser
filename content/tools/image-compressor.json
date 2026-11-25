@@ -6,7 +6,10 @@
       "heading": "What Is an Image Compressor?",
       "body": "An image compressor is a tool that reduces an image's file size by changing how its data is stored. Depending on the image format and selected method, it may remove unnecessary information, adjust image quality or reduce the number of colors.\n\nThe purpose is to create a file that is easier to upload, download, store or display online. File Compresser supports several common image formats, each with different characteristics.\n"
     },
-    {},
+    {
+      "heading": "JPG and JPEG Images",
+      "body": "JPG and JPEG are widely used for photographs. They are suitable for product pictures, personal photographs, travel images and many website graphics. The compression process uses quality settings to balance file size and visible detail. Lower quality settings can produce smaller files, but they may also create visible artifacts around edges, textures and small text.\n"
+    },
     {},
     {},
     {},
