@@ -22,7 +22,10 @@
       "heading": "Video Files",
       "body": "Supported video inputs include MP4 and MOV. The video workflow converts compatible files into MP4 using H.264 video encoding and AAC audio when the source contains audio.\n"
     },
-    {}
+    {
+      "heading": "Audio Files",
+      "body": "You can process MP3 files using a lower bitrate or convert WAV recordings into MP3. These operations can reduce file size, but the resulting audio quality depends on the selected settings."
+    }
   ],
   "links": [
     {
