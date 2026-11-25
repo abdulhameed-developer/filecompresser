@@ -78,6 +78,10 @@
     {
       "q": "Do I need to install any software?",
       "a": "No. You can open File Compresser in your web browser, select a tool and process supported files directly on your device.\n"
+    },
+    {
+      "q": "Are my files uploaded to File Compresser?",
+      "a": "No. Selected files are processed in your browser. The website downloads the required processing code, but your files are not uploaded to its servers."
     }
   ],
   "seoTitle": "Free Online File Compressor – Compress Files Privately",
