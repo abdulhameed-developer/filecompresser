@@ -14,7 +14,10 @@
       "heading": "PNG Images",
       "body": "PNG is commonly used for logos, screenshots, diagrams and graphics that need transparent backgrounds. Unlike JPG, PNG can preserve transparency. File Compresser provides separate PNG modes, including Lossless, Smart, Maximum and Target size. The selected mode determines whether decoded pixels are preserved or colors may be reduced to create a smaller file.\n"
     },
-    {},
+    {
+      "heading": "WebP Images",
+      "body": "WebP is an image format designed for web use. It supports lossy and lossless compression, as well as transparency. It can be useful for website photographs and graphics where smaller downloads are important. However, an existing WebP image may already be optimized, so further compression does not always create a smaller result.\n"
+    },
     {},
     {},
     {}
