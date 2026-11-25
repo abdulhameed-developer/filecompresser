@@ -34,7 +34,10 @@
       "heading": "Balanced",
       "body": "Balanced offers a more moderate approach. It is useful when you want to reduce file size without choosing the strongest compression setting."
     },
-    {},
+    {
+      "heading": "High Quality",
+      "body": "High Quality prioritizes more visual detail. The output may be larger than a result created with a stronger compression setting.\n"
+    },
     {},
     {},
     {}
