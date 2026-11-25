@@ -42,7 +42,10 @@
       "heading": "Why Use a Browser-Based File Compressor?",
       "body": "A browser-based file compressor provides a convenient way to manage files without installing additional software. You can open the website, select your files and complete the task using your existing browser.\n\nOther useful features include:\n\nNo account or registration required.\nNo software installation.\nNo added watermarks.\nSupport for multiple file formats.\nActual file size comparisons.\nIndividual and supported batch downloads.\nAutomatic selection of the appropriate processing workflow.\n\nThe queue supports up to 500 files and 300 MB in total. The maximum individual file size depends on the selected processing tool. Browser memory and device performance can also affect the processing time.\n"
     },
-    {},
+    {
+      "heading": "How Much Can You Reduce File Size?",
+      "body": "There is no fixed percentage that applies to every file. The result depends on the original format, existing compression, file contents and selected settings. For example, an image that has already been optimized may not become smaller after another compression attempt. Similarly, a PDF containing compressed images may have very little removable data.\n\nThe website checks the actual output rather than displaying an estimated saving. If ordinary same-format compression does not create a smaller file, the original is retained unchanged. Format conversion, resizing and ZIP creation are different operations. They can sometimes produce a larger output, so always compare the actual file sizes.\n"
+    },
     {},
     {},
     {},
