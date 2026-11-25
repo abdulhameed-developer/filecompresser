@@ -90,7 +90,10 @@
       "q": "Will image dimensions change?",
       "a": "No. Original dimensions are maintained unless you enable the resizing option.\n"
     },
-    {},
+    {
+      "q": "Can I compress PNG images without losing transparency?",
+      "a": "Yes. The PNG workflow is designed to preserve transparency. Lossless mode also preserves decoded pixels.\n"
+    },
     {},
     {}
   ],
