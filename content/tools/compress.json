@@ -18,7 +18,10 @@
       "heading": "GIF Files",
       "body": "Animated GIFs can contain many frames and colors, which may increase their file size. The GIF workflow attempts to reduce the color palette while checking animation properties such as frame timing, dimensions and looping.\n"
     },
-    {},
+    {
+      "heading": "Video Files",
+      "body": "Supported video inputs include MP4 and MOV. The video workflow converts compatible files into MP4 using H.264 video encoding and AAC audio when the source contains audio.\n"
+    },
     {}
   ],
   "links": [
