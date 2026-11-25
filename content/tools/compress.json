@@ -50,9 +50,10 @@
       "heading": "Keep Your Files Private During Processing",
       "body": "File Compresser handles selected files inside the browser. Your device performs the processing, and the files are not sent to the website's servers."
     },
-    {},
-    {},
-    {}
+    {
+      "heading": "Process Your Files with One Tool",
+      "body": "You do not need to open a separate application for every supported file format. File Compresser's Compress Any File tool brings common file processing tasks together in one place."
+    }
   ],
   "links": [
     {
