@@ -30,7 +30,10 @@
       "heading": "PDF Documents",
       "body": "PDF files can go through a structural rewrite with selected metadata removal. This process does not downsample embedded images or scanned pages, so some documents may show little or no size reduction."
     },
-    {},
+    {
+      "heading": "ZIP Archives",
+      "body": "The general tool can also accept ZIP files and extract their contents. If your purpose is to combine several files into one archive, use the dedicated ZIP Creator instead."
+    },
     {},
     {},
     {},
