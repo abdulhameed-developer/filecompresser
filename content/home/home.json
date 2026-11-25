@@ -26,8 +26,8 @@
       "body": "Different files need different compression methods. A photograph, PDF document and video recording cannot always be optimized using the same settings. File Compresser provides dedicated tools for common file formats so you can select the right option for your task.\n"
     },
     {
-      "heading": "Check the result before replacing your original",
-      "body": "Compression depends on the file and your chosen settings. Compare the actual file sizes, inspect image and document quality, and play media downloads before replacing an original."
+      "heading": "Image Compression",
+      "body": "Large images can slow down websites and create problems when uploading photographs or sharing design files. The image compression tools help reduce the size of supported JPG, JPEG, PNG and WebP images.\n\nYou can select an appropriate quality mode and compare the original image with the processed version. Image dimensions remain unchanged by default. If you need a smaller width or height, you can enable the resizing option.\n\nThe platform also provides separate tools for JPG, JPEG, PNG and WebP files. This makes it easier to choose settings according to the image format and its intended use.\n"
     }
   ],
   "links": [],
