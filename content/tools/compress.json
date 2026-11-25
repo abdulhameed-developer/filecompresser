@@ -10,7 +10,10 @@
       "heading": "Which File Formats Can You Process?",
       "body": "File Compresser supports several commonly used formats. Each format has its own processing method and limitations.\n"
     },
-    {},
+    {
+      "heading": "Image Files",
+      "body": "You can add JPG, JPEG, PNG and WebP images. These formats are commonly used for website photographs, product pictures, graphics, screenshots and digital designs. The image processing workflow offers quality and format options where supported. Original dimensions are maintained unless you specifically enable resizing.\n"
+    },
     {},
     {},
     {}
