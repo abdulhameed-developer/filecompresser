@@ -41,7 +41,10 @@
       "heading": "PDF Compression",
       "body": "PDF documents are commonly used for reports, forms, educational material and business records. Some PDF files can be difficult to email or upload because of their size.\n\nThe PDF Compressor attempts to optimize the document structure and selected metadata. However, it does not promise to reduce every PDF. Scanned documents and PDFs containing large images may remain close to their original size.\n"
     },
-    {},
+    {
+      "heading": "ZIP File Tools",
+      "body": "ZIP archives are useful when you need to collect multiple files into one package. The ZIP Creator helps combine selected files into a single archive, while the ZIP Extractor allows you to open supported ZIP files and save their contents. These tools are helpful for organizing documents, images and other files before sharing or storing them."
+    },
     {},
     {},
     {},
