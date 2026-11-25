@@ -64,13 +64,7 @@
     {
       "heading": "Does Compression Always Make Files Smaller?",
       "body": "No. The result depends on the original file, its format and the selected settings. Some images are already optimized, while certain PDFs contain data that cannot be reduced through structural optimization alone.\n\nFile Compresser reports the actual result instead of promising a fixed percentage reduction. When ordinary same-format compression does not produce a smaller file, the original can be retained unchanged. Explicit conversions, resizing and ZIP creation may also increase the final file size.\n\nFor this reason, compare the actual output size and check the file quality before replacing your original.\n"
-    },
-    {},
-    {},
-    {},
-    {},
-    {},
-    {}
+    }
   ],
   "links": [
     {}
@@ -78,8 +72,8 @@
   "faqMode": "custom",
   "faq": [
     {
-      "q": "Are my files uploaded to a server?",
-      "a": "No. Every tool on this site reads your file into the browser tab and processes it on your own device. Nothing is sent to filecompresser servers, and nothing is kept after you close the tab."
+      "q": "Is File Compresser free to use?",
+      "a": "Yes. The available compression and conversion tools can be used without creating an account or paying a subscription.\n"
     },
     {
       "q": "Which file types can I process?",
