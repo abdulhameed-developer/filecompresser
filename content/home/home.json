@@ -73,23 +73,7 @@
   "faq": [
     {
       "q": "Is File Compresser free to use?",
-      "a": "Yes. The available compression and conversion tools can be used without creating an account or paying a subscription.\n"
-    },
-    {
-      "q": "Which file types can I process?",
-      "a": "Image compression (JPG, PNG, WebP), GIF optimization, MP3 re-encoding, WAV to MP3, video re-encoding to MP4, PDF optimization, and ZIP creation and extraction. Processing runs on your device; each tool explains whether it compresses, converts, packages or extracts your files."
-    },
-    {
-      "q": "Why might my file not get smaller?",
-      "a": "Compression depends on the input and the selected settings. Most PDFs and already-compressed images have little left to give. We report the real sizes either way — no tool here truncates bytes, renames a file, or returns the original while calling it compressed."
-    },
-    {
-      "q": "Is anything limited or paid?",
-      "a": "No account, no sign-up, no watermark. Queues are limited to 500 files and 300 MB to protect browser memory. The practical limits are your device’s memory, which is why each tool states its maximum file size up front."
-    },
-    {
-      "q": "Why does the first video take so long?",
-      "a": "Video, audio and GIF tools load a WebAssembly build of FFmpeg from this site on first use — about 21 MB, cached by your browser afterwards. Later jobs can reuse the loaded engine while the tab remains open."
+      "a": "Yes. The available compression and conversion tools can be used without creating an account or paying a subscription."
     }
   ],
   "seoTitle": "Free Online File Compressor – Compress Files Privately",
