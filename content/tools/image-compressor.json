@@ -22,7 +22,10 @@
       "heading": "How to Compress Images Online",
       "body": "You can use File Compresser without installing an image editing application. The process involves selecting your images, choosing settings and reviewing the output.\n\nOpen the Image Compressor page.\nSelect JPG, JPEG, PNG or WebP images from your device.\nWait for the website to validate the selected files.\nChoose a suitable compression mode.\nEnable resizing only if you need different image dimensions.\nStart processing.\nCompare the original and final image sizes.\nInspect the image quality and download the result.\n\nThe original image dimensions are maintained by default. If you enable resizing, the aspect ratio is preserved and smaller images are not enlarged.\n"
     },
-    {},
+    {
+      "heading": "Choose the Right Compression Mode",
+      "body": "Selecting the right quality mode is important because different images have different requirements.\n"
+    },
     {}
   ],
   "links": [
