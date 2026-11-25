@@ -46,7 +46,10 @@
       "heading": "Target Size",
       "body": "Target Size attempts to create an image within a specified maximum file size. It checks the actual output bytes rather than simply estimating the result. If the requested size cannot be achieved, the tool reports that the target was not met.\n"
     },
-    {}
+    {
+      "heading": "Why Should You Compress Images for Websites?",
+      "body": "Large images are one of the common reasons web pages contain heavy resources. When a website uses unnecessarily large photographs, visitors may need to download more data than required for the displayed image. Optimizing images can help reduce page weight and make website resources easier to load.\n\nFor website owners, image compression is useful for:\n\nProduct photographs on online stores.\nFeatured images in blog articles.\nHomepage banners and promotional graphics.\nTeam photographs and business profiles.\nScreenshots and tutorial images.\nPortfolio and project galleries.\n\nImage compression is only one part of website optimization. Dimensions, responsive image delivery, caching and other page resources also affect loading performance."
+    }
   ],
   "links": [
     {
