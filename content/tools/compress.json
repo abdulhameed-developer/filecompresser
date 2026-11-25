@@ -25,7 +25,19 @@
     {
       "heading": "Audio Files",
       "body": "You can process MP3 files using a lower bitrate or convert WAV recordings into MP3. These operations can reduce file size, but the resulting audio quality depends on the selected settings."
-    }
+    },
+    {
+      "heading": "PDF Documents",
+      "body": "PDF files can go through a structural rewrite with selected metadata removal. This process does not downsample embedded images or scanned pages, so some documents may show little or no size reduction."
+    },
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
   ],
   "links": [
     {
