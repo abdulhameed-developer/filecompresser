@@ -98,7 +98,10 @@
       "q": "Why is my image not getting smaller?",
       "a": "Your image may already be optimized. The tool retains the original when an ordinary same-format compression attempt does not produce a smaller suitable file.\n"
     },
-    {}
+    {
+      "q": "Are my images uploaded?",
+      "a": "No. Image processing runs directly in your browser using your device.\n"
+    }
   ],
   "seoTitle": "Free Image Compressor Online for JPG, PNG & WebP",
   "seoDescription": "Compress JPG, PNG and WebP images online for free. Reduce image file size, adjust quality and keep your files private in your browser."
