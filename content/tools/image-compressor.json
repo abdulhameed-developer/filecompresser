@@ -77,7 +77,17 @@
       "href": "/blog/choosing-a-compression-mode"
     }
   ],
-  "faq": [],
+  "faq": [
+    {
+      "q": "Is this image compressor free?",
+      "a": "Yes. You can use the online image compression tool without registration or a paid subscription.\n"
+    },
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
   "seoTitle": "Free Image Compressor Online for JPG, PNG & WebP",
   "seoDescription": "Compress JPG, PNG and WebP images online for free. Reduce image file size, adjust quality and keep your files private in your browser."
 }
