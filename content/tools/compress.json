@@ -81,7 +81,12 @@
     {
       "q": "Are my files uploaded to a server?",
       "a": "No. File processing takes place in your browser on your device.\n"
-    }
+    },
+    {
+      "q": "Why did my file remain the same size?",
+      "a": "Some files are already optimized, so another compression attempt may not produce a smaller result. In such cases, the original is retained.\n"
+    },
+    {}
   ],
   "seoTitle": "Compress Any File Online Free Without Uploading",
   "seoDescription": "Compress files online for free, including images, videos, audio, PDFs and ZIP files. Process multiple file types privately in your browser."
