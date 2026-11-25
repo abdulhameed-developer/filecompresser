@@ -15,9 +15,6 @@
       "body": "No preset silently resizes an image. Enable Resize this image only when you want different dimensions; the original aspect ratio is retained and smaller images are not enlarged. Check text, edges and transparency before keeping the download."
     }
   ],
-  "faq": [],
-  "seoTitle": "Image Compressor for JPG, PNG and WebP",
-  "seoDescription": "Compress JPG, PNG and WebP images locally. Choose a supported format, review quality and dimensions, then compare the actual download size.",
   "links": [
     {
       "label": "Choose a format for website images",
@@ -27,5 +24,8 @@
       "label": "Choose an image mode or target size",
       "href": "/blog/choosing-a-compression-mode"
     }
-  ]
+  ],
+  "faq": [],
+  "seoTitle": "Free Image Compressor Online for JPG, PNG & WebP",
+  "seoDescription": "Compress JPG, PNG and WebP images online for free. Reduce image file size, adjust quality and keep your files private in your browser."
 }
