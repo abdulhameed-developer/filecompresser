@@ -49,7 +49,10 @@
       "heading": "How Does File Compresser Work?",
       "body": "Using an online file compressor should not require technical knowledge. The process is designed around three simple steps.\n\nSelect your files: Open the tool you need and choose files from your device. You can also use the general compression page to process a supported mixed batch.\nChoose your settings: Review the available compression, conversion or resizing options. Select settings according to the format and quality you need.\nReview and download: Start processing and compare the original and final file sizes. Check the result before downloading it to your device.\n\nThe website also checks supported file types and size limits before processing. This helps identify files that cannot be handled by the selected tool.\n"
     },
-    {},
+    {
+      "heading": "Your Files Stay on Your Device",
+      "body": "File Compresser processes selected files inside your browser. The files are read into the browser tab, processed using the required tools and made available for download. They are not sent to File Compresser servers for compression.\n\nBecause the work takes place in your browser, your device's memory and processing power can affect performance. Keep an original copy of important files before starting any compression task."
+    },
     {},
     {},
     {},
