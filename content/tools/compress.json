@@ -65,7 +65,15 @@
       "href": "/blog/what-privacy-claim-really-means"
     }
   ],
-  "faq": [],
+  "faq": [
+    {
+      "q": "Can I compress multiple files at once?",
+      "a": "Yes. You can add supported files to the same queue. The website identifies each format and applies its corresponding workflow.\n"
+    },
+    {},
+    {},
+    {}
+  ],
   "seoTitle": "Compress Any File Online Free Without Uploading",
   "seoDescription": "Compress files online for free, including images, videos, audio, PDFs and ZIP files. Process multiple file types privately in your browser."
 }
