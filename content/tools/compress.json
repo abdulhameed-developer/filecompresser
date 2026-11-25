@@ -1,19 +1,16 @@
 {
-  "heading": "How do I process a mixed batch of files?",
-  "introduction": "Add supported images, GIFs, video, audio, PDFs or ZIPs to one queue. FileCompresser identifies each file and runs the appropriate workflow on your device. ZIP inputs are extracted rather than compressed again.",
+  "heading": "Compress Any File Online Without Uploading",
+  "introduction": "Working with different file formats can become time-consuming when you need to use separate applications for every task. You may have photographs to optimize, videos to reduce, audio recordings to convert or PDF documents to prepare for sharing. Managing these files individually can take extra time, especially when you have several files to process.\n\nFile Compresser makes this process easier with its Compress Any File tool. It allows you to select multiple supported file types in one place and automatically choose the appropriate processing method for each file. You do not need to identify the correct compression engine or move between different applications for every format.\n\nThe tool supports common image, video, audio, GIF, PDF and ZIP formats. All selected files are processed directly in your browser, so you do not need to upload your personal documents or media to an external server.",
   "sections": [
     {
-      "heading": "Choose one queue or a specialist tool",
-      "body": "Use this page when you have several supported file types to process. Choose a dedicated tool below when you need controls such as an image output format, video resolution or MP3 bitrate."
+      "heading": "What Is the Compress Any File Tool?",
+      "body": "Compress Any File is a browser-based file processing tool that recognizes supported file formats and applies the relevant workflow. Instead of asking you to select an individual compressor for every file, it identifies the file type and prepares the appropriate operation.\n\nFor example, a JPG image follows an image compression process, while an MP4 video uses the video processing engine. A WAV recording can be converted into MP3, and a PDF can go through structural optimization.\n\nZIP files follow a different process. When you add a ZIP archive to this tool, its contents are extracted rather than compressed again. This distinction is important because extraction and compression are two separate file operations.\n\nThe tool is useful when you have a mixed collection of supported files and want to manage them from one interface.\n"
     },
-    {
-      "heading": "Review each result separately",
-      "body": "Review the controls available for your selection, start processing, then compare each input and output. Ordinary compression retains the original unchanged when a candidate is not smaller. Explicit conversions, resizing and ZIP creation are separate operations and may increase bytes; extraction is not a compression saving."
-    },
-    {
-      "heading": "What this queue can accept",
-      "body": "Supported formats and per-file limits appear in the upload area. Queues accept up to 500 files and 300 MB in total. Files with unsupported signatures are rejected, even if their extensions look familiar."
-    }
+    {},
+    {},
+    {},
+    {},
+    {}
   ],
   "links": [
     {
