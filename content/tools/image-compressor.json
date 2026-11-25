@@ -57,6 +57,10 @@
     {
       "heading": "Do Compressed Images Lose Quality?",
       "body": "The answer depends on the selected format and compression method. JPEG and WebP lossy encoding can change image pixels. The difference may be difficult to notice at moderate settings, but stronger compression can affect fine details, gradients and text.\n\nPNG Lossless preserves decoded pixels, while other PNG modes may reduce colors. Transparency can be preserved even when color information changes. Before replacing an original, compare both versions at the same display scale. Pay attention to small lettering, sharp edges, product details and transparent areas.\n"
+    },
+    {
+      "heading": "Private Image Processing in Your Browser",
+      "body": "File Compresser processes selected images directly on your device. The website does not upload them to its servers for compression.\n"
     }
   ],
   "links": [
