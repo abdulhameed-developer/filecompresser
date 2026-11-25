@@ -3,17 +3,15 @@
   "introduction": "Use this tool to make JPG, JPEG, PNG and WebP images smaller. Choose a quality mode, compare the original and new sizes, and download the result.\nAn image compressor helps reduce the amount of data stored in an image file. This makes photographs and graphics easier to manage while allowing you to maintain suitable visual quality for their intended use.\n\nFile Compresser provides a free online image compressor for JPG, JPEG, PNG and WebP images. You can select images from your device, choose a suitable quality mode and compare the original file with the processed version. The tool works directly in your browser, so your selected images are not uploaded to the website's servers.\n",
   "sections": [
     {
-      "heading": "Prepare a mixed image batch",
-      "body": "Add your images, keep their formats or choose a supported output, and review the default Maximum mode. JPEG and WebP use a stronger quality trade-off; PNG may reduce colors while preserving transparency. Choose Balanced, High quality or PNG Lossless when you need more detail. Review every result at the same scale as its original."
+      "heading": "What Is an Image Compressor?",
+      "body": "An image compressor is a tool that reduces an image's file size by changing how its data is stored. Depending on the image format and selected method, it may remove unnecessary information, adjust image quality or reduce the number of colors.\n\nThe purpose is to create a file that is easier to upload, download, store or display online. File Compresser supports several common image formats, each with different characteristics.\n"
     },
-    {
-      "heading": "Match the format to the image",
-      "body": "JPG is useful for photographs. PNG and WebP can retain transparent backgrounds. JPG output is unavailable for transparent images so that a background is not silently flattened."
-    },
-    {
-      "heading": "Check dimensions as well as file size",
-      "body": "No preset silently resizes an image. Enable Resize this image only when you want different dimensions; the original aspect ratio is retained and smaller images are not enlarged. Check text, edges and transparency before keeping the download."
-    }
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
   ],
   "links": [
     {
