@@ -46,7 +46,10 @@
       "heading": "How Much Can You Reduce File Size?",
       "body": "There is no fixed percentage that applies to every file. The result depends on the original format, existing compression, file contents and selected settings. For example, an image that has already been optimized may not become smaller after another compression attempt. Similarly, a PDF containing compressed images may have very little removable data.\n\nThe website checks the actual output rather than displaying an estimated saving. If ordinary same-format compression does not create a smaller file, the original is retained unchanged. Format conversion, resizing and ZIP creation are different operations. They can sometimes produce a larger output, so always compare the actual file sizes.\n"
     },
-    {},
+    {
+      "heading": "Keep Your Files Private During Processing",
+      "body": "File Compresser handles selected files inside the browser. Your device performs the processing, and the files are not sent to the website's servers."
+    },
     {},
     {},
     {}
