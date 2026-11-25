@@ -70,7 +70,10 @@
       "q": "Can I compress multiple files at once?",
       "a": "Yes. You can add supported files to the same queue. The website identifies each format and applies its corresponding workflow.\n"
     },
-    {},
+    {
+      "q": "Is Compress Any File free?",
+      "a": "Yes. You can use the available tool without creating an account or paying a subscription.\n"
+    },
     {},
     {}
   ],
