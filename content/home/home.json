@@ -45,7 +45,10 @@
       "heading": "ZIP File Tools",
       "body": "ZIP archives are useful when you need to collect multiple files into one package. The ZIP Creator helps combine selected files into a single archive, while the ZIP Extractor allows you to open supported ZIP files and save their contents. These tools are helpful for organizing documents, images and other files before sharing or storing them."
     },
-    {},
+    {
+      "heading": "How Does File Compresser Work?",
+      "body": "Using an online file compressor should not require technical knowledge. The process is designed around three simple steps.\n\nSelect your files: Open the tool you need and choose files from your device. You can also use the general compression page to process a supported mixed batch.\nChoose your settings: Review the available compression, conversion or resizing options. Select settings according to the format and quality you need.\nReview and download: Start processing and compare the original and final file sizes. Check the result before downloading it to your device.\n\nThe website also checks supported file types and size limits before processing. This helps identify files that cannot be handled by the selected tool.\n"
+    },
     {},
     {},
     {},
