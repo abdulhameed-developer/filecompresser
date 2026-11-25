@@ -61,7 +61,10 @@
       "heading": "When Should You Compress a File?",
       "body": "File compression is useful in many everyday situations. Website owners can optimize photographs before adding them to web pages. Students can prepare documents for online submissions. Professionals can reduce the size of email attachments, while content creators can prepare images, audio and videos for sharing.\n\nThe right settings depend on the purpose of the file. A website photograph may need a smaller file size, while a product image may require more visual detail. A voice recording may work well at a lower audio bitrate, but an important music or production file may need higher quality.\n\nAlways consider the final use before selecting compression settings.\n"
     },
-    {},
+    {
+      "heading": "Does Compression Always Make Files Smaller?",
+      "body": "No. The result depends on the original file, its format and the selected settings. Some images are already optimized, while certain PDFs contain data that cannot be reduced through structural optimization alone.\n\nFile Compresser reports the actual result instead of promising a fixed percentage reduction. When ordinary same-format compression does not produce a smaller file, the original can be retained unchanged. Explicit conversions, resizing and ZIP creation may also increase the final file size.\n\nFor this reason, compare the actual output size and check the file quality before replacing your original.\n"
+    },
     {},
     {},
     {},
