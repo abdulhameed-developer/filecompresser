@@ -38,7 +38,10 @@
       "heading": "High Quality",
       "body": "High Quality prioritizes more visual detail. The output may be larger than a result created with a stronger compression setting.\n"
     },
-    {},
+    {
+      "heading": "PNG Lossless",
+      "body": "PNG Lossless preserves decoded image pixels. It is a suitable option when exact pixel appearance matters more than achieving the smallest possible file.\n"
+    },
     {},
     {}
   ],
