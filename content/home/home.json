@@ -86,7 +86,13 @@
     {
       "q": "Which file formats are supported?",
       "a": "Supported formats include JPG, JPEG, PNG, WebP, GIF, MP4, MOV, MP3, WAV, PDF and ZIP. Each tool has its own supported formats and file limits.\n"
-    }
+    },
+    {
+      "q": "Will compression reduce image or video quality?",
+      "a": "It depends on the selected settings. Lossy compression can change image or audio quality, and video re-encoding can affect visual detail. Review the result before downloading or using it.\n"
+    },
+    {},
+    {}
   ],
   "seoTitle": "Free Online File Compressor – Compress Files Privately",
   "seoDescription": "Compress images, videos, audio and PDF files online for free. Reduce file sizes directly in your browser without uploading files or creating an account."
