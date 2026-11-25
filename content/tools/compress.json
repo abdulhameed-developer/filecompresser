@@ -78,7 +78,10 @@
       "q": "Does the tool support every file format?",
       "a": "No. It supports the formats listed on the upload area, including JPG, JPEG, PNG, WebP, GIF, MP4, MOV, MP3, WAV, PDF and ZIP.\n"
     },
-    {}
+    {
+      "q": "Are my files uploaded to a server?",
+      "a": "No. File processing takes place in your browser on your device.\n"
+    }
   ],
   "seoTitle": "Compress Any File Online Free Without Uploading",
   "seoDescription": "Compress files online for free, including images, videos, audio, PDFs and ZIP files. Process multiple file types privately in your browser."
