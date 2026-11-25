@@ -54,7 +54,10 @@
       "heading": "Should You Resize an Image Before Compressing It?",
       "body": "Compression and resizing are two different operations. Compression changes how image information is stored. Resizing changes the actual pixel dimensions of an image.\nFor example, a large photograph may have more pixels than a website section needs. Reducing its dimensions can remove unnecessary image data and may provide a larger size reduction than compression alone.\n\nHowever, resizing is not always necessary. If you need to preserve the original dimensions, keep the resize option disabled. File Compresser does not silently resize images. You can enable resizing when a smaller width or height is required.\n"
     },
-    {}
+    {
+      "heading": "Do Compressed Images Lose Quality?",
+      "body": "The answer depends on the selected format and compression method. JPEG and WebP lossy encoding can change image pixels. The difference may be difficult to notice at moderate settings, but stronger compression can affect fine details, gradients and text.\n\nPNG Lossless preserves decoded pixels, while other PNG modes may reduce colors. Transparency can be preserved even when color information changes. Before replacing an original, compare both versions at the same display scale. Pay attention to small lettering, sharp edges, product details and transparent areas.\n"
+    }
   ],
   "links": [
     {
