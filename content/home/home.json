@@ -82,6 +82,10 @@
     {
       "q": "Are my files uploaded to File Compresser?",
       "a": "No. Selected files are processed in your browser. The website downloads the required processing code, but your files are not uploaded to its servers."
+    },
+    {
+      "q": "Which file formats are supported?",
+      "a": "Supported formats include JPG, JPEG, PNG, WebP, GIF, MP4, MOV, MP3, WAV, PDF and ZIP. Each tool has its own supported formats and file limits.\n"
     }
   ],
   "seoTitle": "Free Online File Compressor – Compress Files Privately",
