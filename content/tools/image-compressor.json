@@ -29,7 +29,15 @@
     {
       "heading": "Maximum",
       "body": "Maximum is the default mode for the general image compressor. It applies a stronger compression trade-off to reduce file size. For JPEG and WebP, this can affect visible image detail.\n"
-    }
+    },
+    {
+      "heading": "Balanced",
+      "body": "Balanced offers a more moderate approach. It is useful when you want to reduce file size without choosing the strongest compression setting."
+    },
+    {},
+    {},
+    {},
+    {}
   ],
   "links": [
     {
