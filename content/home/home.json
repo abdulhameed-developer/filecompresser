@@ -22,8 +22,8 @@
   "introduction": "Managing large files can become difficult when you need to upload documents, share photos, send videos or store important data. Large files take longer to transfer, use more storage space and may not meet the size requirements of websites or online forms. A reliable file compression tool can help reduce these problems by making files smaller and easier to manage.\n\nFile Compresser provides free online tools for compressing and converting different types of files. You can work with images, videos, audio files, GIFs, PDFs and ZIP archives directly in your web browser. There is no need to install desktop software, create an account or upload your files to an external server. The processing takes place on your own device, giving you more control over your selected files.\n\nWhether you want to reduce the size of a photograph, prepare a video for sharing, convert WAV audio into MP3 or organize several files into a ZIP archive, File Compresser brings these tools together in one place.\n",
   "sections": [
     {
-      "heading": "Choose the right output",
-      "body": "Use JPG or WebP for photographs, PNG for transparent graphics, MP4 for video and MP3 for smaller audio files. PNG starts with Maximum, which may reduce colors while preserving transparency. Choose Lossless to preserve decoded pixels. PDF optimization and ZIP tools have their own limits; check each tool before you start. "
+      "heading": "Compress Different File Types in One Place",
+      "body": "Different files need different compression methods. A photograph, PDF document and video recording cannot always be optimized using the same settings. File Compresser provides dedicated tools for common file formats so you can select the right option for your task.\n"
     },
     {
       "heading": "Check the result before replacing your original",
