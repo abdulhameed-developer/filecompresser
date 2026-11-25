@@ -94,7 +94,10 @@
       "q": "Can I compress PNG images without losing transparency?",
       "a": "Yes. The PNG workflow is designed to preserve transparency. Lossless mode also preserves decoded pixels.\n"
     },
-    {},
+    {
+      "q": "Why is my image not getting smaller?",
+      "a": "Your image may already be optimized. The tool retains the original when an ordinary same-format compression attempt does not produce a smaller suitable file.\n"
+    },
     {}
   ],
   "seoTitle": "Free Image Compressor Online for JPG, PNG & WebP",
