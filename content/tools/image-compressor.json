@@ -42,7 +42,10 @@
       "heading": "PNG Lossless",
       "body": "PNG Lossless preserves decoded image pixels. It is a suitable option when exact pixel appearance matters more than achieving the smallest possible file.\n"
     },
-    {},
+    {
+      "heading": "Target Size",
+      "body": "Target Size attempts to create an image within a specified maximum file size. It checks the actual output bytes rather than simply estimating the result. If the requested size cannot be achieved, the tool reports that the target was not met.\n"
+    },
     {}
   ],
   "links": [
