@@ -32,6 +32,10 @@
     {
       "heading": "Video Compression",
       "body": "Video recordings can take up considerable storage space, especially when they are long or recorded at high resolutions. The Video Compressor accepts supported MP4 and MOV files and converts them into MP4 using H.264 video encoding.\n\nYou can choose suitable output settings, including a resolution limit, according to your needs. Always check the final video before sharing it because the output size and visual quality depend on the original recording and selected settings.\n"
+    },
+    {
+      "heading": "Audio Compression and Conversion",
+      "body": "Audio files also need different formats depending on where you plan to use them. The MP3 Compressor lets you re-encode existing MP3 files using a lower bitrate. This can reduce file size, although a lower bitrate may affect sound quality.\n\nThe WAV to MP3 Converter provides another option for people working with uncompressed audio recordings. Converting WAV files to MP3 can make them easier to store and share.\n"
     }
   ],
   "links": [
