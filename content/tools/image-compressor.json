@@ -26,7 +26,10 @@
       "heading": "Choose the Right Compression Mode",
       "body": "Selecting the right quality mode is important because different images have different requirements.\n"
     },
-    {}
+    {
+      "heading": "Maximum",
+      "body": "Maximum is the default mode for the general image compressor. It applies a stronger compression trade-off to reduce file size. For JPEG and WebP, this can affect visible image detail.\n"
+    }
   ],
   "links": [
     {
