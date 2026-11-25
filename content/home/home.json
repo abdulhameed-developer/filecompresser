@@ -36,7 +36,23 @@
     {
       "heading": "Audio Compression and Conversion",
       "body": "Audio files also need different formats depending on where you plan to use them. The MP3 Compressor lets you re-encode existing MP3 files using a lower bitrate. This can reduce file size, although a lower bitrate may affect sound quality.\n\nThe WAV to MP3 Converter provides another option for people working with uncompressed audio recordings. Converting WAV files to MP3 can make them easier to store and share.\n"
-    }
+    },
+    {
+      "heading": "PDF Compression",
+      "body": "PDF documents are commonly used for reports, forms, educational material and business records. Some PDF files can be difficult to email or upload because of their size.\n\nThe PDF Compressor attempts to optimize the document structure and selected metadata. However, it does not promise to reduce every PDF. Scanned documents and PDFs containing large images may remain close to their original size.\n"
+    },
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
   ],
   "links": [
     {}
