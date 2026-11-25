@@ -28,9 +28,15 @@
     {
       "heading": "Image Compression",
       "body": "Large images can slow down websites and create problems when uploading photographs or sharing design files. The image compression tools help reduce the size of supported JPG, JPEG, PNG and WebP images.\n\nYou can select an appropriate quality mode and compare the original image with the processed version. Image dimensions remain unchanged by default. If you need a smaller width or height, you can enable the resizing option.\n\nThe platform also provides separate tools for JPG, JPEG, PNG and WebP files. This makes it easier to choose settings according to the image format and its intended use.\n"
+    },
+    {
+      "heading": "Video Compression",
+      "body": "Video recordings can take up considerable storage space, especially when they are long or recorded at high resolutions. The Video Compressor accepts supported MP4 and MOV files and converts them into MP4 using H.264 video encoding.\n\nYou can choose suitable output settings, including a resolution limit, according to your needs. Always check the final video before sharing it because the output size and visual quality depend on the original recording and selected settings.\n"
     }
   ],
-  "links": [],
+  "links": [
+    {}
+  ],
   "faqMode": "custom",
   "faq": [
     {
