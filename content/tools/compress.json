@@ -74,7 +74,10 @@
       "q": "Is Compress Any File free?",
       "a": "Yes. You can use the available tool without creating an account or paying a subscription.\n"
     },
-    {},
+    {
+      "q": "Does the tool support every file format?",
+      "a": "No. It supports the formats listed on the upload area, including JPG, JPEG, PNG, WebP, GIF, MP4, MOV, MP3, WAV, PDF and ZIP.\n"
+    },
     {}
   ],
   "seoTitle": "Compress Any File Online Free Without Uploading",
