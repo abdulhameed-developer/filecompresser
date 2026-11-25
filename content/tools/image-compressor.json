@@ -86,7 +86,10 @@
       "q": "Which image formats are supported?",
       "a": "The tool supports JPG, JPEG, PNG and WebP still images.\n"
     },
-    {},
+    {
+      "q": "Will image dimensions change?",
+      "a": "No. Original dimensions are maintained unless you enable the resizing option.\n"
+    },
     {},
     {},
     {}
