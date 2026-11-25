@@ -82,7 +82,10 @@
       "q": "Is this image compressor free?",
       "a": "Yes. You can use the online image compression tool without registration or a paid subscription.\n"
     },
-    {},
+    {
+      "q": "Which image formats are supported?",
+      "a": "The tool supports JPG, JPEG, PNG and WebP still images.\n"
+    },
     {},
     {},
     {},
