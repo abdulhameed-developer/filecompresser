@@ -53,7 +53,7 @@ About, Contact and legal page sections provide paragraph items, bullet items and
 - Save, confirm Tina's GitHub commit, confirm Cloudflare's matching successful production deployment, then inspect the exact public URL.
 - If validation fails, correct the named field. Do not bypass the deployment checks. Never paste credentials into content.
 
-For a published, unarchived article, **Last updated cannot be earlier than Publication date**. The two date fields and the incoming Publish/Archive toggles share this check, so publishing a draft or restoring an archived article cannot bypass it. Last updated remains optional and clearable; drafts and archived articles can retain unfinished date ordering. Fourteen callback/reader parity cases passed for these rules, including valid dates, clearing and publication-state changes. These date callbacks have not been verified in the hosted editor; the native isolated editor test covered lists, HTML and links, and the connected save → GitHub → Cloudflare publishing chain remains unverified.
+For a published, unarchived article, **Last updated cannot be earlier than Publication date**. The two date fields and the incoming Publish/Archive toggles share this check, so publishing a draft or restoring an archived article cannot bypass it. Last updated remains optional and clearable; drafts and archived articles can retain unfinished date ordering. Fourteen callback/reader parity cases passed for these rules, including valid dates, clearing and publication-state changes. These date callbacks have not been separately exercised in the hosted editor. The native isolated editor tested lists, HTML and links; the connected save → GitHub → Cloudflare → public-site chain is now verified with a real FAQ/link correction.
 
 The section, introduction/FAQ and article HTML/paragraph fields use the same validation module as the public content reader. Invalid HTML and unsafe Markdown links therefore receive field-level feedback in Tina before a save can become a failed hosting build. Ordinary article paragraphs still treat HTML-like text literally; use Safe HTML to render supported markup.
 
@@ -61,4 +61,10 @@ Dedicated **Helpful link**, article **Link**, optional **Author page**, and info
 
 Field validation checks address syntax and safety; it does not fetch the destination or confirm that a page/section exists. Use a real published path and a matching section ID, then include the destination in the site's link/release checks.
 
-The new editor controls and public rendering are available after the code and Tina schema lock are deployed together. The final local CMS bundle and asset bootstrap passed; local callback tests do not establish the hosted editor's state. The connected hosted editor and publish workflow still require verification.
+The code and Tina schema lock are now deployed together. On 26 November 2026, the connected editor saved and reopened a real homepage FAQ/link correction, GitHub received its exact change, Cloudflare built it successfully, and the public answer, link and FAQ structured data were verified. Local callback tests do not establish every hosted template or date-validation scenario; the progress report keeps those boundaries explicit.
+
+## Saving and publishing
+
+For homepage/tool content, open **Content sections**, choose a section, and enter `- item`, `1. item` or `[link text](/page)` in **Content — paragraphs, lists, links or safe HTML**. Its help text now shows literal HTML examples. Blog articles have separate **Bullet list**, **Numbered list**, **Link** and **Safe HTML** blocks.
+
+**Save** updates GitHub through Tina. The public site changes after Cloudflare's matching build succeeds; it is not an instant preview update. The two verified release builds took about four and five minutes. A validation error disables Save, and a failed hosting build keeps the previous working public release. Check the exact saved commit and its build status before treating a change as published.

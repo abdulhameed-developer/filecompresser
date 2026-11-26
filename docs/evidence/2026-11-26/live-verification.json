@@ -1,0 +1,202 @@
+{
+  "capturedAt": "2026-11-26T13:46:17.606Z",
+  "site": "https://filecompresser.com",
+  "sourceCommit": "0197d180403db5992a5a90ae44f716bbacae632c",
+  "cloudflareDeployment": "5ecc7f32-5c39-462e-8b66-aa2485f49d9b",
+  "publicHomepageSha256": "453cba02f60a5ed6d7953708ad5d9d5afe9ecf85fd09591980b6781dcd725eeb",
+  "localAndConnectedSourceTests": {
+    "files": 50,
+    "passed": 792,
+    "skipped": 0
+  },
+  "liveFunctionality": {
+    "status": "TESTED_PASSED",
+    "checks": 74,
+    "passed": 74,
+    "failedResources": [],
+    "pageErrors": [],
+    "fileUploadRequests": [],
+    "evidence": [
+      "full-74-final/functionality.json",
+      "full-74-final/summary.json",
+      "full-74-final-readonly.json"
+    ],
+    "durationMs": 200245,
+    "scope": "All 14 canonical tools plus the WAV-to-MP3 alias; decoded/downloaded real image, GIF, audio, video, PDF and ZIP outputs; tested preset/custom/target subsets; comparison/modal Enter; per-tool unsupported/malformed-input replacement; synthetic sparse oversized 51 MiB JPG; mixed dispatch; unsafe ZIP; video cancellation/retry. This does not exhaust every device, file, codec, limit or settings combination."
+  },
+  "liveAccessibility": {
+    "routes": 29,
+    "automatedViolations": 0,
+    "machineIncompleteRules": 4,
+    "manuallyReviewedSvgTextNodes": 51,
+    "notACertification": true
+  },
+  "delivery": {
+    "status": "TESTED_PASSED",
+    "evidence": "http-delivery-final.json",
+    "responses": 16,
+    "details": "Both HTML documents and 14 current JS/CSS GET responses returned 200 and Brotli. All 14 fingerprinted assets were CF HIT with 31536000 immutable caching; HTML was DYNAMIC with max-age=0,must-revalidate. decodedBytes in the delivery artifact are not wire transfer bytes."
+  },
+  "webmSample": {
+    "status": "TESTED_PASSED_INITIAL_DEPLOYMENT_ENGINE_UNCHANGED",
+    "inputBytes": 139348,
+    "outputBytes": 140766,
+    "clickToResultMs": 3361,
+    "decodedFrames": 168,
+    "width": 768,
+    "height": 568,
+    "durationSeconds": 5.238
+  },
+  "hostedPublishing": "PASS: one real FAQ/link correction saved/reopened via Tina, exact Git change280bcc8 reviewed, Cloudflare5d6df6b1 succeeded, public answer/link/FAQmetadata verified. Final0197d18 help examples visually verified in hosted editor.",
+  "automaticAnalytics": {
+    "ownerDecision": "Disable automatic analytics and preserve existing privacy promise",
+    "setting": "Site-specific RUM Disable, persisted after reload",
+    "verified": "Five canonical responses have no injected beacon; CSP unchanged. No analytics history deleted."
+  },
+  "lighthouse": {
+    "status": "PARTIALLY_MEASURED_STANDARD_PROFILE_WITH_DIAGNOSTIC_BLOCKER",
+    "standardAttempts": 6,
+    "standardValid": 3,
+    "standardMeasurements": [
+      {
+        "route": "/",
+        "mode": "mobile",
+        "status": "TESTED_PASSED_VALID_MEASUREMENT",
+        "file": "lighthouse-home-mobile-retry/home-mobile.report.json",
+        "fetchTime": "2026-11-26T13:42:06.619Z",
+        "lighthouseVersion": "13.0.1",
+        "scores": {
+          "performance": 75,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100
+        },
+        "metrics": {
+          "first-contentful-paint": 2217.73,
+          "largest-contentful-paint": 2669.73,
+          "total-blocking-time": 821,
+          "cumulative-layout-shift": 0,
+          "speed-index": 2301.384739237757
+        },
+        "warnings": [
+          "The tested device appears to have a slower CPU than  Lighthouse expects. This can negatively affect your performance score. Learn more about [calibrating an appropriate CPU slowdown multiplier](https://github.com/GoogleChrome/lighthouse/blob/main/docs/throttling.md#cpu-throttling)."
+        ],
+        "protocols": [
+          "h3",
+          "h2"
+        ]
+      },
+      {
+        "route": "/",
+        "mode": "desktop",
+        "status": "TESTED_PASSED_VALID_MEASUREMENT",
+        "file": "lighthouse-final/home-desktop.report.json",
+        "fetchTime": "2026-11-26T13:41:13.821Z",
+        "lighthouseVersion": "13.0.1",
+        "scores": {
+          "performance": 100,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100
+        },
+        "metrics": {
+          "first-contentful-paint": 378.683,
+          "largest-contentful-paint": 672.683,
+          "total-blocking-time": 0.5,
+          "cumulative-layout-shift": 0,
+          "speed-index": 449.37187116651046
+        },
+        "warnings": [],
+        "protocols": [
+          "h3"
+        ]
+      },
+      {
+        "route": "/webm-to-mp4",
+        "mode": "mobile",
+        "status": "TESTED_PASSED_VALID_MEASUREMENT",
+        "file": "lighthouse-final/webm-to-mp4-mobile.report.json",
+        "fetchTime": "2026-11-26T13:41:27.698Z",
+        "lighthouseVersion": "13.0.1",
+        "scores": {
+          "performance": 98,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100
+        },
+        "metrics": {
+          "first-contentful-paint": 1070.1515,
+          "largest-contentful-paint": 2106.1515,
+          "total-blocking-time": 136,
+          "cumulative-layout-shift": 0,
+          "speed-index": 1070.1515
+        },
+        "warnings": [],
+        "protocols": [
+          "h2",
+          "h3"
+        ]
+      }
+    ],
+    "standardFailedAttempts": [
+      {
+        "route": "/",
+        "mode": "mobile",
+        "status": "TESTED_FAILED_MEASUREMENT_NO_SCORE",
+        "file": "lighthouse-final/home-mobile.report.json",
+        "runtimeError": "NO_NAVSTART",
+        "finalUrl": "https://filecompresser.com/",
+        "warnings": []
+      },
+      {
+        "route": "/webm-to-mp4",
+        "mode": "desktop",
+        "status": "TESTED_FAILED_MEASUREMENT_NO_SCORE",
+        "file": "lighthouse-final/webm-to-mp4-desktop.report.json",
+        "runtimeError": "CHROME_INTERSTITIAL_ERROR",
+        "finalUrl": "chrome-error://chromewebdata/",
+        "warnings": [
+          "The page may not be loading as expected because your test URL (https://filecompresser.com/webm-to-mp4) was redirected to chrome-error://chromewebdata/. Try testing the second URL directly.",
+          "Chrome prevented page load with an interstitial. Make sure you are testing the correct URL and that the server is properly responding to all requests."
+        ]
+      },
+      {
+        "route": "/webm-to-mp4",
+        "mode": "desktop",
+        "status": "TESTED_FAILED_MEASUREMENT_NO_SCORE",
+        "file": "lighthouse-webm-desktop-retry/webm-to-mp4-desktop.report.json",
+        "runtimeError": "CHROME_INTERSTITIAL_ERROR",
+        "finalUrl": "chrome-error://chromewebdata/",
+        "warnings": [
+          "The page may not be loading as expected because your test URL (https://filecompresser.com/webm-to-mp4) was redirected to chrome-error://chromewebdata/. Try testing the second URL directly.",
+          "Chrome prevented page load with an interstitial. Make sure you are testing the correct URL and that the server is properly responding to all requests."
+        ]
+      }
+    ],
+    "desktopWebm": {
+      "status": "BLOCKED_DEFAULT_PROFILE",
+      "score": null,
+      "reason": "Two default CHROME_INTERSTITIAL_ERROR attempts; neither is a valid measurement."
+    },
+    "diagnostic": {
+      "status": "FAILED_DIAGNOSTIC_NO_SCORE",
+      "flags": "--disable-quic only; no certificate or security bypass",
+      "file": "lighthouse-webm-desktop-noquic-diagnostic/webm-to-mp4-desktop.report.json",
+      "runtimeError": "CHROME_INTERSTITIAL_ERROR",
+      "networkLog": "lighthouse-webm-desktop-noquic-diagnostic/webm-to-mp4-desktop-0.devtoolslog.json",
+      "trace": "lighthouse-webm-desktop-noquic-diagnostic/webm-to-mp4-desktop-0.trace.json",
+      "observed": "Two initial document GETs failed with net::ERR_CONNECTION_RESET, followed by ERR_ABORTED. No Security.certificateError event was recorded. Default failures did not retain network logs, so their exact cause is unproven.",
+      "preflightNote": "First diagnostic CLI invocation rejected an absent output directory before launching Chrome. Directory was created; only one actual no-QUIC measurement ran."
+    },
+    "remaining": "Home mobile measured 75 performance, with 821 ms TBT, approximately 4993 ms main-thread work, 77 KiB estimated unused JavaScript and a CPU-calibration warning. The warning does not prove it is the only cause. WebM mobile measured 98. Lab results do not establish field INP/Core Web Vitals or ranking. Not all live routes were Lighthouse-tested; all 14 tools were measured locally separately."
+  },
+  "limits": [
+    "No physical iPhone/Android/Safari hardware testing; local Chromium, Firefox and WebKit browser-engine tests are separate.",
+    "No 200 MB physical files, exhaustive queue/memory/adversarial combinations or every codec/settings combination tested.",
+    "The live processing matrix used Chromium. All three browser engines were tested locally.",
+    "No independent penetration test or claim that all vulnerabilities are absent.",
+    "No overall 100% or perfection claim. Remaining home-mobile performance work and the desktop WebM Lighthouse transport blocker are explicit.",
+    "The installed Tina admin default text/textarea labels lack matching control IDs; no unsupported DOM patch was added. Public-site labels were checked separately."
+  ],
+  "evidenceRoot": ".qa-results/2026-11-26-live-a98b9fc3/"
+}

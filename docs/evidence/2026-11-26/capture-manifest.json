@@ -141,5 +141,16 @@
       "sha256": "43d03dedcb86ca8f93582cb4d60dfa9afb4b2b1a35630530c4e7456768964055",
       "scope": "Real generated sample during processing; earlier layout/codec acceptance build, unchanged controls/engine"
     }
-  ]
+  ],
+  "releaseFollowupCaptures": {
+    "sourceCommit": "0197d180403db5992a5a90ae44f716bbacae632c",
+    "cloudflareDeployment": "5ecc7f32-5c39-462e-8b66-aa2485f49d9b",
+    "scope": "The CMS captures show the same public Image Compression section and native editor at 1280x907. Before is the initial deployed help; after is the final hosted literal-help fix. No content was edited for these captures. Link captures are the matching local oT6ZidQfrLDwlDyzxxWns build, with real Tab focus and actual navigation/Back states also verified in the separate report.",
+    "files": [
+      { "file": "cms-help-before.png", "source": ".qa-results/2026-11-26-live-a98b9fc3/cms-help-before.png", "sha256": "685f87694bc07fe7e5b947f7e82f4d0c6961e29fa69ee9a70c9196ada9eb00b2" },
+      { "file": "cms-help-after.png", "source": ".qa-results/2026-11-26-help-release/cms-help-hosted-after.png", "sha256": "071647ab2ff19c5d6e392648027847a6937927b98830ee2dd28cf23cd4d92d62" },
+      { "file": "faq-link-390-focus.png", "source": ".qa-results/2026-11-26-help-release/link-states/faq-390-keyboard-focus.png", "sha256": "6b6cb77ddb94a58f6fb1c6966a3b273a900248ee69c4d732e104d7470ccc24e6" },
+      { "file": "faq-link-1440-default.png", "source": ".qa-results/2026-11-26-help-release/link-states/faq-1440-default.png", "sha256": "178836368796acf1dd64ff0cef62570f0bf2fe27a1afc3c9b37ce6e4484d5093" }
+    ]
+  }
 }
