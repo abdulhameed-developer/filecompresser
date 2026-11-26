@@ -387,6 +387,21 @@ it('opens and focuses collapsed settings from the main action without starting p
   expect(shortcut.getAttribute('aria-expanded')).toBe('true')
   expect(panel.querySelector('h2')?.textContent).toBe('Settings')
   expect(mocks.process).not.toHaveBeenCalled()
+  await click(button('Done')!)
+  expect(panel.open).toBe(false)
+  expect(document.activeElement).toBe(shortcut)
+})
+
+it('keeps converter settings contextual and exposes its fixed output format', async () => {
+  await mount('webm-to-mp4')
+  const webm = new File([new Uint8Array([0x1a, 0x45, 0xdf, 0xa3, 0x93])], 'recording.webm', { type: 'video/webm' }) as unknown as globalThis.File
+  await upload([webm])
+  expect(primary()?.textContent).toContain('Convert to MP4')
+  const panel = container.querySelector<HTMLDialogElement>('.settingsDialog')!
+  expect(panel.querySelector('.conversionOutput')?.textContent).toContain('MP4 · H.264 video')
+  expect(panel.querySelector('.compressionLevel')).toBeNull()
+  await click(container.querySelector<HTMLButtonElement>('.workflowSettingsShortcut')!)
+  expect(panel.open).toBe(true)
 })
 
 it('defaults PNG to Maximum while keeping Lossless available without a JPEG quality slider', async () => {

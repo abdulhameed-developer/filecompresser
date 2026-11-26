@@ -23,6 +23,8 @@ export interface VideoOptions {
   level?: CompressionLevel
   resolution?: 'original' | '1080' | '720' | '480'
   outputFormat?: 'mp4'
+  /** WebM is accepted only by the dedicated WebM → MP4 converter. */
+  allowWebm?: boolean
 }
 
 /**
@@ -55,7 +57,7 @@ interface RunSpec {
   outputName: string
   level: CompressionLevel
   resolution: VideoOptions['resolution']
-  inputFormat: 'mp4' | 'mov'
+  inputFormat: 'mp4' | 'mov' | 'webm'
   /** Text shown in the UI while this pass runs. */
   stage: string
   /** Fraction of the 5–95% budget this pass occupies, e.g. video vs audio pass. */
@@ -149,9 +151,9 @@ async function runFfmpeg(
     verifyMediaDuration(source, output)
     candidate.note = resized
       ? 'Resized to your selected resolution and encoded as H.264/AAC MP4. Dimensions are rounded down to even pixels for compatible playback.'
-      : spec.inputFormat === 'mov' ? 'Converted MOV to H.264/AAC MP4 while preserving display dimensions.' : 'Encoded as H.264/AAC MP4 while preserving display dimensions.'
+      : spec.inputFormat === 'mov' ? 'Converted MOV to H.264/AAC MP4 while preserving display dimensions.' : spec.inputFormat === 'webm' ? 'Converted WebM to H.264/AAC MP4 while preserving display dimensions.' : 'Encoded as H.264/AAC MP4 while preserving display dimensions.'
     onProgress?.(100, 'Done')
-    return applyResultPolicy(spec.input, candidate, resized ? 'resize' : spec.inputFormat === 'mov' ? 'convert' : 'reduce')
+    return applyResultPolicy(spec.input, candidate, resized ? 'resize' : spec.inputFormat === 'mp4' ? 'reduce' : 'convert')
   } catch (e) {
     if (signal?.cancelled || cancelledHere) {
       throw new ProcessingError('Processing was cancelled.', 'cancelled')
@@ -253,7 +255,8 @@ export async function compressVideo(
   assertNotCancelled(signal)
   if (file.size > 200 * 1024 * 1024) throw new ProcessingError('This video exceeds the 200 MB input limit.')
   const inputFormat = await detectFormat(file)
-  if (inputFormat !== 'mp4' && inputFormat !== 'mov') throw new ProcessingError('Choose a verified MP4 or MOV video file.')
+  const supported = inputFormat === 'mp4' || inputFormat === 'mov' || (options.allowWebm && inputFormat === 'webm')
+  if (!supported) throw new ProcessingError(options.allowWebm ? 'Choose a verified WebM video file.' : 'Choose a verified MP4 or MOV video file.')
 
   onProgress?.(1, 'Loading the video engine…')
 
@@ -282,7 +285,7 @@ export async function compressVideo(
       level,
       resolution: options.resolution,
       inputFormat,
-      stage: 'Compressing video…',
+      stage: inputFormat === 'webm' ? 'Converting WebM to MP4…' : 'Compressing video…',
       outputMime: 'video/mp4',
       outputExtension: 'mp4',
       outputFilename: replaceExtension(

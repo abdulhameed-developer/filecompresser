@@ -20,6 +20,7 @@ export default function ToolWorkspace({ tool, formatsLabel }: ToolWorkspaceProps
   const galleryId = useId()
   const settingsId = useId()
   const settingsPanel = useRef<HTMLDialogElement>(null)
+  const settingsTrigger = useRef<HTMLButtonElement>(null)
   const actionBar = useRef<HTMLDivElement>(null)
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [page, setPage] = useState(0)
@@ -97,7 +98,16 @@ export default function ToolWorkspace({ tool, formatsLabel }: ToolWorkspaceProps
     }
     window.requestAnimationFrame(() => panel.querySelector<HTMLElement>('button, input, select, [tabindex="0"]')?.focus())
   }
-  const closeSettings = () => { settingsPanel.current?.close(); setSettingsOpen(false) }
+  const closeSettings = () => {
+    const panel = settingsPanel.current
+    if (panel && typeof panel.close === 'function') panel.close()
+    else if (panel) {
+      panel.removeAttribute('open')
+      panel.open = false
+    }
+    setSettingsOpen(false)
+    window.setTimeout(() => settingsTrigger.current?.focus(), 0)
+  }
   const changeSelection = (id: string, checked: boolean) => queue.setSelection(checked ? [...selectedIds, id] : selectedIds.filter(value => value !== id))
   const converting = imageSettings && Boolean(outputFormat) && scope.some(item => item.inputFormat !== outputFormat)
   const action = actionLabel(tool, hasSaved, runnable.length, converting ? outputFormat : '', imageSettings)
@@ -120,7 +130,7 @@ export default function ToolWorkspace({ tool, formatsLabel }: ToolWorkspaceProps
         <div ref={actionBar} className={`workflowActionBar${changed ? ' hasDraftChanges' : ''}`}>
           <div className="workflowActionContext"><span className={`workflowPhase${changed || phase === 'Target not met' || phase === 'Targets not met' ? ' isDirty' : ''}`}>{phase}</span><p>{busy ? 'Settings are locked during this run.' : changed ? collective ? 'Saved ZIP uses previous inputs. Rebuild it to include the current files.' : `${changed} saved result${changed === 1 ? ' still uses' : 's still use'} previous settings.` : unmetTargets ? `${unmetTargets} result${unmetTargets === 1 ? ' exceeds its' : 's exceed their'} limit. Available to download; adjust settings to try again.` : downloads.length && !runnable.length ? totalOriginal > 0 ? savingsSummary(totalOriginal, totalOutput) : `${downloads.length} extracted files ready` : validating ? 'Reading and validating your files…' : imageSettings && formatChecking ? 'Checking image compatibility…' : runnable.length ? `${runnable.length} original file${runnable.length === 1 ? '' : 's'} to process` : 'Choose a file or select an existing source.'}</p></div>
           <div className="workflowPrimaryActions">
-            {hasSettings && <button type="button" className="workflowSettingsShortcut" aria-controls={settingsId} aria-expanded={settingsOpen} onClick={openSettings}><Icon name="settings" />Settings</button>}
+            {hasSettings && <button ref={settingsTrigger} type="button" className="workflowSettingsShortcut" aria-controls={settingsId} aria-expanded={settingsOpen} onClick={openSettings}><Icon name="settings" />Settings</button>}
             {busy ? <button key="cancel" type="button" className="downloadBtn secondary" onClick={event => { event.preventDefault(); queue.cancelAll() }}>Cancel processing</button> : runnable.length > 0 || validating ? <button key="process" type="submit" className="compressBtn" disabled={!canRun} aria-describedby={queue.settingsError ? errorId : undefined}>{validating ? 'Checking files…' : imageSettings && formatChecking ? 'Checking images…' : action}<Icon name="arrow" /></button> : null}
             {downloads.length > 0 && <DownloadActions items={downloads} compact previous={olderDownloads === downloads.length} olderCount={olderDownloads} zipName={`filecompresser-${tool.slug}.zip`} />}
           </div>

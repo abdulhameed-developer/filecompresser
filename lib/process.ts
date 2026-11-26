@@ -80,7 +80,7 @@ export async function processFile(
     }
     case 'webm-to-mp4': {
       const { compressVideo } = await import('./engines/video')
-      return withMediaLock(() => compressVideo(file, { level: options.level, resolution: normalizeResolution(options.resolution) }, onProgress, signal), signal)
+      return withMediaLock(() => compressVideo(file, { level: options.level, resolution: normalizeResolution(options.resolution), allowWebm: true }, onProgress, signal), signal)
     }
     case 'audio-compress': {
       const { processAudio } = await import('./engines/audio')
