@@ -13,6 +13,8 @@
 .primaryAction:hover { background: #254d3d; }
 .tertiaryAction:hover .uiIcon { transform: translateX(3px); }
 .editorialLink,.legal p a,.postPage > p a,.articleReferences a { color: #345a3c; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.editorialLink:link,.editorialLink:visited { color: var(--ink-soft); text-decoration-color: currentColor; }
+.editorialLink:hover,.editorialLink:active,.editorialLink:focus-visible { color: var(--ink); text-decoration-color: currentColor; }
 :is(.navbtn,.mobileCta,.toolsDropdownFoot a,.compressBtn,.downloadBtn,.textLink,.postFooter a) { display: inline-flex; align-items: center; justify-content: center; gap: 9px; }
 .navbtn { font-size: 13px; padding: 10px 15px; min-height: 44px; border-radius: 8px; }
 .navbtn svg { width: 17px; height: 17px; }

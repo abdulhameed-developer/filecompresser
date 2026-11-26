@@ -64,7 +64,7 @@ export const managedPageCollection = {
         { type: 'string', name: 'placement', label: 'Display style', options: [{ value: 'card', label: 'Feature or help card' }, { value: 'detail', label: 'Detailed explanation' }, { value: 'text', label: 'Normal text section' }] },
         string('label', 'Section label', false),
         { type: 'string', name: 'icon', label: 'Existing icon', options: ['file', 'shield', 'check', 'clock', 'image', 'download'] },
-        { ...string('body', 'Paragraphs', false), list: true, description: 'Inline links use `[link text](/page)` or `[link text](https://example.com)`. HTML is displayed as text here.', ui: { component: 'list', field: { component: 'textarea' } } },
+        { ...string('body', 'Paragraphs', false), list: true, description: 'Inline links use [link text](/page) or [link text](https://example.com). HTML is displayed as text here.', ui: { component: 'list', field: { component: 'textarea' } } },
         { ...string('items', 'Bullet list items', false), list: true, description: 'Add one bullet per item. Inline Markdown links are supported.', ui: { component: 'list', field: { component: 'textarea' } } },
         { ...link('links', 'Section links'), list: true },
       ],
