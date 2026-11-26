@@ -108,16 +108,12 @@ describe('queue workflows', () => {
     })
     expect(queue.settingsError).toBeNull()
     await run()
-    expect(mocks.processFile.mock.calls[0][0].options).toMatchObject({ imageMode: 'target', targetSize: 50_000, resizeEnabled: true, resizeMaxWidth: 1000, outputFormat: 'webp' })
+    expect(mocks.processFile.mock.calls[0][0].options).toMatchObject({ imageMode: 'target', targetSize: 50_000, outputFormat: 'webp' })
   })
   it.each([
     [{ imageMode: 'target', targetSize: '' }, 'Choose a target'],
     [{ imageMode: 'target', targetSize: -1 }, 'whole bytes'],
     [{ imageMode: 'target', targetSize: 200_000_001 }, 'whole bytes'],
-    [{ resizeEnabled: true }, 'Enter a maximum width or height'],
-    [{ resizeEnabled: true, resizeMaxWidth: -10, resizeMaxHeight: 1000 }, 'Maximum width'],
-    [{ resizeEnabled: true, resizeMaxWidth: 1000, resizeMaxHeight: 1.5 }, 'Maximum height'],
-    [{ resizeEnabled: true, resizeMaxWidth: 32769 }, 'Maximum width'],
   ] as [Record<string, SettingValue>, string][])('blocks invalid active image settings %# before an engine starts', async (settings, message) => {
     await mount()
     await add([jpeg()])

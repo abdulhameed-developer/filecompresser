@@ -26,10 +26,7 @@ export function configurationLabel(config: ConfigurationSnapshot, sourceFormat?:
   else if (format !== 'png') parts.push(`Quality ${Math.round((typeof options.quality === 'number' ? options.quality : mode === 'high-quality' ? .93 : mode === 'maximum' ? .60 : .82) * 100)}%`)
   if (options.outputFormat) parts.push(`${format === 'jpeg' ? 'JPG' : format.toUpperCase()} output`)
   else parts.push('Original format')
-  if (options.resizeEnabled === true) {
-    if (Number(options.resizeMaxWidth) > 0) parts.push(`Max width ${Number(options.resizeMaxWidth).toLocaleString('en-US')} px`)
-    if (Number(options.resizeMaxHeight) > 0) parts.push(`Max height ${Number(options.resizeMaxHeight).toLocaleString('en-US')} px`)
-  } else parts.push('Original dimensions')
+  parts.push('Original dimensions')
   return parts.join(' · ')
 }
 

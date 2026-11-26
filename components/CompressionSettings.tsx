@@ -4,7 +4,6 @@ import { useId } from 'react'
 import type { CompressionLevel, SettingValue, ToolDefinition } from '@/lib/types'
 import { MAX_IMAGE_TARGET_BYTES } from '@/lib/image-settings'
 
-export interface DimensionPreview { name: string; inputWidth: number; inputHeight: number; width: number; height: number }
 
 interface CompressionSettingsProps {
   targetAllowed?: boolean
@@ -12,8 +11,6 @@ interface CompressionSettingsProps {
   imageFormat?: string
   hasPng?: boolean
   hasLossy?: boolean
-  resizePreviews?: DimensionPreview[]
-  resizePreviewMissing?: number
   tool: ToolDefinition
   level: CompressionLevel
   onLevel: (level: CompressionLevel) => void
@@ -36,14 +33,13 @@ const PNG_MODES = [
 ] as const
 const TARGET_PRESETS = [20_000, 50_000, 100_000, 200_000, 500_000, 1_000_000]
 
-export default function CompressionSettings({ tool, level, onLevel, settings, onSetting, targetAllowed = true, imageSettings = tool.engine === 'image-compress', imageFormat, hasPng = imageFormat === 'png', hasLossy = imageFormat !== 'png', resizePreviews = [], resizePreviewMissing = 0 }: CompressionSettingsProps) {
+export default function CompressionSettings({ tool, level, onLevel, settings, onSetting, targetAllowed = true, imageSettings = tool.engine === 'image-compress', imageFormat, hasPng = imageFormat === 'png', hasLossy = imageFormat !== 'png' }: CompressionSettingsProps) {
   const prefix = useId()
   const mode = String(settings.imageMode || 'balanced')
   const pngMode = String(settings.pngMode || (mode === 'target' || mode === 'maximum' ? mode : 'lossless'))
   const quality = typeof settings.quality === 'number' ? Math.round(settings.quality * 100) : mode === 'high-quality' ? 93 : mode === 'maximum' ? 60 : 82
   const presetQuality = mode === 'high-quality' ? 93 : mode === 'maximum' ? 60 : 82
   const customQuality = mode !== 'target' && typeof settings.quality === 'number' && quality !== presetQuality
-  const resizeEnabled = settings.resizeEnabled === true
   const targeting = (hasLossy && mode === 'target') || (hasPng && pngMode === 'target')
 
   return <div className={`settings${imageSettings ? ' imageSettings' : ''}`}>
@@ -70,17 +66,6 @@ export default function CompressionSettings({ tool, level, onLevel, settings, on
         <input id={`${prefix}-quality`} type="range" min={10} max={100} step={1} value={quality} onChange={event => onSetting('quality', Number(event.target.value) / 100)} aria-describedby={`${prefix}-quality-hint`} />
         <p className="settingHelp" id={`${prefix}-quality-hint`}>Higher keeps more detail, usually in a larger file. Encoder setting, not a measured quality score.</p>
       </div>}
-      <div className="resizeChoice">
-        <label className="resizeToggle" htmlFor={`${prefix}-resize`}><input id={`${prefix}-resize`} type="checkbox" checked={resizeEnabled} onChange={event => onSetting('resizeEnabled', event.target.checked)} />Resize{!resizeEnabled && <span>Original dimensions</span>}</label>
-        {resizeEnabled && <fieldset className="resizeFields">
-          <legend className="srInline">Fit within maximum dimensions</legend>
-          <NumberField id={`${prefix}-width`} label="Maximum width (px)" value={settings.resizeMaxWidth ?? ''} placeholder="e.g. 1920" min={1} max={32768} onChange={next => onSetting('resizeMaxWidth', next)} />
-          <NumberField id={`${prefix}-height`} label="Maximum height (px)" value={settings.resizeMaxHeight ?? ''} placeholder="e.g. 1080" min={1} max={32768} onChange={next => onSetting('resizeMaxHeight', next)} />
-          <p className="settingHelp">Fit within either bound. No cropping or upscaling.</p>
-        </fieldset>}
-        {resizeEnabled && resizePreviews.length > 0 && <div className="resizePreview" tabIndex={resizePreviews.length > 3 ? 0 : undefined} role="region" aria-label="Expected image dimensions"><table><caption>Expected dimensions</caption><thead><tr><th scope="col">File</th><th scope="col">Original (px)</th><th scope="col">Output (px)</th></tr></thead><tbody>{resizePreviews.map((preview, index) => <tr key={`${index}:${preview.name}`}><th scope="row">{preview.name}</th><td>{preview.inputWidth.toLocaleString('en-US')} × {preview.inputHeight.toLocaleString('en-US')}</td><td>{preview.width.toLocaleString('en-US')} × {preview.height.toLocaleString('en-US')}</td></tr>)}</tbody></table></div>}
-        {resizeEnabled && resizePreviewMissing > 0 && <p className="settingHelp">Dimensions could not be read for {resizePreviewMissing} selected file{resizePreviewMissing === 1 ? '' : 's'}; a preview is unavailable for {resizePreviewMissing === 1 ? 'it' : 'them'}.</p>}
-      </div>
     </> : tool.engine !== 'image-compress' && !NO_LEVEL_ENGINES.has(tool.engine) && tool.category !== 'audio' && <fieldset className="settingBlock">
       <legend>Compression level</legend>
       <div className="pills" role="group" aria-label="Compression level">{(['recommended', 'maximum'] as const).map(value => <button key={value} type="button" className={level === value ? 'active' : ''} aria-pressed={level === value} onClick={() => onLevel(value)}>{value === 'recommended' ? 'Recommended' : 'Maximum'}</button>)}</div>

@@ -59,9 +59,6 @@ export interface ProcessingOptions {
   level?: CompressionLevel
   imageMode?: ImageMode
   pngMode?: PngMode
-  resizeEnabled?: boolean
-  resizeMaxWidth?: number
-  resizeMaxHeight?: number
   quality?: number
   bitrate?: string
   resolution?: string

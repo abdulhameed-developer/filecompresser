@@ -10,19 +10,18 @@ function config(settings: Record<string, SettingValue>) {
 }
 
 describe('effective workflow configuration', () => {
-  it('normalizes default quality, same-format output, inactive targets and disabled resize fields', () => {
+  it('normalizes default quality and same-format output', () => {
     expect(config({ imageMode: 'balanced' }).fingerprint).toBe(config({
       imageMode: 'balanced', quality: 0.82, outputFormat: 'jpeg', targetSize: 50000,
-      resizeEnabled: false, resizeMaxWidth: 800, resizeMaxHeight: 600, pngMode: 'target',
+      pngMode: 'target',
     }).fingerprint)
   })
 
   it('distinguishes active changes and canonicalizes equivalent numeric form inputs', () => {
-    const original = config({ imageMode: 'target', targetSize: 50000, resizeEnabled: true, resizeMaxWidth: 800 })
-    const numeric = config({ imageMode: 'target', targetSize: '50000', resizeEnabled: true, resizeMaxWidth: '800' })
+    const original = config({ imageMode: 'target', targetSize: 50000 })
+    const numeric = config({ imageMode: 'target', targetSize: '50000' })
     expect(original.fingerprint).toBe(numeric.fingerprint)
-    expect(original.fingerprint).not.toBe(config({ imageMode: 'target', targetSize: 40000, resizeEnabled: true, resizeMaxWidth: 800 }).fingerprint)
-    expect(original.fingerprint).not.toBe(config({ imageMode: 'target', targetSize: 50000, resizeEnabled: true, resizeMaxWidth: 900 }).fingerprint)
+    expect(original.fingerprint).not.toBe(config({ imageMode: 'target', targetSize: 40000 }).fingerprint)
   })
 
   it('treats independent PNG and JPEG/WebP modes as active only for their actual output', () => {
@@ -57,7 +56,7 @@ describe('effective workflow configuration', () => {
     expect(workflowDefaults(tool)).toMatchObject({ imageMode: 'maximum', pngMode: 'maximum' })
     const mixed = [{ inputFormat: 'png' }, { inputFormat: 'pdf' }] as QueueItem[]
     expect(scopeWorkflowOptions(getTool('compress')!, mixed, 'maximum', {
-      imageMode: 'target', pngMode: 'target', targetSize: 50000, quality: 0.4, resizeEnabled: true, resizeMaxWidth: 800,
+      imageMode: 'target', pngMode: 'target', targetSize: 50000, quality: 0.4,
     })).toEqual({ level: 'recommended', imageMode: 'maximum', pngMode: 'maximum' })
   })
 })

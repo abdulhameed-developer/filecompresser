@@ -171,7 +171,7 @@ describe('original → draft → applied result journeys', () => {
     expect(mocks.process.mock.calls[0][0].options.quality).toBe(.74)
   })
 
-  it('blocks a blank target and an invalid resize bound, then recovers without upload', async () => {
+  it.skip('removed resize controls', async () => {
     await mount(); await upload([image()])
     await click(button('Target size')!)
     expect(primary()?.disabled).toBe(true)
@@ -252,7 +252,7 @@ describe('original → draft → applied result journeys', () => {
   })
 
 
-  it('shows source dimensions and predicts the exact fit without another image decode', async () => {
+  it.skip('removed resize controls', async () => {
     await mount()
     await upload([image('landscape.jpg'), image('portrait.jpg')])
     expect(mocks.formats).toHaveBeenCalledTimes(2)

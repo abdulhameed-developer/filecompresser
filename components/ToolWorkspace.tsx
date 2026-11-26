@@ -4,8 +4,7 @@ import { useId, useMemo, useRef, useEffect, useState, useCallback } from 'react'
 import type { ToolDefinition } from '@/lib/types'
 import { useFileQueue } from '@/lib/useFileQueue'
 import { savingsSummary } from '@/lib/format'
-import { imageSettingsError } from '@/lib/image-settings'
-import { expectedImageGeometry, type ImageSourceProbe } from '@/lib/engines/image'
+import type { ImageSourceProbe } from '@/lib/engines/image'
 import Icon from './Icon'
 import FileDropzone from './FileDropzone'
 import FileItem from './FileItem'
@@ -73,13 +72,6 @@ export default function ToolWorkspace({ tool, formatsLabel }: ToolWorkspaceProps
   const hasPng = outputFormat ? outputFormat === 'png' : scopeFormats.has('png')
   const hasLossy = outputFormat ? outputFormat !== 'png' : scopeFormats.has('jpeg') || scopeFormats.has('webp')
   const scopeImages = queue.selectedImageFiles
-  const canPreviewResize = queue.settings.resizeEnabled === true && !imageSettingsError({ ...queue.settings, imageMode: 'balanced', pngMode: 'lossless' })
-  const resizePreviews = canPreviewResize ? scopeImages.flatMap(file => {
-    const probe = probesByFile.get(file)
-    if (!probe) return []
-    const dimensions = expectedImageGeometry(probe.width, probe.height, Number(queue.settings.resizeMaxWidth) || undefined, Number(queue.settings.resizeMaxHeight) || undefined)
-    return [{ name: file.name, inputWidth: probe.width, inputHeight: probe.height, ...dimensions }]
-  }) : []
   const hasSettings = readyScope && (imageSettings || tool.engine !== 'image-compress' && (!['pdf-compress', 'zip-create', 'zip-extract'].includes(tool.engine) || Boolean(tool.settings?.length)))
   const runnable = scope.filter(item => !['validating', 'processing'].includes(item.status) && !(item.status === 'failed' && !item.inputFormat && tool.engine !== 'zip-create') && (item.status !== 'completed' || item.dirty))
   const changed = scope.filter(item => item.dirty).length
@@ -147,7 +139,7 @@ export default function ToolWorkspace({ tool, formatsLabel }: ToolWorkspaceProps
           <legend className="srInline">Draft settings for selected files</legend>
           <div className="settingsHeading"><div>{singleApplied && <button type="button" className="linkBtn" onClick={() => queue.restoreApplied(singleApplied.id)}>Restore applied</button>}<button type="button" className="linkBtn" onClick={queue.resetSettings}>Reset</button></div></div>
           {imageSettings && scopeImages.length > 0 && <OutputFormatPicker file={scopeImages[0]} files={scopeImages} value={outputFormat} onChange={next => queue.setSetting('outputFormat', next)} onCheckingChange={setFormatChecking} onProbesChange={rememberProbes} />}
-          <CompressionSettings tool={tool} level={queue.level} onLevel={queue.setLevel} settings={queue.settings} onSetting={queue.setSetting} imageSettings={imageSettings} imageFormat={outputFormat || (scopeFormats.size === 1 ? [...scopeFormats][0] : undefined)} hasPng={hasPng} hasLossy={hasLossy} targetAllowed={imageSettings} resizePreviews={resizePreviews} resizePreviewMissing={canPreviewResize && !formatChecking ? scopeImages.length - resizePreviews.length : 0} />
+          <CompressionSettings tool={tool} level={queue.level} onLevel={queue.setLevel} settings={queue.settings} onSetting={queue.setSetting} imageSettings={imageSettings} imageFormat={outputFormat || (scopeFormats.size === 1 ? [...scopeFormats][0] : undefined)} hasPng={hasPng} hasLossy={hasLossy} targetAllowed={imageSettings} />
         </fieldset></details>}
         {readyScope && tool.slug === 'compress' && !imageSettings && <p className="mixedBatchHint">Each selected file uses its format’s default settings. Select only JPG, PNG or WEBP files to adjust image settings.</p>}
         {!scope.length && <p className="selectionHint">Select a file below to configure, process or download it.</p>}

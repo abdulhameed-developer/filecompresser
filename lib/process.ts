@@ -32,10 +32,6 @@ export async function processFile(
   switch (engine) {
     case 'image-compress': {
       const { compressImage, isImageFormat } = await import('./engines/image')
-      const resizeMaxWidth = options.resizeEnabled === true ? optionalDimension(options.resizeMaxWidth) : undefined
-      const resizeMaxHeight = options.resizeEnabled === true ? optionalDimension(options.resizeMaxHeight) : undefined
-      if (options.resizeEnabled === true && !resizeMaxWidth && !resizeMaxHeight)
-        throw new ProcessingError('Enter a positive maximum width or height, or turn resizing off.')
       return compressImage(
         file,
         {
@@ -52,8 +48,6 @@ export async function processFile(
               ? options.outputFormat
               : undefined,
           targetSize: optionalSize(options.targetSize),
-          resizeMaxWidth,
-          resizeMaxHeight,
         },
         onProgress,
         signal,

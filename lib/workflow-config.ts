@@ -45,11 +45,6 @@ export function normalizedWorkflowOptions(engine: EngineKind, format: string | u
       const quality = numberValue(options.quality)
       result.quality = typeof quality === 'number' ? Math.min(1, Math.max(0.1, quality)) : preset
     }
-    if (options.resizeEnabled === true) {
-      result.resizeEnabled = true
-      result.resizeMaxWidth = numberValue(options.resizeMaxWidth)
-      result.resizeMaxHeight = numberValue(options.resizeMaxHeight)
-    }
     return Object.fromEntries(Object.entries(result).filter(([, value]) => value !== undefined))
   }
   if (engine === 'video-compress') return { level, resolution: ['1080', '720', '480'].includes(String(options.resolution)) ? options.resolution : 'original' }
@@ -61,7 +56,7 @@ export function normalizedWorkflowOptions(engine: EngineKind, format: string | u
 export function scopeWorkflowOptions(tool: ToolDefinition, scope: QueueItem[], level: CompressionLevel, settings: Record<string, SettingValue>): ProcessingOptions {
   const options = optionsForQueue(tool, scope, { level, ...settings })
   if (tool.slug === 'compress' && (!scope.length || scope.some(item => !['jpeg', 'png', 'webp'].includes(item.inputFormat ?? '')))) {
-    for (const key of ['imageMode', 'pngMode', 'quality', 'targetSize', 'resizeEnabled', 'resizeMaxWidth', 'resizeMaxHeight', 'outputFormat']) delete options[key]
+    for (const key of ['imageMode', 'pngMode', 'quality', 'targetSize', 'outputFormat']) delete options[key]
     options.level = 'recommended'
     // Only the image defaults carry into mixed queues. Hidden transformations
     // and targets never apply; media keep their own recommended defaults.
