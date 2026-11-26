@@ -84,6 +84,10 @@ export async function processFile(
         signal,
       )
     }
+    case 'webm-to-mp4': {
+      const { compressVideo } = await import('./engines/video')
+      return withMediaLock(() => compressVideo(file, { level: options.level, resolution: normalizeResolution(options.resolution) }, onProgress, signal), signal)
+    }
     case 'audio-compress': {
       const { processAudio } = await import('./engines/audio')
       return withMediaLock(
@@ -177,6 +181,7 @@ function optionalDimension(value: unknown): number | undefined {
 export function concurrencyFor(engine: EngineKind): number {
   switch (engine) {
     case 'video-compress':
+    case 'webm-to-mp4':
     case 'audio-compress':
     case 'gif-compress':
     case 'pdf-compress':
@@ -207,6 +212,7 @@ export async function engineForFormat(
       return 'pdf-compress'
     case 'mp4':
     case 'mov':
+    case 'webm':
       return 'video-compress'
     case 'mp3':
     case 'wav':

@@ -180,6 +180,7 @@ export type EngineKind =
   | 'image-compress'
   | 'gif-compress'
   | 'video-compress'
+  | 'webm-to-mp4'
   | 'audio-compress'
   | 'pdf-compress'
   | 'zip-create'

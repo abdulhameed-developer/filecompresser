@@ -294,6 +294,23 @@ export const TOOLS: ToolDefinition[] = [
     ],
   },
   {
+    slug: 'webm-to-mp4',
+    title: 'WebM to MP4 Converter',
+    description: 'Convert WebM video to broadly compatible H.264 MP4 in your browser.',
+    category: 'video',
+    engine: 'webm-to-mp4',
+    accept: 'video/webm,.webm',
+    extensions: ['webm'],
+    mimeTypes: ['video/webm'],
+    maxFileSize: 200 * MB,
+    privacyClientSide: true,
+    seoTitle: 'WebM to MP4 Converter — Free Browser Tool',
+    seoDescription: 'Convert WebM videos to compatible MP4 files locally in your browser. No upload required.',
+    faq: mediaFaq,
+    note: 'The result uses H.264 video and AAC audio for broad compatibility.',
+    related: ['video-compressor', 'compress', 'wav-compressor'],
+  },
+  {
     slug: 'mp3-compressor',
     title: 'MP3 Compressor',
     description:
