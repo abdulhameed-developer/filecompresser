@@ -273,7 +273,12 @@ check(
   JSON.stringify(blogIndex),
 )
 
-await page.click('.postCard a')
+const articleHref = await page.locator('.postCard a').first().getAttribute('href')
+await Promise.all([
+  page.waitForURL(new URL(articleHref, BASE).href, { timeout: 30_000 }),
+  page.click('.postCard a'),
+])
+await page.locator('.postFigure svg[role="img"]').waitFor({ state: 'visible', timeout: 30_000 })
 await settleScroll()
 const post = await page.evaluate(() => ({
   path: location.pathname,
