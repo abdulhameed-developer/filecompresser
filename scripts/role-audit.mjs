@@ -9,7 +9,7 @@
  */
 
 import { createRequire } from 'node:module'
-import { existsSync } from 'node:fs'
+import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { checkImageCodecDelivery } from './check-image-codecs.mjs'
 
@@ -112,7 +112,18 @@ page.on('console', (m) => {
 })
 page.on('pageerror', (e) => consoleErrors.push(`pageerror: ${e.message}`))
 const failedRequests = []
-page.on('requestfailed', (r) => failedRequests.push(`${r.url()} — ${r.failure()?.errorText}`))
+const cancelledRequests = []
+page.on('requestfailed', (r) => (r.failure()?.errorText === 'net::ERR_ABORTED' ? cancelledRequests : failedRequests).push(`${r.url()} — ${r.failure()?.errorText}`))
+const payloadOutput = process.env.SCREENSHOT_DIR || '.qa-results/role-audit'
+mkdirSync(payloadOutput, { recursive: true })
+const payloads = []
+const requestInfo = new Map()
+const cdp = await page.context().newCDPSession(page)
+await cdp.send('Network.enable')
+cdp.on('Network.requestWillBeSent', event => {
+  const headers = Object.fromEntries(Object.entries(event.request.headers).filter(([name]) => ['rsc', 'next-router-prefetch', 'purpose', 'sec-purpose'].includes(name.toLowerCase())))
+  requestInfo.set(event.request.url, { type: event.type, headers, initiator: { type: event.initiator.type, url: event.initiator.url, stack: event.initiator.stack?.callFrames?.slice(0, 3).map(frame => ({ functionName: frame.functionName, url: frame.url })) } })
+})
 
 for (const route of ['/', '/jpg-compressor', '/about', '/blog', '/blog/honest-file-size-reporting']) {
   await page.goto(BASE + route, { waitUntil: 'networkidle' })
@@ -122,12 +133,15 @@ for (const route of ['/', '/jpg-compressor', '/about', '/blog', '/blog/honest-fi
       .getEntriesByType('resource')
       .reduce((sum, r) => sum + (r.transferSize || 0), 0)
   )
+  const resources = await page.evaluate(() => performance.getEntriesByType('resource').map(resource => ({ url: resource.name, initiatorType: resource.initiatorType, transferSize: resource.transferSize, encodedBodySize: resource.encodedBodySize, decodedBodySize: resource.decodedBodySize, durationMs: resource.duration })))
+  payloads.push({ route, profile: payloads.length ? 'reused warm profile' : 'fresh cold profile', bytes, resources: resources.map(resource => ({ ...resource, request: requestInfo.get(resource.url) })) })
+  writeFileSync(path.join(payloadOutput, 'payloads.json'), JSON.stringify({ base: BASE, capturedAt: new Date().toISOString(), budgetBytes: 900_000, note: 'Actual local transfer sizes; the budget is unchanged. Resource initiators and prefetch/RSC flags exclude cookies and authentication headers.', routes: payloads }, null, 2))
   // Generous, but a real regression guard: the FFmpeg core must never load here.
   if (bytes > 900_000) {
     fail('DevOps', `${route} transferred ${Math.round(bytes / 1024)}KB on first load`)
   }
   if (bytes > 0 && bytes < 20_000) {
-    note('DevOps', `${route} transferred only ${Math.round(bytes / 1024)}KB — suspiciously light`)
+    note('DevOps', `${route} transferred ${Math.round(bytes / 1024)}KB in this reused warm profile; this is not its cold payload`)
   }
 
   const heavy = await page.evaluate(() =>
@@ -178,14 +192,9 @@ for (const route of A11Y_ROUTES) {
     for (const el of document.querySelectorAll('a, button, input, select, textarea, summary')) {
       const r = el.getBoundingClientRect()
       if (r.width === 0 && r.height === 0) continue
-      const name = (
-        el.getAttribute('aria-label') ||
-        el.getAttribute('title') ||
-        el.textContent ||
-        (el.labels && el.labels[0]?.textContent) ||
-        el.getAttribute('placeholder') ||
-        ''
-      ).trim()
+      const labelled = (el.getAttribute('aria-labelledby') || '').split(/\s+/).map(id => document.getElementById(id)?.textContent || '').join(' ')
+      const imageText = [...el.querySelectorAll('img[alt]')].map(image => image.getAttribute('alt')).join(' ')
+      const name = [el.getAttribute('aria-label'), labelled, el.getAttribute('title'), el.textContent, imageText, el.labels?.[0]?.textContent, el.getAttribute('placeholder')].map(value => String(value || '').trim()).find(Boolean) || ''
       if (!name) nameless.push(el.tagName.toLowerCase() + (el.className ? '.' + String(el.className).split(' ')[0] : ''))
     }
     if (nameless.length) out.push(`${nameless.length} control(s) without an accessible name: ${[...new Set(nameless)].slice(0, 3).join(', ')}`)

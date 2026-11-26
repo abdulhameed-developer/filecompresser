@@ -18,7 +18,7 @@
  */
 
 import { createRequire } from 'node:module'
-import { existsSync } from 'node:fs'
+import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 
 const PW_TOOLS =
@@ -56,20 +56,37 @@ const browser = await chromium.launch({
 })
 const page = await browser.newPage()
 
-const WIDTHS = [320, 360, 375, 390, 414, 768, 1024, 1280, 1440, 1920]
+const WIDTHS = process.env.QA_WIDTHS ? process.env.QA_WIDTHS.split(',').map(Number) : [390, 1440, 320, 375, 430, 760, 768, 900, 901, 1024, 1280, 1920]
 const ROUTES = [
   '/',
+  '/compress',
+  '/image-compressor',
   '/jpg-compressor',
+  '/jpeg-compressor',
+  '/png-compressor',
+  '/webp-compressor',
   '/gif-compressor',
   '/video-compressor',
+  '/webm-to-mp4',
   '/mp3-compressor',
+  '/wav-compressor',
+  '/wav-to-mp3',
   '/pdf-compressor',
+  '/zip-compressor',
   '/archive-compressor',
   '/about',
   '/blog',
   '/blog/how-browser-compression-works',
+  '/blog/honest-file-size-reporting',
+  '/blog/choosing-a-compression-mode',
+  '/blog/what-privacy-claim-really-means',
+  '/blog/compressing-files-for-the-web',
+  '/contact',
   '/privacy',
+  '/terms',
+  '/disclaimer',
   '/sitemap',
+  '/404-missing',
 ]
 
 /** Runs in the page: everything that needs layout must be measured there. */
@@ -393,17 +410,61 @@ async function auditPage() {
 }
 
 const failures = []
+const results = []
+const evidence = process.env.SCREENSHOT_DIR || '.qa-results/responsive'
+mkdirSync(evidence, { recursive: true })
+
+async function prepareFullPageCapture() {
+  // Full-page screenshots do not themselves trigger native lazy loading. Walk
+  // through the page as a visitor does, then restore the true default position.
+  await page.evaluate(async () => {
+    const frame = () => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))
+    const end = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight) - innerHeight
+    for (let top = 0; top < end; top += Math.max(250, innerHeight * .8)) {
+      window.scrollTo({ top, behavior: 'instant' })
+      await frame()
+    }
+    window.scrollTo({ top: end, behavior: 'instant' })
+    await frame()
+  })
+  const images = await page.evaluate(async () => {
+    const candidates = [...document.images].filter(image => {
+      const box = image.getBoundingClientRect()
+      return box.width > 0 && box.height > 0 && box.right > 0 && box.left < innerWidth
+    })
+    return Promise.all(candidates.map(async image => {
+      try { await Promise.race([image.decode(), new Promise((_, reject) => setTimeout(() => reject(Error('Image decode timeout')), 10_000))]) } catch { /* Report the actual completeness below. */ }
+      return { src: image.currentSrc || image.src, complete: image.complete, naturalWidth: image.naturalWidth }
+    }))
+  })
+  await page.evaluate(() => window.scrollTo({ top: 0, left: 0, behavior: 'instant' }))
+  await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))))
+  return images
+}
 
 for (const width of WIDTHS) {
   for (const route of ROUTES) {
     await page.setViewportSize({ width, height: 900 })
     await page.goto(BASE + route, { waitUntil: 'networkidle' })
     const problems = await page.evaluate(auditPage)
+    // Capture the actual closed/default state after the deliberate menu tests.
+    // The menu keeps its DOM for a 140ms exit animation before unmounting.
+    await page.locator('.toolsDropdown').waitFor({ state: 'detached', timeout: 5000 })
+    const capture = [390, 768, 1440].includes(width)
+      ? path.join(evidence, `${route === '/' ? 'home' : route.slice(1).replaceAll('/', '--')}-${width}.png`)
+      : undefined
+    const images = capture ? await prepareFullPageCapture() : undefined
+    if (images) for (const image of images) if (!image.complete || !image.naturalWidth) problems.push(`image did not load: ${image.src}`)
+    if (capture) await page.screenshot({ path: capture, fullPage: true })
+    results.push({ route, width, height: 900, problems, screenshot: capture, images })
     for (const p of problems) failures.push(`${width}px ${route} — ${p}`)
   }
+  console.log(`${width}px: ${ROUTES.length} routes checked`)
+  writeFileSync(path.join(evidence, 'responsive-results.json'), JSON.stringify({ base: BASE, capturedAt: new Date().toISOString(), routes: ROUTES, widths: WIDTHS, results, failures }, null, 2) + '\n')
 }
 
 console.log(`audited ${WIDTHS.length} widths x ${ROUTES.length} routes`)
+writeFileSync(path.join(evidence, 'responsive-results.json'), JSON.stringify({ base: BASE, capturedAt: new Date().toISOString(), routes: ROUTES, widths: WIDTHS, results, failures }, null, 2) + '\n')
 
 await browser.close()
 

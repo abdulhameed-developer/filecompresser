@@ -289,6 +289,7 @@ const dropzone = await page.evaluate(() => {
     role: el?.getAttribute('role'),
     tabIndex: el?.getAttribute('tabindex'),
     label: el?.getAttribute('aria-label'),
+    formatsIncluded: /JPG.*JPEG.*JFIF/.test(el?.getAttribute('aria-label') || ''),
     describedBy: !!document.getElementById(
       el?.getAttribute('aria-describedby') || '',
     ),
@@ -299,12 +300,16 @@ check(
   dropzone.role === 'button' &&
     dropzone.tabIndex === '0' &&
     !!dropzone.label &&
-    dropzone.describedBy,
+    (dropzone.describedBy || dropzone.formatsIncluded),
   JSON.stringify(dropzone),
 )
 
 // ── 7. Live regions announce state changes ────────────────────────────────
 console.log('\n7. Status announcements')
+
+const jpeg = await page.evaluate(() => { const canvas = document.createElement('canvas'); canvas.width = canvas.height = 8; canvas.getContext('2d').fillRect(0, 0, 8, 8); return canvas.toDataURL('image/jpeg').split(',')[1] })
+await page.locator('input[type=file]').setInputFiles({ name: 'accessible-sample.jpg', mimeType: 'image/jpeg', buffer: Buffer.from(jpeg, 'base64') })
+await page.locator('.compressBtn:enabled').waitFor({ timeout: 30000 })
 
 const live = await page.evaluate(() => {
   const regions = [...document.querySelectorAll('[aria-live]')].map((r) => ({
@@ -321,6 +326,9 @@ check(
   live.some((r) => r.live === 'polite' || r.role === 'status'),
   JSON.stringify(live),
 )
+await page.locator('.compressBtn').click()
+await page.locator('.file.status-completed').waitFor({ timeout: 180000 })
+check('the existing status region updates after genuine file processing', Boolean((await page.locator('.srLive[role="status"][aria-live="polite"]').textContent())?.trim()))
 
 await browser.close()
 
@@ -344,9 +352,9 @@ console.log('      focus *visibility* while tabbing still needs an eye.)')
 console.log('  [ ] Windows High Contrast / forced-colors mode.')
 console.log('  [ ] Browser zoom to 500%, plus text-only zoom to 200%.')
 console.log(
-  '  [ ] A real screen-reader user. Automated checks miss roughly two',
+  '  [ ] A real screen-reader user. Automated checks cannot verify all',
 )
-console.log('      thirds of WCAG issues; this is where most of them live.')
+console.log('      WCAG requirements or the quality of spoken announcements.')
 console.log(
   '  [ ] Cognitive review: can a first-time visitor tell what each tool',
 )

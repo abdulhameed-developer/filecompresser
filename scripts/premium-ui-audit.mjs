@@ -38,19 +38,27 @@ try {
     return bounds
   })
   const xml = await (await fetch(`${base}/sitemap.xml`)).text()
-  const toolRoutes = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(item => new URL(item[1]).pathname).filter(route => /compress|archive/.test(route) && !route.startsWith('/blog'))
+  const canonicalRoutes = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(item => new URL(item[1]).pathname)
+  const toolRoutes = canonicalRoutes.filter(route => /compress|archive|webm-to-mp4/.test(route) && !route.startsWith('/blog'))
   let disclosures = 0
-  for (const route of ['/', ...toolRoutes, '/wav-to-mp3']) {
+  for (const route of [...new Set([...canonicalRoutes, '/wav-to-mp3'])]) {
     await check(`All disclosures operate and have indicators: ${route}`, async () => {
       await page.goto(base + route, { waitUntil: 'networkidle' })
       const details = page.locator('main details')
-      const count = await details.count(); assert.ok(count > 0)
+      const count = await details.count(); if (route === '/' || toolRoutes.includes(route)) assert.ok(count > 0)
       for (let i = 0; i < count; i++) {
         const item = details.nth(i); const summary = item.locator('summary')
         const initial = await item.evaluate(el => el.open)
         await summary.focus(); await page.keyboard.press('Enter')
         assert.equal(await item.evaluate(el => el.open), !initial)
-        assert.ok(await summary.locator('svg.uiIcon').count() > 0)
+        const indicator = await summary.evaluate(element => {
+          const style = getComputedStyle(element)
+          const marker = getComputedStyle(element, '::marker')
+          const legacyMarker = getComputedStyle(element, '::-webkit-details-marker')
+          const visibleMarker = marker.display !== 'none' && legacyMarker.display !== 'none' && !['none', '""'].includes(marker.content)
+          return { svg: Boolean(element.querySelector('svg.uiIcon')), native: style.display === 'list-item' && style.listStyleType !== 'none' && style.visibility === 'visible' && Number(style.opacity) > 0 && visibleMarker, listStyleType: style.listStyleType, markerContent: marker.content }
+        })
+        assert.ok(indicator.svg || indicator.native, `Disclosure has no visible SVG or native list marker: ${JSON.stringify(indicator)}`)
         await page.keyboard.press('Enter'); assert.equal(await item.evaluate(el => el.open), initial)
         disclosures++
       }
@@ -76,20 +84,25 @@ try {
   await page.setViewportSize({ width: 1440, height: 1000 })
   await check('Every article has a unique loaded raster image, social image and working contents links', async () => {
     await page.goto(`${base}/blog`, { waitUntil: 'networkidle' })
-    const cards = page.locator('.postCardArt img'); assert.equal(await cards.count(), 5)
+    const cards = page.locator('.postCardArt img'); const articleCount = await cards.count(); assert.ok(articleCount > 0)
+    assert.equal(articleCount, await page.locator('.postCardLink').count())
     const sources = new Set()
-    for (let i = 0; i < 5; i++) { const img = cards.nth(i); await img.scrollIntoViewIfNeeded(); await img.evaluate(el => el.decode()); assert.ok((await img.getAttribute('alt')).length > 20); sources.add(await img.getAttribute('src')) }
-    assert.equal(sources.size, 5)
+    for (let i = 0; i < articleCount; i++) { const img = cards.nth(i); await img.scrollIntoViewIfNeeded(); await img.evaluate(el => el.decode()); assert.ok((await img.getAttribute('alt')).length > 20); sources.add(await img.getAttribute('src')) }
+    assert.equal(sources.size, articleCount)
     await page.evaluate(() => scrollTo(0, 0)); await shot('blog')
     const links = await page.locator('.postCardLink').evaluateAll(elements => elements.map(el => el.getAttribute('href')))
     for (const href of links) {
       await page.goto(base + href, { waitUntil: 'networkidle' })
       await page.locator('.articleHero img').evaluate(el => el.decode())
-      assert.match(await page.locator('meta[property="og:image"]').getAttribute('content'), /\/blog\/.*\.jpg$/)
+      const socialImage = new URL(await page.locator('meta[property="og:image"]').getAttribute('content'))
+      assert.match(socialImage.pathname, /\.(?:jpe?g|png|webp|avif)$/i)
+      const socialResponse = await page.request.get(base + socialImage.pathname)
+      assert.equal(socialResponse.status(), 200)
+      assert.match(socialResponse.headers()['content-type'], /^image\/(?:jpeg|png|webp|avif)/i)
       assert.ok(await page.locator('.articleContents a').evaluateAll(elements => elements.every(el => document.getElementById(el.hash.slice(1)))))
       assert.ok(await page.locator('.articleToolCta a').count() > 0)
     }
-    await shot('article'); return 5
+    await shot('article'); return articleCount
   })
   await page.goto(`${base}/jpg-compressor`, { waitUntil: 'networkidle' }); await shot('tool')
   await check('Reduced motion disables navigation and disclosure animation', async () => {

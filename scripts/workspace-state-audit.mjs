@@ -1,0 +1,126 @@
+/** Populated workspaces, real file validation and native modal keyboard/reflow checks. */
+import { createRequire } from 'node:module'
+import { execFileSync } from 'node:child_process'
+import { mkdtempSync, mkdirSync, writeFileSync, readFileSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import path from 'node:path'
+import assert from 'node:assert/strict'
+import { zipSync } from 'fflate'
+import { PDFDocument } from 'pdf-lib'
+
+const qa = createRequire(path.join(process.env.PW_TOOLS || path.join(process.env.HOME, 'pwtools'), 'qa.cjs'))
+const { chromium } = qa('playwright-core')
+const ffmpeg = process.env.FFMPEG_PATH || qa('ffmpeg-static')
+const fixtures = mkdtempSync(path.join(tmpdir(), 'filecompresser-workspace-'))
+const output = process.env.QA_OUTPUT || '.qa-results/workspace-states'
+mkdirSync(output, { recursive: true })
+const make = (name, args) => {
+  const file = path.join(fixtures, name)
+  execFileSync(ffmpeg, ['-hide_banner', '-v', 'error', '-y', ...args, file], { timeout: 60_000 })
+  return file
+}
+const png = make('sample.png', ['-f', 'lavfi', '-i', 'testsrc=size=160x120:rate=1', '-frames:v', '1'])
+const jpg = make('sample.jpg', ['-i', png, '-frames:v', '1'])
+const webp = make('sample.webp', ['-i', png, '-frames:v', '1'])
+const gif = make('sample.gif', ['-f', 'lavfi', '-i', 'testsrc=size=160x120:rate=5', '-t', '1'])
+const mp4 = make('sample.mp4', ['-f', 'lavfi', '-i', 'testsrc=size=160x120:rate=5', '-t', '1', '-c:v', 'libx264', '-pix_fmt', 'yuv420p'])
+const webm = make('sample.webm', ['-i', mp4, '-c:v', 'libvpx', '-deadline', 'realtime', '-cpu-used', '8'])
+const wav = make('sample.wav', ['-f', 'lavfi', '-i', 'sine=frequency=440', '-t', '1'])
+const mp3 = make('sample.mp3', ['-i', wav, '-b:a', '192k'])
+const pdf = await PDFDocument.create()
+pdf.addPage().drawText('Workspace accessibility fixture')
+const pdfPath = path.join(fixtures, 'sample.pdf')
+writeFileSync(pdfPath, await pdf.save())
+const zip = path.join(fixtures, 'sample.zip')
+writeFileSync(zip, zipSync({ 'sample.txt': new TextEncoder().encode('Workspace validation fixture') }))
+const tools = [
+  ['compress', jpg], ['image-compressor', jpg], ['jpg-compressor', jpg], ['jpeg-compressor', jpg],
+  ['png-compressor', png], ['webp-compressor', webp], ['gif-compressor', gif],
+  ['video-compressor', mp4], ['webm-to-mp4', webm], ['mp3-compressor', mp3],
+  ['wav-compressor', wav], ['pdf-compressor', pdfPath], ['zip-compressor', jpg], ['archive-compressor', zip],
+]
+const base = (process.argv[2] || 'http://127.0.0.1:3000').replace(/\/$/, '')
+const widths = process.env.STATE_WIDTHS ? process.env.STATE_WIDTHS.split(',').map(Number) : [320, 390, 768, 1440]
+const height = process.env.STATE_HEIGHT ? Number(process.env.STATE_HEIGHT) : 900
+const selectedTools = process.env.STATE_TOOLS ? tools.filter(([slug]) => process.env.STATE_TOOLS.split(',').includes(slug)) : tools
+const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || '/usr/bin/google-chrome', args: ['--no-sandbox', '--disable-dev-shm-usage'] })
+const page = await browser.newPage()
+const results = []
+const errors = []
+page.on('pageerror', error => errors.push(error.message))
+try {
+  for (const width of widths) for (const [slug, file] of selectedTools) {
+    const record = { slug, width, height, pass: false, modal: false }
+    try {
+      await page.setViewportSize({ width, height })
+      await page.goto(`${base}/${slug}`, { waitUntil: 'networkidle' })
+      assert.equal(await page.locator('.settingsDialog[open]').count(), 0)
+      const sourceName = process.env.STATE_LONG_FILENAMES ? `source-${'verylongfilename'.repeat(10)}${path.extname(file)}` : path.basename(file)
+      record.sourceName = sourceName
+      await page.locator('input[type=file]').setInputFiles(process.env.STATE_LONG_FILENAMES ? { name: sourceName, mimeType: '', buffer: readFileSync(file) } : file)
+      await page.locator('.workflowPrimaryActions .compressBtn:enabled').waitFor({ timeout: 15_000 })
+      assert.equal(await page.locator('.fileError').count(), 0)
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Populated workspace overflows horizontally')
+      await page.screenshot({ path: path.join(output, `${slug}-${width}-ready.png`), fullPage: true })
+      const details = page.locator('.fileCardDetails').first()
+      await details.locator('summary').click()
+      assert.equal(await details.evaluate(el => el.open), true)
+      await details.locator('summary').click()
+      assert.equal(await details.evaluate(el => el.open), false)
+      const trigger = page.getByRole('button', { name: 'Settings', exact: true })
+      if (await trigger.count()) {
+        record.modal = true
+        const open = async () => {
+          await trigger.click()
+          await page.getByRole('dialog', { name: 'Settings', exact: true }).waitFor()
+        }
+        await open()
+        const geometry = await page.locator('.settingsDialog').evaluate(el => {
+          const box = el.getBoundingClientRect()
+          return { x: box.x, right: box.right, y: box.y, bottom: box.bottom, focusedInside: el.contains(document.activeElement), locked: getComputedStyle(document.body).overflow === 'hidden', scroll: window.scrollY }
+        })
+        assert.ok(geometry.x >= 0 && geometry.right <= width && geometry.y >= 0 && geometry.bottom <= height)
+        const doneBox = await page.getByRole('button', { name: 'Done', exact: true }).boundingBox()
+        assert.ok(doneBox.y >= geometry.y && doneBox.y + doneBox.height <= geometry.bottom, 'Modal Done action must remain visible inside the viewport')
+        assert.ok(geometry.focusedInside && geometry.locked)
+        await page.getByRole('button', { name: 'Close settings', exact: true }).focus()
+        await page.keyboard.press('Shift+Tab')
+        assert.equal(await page.getByRole('button', { name: 'Done', exact: true }).evaluate(el => el === document.activeElement), true)
+        await page.keyboard.press('Tab')
+        assert.equal(await page.getByRole('button', { name: 'Close settings', exact: true }).evaluate(el => el === document.activeElement), true)
+        await page.screenshot({ path: path.join(output, `${slug}-${width}-settings.png`) })
+        if ([390, 1440].includes(width)) {
+          await page.addScriptTag({ path: qa.resolve('axe-core/axe.min.js') })
+          const violations = await page.evaluate(async () => (await window.axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'] } })).violations.map(item => ({ id: item.id, nodes: item.nodes.map(node => node.target) })))
+          record.violations = violations
+          assert.deepEqual(violations, [])
+        }
+        await page.keyboard.press('Escape')
+        assert.equal(await page.locator('.settingsDialog').evaluate(el => el.open), false)
+        assert.equal(await trigger.evaluate(el => el === document.activeElement), true)
+        assert.equal(await page.evaluate(() => getComputedStyle(document.body).overflow === 'hidden'), false)
+        assert.equal(await page.evaluate(() => window.scrollY), geometry.scroll)
+        await open()
+        await page.getByRole('button', { name: 'Done', exact: true }).click()
+        assert.equal(await trigger.evaluate(el => el === document.activeElement), true)
+        await open()
+        await page.mouse.click(2, 2)
+        assert.equal(await page.locator('.settingsDialog').evaluate(el => el.open), false)
+      } else if (slug === 'webm-to-mp4') {
+        assert.match(await page.locator('.workflowOutput').innerText(), /MP4/)
+        assert.match(await page.locator('.compressBtn').innerText(), /Convert to MP4/)
+      }
+      record.pass = true
+      console.log('PASS', slug, width, record.modal ? 'modal + ready' : 'ready')
+    } catch (error) {
+      record.error = error.stack || String(error)
+      record.focus = await page.evaluate(() => ({ tag: document.activeElement?.tagName, text: document.activeElement?.textContent?.slice(0, 100), className: document.activeElement?.className, dialogOpen: document.querySelector('.settingsDialog')?.open })).catch(() => null)
+      console.error('FAIL', slug, width, record.error)
+      await page.screenshot({ path: path.join(output, `${slug}-${width}-failure.png`) }).catch(() => {})
+    }
+    results.push(record)
+    writeFileSync(path.join(output, 'summary.json'), JSON.stringify({ base, capturedAt: new Date().toISOString(), fixtures, results, errors }, null, 2) + '\n')
+  }
+} finally { await browser.close() }
+console.log(`${results.filter(result => result.pass).length}/${results.length} populated workspace checks passed`)
+if (results.some(result => !result.pass) || errors.length) process.exitCode = 1

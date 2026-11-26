@@ -35,6 +35,7 @@ const PAGES = [
   '/webp-compressor',
   '/gif-compressor',
   '/video-compressor',
+  '/webm-to-mp4',
   '/mp3-compressor',
   '/wav-compressor',
   '/pdf-compressor',

@@ -7,21 +7,22 @@ const axe = createRequire(path.join(process.env.AXE_TOOLS || process.env.PW_TOOL
 const { chromium } = qa('playwright-core')
 const base = process.argv[2] || 'http://127.0.0.1:3000'
 const xml = await (await fetch(`${base}/sitemap.xml`)).text()
-const routes = [...new Set([...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => new URL(match[1]).pathname).concat('/wav-to-mp3'))]
+const routes = process.env.A11Y_ROUTES ? process.env.A11Y_ROUTES.split(',') : [...new Set([...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => new URL(match[1]).pathname).concat('/wav-to-mp3', '/404-missing'))]
 const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || '/usr/bin/google-chrome', args: ['--no-sandbox'] })
 const results = []
+const output = process.env.A11Y_OUTPUT || '.qa-results/axe.json'
 try {
   const page = await browser.newPage()
   for (const route of routes) {
     await page.goto(`${base}${route}`)
     await page.addScriptTag({ path: axe.resolve('axe-core/axe.min.js') })
     const result = await page.evaluate(async () => await globalThis.axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'] } }))
-    results.push({ route, violations: result.violations.map(item => ({ id: item.id, impact: item.impact, nodes: item.nodes.map(node => node.target) })), incomplete: result.incomplete.length })
+    results.push({ route, violations: result.violations.map(item => ({ id: item.id, impact: item.impact, nodes: item.nodes.map(node => node.target) })), incomplete: result.incomplete.length, incompleteDetails: result.incomplete.map(item => ({ id: item.id, impact: item.impact, nodes: item.nodes.map(node => ({ target: node.target, summary: node.failureSummary })) })) })
     console.log(route, result.violations.length)
   }
 } finally {
-  mkdirSync('.qa-results', { recursive: true })
-  writeFileSync('.qa-results/axe.json', JSON.stringify(results, null, 2))
+  mkdirSync(path.dirname(output), { recursive: true })
+  writeFileSync(output, JSON.stringify(results, null, 2))
   await browser.close()
 }
 console.log(`${results.length} pages scanned. Incomplete checks require manual review; this is not accessibility certification.`)

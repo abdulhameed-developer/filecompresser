@@ -1,6 +1,6 @@
 /** Interaction evidence for the product composition. QA tools remain outside runtime dependencies. */
 import { createRequire } from 'node:module'
-import { mkdirSync, writeFileSync } from 'node:fs'
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import assert from 'node:assert/strict'
 const qa = createRequire(path.join(process.env.PW_TOOLS || path.join(process.env.HOME, 'pwtools'), 'qa.cjs'))
@@ -11,6 +11,7 @@ mkdirSync(out, { recursive: true })
 const b = await chromium.launch({ executablePath: process.env.CHROME_PATH || '/usr/bin/google-chrome', args: ['--no-sandbox'] })
 const p = await b.newPage({ viewport: { width: 1440, height: 1000 } })
 const results = []
+const toolCount = [...readFileSync('lib/tools.ts', 'utf8').matchAll(/^\s+slug: '/gm)].length
 async function check(name, work) { try { const detail = await work(); results.push({ name, pass: true, detail }); console.log('PASS', name) } catch (error) { results.push({ name, pass: false, error: String(error) }); console.error('FAIL', name, String(error)) } }
 try {
   await check('Header active, hover and focus states share a balanced 44px frame', async () => {
@@ -35,7 +36,7 @@ try {
   })
   await check('Tools dropdown hover and focus surfaces follow labels without layout shifts', async () => {
     await p.goto(base, { waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Tools', exact: true }).click(); await p.waitForTimeout(240)
-    const links = p.locator('.toolsDropdownInner a'), count = await links.count(); assert.equal(count, 13)
+    const links = p.locator('.toolsDropdownInner a'), count = await links.count(); assert.equal(count, toolCount)
     const measurements = []
     for (let i = 0; i < count; i++) {
       const link = links.nth(i), before = await link.boundingBox(); await link.hover(); await p.waitForTimeout(170)
@@ -51,6 +52,8 @@ try {
     }
     await p.keyboard.press('Escape')
     const trigger = p.getByRole('button', { name: 'Tools', exact: true })
+    await trigger.focus()
+    await p.screenshot({ path: path.join(out, 'nav-tools-trigger-focus.png') })
     await trigger.focus(); await p.keyboard.press('ArrowDown'); await p.waitForTimeout(40)
     assert.notEqual(await links.first().evaluate(el => getComputedStyle(el).outlineStyle), 'none')
     await p.screenshot({ path: path.join(out, 'dropdown-item-focus.png') })
@@ -67,15 +70,45 @@ try {
     if (width === 1440) await p.screenshot({ path: path.join(out, 'menu-desktop.png') })
     await p.keyboard.press('Escape'); return bounds
   })
+  await check('Selected tool menu has balanced active, hover and keyboard focus states', async () => {
+    await p.setViewportSize({ width: 1440, height: 1000 })
+    await p.goto(`${base}/webm-to-mp4`, { waitUntil: 'networkidle' })
+    await p.getByRole('button', { name: 'Tools', exact: true }).click()
+    const active = p.locator('.toolsDropdownInner a[href="/webm-to-mp4"]')
+    assert.equal(await active.getAttribute('aria-current'), 'page')
+    for (const slug of ['jpg-compressor', 'pdf-compressor', 'webm-to-mp4']) {
+      await p.locator(`.toolsDropdownInner a[href="/${slug}"]`).hover()
+      await p.waitForTimeout(180)
+      await p.screenshot({ path: path.join(out, `nav-menu-hover-${slug}.png`) })
+    }
+    await p.locator('.toolsDropdownInner a[href="/jpg-compressor"]').focus()
+    await p.screenshot({ path: path.join(out, 'selected-tool-menu-active-hover-focus.png') })
+    await p.keyboard.press('Escape')
+    await p.locator('.toolsDropdown').waitFor({ state: 'detached' })
+  })
+  await check('Mobile tool navigation exposes the selected converter with large touch targets', async () => {
+    await p.setViewportSize({ width: 390, height: 900 })
+    await p.goto(`${base}/webm-to-mp4`, { waitUntil: 'networkidle' })
+    await p.getByRole('button', { name: 'Open menu', exact: true }).click()
+    const group = p.locator('.mobileGroup').filter({ has: p.locator('a[href="/webm-to-mp4"]') })
+    await group.locator('summary').click()
+    const selected = group.locator('a[href="/webm-to-mp4"]')
+    assert.equal(await selected.getAttribute('aria-current'), 'page')
+    assert.ok((await selected.boundingBox()).height >= 44)
+    await p.screenshot({ path: path.join(out, 'nav-mobile-media-expanded-390.png') })
+    await p.keyboard.press('Escape')
+    await p.locator('.mobileMenu').waitFor({ state: 'detached' })
+  })
   await check('Directory combines search and categories without removing tools', async () => {
+    await p.setViewportSize({ width: 1440, height: 1000 })
     await p.goto(base, { waitUntil: 'networkidle' }); await p.locator('.toolDirectory').scrollIntoViewIfNeeded()
-    assert.equal(await p.locator('.toolTile').count(), 13)
+    assert.equal(await p.locator('.toolTile').count(), toolCount)
     await p.getByRole('button', { name: 'PDF & Archives', exact: true }).click()
     assert.equal(await p.locator('.toolTile').count(), 3)
     await p.getByRole('searchbox', { name: 'Find your tool' }).fill('jpg')
     assert.equal(await p.locator('.toolTile').count(), 0)
     await p.getByRole('button', { name: 'Reset filters' }).click()
-    assert.equal(await p.locator('.toolTile').count(), 13)
+    assert.equal(await p.locator('.toolTile').count(), toolCount)
     await p.locator('.toolTile').first().hover()
     await p.locator('.toolDirectory').screenshot({ path: path.join(out, 'directory-hover.png') })
   })
@@ -123,7 +156,7 @@ try {
   })
   await check('Tool facts are near selection and supporting guidance stays available', async () => {
     await p.goto(`${base}/jpg-compressor`)
-    assert.match(await p.locator('.limit').innerText(), /50 MB/)
+    assert.match(await p.locator('.workspaceIntro').innerText(), /50 MB/)
     assert.match(await p.locator('.formats').innerText(), /JPG/)
     assert.equal(await p.locator('.toolFacts,.toolNoteBlock,.processExplainer').count(), 0)
     await p.getByText('Limits and quality', { exact: true }).click()
