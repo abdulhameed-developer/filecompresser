@@ -4,6 +4,7 @@ import { useEffect, useId, useRef, useState, type KeyboardEvent, type UIEvent } 
 import Image from 'next/image'
 import Icon from './Icon'
 import { formatBytes } from '@/lib/format'
+import { lockDialogScroll } from '@/lib/dialog-scroll'
 
 interface ImageComparisonProps {
   original: File
@@ -34,6 +35,7 @@ export default function ImageComparison({ original, output, outputName, resultLa
 
   useEffect(() => {
     const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null
+    const unlockScroll = lockDialogScroll()
     const dialog = dialogRef.current
     let originalUrl: string | undefined
     let outputUrl: string | undefined
@@ -50,7 +52,8 @@ export default function ImageComparison({ original, output, outputName, resultLa
       if (originalUrl) URL.revokeObjectURL(originalUrl)
       if (outputUrl) URL.revokeObjectURL(outputUrl)
       if (dialog?.open && typeof dialog.close === 'function') dialog.close()
-      previousFocus?.focus()
+      previousFocus?.focus({ preventScroll: true })
+      unlockScroll()
     }
   }, [original, output])
 

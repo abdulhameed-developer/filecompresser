@@ -4,6 +4,7 @@ import path from 'node:path'
 import type { Metadata } from 'next'
 import type { IconName } from '@/components/Icon'
 import { pageMetadata } from './seo'
+import { safeEditorialHref } from './editorial-markup'
 
 export const MANAGED_PAGE_SLUGS = ['about', 'contact', 'privacy', 'terms', 'disclaimer', 'blog'] as const
 export type ManagedPageSlug = typeof MANAGED_PAGE_SLUGS[number]
@@ -60,14 +61,8 @@ function optionalGroup(value: unknown, location: string): Record<string, unknown
 function link(value: unknown, location: string): ManagedLink {
   const item = record(value, location)
   const href = text(item.href, `${location}.href`)
-  if (/[\u0000-\u0020\u007f\\]/.test(href)) return invalid(location, 'links cannot contain whitespace, control characters or backslashes')
-  if (!/^\/(?!\/)/.test(href)) {
-    try {
-      const url = new URL(href)
-      if (url.protocol !== 'https:' || url.username || url.password) return invalid(location, 'use a site-relative or HTTPS link without credentials')
-    } catch { return invalid(location, 'use a site-relative or HTTPS link without credentials') }
-  }
-  return { label: text(item.label, `${location}.label`), href }
+  try { return { label: text(item.label, `${location}.label`), href: safeEditorialHref(href) } }
+  catch (error) { return invalid(location, `link: ${error instanceof Error ? error.message : 'Invalid address'}`) }
 }
 function date(value: unknown, location: string): string | undefined {
   const source = text(value, location, true)

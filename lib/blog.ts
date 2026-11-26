@@ -7,6 +7,7 @@ export interface EditorialImage { src: string; alt: string; caption?: string }
 export interface PostAuthor { name: string; url?: string; kind?: 'Person' | 'Organization' }
 
 export type Block =
+  | { type: 'html'; html: string }
   | { type: 'p'; text: string }
   | { type: 'h2'; text: string }
   | { type: 'h3'; text: string }

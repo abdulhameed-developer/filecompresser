@@ -4,7 +4,7 @@
   "introduction": "Compress, convert and organize files in your browser. No account, upload queue or watermark between you and your result.",
   "seoTitle": "About",
   "seoDescription": "What filecompresser is, how browser-based processing works, what the tools genuinely do, and where their honest limits are.",
-  "updated": "2026-11-04",
+  "updated": "2026-11-26",
   "introCta": {
     "label": "Choose your files",
     "href": "/#compress"
@@ -39,7 +39,7 @@
       "heading": "Your device does the work.",
       "body": [
         "Browser memory and processing speed vary. Each tool lists its input limits; very large or complex files may fail even within those limits. Media jobs have a five-minute processing limit.",
-        "13 tools cover supported images, GIF, video, audio, PDF and ZIP workflows. Some formats are lossy; PDF optimization is structural and ZIP extraction supports a defined subset of archives."
+        "Tools cover supported images, GIF, video, audio, PDF and ZIP workflows. Some formats are lossy; PDF optimization is structural and ZIP extraction supports a defined subset of archives."
       ],
       "links": [
         {

@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
-import { cleanJpegMetadata, imageGeometry, inspectImageHeader } from '../workers/image-metadata.mjs'
+import { cleanJpegMetadata, inspectImageHeader } from '../workers/image-metadata.mjs'
 import { runImagePipeline, TARGET_MAX_ENCODES } from '../workers/image-pipeline.mjs'
 
 // Header fixtures deliberately test the container/policy boundary. They are
@@ -72,12 +72,12 @@ function adapter(config: { size?: number | ((q: number) => number); alpha?: bool
   return { decode, encode, close }
 }
 
-describe('image preflight and explicit geometry', () => {
-  it('keeps original dimensions unless a positive explicit maximum is provided', () => {
-    expect(imageGeometry(4000, 3000)).toEqual({ width: 4000, height: 3000 })
-    expect(imageGeometry(4000, 3000, 1000, 1000)).toEqual({ width: 1000, height: 750 })
-    expect(imageGeometry(200, 100, 1000, 1000)).toEqual({ width: 200, height: 100 })
-    expect(imageGeometry(4000, 3000, undefined, 600)).toEqual({ width: 800, height: 600 })
+describe('image preflight and original geometry', () => {
+  it.each([[4000, 3000], [1001, 501], [3000, 4000], [200, 100]])('preserves %i × %i dimensions even if obsolete resize options are supplied', async (width, height) => {
+    const codec = adapter()
+    const result = await runImagePipeline(jpeg(width, height), { mode: 'balanced', resizeMaxWidth: 100, resizeMaxHeight: 100 }, codec)
+    expect(codec.decode.mock.calls[0][2]).toEqual({ width, height })
+    expect(result.inspection).toMatchObject({ inputWidth: width, inputHeight: height, outputWidth: width, outputHeight: height })
   })
 
   it('rejects enormous images before a decoder is called', async () => {
@@ -93,10 +93,12 @@ describe('image preflight and explicit geometry', () => {
     expect(codec.decode).not.toHaveBeenCalled()
   })
 
-  it('refuses to label8-bit canvas resizing of16-bit PNG as lossless', async () => {
+  it('ignores obsolete bounds and preserves16-bit PNG precision at original dimensions', async () => {
     const codec = adapter()
-    await expect(runImagePipeline(png(4000, 3000, 1000, false, 16), { pngMode: 'lossless', resizeMaxWidth: 1000 }, codec)).rejects.toMatchObject({ code: 'image-precision' })
-    expect(codec.decode).not.toHaveBeenCalled()
+    const result = await runImagePipeline(png(4000, 3000, 1000, false, 16), { pngMode: 'lossless', resizeMaxWidth: 1000 }, codec)
+    expect(codec.decode).toHaveBeenCalledTimes(1)
+    expect(await inspectImageHeader(result.blob)).toMatchObject({ width: 4000, height: 3000, bitDepth: 16 })
+    expect(result.inspection.compressionKind).toBe('lossless')
   })
 
   it('never sends16-bit PNG through color-reduction trials', async () => {
@@ -122,6 +124,10 @@ describe('image preflight and explicit geometry', () => {
     const exif = new Uint8Array([69, 120, 105, 102, 0, 0, 73, 73, 42, 0, 8, 0, 0, 0, 1, 0, 18, 1, 3, 0, 1, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0])
     const source = jpeg(4000, 3000, 0, [segment(225, exif), segment(225, new TextEncoder().encode('XMP metadata')), segment(226, new Uint8Array(65500)), segment(226, new Uint8Array(600))])
     expect(await inspectImageHeader(source)).toMatchObject({ encodedWidth: 4000, encodedHeight: 3000, width: 3000, height: 4000, orientation: 6 })
+    const codec = adapter()
+    const result = await runImagePipeline(source, { mode: 'balanced', resizeMaxWidth: 1000 }, codec)
+    expect(codec.decode.mock.calls[0][2]).toEqual({ width: 3000, height: 4000 })
+    expect(result.inspection).toMatchObject({ inputWidth: 3000, inputHeight: 4000, outputWidth: 3000, outputHeight: 4000 })
   })
 
   it('keeps JPEG scan bytes and orientation during ancillary metadata cleanup', async () => {
@@ -173,10 +179,10 @@ describe('image recovery output policy', () => {
     expect(result.blob.size).toBeGreaterThan(1000)
   })
 
-  it('resizes only when explicit bounds change geometry, preserving aspect ratio', async () => {
+  it('retains an original instead of using obsolete resize bounds to force a smaller geometry', async () => {
     const result = await runImagePipeline(jpeg(), { mode: 'balanced', resizeMaxWidth: 1000, resizeMaxHeight: 1000 }, adapter({ size: 1200 }))
-    expect(result.outcome).toBe('resized')
-    expect(result.inspection).toMatchObject({ inputWidth: 4000, inputHeight: 3000, outputWidth: 1000, outputHeight: 750 })
+    expect(result.outcome).toBe('unchanged')
+    expect(result.inspection).toMatchObject({ inputWidth: 4000, inputHeight: 3000, outputWidth: 4000, outputHeight: 3000 })
   })
 
   it('does not flatten alpha into JPEG and refuses a WebP that lost alpha', async () => {
@@ -220,17 +226,17 @@ describe('verified maximum-byte target', () => {
     expect(result.inspection).toMatchObject({ outputWidth: 4000, outputHeight: 3000 })
   })
 
-  it('reports the explicit resized dimensions and acknowledges resizing when a target remains unmet', async () => {
+  it('preserves original dimensions and offers only available alternatives when a target remains unmet', async () => {
     const result = await runImagePipeline(jpeg(4000, 3000, 3000), {
       mode: 'target', targetSize: 1000, resizeMaxWidth: 1000, resizeMaxHeight: 1000,
     }, adapter({ size: quality => Math.round(1500 + quality * 1000) }))
     expect(result.outcome).toBe('target-unmet')
     expect(result.blob.size).toBeGreaterThan(1000)
-    expect(await inspectImageHeader(result.blob)).toMatchObject({ width: 1000, height: 750 })
-    expect(result.inspection).toMatchObject({ inputWidth: 4000, inputHeight: 3000, outputWidth: 1000, outputHeight: 750 })
-    expect(result.targetNote).toContain('after your explicit resizing')
-    expect(result.targetNote).not.toContain('without resizing')
-    expect(result.targetNote).toContain('adjust your resize settings')
+    expect(await inspectImageHeader(result.blob)).toMatchObject({ width: 4000, height: 3000 })
+    expect(result.inspection).toMatchObject({ inputWidth: 4000, inputHeight: 3000, outputWidth: 4000, outputHeight: 3000 })
+    expect(result.targetNote).toContain('preserving the original dimensions')
+    expect(result.targetNote).toContain('Choose another format or use a larger limit')
+    expect(result.targetNote).not.toMatch(/resiz/i)
   })
 
   it('does not replace the original with a larger failed-target candidate', async () => {

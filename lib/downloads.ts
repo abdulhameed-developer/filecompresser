@@ -1,4 +1,3 @@
-import { zip } from 'fflate'
 import {
   flattenArchivePath,
   sanitizeArchivePath,
@@ -83,6 +82,7 @@ function uniqueName(used: Set<string>, candidate: string): string {
 
 /** Build a ZIP blob from already-encoded results. */
 async function zipEntries(entries: Record<string, Uint8Array>): Promise<Blob> {
+  const { zip } = await import('fflate')
   const bytes = await new Promise<Uint8Array>((resolve, reject) => {
     // fflate's async zip delivers the finished archive in a single callback.
     zip(entries, { level: 6 }, (err, chunk) => {

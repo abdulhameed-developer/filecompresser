@@ -9,15 +9,15 @@ const imageFaq: FaqEntry[] = [
   },
   {
     q: 'How much smaller will my image get?',
-    a: 'Savings depend on the source and selected settings. In ordinary same-format compression, a candidate that is not smaller is discarded and your original is returned unchanged with 0% reduction. Conversions and explicit resizing are reported separately. Compare the actual bytes and image quality before keeping a result.',
+    a: 'Savings depend on the source and selected settings. In ordinary same-format compression, a candidate that is not smaller is discarded and your original is returned unchanged with 0% reduction. Format conversions are reported separately. Compare the actual bytes and image quality before keeping a result.',
   },
   {
     q: 'Will I lose quality?',
-    a: 'JPEG and WEBP encoding is lossy. Balanced, High quality and Maximum use different quality settings, but no setting guarantees invisible changes. PNG Lossless preserves decoded pixels; Smart, Maximum and Target size can reduce colors and change pixels while preserving transparency. Explicit resizing also changes pixels. Inspect text, edges and fine detail before replacing an original.',
+    a: 'JPEG and WEBP encoding is lossy. Balanced, High quality and Maximum use different quality settings, but no setting guarantees invisible changes. PNG Lossless preserves decoded pixels; Smart, Maximum and Target size can reduce colors and change pixels while preserving transparency. Inspect text, edges and fine detail before replacing an original.',
   },
   {
     q: 'Does this resize my image?',
-    a: 'No. Original display dimensions are kept unless you enable Resize this image and enter a maximum width or height. Aspect ratio is preserved and smaller images are not enlarged. EXIF orientation may be normalized, so an upright image can have different stored width and height from its camera file.',
+    a: 'No. Original display dimensions are preserved, and image resizing is not offered. EXIF orientation may be normalized, so an upright image can have different stored width and height from its camera file without changing its displayed orientation.',
   },
 ]
 
@@ -157,7 +157,7 @@ export const TOOLS: ToolDefinition[] = [
     slug: 'jpeg-compressor',
     title: 'JPEG Compressor',
     description:
-      'Re-encode JPEG images with quality controls and optional resizing, then compare the result.',
+      'Re-encode JPEG images with quality controls and preserved dimensions, then compare the result.',
     category: 'image',
     engine: 'image-compress',
     accept: 'image/jpeg,.jpg,.jpeg,.jfif',

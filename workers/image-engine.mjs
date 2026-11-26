@@ -8,7 +8,7 @@ self.onmessage = async event => {
     const adapter = createImageCanvasAdapter()
     if (probe) {
       const header = await inspectImageHeader(file)
-      const decoded = await adapter.decode(file, header, { width: header.width, height: header.height })
+      const decoded = await adapter.decode(file, header)
       try { self.postMessage({ type: 'probe', result: { format: header.format, width: header.width, height: header.height, hasAlpha: decoded.hasAlpha, jpegSafe: !decoded.hasAlpha && header.jpegPrecisionSafe !== false } }) }
       finally { decoded.close() }
       return

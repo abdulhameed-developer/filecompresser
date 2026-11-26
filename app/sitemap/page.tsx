@@ -39,12 +39,12 @@ const PAGES = [
 export default function SitemapPage() {
   return <div className="productPage siteMapIndex">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdScript(structuredData) }} />
-    <nav className="breadcrumb" aria-label="Breadcrumb"><Link href="/">Home</Link><span aria-hidden="true">/</span><span aria-current="page">Sitemap</span></nav>
+    <nav className="breadcrumb" aria-label="Breadcrumb"><Link prefetch={false} href="/">Home</Link><span aria-hidden="true">/</span><span aria-current="page">Sitemap</span></nav>
     <div className="productIntro"><span className="sectionLabel">FIND YOUR WAY</span><h1>Every tool. Every guide.</h1><p>A quick route to the file task or information you need.</p></div>
     <div className="siteMapGrid">
-      {TOOL_GROUPS.map(group => <nav className="mapGroup" key={group.key} aria-label={group.title}><h2><Icon name={group.key === 'image' ? 'image' : group.key === 'media' ? 'media' : 'archive'} />{group.title}</h2><ul>{toolsInGroup(group).map(tool => <li key={tool.slug}><Link href={`/${tool.slug}`}><span>{tool.title}</span><Icon name="arrow" /></Link></li>)}</ul></nav>)}
-      <nav className="mapGroup" aria-label="Site pages"><h2><Icon name="file" />Product & information</h2><ul>{PAGES.map(page => <li key={page.href}><Link href={page.href}><span>{page.label}</span><Icon name="arrow" /></Link></li>)}</ul></nav>
-      <nav className="mapGroup mapGuides" aria-label="File guides"><h2><Icon name="file" />File guides</h2><ul>{postsByDate().map(post => <li key={post.slug}><Link href={`/blog/${post.slug}`}><span>{post.title}</span><Icon name="arrow" /></Link></li>)}</ul></nav>
+      {TOOL_GROUPS.map(group => <nav className="mapGroup" key={group.key} aria-label={group.title}><h2><Icon name={group.key === 'image' ? 'image' : group.key === 'media' ? 'media' : 'archive'} />{group.title}</h2><ul>{toolsInGroup(group).map(tool => <li key={tool.slug}><Link prefetch={false} href={`/${tool.slug}`}><span>{tool.title}</span><Icon name="arrow" /></Link></li>)}</ul></nav>)}
+      <nav className="mapGroup" aria-label="Site pages"><h2><Icon name="file" />Product & information</h2><ul>{PAGES.map(page => <li key={page.href}><Link prefetch={false} href={page.href}><span>{page.label}</span><Icon name="arrow" /></Link></li>)}</ul></nav>
+      <nav className="mapGroup mapGuides" aria-label="File guides"><h2><Icon name="file" />File guides</h2><ul>{postsByDate().map(post => <li key={post.slug}><Link prefetch={false} href={`/blog/${post.slug}`}><span>{post.title}</span><Icon name="arrow" /></Link></li>)}</ul></nav>
     </div>
   </div>
 }

@@ -1,6 +1,7 @@
 import type { FaqEntry, ToolDefinition } from './types'
 import type { Metadata } from 'next'
 import { getSiteSettings, verificationToken } from './site-settings'
+import { safeEditorialHref, splitEditorialLinks } from './editorial-markup'
 
 const settings = getSiteSettings()
 export const SITE_NAME = settings.siteName
@@ -84,15 +85,18 @@ export function toolJsonLd(tool: ToolDefinition) {
 }
 
 export function faqJsonLd(faq: FaqEntry[]) {
-  // Semantic Schema.org description of visible content. Google discontinued
-  // FAQ rich results in 2026; this markup makes no rich-result promise.
+  // Semantic description of visible content, without a rich-result promise.
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity: faq.map((entry) => ({
       '@type': 'Question',
       name: entry.q,
-      acceptedAnswer: { '@type': 'Answer', text: entry.a },
+      acceptedAnswer: { '@type': 'Answer', text: splitEditorialLinks(entry.a).map(part => {
+        if (typeof part === 'string') return part
+        try { safeEditorialHref(part.href); return part.label }
+        catch { return part.source }
+      }).join('') },
     })),
   }
 }

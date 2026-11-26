@@ -31,10 +31,10 @@ export default function NotFound() {
       </p>
 
       <div className="notFoundActions">
-        <Link className="navbtn" href="/">
+        <Link prefetch={false} className="navbtn" href="/">
           Back home <Icon name="arrow" />
         </Link>
-        <Link className="navbtn secondary" href="/sitemap">
+        <Link prefetch={false} className="navbtn secondary" href="/sitemap">
           See every tool
         </Link>
       </div>
@@ -47,7 +47,7 @@ export default function NotFound() {
             <ul>
               {tools.slice(0, 4).map((tool) => (
                 <li key={tool.slug}>
-                  <Link href={`/${tool.slug}`}>{tool.title}</Link>
+                  <Link prefetch={false} href={`/${tool.slug}`}>{tool.title}</Link>
                 </li>
               ))}
             </ul>

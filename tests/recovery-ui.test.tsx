@@ -41,6 +41,7 @@ beforeEach(() => {
   vi.stubGlobal('File', File)
   vi.stubGlobal('Blob', Blob)
   vi.stubGlobal('IS_REACT_ACT_ENVIRONMENT', true)
+  vi.spyOn(window, 'scrollTo').mockImplementation(() => {})
   container = document.createElement('div')
   document.body.append(container)
   root = createRoot(container)
@@ -75,19 +76,12 @@ describe('image settings that match actual byte and dimension choices', () => {
     expect(container.textContent).toContain('12,500 bytes')
   })
 
-  it.skip('removed resize controls', async () => {
+  it('offers quality controls without exposing image resize dimensions', async () => {
     await act(async () => root.render(<SettingsHarness />))
     expect(container.querySelector('input[type=number]')).toBeNull()
-    const resize = container.querySelector('input[type=checkbox]') as HTMLInputElement
-    expect(resize.checked).toBe(false)
-    await act(async () => resize.click())
-    expect(settings.resizeEnabled).toBe(true)
-    const width = container.querySelector('input[placeholder="e.g. 1920"]') as HTMLInputElement
-    await act(async () => { width.value = '1600'; Simulate.change(width) })
-    expect(settings.resizeMaxWidth).toBe(1600)
-    await act(async () => resize.click())
-    expect(settings.resizeEnabled).toBe(false)
-    expect(container.querySelector('input[type=number]')).toBeNull()
+    expect(container.querySelector('input[type=checkbox], .resizeToggle, .resizeFields')).toBeNull()
+    expect(container.querySelector('input[type=range]')).not.toBeNull()
+    expect(Object.keys(settings).some(key => key.startsWith('resize'))).toBe(false)
   })
 
   it('clears an explicit quality override when a different mode is chosen', async () => {

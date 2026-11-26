@@ -2,6 +2,13 @@ import { redirectCollection } from './redirects.mjs'
 import { editorialCollections } from './editorial.mjs'
 import { managedPageCollection } from './managed-pages.mjs'
 import { siteSettingsCollection } from './site-settings.mjs'
+import { editorialFieldValidator, editorialUrlFieldValidator } from '../lib/editorial-markup.mjs'
+
+const htmlValidation = editorialFieldValidator({ htmlOnly: true })
+const paragraphValidation = editorialFieldValidator({ literalHtml: true })
+const linkValidation = editorialUrlFieldValidator()
+const authorLinkValidation = editorialUrlFieldValidator({ required: false })
+const referenceValidation = editorialUrlFieldValidator({ reference: true })
 
 const figureOptions = [
   { value: 'pipeline', label: 'Compression pipeline' },
@@ -14,15 +21,23 @@ const figureOptions = [
 const textarea = (name, label, required = true) => ({
   type: 'string', name, label, required, ui: { component: 'textarea' },
 })
+const isIsoDate = value => {
+  if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false
+  const parsed = new Date(`${value}T00:00:00Z`)
+  return Number.isFinite(parsed.getTime()) && parsed.toISOString().slice(0, 10) === value
+}
+const publicationDateOrderError = values => {
+  if (values?.published === true && values?.archived !== true && isIsoDate(values.date) && isIsoDate(values.updated) && values.updated < values.date) return 'Last updated cannot be earlier than publication date.'
+}
 const date = (name, label, required = false) => ({
   type: 'string', name, label, required,
   description: 'Use YYYY-MM-DD, for example 2026-11-21.',
   ui: {
-    validate(value) {
+    validate(value, values = {}) {
       if (!value && !required) return
       if (!/^\d{4}-\d{2}-\d{2}$/.test(value || '')) return 'Use YYYY-MM-DD.'
-      const parsed = new Date(`${value}T00:00:00Z`)
-      if (!Number.isFinite(parsed.getTime()) || parsed.toISOString().slice(0, 10) !== value) return 'Enter a real calendar date.'
+      if (!isIsoDate(value)) return 'Enter a real calendar date.'
+      return publicationDateOrderError({ ...values, [name]: value })
     },
   },
 })
@@ -48,8 +63,8 @@ export const collections = [
     },
     defaultItem: () => ({ published: false, archived: false, date: new Date().toISOString().slice(0, 10), readingTime: '5 min', figure: 'pipeline', body: [] }),
     fields: [
-      { type: 'boolean', name: 'published', label: 'Publish this post', description: 'Off = draft. Saving a published post commits to GitHub and appears publicly after the next successful hosting build.' },
-      { type: 'boolean', name: 'archived', label: 'Archive this post', description: 'Keeps the content file but removes the post from public pages and sitemaps after the next build. Add an appropriate redirect for an old indexed address.' },
+      { type: 'boolean', name: 'published', label: 'Publish this post', description: 'Off = draft. Saving a published post commits to GitHub and appears publicly after the next successful hosting build.', ui: { validate(value, values = {}) { return publicationDateOrderError({ ...values, published: value }) } } },
+      { type: 'boolean', name: 'archived', label: 'Archive this post', description: 'Keeps the content file but removes the post from public pages and sitemaps after the next build. Add an appropriate redirect for an old indexed address.', ui: { validate(value, values = {}) { return publicationDateOrderError({ ...values, archived: value }) } } },
       { type: 'string', name: 'title', label: 'Post title', isTitle: true, required: true },
       textarea('description', 'Short introduction'),
       date('date', 'Publication date', true), date('updated', 'Last updated'),
@@ -72,7 +87,7 @@ export const collections = [
         fields: [
         { type: 'string', name: 'name', label: 'Author name' },
         { type: 'string', name: 'kind', label: 'Author type', options: ['Person', 'Organization'] },
-        { type: 'string', name: 'url', label: 'Author page', description: 'Optional site path or HTTPS address.' },
+        { type: 'string', name: 'url', label: 'Author page', ui: { validate: authorLinkValidation }, description: 'Optional site path, #section anchor or HTTPS address.' },
       ] },
       { type: 'string', name: 'category', label: 'Category' },
       { type: 'string', name: 'tags', label: 'Tags', list: true },
@@ -83,12 +98,13 @@ export const collections = [
           if (values.published === true && values.archived !== true && (!Array.isArray(value) || value.length === 0)) return 'Add at least one content block before publishing this post.'
         } },
         templates: [
-          { name: 'p', label: 'Paragraph', fields: [textarea('text', 'Paragraph text')] },
+          { name: 'p', label: 'Paragraph', fields: [{ ...textarea('text', 'Paragraph text'), ui: { component: 'textarea', validate: paragraphValidation }, description: 'Add inline links as `[link text](/page)` or `[link text](https://example.com)`. For HTML, choose the Safe HTML block.' }] },
+          { name: 'html', label: 'Safe HTML', fields: [{ ...textarea('html', 'HTML content'), ui: { component: 'textarea', validate: htmlValidation }, description: 'Supported: `<p>`, `<br>`, `<strong>`, `<em>`, `<b>`, `<i>`, `<code>`, `<ul>`, `<ol>`, `<li>`, `<blockquote>` and `<a>` with a quoted `href`. Examples: `<p>Read <a href="/privacy">privacy</a>.</p>` and `<ul><li>First item</li></ul>`. Close every tag. Scripts, styles, embeds and other attributes are rejected.' }] },
           { name: 'h2', label: 'Section heading (H2)', fields: [{ type: 'string', name: 'text', label: 'Heading text', required: true }] },
           { name: 'h3', label: 'Subheading (H3)', fields: [{ type: 'string', name: 'text', label: 'Heading text', required: true }] },
           { name: 'ul', label: 'Bullet list', fields: [{ type: 'string', name: 'items', label: 'List items', list: true, required: true }] },
           { name: 'ol', label: 'Numbered list', fields: [{ type: 'string', name: 'items', label: 'List items', list: true, required: true }] },
-          { name: 'link', label: 'Link', fields: [{ type: 'string', name: 'text', label: 'Link text', required: true }, { type: 'string', name: 'href', label: 'Destination', required: true, description: 'A site path such as /image-compressor, or a complete HTTPS address.' }] },
+          { name: 'link', label: 'Link', fields: [{ type: 'string', name: 'text', label: 'Link text', required: true }, { type: 'string', name: 'href', label: 'Destination', required: true, ui: { validate: linkValidation }, description: 'A site path such as /image-compressor, a #section anchor, or a complete HTTPS address.' }] },
           { name: 'image', label: 'Uploaded image', fields: postImageFields() },
           { name: 'table', label: 'Data table', fields: [
             { type: 'string', name: 'caption', label: 'Table caption' },
@@ -113,7 +129,7 @@ export const collections = [
       },
       {
         type: 'object', name: 'references', label: 'Further reading', list: true,
-        fields: [{ type: 'string', name: 'title', label: 'Link title', required: true }, { type: 'string', name: 'url', label: 'HTTPS address', required: true }],
+        fields: [{ type: 'string', name: 'title', label: 'Link title', required: true }, { type: 'string', name: 'url', label: 'HTTP(S) address', required: true, ui: { validate: referenceValidation } }],
       },
     ],
   },

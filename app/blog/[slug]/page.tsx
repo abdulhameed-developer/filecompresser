@@ -117,9 +117,9 @@ export default async function BlogPostPage({
       />
 
       <nav className="breadcrumb" aria-label="Breadcrumb">
-        <Link href="/">Home</Link>
+        <Link prefetch={false} href="/">Home</Link>
         <span aria-hidden="true">/</span>
-        <Link href="/blog">Blog</Link>
+        <Link prefetch={false} href="/blog">Blog</Link>
         <span aria-hidden="true">/</span>
         <span aria-current="page">{post.title}</span>
       </nav>
@@ -131,7 +131,7 @@ export default async function BlogPostPage({
         </span>
         {post.readingTime} read
         <span className="postMetaDot" aria-hidden="true">·</span>
-        <span>By {author.url ? <Link href={author.url}>{author.name}</Link> : author.name}</span>
+        <span>By {author.url ? <Link prefetch={false} href={author.url}>{author.name}</Link> : author.name}</span>
       </div>
 
       <h1>{post.title}</h1>
@@ -153,14 +153,14 @@ export default async function BlogPostPage({
       <aside className="articleToolCta" aria-label="Try these tools">
         <h2>Put this guide into practice</h2>
         <p>Choose a tool and process your files on your own device.</p>
-        <div>{BLOG_ART[post.figure].tools.map(slug => <Link key={slug} href={`/${slug}`}>{getTool(slug)?.title}<Icon name="arrow" /></Link>)}</div>
+        <div>{BLOG_ART[post.figure].tools.map(slug => <Link prefetch={false} key={slug} href={`/${slug}`}>{getTool(slug)?.title}<Icon name="arrow" /></Link>)}</div>
       </aside>
       <nav className="relatedTools postRelated" aria-labelledby="more-posts">
         <h2 id="more-posts">More from the blog</h2>
         <ul>
           {others.map((other) => (
             <li key={other.slug}>
-              <Link href={`/blog/${other.slug}`}>
+              <Link prefetch={false} href={`/blog/${other.slug}`}>
                 {other.title}
                 <small>{other.description}</small>
               </Link>
@@ -170,7 +170,7 @@ export default async function BlogPostPage({
       </nav>
 
       <p className="postFooter">
-        <Link className="textLink" href="/blog">
+        <Link prefetch={false} className="textLink" href="/blog">
           <Icon name="arrow-left" />All posts
         </Link>
       </p>

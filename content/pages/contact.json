@@ -25,7 +25,7 @@
       "icon": "image",
       "heading": "The result stayed unchanged or grew",
       "body": [
-        "An efficient original may have little room to shrink. Ordinary compression retains it unchanged with 0% reduction when a candidate is not smaller. A requested format conversion or resize can legitimately increase bytes. Compare actual sizes and the result label."
+        "An efficient original may have little room to shrink. Ordinary compression retains it unchanged with 0% reduction when a candidate is not smaller. A requested format conversion can legitimately increase bytes. Compare actual sizes and the result label."
       ],
       "placement": "card"
     },
@@ -64,5 +64,5 @@
       "href": "/blog"
     }
   },
-  "updated": "2026-11-21"
+  "updated": "2026-11-26"
 }

@@ -1,8 +1,12 @@
+import { editorialUrlFieldValidator } from '../lib/editorial-markup.mjs'
+
+const linkValidation = editorialUrlFieldValidator()
+const optionalLinkValidation = editorialUrlFieldValidator({ required: false })
 const string = (name, label, required = true) => ({ type: 'string', name, label, required })
 const textarea = (name, label, required = true) => ({ ...string(name, label, required), ui: { component: 'textarea' } })
 const link = (name, label, required = false) => ({
   type: 'object', name, label, required,
-  fields: [string('label', 'Link text'), { ...string('href', 'Address'), description: 'Use a path on this site, such as /blog, or a full HTTPS address.' }],
+  fields: [string('label', 'Link text'), { ...string('href', 'Address'), ui: { validate: linkValidation }, description: 'Use a path on this site, such as /blog, a #section anchor or a full HTTPS address.' }],
 })
 const cleared = value => {
   if (value === undefined || value === null) return true
@@ -16,6 +20,10 @@ const optionalGroupValidator = (paths, label) => value => {
   if (typeof value !== 'object' || Array.isArray(value)) return `${label} must be a group of fields.`
   if (cleared(value)) return
   if (!paths.every(path => completeText(atPath(value, path)))) return `Complete every ${label.toLowerCase()} field, or clear all of them to remove it.`
+  for (const path of paths.filter(path => path.endsWith('href'))) {
+    const error = linkValidation(atPath(value, path))
+    if (error) return error
+  }
 }
 const clearableLink = (name, label) => ({
   type: 'object', name, label,
@@ -23,16 +31,9 @@ const clearableLink = (name, label) => ({
   ui: { validate(value) {
     const error = optionalGroupValidator(['label', 'href'], label)(value)
     if (error || cleared(value)) return error
-    const href = value.href
-    if (/[\u0000-\u0020\u007f\\]/.test(href)) return 'Use a site-relative or HTTPS address without whitespace or backslashes.'
-    if (!/^\/(?!\/)/.test(href)) {
-      try {
-        const url = new URL(href)
-        if (url.protocol !== 'https:' || url.username || url.password) return 'Use a site-relative or HTTPS address without credentials.'
-      } catch { return 'Use a site-relative or HTTPS address without credentials.' }
-    }
+    return linkValidation(value.href)
   } },
-  fields: [string('label', 'Link text', false), { ...string('href', 'Address', false), description: 'Use a path on this site, such as /blog, or a full HTTPS address.' }],
+  fields: [string('label', 'Link text', false), { ...string('href', 'Address', false), ui: { validate: optionalLinkValidation }, description: 'Use a path on this site, such as /blog, a #section anchor or a full HTTPS address.' }],
 })
 
 export const managedPageCollection = {
@@ -63,8 +64,8 @@ export const managedPageCollection = {
         { type: 'string', name: 'placement', label: 'Display style', options: [{ value: 'card', label: 'Feature or help card' }, { value: 'detail', label: 'Detailed explanation' }, { value: 'text', label: 'Normal text section' }] },
         string('label', 'Section label', false),
         { type: 'string', name: 'icon', label: 'Existing icon', options: ['file', 'shield', 'check', 'clock', 'image', 'download'] },
-        { ...string('body', 'Paragraphs', false), list: true, ui: { component: 'list', field: { component: 'textarea' } } },
-        { ...string('items', 'Bullet list items', false), list: true, ui: { component: 'list', field: { component: 'textarea' } } },
+        { ...string('body', 'Paragraphs', false), list: true, description: 'Inline links use `[link text](/page)` or `[link text](https://example.com)`. HTML is displayed as text here.', ui: { component: 'list', field: { component: 'textarea' } } },
+        { ...string('items', 'Bullet list items', false), list: true, description: 'Add one bullet per item. Inline Markdown links are supported.', ui: { component: 'list', field: { component: 'textarea' } } },
         { ...link('links', 'Section links'), list: true },
       ],
     },

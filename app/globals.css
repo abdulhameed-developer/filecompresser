@@ -65,7 +65,9 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* Native focus and navigation must settle before a control can be activated.
+     Intentional gallery motion requests smooth scrolling explicitly. */
+  scroll-behavior: auto;
   /* Anchor targets must clear the sticky header, or `/#how` lands with the
      section heading hidden underneath it. */
   scroll-padding-top: calc(var(--header-h) + 16px);

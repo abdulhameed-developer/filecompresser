@@ -4,7 +4,7 @@
   "sections": [
     {
       "heading": "Work from the largest useful source",
-      "body": "Work from your camera or editor export rather than repeatedly recompressing a previous download. Choose Balanced, High quality, Maximum or a separate Target size, then compare the output at the same scale. Enable resizing only when different dimensions are wanted."
+      "body": "Work from your camera or editor export rather than repeatedly recompressing a previous download. Choose Balanced, High quality, Maximum or a separate Target size, then compare the output at the same scale. Image dimensions are preserved."
     },
     {
       "heading": "Changing an extension does not compress a photograph",
@@ -17,7 +17,7 @@
   ],
   "faq": [],
   "seoTitle": "JPEG Compressor — Optimize Camera Exports",
-  "seoDescription": "Optimize JPEG photographs with browser-based quality and dimension controls. JPG and JPEG use the same format; review each re-encoded result.",
+  "seoDescription": "Optimize JPEG photographs with browser-based quality controls and preserved dimensions. JPG and JPEG use the same format; review each result.",
   "links": [
     {
       "label": "Choose a format for the final export",

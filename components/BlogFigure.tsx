@@ -34,7 +34,7 @@ function Figure({
   children: React.ReactNode
 }) {
   return (
-    <svg
+    <div className="editorialDiagram"><svg
       className="figureSvg"
       viewBox={`0 0 720 ${height}`}
       width="720"
@@ -47,7 +47,7 @@ function Figure({
       <g aria-hidden="true" fontFamily="var(--font-mono)" fontSize="12">
         {children}
       </g>
-    </svg>
+    </svg><p className="diagramSummary" aria-hidden="true">{label}</p></div>
   )
 }
 
@@ -121,10 +121,10 @@ function PipelineFigure() {
   const gap = 20
   const startX = 12
   const nodes = [
-    { label: 'You pick a file', sub: 'never leaves the tab' },
-    { label: 'Validate', sub: 'real bytes, not the name' },
-    { label: 'Encode', sub: 'worker / WebAssembly' },
-    { label: 'Measure', sub: 'compare to the original' },
+    { label: 'Select file', sub: 'in this tab' },
+    { label: 'Validate', sub: 'check bytes' },
+    { label: 'Encode', sub: 'local engine' },
+    { label: 'Measure', sub: 'actual bytes' },
     { label: 'Download', sub: 'a real file' },
   ]
   return (
@@ -153,9 +153,9 @@ function PipelineFigure() {
 // ───────────────────────────── size bars ─────────────────────────────
 function SizeBarsFigure() {
   const rows = [
-    { label: 'Genuinely smaller', before: 300, after: 120, verdict: '61% smaller', tone: '#eef6d8', stroke: DEEP },
+    { label: 'Genuinely smaller', before: 300, after: 120, verdict: '60% smaller', tone: '#eef6d8', stroke: DEEP },
     { label: 'The same size', before: 220, after: 220, verdict: 'no size change', tone: PAPER, stroke: LINE },
-    { label: 'Larger', before: 180, after: 190, verdict: '5% larger', tone: '#fbeae7', stroke: 'var(--danger)' },
+    { label: 'Larger', before: 180, after: 190, verdict: '6% larger (rounded)', tone: '#fbeae7', stroke: 'var(--danger)' },
   ]
   const maxPx = 400
   const barH = 18
@@ -204,7 +204,7 @@ function QualityCurveFigure() {
     <div className="compressionModeGuide" id="fig-qualitycurve" role="group" aria-label="Qualitative guide to the four image compression modes">
       <p className="modeGuideIntro">Choose for your actual output requirement</p>
       <dl>{modes.map(mode => <div key={mode.name}><dt>{mode.name}</dt><dd>{mode.description}</dd></div>)}</dl>
-      <p className="modeGuideNote">This is qualitative guidance, not a measured size or quality chart. Original dimensions are kept unless you enable resizing. PNG starts with Maximum and has no quality slider. Maximum may reduce colors; choose Lossless when every decoded pixel must stay unchanged.</p>
+      <p className="modeGuideNote">This is qualitative guidance, not a measured size or quality chart. Original image dimensions are preserved. PNG starts with Maximum and has no quality slider. Maximum may reduce colors; choose Lossless when every decoded pixel must stay unchanged.</p>
     </div>
   )
 }

@@ -15,6 +15,7 @@ export default function ManagedLegalPage({ slug }: { slug: ManagedPageSlug }) {
     <h1>{page.title}</h1>
     {page.updated && <p className="legalUpdated">Last updated: {managedDateLabel(page.updated)}</p>}
     {page.introduction && <p>{page.introduction}</p>}
+    {page.sections.length >= 5 && <nav className="editorialContents" aria-label="On this page"><details><summary>On this page <span>({page.sections.length} sections)</span></summary><ol>{page.sections.map((section, i) => <li key={i}><a href={`#page-section-${i}`}>{section.heading}</a></li>)}</ol></details></nav>}
     <ManagedPageSections sections={page.sections} />
     {page.footer && <ManagedPageFooter footer={page.footer} />}
   </div>

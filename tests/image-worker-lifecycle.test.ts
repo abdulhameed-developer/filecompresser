@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { availableOutputFormats, compressImage, expectedImageGeometry } from '@/lib/engines/image'
+import { availableOutputFormats, compressImage } from '@/lib/engines/image'
 import { createCancelSignal, type ImageInspection } from '@/lib/types'
 
 function source(name = 'photo.jpg', type = 'image/jpeg') {
@@ -111,9 +111,17 @@ describe('image worker ownership and truthful downloads', () => {
     expect(observer).not.toHaveBeenCalled()
   })
 
-  it('predicts the exact encoder fit and rounding without upsampling', () => {
-    expect(expectedImageGeometry(1001, 501, 500, 500)).toEqual({ width: 500, height: 250 })
-    expect(expectedImageGeometry(200, 100, 1000, 1000)).toEqual({ width: 200, height: 100 })
-    expect(expectedImageGeometry(3000, 4000, undefined, 600)).toEqual({ width: 450, height: 600 })
+  it('does not send obsolete resize options to the worker or alter source dimensions', async () => {
+    vi.stubGlobal('Worker', ControlledWorker)
+    const file = source()
+    const oldOptions = { mode: 'balanced', resizeMaxWidth: 50, resizeMaxHeight: 50 } as const
+    const pending = compressImage(file, oldOptions)
+    await vi.waitFor(() => expect(ControlledWorker.instances).toHaveLength(1))
+    const worker = ControlledWorker.instances[0]
+    const { options } = worker.postMessage.mock.calls[0][0]
+    expect(options).not.toHaveProperty('resizeMaxWidth')
+    expect(options).not.toHaveProperty('resizeMaxHeight')
+    worker.finish(file)
+    expect((await pending).inspection).toMatchObject({ inputWidth: 200, inputHeight: 100, outputWidth: 200, outputHeight: 100 })
   })
 })

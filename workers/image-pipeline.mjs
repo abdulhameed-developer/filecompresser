@@ -1,4 +1,4 @@
-import { ImagePipelineError, imageGeometry, inspectImageHeader } from './image-metadata.mjs'
+import { ImagePipelineError, inspectImageHeader } from './image-metadata.mjs'
 import { choosePngCandidate, PNG_HIGH_PRECISION_NOTE, pngModeFor, pngQualityAccepted } from './image-png.mjs'
 
 export const IMAGE_MODES = ['balanced', 'high-quality', 'maximum', 'target']
@@ -47,15 +47,14 @@ export async function runImagePipeline(file, options, adapter, hooks = {}) {
     ? Math.floor(options.targetSize) : undefined
   if (mode === 'target' && !targetBytes)
     throw new ImagePipelineError('Enter a positive maximum file size before using Target Size.', 'target-required')
-  const geometry = imageGeometry(header.width, header.height, options.resizeMaxWidth, options.resizeMaxHeight)
+  // Compression and format conversion never change display dimensions, even
+  // when an old caller supplies former resize options.
+  const geometry = { width: header.width, height: header.height }
   // Large-image measurements showed much higher CPU cost for level4. Keep
   // real color-reduction modes/guards, but bound extra DEFLATE effort above4MP.
   // This is an effort policy, not a fixed processing-time guarantee.
   const pngEffort = (pngMode === 'maximum' || pngMode === 'target') && geometry.width * geometry.height <= 4_000_000 ? 4 : 2
-  const resized = geometry.width !== header.width || geometry.height !== header.height
   const converted = outputFormat !== header.format
-  if (outputFormat === 'png' && header.format === 'png' && header.bitDepth === 16 && resized)
-    throw new ImagePipelineError('Resizing this 16-bit PNG would normalize it to 8-bit browser pixels. Its original precision was kept. Resize it with a 16-bit image editor, or explicitly choose another output format.', 'image-precision')
   let decoded
   let attempts = 0
   try {
@@ -63,7 +62,7 @@ export async function runImagePipeline(file, options, adapter, hooks = {}) {
     decoded = await adapter.decode(file, header, geometry)
     assertActive()
     if (decoded.sourceWidth !== header.width || decoded.sourceHeight !== header.height)
-      throw new ImagePipelineError('This browser could not preserve the image’s EXIF-oriented dimensions. No resized file was returned.', 'dimension-mismatch')
+      throw new ImagePipelineError('This browser could not preserve the image’s EXIF-oriented dimensions. No altered output was returned.', 'dimension-mismatch')
     if (decoded.hasAlpha && outputFormat === 'jpeg')
       throw new ImagePipelineError('This image has transparency. Choose PNG or WebP to preserve it; JPEG cannot store transparency.', 'transparency')
 
@@ -84,7 +83,7 @@ export async function runImagePipeline(file, options, adapter, hooks = {}) {
       },
     })
 
-    if (targetBytes && !resized && !converted && file.size <= targetBytes) {
+    if (targetBytes && !converted && file.size <= targetBytes) {
       hooks.progress?.(100, 'Original already meets the size limit')
       return unchanged('target-met', 'The original already meets the maximum-byte limit. Its quality, dimensions and bytes were kept unchanged.')
     }
@@ -143,7 +142,7 @@ export async function runImagePipeline(file, options, adapter, hooks = {}) {
       if (candidate.note) candidate.metadataNote = `${candidate.metadataNote ?? ''} ${candidate.note}`.trim()
       targetMet = Boolean(targetBytes && candidate.blob.size <= targetBytes)
     } else if (mode === 'target') {
-      if (!converted && !resized && decoded.losslessCandidate) {
+      if (!converted && decoded.losslessCandidate) {
         const lossless = await decoded.losslessCandidate()
         assertActive()
         if (lossless?.blob?.size > 0 && lossless.blob.size <= targetBytes) { candidate = lossless; targetMet = true }
@@ -173,19 +172,19 @@ export async function runImagePipeline(file, options, adapter, hooks = {}) {
       candidate = await encode(qualityFor(mode, options.quality))
       // A metadata-only alternative can preserve JPEG fidelity when a lossy
       // re-encode gives no useful reduction. It is never used for conversions.
-      if (!converted && !resized && decoded.losslessCandidate) {
+      if (!converted && decoded.losslessCandidate) {
         const lossless = await decoded.losslessCandidate()
         assertActive()
         if (lossless?.blob?.size > 0 && lossless.blob.size < candidate.blob.size) candidate = lossless
       }
     }
     assertActive()
-    if (!resized && !converted && candidate.blob.size >= file.size) {
+    if (!converted && candidate.blob.size >= file.size) {
       hooks.progress?.(100, 'Original retained')
       return mode === 'target'
         ? unchanged('target-unmet', outputFormat === 'png'
-          ? `${candidate.note ? `${candidate.note} ` : ''}The tested PNG settings did not meet the ${targetBytes.toLocaleString()}-byte limit under the color and transparency guards or produce a smaller file. The original is available unchanged. Choose another format, allow explicit resizing, or use a larger limit.`
-          : `No tested encoding met the ${targetBytes.toLocaleString()}-byte limit while preserving dimensions and format. The original is available unchanged. Choose another format, allow explicit resizing, or use a larger limit.`)
+          ? `${candidate.note ? `${candidate.note} ` : ''}The tested PNG settings did not meet the ${targetBytes.toLocaleString()}-byte limit under the color and transparency guards or produce a smaller file. The original is available unchanged. Choose another format or use a larger limit.`
+          : `No tested encoding met the ${targetBytes.toLocaleString()}-byte limit while preserving dimensions and format. The original is available unchanged. Choose another format or use a larger limit.`)
         : unchanged('unchanged', `${candidate.note ? `${candidate.note} ` : ''}No smaller valid output was found at this setting. The original file is unchanged.`)
     }
     stage('Verifying the encoded bytes, dimensions and transparency…')
@@ -209,12 +208,12 @@ export async function runImagePipeline(file, options, adapter, hooks = {}) {
     hooks.progress?.(100, mode === 'target' && !targetMet ? 'Target not met' : 'Verified')
     return {
       blob: candidate.blob,
-      outcome: mode === 'target' ? targetMet ? 'target-met' : 'target-unmet' : converted ? 'converted' : resized ? 'resized' : 'reduced',
+      outcome: mode === 'target' ? targetMet ? 'target-met' : 'target-unmet' : converted ? 'converted' : 'reduced',
       targetBytes,
       targetNote: mode === 'target' && !targetMet
         ? outputFormat === 'png'
-          ? `The smallest accepted PNG candidate is ${candidate.blob.size.toLocaleString()} bytes, above the ${targetBytes.toLocaleString()}-byte limit. Lossless PNG optimization and available color-reduction trials preserved alpha and the requested dimensions${resized ? ' after your explicit resizing' : ''}. Choose another format, ${resized ? 'adjust your resize settings' : 'allow explicit resizing'}, or use a larger limit.`
-          : `The smallest tested candidate is ${candidate.blob.size.toLocaleString()} bytes, above the ${targetBytes.toLocaleString()}-byte limit. The search stopped at ${Math.round(TARGET_QUALITY_FLOOR * 100)}% quality ${resized ? 'after your explicit resizing' : 'without resizing'}. Choose another format, ${resized ? 'adjust your resize settings' : 'allow explicit resizing'}, or use a larger limit.`
+          ? `The smallest accepted PNG candidate is ${candidate.blob.size.toLocaleString()} bytes, above the ${targetBytes.toLocaleString()}-byte limit. Lossless PNG optimization and available color-reduction trials preserved alpha and the original dimensions. Choose another format or use a larger limit.`
+          : `The smallest tested candidate is ${candidate.blob.size.toLocaleString()} bytes, above the ${targetBytes.toLocaleString()}-byte limit. The search stopped at ${Math.round(TARGET_QUALITY_FLOOR * 100)}% quality while preserving the original dimensions. Choose another format or use a larger limit.`
         : mode === 'target' && outputFormat === 'png'
           ? candidate.compressionKind === 'lossy'
             ? `Color-reduced PNG met the ${targetBytes.toLocaleString()}-byte limit. Colors may differ; alpha and requested dimensions were preserved and the numerical color-error guard passed.`

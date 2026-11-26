@@ -146,13 +146,6 @@ export async function inspectImageHeader(file, cancelled = () => false) {
   return { format, encodedWidth: width, encodedHeight: height, width: rotated ? height : width, height: rotated ? width : height, orientation, hasProfile, ...(format === 'png' ? { bitDepth, jpegPrecisionSafe: bitDepth !== 16 || !pngAlphaPossible } : {}) }
 }
 
-export function imageGeometry(width, height, maxWidth, maxHeight) {
-  const bound = value => typeof value === 'number' && Number.isFinite(value) && value > 0 ? Math.max(1, Math.floor(value)) : undefined
-  const widthBound = bound(maxWidth), heightBound = bound(maxHeight)
-  const ratio = Math.min(1, widthBound ? widthBound / width : 1, heightBound ? heightBound / height : 1)
-  return { width: Math.max(1, Math.round(width * ratio)), height: Math.max(1, Math.round(height * ratio)) }
-}
-
 /** Remove ancillary JPEG segments without touching the encoded image scans. */
 export function cleanJpegMetadata(bytes, orientation = 1) {
   if (!bytesEqual(bytes, [0xff, 0xd8, 0xff])) return null

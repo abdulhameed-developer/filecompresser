@@ -1,11 +1,11 @@
 {
   "title": "Why compressed files sometimes get bigger",
-  "description": "An efficient file may have little room to shrink. Learn why compression can retain the original, and how conversions and resizing differ.",
+  "description": "An efficient file may have little room to shrink. Learn why compression can retain the original, and why format conversion can produce a larger file.",
   "date": "2026-09-08",
-  "updated": "2026-11-23",
+  "updated": "2026-11-26",
   "readingTime": "5 min",
   "figure": "sizebars",
-  "seoDescription": "Understand real file-size savings, original-retained 0% results, and why an explicit format conversion or resize may produce a larger output.",
+  "seoDescription": "Understand real file-size savings, original-retained 0% results, and why an explicit format conversion may produce a larger output.",
   "body": [
     {
       "_template": "p",
@@ -33,7 +33,7 @@
       "items": [
         "Smaller: an output below the original size provides a real, measurable reduction. Inspect quality as well as bytes before keeping it.",
         "Original retained: an ordinary compression candidate that is not smaller is discarded. The unchanged original has 0% reduction and retains its existing metadata.",
-        "Larger transformation: a requested format conversion, resize or new ZIP archive can increase bytes. Growth is labelled larger rather than as a saving."
+        "Larger transformation: a requested format conversion or new ZIP archive can increase bytes. Growth is labelled larger rather than as a saving."
       ]
     },
     {
@@ -46,7 +46,7 @@
     },
     {
       "_template": "p",
-      "text": "Resizing is also a separate choice. Image dimensions are preserved unless you enable resizing. A smaller image may save bytes by containing fewer pixels; that change should never be hidden inside a compression preset."
+      "text": "Image dimensions are preserved by the image tools. Preparing a smaller image in another editor can reduce bytes by containing fewer pixels, but this is a separate operation and is not offered as a compression preset here."
     },
     {
       "_template": "h2",

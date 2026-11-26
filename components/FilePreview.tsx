@@ -45,7 +45,7 @@ export default function FilePreview({ item, dimensions }: { item: QueueItem; dim
     return () => { disposed = true; if (url) URL.revokeObjectURL(url) }
   }, [item.file, item.inputFormat, width, height])
   const format = item.inputFormat === 'jpeg' ? 'JPG' : item.inputFormat?.toUpperCase() || 'FILE'
-  const icon = ['mp3', 'wav', 'mp4', 'mov', 'gif'].includes(item.inputFormat ?? '') ? 'media' : item.inputFormat === 'zip' ? 'archive' : 'file'
+  const icon = ['mp3', 'wav', 'mp4', 'mov', 'webm', 'm4a', 'flac', 'ogg', 'gif'].includes(item.inputFormat ?? '') ? 'media' : item.inputFormat === 'zip' ? 'archive' : 'file'
   return <div className={`filePreview${preview?.file === item.file ? ' hasPreview' : ''}`} aria-hidden="true">
     {/* This small local bitmap is decorative. The adjacent filename labels the card. */}
     {/* eslint-disable-next-line @next/next/no-img-element */}

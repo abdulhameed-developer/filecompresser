@@ -1,6 +1,6 @@
 {
   "heading": "  Image Compressor Online for Smaller Image Files",
-  "introduction": "Use this tool to make JPG, JPEG, PNG and WebP images smaller. Choose a quality mode, compare the original and new sizes, and download the result.\nAn image compressor helps reduce the amount of data stored in an image file. This makes photographs and graphics easier to manage while allowing you to maintain suitable visual quality for their intended use.\n\nFile Compresser provides a free online image compressor for JPG, JPEG, PNG and WebP images. You can select images from your device, choose a suitable quality mode and compare the original file with the processed version. The tool works directly in your browser, so your selected images are not uploaded to the website's servers.\n",
+  "introduction": "Use this tool to make JPG, JPEG, PNG and WebP images smaller. Choose a quality mode, compare the original and new sizes, and download the result.\n\nAn image compressor helps reduce the amount of data stored in an image file. This makes photographs and graphics easier to manage while allowing you to maintain suitable visual quality for their intended use.\n\nFile Compresser provides a free online image compressor for JPG, JPEG, PNG and WebP images. You can select images from your device, choose a suitable quality mode and compare the original file with the processed version. The tool works directly in your browser, so your selected images are not uploaded to the website's servers.\n",
   "sections": [
     {
       "heading": "What Is an Image Compressor?",
@@ -20,7 +20,7 @@
     },
     {
       "heading": "How to Compress Images Online",
-      "body": "You can use File Compresser without installing an image editing application. The process involves selecting your images, choosing settings and reviewing the output.\n\nOpen the Image Compressor page.\nSelect JPG, JPEG, PNG or WebP images from your device.\nWait for the website to validate the selected files.\nChoose a suitable compression mode.\nEnable resizing only if you need different image dimensions.\nStart processing.\nCompare the original and final image sizes.\nInspect the image quality and download the result.\n\nThe original image dimensions are maintained by default. If you enable resizing, the aspect ratio is preserved and smaller images are not enlarged.\n"
+      "body": "You can use File Compresser without installing an image editing application.\n\n1. Select JPG, JPEG, PNG or WebP images from your device.\n2. Wait for the website to validate the selected files.\n3. Open Settings to choose a compression mode or output format.\n4. Start processing.\n5. Compare the original and final image sizes.\n6. Inspect the image quality and download the result.\n\nOriginal image dimensions are preserved."
     },
     {
       "heading": "Choose the Right Compression Mode",
@@ -48,11 +48,11 @@
     },
     {
       "heading": "Why Should You Compress Images for Websites?",
-      "body": "Large images are one of the common reasons web pages contain heavy resources. When a website uses unnecessarily large photographs, visitors may need to download more data than required for the displayed image. Optimizing images can help reduce page weight and make website resources easier to load.\n\nFor website owners, image compression is useful for:\n\nProduct photographs on online stores.\nFeatured images in blog articles.\nHomepage banners and promotional graphics.\nTeam photographs and business profiles.\nScreenshots and tutorial images.\nPortfolio and project galleries.\n\nImage compression is only one part of website optimization. Dimensions, responsive image delivery, caching and other page resources also affect loading performance."
+      "body": "Large images are one of the common reasons web pages contain heavy resources. When a website uses unnecessarily large photographs, visitors may need to download more data than required for the displayed image. Optimizing images can help reduce page weight and make website resources easier to load.\n\nFor website owners, image compression is useful for:\n\n- Product photographs on online stores.\n- Featured images in blog articles.\n- Homepage banners and promotional graphics.\n- Team photographs and business profiles.\n- Screenshots and tutorial images.\n- Portfolio and project galleries.\n\nImage compression is only one part of website optimization. Dimensions, responsive image delivery, caching and other page resources also affect loading performance."
     },
     {
-      "heading": "Should You Resize an Image Before Compressing It?",
-      "body": "Compression and resizing are two different operations. Compression changes how image information is stored. Resizing changes the actual pixel dimensions of an image.\nFor example, a large photograph may have more pixels than a website section needs. Reducing its dimensions can remove unnecessary image data and may provide a larger size reduction than compression alone.\n\nHowever, resizing is not always necessary. If you need to preserve the original dimensions, keep the resize option disabled. File Compresser does not silently resize images. You can enable resizing when a smaller width or height is required.\n"
+      "heading": "Are Image Dimensions Preserved?",
+      "body": "Image compression changes how image information is encoded while preserving the displayed pixel dimensions. File Compresser does not offer image resizing.\n\nIf your website needs a different image width or height, prepare those dimensions in an image editor before compression. Keep the full-size original for printing and future editing."
     },
     {
       "heading": "Do Compressed Images Lose Quality?",
@@ -88,7 +88,7 @@
     },
     {
       "q": "Will image dimensions change?",
-      "a": "No. Original dimensions are maintained unless you enable the resizing option.\n"
+      "a": "No. Original display dimensions are preserved. Image resizing is not offered.\n"
     },
     {
       "q": "Can I compress PNG images without losing transparency?",

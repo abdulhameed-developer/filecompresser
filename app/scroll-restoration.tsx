@@ -47,7 +47,7 @@ function scrollToHash(hash: string): boolean {
 
   const top =
     target.getBoundingClientRect().top + window.scrollY - headerOffset() - 16
-  window.scrollTo({ top: Math.max(0, top), behavior: 'auto' })
+  window.scrollTo({ top: Math.max(0, top), behavior: 'instant' })
   return true
 }
 
@@ -100,7 +100,7 @@ export default function ScrollRestoration() {
       return
     }
 
-    window.scrollTo(0, 0)
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
   }, [href])
 
   useEffect(() => {
@@ -114,7 +114,7 @@ export default function ScrollRestoration() {
       // can no longer mean anything, so pin to the top rather than letting the
       // browser leave us mid-page.
       if (offset > document.documentElement.scrollHeight - window.innerHeight) {
-        window.scrollTo(0, 0)
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
         offsetRef.current = 0
       }
     }

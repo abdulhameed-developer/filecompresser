@@ -8,7 +8,7 @@
     },
     {
       "heading": "A target size is a limit, not an exact byte count",
-      "body": "Target size searches actual encodes and verifies the final byte count. A 50 KB maximum means 50,000 bytes, not a promise of exactly that size. If no supported encode fits, the result is marked Target not met. Resizing remains off unless you explicitly enable it."
+      "body": "Target size searches actual encodes and verifies the final byte count. A 50 KB maximum means 50,000 bytes, not a promise of exactly that size. If no supported encode fits, the result is marked Target not met. Image dimensions stay unchanged."
     },
     {
       "heading": "Where JPG works well",

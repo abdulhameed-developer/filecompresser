@@ -2,8 +2,8 @@
   "heading": "How do I convert WebM to MP4?",
   "introduction": "Convert a WebM recording to H.264 video in an MP4 container with AAC audio when present. Processing stays in your browser and the original file is never changed.",
   "sections": [
-    { "heading": "Choose a compatible output", "body": "MP4 is widely supported by phones, browsers, editors and sharing platforms. The conversion changes the container and video encoding; it is not a filename-only rename." },
-    { "heading": "Keep the tab open", "body": "The first media job loads the browser engine. Encoding time depends on duration, resolution, codec and device speed. For long recordings, choose a lower resolution in the video settings." },
+    { "heading": "Choose a compatible output", "body": "MP4 is widely supported by phones, browsers, editors and sharing platforms. Conversion creates a real MP4 container. Compatible H.264 video can be kept without re-encoding; other supported video codecs are encoded as H.264. It is not a filename-only rename." },
+    { "heading": "Keep the tab open", "body": "The first media job loads the browser engine. Encoding time depends on duration, resolution, codec and device speed. The converter preserves the source dimensions; long recordings need more time and memory." },
     { "heading": "Check the result", "body": "Play the downloaded MP4 with sound before replacing the WebM original. Subtitles and cover art are not retained by the browser encoder." }
   ],
   "faq": [],

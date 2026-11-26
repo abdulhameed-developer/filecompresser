@@ -227,9 +227,22 @@ details[open] > summary > svg { transform: rotate(180deg); }
 
 /* Content managed below the tool workspace. */
 .editorialContent { margin: 3rem 0; padding: 2rem 0; border-top: 1px solid var(--border, #dce4df); max-width: 76ch; }
+.toolPage > .editorialContent { margin: 32px 0 8px; padding: 24px 0 12px; }
 .editorialContent h2 { font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.25; margin: 0 0 1rem; }
 .editorialContent h3 { font-size: 1.15rem; margin: 1.6rem 0 .5rem; }
 .editorialContent p { font-size: 1rem; line-height: 1.8; margin: .7rem 0; white-space: pre-line; }
+.editorialContent a, .aliasNotice a { color: #2e5f3d; text-decoration-color: #9db48c; text-underline-offset: 3px; }
+.editorialContent a:hover, .aliasNotice a:hover { color: var(--ink); text-decoration-color: currentColor; }
+.postPage .sectionLabel a { color: #2e5f3d; text-underline-offset: 3px; text-decoration-color: #9db48c; }
+.postPage .sectionLabel a:hover { color: var(--ink); text-decoration-color: currentColor; }
+.diagramSummary { margin: 12px 0 0; color: #52655a; font: 400 14px/1.6 var(--font-sans); }
+@media(max-width:600px) { .postRelated ul { grid-template-columns: minmax(0,1fr); } }
+.editorialContents { margin: 20px 0 24px; border: 1px solid #d6e2d4; border-radius: 10px; background: #f7f9f5; }
+.editorialContents summary { min-height: 48px; padding: 12px 16px; cursor: pointer; font-weight: 650; font-size: 14px; line-height: 1.6; }
+.editorialContents ol { margin: 0; padding: 0 20px 12px 40px; }
+.editorialContents li { padding-left: 2px; }
+.editorialContents a { font-size: 14px; }
+.editorialContent h3[id] { scroll-margin-top: 100px; }
 .editorialContent nav a { display: inline-flex; align-items: center; min-height: 44px; padding-block: 8px; line-height: 1.5; text-underline-offset: 3px; }
 .editorialContent nav li + li { margin-top: 4px; }
 .homePage > .editorialContent { max-width: var(--content); margin-inline: auto; padding-inline: 24px; }
@@ -275,12 +288,6 @@ details[open] > summary > svg { transform: rotate(180deg); }
 .toolCard .imageAdvancedBody .settingField { margin: 0; min-width: 0; }
 .toolCard .settingField label > output { float: right; color: #42612d; }
 .toolCard .imageAdvancedBody input[type=range] { width: 100%; min-height: 34px; accent-color: #527438; }
-.toolCard .resizeChoice { border-top: 1px solid #dce6db; padding-top: 16px; }
-.toolCard .resizeToggle { display: flex; align-items: center; gap: 10px; min-height: 44px; font-size: 14px; font-weight: 650; cursor: pointer; }
-.toolCard .resizeToggle input { width: 20px; height: 20px; accent-color: #527438; }
-.toolCard .resizeFields { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; margin: 16px 0 0; border: 0; padding: 0; }
-.toolCard .resizeFields > legend { margin-bottom: 14px; }
-.toolCard .resizeFields > p { grid-column: 1/-1; margin: 0; }
 .toolCard .numberField { min-width: 0; }
 .toolCard .numberField input,.toolCard .settingField select { min-height: 48px; width: 100%; color: var(--ink); background: white; border: 1px solid #bacbbd; border-radius: 7px; padding: 11px 13px; font: 400 16px var(--font-sans); }
 .toolCard .numberField input { padding-right: 48px; }
@@ -381,7 +388,6 @@ details[open] > summary > svg { transform: rotate(180deg); }
   .toolCard .exactTarget { margin: 0; }
   .toolCard .exactTarget strong { display: inline; margin-left: 5px; font-size: 16px; }
   .toolCard .imageAdvancedSettings > summary > span { display: block; margin: 6px 0 0 15px; }
-  .toolCard .resizeFields { grid-template-columns: minmax(0,1fr); }
   .toolCard .resultFile { grid-template-columns: 34px minmax(0,1fr); padding: 14px; gap: 10px; }
   .toolCard .fileIcon { width: 34px; min-width: 34px; min-height: 44px; }
   .toolCard .fileTitle > strong { flex-basis: 100%; font-size: 14px; }
@@ -454,10 +460,6 @@ details[open] > summary > svg { transform: rotate(180deg); }
 .workflowWorkspace .qualityControl label { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 13px; margin: 0; }
 .workflowWorkspace .qualityControl input { width: 100%; min-height: 44px; margin: 0; accent-color: #537236; }
 .workflowWorkspace .qualityControl .settingHelp { margin-top: -3px; }
-.workflowWorkspace .resizeChoice { border-top: 1px solid #dce4d7; margin: 0; padding-top: 7px; }
-.workflowWorkspace .resizeToggle { font-size: 13px; margin: 0; min-height: 44px; }
-.workflowWorkspace .resizeToggle > span { margin-left: auto; color: #64745e; font-weight: 400; font-size: 12px; }
-.workflowWorkspace .resizeFields { margin-top: 7px; gap: 12px; }
 .workflowWorkspace .settingField label { font-size: 13px; margin-bottom: 7px; }
 .workflowWorkspace .numberField input,.workflowWorkspace .settingField select { min-height: 44px; font-size: 15px; padding-block: 9px; }
 .workflowWorkspace .outputFormatField { padding: 0 0 14px; margin: 0 0 14px; max-width: none; border-bottom: 1px solid #dce4d7; display: grid; grid-template-columns: 78px minmax(180px,320px) minmax(0,1fr); align-items: center; gap: 5px 12px; }
@@ -547,9 +549,6 @@ details[open] > summary > svg { transform: rotate(180deg); }
   .workflowWorkspace .imageModeGrid { gap: 4px; grid-template-columns: repeat(2,minmax(0,1fr)); }
   .workflowWorkspace .imageModeOption { min-height: 44px; padding: 9px 7px; }
   .workflowWorkspace .imageModeOption > span { font-size: 12px; }
-  .workflowWorkspace .resizeFields { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; }
-  .workflowWorkspace .resizeFields label { font-size: 11px; }
-  .workflowWorkspace .resizeToggle > span { font-size: 11px; }
   .workflowWorkspace .outputFormatField { grid-template-columns: 54px minmax(0,1fr); gap: 4px 9px; }
   .workflowWorkspace .outputFormatField > .settingHelp { grid-column: 2; margin-top: 3px; }
   .workflowWorkspace .settingField select { font-size: 14px; }
@@ -580,16 +579,6 @@ details[open] > summary > svg { transform: rotate(180deg); }
   .workflowConfig { gap: 2px; }
   .workflowConfig strong { display: block; width: 100%; }
 }
-
-/* A draft dimension preview reuses source inspection, never the saved result. */
-.workflowWorkspace .resizePreview { margin-top: 12px; max-height: 190px; overflow: auto; border: 1px solid #d8e2d1; border-radius: 7px; background: #fff; }
-.resizePreview table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 12px; line-height: 1.5; }
-.resizePreview caption { text-align: left; padding: 10px 12px 7px; color: #36512d; font-size: 13px; font-weight: 600; }
-.resizePreview th,.resizePreview td { padding: 8px 12px; text-align: left; vertical-align: top; border-top: 1px solid #e3e9de; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
-.resizePreview thead th { color: #5e6d56; font-weight: 500; background: #f9fbf6; }
-.resizePreview th:first-child { width: 38%; }
-.resizePreview tbody th { font-weight: 500; }
-@media(max-width:760px) { .resizePreview table { font-size: 11px; }.resizePreview th,.resizePreview td { padding: 8px; }.resizePreview caption { font-size: 12px; padding: 9px 8px 6px; } }
 
 /* Compact, bounded file gallery shared by every tool. */
 .workflowBody { display: grid; gap: 20px; padding-top: 16px; align-items: start; }
@@ -638,23 +627,20 @@ details[open] > summary > svg { transform: rotate(180deg); }
 .gallerySwipeHint { display: none; }
 .settingsDialog { width: min(560px, calc(100vw - 24px)); max-height: min(760px, calc(100dvh - 24px)); padding: 0; border: 1px solid #d6e2d4; border-radius: 16px; background: #f7f9f5; color: #183f35; box-shadow: 0 24px 80px rgb(20 54 44 / 24%); }
 .settingsDialog::backdrop { background: rgb(15 42 35 / 34%); backdrop-filter: blur(4px); }
-.settingsDialogShell { display: flex; flex-direction: column; max-height: min(760px, calc(100dvh - 24px)); overflow: auto; }
-.settingsDialogHeader { display: flex; justify-content: space-between; gap: 16px; padding: 20px 20px 14px; border-bottom: 1px solid #dae3d6; }
-.settingsDialogEyebrow { color: #6a7d70; font-size: 10px; font-weight: 750; letter-spacing: .14em; }
+.settingsDialogShell { display: flex; flex-direction: column; max-height: min(760px, calc(100dvh - 24px)); overflow: auto; overscroll-behavior: contain; }
+.settingsDialogHeader { position: sticky; top: 0; z-index: 2; display: flex; justify-content: space-between; gap: 16px; padding: 20px 20px 14px; border-bottom: 1px solid #dae3d6; background: #f7f9f5; }
+.settingsDialogEyebrow { color: #52655a; font-size: 10px; font-weight: 750; letter-spacing: .14em; }
 .settingsDialogHeader h2 { margin: 5px 0 2px; font-size: 22px; }
 .settingsDialogHeader p { margin: 0; color: #52655a; font-size: 13px; }
 .settingsDialog .workspaceSettings { border: 0; padding: 16px 20px 4px; background: transparent; }
-.settingsDialogFooter { display: flex; justify-content: flex-end; padding: 12px 20px 20px; }
+.settingsDialogFooter { position: sticky; bottom: 0; display: flex; align-items: center; justify-content: space-between; padding: 12px 20px 16px; border-top: 1px solid #dae3d6; background: #f7f9f5; }
 .settingsDialog .settingsHeading { margin-bottom: 10px; }
-.settingsDialog .iconBtn { flex: 0 0 auto; }
-.settingsDisclosure { border: 1px solid #dae3d6; background: #f7f9f5; border-radius: 10px; }
-.settingsDisclosure > summary { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 10px; padding: 12px 14px; min-height: 48px; cursor: pointer; font-size: 14px; font-weight: 650; list-style: none; }
-.settingsDisclosure > summary::-webkit-details-marker { display: none; }
-.settingsDisclosure > summary > span { color: #52655a; font-size: 11px; font-weight: 400; }
-.settingsDisclosure > summary > .uiIcon { margin-left: auto; width: 16px; height: 16px; }
-.settingsDisclosure[open] > summary > .uiIcon { transform: rotate(180deg); }
-.workflowWorkspace .settingsDisclosure .workspaceSettings { min-width: 0; border: 0; padding: 0 14px 14px; background: transparent; border-radius: 0; }
-.settingsDisclosure .settingsHeading { justify-content: flex-end; margin-bottom: 5px; }
+.settingsDialog .iconBtn { width: 44px; height: 44px; flex: 0 0 44px; align-self: flex-start; display: grid; place-items: center; }
+.settingsDialogFooter .linkBtn { min-height: 44px; padding: 8px; }
+.settingsDialog .settingField { display: grid; grid-template-columns: minmax(0,1fr); align-items: start; gap: 8px; }
+.settingsDialog .settingField > .settingHelp { grid-column: 1; margin: 0; }
+.workflowWorkspace .settingsDialog .imageSettings { grid-template-columns: minmax(0,1fr); gap: 16px; }
+.settingsDialog .imageModeOption { min-width: 0; padding-inline: 8px; }
 .workflowActionContext { flex: 1 1 auto; }
 @media(min-width:761px) {
   .workspaceConfiguration .imageSettings { grid-template-columns: repeat(2,minmax(0,1fr)); align-items: start; gap: 16px 24px; }
@@ -673,10 +659,6 @@ details[open] > summary > svg { transform: rotate(180deg); }
 .galleryScrollControls { display: flex; gap: 5px; margin-left: auto; }
 .galleryScrollControls button { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #ccd8c5; background: white; border-radius: 6px; color: var(--ink); cursor: pointer; }
 .workspaceResultsHeading .summaryFailed { margin-right: 4px; }
-.settingsDisclosure { position: relative; }
-.settingsDisclosure > summary { padding-right: 112px; }
-.settingsDisclosure > summary > .uiIcon { position: absolute; right: 14px; top: 16px; }
-.settingsDisclosure .settingsHeading { position: absolute; top: 2px; right: 40px; margin: 0; }
 .hasFiles .dropzone { min-height: 48px; padding-block: 6px; }
 .workspaceScope .clearQueue { min-height: 44px; padding: 8px; margin-left: auto; color: #73523a; font-size: 12px; }
 .workspaceScope .scopeRemove + .clearQueue { margin-left: 0; }
@@ -686,6 +668,35 @@ details[open] > summary > svg { transform: rotate(180deg); }
 .workflowWorkspace .fileCard .fileRemoveButton > .uiIcon { width: 26px; height: 26px; padding: 3px; background: white; border-radius: 4px; }
 .galleryScrollControls button:disabled { opacity: .35; cursor: default; }
 .workspaceConfiguration:empty { display: none; }
+.workflowOutput { display: flex; align-items: center; gap: 8px; margin: 12px 0 0; color: #52655a; font-size: 13px; line-height: 1.6; }
+.workflowOutput > .uiIcon { width: 17px; height: 17px; flex: 0 0 auto; }
+.workflowOutput strong { color: var(--ink); }
+.workflowActionBar { scroll-margin-top: 88px; }
+.workflowStatus { margin: 14px 0 0; padding: 9px 12px; border: 1px solid #d6e2c9; border-radius: 7px; font-size: 13px; line-height: 1.6; overflow-wrap: anywhere; }
+.workflowStatus.status-error { border-color: #edc7c1; }
+.workflowStatus.status-info { border-color: #d8e2d1; }
+.workflowOutputNote { display: block; font-size: 12px; }
+.notFoundGroup a { min-height: 44px; display: inline-flex; align-items: center; padding-block: 10px; }
+.workflowWorkspace .singleFileGallery { display: block; overflow: visible; }
+.workflowWorkspace .singleFileGallery .fileCard { display: grid; grid-template-columns: 88px minmax(0,1fr); column-gap: 16px; padding: 16px; }
+.singleFileGallery .filePreview { grid-column: 1; grid-row: 1/3; height: 88px; margin: 0; }
+.workflowWorkspace .singleFileGallery .fileMeta { grid-column: 2; }
+.workflowWorkspace .singleFileGallery .fileTitle { padding-right: 32px; }
+.workflowWorkspace .singleFileGallery .fileTitle > strong { min-height: 0; font-size: 14px; }
+.workflowWorkspace .singleFileGallery .filePendingFacts { white-space: normal; font-size: 12px; line-height: 1.6; }
+.workflowWorkspace .singleFileGallery .fileStatus { font-size: 13px; }
+.workflowWorkspace .singleFileGallery .fileActions { grid-column: 2; margin-top: 4px; }
+.singleFileGallery .fileCardResult { font-size: 13px; }
+.singleFileGallery .fileCardResult strong { font-size: 16px; }
+@media(max-width:480px) {
+  .workflowWorkspace .singleFileGallery .fileCard { grid-template-columns: 56px minmax(0,1fr); column-gap: 12px; padding: 12px; }
+  .singleFileGallery .filePreview { height: 64px; }
+  .singleFileGallery .filePreview > span { font-size: 8px; padding: 2px 3px; right: 2px; }
+  .workflowWorkspace .singleFileGallery .fileTitle > strong { font-size: 13px; }
+  .settingsDialogHeader { padding: 16px 16px 12px; }
+  .settingsDialog .workspaceSettings { padding-inline: 16px; }
+  .settingsDialogFooter { padding-inline: 16px; }
+}
 
 /* Let vertical wheel and touch gestures continue to the document. */
 .workflowWorkspace .fileGallery { overscroll-behavior: auto; }

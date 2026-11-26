@@ -4,7 +4,7 @@
   "sections": [
     {
       "heading": "Choose quality separately from dimensions",
-      "body": "Keep WebP output and choose Balanced, High quality, Maximum or a separate Target size. Compare the output at the same scale as the original. Enable Resize this image only when you intentionally want smaller dimensions."
+      "body": "Keep WebP output and choose Balanced, High quality, Maximum or a separate Target size. Compare the output at the same scale as the original. Image dimensions are preserved."
     },
     {
       "heading": "Keep transparency when you need it",
@@ -12,7 +12,7 @@
     },
     {
       "heading": "Keep a result only when it suits the page",
-      "body": "Compare actual file size, dimensions and visible detail together. A smaller image with unreadable text may be unsuitable. A requested conversion or resize can increase bytes and is reported separately; it is never described as a saving."
+      "body": "Compare actual file size, dimensions and visible detail together. A smaller image with unreadable text may be unsuitable. A requested conversion can increase bytes and is reported separately; it is never described as a saving."
     }
   ],
   "faq": [],

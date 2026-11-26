@@ -5,6 +5,7 @@ import os from 'node:os'
 import { getHomeContent, getToolContent, parseEditorialContent, parsePublishedPost, readPublishedPosts } from '@/lib/content'
 import { BLOG_POSTS, allPostSlugs, getPost } from '@/lib/blog'
 import { TOOLS } from '@/lib/tools'
+import { editorialCollections } from '../tina/editorial.mjs'
 
 const temporaryDirectories: string[] = []
 afterEach(() => temporaryDirectories.splice(0).forEach(directory => rmSync(directory, { recursive: true, force: true })))
@@ -35,6 +36,7 @@ describe('CMS publication boundaries', () => {
   it('fails publication for malformed content instead of silently publishing broken HTML or dates', () => {
     expect(() => parsePublishedPost({ ...document(), title: '' }, 'guide')).toThrow('title')
     expect(() => parsePublishedPost({ ...document(), date: '2026-02-30' }, 'guide')).toThrow('date does not exist')
+    expect(() => parsePublishedPost({ ...document(), updated: '2026-11-20' }, 'guide')).toThrow('earlier than publication')
     expect(() => parsePublishedPost({ ...document(), figure: 'unknown' }, 'guide')).toThrow('illustration')
     expect(() => parsePublishedPost({ ...document(), published: 'true' }, 'guide')).toThrow('published')
     expect(() => parsePublishedPost({ ...document(), body: [{ _template: 'script', text: 'alert(1)' }] }, 'guide')).toThrow('supported')
@@ -65,6 +67,9 @@ describe('CMS publication boundaries', () => {
 
 describe('SEO content for homepage and tools', () => {
   it('provides valid editable content for every canonical tool and resolves the WAV alias', () => {
+    const collection = editorialCollections.find(collection => collection.name === 'toolPage')!
+    const editableSlugs = collection.match.include.replace(/[{}]/g, '').split(',')
+    expect(editableSlugs.sort()).toEqual(TOOLS.map(tool => tool.slug).sort())
     for (const tool of TOOLS) {
       const content = getToolContent(tool.slug)
       expect(content.heading.trim()).not.toBe('')

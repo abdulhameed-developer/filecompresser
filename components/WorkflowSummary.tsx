@@ -14,6 +14,7 @@ export function configurationLabel(config: ConfigurationSnapshot, sourceFormat?:
   if (config.engine === 'audio-compress' || config.engine === 'wav-to-mp3') return `MP3 bitrate request: ${String(options.bitrate || '192k').replace(/k$/, ' kbps')}`
   if (config.engine === 'gif-compress') return options.level === 'maximum' ? 'Maximum · Up to 64 colors' : 'Recommended · Up to 128 colors'
   if (config.engine === 'video-compress') return `${options.level === 'maximum' ? 'Maximum' : 'Recommended'} · ${options.resolution && options.resolution !== 'original' ? `Max height ${String(options.resolution).replace(/p$/, '')} px` : 'Original dimensions'}`
+  if (config.engine === 'webm-to-mp4') return 'MP4 · H.264 video · Original dimensions'
 
   const mode = String(options.imageMode || 'balanced')
   const format = String(options.outputFormat || sourceFormat || '')

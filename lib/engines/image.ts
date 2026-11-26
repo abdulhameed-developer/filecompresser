@@ -1,7 +1,7 @@
 import { suffixFilename, replaceExtension } from '../format'
 import type { CancelSignal, CompressionLevel, ImageInspection, ImageMode, ImageOutcome, OutputFormatOption, PngMode, ProcessedResult, ProgressCallback } from '../types'
 import { assertNotCancelled, listenForCancellation, ProcessingError } from '../types'
-import { imageGeometry, inspectImageHeader } from '../../workers/image-metadata.mjs'
+import { inspectImageHeader } from '../../workers/image-metadata.mjs'
 
 export type ImageFormat = 'jpeg' | 'png' | 'webp'
 
@@ -36,9 +36,6 @@ export interface ImageCompressOptions {
   outputFormat?: ImageFormat
   /** Strict maximum bytes, never a rounded display value. */
   targetSize?: number
-  /** Explicit maximum dimensions. Omitted/zero bounds never resize an image. */
-  resizeMaxWidth?: number
-  resizeMaxHeight?: number
 }
 
 export interface ImageCompressResult extends ProcessedResult {
@@ -71,11 +68,6 @@ export interface ImageSourceProbe {
   readonly hasAlpha: boolean
   /** False when full-depth opacity cannot be proved by the8-bit preview. */
   readonly jpegSafe?: boolean
-}
-
-/** The same fit/rounding policy used by the actual encoder; never upsamples. */
-export function expectedImageGeometry(width: number, height: number, maxWidth?: number, maxHeight?: number) {
-  return imageGeometry(width, height, maxWidth, maxHeight)
 }
 
 type WorkerOutput = PipelineResult | ImageProbe
@@ -142,7 +134,7 @@ async function runFallback(file: File, options: ImageCompressOptions, onProgress
   const adapter = createImageCanvasAdapter({ mainThread: true, cancelled })
   if (probe) {
     const header = await inspectImageHeader(file, cancelled)
-    const decoded = await adapter.decode(file, header, { width: header.width, height: header.height })
+    const decoded = await adapter.decode(file, header)
     try { return { format: header.format as ImageFormat, width: header.width, height: header.height, hasAlpha: decoded.hasAlpha, jpegSafe: !decoded.hasAlpha && header.jpegPrecisionSafe !== false } }
     finally { decoded.close() }
   }
@@ -191,7 +183,12 @@ export async function compressImage(file: File, options: ImageCompressOptions = 
     // Reject animation and pathological headers before allocating any worker bitmap.
     onProgress?.(0, 'Checking image…')
     await inspectImageHeader(file, () => Boolean(signal?.cancelled))
-    const result = await runImageJob(file, { ...options, mode }, onProgress, signal)
+    // Keep obsolete or unknown options out of the worker contract. Image
+    // compression/conversion always preserves the source display dimensions.
+    const result = await runImageJob(file, {
+      level: options.level, mode, pngMode: options.pngMode, quality: options.quality,
+      outputFormat: options.outputFormat, targetSize: options.targetSize,
+    }, onProgress, signal)
     assertNotCancelled(signal)
     if (!('blob' in result)) throw new ProcessingError('The image worker produced no encoded file.')
     const elapsedMs = Math.max(0, Math.round(performance.now() - started))
@@ -199,10 +196,9 @@ export async function compressImage(file: File, options: ImageCompressOptions = 
     const ext = format === 'jpeg' ? 'jpg' : format
     const unchanged = result.inspection.encoder === 'Original file'
     const transformed = result.inspection.inputFormat !== result.inspection.outputFormat
-    const resized = result.inspection.inputWidth !== result.inspection.outputWidth || result.inspection.inputHeight !== result.inspection.outputHeight
     const filename = unchanged
       ? replaceExtension(file.name, ext)
-      : suffixFilename(replaceExtension(file.name, ext), transformed ? '-converted' : resized ? '-resized' : '-compressed')
+      : suffixFilename(replaceExtension(file.name, ext), transformed ? '-converted' : '-compressed')
     return { ...result, inspection: { ...result.inspection, elapsedMs }, durationMs: elapsedMs, filename, mimeType: IMAGE_OUTPUT_FORMATS[format].mimeType }
   } catch (error) { throw describeImageError(error, signal) }
 }

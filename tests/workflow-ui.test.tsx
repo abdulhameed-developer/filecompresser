@@ -12,7 +12,7 @@ import { listenForCancellation, ProcessingError } from '@/lib/types'
 
 const mocks = vi.hoisted(() => ({ process: vi.fn(), formats: vi.fn(), download: vi.fn(), zip: vi.fn() }))
 vi.mock('@/lib/process', () => ({ processFile: mocks.process, concurrencyFor: () => 1, engineForFormat: async (format: string) => format === 'pdf' ? 'pdf-compress' : 'image-compress' }))
-vi.mock('@/lib/engines/image', async () => ({ availableOutputFormats: mocks.formats, expectedImageGeometry: (await import('../workers/image-metadata.mjs')).imageGeometry }))
+vi.mock('@/lib/engines/image', () => ({ availableOutputFormats: mocks.formats }))
 vi.mock('@/lib/downloads', () => ({ revokeItemUrl: () => {}, downloadItemsIndividually: mocks.download, downloadBlob: mocks.download, prepareDownloadZip: mocks.zip, safeDownloadFilename: (name: string) => name }))
 let root: Root
 let container: HTMLDivElement
@@ -21,11 +21,11 @@ const image = (name = 'photo.jpg') => new File([new Uint8Array([0xff, 0xd8, 0xff
 function result(file: globalThis.File, options: ProcessingOptions): ProcessedResult {
   const format = String(options.outputFormat || 'jpeg')
   const bytes = options.quality === .74 ? 80_000 : format === 'webp' ? 60_000 : 100_000
-  const width = options.resizeEnabled ? Number(options.resizeMaxWidth) || 4000 : 4000
-  return { blob: new Blob([new Uint8Array(bytes)], { type: `image/${format}` }) as unknown as globalThis.Blob, filename: `${file.name.split('.')[0]}-compressed.${format === 'jpeg' ? 'jpg' : format}`, mimeType: `image/${format}`, outcome: 'reduced', inspection: { inputWidth: 4000, inputHeight: 3000, outputWidth: width, outputHeight: Math.round(width * .75), inputFormat: 'jpeg', outputFormat: format, elapsedMs: 100, encoder: 'Test encoder', metadataNote: 'Metadata removed.' } }
+  return { blob: new Blob([new Uint8Array(bytes)], { type: `image/${format}` }) as unknown as globalThis.Blob, filename: `${file.name.split('.')[0]}-compressed.${format === 'jpeg' ? 'jpg' : format}`, mimeType: `image/${format}`, outcome: 'reduced', inspection: { inputWidth: 4000, inputHeight: 3000, outputWidth: 4000, outputHeight: 3000, inputFormat: 'jpeg', outputFormat: format, elapsedMs: 100, encoder: 'Test encoder', metadataNote: 'Metadata removed.' } }
 }
 beforeEach(() => {
   vi.stubGlobal('File', File); vi.stubGlobal('Blob', Blob); vi.stubGlobal('IS_REACT_ACT_ENVIRONMENT', true)
+  vi.spyOn(window, 'scrollTo').mockImplementation(() => {})
   container = document.createElement('div'); document.body.append(container); root = createRoot(container)
   mocks.formats.mockReset().mockImplementation(async (file: globalThis.File, _signal: unknown, onProbe?: (probe: ImageSourceProbe) => void) => {
     onProbe?.({ file, format: 'jpeg', width: file.name === 'portrait.jpg' ? 3000 : 4000, height: file.name === 'portrait.jpg' ? 4000 : 3000, hasAlpha: false })
@@ -55,6 +55,19 @@ it.each(TOOLS.map(tool => [tool.slug]))('starts %s with upload and no premature 
 })
 
 describe('original → draft → applied result journeys', () => {
+  it('does not process through an implicit form submit while settings are open', async () => {
+    await mount(); await upload([image()])
+    await click(button('Settings')!)
+    const dialog = container.querySelector('dialog')!
+    expect(dialog.open).toBe(true)
+    await act(async () => { container.querySelector('form')!.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true })); await flush() })
+    expect(mocks.process).not.toHaveBeenCalled()
+    expect(dialog.open).toBe(true)
+    await click(button('Done')!)
+    await click(primary()!)
+    expect(mocks.process).toHaveBeenCalledTimes(1)
+  })
+
   it('prevents native cancel activation from becoming a submit or restarting the run', async () => {
     await mount(); await upload([image()]); await click(primary()!)
     await change(container.querySelector('input[type=range]')!, '74')
@@ -171,21 +184,17 @@ describe('original → draft → applied result journeys', () => {
     expect(mocks.process.mock.calls[0][0].options.quality).toBe(.74)
   })
 
-  it.skip('removed resize controls', async () => {
+  it('processes an exact target without exposing or requesting image resizing', async () => {
     await mount(); await upload([image()])
     await click(button('Target size')!)
     expect(primary()?.disabled).toBe(true)
     expect(container.querySelector('[role=alert]')?.textContent).toContain('Choose a target')
     await click(button('50 KB')!)
     expect(primary()?.disabled).toBe(false)
-    await click(container.querySelector<HTMLInputElement>('.resizeToggle input')!)
-    expect(primary()?.disabled).toBe(true)
-    await change(container.querySelector<HTMLInputElement>('input[placeholder="e.g. 1920"]')!, '-10')
-    expect(container.querySelector('[role=alert]')?.textContent).toContain('Maximum width')
-    await change(container.querySelector<HTMLInputElement>('input[placeholder="e.g. 1920"]')!, '1600')
-    expect(primary()?.disabled).toBe(false)
+    expect(container.querySelector('.resizeToggle, .resizeFields')).toBeNull()
     await click(primary()!)
-    expect(mocks.process.mock.calls[0][0].options).toMatchObject({ targetSize: 50000, resizeEnabled: true, resizeMaxWidth: 1600 })
+    expect(mocks.process.mock.calls[0][0].options).toMatchObject({ targetSize: 50000 })
+    expect(Object.keys(mocks.process.mock.calls[0][0].options).some(key => key.startsWith('resize'))).toBe(false)
   })
   it('labels first-run partial successes as current while the remaining source is processing', async () => {
     await mount()
@@ -252,32 +261,15 @@ describe('original → draft → applied result journeys', () => {
   })
 
 
-  it.skip('removed resize controls', async () => {
+  it('reports each original image geometry without offering resize controls', async () => {
     await mount()
     await upload([image('landscape.jpg'), image('portrait.jpg')])
     expect(mocks.formats).toHaveBeenCalledTimes(2)
     const sourceFacts = container.querySelectorAll('.filePendingFacts')
     expect(sourceFacts[0].textContent).toContain('4,000 × 3,000 px')
     expect(sourceFacts[1].textContent).toContain('3,000 × 4,000 px')
-    await click(container.querySelector<HTMLInputElement>('.resizeToggle input')!)
-    const width = container.querySelector<HTMLInputElement>('input[placeholder="e.g. 1920"]')!
-    const height = container.querySelector<HTMLInputElement>('input[placeholder="e.g. 1080"]')!
-    await change(width, '1600')
-    let rows = container.querySelectorAll('.resizePreview tbody tr')
-    expect(rows[0].querySelector('td:last-child')?.textContent).toBe('1,600 × 1,200')
-    expect(rows[1].querySelector('td:last-child')?.textContent).toBe('1,600 × 2,133')
-    await change(height, '1000')
-    rows = container.querySelectorAll('.resizePreview tbody tr')
-    expect(rows[0].querySelector('td:last-child')?.textContent).toBe('1,333 × 1,000')
-    expect(rows[1].querySelector('td:last-child')?.textContent).toBe('750 × 1,000')
-    await change(height, '')
-    await change(width, '8000')
-    rows = container.querySelectorAll('.resizePreview tbody tr')
-    expect(rows[0].querySelector('td:last-child')?.textContent).toBe('4,000 × 3,000')
-    expect(rows[1].querySelector('td:last-child')?.textContent).toBe('3,000 × 4,000')
-    await change(width, '-10')
-    expect(container.querySelector('.resizePreview')).toBeNull()
-    expect(container.querySelector('[role=alert]')?.textContent).toContain('Maximum width')
+    expect(container.querySelector('.resizeToggle, .resizeFields, .resizePreview')).toBeNull()
+    expect(container.querySelector('input[type=number]')).toBeNull()
     expect(mocks.formats).toHaveBeenCalledTimes(2)
     expect(mocks.process).not.toHaveBeenCalled()
   })
@@ -397,11 +389,9 @@ it('keeps converter settings contextual and exposes its fixed output format', as
   const webm = new File([new Uint8Array([0x1a, 0x45, 0xdf, 0xa3, 0x93])], 'recording.webm', { type: 'video/webm' }) as unknown as globalThis.File
   await upload([webm])
   expect(primary()?.textContent).toContain('Convert to MP4')
-  const panel = container.querySelector<HTMLDialogElement>('.settingsDialog')!
-  expect(panel.querySelector('.conversionOutput')?.textContent).toContain('MP4 · H.264 video')
-  expect(panel.querySelector('.compressionLevel')).toBeNull()
-  await click(container.querySelector<HTMLButtonElement>('.workflowSettingsShortcut')!)
-  expect(panel.open).toBe(true)
+  expect(container.querySelector('.workflowOutput')?.textContent).toContain('MP4 · H.264 video')
+  expect(container.querySelector('.settingsDialog')).toBeNull()
+  expect(container.querySelector('.workflowSettingsShortcut')).toBeNull()
 })
 
 it('defaults PNG to Maximum while keeping Lossless available without a JPEG quality slider', async () => {

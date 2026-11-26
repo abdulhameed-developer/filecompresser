@@ -16,6 +16,7 @@ import {
 import ToolDirectory from '@/components/ToolDirectory'
 import type { Metadata } from 'next'
 import EditorialContent from '@/components/EditorialContent'
+import { InlineEditorialText } from '@/components/EditorialText'
 import { getHomeContent, resolveEditorialFaq } from '@/lib/content'
 
 export function generateMetadata(): Metadata {
@@ -83,10 +84,10 @@ export default function HomePage() {
             <span><Icon name="check" />Clear size comparisons</span>
           </div>
           <nav className="heroToolLinks" aria-label="Popular tools">
-            <Link href="/image-compressor"><Icon name="image" />Images</Link>
-            <Link href="/video-compressor"><Icon name="media" />Video</Link>
-            <Link href="/pdf-compressor"><Icon name="file" />PDF</Link>
-            <Link href="/zip-compressor"><Icon name="archive" />ZIP</Link>
+            <Link prefetch={false} href="/image-compressor"><Icon name="image" />Images</Link>
+            <Link prefetch={false} href="/video-compressor"><Icon name="media" />Video</Link>
+            <Link prefetch={false} href="/pdf-compressor"><Icon name="file" />PDF</Link>
+            <Link prefetch={false} href="/zip-compressor"><Icon name="archive" />ZIP</Link>
           </nav>
         </section>
 
@@ -113,7 +114,7 @@ export default function HomePage() {
             {faq.map((entry) => (
               <details key={entry.q}>
                 <summary><span>{entry.q}</span><Icon name="chevron" /></summary>
-                <p>{entry.a}</p>
+                <p><InlineEditorialText value={entry.a} /></p>
               </details>
             ))}
           </div>

@@ -20,7 +20,7 @@ export default function SiteFooter() {
     <footer className="siteFooter">
       <div className="footerTop">
         <div className="footerBrand">
-          <Link className="brand" href="/">
+          <Link prefetch={false} className="brand" href="/">
             <Image className="brandMark" src="/logo.png" alt="FileCompresser — home" width={223} height={68} />
           </Link>
           <p>
@@ -28,7 +28,7 @@ export default function SiteFooter() {
             watermarks.
           </p>
           <p className="footerContact">
-            <Link href="/contact">Help & contact</Link>
+            <Link prefetch={false} href="/contact">Help & contact</Link>
           </p>
           {supportEmail && <p className="footerContact"><SupportEmailLink email={supportEmail} /></p>}
           <p className="footerContact"><a href="/THIRD-PARTY-NOTICES.txt">Open-source notices &amp; source</a></p>
@@ -42,7 +42,7 @@ export default function SiteFooter() {
             <ul>
               {column.links.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href}>{link.label}</Link>
+                  <Link prefetch={false} href={link.href}>{link.label}</Link>
                 </li>
               ))}
             </ul>

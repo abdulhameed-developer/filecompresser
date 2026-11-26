@@ -14,6 +14,8 @@ interface Entry {
 }
 
 export function GET() {
+  const posts = postsByDate()
+  const blogLastmod = [getManagedPage('blog').updated, ...posts.map(post => post.updated ?? post.date)].filter((date): date is string => Boolean(date)).sort().at(-1)
   const entries: Entry[] = [
     { path: '/', changefreq: 'weekly', priority: '1.0' },
     {
@@ -22,7 +24,7 @@ export function GET() {
       priority: '0.6',
       lastmod: getManagedPage('about').updated,
     },
-    { path: '/blog', changefreq: 'weekly', priority: '0.7', lastmod: getManagedPage('blog').updated },
+    { path: '/blog', changefreq: 'weekly', priority: '0.7', lastmod: blogLastmod },
     {
       path: '/privacy',
       changefreq: 'yearly',
@@ -53,7 +55,7 @@ export function GET() {
       priority: '0.2',
     },
     // Each post carries its own publication date, which is a real lastmod.
-    ...postsByDate().map((post) => ({
+    ...posts.map((post) => ({
       path: `/blog/${post.slug}`,
       changefreq: 'yearly',
       priority: '0.6',

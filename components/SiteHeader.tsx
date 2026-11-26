@@ -299,7 +299,7 @@ export default function SiteHeader() {
   return (
     <header className="siteHeader">
       <nav className="nav" aria-label="Primary" ref={navRef}>
-        <Link className="brand" href="/" onClick={close}>
+        <Link prefetch={false} className="brand" href="/" onClick={close}>
           {/* The logo's alternative text also names this home link. */}
           <Image
             className="brandMark"
@@ -347,7 +347,7 @@ export default function SiteHeader() {
                         <ul>
                           {tools.map((tool) => (
                             <li key={tool.slug}>
-                              <Link
+                              <Link prefetch={false}
                                 href={`/${tool.slug}`}
                                 aria-current={
                                   pathname === `/${tool.slug}`
@@ -366,7 +366,7 @@ export default function SiteHeader() {
                   })}
                 </div>
                 <div className="toolsDropdownFoot">
-                  <Link href="/sitemap" onClick={close}>
+                  <Link prefetch={false} href="/sitemap" onClick={close}>
                     See all {TOOLS.length} tools <Icon name="arrow" />
                   </Link>
                 </div>
@@ -375,7 +375,7 @@ export default function SiteHeader() {
           </div>
 
           {NAV_LINKS.map((link) => (
-            <Link
+            <Link prefetch={false}
               key={link.href}
               className="navlink"
               href={link.href}
@@ -389,7 +389,7 @@ export default function SiteHeader() {
           ))}
         </div>
 
-        <Link className="navbtn" href="/#compress" onClick={close}>
+        <Link prefetch={false} className="navbtn" href="/#compress" onClick={close}>
           Start compressing <Icon name="arrow" />
         </Link>
 
@@ -411,7 +411,7 @@ export default function SiteHeader() {
       {mobileOpen && (
         <div id={mobileId} className="mobileMenu" ref={mobilePanelRef}>
           <div className="mobileMenuInner">
-            <Link className="mobileCta" href="/#compress" onClick={close}>
+            <Link prefetch={false} className="mobileCta" href="/#compress" onClick={close}>
               Start compressing
               <Icon name="arrow" />
             </Link>
@@ -428,7 +428,7 @@ export default function SiteHeader() {
               free, and needs no JS to be usable if hydration is slow.
             */}
             <nav className="mobilePrimary" aria-label="Mobile">
-              <Link
+              <Link prefetch={false}
                 className="mobileTopLink"
                 href="/blog"
                 aria-current={pathname.startsWith('/blog') ? 'page' : undefined}
@@ -436,7 +436,7 @@ export default function SiteHeader() {
               >
                 Blog
               </Link>
-              <Link
+              <Link prefetch={false}
                 className="mobileTopLink"
                 href="/about"
                 aria-current={
@@ -446,7 +446,7 @@ export default function SiteHeader() {
               >
                 About
               </Link>
-              <Link
+              <Link prefetch={false}
                 className="mobileTopLink"
                 href="/contact"
                 aria-current={
@@ -476,7 +476,7 @@ export default function SiteHeader() {
                     <ul id={panelId}>
                       {tools.map((tool) => (
                         <li key={tool.slug}>
-                          <Link
+                          <Link prefetch={false}
                             href={`/${tool.slug}`}
                             aria-current={
                               pathname === `/${tool.slug}` ? 'page' : undefined
@@ -496,7 +496,7 @@ export default function SiteHeader() {
 
             <nav className="mobileSecondary" aria-label="Legal">
               {FOOTER_SITE_LINKS.map((link) => (
-                <Link
+                <Link prefetch={false}
                   key={link.href}
                   className="mobileMetaLink"
                   href={link.href}

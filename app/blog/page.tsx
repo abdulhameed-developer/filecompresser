@@ -50,7 +50,7 @@ export default function BlogIndexPage() {
       />
 
       <nav className="breadcrumb" aria-label="Breadcrumb">
-        <Link href="/">Home</Link>
+        <Link prefetch={false} href="/">Home</Link>
         <span aria-hidden="true">/</span>
         <span aria-current="page">Blog</span>
       </nav>
@@ -61,11 +61,11 @@ export default function BlogIndexPage() {
         {page.introduction}
       </p>
 
-      {posts.length === 0 && <p>No published guides yet. <Link href="/#tools">Explore the file tools</Link>.</p>}
+      {posts.length === 0 && <p>No published guides yet. <Link prefetch={false} href="/#tools">Explore the file tools</Link>.</p>}
       <ul className="postList">
         {posts.map((post) => (
           <li key={post.slug} className="postCard">
-            <Link className="postCardLink" href={`/blog/${post.slug}`}>
+            <Link prefetch={false} className="postCardLink" href={`/blog/${post.slug}`}>
               <div className="postCardArt">
                 {post.featuredImage ? <Image src={post.featuredImage.src} alt={post.featuredImage.alt} width={1200} height={800} sizes="(max-width: 760px) 100vw, 540px" style={{ width: '100%', height: 'auto' }} /> : <BlogImage figure={post.figure} sizes="(max-width: 760px) 100vw, 540px" />}
               </div>

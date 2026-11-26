@@ -31,11 +31,11 @@ export default function FeaturedGuides({ posts }: { posts: Pick<BlogPost, 'slug'
   }
   if (!posts.length) return null
   return <section className="featuredGuides" aria-labelledby="featured-heading">
-    <div className="sectionHeading"><div><span className="sectionLabel">THE FILE GUIDE</span><h2 id="featured-heading">Make the right file choice.</h2></div><Link className="tertiaryAction" href="/blog">All guides<Icon name="arrow" /></Link></div>
+    <div className="sectionHeading"><div><span className="sectionLabel">THE FILE GUIDE</span><h2 id="featured-heading">Make the right file choice.</h2></div><Link prefetch={false} className="tertiaryAction" href="/blog">All guides<Icon name="arrow" /></Link></div>
     <div id={id} className="guideRail" ref={rail} onKeyDown={event => {
       if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); move(event.key === 'ArrowRight' ? 1 : -1) }
     }}>
-      {posts.map(post => <Link className="editorialCard" key={post.slug} href={`/blog/${post.slug}`} onFocus={event => {
+      {posts.map(post => <Link prefetch={false} className="editorialCard" key={post.slug} href={`/blog/${post.slug}`} onFocus={event => {
         if (rail.current && rail.current.scrollWidth > rail.current.clientWidth) {
           const left = event.currentTarget.offsetLeft
           rail.current.scrollTo({ left, behavior: 'instant' })

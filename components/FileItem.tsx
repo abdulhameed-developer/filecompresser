@@ -54,10 +54,10 @@ export default function FileItem({ item, tool, onRemove, onRetry, onCancel, onRe
   const canCompare = Boolean(canDownload && !extraction && inspection && ['jpeg', 'png', 'webp'].includes(inspection.inputFormat) && ['jpeg', 'png', 'webp'].includes(inspection.outputFormat) && [inspection.inputWidth, inspection.inputHeight, inspection.outputWidth, inspection.outputHeight].every(value => Number.isFinite(value) && value > 0))
   const elapsed = inspection?.elapsedMs ?? result?.durationMs
   const changedDimensions = inspection && (inspection.inputWidth !== inspection.outputWidth || inspection.inputHeight !== inspection.outputHeight)
-  const converted = inspection && inspection.inputFormat !== inspection.outputFormat
+  const converted = result?.outcome === 'converted' || Boolean(inspection && inspection.inputFormat !== inspection.outputFormat)
   const effectiveEngine = item.draftConfig?.engine ?? tool.engine
   const draftOutput = item.draftConfig?.options.outputFormat
-  const conversionRequested = (effectiveEngine === 'audio-compress' && item.inputFormat === 'wav') || (effectiveEngine === 'image-compress' && Boolean(draftOutput) && draftOutput !== item.inputFormat)
+  const conversionRequested = effectiveEngine === 'webm-to-mp4' || (effectiveEngine === 'audio-compress' && item.inputFormat !== 'mp3') || (effectiveEngine === 'image-compress' && Boolean(draftOutput) && draftOutput !== item.inputFormat)
   const applyAction = effectiveEngine === 'zip-create' ? 'Rebuild ZIP' : effectiveEngine === 'zip-extract' ? 'Extract again' : effectiveEngine === 'pdf-compress' ? 'Optimize again' : conversionRequested ? 'Convert again' : 'Recompress'
   const changeNotice = effectiveEngine === 'zip-create' ? 'Inputs have changed. Rebuild ZIP to include the current files.' : `Settings have changed. ${applyAction} to apply them.`
   const repeatAction = effectiveEngine === 'zip-extract' ? 'Extract again' : effectiveEngine === 'pdf-compress' ? 'Optimize again' : conversionRequested ? 'Convert again' : 'Process again'

@@ -90,13 +90,9 @@ export default function FileDropzone({
       className={`dropzone${drag ? ' drag' : ''}${disabled ? ' disabled' : ''}`}
       role="button"
       tabIndex={disabled ? -1 : 0}
-      // The accessible name is static: it must not change while the pointer
-      // moves over the zone, or a screen reader re-announces the control on
-      // every drag event.
-      aria-label={
-        disabled ? 'File upload is unavailable while processing' : label
-      }
-      aria-describedby={hintId}
+      // Include the complete visible label so voice-control users can address
+      // the same words they see. Drag depth prevents repeated state changes.
+      aria-label={[drag ? 'Drop them here' : label, hint, formats].filter(Boolean).join('. ')}
       aria-disabled={disabled || undefined}
       onClick={open}
       onKeyDown={handleKeyDown}
@@ -140,7 +136,7 @@ export default function FileDropzone({
           are what let screen-reader users jump straight to the upload area.
           It is level 2 so it sits directly under the page H1 — the previous H3
           skipped a level and broke the document outline. The visible text
-          follows the drag state; the accessible name does not. */}
+          follows the drag state, as does its accessible name. */}
       <h2 aria-hidden={drag || undefined}>{drag ? 'Drop them here' : label}</h2>
       <p id={hintId}>
         {hint.includes('browse') ? (

@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-24",
+  "updated": "2026-11-26",
   "title": "Choosing image compression modes and target sizes",
   "description": "Compare JPEG/WebP quality and PNG Lossless, Smart, Maximum or Target size. Understand preserved dimensions and when an original stays unchanged.",
   "date": "2026-09-12",
   "readingTime": "6 min",
   "figure": "qualitycurve",
-  "seoDescription": "Choose image modes or a maximum-byte target. Understand PNG lossless and color-reduction modes, optional resizing and truthful unmet targets.",
+  "seoDescription": "Choose image modes or a maximum-byte target. Understand PNG lossless and color-reduction modes, preserved dimensions and truthful unmet targets.",
   "body": [
     {
       "_template": "p",
-      "text": "Choose settings for the job you need the image to do. A quality setting changes how a lossy encoder represents detail; a size target sets a maximum number of bytes. Resizing changes dimensions and is a separate, optional choice."
+      "text": "Choose settings for the job you need the image to do. A quality setting changes how a lossy encoder represents detail; a size target sets a maximum number of bytes. The image tools preserve original display dimensions."
     },
     {
       "_template": "figure",
@@ -54,7 +54,7 @@
     },
     {
       "_template": "p",
-      "text": "Some limits cannot be reached within the supported quality, dimensions and format. An output over the maximum is marked Target not met. The tool does not pad or truncate a file, quietly resize it, or call a near miss a success. Consider a different format, a less restrictive target or explicitly enabled resizing."
+      "text": "Some limits cannot be reached within the supported quality, dimensions and format. An output over the maximum is marked Target not met. The tool does not pad or truncate a file, quietly resize it, or call a near miss a success. Consider a different format or a less restrictive target."
     },
     {
       "_template": "h2",
@@ -62,7 +62,7 @@
     },
     {
       "_template": "p",
-      "text": "Lossless preserves the decoded PNG pixels and transparency. Smart, Maximum and Target size may reduce colors while preserving transparency values; their color changes can be visible. Dimensions stay unchanged unless you explicitly enable resizing. PNG uses these named modes rather than the JPEG/WebP quality slider."
+      "text": "Lossless preserves the decoded PNG pixels and transparency. Smart, Maximum and Target size may reduce colors while preserving transparency values; their color changes can be visible. Dimensions stay unchanged. PNG uses these named modes rather than the JPEG/WebP quality slider."
     },
     {
       "_template": "p",
@@ -70,16 +70,16 @@
     },
     {
       "_template": "h2",
-      "text": "Dimensions stay unchanged unless you choose resizing"
+      "text": "Original display dimensions are preserved"
     },
     {
       "_template": "p",
-      "text": "Ordinary image compression preserves original display dimensions. Resize this image is off by default. When enabled, your maximum width or height is applied without changing aspect ratio or enlarging smaller inputs. EXIF orientation can be normalized: an upright image may have different stored width and height from the camera file, without changing its displayed orientation."
+      "text": "Image compression and conversion preserve original display dimensions. There is no image resize option. EXIF orientation can be normalized: an upright image may have different stored width and height from the camera file, without changing its displayed orientation."
     },
     {
       "_template": "callout",
       "title": "When the original is already efficient",
-      "text": "In ordinary same-format compression, a candidate that is not smaller is discarded. The original is returned unchanged with 0% reduction. A conversion or requested resize is reported as a separate transformation and may increase bytes; growth is never presented as a saving."
+      "text": "In ordinary same-format compression, a candidate that is not smaller is discarded. The original is returned unchanged with 0% reduction. A requested conversion is reported as a separate transformation and may increase bytes; growth is never presented as a saving."
     },
     {
       "_template": "h2",

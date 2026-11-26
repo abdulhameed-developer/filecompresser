@@ -1,9 +1,10 @@
 'use client'
 
-import { useId, useMemo, useRef, useEffect, useState, useCallback } from 'react'
+import { useId, useMemo, useRef, useEffect, useState, useCallback, type KeyboardEvent } from 'react'
 import type { ToolDefinition } from '@/lib/types'
 import { useFileQueue } from '@/lib/useFileQueue'
 import { savingsSummary } from '@/lib/format'
+import { lockDialogScroll } from '@/lib/dialog-scroll'
 import type { ImageSourceProbe } from '@/lib/engines/image'
 import Icon from './Icon'
 import FileDropzone from './FileDropzone'
@@ -22,7 +23,12 @@ export default function ToolWorkspace({ tool, formatsLabel }: ToolWorkspaceProps
   const settingsPanel = useRef<HTMLDialogElement>(null)
   const settingsTrigger = useRef<HTMLButtonElement>(null)
   const actionBar = useRef<HTMLDivElement>(null)
+  const previouslyHadFiles = useRef(false)
   const [settingsOpen, setSettingsOpen] = useState(false)
+  useEffect(() => {
+    if (!settingsOpen) return
+    return lockDialogScroll()
+  }, [settingsOpen])
   const [page, setPage] = useState(0)
   const [expandedId, setExpandedId] = useState<string | null>(null)
   const gallery = useRef<HTMLUListElement>(null)
@@ -52,6 +58,15 @@ export default function ToolWorkspace({ tool, formatsLabel }: ToolWorkspaceProps
   }, [items])
   const probesByFile = new Map(sourceProbes.map(probe => [probe.file, probe]))
   const hasItems = items.length > 0
+  useEffect(() => {
+    const firstSelection = hasItems && !previouslyHadFiles.current
+    previouslyHadFiles.current = hasItems
+    if (!firstSelection) return
+    const frame = window.requestAnimationFrame(() => {
+      actionBar.current?.scrollIntoView?.({ block: 'start', behavior: 'instant' })
+    })
+    return () => window.cancelAnimationFrame(frame)
+  }, [hasItems])
   const pageCount = Math.max(1, Math.ceil(items.length / 6))
   const currentPage = Math.min(page, pageCount - 1)
   const visibleItems = items.slice(currentPage * 6, currentPage * 6 + 6)
@@ -73,7 +88,7 @@ export default function ToolWorkspace({ tool, formatsLabel }: ToolWorkspaceProps
   const hasPng = outputFormat ? outputFormat === 'png' : scopeFormats.has('png')
   const hasLossy = outputFormat ? outputFormat !== 'png' : scopeFormats.has('jpeg') || scopeFormats.has('webp')
   const scopeImages = queue.selectedImageFiles
-  const hasSettings = readyScope && (imageSettings || tool.engine !== 'image-compress' && (!['pdf-compress', 'zip-create', 'zip-extract'].includes(tool.engine) || Boolean(tool.settings?.length)))
+  const hasSettings = readyScope && (imageSettings || tool.engine !== 'image-compress' && (!['pdf-compress', 'zip-create', 'zip-extract', 'webm-to-mp4'].includes(tool.engine) || Boolean(tool.settings?.length)))
   const runnable = scope.filter(item => !['validating', 'processing'].includes(item.status) && !(item.status === 'failed' && !item.inputFormat && tool.engine !== 'zip-create') && (item.status !== 'completed' || item.dirty))
   const changed = scope.filter(item => item.dirty).length
   const hasSaved = scope.some(item => item.result)
@@ -87,7 +102,7 @@ export default function ToolWorkspace({ tool, formatsLabel }: ToolWorkspaceProps
   const totalOutput = downloads.filter(item => item.comparison !== 'extraction').reduce((sum, item) => sum + (item.result?.blob.size || 0), 0)
   const phase = busy ? 'Processing' : validating ? 'Checking files' : changed ? collective ? 'Inputs changed' : 'Changes not applied' : queue.failedCount ? completedSources ? 'Partly complete' : 'Needs attention' : scope.some(item => item.status === 'cancelled') ? 'Cancelled' : unmetTargets ? unmetTargets === 1 ? 'Target not met' : 'Targets not met' : hasSaved && !runnable.length ? 'Results ready' : readyScope ? 'Ready' : 'Select a file'
   const moveCards = (direction: number) => gallery.current?.scrollBy?.({ left: direction * Math.max(180, gallery.current.clientWidth - 40), behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })
-  const processSelected = () => { if (canRun) queue.reprocessSelected(selectedIds) }
+  const processSelected = () => { if (canRun && !settingsPanel.current?.open) queue.reprocessSelected(selectedIds) }
   const openSettings = () => {
     const panel = settingsPanel.current
     if (!panel) return
@@ -96,7 +111,7 @@ export default function ToolWorkspace({ tool, formatsLabel }: ToolWorkspaceProps
       if (typeof panel.showModal === 'function') panel.showModal()
       else panel.setAttribute('open', '')
     }
-    window.requestAnimationFrame(() => panel.querySelector<HTMLElement>('button, input, select, [tabindex="0"]')?.focus())
+    panel.querySelector<HTMLElement>('button, input, select, [tabindex="0"]')?.focus({ preventScroll: true })
   }
   const closeSettings = () => {
     const panel = settingsPanel.current
@@ -106,11 +121,26 @@ export default function ToolWorkspace({ tool, formatsLabel }: ToolWorkspaceProps
       panel.open = false
     }
     setSettingsOpen(false)
-    window.setTimeout(() => settingsTrigger.current?.focus(), 0)
+    settingsTrigger.current?.focus({ preventScroll: true })
+  }
+  const onSettingsKeyDown = (event: KeyboardEvent<HTMLDialogElement>) => {
+    if (event.key !== 'Tab') return
+    const controls = [...event.currentTarget.querySelectorAll<HTMLElement>('button, input, select, textarea, a[href], [tabindex="0"]')]
+      .filter(control => !control.matches(':disabled') && !control.closest('[hidden]'))
+    const first = controls[0]
+    const last = controls.at(-1)
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault()
+      last?.focus()
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault()
+      first?.focus()
+    }
   }
   const changeSelection = (id: string, checked: boolean) => queue.setSelection(checked ? [...selectedIds, id] : selectedIds.filter(value => value !== id))
   const converting = imageSettings && Boolean(outputFormat) && scope.some(item => item.inputFormat !== outputFormat)
-  const action = actionLabel(tool, hasSaved, runnable.length, converting ? outputFormat : '', imageSettings)
+  const conversionTarget = converting ? outputFormat : tool.engine === 'audio-compress' && scope.some(item => item.inputFormat && item.inputFormat !== 'mp3') ? 'mp3' : ''
+  const action = actionLabel(tool, hasSaved, runnable.length, conversionTarget, imageSettings)
   const singleApplied = scope.length === 1 && scope[0].appliedConfig && scope[0].dirty ? scope[0] : undefined
 
   return <section className={`compressCard toolCard workflowWorkspace${hasItems ? ' hasFiles' : ' emptyWorkspace'}`} aria-label={`${tool.title} workspace`}>
@@ -135,23 +165,23 @@ export default function ToolWorkspace({ tool, formatsLabel }: ToolWorkspaceProps
             {downloads.length > 0 && <DownloadActions items={downloads} compact previous={olderDownloads === downloads.length} olderCount={olderDownloads} zipName={`filecompresser-${tool.slug}.zip`} />}
           </div>
         </div>
+        {readyScope && ['webm-to-mp4', 'video-compress', 'audio-compress'].includes(tool.engine) && <p className="workflowOutput"><Icon name="arrow" /><span>{tool.engine === 'video-compress' ? 'Encode to: ' : 'Output: '}{tool.engine === 'audio-compress' ? <strong>MP3 audio</strong> : <><strong>MP4</strong> · H.264 video, AAC audio when present</>}{tool.engine === 'video-compress' && <span className="workflowOutputNote">Compatible originals kept if re-encoding does not save space.</span>}</span></p>}
         <div className={`workflowBody${hasSettings ? ' withSettings' : ''}`}>
           <section className="workspaceGallery" aria-label="Uploaded files and results">
       <div className="workspaceResultsHeading"><h3>{completedSources ? 'Files & results' : 'Source files'}</h3>{queue.failedCount > 0 && <span className="summaryFailed">{queue.failedCount} need attention</span>}{visibleItems.length > 1 && <div className="galleryScrollControls"><button type="button" aria-label="Scroll file cards left" disabled={galleryEdges.start} aria-controls={galleryId} onClick={() => moveCards(-1)}><Icon name="arrow-left" /></button><button type="button" aria-label="Scroll file cards right" disabled={galleryEdges.end} aria-controls={galleryId} onClick={() => moveCards(1)}><Icon name="arrow" /></button></div>}</div>
-      <ul id={galleryId} ref={gallery} onScroll={measureGallery} className="fileList fileGallery" tabIndex={0} aria-label="File cards. Scroll sideways to see more files.">
+      <ul id={galleryId} ref={gallery} onScroll={measureGallery} className={`fileList fileGallery${items.length === 1 ? ' singleFileGallery' : ''}`} tabIndex={items.length > 1 ? 0 : undefined} aria-label={items.length > 1 ? 'File cards. Scroll sideways to see more files.' : 'Selected file and result'}>
         {visibleItems.map(item => <FileItem key={item.id} compact expanded={expandedId === item.id} onExpanded={open => setExpandedId(open ? item.id : null)} item={item} tool={tool} onRemove={queue.removeItem} onRetry={queue.retryItem} onCancel={queue.cancelItem} onReprocess={queue.reprocessItem} onRestoreApplied={scope.length > 1 ? queue.restoreApplied : undefined} sourceInfo={probesByFile.get(item.file)} selected={selected.has(item.id)} onSelect={collective ? undefined : changeSelection} showSelection={!collective && (items.length > 1 || selectedIds.length !== items.length)} hideDownload={items.length === 1 && downloads.length > 0 && tool.engine !== 'zip-extract'} busy={busy} />)}
       </ul>
-      <nav className="galleryPagination" aria-label="File pages"><span role="status">Showing {currentPage * 6 + 1}–{Math.min((currentPage + 1) * 6, items.length)} of {items.length} files</span>{pageCount > 1 && <div><button type="button" aria-label="Previous file page" aria-controls={galleryId} disabled={currentPage === 0} onClick={() => turnPage(currentPage - 1)}><Icon name="arrow-left" /></button><span>{currentPage + 1} / {pageCount}</span><button type="button" aria-label="Next file page" aria-controls={galleryId} disabled={currentPage === pageCount - 1} onClick={() => turnPage(currentPage + 1)}><Icon name="arrow" /></button></div>}<span className="gallerySwipeHint">{galleryEdges.start && galleryEdges.end ? 'All files on this page' : 'Scroll cards sideways ↔'}</span></nav>
+      <nav className="galleryPagination" aria-label="File pages"><span role="status">Showing {currentPage * 6 + 1}–{Math.min((currentPage + 1) * 6, items.length)} of {items.length} files</span>{pageCount > 1 && <div><button type="button" aria-label="Previous file page" aria-controls={galleryId} disabled={currentPage === 0} onClick={() => turnPage(currentPage - 1)}><Icon name="arrow-left" /></button><span>{currentPage + 1} / {pageCount}</span><button type="button" aria-label="Next file page" aria-controls={galleryId} disabled={currentPage === pageCount - 1} onClick={() => turnPage(currentPage + 1)}><Icon name="arrow" /></button></div>}<span className="gallerySwipeHint">{galleryEdges.start && galleryEdges.end ? 'All files on this page' : 'Scroll cards sideways'}</span></nav>
           </section>
           <div className="workspaceConfiguration">
-        {hasSettings && <dialog id={settingsId} ref={settingsPanel} className="settingsDialog" aria-labelledby={`${settingsId}-title`} onCancel={event => { event.preventDefault(); closeSettings() }} onClick={event => { if (event.target === event.currentTarget) closeSettings() }}>
+        {hasSettings && <dialog id={settingsId} ref={settingsPanel} className="settingsDialog" aria-labelledby={`${settingsId}-title`} onKeyDown={onSettingsKeyDown} onClose={() => setSettingsOpen(false)} onCancel={event => { event.preventDefault(); closeSettings() }} onClick={event => { if (event.target === event.currentTarget) closeSettings() }}>
           <div className="settingsDialogShell"><header className="settingsDialogHeader"><div><span className="settingsDialogEyebrow">WORKSPACE SETTINGS</span><h2 id={`${settingsId}-title`}>Settings</h2><p>For {scope.length} selected file{scope.length === 1 ? '' : 's'}.</p></div><button type="button" className="iconBtn" aria-label="Close settings" onClick={closeSettings}><Icon name="close" /></button></header><fieldset className="workspaceSettings" disabled={busy} aria-describedby={queue.settingsError ? errorId : undefined}>
             <legend className="srInline">Draft settings for selected files</legend>
-            <div className="settingsHeading"><div>{singleApplied && <button type="button" className="linkBtn" onClick={() => queue.restoreApplied(singleApplied.id)}>Restore applied</button>}<button type="button" className="linkBtn" onClick={queue.resetSettings}>Reset</button></div></div>
+            {singleApplied && <div className="settingsHeading"><button type="button" className="linkBtn" onClick={() => queue.restoreApplied(singleApplied.id)}>Restore applied</button></div>}
             {imageSettings && scopeImages.length > 0 && <OutputFormatPicker file={scopeImages[0]} files={scopeImages} value={outputFormat} onChange={next => queue.setSetting('outputFormat', next)} onCheckingChange={setFormatChecking} onProbesChange={rememberProbes} />}
-            {tool.engine === 'webm-to-mp4' && <div className="conversionOutput" role="status"><span>Output format</span><strong>MP4 · H.264 video</strong><small>Fixed for broad playback compatibility.</small></div>}
             <CompressionSettings tool={tool} level={queue.level} onLevel={queue.setLevel} settings={queue.settings} onSetting={queue.setSetting} imageSettings={imageSettings} imageFormat={outputFormat || (scopeFormats.size === 1 ? [...scopeFormats][0] : undefined)} hasPng={hasPng} hasLossy={hasLossy} targetAllowed={imageSettings} />
-          </fieldset><footer className="settingsDialogFooter"><button type="button" className="downloadBtn secondary" onClick={closeSettings}>Done</button></footer></div>
+          </fieldset><footer className="settingsDialogFooter"><button type="button" className="linkBtn" disabled={busy} onClick={queue.resetSettings}>Reset</button><button type="button" className="downloadBtn secondary" onClick={closeSettings}>Done</button></footer></div>
         </dialog>}
         {readyScope && tool.slug === 'compress' && !imageSettings && <p className="mixedBatchHint">Each selected file uses its format’s default settings. Select only JPG, PNG or WEBP files to adjust image settings.</p>}
         {!scope.length && <p className="selectionHint">Select a file below to configure, process or download it.</p>}

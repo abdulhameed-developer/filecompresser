@@ -12,6 +12,7 @@ import {
 import { pageMetadata, breadcrumbJsonLd, faqJsonLd, jsonLdScript, toolJsonLd } from '@/lib/seo'
 import Icon from '@/components/Icon'
 import EditorialContent from '@/components/EditorialContent'
+import { InlineEditorialText } from '@/components/EditorialText'
 import { getToolContent, resolveEditorialFaq } from '@/lib/content'
 
 export function generateStaticParams() {
@@ -77,7 +78,7 @@ export default async function ToolPage({ params }: { params: Promise<{ tool: str
 
       <div className="toolPage">
         <nav className="breadcrumb" aria-label="Breadcrumb">
-          <Link href="/">Home</Link>
+          <Link prefetch={false} href="/">Home</Link>
           <span aria-hidden="true">/</span>
           <span aria-current="page">{tool.title}</span>
         </nav>
@@ -91,7 +92,7 @@ export default async function ToolPage({ params }: { params: Promise<{ tool: str
 
         {isAlias && (
           <p className="aliasNotice">
-            This URL is an alias for <Link href={`/${canonical}`}>{tool.title}</Link>. Both
+            This URL is an alias for <Link prefetch={false} href={`/${canonical}`}>{tool.title}</Link>. Both
             addresses run the same tool.
           </p>
         )}
@@ -108,7 +109,7 @@ export default async function ToolPage({ params }: { params: Promise<{ tool: str
             {faq.map((entry) => (
               <details key={entry.q}>
                 <summary><span>{entry.q}</span><Icon name="chevron" /></summary>
-                <p>{entry.a}</p>
+                <p><InlineEditorialText value={entry.a} /></p>
               </details>
             ))}
           </section>
@@ -119,7 +120,7 @@ export default async function ToolPage({ params }: { params: Promise<{ tool: str
           <ul>
             {related.map((other) => (
               <li key={other.slug}>
-                <Link href={`/${other.slug}`}>
+                <Link prefetch={false} href={`/${other.slug}`}>
                   <span>{other.title}</span><Icon name="arrow" />
                 </Link>
               </li>

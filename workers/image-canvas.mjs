@@ -82,35 +82,15 @@ async function canvasBlob(canvas, type, quality) {
   return blob
 }
 
-function bitmapAlpha(source, mainThread, cancelled) {
-  const canvas = makeCanvas(256, 256, mainThread)
-  const context = canvas.getContext('2d', { willReadFrequently: true })
-  if (!context) throw new ImagePipelineError('This browser cannot inspect transparency safely.', 'canvas-limit')
-  try {
-    for (let y = 0; y < source.height; y += 256) for (let x = 0; x < source.width; x += 256) {
-      if (cancelled()) throw new ImagePipelineError('Processing was cancelled.', 'cancelled')
-      const width = Math.min(256, source.width - x), height = Math.min(256, source.height - y)
-      context.clearRect(0, 0, 256, 256)
-      context.drawImage(source.image ?? source, x, y, width, height, 0, 0, width, height)
-      if (alphaPresent(context.getImageData(0, 0, width, height).data, cancelled)) return true
-    }
-    return false
-  } finally { canvas.width = canvas.height = 0 }
-}
-
 /** One decoded source/canvas per job. Codec modules are loaded only on demand. */
 export function createImageCanvasAdapter({ mainThread = false, cancelled = () => Boolean(false) } = {}) {
   return {
-    async decode(file, header, geometry) {
+    async decode(file, header) {
+      const geometry = { width: header.width, height: header.height }
       let source = await decode(file, mainThread)
       let canvas, pixels, context
       const sourceWidth = source.width, sourceHeight = source.height
-      const resized = geometry.width !== header.width || geometry.height !== header.height
-      let originalHasAlpha
       try {
-        // An explicit resize must not hide a tiny transparent source pixel from
-        // the JPEG-conversion guard. Inspect the original before resampling.
-        if (resized && header.format !== 'jpeg') originalHasAlpha = bitmapAlpha(source, mainThread, cancelled)
         canvas = makeCanvas(geometry.width, geometry.height, mainThread)
         context = canvas.getContext('2d', { willReadFrequently: true, colorSpace: 'srgb' })
         if (!context) throw new ImagePipelineError('This browser cannot create a full-resolution image canvas.', 'canvas-limit')
@@ -125,7 +105,7 @@ export function createImageCanvasAdapter({ mainThread = false, cancelled = () =>
         throw error
       }
       let hasAlpha
-      try { hasAlpha = originalHasAlpha ?? alphaPresent(pixels.data, cancelled) }
+      try { hasAlpha = alphaPresent(pixels.data, cancelled) }
       catch (error) { canvas.width = canvas.height = 0; pixels = null; context = null; throw error }
       const fallbackNote = mainThread ? ' Worker processing is unavailable in this browser, so this job used the browser’s main-thread fallback.' : ''
       const normalizedNote = `EXIF orientation normalized. Browser-managed colors rendered to sRGB; source EXIF, GPS and ICC metadata are not copied.${fallbackNote}`
@@ -149,7 +129,7 @@ export function createImageCanvasAdapter({ mainThread = false, cancelled = () =>
             }
           }
           if (format === 'png') {
-            if (header.format === 'png' && !resized && mainThread) return {
+            if (header.format === 'png' && mainThread) return {
               blob: file.type === IMAGE_MIME.png ? file : new Blob([file], { type: IMAGE_MIME.png }),
               encoder: 'Original file',
               metadataNote: 'A browser worker was unavailable. The original PNG, sample precision and color metadata were retained without main-thread re-encoding.',
@@ -157,12 +137,12 @@ export function createImageCanvasAdapter({ mainThread = false, cancelled = () =>
             }
             try {
               const codec = await oxipng()
-              // Same-format/no-resize optimization preserves the encoded PNG's
+              // Same-format optimization preserves the encoded PNG's
               // color/orientation chunks; new images use the normalized pixels.
-              const encoded = header.format === 'png' && !resized
+              const encoded = header.format === 'png'
                 ? codec.optimise(new Uint8Array(await file.arrayBuffer()), effort, false, false)
                 : codec.optimise_raw(pixels.data, geometry.width, geometry.height, effort, false, false)
-              if (header.format === 'png' && !resized && (header.bitDepth === 16 || header.hasProfile || hasAlpha)) {
+              if (header.format === 'png' && (header.bitDepth === 16 || header.hasProfile || hasAlpha)) {
                 const decoder = await upng()
                 const original = new Uint8Array(await file.arrayBuffer())
                 const sourceSamplesEqual = header.bitDepth === 16
@@ -178,14 +158,14 @@ export function createImageCanvasAdapter({ mainThread = false, cancelled = () =>
               return {
                 blob: new Blob([encoded], { type: IMAGE_MIME.png }),
                 encoder: `Oxipng (@jsquash/oxipng 2.3.0, single-thread ${mainThread ? 'fallback' : 'worker'}, level ${effort})`,
-                metadataNote: header.format === 'png' && !resized
+                metadataNote: header.format === 'png'
                   ? `Original-byte lossless PNG optimization. Decoded colors and alpha were verified; transparent, high-precision or profiled PNGs also passed exact source-sample and color/orientation-chunk checks.${fallbackNote}`
                   : normalizedNote,
               }
             } catch (error) {
               if (cancelled()) throw new ImagePipelineError('Processing was cancelled.', 'cancelled')
               if (error instanceof ImagePipelineError && error.code !== 'png-quantizer-unavailable') throw error
-              if (header.format === 'png' && !resized) return {
+              if (header.format === 'png') return {
                 blob: file.type === IMAGE_MIME.png ? file : new Blob([file], { type: IMAGE_MIME.png }),
                 encoder: 'Original file',
                 metadataNote: 'The original PNG and its sample precision/profile were retained; lossless optimization or exact source verification was unavailable.',
@@ -198,7 +178,7 @@ export function createImageCanvasAdapter({ mainThread = false, cancelled = () =>
           return { blob: await canvasBlob(canvas, IMAGE_MIME.webp, quality), encoder: `Browser WebP${mainThread ? ' main-thread fallback' : ' worker'}`, metadataNote: normalizedNote }
         },
         async losslessCandidate() {
-          if (header.format !== 'jpeg' || resized) return null
+          if (header.format !== 'jpeg') return null
           const original = new Uint8Array(await file.arrayBuffer())
           const bytes = cleanJpegMetadata(original, header.orientation)
           return bytes && bytes.length < file.size ? {

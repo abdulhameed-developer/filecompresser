@@ -2,7 +2,7 @@
   "title": "How browser-based file compression works",
   "description": "From the moment you drop a file to the moment you download the result, every step runs on your own device. Here is the real pipeline, without the marketing.",
   "date": "2026-09-04",
-  "updated": "2026-11-23",
+  "updated": "2026-11-26",
   "readingTime": "6 min",
   "figure": "pipeline",
   "seoDescription": "A walkthrough of the real client-side compression pipeline: magic-byte validation, worker and WebAssembly engines, and why no step needs a server.",
@@ -29,11 +29,11 @@
     },
     {
       "_template": "p",
-      "text": "Image compression uses a Web Worker where supported, with browser canvas operations also used for decoding and target-size encoding. Heavy work can still affect responsiveness on constrained devices. Video, audio and GIF work uses a WebAssembly build of FFmpeg — roughly 30 MB of code, downloaded once and cached, and never loaded on a page you are not using it on."
+      "text": "Image compression uses a Web Worker where supported, with browser canvas operations also used for decoding and target-size encoding. Heavy work can still affect responsiveness on constrained devices. Video, audio and GIF work uses a WebAssembly build of FFmpeg — about 21 MB of engine code, loaded when needed and available for browser caching."
     },
     {
       "_template": "p",
-      "text": "None of that engine code is fetched until you actually start a job. A page view costs you the site's own JavaScript and nothing else. The distinction matters for the same reason the compression does: the work happens on your machine, and the code that does it is only ever code."
+      "text": "The larger FFmpeg engine is fetched when you start a media job. An ordinary page view loads the page, styles, fonts, images and site JavaScript. Engine downloads carry code; your selected file stays in the browser."
     },
     {
       "_template": "figure",
@@ -46,7 +46,7 @@
     },
     {
       "_template": "p",
-      "text": "An encoder produces a Blob: actual output bytes in memory, with a measured size and detected format. Ordinary compression discards a candidate that is not smaller and returns the original unchanged with 0% reduction. Requested conversions and resizing are described separately; any size increase is labelled honestly."
+      "text": "An encoder produces a Blob: actual output bytes in memory, with a measured size and detected format. Ordinary compression discards a candidate that is not smaller and returns the original unchanged with 0% reduction. Requested format conversions are described separately; any size increase is labelled honestly."
     },
     {
       "_template": "p",

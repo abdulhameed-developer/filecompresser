@@ -61,6 +61,28 @@ async function run() {
 }
 
 describe('queue workflows', () => {
+  it.each(['add', 'remove'])('clears an obsolete failed-run banner after idle queue %s while preserving file errors', async mutation => {
+    await mount()
+    await add([jpeg()])
+    mocks.processFile.mockRejectedValueOnce(new Error('Codec failed for this source'))
+    await run()
+    expect(queue.status.kind).toBe('error')
+    expect(queue.items[0].error).toBe('Codec failed for this source')
+    await add([])
+    expect(queue.status.kind).toBe('error')
+    if (mutation === 'add') {
+      await add([jpeg('new.jpg')])
+      expect(queue.items[0].error).toBe('Codec failed for this source')
+      expect(queue.items[1].status).toBe('queued')
+    } else {
+      await act(async () => queue.removeItem(queue.items[0].id))
+      expect(queue.items).toHaveLength(0)
+      await add([jpeg('new.jpg')])
+      expect(queue.items[0].status).toBe('queued')
+    }
+    expect(queue.status).toEqual({ kind: 'idle', text: '' })
+  })
+
   it('processes valid selected sources without rerunning validation-rejected rows', async () => {
     await mount('compress')
     await add([jpeg(), new File([], 'empty.jpg') as unknown as globalThis.File])

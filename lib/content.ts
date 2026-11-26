@@ -6,6 +6,7 @@ import { lstatSync, readFileSync, readdirSync } from 'node:fs'
 import path from 'node:path'
 import type { Block, BlogPost, EditorialImage, FigureId } from './blog'
 import { TOOLS, canonicalSlug } from './tools'
+import { parseEditorialHtml, safeEditorialHref, safeReferenceHref, validateEditorialValue } from './editorial-markup'
 
 export interface EditorialContent {
   heading: string
@@ -81,28 +82,16 @@ function figure(value: unknown, location: string): FigureId {
 /** Editorial URLs are navigation links, never executable schemes. */
 function editorialLink(value: unknown, location: string): string {
   const href = text(value, location)
-  let decoded: string
-  try { decoded = decodeURIComponent(href) } catch { return fail(location, 'invalid URL encoding') }
-  if (/[\\\u0000-\u0020\u007f]/.test(decoded)) return fail(location, 'links cannot contain spaces, controls or backslashes')
-  if (href.startsWith('/') && !decoded.startsWith('//')) return href
-  try {
-    const url = new URL(href)
-    if (url.protocol === 'https:' && !url.username && !url.password) return href
-  } catch { /* The error below explains the accepted address formats. */ }
-  return fail(location, 'use a site-relative path or HTTPS address without credentials')
+  try { return safeEditorialHref(href) }
+  catch (error) { return fail(location, error instanceof Error ? error.message : 'Invalid link address') }
 }
 
-/** Accept only Markdown-style links that the renderer knows how to escape safely. */
-function editorialText(value: unknown, location: string, optional = false): string {
+/** Use the editor's exact validation boundary before public rendering. */
+function editorialText(value: unknown, location: string, optional = false, allowHtml = false): string {
   const result = text(value, location, optional)
   if (!result) return result
-  if (/<\/?[a-z!][^>]*>/i.test(result)) return fail(location, 'raw HTML is not allowed; use [link text](/path) or [link text](https://example.com)')
-  const links = result.match(/\[[^\]\n]{1,120}\]\(([^\s)]+)\)/g) ?? []
-  for (const link of links) {
-    const match = link.match(/^\[[^\]]+\]\(([^\s)]+)\)$/)
-    if (match) editorialLink(match[1], `${location}.link`)
-  }
-  if (/\[[^\]\n]*\]\([^)]*\)/.test(result) && links.length === 0) return fail(location, 'use a valid Markdown link with a site path or HTTPS address')
+  try { validateEditorialValue(result, { allowHtml }) }
+  catch (error) { return fail(location, error instanceof Error ? error.message : 'Invalid editorial content') }
   return result
 }
 
@@ -132,10 +121,20 @@ function block(value: unknown, location: string): Block {
   // existing discriminated union so every original article renders unchanged.
   const type = item._template ?? item.type
   switch (type) {
-    case 'p':
+    case 'html': {
+      const html = text(item.html, `${location}.html`)
+      try { parseEditorialHtml(html) } catch (error) { return fail(location, error instanceof Error ? error.message : 'Invalid HTML') }
+      return { type, html }
+    }
     case 'h2':
     case 'h3':
       return { type, text: text(item.text, `${location}.text`) }
+    case 'p':
+      {
+        const value = text(item.text, `${location}.text`)
+        try { validateEditorialValue(value, { literalHtml: true }) } catch (error) { return fail(location, error instanceof Error ? error.message : 'Invalid link') }
+        return { type, text: value }
+      }
     case 'ul':
     case 'ol':
       return { type, items: list(item.items, `${location}.items`).map((entry, i) => text(entry, `${location}.items[${i}]`)) }
@@ -183,7 +182,10 @@ export function parsePublishedPost(value: unknown, slug: string): BlogPost | und
     body: list(item.body, `${slug}.body`).map((entry, i) => block(entry, `${slug}.body[${i}]`)),
   }
   if (!post.body.length) return fail(slug, 'published articles need at least one content block')
-  if (item.updated) post.updated = isoDate(item.updated, `${slug}.updated`)
+  if (item.updated) {
+    post.updated = isoDate(item.updated, `${slug}.updated`)
+    if (post.updated < post.date) return fail(slug, 'last updated cannot be earlier than publication date')
+  }
   if (item.seoTitle) post.seoTitle = text(item.seoTitle, `${slug}.seoTitle`)
   if (item.seoDescription) post.seoDescription = text(item.seoDescription, `${slug}.seoDescription`)
   const featuredImage = optionalObject(item.featuredImage, `${slug}.featuredImage`)
@@ -203,13 +205,12 @@ export function parsePublishedPost(value: unknown, slug: string): BlogPost | und
     post.references = list(item.references, `${slug}.references`).map((entry, i) => {
       const reference = object(entry, `${slug}.references[${i}]`)
       const url = text(reference.url, `${slug}.references[${i}].url`)
+      const title = text(reference.title, `${slug}.references[${i}].title`)
       try {
-        const parsed = new URL(url)
-        if (!['http:', 'https:'].includes(parsed.protocol) || parsed.username || parsed.password) throw new Error('unsafe URL')
+        return { title, url: safeReferenceHref(url) }
       } catch {
         return fail(slug, 'reference links must be HTTP(S) URLs without credentials')
       }
-      return { title: text(reference.title, `${slug}.references[${i}].title`), url }
     })
   }
   return post
@@ -258,7 +259,7 @@ export function parseEditorialContent(value: unknown, location: string): Editori
     introduction: editorialText(item.introduction, `${location}.introduction`),
     sections: list(item.sections ?? [], `${location}.sections`).map((entry, i) => {
       const section = object(entry, `${location}.sections[${i}]`)
-      return { heading: text(section.heading, `${location}.sections[${i}].heading`), body: editorialText(section.body, `${location}.sections[${i}].body`) }
+      return { heading: text(section.heading, `${location}.sections[${i}].heading`), body: editorialText(section.body, `${location}.sections[${i}].body`, false, true) }
     }),
     faq: list(item.faq ?? [], `${location}.faq`).map((entry, i) => {
       const faq = object(entry, `${location}.faq[${i}]`)

@@ -176,11 +176,13 @@ export function useFileQueue(tool: ToolDefinition) {
   const addFiles = useCallback((list: FileList | File[]) => {
     if (running.current) return
     const incoming = Array.from(list)
+    if (!incoming.length) return
     const total = [...itemsRef.current.map(item => item.file), ...incoming]
     if (total.length > QUEUE_FILES || total.reduce((sum, file) => sum + file.size, 0) > QUEUE_BYTES) {
       setStatus({ kind: 'error', text: 'Add at most 500 files and 300 MB in one queue. Remove files before adding more.' })
       return
     }
+    setStatus({ kind: 'idle', text: '' })
     const version = epoch.current
     const prepared: QueueItem[] = incoming.map(file => ({ id: uid(), file, name: file.name, mimeType: file.type, originalSize: file.size, status: 'validating', progress: 0 }))
     update(previous => [...previous, ...prepared])
@@ -217,6 +219,7 @@ export function useFileQueue(tool: ToolDefinition) {
       : item))
   }, [update])
   const removeItem = useCallback((id: string) => {
+    if (!running.current && itemsRef.current.some(item => item.id === id)) setStatus({ kind: 'idle', text: '' })
     if (toolRef.current.engine === 'zip-create' && running.current) cancelItem(id)
     signals.current.get(id)?.cancel('removed')
     update(previous => {

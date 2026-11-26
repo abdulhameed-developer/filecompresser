@@ -1,10 +1,10 @@
 {
   "heading": "Can I reduce a PNG and keep its transparent background?",
-  "introduction": "Maximum is the default for PNG and may reduce colors while preserving transparency. Choose Lossless to preserve decoded pixels, or Smart for more conservative color reduction. Dimensions stay unchanged unless you enable resizing.",
+  "introduction": "Maximum is the default for PNG and may reduce colors while preserving transparency. Choose Lossless to preserve decoded pixels, or Smart for more conservative color reduction. Dimensions stay unchanged.",
   "sections": [
     {
       "heading": "Use PNG for graphics that need it",
-      "body": "PNG is useful for transparent artwork, screenshots and diagrams. Choose Lossless to preserve the decoded image pixels. Optional resizing changes pixels and is off by default. Keep your original and check lettering, edges and transparent areas after processing."
+      "body": "PNG is useful for transparent artwork, screenshots and diagrams. Choose Lossless to preserve the decoded image pixels. Keep your original and check lettering, edges and transparent areas after processing."
     },
     {
       "heading": "Choose whether colors may change",
@@ -12,7 +12,7 @@
     },
     {
       "heading": "Check the actual size and target result",
-      "body": "Target size tries real PNG encodes, including color-reduced candidates, and checks their bytes against your maximum. An oversized result is marked Target not met. Ordinary same-format compression returns the original unchanged with 0% reduction if no smaller suitable result is found. If a target cannot be reached, consider a less restrictive limit, supported WebP conversion or explicitly enabled resizing; these are separate trade-offs."
+      "body": "Target size tries real PNG encodes, including color-reduced candidates, and checks their bytes against your maximum. An oversized result is marked Target not met. Ordinary same-format compression returns the original unchanged with 0% reduction if no smaller suitable result is found. If a target cannot be reached, consider a less restrictive limit or supported WebP conversion."
     }
   ],
   "faq": [],
