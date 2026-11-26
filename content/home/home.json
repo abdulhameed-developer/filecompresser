@@ -27,7 +27,7 @@
     },
     {
       "heading": "Image Compression",
-      "body": "Large images can slow down websites and create problems when uploading photographs or sharing design files. The image compression tools help reduce the size of supported JPG, JPEG, PNG and WebP images.\n\nYou can select an appropriate quality mode and compare the original image with the processed version. Image dimensions remain unchanged by default. If you need a smaller width or height, you can enable the resizing option.\n\nThe platform also provides separate tools for JPG, JPEG, PNG and WebP files. This makes it easier to choose settings according to the image format and its intended use.\n"
+      "body": "Large images can slow down websites and create problems when uploading photographs or sharing design files. The image compression tools help reduce the size of supported JPG, JPEG, PNG and WebP images.\n\nYou can select an appropriate quality mode and compare the original image with the processed version. Image dimensions remain unchanged, so the compression result is easy to compare with the source.\n\nThe platform also provides separate tools for JPG, JPEG, PNG and WebP files. This makes it easier to choose settings according to the image format and its intended use.\n"
     },
     {
       "heading": "Video Compression",
@@ -47,7 +47,7 @@
     },
     {
       "heading": "How Does File Compresser Work?",
-      "body": "Using an online file compressor should not require technical knowledge. The process is designed around three simple steps.\n\nSelect your files: Open the tool you need and choose files from your device. You can also use the general compression page to process a supported mixed batch.\nChoose your settings: Review the available compression, conversion or resizing options. Select settings according to the format and quality you need.\nReview and download: Start processing and compare the original and final file sizes. Check the result before downloading it to your device.\n\nThe website also checks supported file types and size limits before processing. This helps identify files that cannot be handled by the selected tool.\n"
+      "body": "Using an online file compressor should not require technical knowledge. The process is designed around three simple steps.\n\nSelect your files: Open the tool you need and choose files from your device. You can also use the general compression page to process a supported mixed batch.\nChoose your settings: Review the available compression or conversion options. Select settings according to the format and quality you need.\nReview and download: Start processing and compare the original and final file sizes. Check the result before downloading it to your device.\n\nThe website also checks supported file types and size limits before processing. This helps identify files that cannot be handled by the selected tool.\n"
     },
     {
       "heading": "Your Files Stay on Your Device",
@@ -63,7 +63,7 @@
     },
     {
       "heading": "Does Compression Always Make Files Smaller?",
-      "body": "No. The result depends on the original file, its format and the selected settings. Some images are already optimized, while certain PDFs contain data that cannot be reduced through structural optimization alone.\n\nFile Compresser reports the actual result instead of promising a fixed percentage reduction. When ordinary same-format compression does not produce a smaller file, the original can be retained unchanged. Explicit conversions, resizing and ZIP creation may also increase the final file size.\n\nFor this reason, compare the actual output size and check the file quality before replacing your original.\n"
+      "body": "No. The result depends on the original file, its format and the selected settings. Some images are already optimized, while certain PDFs contain data that cannot be reduced through structural optimization alone.\n\nFile Compresser reports the actual result instead of promising a fixed percentage reduction. When ordinary same-format compression does not produce a smaller file, the original can be retained unchanged. Explicit conversions and ZIP creation may also increase the final file size.\n\nFor this reason, compare the actual output size and check the file quality before replacing your original.\n"
     },
     {
       "heading": "Start Compressing Your Files Online",
