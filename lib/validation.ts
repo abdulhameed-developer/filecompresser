@@ -185,8 +185,16 @@ export async function detectFormat(file: Blob): Promise<string | null> {
     return null
   }
 
-  // Matroska / WebM: EBML magic.
-  if (matchesAt(buf, 0, [0x1a, 0x45, 0xdf, 0xa3])) return 'matroska'
+  // Matroska / WebM share the EBML container signature. WebM files are a
+  // constrained Matroska profile, so preserve the WebM identity when the
+  // browser supplies the WebM MIME type or the filename uses .webm. The
+  // media engine still performs the authoritative codec/container check.
+  if (matchesAt(buf, 0, [0x1a, 0x45, 0xdf, 0xa3])) {
+    const fileName = 'name' in file && typeof file.name === 'string' ? file.name : ''
+    return file.type === 'video/webm' || extensionOf(fileName) === 'webm'
+      ? 'webm'
+      : 'matroska'
+  }
 
   if (
     matchesAt(buf, 0, SIGNATURES.mp3) &&
@@ -281,6 +289,7 @@ const EXT_TO_FORMAT: Record<string, string> = {
   mp4: 'mp4',
   mov: 'mov',
   m4v: 'mp4',
+  webm: 'webm',
   mp3: 'mp3',
   wav: 'wav',
   heic: 'heic',
@@ -303,6 +312,7 @@ const STRICT_SIGNATURE_FORMATS = new Set([
   'wav',
   'mp4',
   'mov',
+  'webm',
   'm4a',
   'heic',
   'svg',
@@ -337,10 +347,11 @@ const FRIENDLY_FORMAT_NAMES: Record<string, string> = {
   m4a: 'M4A audio',
   flac: 'FLAC audio',
   ogg: 'Ogg audio',
+  webm: 'WebM video',
 }
 
 /** MP4/MOV/M4V are the same container family; tools accept each other. */
-const VIDEO_FAMILY = new Set(['mp4', 'mov'])
+const VIDEO_FAMILY = new Set(['mp4', 'mov', 'webm'])
 /** MP3/WAV/M4A/FLAC/Ogg are all decodable by the audio engine. */
 const AUDIO_FAMILY = new Set(['mp3', 'wav', 'm4a', 'flac', 'ogg'])
 /** All ISO-base HEIF brands surface as one "heic" tool input. */

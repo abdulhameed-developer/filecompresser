@@ -69,6 +69,11 @@ describe('magic byte detection', () => {
     expect(await detectFormat(fileFromBytes('a.webp', bytes))).toBe('webp')
   })
 
+  it('recognizes WebM EBML files as WebM rather than generic Matroska', async () => {
+    const ebml = [0x1a, 0x45, 0xdf, 0xa3, 0x93, 0x42, 0x82, 0x88]
+    expect(await detectFormat(fileFromBytes('recording.webm', ebml, 'video/webm'))).toBe('webm')
+  })
+
   it('detects WAV from RIFF....WAVE', async () => {
     const bytes = [
       ...new TextEncoder().encode('RIFF'),
