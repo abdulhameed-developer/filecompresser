@@ -21,7 +21,7 @@ describe('editorial publication integrity', () => {
   })
   it('gives every canonical tool distinct and complete decision guidance', () => {
     expect(Object.keys(TOOL_GUIDES).sort()).toEqual(TOOLS.map(tool => tool.slug).sort())
-    expect(new Set(Object.values(TOOL_GUIDES).map(guide => guide.output)).size).toBe(13)
+    expect(new Set(Object.values(TOOL_GUIDES).map(guide => guide.output)).size).toBe(14)
   })
   it('does not revive stale font-network or unsupported benchmark claims', () => {
     const text = JSON.stringify(BLOG_POSTS)

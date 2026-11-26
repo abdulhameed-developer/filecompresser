@@ -24,7 +24,7 @@ describe('tool discovery', () => {
       expect(host.querySelectorAll('a')).toHaveLength(0)
       expect(host.textContent).toContain('No tools match')
       await change('')
-      expect(host.querySelectorAll('a')).toHaveLength(13)
+      expect(host.querySelectorAll('a')).toHaveLength(14)
     } finally { await act(async () => root.unmount()); host.remove() }
   })
 })

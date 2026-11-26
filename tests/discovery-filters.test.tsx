@@ -22,7 +22,7 @@ describe('category filtering', () => {
       expect(host.querySelectorAll('.toolTile')).toHaveLength(0)
       const reset = [...host.querySelectorAll('button')].find(button => button.textContent?.includes('Reset filters'))!
       await act(async () => reset.click())
-      expect(host.querySelectorAll('.toolTile')).toHaveLength(13)
+      expect(host.querySelectorAll('.toolTile')).toHaveLength(14)
       expect(input.value).toBe('')
     } finally { await act(async () => root.unmount()); host.remove() }
   })

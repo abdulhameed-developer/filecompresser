@@ -15,7 +15,7 @@ const faqFields = () => [
 const editorialFields = () => [
   { ...text('heading', 'Content heading'), isTitle: true },
   text('introduction', 'Introduction', true),
-  { type: 'object', name: 'sections', label: 'Content sections', list: true, ui: { itemProps: item => ({ label: item.heading || 'Section' }) }, fields: [text('heading', 'Section heading'), { ...text('body', 'Paragraphs', true), description: 'Use a blank line between paragraphs. Add instructions, use cases, formats or limitations. HTML is not supported.' }] },
+  { type: 'object', name: 'sections', label: 'Content sections', list: true, ui: { itemProps: item => ({ label: item.heading || 'Section' }) }, fields: [text('heading', 'Section heading'), { ...text('body', 'Paragraphs', true), description: 'Use blank lines between paragraphs. Safe links are supported as Markdown: [Privacy Policy](/privacy) or [MDN](https://developer.mozilla.org/). Raw HTML and scripts are not allowed.' }] },
   { type: 'object', name: 'links', label: 'Helpful links', list: true, fields: [text('label', 'Link text'), { ...text('href', 'Link address'), description: 'Use an existing /page path or a full HTTPS address.' }] },
   ...faqFields(),
   { ...text('seoTitle', 'SEO title', false, false), description: 'Leave blank to use the existing page title. Keep it specific and readable.' },

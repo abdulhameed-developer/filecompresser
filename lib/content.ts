@@ -92,6 +92,20 @@ function editorialLink(value: unknown, location: string): string {
   return fail(location, 'use a site-relative path or HTTPS address without credentials')
 }
 
+/** Accept only Markdown-style links that the renderer knows how to escape safely. */
+function editorialText(value: unknown, location: string, optional = false): string {
+  const result = text(value, location, optional)
+  if (!result) return result
+  if (/<\/?[a-z!][^>]*>/i.test(result)) return fail(location, 'raw HTML is not allowed; use [link text](/path) or [link text](https://example.com)')
+  const links = result.match(/\[[^\]\n]{1,120}\]\(([^\s)]+)\)/g) ?? []
+  for (const link of links) {
+    const match = link.match(/^\[[^\]]+\]\(([^\s)]+)\)$/)
+    if (match) editorialLink(match[1], `${location}.link`)
+  }
+  if (/\[[^\]\n]*\]\([^)]*\)/.test(result) && links.length === 0) return fail(location, 'use a valid Markdown link with a site path or HTTPS address')
+  return result
+}
+
 function editorialImage(value: unknown, location: string): EditorialImage {
   const item = object(value, location)
   const input = text(item.src, `${location}.src`)
@@ -241,14 +255,14 @@ export function parseEditorialContent(value: unknown, location: string): Editori
   const hero = optionalObject(item.hero, `${location}.hero`)
   return {
     heading: text(item.heading, `${location}.heading`),
-    introduction: text(item.introduction, `${location}.introduction`),
+    introduction: editorialText(item.introduction, `${location}.introduction`),
     sections: list(item.sections ?? [], `${location}.sections`).map((entry, i) => {
       const section = object(entry, `${location}.sections[${i}]`)
-      return { heading: text(section.heading, `${location}.sections[${i}].heading`), body: text(section.body, `${location}.sections[${i}].body`) }
+      return { heading: text(section.heading, `${location}.sections[${i}].heading`), body: editorialText(section.body, `${location}.sections[${i}].body`) }
     }),
     faq: list(item.faq ?? [], `${location}.faq`).map((entry, i) => {
       const faq = object(entry, `${location}.faq[${i}]`)
-      return { q: text(faq.q, `${location}.faq[${i}].q`), a: text(faq.a, `${location}.faq[${i}].a`) }
+      return { q: text(faq.q, `${location}.faq[${i}].q`), a: editorialText(faq.a, `${location}.faq[${i}].a`) }
     }),
     faqMode: faqMode as EditorialContent['faqMode'],
     links: list(item.links ?? [], `${location}.links`).map((entry, i) => {
