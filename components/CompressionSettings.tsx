@@ -18,7 +18,7 @@ interface CompressionSettingsProps {
   onSetting: (id: string, value: SettingValue) => void
 }
 
-const NO_LEVEL_ENGINES = new Set(['zip-extract', 'zip-create', 'pdf-compress'])
+const NO_LEVEL_ENGINES = new Set(['zip-extract', 'zip-create', 'pdf-compress', 'webm-to-mp4'])
 const IMAGE_MODES = [
   { value: 'balanced', label: 'Balanced', description: 'A balance of file size and detail.' },
   { value: 'high-quality', label: 'High quality', description: 'More detail, usually a larger file.' },

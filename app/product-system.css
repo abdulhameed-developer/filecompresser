@@ -439,6 +439,10 @@ details[open] > summary > svg { transform: rotate(180deg); }
 .settingsHeading .linkBtn { font-size: 12px; padding: 6px 9px; min-height: 44px; }
 .workflowWorkspace .settings { display: grid; grid-template-columns: minmax(0,1fr); gap: 15px; }
 .workflowWorkspace .settingBlock { margin: 0; padding: 0; border: 0; min-width: 0; }
+.workflowWorkspace .conversionOutput { display: grid; gap: 3px; margin: 0 0 14px; padding: 11px 12px; border: 1px solid #d8e3d5; border-radius: 9px; background: #fbfcfa; }
+.workflowWorkspace .conversionOutput span { color: #52655a; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+.workflowWorkspace .conversionOutput strong { color: #183f35; font-size: 14px; }
+.workflowWorkspace .conversionOutput small { color: #66776d; font-size: 12px; }
 .workflowWorkspace .settingBlock > legend { margin: 0 0 8px; padding: 0; font-size: 13px; line-height: 1.5; }
 .workflowWorkspace .imageModeGrid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 5px; }
 .workflowWorkspace .imageModeOption { min-height: 44px; padding: 10px 8px; border: 1px solid #cbd6c7; border-radius: 6px; box-shadow: none; text-align: center; }

@@ -139,6 +139,7 @@ export default function ToolWorkspace({ tool, formatsLabel }: ToolWorkspaceProps
           <legend className="srInline">Draft settings for selected files</legend>
           <div className="settingsHeading"><div>{singleApplied && <button type="button" className="linkBtn" onClick={() => queue.restoreApplied(singleApplied.id)}>Restore applied</button>}<button type="button" className="linkBtn" onClick={queue.resetSettings}>Reset</button></div></div>
           {imageSettings && scopeImages.length > 0 && <OutputFormatPicker file={scopeImages[0]} files={scopeImages} value={outputFormat} onChange={next => queue.setSetting('outputFormat', next)} onCheckingChange={setFormatChecking} onProbesChange={rememberProbes} />}
+          {tool.engine === 'webm-to-mp4' && <div className="conversionOutput" role="status"><span>Output format</span><strong>MP4 · H.264 video</strong><small>Fixed for broad playback compatibility.</small></div>}
           <CompressionSettings tool={tool} level={queue.level} onLevel={queue.setLevel} settings={queue.settings} onSetting={queue.setSetting} imageSettings={imageSettings} imageFormat={outputFormat || (scopeFormats.size === 1 ? [...scopeFormats][0] : undefined)} hasPng={hasPng} hasLossy={hasLossy} targetAllowed={imageSettings} />
         </fieldset></details>}
         {readyScope && tool.slug === 'compress' && !imageSettings && <p className="mixedBatchHint">Each selected file uses its format’s default settings. Select only JPG, PNG or WEBP files to adjust image settings.</p>}
@@ -167,6 +168,7 @@ function actionLabel(tool: ToolDefinition, saved: boolean, count: number, conver
   if (tool.engine === 'zip-extract') return saved ? 'Extract again' : 'Extract ZIP'
   if (tool.engine === 'audio-compress' && tool.extensions.includes('wav') && !tool.extensions.includes('mp3')) return `${saved ? 'Convert again' : 'Convert to MP3'}${suffix}`
   if (tool.engine === 'pdf-compress') return `${saved ? 'Optimize again' : 'Optimize PDF'}${suffix}`
+  if (tool.engine === 'webm-to-mp4') return `${saved ? 'Convert again' : 'Convert to MP4'}${suffix}`
   if (conversionFormat) return `Convert to ${conversionFormat === 'jpeg' ? 'JPG' : conversionFormat.toUpperCase()}${suffix}`
   return `${saved ? 'Recompress' : 'Compress'}${suffix}`
 }
