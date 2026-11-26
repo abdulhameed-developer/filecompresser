@@ -93,6 +93,7 @@ async function runFfmpeg(
   })
 
   let detach: (() => void) | null = null
+  let elapsedTimer: ReturnType<typeof setInterval> | undefined
 
   try {
     await writeInputFile(ffmpeg, spec.inputName, spec.input)
@@ -107,19 +108,40 @@ async function runFfmpeg(
     if ((!spec.resolution || spec.resolution === 'original') && (dimensions.width % 2 || dimensions.height % 2)) {
       throw new ProcessingError(`This video is ${dimensions.width} × ${dimensions.height}. The compatible H.264 MP4 encoder requires even dimensions. Choose an explicit Max resolution to resize, or keep your original file.`, 'video-dimensions')
     }
-    onProgress?.(start, spec.stage)
+    // Chrome screen recordings can contain compatible H.264 even when their
+    // container is named .webm. Changing that container does not need a lossy,
+    // expensive re-encode. Restrict copying to 8-bit 4:2:0 H.264 and unchanged
+    // display dimensions; every result still receives the same integrity checks.
+    const compatibleVideo = sourceVideo.codec_name === 'h264' && sourceVideo.pixelFormat === 'yuv420p'
+    const compatibleAudio = source.streams.filter(stream => stream.codec_type === 'audio').every(stream => stream.codec_name === 'aac')
+    const compatibleOriginal = compatibleVideo && compatibleAudio
+    const copyVideo = spec.inputFormat === 'webm' && compatibleVideo && (!spec.resolution || spec.resolution === 'original')
+    const copyAudio = copyVideo && compatibleAudio
+    const stage = copyVideo ? 'Packaging compatible video as MP4…' : spec.stage
+    const encodingStarted = performance.now()
+    const reportEncoding = (pct: number) => {
+      if (signal?.cancelled) return
+      // MediaRecorder files often omit duration. A percentage derived from the
+      // core's negative progress sentinel would remain stuck at 9%. Show an
+      // indeterminate bar and real elapsed time instead of inventing an ETA.
+      if (!source.duration) onProgress?.(0, `${stage} ${Math.floor((performance.now() - encodingStarted) / 1000)}s elapsed.`)
+      else onProgress?.(start + (pct / 100) * span * weight, stage)
+    }
+    reportEncoding(0)
+    if (!source.duration) elapsedTimer = setInterval(() => reportEncoding(0), 1000)
 
     detach = attachFfmpegProgress(ffmpeg, (pct) => {
-      if (signal?.cancelled) return
-      onProgress?.(start + (pct / 100) * span * weight, spec.stage)
+      reportEncoding(pct)
     })
 
-    const args = buildEncodeArgs(spec.inputName, spec.outputName, spec.level, spec.resolution, dimensions, sourceVideo.index)
+    const args = buildEncodeArgs(spec.inputName, spec.outputName, spec.level, spec.resolution, dimensions, sourceVideo.index, { copyVideo, copyAudio, conversion: spec.inputFormat === 'webm' })
     if ((await ffmpeg.exec(args, 300_000)) !== 0)
       throw new ProcessingError(
         'Video encoding failed or exceeded the five-minute processing limit.',
       )
     assertNotCancelled(signal)
+    if (elapsedTimer) clearInterval(elapsedTimer)
+    elapsedTimer = undefined
     detach()
     detach = null
 
@@ -149,11 +171,16 @@ async function runFfmpeg(
     const afterAudio = output.streams.filter(stream => stream.codec_type === 'audio')
     if (beforeAudio.length !== afterAudio.length || afterAudio.some((stream, index) => stream.codec_name !== 'aac' || (beforeAudio[index].channels && beforeAudio[index].channels !== stream.channels))) throw new ProcessingError('The output audio streams did not match the original video. The original file is unchanged.')
     verifyMediaDuration(source, output)
-    candidate.note = resized
+    candidate.note = copyVideo
+      ? `Converted to MP4 without re-encoding the compatible H.264 video. Original video quality and display dimensions are preserved.${copyAudio ? '' : ' Audio was encoded as AAC.'}`
+      : resized
       ? 'Resized to your selected resolution and encoded as H.264/AAC MP4. Dimensions are rounded down to even pixels for compatible playback.'
-      : spec.inputFormat === 'mov' ? 'Converted MOV to H.264/AAC MP4 while preserving display dimensions.' : spec.inputFormat === 'webm' ? 'Converted WebM to H.264/AAC MP4 while preserving display dimensions.' : 'Encoded as H.264/AAC MP4 while preserving display dimensions.'
+      : spec.inputFormat === 'mov' ? 'Converted MOV to H.264/AAC MP4 while preserving display dimensions.' : spec.inputFormat === 'webm' ? 'Converted WebM to H.264/AAC MP4 while preserving display dimensions.' : !compatibleOriginal ? 'Converted the source codecs to compatible H.264/AAC MP4 while preserving display dimensions. A compatibility conversion can produce a larger file.' : 'Encoded as H.264/AAC MP4 while preserving display dimensions.'
     onProgress?.(100, 'Done')
-    return applyResultPolicy(spec.input, candidate, resized ? 'resize' : spec.inputFormat === 'mp4' ? 'reduce' : 'convert')
+    // Keeping an original only satisfies this tool's H.264/AAC promise when
+    // those streams were already compatible. HEVC/VP9/4:4:4 MP4 inputs are
+    // compatibility conversions even if their filename already ends in .mp4.
+    return applyResultPolicy(spec.input, candidate, resized ? 'resize' : spec.inputFormat === 'mp4' && compatibleOriginal ? 'reduce' : 'convert')
   } catch (e) {
     if (signal?.cancelled || cancelledHere) {
       throw new ProcessingError('Processing was cancelled.', 'cancelled')
@@ -164,6 +191,7 @@ async function runFfmpeg(
     )
   } finally {
     if (detach) detach()
+    if (elapsedTimer) clearInterval(elapsedTimer)
     releaseCancel()
     // Best-effort cleanup of the virtual FS so a long session does not grow.
     if (!cancelledHere && isFFmpegLoaded()) {
@@ -192,9 +220,12 @@ export function buildEncodeArgs(
   resolution: VideoOptions['resolution'],
   dimensions?: { width: number; height: number },
   videoIndex?: number,
+  strategy: { copyVideo?: boolean; copyAudio?: boolean; conversion?: boolean } = {},
 ): string[] {
-  const crf = level === 'maximum' ? '32' : '28'
-  const preset = level === 'maximum' ? 'veryfast' : 'faster'
+  const crf = strategy.conversion ? '23' : level === 'maximum' ? '32' : '28'
+  // Conversion prioritizes getting a compatible file quickly. Compression
+  // retains its denser presets; both paths preserve the source timestamps.
+  const preset = strategy.conversion ? 'ultrafast' : level === 'maximum' ? 'veryfast' : 'faster'
   const audioBitrate = level === 'maximum' ? '96k' : '128k'
   const scale = scaleFilter(resolution, dimensions)
 
@@ -206,21 +237,17 @@ export function buildEncodeArgs(
     videoIndex === undefined ? '0:v:0' : `0:${videoIndex}`,
     '-map',
     '0:a?',
-    '-c:v',
-    'libx264',
-    '-preset',
-    preset,
-    '-crf',
-    crf,
-    '-pix_fmt',
-    'yuv420p',
-    '-c:a',
-    'aac',
-    '-b:a',
-    audioBitrate,
-    '-movflags',
-    '+faststart',
   ]
+
+  if (strategy.copyVideo) args.push('-c:v', 'copy')
+  else args.push('-c:v', 'libx264', '-preset', preset, '-crf', crf, '-pix_fmt', 'yuv420p')
+  // Browser screen recordings are variable-frame-rate and may advertise a
+  // guessed 1000fps rate. FFmpeg's automatic CFR mode otherwise duplicates
+  // thousands of frames. Pass through the real presentation timestamps.
+  args.push('-fps_mode', 'passthrough')
+  if (strategy.copyAudio) args.push('-c:a', 'copy')
+  else args.push('-c:a', 'aac', '-b:a', audioBitrate)
+  args.push('-movflags', '+faststart')
 
   if (scale) args.push('-vf', scale)
 
@@ -252,6 +279,7 @@ export async function compressVideo(
   onProgress?: ProgressCallback,
   signal?: CancelSignal,
 ): Promise<ProcessedResult> {
+  const started = performance.now()
   assertNotCancelled(signal)
   if (file.size > 200 * 1024 * 1024) throw new ProcessingError('This video exceeds the 200 MB input limit.')
   const inputFormat = await detectFormat(file)
@@ -276,7 +304,7 @@ export async function compressVideo(
   const outputName = `out_${stamp}.mp4`
   const level = options.level ?? 'recommended'
 
-  return runFfmpeg(
+  const result = await runFfmpeg(
     ffmpeg,
     {
       input: file,
@@ -288,14 +316,12 @@ export async function compressVideo(
       stage: inputFormat === 'webm' ? 'Converting WebM to MP4…' : 'Compressing video…',
       outputMime: 'video/mp4',
       outputExtension: 'mp4',
-      outputFilename: replaceExtension(
-        suffixFilename(file.name, '-compressed'),
-        'mp4',
-      ),
+      outputFilename: inputFormat === 'webm' ? replaceExtension(file.name, 'mp4') : replaceExtension(suffixFilename(file.name, '-compressed'), 'mp4'),
     },
     onProgress,
     signal,
   )
+  return { ...result, durationMs: Math.round(performance.now() - started) }
 }
 
 function guessExt(name: string): string {

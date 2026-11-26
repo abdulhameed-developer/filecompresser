@@ -34,4 +34,11 @@ describe('honest reduction and explicit transformation policy', () => {
     expect(result.filename).toBe(original.name)
     expect(await result.blob.text()).toBe(await original.text())
   })
+  it.each([['animation.bin', 'image/gif', 'animation.gif'], ['document.jpg', 'application/pdf', 'document.pdf'], ['photo.JPEG', 'image/jpeg', 'photo.JPEG'], ['rows.csv', 'text/plain', 'rows.csv']])('keeps retained bytes usable for %s', async (name, mime, expected) => {
+    const original = new File(['verified original'], name)
+    const result = unchangedResult(original, mime)
+    expect(result.filename).toBe(expected)
+    expect(await result.blob.text()).toBe('verified original')
+    expect(result.outcome).toBe('unchanged')
+  })
 })

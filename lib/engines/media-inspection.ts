@@ -7,9 +7,11 @@ export interface MediaStream {
   index?: number
   codec_type: 'audio' | 'video'
   codec_name: string
+  pixelFormat?: string
   width?: number
   height?: number
   sample_rate?: number
+  bit_rate?: number
   channels?: number
   rotation?: number
   attachedPicture?: boolean
@@ -23,7 +25,7 @@ export async function inspectMedia(ffmpeg: FFmpeg, filename: string, signal?: Ca
   try {
     const exit = await ffmpeg.ffprobe([
       '-v', 'error', '-show_entries',
-      'stream=index,codec_type,codec_name,width,height,sample_rate,channels:stream_disposition=attached_pic:stream_side_data=rotation:stream_tags=rotate:format=duration',
+      'stream=index,codec_type,codec_name,pix_fmt,width,height,sample_rate,bit_rate,channels:stream_disposition=attached_pic:stream_side_data=rotation:stream_tags=rotate:format=duration',
       '-of', 'json', filename, '-o', output,
     ], 30_000)
     assertNotCancelled(signal)
@@ -49,8 +51,9 @@ export async function inspectMedia(ffmpeg: FFmpeg, filename: string, signal?: Ca
         index: Number.isInteger(index) && index >= 0 ? index : undefined,
         codec_type: stream.codec_type,
         codec_name: typeof stream.codec_name === 'string' ? stream.codec_name : '',
+        pixelFormat: typeof stream.pix_fmt === 'string' ? stream.pix_fmt : undefined,
         width: positive(stream.width), height: positive(stream.height),
-        sample_rate: positive(stream.sample_rate), channels: positive(stream.channels),
+        sample_rate: positive(stream.sample_rate), bit_rate: positive(stream.bit_rate), channels: positive(stream.channels),
         rotation: Number.isFinite(rawRotation) ? rawRotation : 0,
         attachedPicture: Number(disposition.attached_pic) === 1,
       }]

@@ -39,6 +39,7 @@ export async function processAudio(
   onProgress?: ProgressCallback,
   signal?: CancelSignal,
 ): Promise<ProcessedResult> {
+  const started = performance.now()
   assertNotCancelled(signal)
   if (file.size > 100 * 1024 * 1024) throw new ProcessingError('This audio file exceeds the 100 MB input limit.')
   const inputFormat = await detectFormat(file)
@@ -57,6 +58,7 @@ export async function processAudio(
   assertNotCancelled(signal)
 
   const outFmt = options.outputFormat ?? 'mp3'
+  const stage = outFmt === 'wav' ? 'Converting to WAV…' : inputFormat === 'mp3' ? 'Compressing MP3…' : inputFormat === 'wav' ? 'Converting WAV to MP3…' : 'Converting audio to MP3…'
   const level = options.level ?? 'recommended'
   const bitrate = options.bitrate ?? (level === 'maximum' ? '96k' : '192k')
   if (!['96k', '128k', '160k', '192k', '256k', '320k'].includes(bitrate))
@@ -84,7 +86,15 @@ export async function processAudio(
     const source = await inspectMedia(ffmpeg, inputName, signal)
     const sourceAudio = source.streams.filter(stream => stream.codec_type === 'audio')
     if (sourceAudio.length !== 1) throw new ProcessingError('This tool needs exactly one audio stream. Your original file is unchanged.')
-    onProgress?.(10, outFmt === 'mp3' ? 'Re-encoding audio…' : 'Converting to WAV…')
+    // MP3's low-sample-rate profiles cannot represent every exposed bitrate.
+    // LAME otherwise silently clamps e.g. 22.05 kHz + 320 kbps to 160 kbps.
+    // Raise only the minimum rate needed for the selected CBR bitrate, and
+    // verify the actual output below rather than reporting the request as fact.
+    const sourceRate = sourceAudio[0].sample_rate
+    const requestedKbps = Number(bitrate.replace('k', ''))
+    const minimumRate = requestedKbps > 160 ? 32000 : 16000
+    const sampleRateArgs = outFmt === 'mp3' && sourceRate && sourceRate < minimumRate ? ['-ar', String(minimumRate)] : []
+    onProgress?.(10, stage)
 
     const args =
       outFmt === 'mp3'
@@ -98,6 +108,7 @@ export async function processAudio(
             'libmp3lame',
             '-b:a',
             bitrate,
+            ...sampleRateArgs,
             outputName,
           ]
         : [
@@ -115,7 +126,7 @@ export async function processAudio(
       if (signal?.cancelled) return
       onProgress?.(
         10 + pct * 0.85,
-        outFmt === 'mp3' ? 'Re-encoding audio…' : 'Converting to WAV…',
+        stage,
       )
     })
 
@@ -138,7 +149,11 @@ export async function processAudio(
     const output = await inspectMedia(ffmpeg, outputName, signal)
     const outputAudio = output.streams.filter(stream => stream.codec_type === 'audio')
     if (outputAudio.length !== 1 || outputAudio[0].codec_name !== (outFmt === 'mp3' ? 'mp3' : 'pcm_s16le') || (sourceAudio[0].channels && sourceAudio[0].channels !== outputAudio[0].channels)) throw new ProcessingError('The audio output failed its stream integrity check. The original file is unchanged.')
+    const actualKbps = outputAudio[0].bit_rate ? Math.round(outputAudio[0].bit_rate / 1000) : undefined
+    if (outFmt === 'mp3' && actualKbps !== requestedKbps) throw new ProcessingError('The encoder could not verify the selected MP3 bitrate. Your original file is unchanged. Try another bitrate.')
     verifyMediaDuration(source, output)
+    const outputRate = outputAudio[0].sample_rate
+    const rateNote = outFmt === 'mp3' && sourceRate && outputRate && sourceRate !== outputRate ? ` Sample rate changed from ${sourceRate.toLocaleString('en-US')} Hz to ${outputRate.toLocaleString('en-US')} Hz for MP3 compatibility. Resampling does not restore missing detail.` : ''
     // Only claim "compressed" when we actually produced a lossy encode of a
     // same-format source; otherwise the honest verb is "converted".
     const filename =
@@ -147,10 +162,11 @@ export async function processAudio(
         : replaceExtension(file.name, outFmt)
 
     onProgress?.(100, 'Done')
-    return applyResultPolicy(file, {
+    const result = applyResultPolicy(file, {
       blob, filename, mimeType: mime,
-      note: outFmt === 'mp3' ? `Encoded as MP3 at ${bitrate.replace('k', '')} kbps. MP3 encoding is lossy.` : 'Converted to 16-bit PCM WAV. WAV output can be larger than compressed audio.',
+      note: outFmt === 'mp3' ? `Encoded as MP3 at ${actualKbps} kbps. MP3 encoding is lossy.${rateNote}` : 'Converted to 16-bit PCM WAV. WAV output can be larger than compressed audio.',
     }, outFmt === 'mp3' && inputFormat === 'mp3' ? 'reduce' : 'convert')
+    return { ...result, durationMs: Math.round(performance.now() - started) }
   } catch (e) {
     if (signal?.cancelled || cancelledHere) {
       throw new ProcessingError('Processing was cancelled.', 'cancelled')

@@ -38,8 +38,8 @@ function mp3(size: number): Uint8Array<ArrayBuffer> {
   bytes.set([73, 68, 51, 3, 0, 0, 0, 0, 0, 0])
   return bytes
 }
-const videoInfo = (width = 320, height = 240) => ({ streams: [{ index: 0, codec_type: 'video', codec_name: 'h264', width, height }, { index: 1, codec_type: 'audio', codec_name: 'aac', channels: 2, sample_rate: '44100' }], format: { duration: '2' } })
-const audioInfo = (codec = 'mp3', channels = 2, duration = '2') => ({ streams: [{ index: 0, codec_type: 'audio', codec_name: codec, channels, sample_rate: '44100' }], format: { duration } })
+const videoInfo = (width = 320, height = 240) => ({ streams: [{ index: 0, codec_type: 'video', codec_name: 'h264', pix_fmt: 'yuv420p', width, height }, { index: 1, codec_type: 'audio', codec_name: 'aac', channels: 2, sample_rate: '44100' }], format: { duration: '2' } })
+const audioInfo = (codec = 'mp3', channels = 2, duration = '2', sampleRate = 44100, bitRate = 192000) => ({ streams: [{ index: 0, codec_type: 'audio', codec_name: codec, channels, sample_rate: String(sampleRate), bit_rate: String(bitRate) }], format: { duration } })
 beforeEach(() => {
   state.exec.mockReset().mockImplementation(async () => {
     for (const progress of [0, 0.7, 0.2, 1]) for (const handler of state.handlers) handler({ progress })
@@ -107,10 +107,51 @@ describe('media progress through inspection, encoding and validation', () => {
 })
 
 describe('video dimension and result policy', () => {
+  const recording = () => new File([new Uint8Array([0x1a, 0x45, 0xdf, 0xa3, 1, 2, 3, 4])], 'recording.webm', { type: 'video/webm' })
+  it('remuxes compatible H.264 recordings without lossy video or AAC audio re-encoding', async () => {
+    state.source = { ...videoInfo(), streams: [{ ...videoInfo().streams[0], pix_fmt: 'yuv420p' }, videoInfo().streams[1]] }
+    state.bytes = mp4(1000)
+    const result = await compressVideo(recording(), { allowWebm: true })
+    const args = state.exec.mock.calls[0][0] as string[]
+    expect(args.slice(args.indexOf('-c:v'), args.indexOf('-c:v') + 2)).toEqual(['-c:v', 'copy'])
+    expect(args.slice(args.indexOf('-c:a'), args.indexOf('-c:a') + 2)).toEqual(['-c:a', 'copy'])
+    expect(args).not.toContain('-preset')
+    expect(result.outcome).toBe('converted')
+    expect(result.note).toContain('without re-encoding')
+  })
+  it.each(['vp8', 'vp9'])('converts %s recordings to H.264 with timestamp passthrough and a fast preset', async codec => {
+    state.source = { ...videoInfo(), streams: [{ ...videoInfo().streams[0], codec_name: codec, pix_fmt: 'yuv420p' }, videoInfo().streams[1]] }
+    const progress: string[] = []
+    await compressVideo(recording(), { allowWebm: true }, (_pct, stage) => { if (stage) progress.push(stage) })
+    const args = state.exec.mock.calls[0][0] as string[]
+    expect(args).toContain('libx264')
+    expect(args.slice(args.indexOf('-fps_mode'), args.indexOf('-fps_mode') + 2)).toEqual(['-fps_mode', 'passthrough'])
+    expect(args).toContain('ultrafast')
+    expect(progress).toContain('Converting WebM to MP4…')
+    expect(progress).not.toContain('Compressing video…')
+  })
+  it('re-encodes non-compatible H.264 pixel formats and never enables WebM in the compressor implicitly', async () => {
+    state.source = { ...videoInfo(), streams: [{ ...videoInfo().streams[0], pix_fmt: 'yuv444p' }, videoInfo().streams[1]] }
+    await compressVideo(recording(), { allowWebm: true })
+    expect(state.exec.mock.calls[0][0]).toContain('libx264')
+    await expect(compressVideo(recording())).rejects.toThrow(/MP4 or MOV/)
+  })
+  it('reports an indeterminate elapsed stage when a recording has no trustworthy duration', async () => {
+    state.source = { streams: [{ codec_type: 'video', codec_name: 'vp9', width: 320, height: 240, pix_fmt: 'yuv420p' }, { codec_type: 'audio', codec_name: 'opus', channels: 2 }] }
+    const progress: { percent: number; stage?: string }[] = []
+    const result = await compressVideo(recording(), { allowWebm: true }, (percent, stage) => { progress.push({ percent, stage }) })
+    const encoding = progress.filter(item => item.stage?.includes('Converting WebM'))
+    expect(encoding.length).toBeGreaterThan(0)
+    expect(encoding.every(item => item.percent === 0 && /\d+s elapsed/.test(item.stage ?? ''))).toBe(true)
+    expect(progress.at(-1)?.percent).toBe(100)
+    expect(result.durationMs).toBeGreaterThanOrEqual(0)
+    expect(result.filename).toBe('recording.mp4')
+  })
   it('preserves even original dimensions without a scale filter', async () => {
     const result = await compressVideo(new File([mp4(1000)], 'video.mp4'))
     expect(result.outcome).toBe('reduced')
     expect(state.exec.mock.calls[0][0]).not.toContain('-vf')
+    expect(state.exec.mock.calls[0][0]).toContain('passthrough')
     expect(result.mimeType).toBe('video/mp4')
     expect(state.deleted.some(name => name.startsWith('probe_'))).toBe(true)
   })
@@ -143,6 +184,14 @@ describe('video dimension and result policy', () => {
     expect(result.filename).toBe(original.name)
     expect(new Uint8Array(await result.blob.arrayBuffer())).toEqual(new Uint8Array(await original.arrayBuffer()))
   })
+  it.each(['hevc', 'vp9'])('keeps verified H.264 output when an %s MP4 compatibility conversion grows', async codec => {
+    state.source = { ...videoInfo(), streams: [{ ...videoInfo().streams[0], codec_name: codec }, videoInfo().streams[1]] }
+    state.bytes = mp4(1000)
+    const result = await compressVideo(new File([mp4(100)], 'source.mp4'))
+    expect(result.outcome).toBe('converted')
+    expect(result.blob.size).toBe(1000)
+    expect(result.filename).toMatch(/\.mp4$/)
+  })
   it('rejects an unexpected encoded dimension change', async () => {
     state.output = videoInfo(318, 240)
     await expect(compressVideo(new File([mp4(1000)], 'video.mp4'))).rejects.toThrow(/changed the video dimensions/)
@@ -156,6 +205,32 @@ describe('video dimension and result policy', () => {
 
 describe('audio output integrity and conversion policy', () => {
   beforeEach(() => { state.source = audioInfo(); state.output = audioInfo(); state.bytes = mp3(100) })
+  it.each([8000, 16000, 22050].flatMap(rate => [96, 128, 160, 192, 256, 320].map(bitrate => [rate, bitrate])))('honors %s Hz source at %s kbps with only the necessary MP3 sample-rate change', async (rate, bitrate) => {
+    const expectedRate = Math.max(rate, bitrate > 160 ? 32000 : 16000)
+    state.source = audioInfo('pcm_s16le', 2, '2', rate)
+    state.output = audioInfo('mp3', 2, '2', expectedRate, bitrate * 1000)
+    const wav = new Uint8Array(100)
+    wav.set([...new TextEncoder().encode('RIFF'), 92, 0, 0, 0, ...new TextEncoder().encode('WAVE')])
+    const result = await processAudio(new File([wav], 'low-rate.wav'), { bitrate: `${bitrate}k` })
+    const args = state.exec.mock.calls[0][0] as string[]
+    if (expectedRate !== rate) {
+      expect(args.slice(args.indexOf('-ar'), args.indexOf('-ar') + 2)).toEqual(['-ar', String(expectedRate)])
+      expect(result.note).toContain('Resampling does not restore missing detail.')
+    } else {
+      expect(args).not.toContain('-ar')
+      expect(result.note).not.toContain('Sample rate changed')
+    }
+    expect(result.note).toContain(`at ${bitrate} kbps`)
+  })
+  it('refuses a silently clamped bitrate instead of reporting the request as the output rate', async () => {
+    state.source = audioInfo('pcm_s16le', 2, '2', 22050)
+    state.output = audioInfo('mp3', 2, '2', 22050, 160000)
+    await expect(processAudio(new File([mp3(1000)], 'sound.mp3'), { bitrate: '320k' })).rejects.toThrow(/selected MP3 bitrate/)
+  })
+  it('does not claim an output bitrate that inspection could not verify', async () => {
+    state.output = { streams: [{ codec_type: 'audio', codec_name: 'mp3', channels: 2, sample_rate: '44100' }], format: { duration: '2' } }
+    await expect(processAudio(new File([mp3(1000)], 'sound.mp3'))).rejects.toThrow(/selected MP3 bitrate/)
+  })
   it('detects a same-format MP3 from bytes rather than a misleading source suffix', async () => {
     const result = await processAudio(new File([mp3(1000)], 'misnamed.wav'))
     expect(result.outcome).toBe('reduced')
