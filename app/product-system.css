@@ -636,6 +636,17 @@ details[open] > summary > svg { transform: rotate(180deg); }
 .galleryPagination button { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #ccd8c5; background: #fff; color: var(--ink); border-radius: 6px; cursor: pointer; }
 .galleryPagination button:disabled { opacity: .4; cursor: default; }
 .gallerySwipeHint { display: none; }
+.settingsDialog { width: min(560px, calc(100vw - 24px)); max-height: min(760px, calc(100dvh - 24px)); padding: 0; border: 1px solid #d6e2d4; border-radius: 16px; background: #f7f9f5; color: #183f35; box-shadow: 0 24px 80px rgb(20 54 44 / 24%); }
+.settingsDialog::backdrop { background: rgb(15 42 35 / 34%); backdrop-filter: blur(4px); }
+.settingsDialogShell { display: flex; flex-direction: column; max-height: min(760px, calc(100dvh - 24px)); overflow: auto; }
+.settingsDialogHeader { display: flex; justify-content: space-between; gap: 16px; padding: 20px 20px 14px; border-bottom: 1px solid #dae3d6; }
+.settingsDialogEyebrow { color: #6a7d70; font-size: 10px; font-weight: 750; letter-spacing: .14em; }
+.settingsDialogHeader h2 { margin: 5px 0 2px; font-size: 22px; }
+.settingsDialogHeader p { margin: 0; color: #52655a; font-size: 13px; }
+.settingsDialog .workspaceSettings { border: 0; padding: 16px 20px 4px; background: transparent; }
+.settingsDialogFooter { display: flex; justify-content: flex-end; padding: 12px 20px 20px; }
+.settingsDialog .settingsHeading { margin-bottom: 10px; }
+.settingsDialog .iconBtn { flex: 0 0 auto; }
 .settingsDisclosure { border: 1px solid #dae3d6; background: #f7f9f5; border-radius: 10px; }
 .settingsDisclosure > summary { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 10px; padding: 12px 14px; min-height: 48px; cursor: pointer; font-size: 14px; font-weight: 650; list-style: none; }
 .settingsDisclosure > summary::-webkit-details-marker { display: none; }

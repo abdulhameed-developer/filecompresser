@@ -19,9 +19,9 @@ export default function ToolWorkspace({ tool, formatsLabel }: ToolWorkspaceProps
   const errorId = useId()
   const galleryId = useId()
   const settingsId = useId()
-  const settingsPanel = useRef<HTMLDetailsElement>(null)
+  const settingsPanel = useRef<HTMLDialogElement>(null)
   const actionBar = useRef<HTMLDivElement>(null)
-  const [settingsOpen, setSettingsOpen] = useState(true)
+  const [settingsOpen, setSettingsOpen] = useState(false)
   const [page, setPage] = useState(0)
   const [expandedId, setExpandedId] = useState<string | null>(null)
   const gallery = useRef<HTMLUListElement>(null)
@@ -89,16 +89,15 @@ export default function ToolWorkspace({ tool, formatsLabel }: ToolWorkspaceProps
   const processSelected = () => { if (canRun) queue.reprocessSelected(selectedIds) }
   const openSettings = () => {
     const panel = settingsPanel.current
-    const toolbar = actionBar.current
-    if (!panel || !toolbar) return
+    if (!panel) return
     setSettingsOpen(true)
-    panel.open = true
-    panel.querySelector('summary')?.focus({ preventScroll: true })
-    // Account for wrapped mobile actions as well as the site header.
-    const stickyTop = Number.parseFloat(getComputedStyle(toolbar).top) || 0
-    const top = window.scrollY + panel.getBoundingClientRect().top - stickyTop - toolbar.getBoundingClientRect().height - 12
-    window.scrollTo({ top: Math.max(0, top), behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })
+    if (!panel.open) {
+      if (typeof panel.showModal === 'function') panel.showModal()
+      else panel.setAttribute('open', '')
+    }
+    window.requestAnimationFrame(() => panel.querySelector<HTMLElement>('button, input, select, [tabindex="0"]')?.focus())
   }
+  const closeSettings = () => { settingsPanel.current?.close(); setSettingsOpen(false) }
   const changeSelection = (id: string, checked: boolean) => queue.setSelection(checked ? [...selectedIds, id] : selectedIds.filter(value => value !== id))
   const converting = imageSettings && Boolean(outputFormat) && scope.some(item => item.inputFormat !== outputFormat)
   const action = actionLabel(tool, hasSaved, runnable.length, converting ? outputFormat : '', imageSettings)
@@ -135,13 +134,15 @@ export default function ToolWorkspace({ tool, formatsLabel }: ToolWorkspaceProps
       <nav className="galleryPagination" aria-label="File pages"><span role="status">Showing {currentPage * 6 + 1}–{Math.min((currentPage + 1) * 6, items.length)} of {items.length} files</span>{pageCount > 1 && <div><button type="button" aria-label="Previous file page" aria-controls={galleryId} disabled={currentPage === 0} onClick={() => turnPage(currentPage - 1)}><Icon name="arrow-left" /></button><span>{currentPage + 1} / {pageCount}</span><button type="button" aria-label="Next file page" aria-controls={galleryId} disabled={currentPage === pageCount - 1} onClick={() => turnPage(currentPage + 1)}><Icon name="arrow" /></button></div>}<span className="gallerySwipeHint">{galleryEdges.start && galleryEdges.end ? 'All files on this page' : 'Scroll cards sideways ↔'}</span></nav>
           </section>
           <div className="workspaceConfiguration">
-        {hasSettings && <details id={settingsId} ref={settingsPanel} className="settingsDisclosure" open={settingsOpen} onToggle={event => { if (event.currentTarget.open !== settingsOpen) setSettingsOpen(event.currentTarget.open) }}><summary>Settings <span>For {scope.length} selected file{scope.length === 1 ? '' : 's'}</span><Icon name="chevron" /></summary><fieldset className="workspaceSettings" disabled={busy} aria-describedby={queue.settingsError ? errorId : undefined}>
-          <legend className="srInline">Draft settings for selected files</legend>
-          <div className="settingsHeading"><div>{singleApplied && <button type="button" className="linkBtn" onClick={() => queue.restoreApplied(singleApplied.id)}>Restore applied</button>}<button type="button" className="linkBtn" onClick={queue.resetSettings}>Reset</button></div></div>
-          {imageSettings && scopeImages.length > 0 && <OutputFormatPicker file={scopeImages[0]} files={scopeImages} value={outputFormat} onChange={next => queue.setSetting('outputFormat', next)} onCheckingChange={setFormatChecking} onProbesChange={rememberProbes} />}
-          {tool.engine === 'webm-to-mp4' && <div className="conversionOutput" role="status"><span>Output format</span><strong>MP4 · H.264 video</strong><small>Fixed for broad playback compatibility.</small></div>}
-          <CompressionSettings tool={tool} level={queue.level} onLevel={queue.setLevel} settings={queue.settings} onSetting={queue.setSetting} imageSettings={imageSettings} imageFormat={outputFormat || (scopeFormats.size === 1 ? [...scopeFormats][0] : undefined)} hasPng={hasPng} hasLossy={hasLossy} targetAllowed={imageSettings} />
-        </fieldset></details>}
+        {hasSettings && <dialog id={settingsId} ref={settingsPanel} className="settingsDialog" aria-labelledby={`${settingsId}-title`} onCancel={event => { event.preventDefault(); closeSettings() }} onClick={event => { if (event.target === event.currentTarget) closeSettings() }}>
+          <div className="settingsDialogShell"><header className="settingsDialogHeader"><div><span className="settingsDialogEyebrow">WORKSPACE SETTINGS</span><h2 id={`${settingsId}-title`}>Settings</h2><p>For {scope.length} selected file{scope.length === 1 ? '' : 's'}.</p></div><button type="button" className="iconBtn" aria-label="Close settings" onClick={closeSettings}><Icon name="close" /></button></header><fieldset className="workspaceSettings" disabled={busy} aria-describedby={queue.settingsError ? errorId : undefined}>
+            <legend className="srInline">Draft settings for selected files</legend>
+            <div className="settingsHeading"><div>{singleApplied && <button type="button" className="linkBtn" onClick={() => queue.restoreApplied(singleApplied.id)}>Restore applied</button>}<button type="button" className="linkBtn" onClick={queue.resetSettings}>Reset</button></div></div>
+            {imageSettings && scopeImages.length > 0 && <OutputFormatPicker file={scopeImages[0]} files={scopeImages} value={outputFormat} onChange={next => queue.setSetting('outputFormat', next)} onCheckingChange={setFormatChecking} onProbesChange={rememberProbes} />}
+            {tool.engine === 'webm-to-mp4' && <div className="conversionOutput" role="status"><span>Output format</span><strong>MP4 · H.264 video</strong><small>Fixed for broad playback compatibility.</small></div>}
+            <CompressionSettings tool={tool} level={queue.level} onLevel={queue.setLevel} settings={queue.settings} onSetting={queue.setSetting} imageSettings={imageSettings} imageFormat={outputFormat || (scopeFormats.size === 1 ? [...scopeFormats][0] : undefined)} hasPng={hasPng} hasLossy={hasLossy} targetAllowed={imageSettings} />
+          </fieldset><footer className="settingsDialogFooter"><button type="button" className="downloadBtn secondary" onClick={closeSettings}>Done</button></footer></div>
+        </dialog>}
         {readyScope && tool.slug === 'compress' && !imageSettings && <p className="mixedBatchHint">Each selected file uses its format’s default settings. Select only JPG, PNG or WEBP files to adjust image settings.</p>}
         {!scope.length && <p className="selectionHint">Select a file below to configure, process or download it.</p>}
         {queue.settingsError && hasSettings && <p id={errorId} className="settingsValidation" role="alert">{queue.settingsError}</p>}

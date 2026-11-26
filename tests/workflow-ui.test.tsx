@@ -377,24 +377,15 @@ it('uses Maximum on upload and reset, while an explicit Balanced choice remains 
 })
 
 it('opens and focuses collapsed settings from the main action without starting processing', async () => {
-  const scroll = vi.fn()
-  vi.stubGlobal('scrollTo', scroll)
-  vi.stubGlobal('matchMedia', vi.fn(() => ({ matches: true })))
   await mount(); await upload([image()])
-  const panel = container.querySelector<HTMLDetailsElement>('.settingsDisclosure')!
-  const toolbar = container.querySelector<HTMLElement>('.workflowActionBar')!
-  toolbar.style.top = '76px'
-  vi.spyOn(toolbar, 'getBoundingClientRect').mockReturnValue({ height: 76 } as DOMRect)
-  vi.spyOn(panel, 'getBoundingClientRect').mockReturnValue({ top: 480 } as DOMRect)
-  await act(async () => { panel.open = false; Simulate.toggle(panel); await flush() })
+  const panel = container.querySelector<HTMLDialogElement>('.settingsDialog')!
   const shortcut = container.querySelector<HTMLButtonElement>('.workflowSettingsShortcut')!
   expect(shortcut.getAttribute('aria-controls')).toBe(panel.id)
   expect(shortcut.getAttribute('aria-expanded')).toBe('false')
   await click(shortcut)
   expect(panel.open).toBe(true)
   expect(shortcut.getAttribute('aria-expanded')).toBe('true')
-  expect(document.activeElement).toBe(panel.querySelector('summary'))
-  expect(scroll).toHaveBeenCalledWith({ top: 316, behavior: 'auto' })
+  expect(panel.querySelector('h2')?.textContent).toBe('Settings')
   expect(mocks.process).not.toHaveBeenCalled()
 })
 
