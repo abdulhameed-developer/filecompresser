@@ -160,11 +160,6 @@ function optionalSize(value: unknown): number | undefined {
   return bytes > 0 ? bytes : undefined
 }
 
-function optionalDimension(value: unknown): number | undefined {
-  const number = typeof value === 'number' ? value : Number(value)
-  return Number.isFinite(number) && number >= 1 && number <= 32768 ? Math.floor(number) : undefined
-}
-
 /**
  * How many files may be processed at once.
  *
