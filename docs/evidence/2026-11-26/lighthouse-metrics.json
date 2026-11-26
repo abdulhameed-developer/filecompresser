@@ -1,0 +1,660 @@
+{
+  "capturedAt": "2026-11-26T12:54:04.676Z",
+  "artifact": {
+    "buildId": "T0IO7fozU0grEtYQtuYdr",
+    "homeSha256": "dbf7c96d906d83c7574074a7d7bec1d2ba3bcf684845669234b0578232d4d0e5",
+    "adminSha256": "063646c9c411fbf9c2edb5ca7ff7a88937de1bb2a200e9e48e70ae7876ec228b",
+    "compiledAt": "2026-11-26T12:35:11.151Z",
+    "cmsMode": "local mode; connected production CMS build remains separate",
+    "delta": "Shared editorial URL/scanner +FAQ text normalization and one factual article paragraph; no further control/layout/codec changes"
+  },
+  "scope": "32 valid local Lighthouse 13 reports; 16 routes x mobile/desktop. Not production field data.",
+  "metricsUnits": {
+    "first-contentful-paint": "ms",
+    "largest-contentful-paint": "ms",
+    "total-blocking-time": "ms",
+    "cumulative-layout-shift": "unitless",
+    "speed-index": "ms"
+  },
+  "baselineScope": "Only home, JPG, WebM, PDF and browser-processing article had measured baselines. Baseline noindex SEO69 differs from final production indexing configuration.",
+  "attempts": 33,
+  "validReports": 32,
+  "measurementFailure": {
+    "route": "/jpg-compressor",
+    "mode": "desktop",
+    "error": "NO_NAVSTART",
+    "disposition": "Original retained locally; same-settings isolated retry without source changes produced valid performance98."
+  },
+  "warnings": [
+    {
+      "route": "/png-compressor",
+      "mode": "mobile",
+      "warnings": [
+        "The tested device appears to have a slower CPU than  Lighthouse expects. This can negatively affect your performance score. Learn more about [calibrating an appropriate CPU slowdown multiplier](https://github.com/GoogleChrome/lighthouse/blob/main/docs/throttling.md#cpu-throttling)."
+      ]
+    },
+    {
+      "route": "/wav-compressor",
+      "mode": "mobile",
+      "warnings": [
+        "The tested device appears to have a slower CPU than  Lighthouse expects. This can negatively affect your performance score. Learn more about [calibrating an appropriate CPU slowdown multiplier](https://github.com/GoogleChrome/lighthouse/blob/main/docs/throttling.md#cpu-throttling)."
+      ]
+    }
+  ],
+  "results": [
+    {
+      "route": "/",
+      "mode": "mobile",
+      "capturedAt": "2026-11-26T12:45:02.293Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 78,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1811.9382,
+        "largest-contentful-paint": 5621.92275,
+        "total-blocking-time": 91.01545000000078,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1811.9382
+      }
+    },
+    {
+      "route": "/",
+      "mode": "desktop",
+      "capturedAt": "2026-11-26T12:45:15.621Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 447.80269999999996,
+        "largest-contentful-paint": 1139.753375,
+        "total-blocking-time": 5.5,
+        "cumulative-layout-shift": 0,
+        "speed-index": 447.80269999999996
+      }
+    },
+    {
+      "route": "/compress",
+      "mode": "mobile",
+      "capturedAt": "2026-11-26T12:45:29.035Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 80,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1657.5275000000001,
+        "largest-contentful-paint": 5176.0275,
+        "total-blocking-time": 95.5,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1657.5275000000001
+      }
+    },
+    {
+      "route": "/compress",
+      "mode": "desktop",
+      "capturedAt": "2026-11-26T12:45:42.970Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 414.038,
+        "largest-contentful-paint": 1087.057,
+        "total-blocking-time": 8,
+        "cumulative-layout-shift": 0,
+        "speed-index": 500.6791680809278
+      }
+    },
+    {
+      "route": "/image-compressor",
+      "mode": "mobile",
+      "capturedAt": "2026-11-26T12:45:56.854Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 79,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1807.3805000000002,
+        "largest-contentful-paint": 5411.070749999999,
+        "total-blocking-time": 68.5,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1807.3805000000002
+      }
+    },
+    {
+      "route": "/image-compressor",
+      "mode": "desktop",
+      "capturedAt": "2026-11-26T12:46:10.782Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 411.50109999999995,
+        "largest-contentful-paint": 1114.3763749999998,
+        "total-blocking-time": 11,
+        "cumulative-layout-shift": 0,
+        "speed-index": 411.50109999999995
+      }
+    },
+    {
+      "route": "/jpg-compressor",
+      "mode": "mobile",
+      "capturedAt": "2026-11-26T12:46:24.895Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 80,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1654.2743,
+        "largest-contentful-paint": 5256.41145,
+        "total-blocking-time": 63,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1654.2743
+      }
+    },
+    {
+      "route": "/jpg-compressor",
+      "mode": "desktop",
+      "capturedAt": "2026-11-26T12:52:52.589Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 425.49199999999996,
+        "largest-contentful-paint": 1094.238,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "speed-index": 449.59508333211664
+      }
+    },
+    {
+      "route": "/jpeg-compressor",
+      "mode": "mobile",
+      "capturedAt": "2026-11-26T12:46:48.498Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 79,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1660.2187,
+        "largest-contentful-paint": 5389.273375000001,
+        "total-blocking-time": 99.4453250000006,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1660.2187
+      }
+    },
+    {
+      "route": "/jpeg-compressor",
+      "mode": "desktop",
+      "capturedAt": "2026-11-26T12:47:02.319Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 440.59979999999996,
+        "largest-contentful-paint": 1132.5998,
+        "total-blocking-time": 6.5,
+        "cumulative-layout-shift": 0,
+        "speed-index": 532.7017312012786
+      }
+    },
+    {
+      "route": "/png-compressor",
+      "mode": "mobile",
+      "capturedAt": "2026-11-26T12:47:17.938Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 81,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1673.6665,
+        "largest-contentful-paint": 4812.583125,
+        "total-blocking-time": 105.08337500000016,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1673.6665
+      }
+    },
+    {
+      "route": "/png-compressor",
+      "mode": "desktop",
+      "capturedAt": "2026-11-26T12:47:30.980Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 414.4841304289325,
+        "largest-contentful-paint": 949.4841304289324,
+        "total-blocking-time": 6.5,
+        "cumulative-layout-shift": 0,
+        "speed-index": 457.04751085467956
+      }
+    },
+    {
+      "route": "/webp-compressor",
+      "mode": "mobile",
+      "capturedAt": "2026-11-26T12:47:44.807Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 79,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1658.5065,
+        "largest-contentful-paint": 5411.133125,
+        "total-blocking-time": 104.87337499999921,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1658.5065
+      }
+    },
+    {
+      "route": "/webp-compressor",
+      "mode": "desktop",
+      "capturedAt": "2026-11-26T12:47:58.103Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 417.27250000000004,
+        "largest-contentful-paint": 1114.90875,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "speed-index": 417.27250000000004
+      }
+    },
+    {
+      "route": "/gif-compressor",
+      "mode": "mobile",
+      "capturedAt": "2026-11-26T12:48:11.824Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 86,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1668.2239,
+        "largest-contentful-paint": 4146.2239,
+        "total-blocking-time": 90.5,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1668.2239
+      }
+    },
+    {
+      "route": "/gif-compressor",
+      "mode": "desktop",
+      "capturedAt": "2026-11-26T12:48:25.600Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 408.8438,
+        "largest-contentful-paint": 1091.05475,
+        "total-blocking-time": 8.5,
+        "cumulative-layout-shift": 0,
+        "speed-index": 409.33046833263074
+      }
+    },
+    {
+      "route": "/video-compressor",
+      "mode": "mobile",
+      "capturedAt": "2026-11-26T12:48:38.757Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 79,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1665.0783000000001,
+        "largest-contentful-paint": 5325.61745,
+        "total-blocking-time": 77.99999999999955,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1665.0783000000001
+      }
+    },
+    {
+      "route": "/video-compressor",
+      "mode": "desktop",
+      "capturedAt": "2026-11-26T12:48:51.870Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 419.09259999999995,
+        "largest-contentful-paint": 1078.61575,
+        "total-blocking-time": 4.5,
+        "cumulative-layout-shift": 0,
+        "speed-index": 419.09259999999995
+      }
+    },
+    {
+      "route": "/webm-to-mp4",
+      "mode": "mobile",
+      "capturedAt": "2026-11-26T12:49:04.771Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 79,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1657.5419000000002,
+        "largest-contentful-paint": 5361.427375,
+        "total-blocking-time": 96.11452499999996,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1657.5419000000002
+      }
+    },
+    {
+      "route": "/webm-to-mp4",
+      "mode": "desktop",
+      "capturedAt": "2026-11-26T12:49:17.796Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 406.422,
+        "largest-contentful-paint": 1088.5275000000001,
+        "total-blocking-time": 6.5,
+        "cumulative-layout-shift": 0,
+        "speed-index": 406.422
+      }
+    },
+    {
+      "route": "/mp3-compressor",
+      "mode": "mobile",
+      "capturedAt": "2026-11-26T12:49:30.745Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 79,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1659.0875999999998,
+        "largest-contentful-paint": 5349.8595000000005,
+        "total-blocking-time": 81.5,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1659.0875999999998
+      }
+    },
+    {
+      "route": "/mp3-compressor",
+      "mode": "desktop",
+      "capturedAt": "2026-11-26T12:49:43.792Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 415.0982,
+        "largest-contentful-paint": 1067.0982000000001,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "speed-index": 495.5248415686975
+      }
+    },
+    {
+      "route": "/wav-compressor",
+      "mode": "mobile",
+      "capturedAt": "2026-11-26T12:49:59.859Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 75,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1684.1046000000001,
+        "largest-contentful-paint": 4348.1046,
+        "total-blocking-time": 381.94769999999926,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1684.1046000000001
+      }
+    },
+    {
+      "route": "/wav-compressor",
+      "mode": "desktop",
+      "capturedAt": "2026-11-26T12:50:15.359Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 421.7137,
+        "largest-contentful-paint": 1074.1421249999999,
+        "total-blocking-time": 15,
+        "cumulative-layout-shift": 0,
+        "speed-index": 464.7309691662554
+      }
+    },
+    {
+      "route": "/pdf-compressor",
+      "mode": "mobile",
+      "capturedAt": "2026-11-26T12:50:29.523Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 79,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1672.0846000000001,
+        "largest-contentful-paint": 5337.1269,
+        "total-blocking-time": 104,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1672.0846000000001
+      }
+    },
+    {
+      "route": "/pdf-compressor",
+      "mode": "desktop",
+      "capturedAt": "2026-11-26T12:50:43.678Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 420.2047,
+        "largest-contentful-paint": 1104.2047,
+        "total-blocking-time": 5,
+        "cumulative-layout-shift": 0,
+        "speed-index": 463.7941187103625
+      }
+    },
+    {
+      "route": "/zip-compressor",
+      "mode": "mobile",
+      "capturedAt": "2026-11-26T12:50:58.837Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 78,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1656.1792999999998,
+        "largest-contentful-paint": 5412.224125,
+        "total-blocking-time": 136.45517500000005,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1656.1792999999998
+      }
+    },
+    {
+      "route": "/zip-compressor",
+      "mode": "desktop",
+      "capturedAt": "2026-11-26T12:51:13.017Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 408.72,
+        "largest-contentful-paint": 1053.08,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "speed-index": 408.72
+      }
+    },
+    {
+      "route": "/archive-compressor",
+      "mode": "mobile",
+      "capturedAt": "2026-11-26T12:51:27.634Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 80,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1657.7435,
+        "largest-contentful-paint": 5261.615250000001,
+        "total-blocking-time": 66,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1657.7435
+      }
+    },
+    {
+      "route": "/archive-compressor",
+      "mode": "desktop",
+      "capturedAt": "2026-11-26T12:51:40.957Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 406.7994,
+        "largest-contentful-paint": 1097.1991,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "speed-index": 412.5578799979779
+      }
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "mode": "mobile",
+      "capturedAt": "2026-11-26T12:51:54.307Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 79,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1655.7165,
+        "largest-contentful-paint": 5402.57475,
+        "total-blocking-time": 105.5,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1655.7165
+      }
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "mode": "desktop",
+      "capturedAt": "2026-11-26T12:52:07.499Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 410.67280000000005,
+        "largest-contentful-paint": 1083.0092,
+        "total-blocking-time": 8.5,
+        "cumulative-layout-shift": 0,
+        "speed-index": 410.67280000000005
+      }
+    }
+  ],
+  "remainingWork": [
+    "Shared route/state CSS and initial framework/workspace JavaScript require careful splitting and renewed regression testing.",
+    "Blocking CSS, images and delivery remain opportunities.",
+    "Local transport is uncompressed; actual Cloudflare encoding and field INP are unverified."
+  ],
+  "rawEvidence": ".qa-results/2026-11-26-final/lighthouse-final-summary.json"
+}

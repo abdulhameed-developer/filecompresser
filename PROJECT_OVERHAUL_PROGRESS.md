@@ -1,6 +1,6 @@
 # FileCompresser product overhaul — engineering progress
 
-Last updated: 2026-11-26 (Asia/Karachi). This is the persistent source of progress, not a claim of release readiness.
+Last updated: 2026-11-26 (Asia/Karachi). Local verification is finished within the scopes below. Release authentication and connected production acceptance remain blocked; this is not a claim of complete production readiness.
 
 ## Rules for evidence
 
@@ -30,94 +30,233 @@ Last updated: 2026-11-26 (Asia/Karachi). This is the persistent source of progre
 
 | Commit | Change | Verification boundary |
 | --- | --- | --- |
-| `241534f` | WebM container validation | Present on remote main; current production hash not yet rechecked |
+| `241534f` | WebM container validation | Verified on remote main and the current Cloudflare production deployment |
 | `3b105af` | Contextual WebM controls | Local only at start |
 | `8451d55` | Settings dialog | Local only at start |
 | `b58da3c` | Engine WebM acceptance, conversion label, focus restoration | Prior run: lint/typecheck/build passed; 47 test files, 652 tests passed, 3 skipped. Actual WebM output was **not verified** |
+| `f6d0059` | Persistent progress document and evidence boundaries | Local progress checkpoint, followed by scoped implementation/QA commits |
+| `05adb24` | Timestamp-safe video, verified audio bitrate and retained-file suffixes | Local scoped engine commit; independent code review, real WASM/browser outputs and source gates pass |
+| `d84aafb` | Tool/modal/navigation refinement, complete image-output resize removal, safe editorial content and selective route loading | Local implementation commit; final source suite/build pass. Exact browser/artifact boundaries recorded below |
+| `7cd9e1e` | Reusable browser, per-tool, modal, Lighthouse and accessibility checks | Local QA tooling commit; actual outcomes and interrupted-run boundaries retained |
 
 ## Priorities and issue inventory
 
-| ID | Priority | Issue | State / next evidence |
+| ID | Priority | Reproduced issue / action | Current status |
 | --- | --- | --- | --- |
-| ENG-01 | Critical | Real WebM sample appeared stuck at 9%; output not established | Root cause reproduced: missing duration/VFR recording caused inferred 1000 fps and frame duplication. Timestamp preservation + safe H.264 remux implemented; browser download retest pending |
-| UX-01 | High | Settings previously occupied permanent workspace space | Modal implemented in prior local commits; recheck Escape, backdrop, focus, mobile and busy states |
-| UX-02 | High | Converter displayed compression presets/action/stage text | Prior local fix; verify real conversion and results semantics |
-| QA-01 | High | Existing route/processing scripts may omit newly added tools and states | Audit inventory and refresh coverage |
-| CMS-01 | High | Editor content/list/link/HTML publishing correctness | Audit schema, rendering, draft handling and production build connection |
-| REL-01 | High | Local commits not on remote main | Preserve local work; verify before push/deployment |
-| SEO-01 | Medium | Full technical SEO and search opportunity review | Source/site audit and research in progress |
-| PERF-01 | High | No current Lighthouse baseline | Measure mobile/desktop; never invent scores |
-| UX-03 | Medium | Single file occupied narrow card inside a wide blank workspace | Compact full-width single-file row implemented; visual retest pending |
-| UX-04 | Medium | 404 tool recovery links only 36 px tall | Raised to 44 px; responsive retest pending |
-| UX-05 | High | WebM applied settings fell through image quality summary | Contextual MP4 summary implemented; regression retest pending |
-| CMS-02 | High | Tina editable tool matcher omitted new WebM route | Included in tool collection; schema build pending |
+| ENG-01 | Critical | Missing-duration/VFR recording inferred 1000 fps and duplicated frames | FIXED: timestamp preservation and compatible H.264 remux; final browser output retains all 168 frames, 1,552 ms measured cold result for this sample. Earlier 965 ms evidence retained; neither timing is a universal guarantee |
+| ENG-02 | High | HEVC/VP9 MP4 could retain an incompatible original despite H.264 output intent | FIXED: verified H.264/AAC compatibility output retained even if larger; compatible same-format compression still preserves a smaller original |
+| ENG-03 | High | Verified renamed GIF downloaded unchanged bytes with a misleading .bin suffix | FIXED and browser retested: trusted MIME repairs suffixes while preserving valid aliases/bytes; arbitrary archive entries unaffected |
+| ENG-04 | High | Low-rate WAV requested at 320 kbps silently encoded at 160 kbps while claiming 320 | FIXED: compatible sample rate only when needed, actual bitrate verified, honest resampling note; 18 WASM combinations and actual browser cases pass |
+| ENG-05 | High | Retired resizing was absent from the UI but still accepted by an exported image-engine/worker path; target advice still mentioned it | FIXED: output resize options/helper/branches, obsolete styles and advice removed. Legacy inputs are stripped/ignored and original dimensions preserved; 151 focused tests pass, including alpha/16-bit/EXIF safeguards. Thumbnail sizing and video resolution controls remain |
+| UX-01 | High | Settings occupied permanent workspace space and controls had poor proportions | FIXED: native viewport-bounded modal, dim/blur, full-width fields, balanced preset grid, 44px close, clear Reset/Done footer, keyboard/focus/scroll recovery |
+| UX-02 | High | Converter displayed compression presets/actions and image-quality summary | FIXED: dedicated MP4/H.264/AAC output near action, Convert wording, no empty WebM settings; MP3 conversion verbs reflect input format |
+| UX-03 | Medium | Narrow single-file card left most of the workspace blank | FIXED: full-width compact single-file row; multi-file gallery/pagination preserved |
+| UX-04 | Medium | 404 recovery links were only 36px tall | FIXED: 44px targets; 348-case responsive sweep passes |
+| UX-05 | Medium | Next action stayed below the viewport after first selection | FIXED: first selection reveals the action bar once; later progress/settings changes do not repeatedly scroll |
+| UX-06 | Medium | Success/error banner was an unpadded strip | FIXED: shared readable padding, border/radius, wrapping and status semantics |
+| UX-07 | High | Comparison continued an existing smooth scroll while open | FIXED: shared root/body lock cancels the animation; strict load/zoom/wheel/focus regression passes. Firefox's separate 3px automation baseline difference was traced to an unsettled pre-click position; the test now explicitly settles the trigger before recording its unchanged strict baseline |
+| UX-08 | High | Old failed-run summary persisted after clearing/replacing files | FIXED: accepted idle queue mutations clear obsolete summary; per-file errors, limits, busy status and saved outputs preserved; real recovery retest passes |
+| UX-09 | High | Enter in numeric Settings implicitly processed behind the modal | FIXED: processing guards the native dialog open state; actual Enter/Done/primary workflow passes in Chromium, Firefox and WebKit |
+| A11Y-01 | Medium | Upload's accessible name omitted some visible label text | FIXED: title/hint/formats included; final route/Lighthouse checks recorded separately |
+| A11Y-02 | Medium | Shift+Tab could escape Settings to browser chrome | FIXED: explicit first/last wrapping with disabled controls excluded; focus/scroll return and viewport checks pass |
+| CMS-01 | High | Editorial lists/links/HTML and source-reader behavior were incomplete/inconsistent | IMPLEMENTED + LOCAL EDITOR PASS: semantic lists, safe React-rendered HTML, inline links and shared validators; hosted save/deploy still BLOCKED by release access |
+| CMS-02 | High | Tina tool collection omitted WebM | FIXED: all 14 tool records visible in actual local editor; regenerated schema lock and CMS build pass |
+| CMS-03 | High | Dedicated URL fields could save data later rejected by hosting build | FIXED: shared URL rules for section/article/author/reference/managed fields; invalid URL disables Save in actual local editor |
+| CMS-04 | High | Individually valid post dates could save an update earlier than publication, then fail the content build | FIXED: date-field and Publish/Archive callbacks match the published reader; 14 parity regressions added and final compiled editor rebuilt. Native/hosted date-toggle scenario is not separately claimed |
+| CMS-05 | High | Valid `%20` URLs were rejected, and balanced parentheses in Markdown destinations were truncated | FIXED: one bounded scanner serves validation, rendering and FAQ metadata; encoded spaces work while controls/backslashes/unsafe schemes remain blocked. Four regressions were demonstrated failing before the fix; 9 files / 157 targeted tests, security/linearity review and final full CMS/site build pass |
+| CONTENT-01 | High | Retired image-resize claims, joined prose, malformed privacy URL | FIXED: accurate capability text, semantic paragraphs/lists, valid links; original user content preserved with targeted corrections |
+| CONTENT-02 | Medium | Long guide/legal content lacked quick access | FIXED: compact native contents indexes with real anchors; eight actual keyboard/clearance cases pass |
+| VIS-01 | Medium | Diagram subtitles overflowed; mobile meaning too small; example arithmetic wrong | FIXED: fitting labels, readable text explanations and correct rounded percentages; all five articles individually reviewed |
+| VIS-02 | Medium | Byline/alias links used browser blue; mobile related articles were cramped | FIXED: shared brand link states and one-column related-article layout on small screens |
+| CONTENT-03 | Medium | Plain line-separated benefits lists and old modified dates remained | FIXED: real bullets on general/image guides, factual WebM remux explanation, three genuinely changed information-page dates corrected |
+| PERF-01 | High | No measured current performance baseline | MEASURED: five routes × mobile/desktop before; all 14 tools plus home/article × mobile/desktop after. 32 valid final reports; performance 75–86 mobile / 98–99 desktop. Remaining real opportunities and failed-trace retry retained below |
+| PERF-02 | Medium | Hashed JS/CSS lacked explicit immutable caching | IMPLEMENTED: one-year hashed-asset rule; logo one day. Production activation awaits release |
+| PERF-03 | Medium | ZIP library loaded before a ZIP download was requested | FIXED and real ZIP retested: lazy import removes one initial script request; measured initial bytes reduced |
+| PERF-04 | High | Speculative route downloads exceeded the unchanged 900,000-byte local subresource budget | FIXED + MEASURED: selective `prefetch={false}` on broad navigation/catalogue lists preserves Next Link navigation. Matched cold 1280px home subresource transfer 978,184 → 719,181 bytes (−26.48%); requests 50 → 15; flagged route prefetch 21 → 0. Main HTML navigation is excluded from this metric. `role-payload-diagnostic/`, final role report |
+| QA-01 | High | Old scripts omitted WebM/current tool count/modal workflow | FIXED: inventory derives 14 tools, alias included, 74 real-output/recovery cases and populated/state audits maintained |
+| UX-10 | High | Firefox missed physical primary-action clicks while native smooth scrolling moved the target before/between press and release | FIXED: root scrolling immediate, route/hash restoration explicitly instant, deliberate gallery motion retained. Causal trace/A-B isolated global smooth scrolling; final built-version six-case sequence passes, including PNG/WebP actual outputs and strict comparison. Native pointer behavior is preserved; the ineffective mouse workaround was removed |
+| REL-01 | High | Verified local changes absent from production | BLOCKED: terminal Git still lacks usable authentication; production remains 241534f |
 
 ## Every tool — current verification matrix
 
-All rows start at NOT TESTED for this execution. Shared unit tests do not substitute for real output verification. AVIF/SVG and PDF merge/split/conversion are not advertised tool routes in this checkout; do not claim them as supported.
+Source and screenshots for every tool have been reviewed. Genuine processing, independent output inspection and downloads have passing evidence in Chromium, Firefox and Linux WebKit for every tool. The full codec/workflow matrix uses the unchanged engine source from the layout-acceptance build; later Link-prefetch and editorial-parser changes receive their own navigation/upload/content checks. Chromium's interrupted run and Firefox's first navigation timeout remain explicitly recorded in the ledger rather than being relabeled as passing whole runs. AVIF/SVG and PDF merge/split/conversion are not advertised tool routes in this checkout.
 
 | Route | Purpose / output | Source reviewed | Real processing + output | Download | Mobile / desktop | Accessibility / errors |
 | --- | --- | --- | --- | --- | --- | --- |
-| `/compress` | Automatic engine for supported mixed files | In progress | NOT TESTED | NOT TESTED | NOT TESTED | NOT TESTED |
-| `/image-compressor` | JPG/PNG/WebP compression/conversion | In progress | NOT TESTED | NOT TESTED | NOT TESTED | NOT TESTED |
-| `/jpg-compressor` | JPG compression/conversion | In progress | NOT TESTED | NOT TESTED | NOT TESTED | NOT TESTED |
-| `/jpeg-compressor` | JPEG compression/conversion | In progress | NOT TESTED | NOT TESTED | NOT TESTED | NOT TESTED |
-| `/png-compressor` | PNG optimization/conversion, alpha protection | In progress | NOT TESTED | NOT TESTED | NOT TESTED | NOT TESTED |
-| `/webp-compressor` | WebP compression/conversion | In progress | NOT TESTED | NOT TESTED | NOT TESTED | NOT TESTED |
-| `/gif-compressor` | Animated GIF optimization | In progress | NOT TESTED | NOT TESTED | NOT TESTED | NOT TESTED |
-| `/video-compressor` | MP4/MOV → H.264 MP4/AAC | In progress | NOT TESTED | NOT TESTED | NOT TESTED | NOT TESTED |
-| `/webm-to-mp4` | WebM → H.264 MP4/AAC | In progress | Prior run unresolved hang | NOT TESTED | NOT TESTED | NOT TESTED |
-| `/mp3-compressor` | Supported audio → MP3 | In progress | NOT TESTED | NOT TESTED | NOT TESTED | NOT TESTED |
-| `/wav-compressor` | WAV → MP3 | In progress | NOT TESTED | NOT TESTED | NOT TESTED | NOT TESTED |
-| `/pdf-compressor` | Lossless structural PDF optimization | In progress | NOT TESTED | NOT TESTED | NOT TESTED | NOT TESTED |
-| `/zip-compressor` | ZIP creation | In progress | NOT TESTED | NOT TESTED | NOT TESTED | NOT TESTED |
-| `/archive-compressor` | Safe ZIP extraction | In progress | NOT TESTED | NOT TESTED | NOT TESTED | NOT TESTED |
+| `/compress` | Automatic engine for supported mixed files | Reviewed | PASS C/F/W; mixed image/audio/PDF | PASS, independent ZIP decode | PASS default + long-name populated/short | PASS tested inputs + tool axe |
+| `/image-compressor` | JPG/PNG/WebP compression/conversion | Reviewed | PASS C/F/W | PASS, decoded | PASS default + long-name populated/short | PASS tested inputs + tool axe |
+| `/jpg-compressor` | JPG compression/conversion | Reviewed | PASS C/F/W; Firefox cold retry recorded | PASS, decoded | PASS default + long-name populated/short | PASS tested inputs + tool axe |
+| `/jpeg-compressor` | JPEG compression/conversion | Reviewed | PASS C/F/W | PASS, decoded | PASS default + long-name populated/short | PASS tested inputs + tool axe |
+| `/png-compressor` | PNG optimization/conversion, alpha protection | Reviewed | PASS C/F/W presets/target | PASS, exact lossless pixels/alpha/geometry | PASS default + long-name populated/short | PASS tested inputs + tool axe |
+| `/webp-compressor` | WebP compression/conversion | Reviewed | PASS C/F/W; 10/100% endpoints also checked | PASS, decoded | PASS default + long-name populated/short | PASS tested inputs + tool axe |
+| `/gif-compressor` | Animated GIF optimization | Reviewed | PASS C/F/W; both modes in WASM | PASS, animation checked | PASS default + long-name populated/short | PASS tested inputs + tool axe |
+| `/video-compressor` | MP4/MOV → H.264 MP4/AAC | Reviewed | PASS C/F/W, five codec paths | PASS, streams/geometry/duration | PASS default + long-name populated/short | PASS tested inputs, cancel/retry + tool axe |
+| `/webm-to-mp4` | WebM → H.264 MP4/AAC | Reviewed | PASS C/F/W; real recording separately probed | PASS, frames/audio checked | PASS default + long-name populated/short | PASS tested inputs + tool axe |
+| `/mp3-compressor` | Supported audio → MP3 | Reviewed | PASS C/F/W; low-rate actual bitrate verified | PASS, audible decode | PASS default + long-name populated/short | PASS tested inputs + tool axe |
+| `/wav-compressor` | WAV → MP3 | Reviewed | PASS C/F/W; alias also works | PASS, audible decode | PASS default + long-name populated/short | PASS tested inputs + tool axe |
+| `/pdf-compressor` | Lossless structural PDF optimization | Reviewed | PASS C/F/W | PASS, text/pages verified | PASS default + long-name populated/short | PASS tested inputs + tool axe |
+| `/zip-compressor` | ZIP creation | Reviewed | PASS C/F/W, byte-safe arbitrary entries | PASS, independent extraction | PASS default + long-name populated/short | PASS arbitrary-file behavior + tool axe |
+| `/archive-compressor` | Safe ZIP extraction | Reviewed | PASS C/F/W, unsafe ZIP rejection/recovery | PASS, extracted bytes verified | PASS default + long-name populated/short | PASS tested unsafe inputs + tool axe |
 
-## All other routes and states
+C/F/W means Chromium, Firefox and Linux WebKit. These are the stated genuine fixtures and sampled options, not every possible codec, file size or option combination. Size rejection uses a 51 MiB logical zero-filled file (now sparse to avoid consuming temporary-storage quota), not a valid giant photograph. File-chooser/touch/keyboard checks and broader responsive/layout evidence are recorded separately below.
 
-Current run visual/interaction review: NOT TESTED for `/`, `/about`, `/contact`, `/blog`, `/privacy`, `/terms`, `/disclaimer`, `/sitemap`, all five article routes, `/wav-to-mp3` alias, and the 404 page. Machine endpoints `/robots.txt` and `/sitemap.xml` require crawl/indexing checks; `/admin` requires CMS verification. Route inventory is derived again from current source/export during QA.
+## Complete route and visual inventory
 
-Required shared states: navigation default/open/hover/focus/current/mobile; settings closed/open/scroll/Escape/backdrop/focus return; upload empty/checking/populated/invalid; queued/processing/cancel/retry; successful/unchanged/larger/failed results; download single/batch/ZIP; long names and multi-file selection.
+All **29 views** received independent top-to-bottom visual review at **390px and 1440px**: the 14 tool routes above, 13 other canonical pages below, the WAV alias and the missing-route 404. The responsive measurement sweep covers 12 widths (348 cases), including every requested width and breakpoint neighbors. Default screenshots are supplemented by actual populated/modal/processing/error/result evidence; screenshots alone do not prove processing.
+
+| Additional route | Purpose-specific refinement / review |
+| --- | --- |
+| `/` | Preserved existing homepage composition; corrected editorial paragraph/list/link flow, valid privacy link and compact guide contents |
+| `/about` | Accurate count-neutral capabilities; concise identity/principles layout preserved; real update date |
+| `/contact` | Accurate support instructions without retired resize advice; clear troubleshooting links; real update date |
+| `/sitemap` | Efficient grouped canonical links reviewed independently; no unnecessary card redesign |
+| `/privacy` | Readable legal composition with native in-page contents and working heading anchors |
+| `/terms` | Same legal navigation rules, purpose-specific text measure and spacing |
+| `/disclaimer` | Corrected capability wording, in-page contents and truthful update date |
+| `/blog` | Featured story plus five article cards; actual-scroll image loading, mobile grid and image proportions reviewed |
+| `/blog/how-browser-compression-works` | Fitting pipeline labels, readable diagram explanation, accurate engine size, inline links and mobile related articles |
+| `/blog/honest-file-size-reporting` | Correct example percentages, readable diagram explanation, accurate dimension/retention guidance |
+| `/blog/choosing-a-compression-mode` | Accurate quality/target choices and retired resize correction, cohesive reading layout |
+| `/blog/what-privacy-claim-really-means` | Readable data-flow explanation, consistent byline/related links; original authored content preserved |
+| `/blog/compressing-files-for-the-web` | Accurate format/bitrate/PDF guidance and diagram explanation; useful internal links |
+| `/wav-to-mp3` alias | Same real WAV conversion, canonical notice uses shared brand link states; canonical destination remains `/wav-compressor` |
+| Missing-route 404 | Clear recovery actions, actual 404/noindex behavior and 44px tool targets |
+
+Exact screenshot filenames and individual conclusions are in [non-tool visual review](docs/visual-review-2026-11-26.md) and [tool visual review](docs/tool-visual-review-2026-11-26.md). Full-page images are under `.qa-results/2026-11-26-final/responsive/` and the decoded-image follow-up set `responsive-loaded/`. Inspection crops add white padding only outside the saved page and must not be mistaken for site whitespace.
+
+Matched visual comparisons are retained with the repository in [selected visual evidence](docs/evidence/2026-11-26/README.md): eight exact PNG workspace/Settings captures, same generated source, settings and 390/1440 × 900 viewports. The single-file row changes from 170 × 248 to 914 × 157 px on desktop, and to 318 × 147 px on mobile. Full-width fields replace the cramped side label/control split; Reset/Done and the close target are consistently sized. The starting build already had a modal, so the comparison documents refinement rather than attributing the initial modal feature to this pass. Fixture and export hashes accompany the images.
+
+`/robots.txt`, `/sitemap.xml`, social image and public resources have separate export/crawl checks. `/admin/` has a separate compiled-asset bootstrap and isolated real editor test; connected hosted editing/publishing is not inferred from public-page tests.
+
+Shared-state coverage includes navigation current/hover/focus/open/mobile, native disclosures, directory filters/search/reset, settings open/close/Escape/backdrop/disabled controls, file validation/queue/progress/cancel/retry, long names/batches, previous/current results, comparison zoom/pan, and individual/ZIP downloads. Final audit totals and any incomplete combinations remain explicit in the ledger.
 
 ## Lighthouse and performance
 
-| Build / route / profile | Before P/A/BP/SEO | After P/A/BP/SEO | Artifact / limitation |
-| --- | --- | --- | --- |
-| Current local baseline | NOT MEASURED | NOT MEASURED | Measurement setup in progress |
-| Current live production | NOT MEASURED | NOT MEASURED | Deployment identity to verify first |
+The final quiet run has **32 valid reports: all 14 canonical tools, home and one article, each mobile and desktop**. All 32 score **100 accessibility / 100 best practices / 100 SEO**. Performance remains below the requested 100: **75–86 mobile and 98–99 desktop**. These are Lighthouse 13 local navigation measurements, not live production or field Core Web Vitals.
 
-Record FCP/LCP/TBT/CLS/Speed Index with actual report artifacts. INP is a field metric and cannot be certified by a single Lighthouse navigation run.
+| Route | Before performance mobile / desktop | Final performance mobile / desktop | Final A / BP / SEO, both profiles |
+| --- | --- | --- | --- |
+| `/` | 52 / 98 | 78 / 98 | 100 / 100 / 100 |
+| `/compress` | NOT MEASURED | 80 / 98 | 100 / 100 / 100 |
+| `/image-compressor` | NOT MEASURED | 79 / 98 | 100 / 100 / 100 |
+| `/jpg-compressor` | 62 / 92 | 80 / 98 | 100 / 100 / 100 |
+| `/jpeg-compressor` | NOT MEASURED | 79 / 98 | 100 / 100 / 100 |
+| `/png-compressor` | NOT MEASURED | 81 / 99 | 100 / 100 / 100 |
+| `/webp-compressor` | NOT MEASURED | 79 / 98 | 100 / 100 / 100 |
+| `/gif-compressor` | NOT MEASURED | 86 / 98 | 100 / 100 / 100 |
+| `/video-compressor` | NOT MEASURED | 79 / 98 | 100 / 100 / 100 |
+| `/webm-to-mp4` | 53 / 98 | 79 / 98 | 100 / 100 / 100 |
+| `/mp3-compressor` | NOT MEASURED | 79 / 98 | 100 / 100 / 100 |
+| `/wav-compressor` | NOT MEASURED | 75 / 98 | 100 / 100 / 100 |
+| `/pdf-compressor` | 58 / 98 | 79 / 98 | 100 / 100 / 100 |
+| `/zip-compressor` | NOT MEASURED | 78 / 98 | 100 / 100 / 100 |
+| `/archive-compressor` | NOT MEASURED | 80 / 98 | 100 / 100 / 100 |
+| `/blog/how-browser-compression-works` | 78 / 98 | 79 / 98 | 100 / 100 / 100 |
+
+Baseline coverage is only the five named routes × two profiles; the other eleven routes have **no measured before score**. All ten baseline reports had accessibility/best-practices 100 and SEO 69. That preview intentionally used noindex; final indexing-enabled production configuration accounts for the SEO configuration difference and is not a code-caused ranking improvement. No current live-production Lighthouse score is claimed.
+
+| Final lab metric, range across 16 routes | Mobile | Desktop |
+| --- | --- | --- |
+| FCP | 1.654–1.812 s | 0.406–0.448 s |
+| LCP | 4.146–5.622 s | 0.949–1.140 s |
+| Total Blocking Time | 63–382 ms | 0–15 ms |
+| Cumulative Layout Shift | 0 on all routes | 0 on all routes |
+| Speed Index | 1.654–1.812 s | 0.406–0.533 s |
+
+Exact route/profile metrics and all audit findings are in [the consolidated result](.qa-results/2026-11-26-final/lighthouse-final-summary.json), with [the score table](.qa-results/2026-11-26-final/lighthouse-scores.md) and [measured before/after values](.qa-results/2026-11-26-final/lighthouse-before-after.json). A compact [32-report metric export](docs/evidence/2026-11-26/lighthouse-metrics.json) is also retained in Git. Raw JSON/HTML and frozen artifact metadata are retained locally in `.qa-results/2026-11-26-final/lighthouse-release-all-tools/`; baseline reports are in `.qa-results/2026-11-26-baseline/lighthouse/`. The final homepage SHA remained `dbf7c96d906d83c7574074a7d7bec1d2ba3bcf684845669234b0578232d4d0e5`.
+
+The initial JPG desktop measurement failed with **NO_NAVSTART** and has no valid score; the original failure remains in the main summary. Only that measurement was repeated, with the same settings and no source change, in `.qa-results/2026-11-26-final/lighthouse-trace-retry/`; its valid performance score is 98. Thus 32 valid route/profile outcomes come from 33 attempts, not from relabeling a failed audit.
+
+Remaining performance work is real and must stay visible: Lighthouse estimates roughly **77–87 KiB of unused-at-initial-load CSS** and **195–251 KiB of unused initial JavaScript**, plus blocking stylesheet, image-delivery, caching and document-compression opportunities. Shared interactive-state styles and framework code cannot be deleted merely because the initial empty view does not use them; any further splitting or consolidation needs regression testing. The local server is uncompressed, so production Cloudflare Brotli/cache delivery requires a separate measurement. PNG/WAV mobile reports also carry a slow-host-CPU calibration warning. These are a mix of code/delivery opportunities and lab limits, not a claim that all remaining work is external. INP requires field data; no field or universal-speed claim is made. Home baseline FCP 2.13 s / LCP 5.71 s / TBT 1260 ms / CLS 0 is retained as an observed shared-host baseline, not a controlled causal benchmark.
+
+Measured initial script footprint: homepage 13 → 12 referenced scripts, 715,432 → 702,082 raw bytes; the three representative tool pages 708,303 → 694,917 raw bytes each. Consistent gzip estimates drop by about 6.5 KB per initial tool/home load; actual Cloudflare Brotli transfer differs. Moving ZIP generation behind its download action preserves functionality while removing that initial request. This method counts unique script references in HTML, including the legacy nomodule reference, rather than claiming those are actual modern-browser transfers. `.qa-results/2026-11-26-final/bundle-comparison.json` records all five routes and the final build.
+
+The separate matched cold 1280px network profile measured **subresource transfer 978,184 → 719,181 bytes**, **50 → 15 subresource requests** and **21 → 0 flagged speculative route prefetch requests**. The same 900,000-byte budget was retained and now passes. These are `performance` resource entries and exclude the main HTML document. No FFmpeg/WASM/image-worker loaded before file selection. Later route values in a reused profile are warm-cache measurements, not additional cold-page comparisons. The before capture is `role-payload-diagnostic/role/payloads.json`; final role evidence records the matching post-fix profile.
 
 ## SEO, CMS and growth
 
 | Area | Status |
 | --- | --- |
-| Canonicals, robots, sitemap, metadata, structured data, links | Audit in progress |
-| Lists, numbered lists, links and sanitized HTML | Source audit in progress |
-| Tina publish → repository → Pages build | Current live verification pending |
-| Google Search Console | Correct owner account opened by user. Overview: 2 total web clicks; indexing processing; CWV no data; 23 HTTPS/0 non-HTTPS; 22 valid/0 invalid breadcrumbs. Detailed report audit in progress |
-| Bing Webmaster Tools | Verified filecompresser.com access. 3-month Aug 26–Nov 25: 0 clicks/0 impressions; no keyword rows. Sitemap success, last crawl Nov 24, 26 discovered URLs, 0 sitemap errors/warnings |
-| Keyword/competitor map and editorial roadmap | Research in progress; no invented search volumes |
-| Privacy-preserving analytics | Existing implementation to inspect before adding any tracking |
+| Canonicals, robots, sitemap, metadata, structured data, links | PASS in the local production-configured export: 28 served routes (27 canonical pages plus WAV alias), 27 unique titles/descriptions and canonical-only sitemap URLs, one H1 per page, correct production origin, robots/sitemap consistency, parsed JSON-LD and internal-link status checks. Automated source tests cover draft/archive exclusion and visible FAQ/link rendering. This does not establish production recrawl or external-link availability |
+| Lists, numbered lists, links and safe HTML | IMPLEMENTED + LOCAL EDITOR PASS. Semantic lists, inline Markdown links and restricted HTML rendered as React nodes; shared editor/reader validation blocks unsupported/unclosed HTML and unsafe URLs before Save. Dedicated section/article/author/reference/managed link fields use the same URL boundary. Earlier five-file / 96-test checkpoint passed; final targeted URL/markup regressions are included in the 788-test full suite. Native editor saved/reopened valid Bullet list, Numbered list, Safe HTML and Link blocks. Formatting, accepted grammar and URL limits: `docs/CMS-CONTENT-FORMATTING.md` |
+| Tina tool collection and compiled editor | PASS locally: all 14 tool records, including WebM, are present in local GraphQL and the actual editor. Schema lock/CMS build passed. Final compiled admin loaded its JS/CSS with HTTP 200 and correct MIME, without the generic asset fallback (`admin-bootstrap-release/result.json`). The separate isolated development screenshot fallback remains documented; it is not presented as an editor screenshot PASS |
+| Tina publish → repository → Pages build | LOCAL WORKFLOW PASS; CONNECTED HOSTED WORKFLOW BLOCKED / NOT RUN. Actual isolated editor validated errors, disabled invalid Save, saved valid content and reopened it; persisted draft JSON and unchanged repository-content proof are in `cms-editor/README.md`. Terminal Git authentication remains unavailable, so no hosted save → GitHub → matching Cloudflare deployment → public acceptance is claimed. The local-mode admin is not a connected production release |
+| Factual content and revision dates | FIXED + VERIFIED. Retired image-resize instructions, inaccurate tool count, engine-size wording, diagram arithmetic/labels and malformed privacy link corrected while preserving authored content and original publication dates. Four revised articles and only the three substantively corrected information pages use 26 November revision dates. Final export/sitemap checks and six fresh About/Contact/Disclaimer browser cases at 390/1440 passed; complete refreshed pages were visually reviewed (`metadata-refreshed/`, `docs/visual-review-2026-11-26.md`) |
+| Google Search Console | READ-ONLY AUDIT COMPLETE. Verified domain property; 3-month Web report: 2 clicks, 60 impressions, CTR 3.3%, average position 27.8; plotted data Nov 20–24. Desktop 1 click/42 impressions, mobile 1/18. Page indexing still processing, CWV no data, HTTPS 23/0 non-HTTPS, breadcrumbs 22 valid/0 invalid; Manual actions and Security issues both “No issues detected”. Sitemap Success, last read Nov 26, 26 discovered pages versus 27 canonical URLs in the local export. This unexplained difference does not identify a missing URL; WebM already existed before this run and its individual crawl/index state is unverified |
+| Bing Webmaster Tools | READ-ONLY AUDIT COMPLETE. Verified property access. Three-month Aug 26–Nov 25: 0 clicks/0 impressions; no keyword rows. Site Explorer, Recommendations and Backlinks showed No Data, which does not establish zero indexed URLs/backlinks. Sitemap Success, last crawl Nov 24, 26 discovered URLs, 0 sitemap errors/warnings. The difference from 27 local canonical URLs does not identify a missing URL; URL-level indexing, including WebM, was not verified |
+| Keyword/competitor map and editorial roadmap | COMPLETE: `docs/SEO-GROWTH-ROADMAP.md` records seven primary competitor references, prioritized intent-to-route mapping, a four-week evidence-led editorial plan and measured GSC/Bing observations. Bing Keyword Research displayed 13.7K impressions for `webm to mp4` and 1.2M for `compress pdf` in its selected three-month research view; these are not monthly search volumes, Google demand or our site traffic. Other query candidates remain qualitative; no ranking, growth or competitor-speed guarantees |
+| Privacy-preserving analytics | Cloudflare Pages Metrics inspected read-only: Production / Last 24 hours shows no available request/subrequest/error/CPU/duration data. Web Analytics explicitly **disabled**. This is not evidence of zero site visitors. No new tracking endpoint/beacon enabled; browser processing files remain local. Tool conversion/abandonment rates are not measurable from the available reports |
+
+Evidence paths without a prefix in this section are under `.qa-results/2026-11-26-final/`. Local editor validation checks markup and address syntax/safety; it does not fetch a destination or prove that every authored section anchor exists. Search-property observations are a small current sample, not field Core Web Vitals, full indexing coverage or a traffic forecast. No search-account settings, indexing requests, production content or hosting configuration were changed by this audit.
 
 ## Verification ledger
 
-| Date | Check / exact scope | Result | Evidence |
-| --- | --- | --- | --- |
-| 2026-11-26 | Repository state, remote main, previous commits, recovery branch | PASS | Git state recorded above |
-| Prior execution | Lint, typecheck, production build; 47 test files | PASS (historical) | 652 passed, 3 skipped; does not verify current output or release |
-| 2026-11-26 | Baseline axe empty pages, 27 canonical + WAV alias | PASS (automated) | `.qa-results/2026-11-26-baseline/axe.json`, zero violations; not a WCAG certification |
-| 2026-11-26 | Source/public/export/CMS input checks | PASS | 261 repository-owned paths, 28 JSON content files |
-| 2026-11-26 | Dependency security gate | PASS with dispositions | Production 0 advisories. All dependencies include 20 advisories (8 high/10 moderate/2 low); 8 high mapped to reviewed Zod backport proof. `.qa-results/2026-11-26-baseline/dependencies/`; do not describe raw dev tree as advisory-free |
-| 2026-11-26 | Workflow UI regressions after modal focus/output edits | PASS | 33 passed, 2 skipped in `tests/workflow-ui.test.tsx` |
+| Check / exact scope | Result | Evidence |
+| --- | --- | --- |
+| Final complete source suite, lint and typecheck | PASS: 49 files, **788/788 passed, zero skipped** | Repeated after final shared URL/scanner/FAQ corrections. Three obsolete skipped resize tests were replaced by active no-controls/original-dimension checks. Includes date parity, image/queue/modal and URL-bound regressions. `source-gates/final-editorial-tests.log`, `latest-source-gates.json` |
+| Serial Tina local editor + production site export | PASS, local mode | Final full CMS/site build 35830: 1 guarded Zod root, 36 guarded parsers, 91 JS files. Latest helper and date/checkbox callbacks included; schema shape unchanged. This local-mode admin must not be deployed as the connected production editor |
+| Final public build after modal/content/scroll/image, prefetch and URL fixes | PASS | Build 35830; lint/types, full suite and matching production-config export/public/CMS-input/source checks all pass. `source-gates/final-editorial-cms-site-build.log`, `final-editorial-tests.log` |
+| Targeted checks after last three factual-content date corrections | PASS: 4 files / 78 tests | About, Contact and Disclaimer updated dates now match their actual correction date, 26 November. Original publication dates and untouched pages preserved |
+| Final export/public/CMS inputs | PASS | 28 served routes, 27 unique titles/descriptions and canonical sitemap URLs; codecs, MIME, redirects, raster assets and bounded JSON checks passed |
+| Source secret heuristic + manual changed-code review | PASS within scope | 297 repository-owned paths scanned after selected evidence images and the compact metrics export were added. No new secrets or file-upload endpoints found. A heuristic scan is not a complete secret/security certification |
+| Dependency security gate | PASS with explicit dispositions | Production audit 0 advisories. Raw all-dependency report: 8 high / 10 moderate / 2 low. Eight high map to the verified Zod backport; other high/critical findings remain blocking. Exact reports/proof in `dependencies/` |
+| Actual shipped-WASM settings matrix | PASS: 29 cases | 28 verified outputs plus expected odd-original-dimension rejection; both video levels × four resolutions, audio bitrates, GIF reduction/retention. `.qa-results/media-core-audit.json` |
+| Low-sample-rate audio actual-WASM matrix | PASS: 18/18 | 8/16/22.05 kHz × 96/128/160/192/256/320 kbps; actual bitrate, sample rate, channels, duration and independent decode. `.qa-results/audio-low-rate-core-audit.json` |
+| Problematic real WebM recording, actual browser download | PASS on final artifact | Cold Chromium click-to-result **1,552 ms** for the 139,348-byte recording. MP4/H.264 output 140,766 bytes; 168 decoded frames, 768×568, 5.238 s, timestamps within 1 ms; no source audio. `webm-recording-release/webm-browser-audit.json`. Earlier 965 ms run retained separately; host/network/cache affect timing. Not a universal speed claim |
+| Intermediate complete real-output Chromium run before final Enter guard | PASS: 73/73 | All 14 tools + alias; per-tool rejection/replacement, decoded output, low-rate MP3, cancellation/retry and stale-banner recovery. `chromium-v5/functionality.json` |
+| Latest 74-case Chromium / Firefox / Linux WebKit | Chromium **74 unique cases PASS across 50 + 24 runs**; Firefox **73/74 plus 1/1 cold retry PASS**; Linux WebKit **74/74 full run PASS** | Chromium `chromium-release-final-v2/functionality-progress.json` contains a 50-pass prefix before exit 143; `chromium-final-51-74-v2/functionality.json` supplies cases 51–74. It is not a clean uninterrupted 74-case run. Firefox `firefox-release-final/functionality-firefox.json` records one initial navigation timeout before input; the same 30-second cold-navigation case passes in `firefox-cold-navigation/`. WebKit `webkit-release-final/` is a complete run. Decoded outputs, no-upload checks and resource/error checks retain their exact outcomes |
+| Populated workspace layouts and modal states | PASS: 56/56 plus 28/28 short-screen cases | 14 tools × 320/390/768/1440 with long filenames; applicable modal bounds, Escape/backdrop/Done, strict Tab wrap, focus/scroll return and modal axe checks. `workspace-prefetch-final/`; phone 320×568 and landscape 768×430 in `workspace-short-phone/` and `workspace-short-landscape/`. Earlier 12 focused cases remain in `workspace-targeted-v4/` |
+| Comparison loading, fit/100/200/400%, wheel and focus return | PASS | Exact background Y remains stable at 390/1280; earlier in-flight scroll defect fixed. Full functional suite retains this regression |
+| Responsive default routes | PASS: 348/348 | 29 routes × 12 widths, including all requested widths and breakpoint neighbors. 404 targets corrected to 44px. `responsive/`; decoded-image captures supplement the measurement sweep |
+| Individual visual review | PASS within stated scope | Every route independently reviewed top-to-bottom at 390/1440. Exact files/findings in `docs/visual-review-2026-11-26.md` and `docs/tool-visual-review-2026-11-26.md` |
+| Actual guide/legal contents keyboard interaction | PASS: 8/8 on final artifact | Home, Privacy, Terms, Disclaimer × 390/1440: Enter expansion/collapse, Tab/Enter anchor and sticky-header clearance. Final repeat after immediate-scroll fix: `contents-interactions-final/`; original evidence also retained |
+| Fresh compiled admin bootstrap | PASS, assets only, final artifact | Compiled JS/CSS 200 with correct MIME, no generic loader fallback. `admin-bootstrap-release/result.json`, matching admin SHA `063646c9…c228b`. API/auth/publishing are separate gates |
+| Native isolated Tina save/reopen workflow | PASS, local only | Bullet/numbered lists, safe HTML, link validation, disabled invalid Save, valid save/reload, 14 tool records including WebM. Independent persisted JSON and unchanged-source proof: `cms-editor/README.md` |
+| Final all-route axe | PASS automated violations: **0 across 29 views** | Exact final parser artifact repeated in `axe-release-final.json`. Four incomplete color-contrast rules cover 51 SVG text nodes; source/paint-order and per-node computed contrast reviewed separately, minimum 4.5786:1. This manual disposition is not an automated complete/WCAG certification: `axe-incomplete-review/`, `docs/accessibility-review-2026-11-26.md` |
+| Shared navigation, design and interaction checks | PASS within scope | Navigation 20/20 and unchanged payload budget in `release-nav-role/`; design 18/18 in `prefetch-nav-design/`; premium states 36/36 plus mechanical/manual accessibility in `prefetch-shared-ui/`. Includes actual current/hover/focus/open/mobile states and live file announcements |
+| Actual visible file chooser, touch and keyboard | PASS: 5/5 on final artifact | Chromium touch/keyboard, Firefox keyboard, Linux WebKit touch/keyboard at 390px; long filenames and real result outputs. `activation-release-final/report.json`. These emulate touch, not physical-device hardware |
+| Final Lighthouse mobile/desktop | PASS measured; performance target not fully met | 32 valid reports across all 14 tools, home and one article; 100 accessibility / best practices / SEO, performance 75–86 mobile and 98–99 desktop. Original invalid JPG desktop trace retained and isolated retry recorded; exact scores and measured baseline boundaries are above |
+| Git push / connected CMS production build / live acceptance | BLOCKED / NOT RUN | Terminal Git authentication still unavailable; no new production release |
 
-## Release and blockers
+Evidence paths in the table without a full prefix are under `.qa-results/2026-11-26-final/`. These local reports/screenshots are retained in the workspace and excluded from the shipped public site.
 
-- No production release authorized as complete by this document.
-- Prior push failed because no terminal GitHub credential was available. Current authentication is not assumed from a signed-in browser.
-- Browser/real-device coverage, current Lighthouse, actual media output, search console data and CMS publishing remain gates until evidence is recorded.
-- No claim of 100% completion, guaranteed search ranking, or WCAG certification.
+## Failures investigated and retained
+
+- Initial Chromium output diagnostic: 49/52 passed. A real retained-GIF suffix defect was fixed; two stale harness expectations were corrected. Later complete output runs passed.
+- The first export checker invocation used localhost/noindex expectations against an intentional production-configured artifact. Repeating with the matching public environment passed; this was not a production canonical defect.
+- Earlier concurrent CMS bundling was stopped under severe host resource contention. Subsequent serial CMS/site builds passed.
+- A 74-case Chromium attempt lost its browser at the M4A case after earlier successes. Later cases were cascading disconnections, not independently executed tests. The failed run is retained in `chromium-release/`. OOM is **not established**: accessible cgroup counters were zero and kernel/system-journal access was unavailable. Later serial attempts also ended with outer exit 143, once before a PNG screenshot and once after a 50-pass prefix before WebM navigation; no encoder cause was established. The PNG case passed independently with identical decoded pixels. Cases 51–74 subsequently passed as an explicit continuation. The ledger reports this split evidence rather than claiming a clean final Chromium whole run. The wrapper now streams logs and bounded diagnostics so an interrupted run remains diagnosable; processing timeout assertions were not relaxed.
+- A separate fresh screenshot attempt against the isolated Tina development server showed its asset fallback. The native built-in browser editing scenario had worked and persisted valid test data. The isolated dev HTML used absolute localhost asset URLs while the document used 127.0.0.1; an origin/transport cause remains unconfirmed. Compiled static admin assets independently passed a fresh-profile bootstrap. Failed dev captures are explicitly labeled and are not presented as editor proof.
+- Firefox's first complete run passed 73/74 cases; comparison measured a 3px difference from an unsettled pre-click automation baseline. The strict assertion was preserved while the test now explicitly settles and records its starting position. Repetition then exposed missed primary clicks: passive traces showed the target moving during native smooth scrolling and no processing submit. An initial mouse-focus workaround was insufficient and was discarded. CSS-auto diagnostics passed 3/3 with exact press/release/submit positions; the final unmodified exported app passed the six-case predecessor sequence. These failures and traces remain in `firefox-serial-final/`, `firefox-pointer-fixed-sequence/`, `firefox-scroll-origin/`, `firefox-scroll-auto-diagnostic/` and `firefox-final-sequence/`.
+- The final Firefox whole run had a separate initial `page.goto` network-idle timeout before any JPG input; all other 73 cases passed. The same fresh-profile JPG case passed with the same 30-second navigation limit. The original failure remains visible.
+- A fixture-writing attempt hit temporary-storage quota (`EDQUOT`), preventing a browser launch. Twenty-eight task-created all-zero oversized fixtures were sparsified with logical sizes and SHA-256 bytes preserved, reclaiming 1,464,418,304 bytes. No user files, outputs or reports were deleted. Exact user quota was unavailable; this does not prove low-memory-phone behavior. `fixture-storage-reclamation.json` records the operation.
+- One Lighthouse JPG desktop run returned `NO_NAVSTART`, which has no valid score. Its original report remains; an isolated valid retry scored 98 performance. All 32 valid final route/profile pairs are retained without counting the invalid trace as a zero or hiding it.
+
+## Artifact, recovery and release status
+
+- Local preview: **http://127.0.0.1:3000**. The separate immutable baseline is at port 3199.
+- Final public export build ID: `T0IO7fozU0grEtYQtuYdr`.
+- Final homepage HTML SHA-256: `dbf7c96d906d83c7574074a7d7bec1d2ba3bcf684845669234b0578232d4d0e5`.
+- Compiled local admin index SHA-256: `063646c9c411fbf9c2edb5ca7ff7a88937de1bb2a200e9e48e70ae7876ec228b`.
+- Recovery branch and all earlier commits remain intact. Additional current-source patch/archive: `recovery/tracked.patch` and `recovery/current-source-files.tar.gz`.
+- Final committed-source recovery destination: `.qa-results/2026-11-26-final/recovery/verified-07CI5f/` (Git bundle, tracked-source archive and fingerprint manifest). These files are produced and verified after the final documentation commit; the manifest records that exact commit without requiring a self-referential hash in this document.
+- Verified implementation commits: `05adb24` (media) and `d84aafb` (workflows, content and loading), following progress commit `f6d0059`; QA helpers are `7cd9e1e`. Evidence and this final ledger receive a separate documentation commit. Nothing has been pushed by this session.
+- Git authentication is separate from browser login. Latest dry run failed with no usable terminal username/sign-in. The owner said they would authenticate; completion has not yet been established.
+- Cloudflare production remains verified commit `241534f`, deployment `0b034c23-c40a-4b52-b012-3e31e7b34e09`. No DNS, public infrastructure, analytics setting, production content or public deployment was changed.
+- The connected `npm run deploy:check` must run with the existing production Tina token/environment, then the matching successful deployment and exact live URLs must be inspected. Local-mode admin output is not a substitute.
+
+## Remaining limits and honest acceptance boundary
+
+- Connected TinaCloud authentication, a hosted content save → GitHub → Cloudflare build, and post-release public behavior remain unverified until release access works.
+- Linux Chromium/Firefox/WebKit and viewport emulation do not certify physical Android/iPhone/iPad devices, Safari/iOS, Edge, VoiceOver/NVDA, forced colors or every assistive technology.
+- Small genuine fixtures, selected settings, cancellation/retry, corrupted/unsafe samples and limit checks do not establish every codec/setting/file-size combination. Physical maximum-size files on low-memory phones and prolonged real-device memory/thermal behavior are not fully exercised.
+- Outputs are independently decoded/probed; no claim that a human listened to every audio sample or watched every long video.
+- PDF is a structural optimizer. Scanned-image recompression, merge/split/conversion tools, AVIF and SVG tools are not implemented or advertised in this checkout.
+- Raw toolchain/editor dependency advisories remain as recorded; this is not an advisory-free or vulnerability-free certification. React 18 deprecation in Next 16 and the harmless ignored lockfile outside this checkout remain build notices; no security gate was disabled to hide them.
+- Cloudflare Web Analytics is disabled and no custom tool-event collector is configured. No upload/start/success/abandonment funnel or conversion-rate claims can be made. A tracking release needs an agreed destination, compatible CSP and truthful privacy notice.
+- Search samples are small; indexing reports/CWV data are unavailable where recorded. No guaranteed ranking or traffic growth.
+- Lighthouse is a local lab result on a shared 7.1 GiB workstation with an uncompressed static server. Production Cloudflare Brotli/caching and field INP require separate verification. Scores below the target must remain visible.
 
 ## Resume point
 
-Resolve ENG-01 first; in parallel finish route/test inventory and technical SEO/CMS source checks. Then use real tool outputs, responsive/modal review, Lighthouse and deployment identity to replace NOT TESTED statuses with scoped evidence. Update this file after each meaningful verified stage and commit.
+Local code, real-output/browser checks, all-route visual/responsive review, final axe and quiet Lighthouse measurements are finished within their recorded limits. Complete the QA/evidence commits and recovery bundle; recheck terminal Git authentication and remote main before a normal push. Follow the matching connected Cloudflare build and inspect the actual public release and hosted Tina workflow before changing production acceptance to PASS. Retain the measured performance opportunities, browser-run interruptions and real-device/assistive-technology limits.

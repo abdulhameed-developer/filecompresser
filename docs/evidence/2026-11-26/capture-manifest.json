@@ -1,0 +1,145 @@
+{
+  "capturedAt": "2026-11-26T11:41:24.438Z",
+  "fixtureSha256": "3fe815007687d62d5e7278571884246a1cabf8b11edcfa0c973104f1dd283015",
+  "note": "Exact unmodified browser screenshots. Same generated PNG, viewport and workspace framing; baseline immutable export3199 versus final export3000.",
+  "viewports": [
+    {
+      "version": "before",
+      "width": 390,
+      "height": 900,
+      "indexSha256": "81739a3f6fd77d7e65abba49843ca6dec3d992878fdebddecd063ce62c390cbc",
+      "row": {
+        "x": 36,
+        "y": 499.046875,
+        "width": 170,
+        "height": 248.09375
+      },
+      "dialog": {
+        "x": 19,
+        "y": 178.0625,
+        "width": 352,
+        "height": 543.875
+      }
+    },
+    {
+      "version": "before",
+      "width": 1440,
+      "height": 900,
+      "indexSha256": "81739a3f6fd77d7e65abba49843ca6dec3d992878fdebddecd063ce62c390cbc",
+      "row": {
+        "x": 263,
+        "y": 441.5,
+        "width": 170,
+        "height": 248.09375
+      },
+      "dialog": {
+        "x": 440,
+        "y": 200.46875,
+        "width": 560,
+        "height": 499.0625
+      }
+    },
+    {
+      "version": "after",
+      "width": 390,
+      "height": 900,
+      "indexSha256": "cd7d9ebf0af54c8d8830ef39f28ce2bad2d1fd92bdc6423267e6a3aad2060fd7",
+      "row": {
+        "x": 36,
+        "y": 499.046875,
+        "width": 318,
+        "height": 147.1875
+      },
+      "dialog": {
+        "x": 19,
+        "y": 196.0625,
+        "width": 352,
+        "height": 507.875
+      }
+    },
+    {
+      "version": "after",
+      "width": 1440,
+      "height": 900,
+      "indexSha256": "cd7d9ebf0af54c8d8830ef39f28ce2bad2d1fd92bdc6423267e6a3aad2060fd7",
+      "row": {
+        "x": 263,
+        "y": 441.5,
+        "width": 914,
+        "height": 156.6875
+      },
+      "dialog": {
+        "x": 440,
+        "y": 217.0625,
+        "width": 560,
+        "height": 465.875
+      }
+    }
+  ],
+  "files": [
+    {
+      "file": "png-before-ready-390.png",
+      "sha256": "227c8e4b1e152a18ecf596cf0cc54fbe796cfcbeb9c2b5bea573beca2b161b2d"
+    },
+    {
+      "file": "png-before-ready-1440.png",
+      "sha256": "e34c554ae79c86126b14d7e8d53828dffd1801459f74e45b7ca766bc79b044f7"
+    },
+    {
+      "file": "png-before-settings-390.png",
+      "sha256": "9541a81c3a194e26a39f6243a4fafb8f5d9fbf4a65d90f4392ad2d4b07a1f8a0"
+    },
+    {
+      "file": "png-before-settings-1440.png",
+      "sha256": "1603b9cd94625ef937a827dd9c800761823c7be2897252830c8664b898117682"
+    },
+    {
+      "file": "png-after-ready-390.png",
+      "sha256": "26c29d7ca35928476428aa2858d7ed25b93bdfaef7c3a6b1adccb6e4216d2fc3"
+    },
+    {
+      "file": "png-after-ready-1440.png",
+      "sha256": "ed00a971ecc090c258af98334b7759413278a459ece7c9cfdbaf9c8a4b466db1"
+    },
+    {
+      "file": "png-after-settings-390.png",
+      "sha256": "9078cf37eb213704ba54f126ce34da656ccb822eeb47f391c794fff05361fb45"
+    },
+    {
+      "file": "png-after-settings-1440.png",
+      "sha256": "a57e36abcd51df90bfcaee355f2d7c85e4d45f1c55c0c9769397ea1e1136b4d7"
+    }
+  ],
+  "additionalCaptures": [
+    {
+      "file": "home-final-1440.png",
+      "source": "release-pages/home-1440.png",
+      "sha256": "9c5e94828c59e1871099b1b0d60a186460c7fc6c00ad072dd41087118dc3dae7",
+      "scope": "Final T0IO7fozU0grEtYQtuYdr loaded-page capture"
+    },
+    {
+      "file": "about-final-1440.png",
+      "source": "release-pages/about-1440.png",
+      "sha256": "864d5bec3103f4cbb88237d9e942682b5a808ca9ea7ea52caf7c7d5a59611775",
+      "scope": "Final T0IO7fozU0grEtYQtuYdr loaded-page capture"
+    },
+    {
+      "file": "article-final-390.png",
+      "source": "release-pages/article-how-browser-390.png",
+      "sha256": "6754e4aa01445be54da6c322f15cb68349558a0be9cece761158300365734e64",
+      "scope": "Final T0IO7fozU0grEtYQtuYdr loaded-page capture"
+    },
+    {
+      "file": "webm-converting-1440.png",
+      "source": "webm-converting-state/webm-converting-1440.png",
+      "sha256": "37bbf536261de2429fc881a336e5d2d76bc833e082b6d36bc8d01b8c18f7999d",
+      "scope": "Real generated sample during processing; earlier layout/codec acceptance build, unchanged controls/engine"
+    },
+    {
+      "file": "webm-converting-390.png",
+      "source": "webm-converting-state/webm-converting-390.png",
+      "sha256": "43d03dedcb86ca8f93582cb4d60dfa9afb4b2b1a35630530c4e7456768964055",
+      "scope": "Real generated sample during processing; earlier layout/codec acceptance build, unchanged controls/engine"
+    }
+  ]
+}
