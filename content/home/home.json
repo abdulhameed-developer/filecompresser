@@ -91,7 +91,7 @@
     },
     {
       "q": "Will compression reduce image or video quality?",
-      "a": "It depends on the selected settings. Lossy compression can change image or audio quality, and video re-encoding can affect visual detail. Review the result before downloading or using it.\n"
+      "a": "PNG starts in Lossless mode, preserving decoded pixels. JPG and WebP start in Balanced mode and use lossy encoding. Optional Smart or Maximum PNG settings can reduce colors. Video and audio re-encoding can also change quality. Use Compare for images and check downloaded media before replacing the original."
     },
     {
       "q": "Why is my compressed file not smaller?",
