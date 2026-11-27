@@ -20,7 +20,7 @@
       "source": ".qa-results/phase2/release-final-acceptance/chromium-desktop/wav-compressor-settings.png",
       "sha256": "085d2c1f868e5c02cee71d56ddb7b450e94e9672c74667f4506bcacc1852428c",
       "bytes": 181555,
-      "note": "Retained F (superseded by H) full-width audio dialog; unedited1280\u00d7900 capture"
+      "note": "Retained F (superseded by H) full-width audio dialog; unedited1280×900 capture"
     },
     {
       "file": "docs/evidence/2026-11-27/screenshots/image-comparison-final-F.png",
@@ -35,7 +35,7 @@
       "sha256": "0d068e7293862dd1e53e75895c2c6ba93dc553129d5b6619394c243d711eec8a",
       "bytes": 181561,
       "artifactBuildId": "vfZQ5yf4p_TqDNwIrY5px",
-      "note": "Compiled H1280\u00d7900 full-width audio dialog; actual native modal, no image edits."
+      "note": "Compiled H1280×900 full-width audio dialog; actual native modal, no image edits."
     },
     {
       "file": "docs/evidence/2026-11-27/screenshots/png-settings-H.png",
@@ -43,7 +43,7 @@
       "sha256": "327c8e987390a280e0561fb45a7a2e4f0eb0e9ac5210cad52bfc0154683b6beb",
       "bytes": 159662,
       "artifactBuildId": "vfZQ5yf4p_TqDNwIrY5px",
-      "note": "Compiled H1280\u00d7900 PNG default Lossless, original format and explicit alternatives."
+      "note": "Compiled H1280×900 PNG default Lossless, original format and explicit alternatives."
     },
     {
       "file": "docs/evidence/2026-11-27/screenshots/png-target-320-H.png",
@@ -51,7 +51,7 @@
       "sha256": "d5fd25ae1d7b63a46db23ad370ff7faf94ec1364bc03df41b3ac279ccbe0ed0c",
       "bytes": 46315,
       "artifactBuildId": "vfZQ5yf4p_TqDNwIrY5px",
-      "note": "Compiled H WebKit320\u00d7568 immediate Target focus; full input/ring above footer; no injected CSS/DOM/listeners."
+      "note": "Compiled H WebKit320×568 immediate Target focus; full input/ring above footer; no injected CSS/DOM/listeners."
     },
     {
       "file": "docs/evidence/2026-11-27/screenshots/archive-replace-guidance-H.png",
@@ -67,7 +67,7 @@
       "sha256": "4fa98be6ac5a5f3f8d3ec37231ddf461a3a955f79dced1688a630c6b58599e2a",
       "bytes": 38436,
       "artifactBuildId": "uFK_GwNQKW1BAEFJBZTww",
-      "note": "Retained failed F320\u00d7568 immediate Target state: custom maximum input is hidden by sticky footer. Same viewport/tool as H after; unedited screenshot."
+      "note": "Retained failed F320×568 immediate Target state: custom maximum input is hidden by sticky footer. Same viewport/tool as H after; unedited screenshot."
     },
     {
       "file": "docs/evidence/2026-11-27/screenshots/png-ready-390-H.png",
@@ -75,7 +75,7 @@
       "sha256": "1c421e85a78fb2eeffd9ee0ca81ccadaea63d5fadde5f5007bcabaa4a539ab10",
       "bytes": 68974,
       "artifactBuildId": "vfZQ5yf4p_TqDNwIrY5px",
-      "note": "Compiled H390\u00d7844 PNG ready workspace; original format/dimensions and Lossless policy visible."
+      "note": "Compiled H390×844 PNG ready workspace; original format/dimensions and Lossless policy visible."
     },
     {
       "file": "docs/evidence/2026-11-27/screenshots/png-completed-390-H.png",
@@ -83,7 +83,7 @@
       "sha256": "7ecd46314b3c34cc6c794b10cfc355e39c5c3298b8c54cfd7f5cf166a0668a53",
       "bytes": 60668,
       "artifactBuildId": "vfZQ5yf4p_TqDNwIrY5px",
-      "note": "Compiled H390\u00d7844 genuine PNG result: 111968\u219283020B, original1440\u00d7900 dimensions; Compare/download accessible. Correct25.9%saving, not invented70%."
+      "note": "Compiled H390×844 genuine PNG result: 111968→83020B, original1440×900 dimensions; Compare/download accessible. Correct25.9%saving, not invented70%."
     },
     {
       "file": "docs/evidence/2026-11-27/screenshots/dropdown-keyboard-focus-H.png",
@@ -116,6 +116,34 @@
       "bytes": 92739,
       "artifactBuildId": "vfZQ5yf4p_TqDNwIrY5px",
       "note": "Compiled H1280px native viewport: genuine decoded MP4 result; converted/larger output is not misreported as compression savings."
+    },
+    {
+      "file": "docs/evidence/2026-11-27/screenshots/tina-bullets-live.png",
+      "source": ".qa-results/phase2/cms-release-roundtrip/screenshots/tina-bullets-live.png",
+      "sha256": "fa79bd236a75d5e7196cb0a578bd2ef541f88ac51629176b962df9c02e24ae85",
+      "bytes": 82352,
+      "note": "Genuine newly deployed hosted Tina editor; exact current bullet body and native label focus verified, Save/Reset disabled."
+    },
+    {
+      "file": "docs/evidence/2026-11-27/screenshots/tina-saved-faq-live.png",
+      "source": ".qa-results/phase2/cms-release-roundtrip/screenshots/tina-saved-faq-live.png",
+      "sha256": "ff6d64a13e0ef114fa744ba19b2b84b36c07632b06b3d7247b8ad324cbfa8df8",
+      "bytes": 51243,
+      "note": "Genuine Tina Save/reload/reopen; exact intended answer persisted with Save/Reset disabled; native label focuses correct field. CMS Git commit5fdf646 changes onlyfaq.4.a."
+    },
+    {
+      "file": "docs/evidence/2026-11-27/screenshots/published-faq-live.png",
+      "source": ".qa-results/phase2/final-live-acceptance/faq-viewports-final/homepage-expanded-faq-1280.png",
+      "sha256": "996c88ac087e00efb13fabdc95d60a6bfb87d8f4ddde606d167bbef311b288b9",
+      "bytes": 79938,
+      "note": "Actual5fdf646/3f5114e1 public homepage,1280×900: expanded new FAQ is fully styled/readable beneath header; original PNG directly reviewed."
+    },
+    {
+      "file": "docs/evidence/2026-11-27/screenshots/published-faq-390-live.png",
+      "source": ".qa-results/phase2/final-live-acceptance/faq-viewports-final/homepage-expanded-faq-390.png",
+      "sha256": "abc7475ed3c338d0445c4a209d6c036af6474505258bb41592d61b1002cc74a7",
+      "bytes": 54765,
+      "note": "Actual5fdf646/3f5114e1 public homepage,390×844: full new FAQ answer, no clipped or blank composite; original PNG directly reviewed."
     }
   ]
 }

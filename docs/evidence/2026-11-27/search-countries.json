@@ -1,0 +1,129 @@
+{
+  "capturedAt": "2026-11-27T11:48:52.580635+00:00",
+  "source": "Google Search Console native owner property sc-domain:filecompresser.com; root built-in browser u/2",
+  "range": "3 months",
+  "searchType": "Web",
+  "tablePages": [
+    "1\u201310 of22",
+    "11\u201320 of22",
+    "21\u201322 of22"
+  ],
+  "rows": [
+    {
+      "country": "Philippines",
+      "clicks": 1,
+      "impressions": 6
+    },
+    {
+      "country": "Pakistan",
+      "clicks": 1,
+      "impressions": 3
+    },
+    {
+      "country": "United States",
+      "clicks": 0,
+      "impressions": 22
+    },
+    {
+      "country": "Canada",
+      "clicks": 0,
+      "impressions": 5
+    },
+    {
+      "country": "India",
+      "clicks": 0,
+      "impressions": 3
+    },
+    {
+      "country": "United Kingdom",
+      "clicks": 0,
+      "impressions": 3
+    },
+    {
+      "country": "Bangladesh",
+      "clicks": 0,
+      "impressions": 2
+    },
+    {
+      "country": "Brazil",
+      "clicks": 0,
+      "impressions": 2
+    },
+    {
+      "country": "Hong Kong",
+      "clicks": 0,
+      "impressions": 1
+    },
+    {
+      "country": "Vietnam",
+      "clicks": 0,
+      "impressions": 1
+    },
+    {
+      "country": "Cameroon",
+      "clicks": 0,
+      "impressions": 1
+    },
+    {
+      "country": "Malaysia",
+      "clicks": 0,
+      "impressions": 1
+    },
+    {
+      "country": "Greece",
+      "clicks": 0,
+      "impressions": 1
+    },
+    {
+      "country": "Australia",
+      "clicks": 0,
+      "impressions": 1
+    },
+    {
+      "country": "Guam",
+      "clicks": 0,
+      "impressions": 1
+    },
+    {
+      "country": "Slovenia",
+      "clicks": 0,
+      "impressions": 1
+    },
+    {
+      "country": "Switzerland",
+      "clicks": 0,
+      "impressions": 1
+    },
+    {
+      "country": "Indonesia",
+      "clicks": 0,
+      "impressions": 1
+    },
+    {
+      "country": "Zimbabwe",
+      "clicks": 0,
+      "impressions": 1
+    },
+    {
+      "country": "Nigeria",
+      "clicks": 0,
+      "impressions": 1
+    },
+    {
+      "country": "Peru",
+      "clicks": 0,
+      "impressions": 1
+    },
+    {
+      "country": "Slovakia",
+      "clicks": 0,
+      "impressions": 1
+    }
+  ],
+  "totalClicks": 2,
+  "totalImpressions": 60,
+  "limitations": [
+    "Native visible table, not API export.",
+    "No country/query join, causal ranking gain or localization recommendation inferred."
+  ]
+}

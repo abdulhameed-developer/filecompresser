@@ -1,8 +1,8 @@
 # FileCompresser product scorecard — Phase 2
 
-Date: 27 November 2026 (Asia/Karachi). **Work in progress; no Phase 2 release yet.** This scorecard separates algorithm measurements, real workflows, public delivery and search outcomes. Historical release `0197d18` / Cloudflare `5ecc7f32` remains the production baseline.
+Date: 27 November 2026 (Asia/Karachi). **Published and verified within the recorded scope.** This scorecard separates algorithm measurements, real workflows, public delivery and search outcomes. Historical release `0197d18` / Cloudflare `5ecc7f32` is the before-release baseline/fallback; current production is `5fdf646` / Cloudflare `3f5114e1`.
 
-Current local candidate **I**, build `0y43p4TdfUlmfFqlz8TuJ`, passes 877 source tests in 56 files, Chromium 79/79 with 57 verified downloads, 45 three-engine image cases, axe 29/29 and 348 responsive measurements. [Local preview](http://127.0.0.1:3220). These are local results; the four H browser suites remain separately identified. Performance interpretation and hosted release/CMS acceptance are unfinished.
+Frozen local **I** reference, build `0y43p4TdfUlmfFqlz8TuJ`, passes 877 source tests in 56 files, Chromium 79/79 with 57 verified downloads, 45 three-engine image cases, axe 29/29 and 348 responsive measurements. [Local preview](http://127.0.0.1:3220). These are local results; the four H browser suites remain separately identified. Published source `5fdf646` / Cloudflare `3f5114e1` passes the final live 79/57 workflow, genuine Tina publishing, four ordinary delivery checks and fresh 29-view public accessibility acceptance. Final-source local preview: [127.0.0.1:3221](http://127.0.0.1:3221). I/3220 and the four H suites remain separately identified.
 
 ## Measurement rules
 
@@ -21,10 +21,10 @@ Current local candidate **I**, build `0y43p4TdfUlmfFqlz8TuJ`, passes 877 source 
 | Lossless PNG | Same screenshot: approximately 3.2–3.6 s, 83,020-byte output | Preserve exact pixels; show real savings and do not silently quantize | Lossless output bytes unchanged across all seven PNG fixtures. Actual optimized-screenshot UI click-to-result about 12.4 s old Maximum → 2.4 s new Lossless, with larger exact-pixel output; lower-effort experiment rejected |
 | JPEG, explicit Balanced engine policy | Generated text JPEG: about 72% reduction at about 1.4 s; portrait fixture about 81% reduction at about 0.7 s | Compare quality-versus-size curves against genuine outputs; avoid universal percentage claims | Existing MozJPEG already effective on these inputs; this is not the old UI Maximum default. Independent native-scale quality and metric review complete for all 15 inputs; repeat provider outputs recorded separately |
 | ZIP extraction scheduling | Controlled Chromium 500-small-entry engine median 2,334.7 ms across three trials | Retain every path, CRC and byte while keeping cooperative cancellation | Candidate median 130 ms; all 500 outputs independently byte checked, three trials. Fresh I Chromium 79-case UI/download acceptance passes; H four-browser results remain retained. Benchmark engine timing is separate |
-| CMS text controls | Historical vendor text/textarea label association defect | Supported plugin extension; real label focus, invalid state, Save/reopen and mobile checks | Six actual isolated editor checks passed; hosted new-bundle admin acceptance remains pending release |
+| CMS text controls | Historical vendor text/textarea label association defect | Supported plugin extension; real label focus, invalid state, Save/reopen and mobile checks | Six isolated checks and genuine new-hosted native label/Save/reopen → GitHub → Cloudflare → visible/schema checks pass; only the reviewed FAQ answer changed |
 | Home initial client graph | Full tool registry imported through shared client navigation/directory/home modules | Keep editorial/SEO registry data on the server without delaying upload or changing navigation | Current I home JS references 702,082 → 667,374 raw B; HTML/JS/CSS per-resource gzip estimate 260,001 → 251,037 B (−8,964 B). Includes legacy nomodule references, not actual browser wire bytes. I Chromium functional acceptance passes; H four-browser results remain retained |
 | Responsive article artwork | The custom pipeline cover bypassed responsive stock delivery and requested the full 65,252-byte upload on mobile | Serve appropriate source widths while preserving authored content and CMS replacement fallback | I uses guarded 640/768/1200 sources; 45 actual three-engine cases pass. Current authored source/alt/metadata are preserved; nonempty captions and changed/unknown uploads also pass source/SSR tests |
-| Mobile homepage Lighthouse | Historical production P75 / A100 / BP100 / SEO100 | Improve actual main-thread work; repeat comparable measurements | Local and old-production lab series are recorded separately; the ledger retains all measured and excluded/blocked attempts with their individual statuses. Shared-host variance prevents a reliable causal article LCP/score improvement claim; final production measurements remain pending |
+| Mobile homepage Lighthouse | Historical production P75 / A100 / BP100 / SEO100 | Improve actual main-thread work; repeat comparable measurements | Local and old-production lab series are recorded separately; the ledger retains all measured and excluded/blocked attempts with their individual statuses. Shared-host final representative performance is 94–100; all ten complete A/BP/SEO scores are 100. One separate official homepage UI analysis scored all four categories 100 mobile/desktop. No universal or causal score-gain claim |
 
 Raw benchmark evidence is under `.qa-results/phase2/`. The competitive report records sample identities, actual outputs and their measured trade-offs. [The consolidated Lighthouse ledger](evidence/2026-11-27/lighthouse-measurements.json) preserves measured and excluded attempts; payload estimates do not establish a performance score.
 
@@ -76,13 +76,16 @@ Google's fresh three-month Web report still shows 2 clicks, 60 impressions, 3.3%
 | Gate | Phase 2 state |
 | --- | --- |
 | Full source tests | Current I source: 56 files / 877 passed, zero skipped |
-| Lint / typecheck / CMS + production export | Full local CMS build passed for B; the unchanged admin is retained in I. I production-public build, admin guard, CMS JSON preflight (29 files), route/export, exact worker hashes and source gates pass. Hosted new-bundle CMS acceptance remains pending |
+| Lint / typecheck / CMS + production export | Full local CMS build passed for B; the unchanged admin is retained in I. I production-public build, admin guard, CMS JSON preflight (29 files), route/export, exact worker hashes and source gates pass. Genuine new-hosted CMS/cloud publishing acceptance passes |
 | Real output and competitor checks | Fresh I Chromium passes 79/79 with 57 independently rehashed downloads. H retains 316/316 across four browser/input suites, 228 downloads. Competitor initial/repeat outputs and rejected attempts remain separately recorded |
-| Responsive / accessibility / Lighthouse | Fresh I responsive 348/348 and expanded axe 29/29 pass; four SVG incompletes remain manually reviewed across 51 unchanged nodes (minimum 4.5786:1). I image delivery passes 45/45 across three engines. H shared/modal/workspace results remain H evidence. I lab performance interpretation is under review |
-| Git commit / push / Cloudflare deployment | No Phase 2 commit or deployment yet |
+| Responsive / accessibility / Lighthouse | Fresh I responsive 348/348 and expanded axe 29/29 pass; four SVG incompletes remain manually reviewed across 51 unchanged nodes (minimum 4.5786:1). I image delivery passes 45/45 across three engines. H shared/modal/workspace results remain H evidence. Current public 29-view accessibility passes with independently proven HEAD diagnostics; original failed observer preserved. Ten final shared-host Lighthouse scores and the separate official homepage result are recorded |
+| Git commit / push / Cloudflare deployment | Implementation `417fcfb` and Tina `5fdf646` published normally; both CI runs and cloud builds succeed. Final Cloudflare `3f5114e1-8094-4a07-9022-4a566e8feb0e` |
 | Rollback | Starting checkpoint `checkpoint/2026-11-27-phase2-start-02b078d`, verified full Git bundle and source archive; older recovery points preserved |
 
 Physical phones/tablets, Safari/iOS, all assistive technologies, field INP, exhaustive maximum-size files and long-term ranking changes remain outside any currently established Phase 2 pass.
+
+
+After live verification, one Google indexing request each for WebM, Contact and JPG was accepted. This does not establish indexing or ranking gains. The only live cache correction was an exact-URL purge of the proven stale `/logo.png`; no broad purge or cache/DNS/TLS/analytics setting changed. [Final acceptance report](PHASE2-ACCEPTANCE-REPORT.md).
 
 <!-- PLATFORM_BROWSER_ACCEPTANCE_START -->
 
@@ -112,5 +115,19 @@ Candidate I, build `0y43p4TdfUlmfFqlz8TuJ`, changes only the reviewed server-ren
 Fresh I Chromium acceptance passed **79/79** with **57** independently rehashed downloads, 50 state captures, normal closure and zero console/resource/exception/upload errors. Separate actual Chromium, Linux WebKit and Firefox image-delivery checks passed **45/45**; Firefox's native high-density ratio is explicitly recorded rather than described as exact emulation. [Candidate I evidence](evidence/2026-11-27/browser-functional-acceptance-I.json) contains the scope and retained failed QA attempts. The four whole suites above remain **H316/316**, with unchanged processing source; four new whole I suites are not claimed.
 
 <!-- PLATFORM_I_FOLLOWTHROUGH_END -->
+
+<!-- PLATFORM_LIVE_ACCEPTANCE_START -->
+
+### Published acceptance after the hosted Tina roundtrip
+
+[The live site](https://filecompresser.com/) at source `5fdf646` / Cloudflare deployment `3f5114e1-8094-4a07-9022-4a566e8feb0e` passed a fresh **79/79** Chromium workflow suite with **57 saved, independently rehashed downloads**, 50 state captures and zero strict browser/upload errors. All 14 tools and the WAV alias produced validated outputs; both before/after identity checks match the actual final deployment. Four separate ordinary Chrome/Firefox PNG/WebM delivery observations and two real expanded-FAQ viewport captures also passed and closed normally. [Public release evidence](evidence/2026-11-27/browser-functional-acceptance-LIVE.json) records exact raw public/immutable hashes and the 57 output proofs.
+
+The first preflight correctly stopped before browser launch on a stale cached logo. Only the exact logo URL was purged; final bytes now match the reviewed source without a hash waiver. The only accepted HTML edge transformation removes two evidenced footer-email comments (33 bytes), with every other byte identical; 20 negative/positive guards and 17 offline preparation guards are retained. H/I history above remains separately scoped. This functional pass does not claim universal performance, every physical device or an absence of all possible defects.
+
+A separate actual live WebM addon passed two unmodified 1280×900 viewport captures and one extra MP4 download. It shows the fixed MP4 target, **Convert to MP4**, **Format converted** and the download action within the viewport. Native validation confirms H.264/AAC, source dimensions and duration, full decoding and audible output. These two states and one download are additional evidence; the suite counts above remain unchanged.
+
+The separate correlated live accessibility retry passed **29 views with zero automated violations** and completed an independent review of all five raw HEAD cancellation proofs. Every accepted HEAD had its own successful native response, unique browser request and matching successful route-tree response; GETs and rejected HEADs remained failures. The original seven-event strict failure is preserved separately. Four SVG checks retain their bounded manual disposition across 51 identical live text nodes. [Correlated accessibility evidence](evidence/2026-11-27/public-accessibility-correlated.json) includes the exact proof and limitations.
+
+<!-- PLATFORM_LIVE_ACCEPTANCE_END -->
 
 <!-- PLATFORM_BROWSER_ACCEPTANCE_END -->

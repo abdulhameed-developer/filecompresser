@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "capturedAt": "2026-11-27T12:37:51.348Z",
+  "status": "PASS_SINGLE_OFFICIAL_HOMEPAGE_ANALYSIS_MOBILE_AND_DESKTOP",
+  "scope": "One normal official PageSpeed Insights UI Analyze submission for the public homepage; both existing form-factor tabs inspected. Public URL only; no files, credentials, API keys or telemetry configuration sent.",
+  "reportTimeDisplayed": "Nov27,2026,5:33:58PM; Captured17:34GMT+5",
+  "sourceCommit": "5fdf646b2b1465c150777e4872a020d4cbd2ac24",
+  "cloudflare": "3f5114e1-8094-4a07-9022-4a566e8feb0e",
+  "publicHomeSha256After": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+  "records": [
+    {
+      "mode": "mobile",
+      "reportUrl": "https://pagespeed.web.dev/analysis/https-filecompresser-com/kwc3vmh94gyii0ebay94ps?form_factor=mobile",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "metricsDisplayed": {
+        "fcp": "1.0 s",
+        "lcp": "1.0 s",
+        "tbt": "30 ms",
+        "cls": "0",
+        "speedIndex": "1.1 s"
+      },
+      "device": "Emulated Moto G Power",
+      "throttling": "Slow 4G",
+      "browser": "HeadlessChromium157.0.8103.38",
+      "lighthouse": "13.6.0",
+      "fieldData": "No Data",
+      "screenshot": {
+        "file": "docs/evidence/2026-11-27/pagespeed-home-mobile.png",
+        "sha256": "0c749c7e471ab8c98c79ab255c4535fe3a2fef2ef92922e4ad574a06c6423627",
+        "bytes": 63648
+      },
+      "axEvidence": {
+        "file": ".qa-results/phase2/lighthouse/pagespeed-independent-final/mobile-ax.txt",
+        "sha256": "990e43761f8456a90abdcd2a14e6e926b5cfbd64d970d5e55cf131e61fb51888"
+      }
+    },
+    {
+      "mode": "desktop",
+      "reportUrl": "https://pagespeed.web.dev/analysis/https-filecompresser-com/kwc3vmh94gyii0ebay94ps?form_factor=desktop",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "metricsDisplayed": {
+        "fcp": "0.3 s",
+        "lcp": "0.3 s",
+        "tbt": "10 ms",
+        "cls": "0",
+        "speedIndex": "0.5 s"
+      },
+      "device": "Emulated Desktop",
+      "throttling": "Custom throttling",
+      "browser": "HeadlessChromium157.0.8103.38",
+      "lighthouse": "13.6.0",
+      "fieldData": "No Data",
+      "screenshot": {
+        "file": "docs/evidence/2026-11-27/pagespeed-home-desktop.png",
+        "sha256": "c8503f0c1c2c3dfc1b3341daab8c54359caef0d1e2197f93165923fa70078ccb",
+        "bytes": 65674
+      },
+      "axEvidence": {
+        "file": ".qa-results/phase2/lighthouse/pagespeed-independent-final/desktop-ax.txt",
+        "sha256": "d7fb03410b4552c8bac89ceb2dec6ad59f9f937db46ea0e97c11c1c40d600a2b"
+      }
+    }
+  ],
+  "boundaries": [
+    "Separate remote measurement from all local/shared-host Lighthouse series.",
+    "No comparable before-release official UI report was collected; no causal score-gain claim.",
+    "Homepage only, one analysis and two form factors; not all tools or physical devices.",
+    "Scores are lab results, not field Core Web Vitals or a complete accessibility/security certification.",
+    "Non-blocking optimization opportunities remain despite100 scores.",
+    "Earlier keyless PSI API request was HTTP429 blocked; that attempt remains preserved. No quota, authentication or security controls were bypassed."
+  ]
+}

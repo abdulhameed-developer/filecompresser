@@ -1,0 +1,166 @@
+{
+  "schema": 1,
+  "capturedAt": "2026-11-27T12:04:38.500Z",
+  "status": "PASS_SCOPED_PUBLISHED_RELEASE_ACCEPTANCE",
+  "implementationCommit": "417fcfb8215837d2307fa4c6af992de06d94f32c",
+  "contentCommit": "5fdf646b2b1465c150777e4872a020d4cbd2ac24",
+  "cloudflareDeploymentId": "3f5114e1-8094-4a07-9022-4a566e8feb0e",
+  "immutableDeploymentUrl": "https://3f5114e1.filecompresser.pages.dev",
+  "githubCi": {
+    "runId": 45993970761,
+    "url": "https://github.com/abdulhameed-developer/filecompresser/actions/runs/45993970761",
+    "status": "completed",
+    "conclusion": "success",
+    "sourceCommit": "5fdf646b2b1465c150777e4872a020d4cbd2ac24"
+  },
+  "sourceTests": {
+    "files": 56,
+    "tests": 877,
+    "skipped": 0,
+    "actualCloudLogConfirms": true
+  },
+  "homepages": [
+    {
+      "name": "public",
+      "base": "https://filecompresser.com",
+      "status": 200,
+      "sha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+      "bytes": 110378
+    },
+    {
+      "name": "immutable",
+      "base": "https://3f5114e1.filecompresser.pages.dev",
+      "status": 200,
+      "sha256": "7231c8728f4460c638adfb44ce3e8b9c522a8739d109506999a9f70e5f71edc7",
+      "bytes": 110411
+    }
+  ],
+  "cmsRoundtripVerified": true,
+  "unchangedCore": {
+    "reference": "Frozen I0y43p4TdfUlmfFqlz8TuJ",
+    "runtimeInputs": 159,
+    "unchanged": 158,
+    "soleSemanticChange": "content/home/home.json faq[4].a"
+  },
+  "cacheCorrection": {
+    "scope": "Exact URLhttps://filecompresser.com/logo.png only",
+    "beforeEvidence": {
+      "capturedAt": "2026-11-27T12:00:50.548Z",
+      "expected": "20c05cf089e1341eb498002013670d4d7d0e587549c32bbad116c04d464ebbab",
+      "rows": [
+        {
+          "name": "public",
+          "url": "https://filecompresser.com/logo.png",
+          "status": 200,
+          "headers": {
+            "content-type": "image/png",
+            "content-length": "23298",
+            "cache-control": "public, max-age=86400",
+            "etag": "\"bee91719093334c965cebffc867c343e\"",
+            "age": "4891",
+            "cf-cache-status": "HIT",
+            "cf-ray": "a610f986ba0f558c-SIN"
+          },
+          "bytes": 23298,
+          "sha256": "60fef559f8d5dccebd929b0bfa792f8d6ff3ca534b787d2f9abe8a15804f8a54"
+        },
+        {
+          "name": "immutable",
+          "url": "https://3f5114e1.filecompresser.pages.dev/logo.png",
+          "status": 200,
+          "headers": {
+            "content-type": "image/png",
+            "content-length": "22361",
+            "cache-control": "public, max-age=86400",
+            "etag": "\"dbcea6e0635190644f19eff331307c61\"",
+            "cf-ray": "a610f988e8d28b16-SIN"
+          },
+          "bytes": 22361,
+          "sha256": "20c05cf089e1341eb498002013670d4d7d0e587549c32bbad116c04d464ebbab"
+        }
+      ],
+      "oldSource": {
+        "bytes": 23298,
+        "sha256": "60fef559f8d5dccebd929b0bfa792f8d6ff3ca534b787d2f9abe8a15804f8a54"
+      },
+      "currentSource": {
+        "bytes": 22361,
+        "sha256": "20c05cf089e1341eb498002013670d4d7d0e587549c32bbad116c04d464ebbab"
+      },
+      "scope": "Read-only exact public/immutable URLs with ordinary HTTPS fresh sockets and retained Git source bytes. No browser, cache-busting, cache/config or app changes."
+    },
+    "afterEvidence": {
+      "capturedAt": "2026-11-27T12:03:24.584Z",
+      "scope": "After native exact-URL purge of https://filecompresser.com/logo.png only; no cache-busting parameter or bypass",
+      "results": [
+        {
+          "url": "https://filecompresser.com/logo.png",
+          "status": 200,
+          "bytes": 22361,
+          "sha256": "20c05cf089e1341eb498002013670d4d7d0e587549c32bbad116c04d464ebbab",
+          "type": "image/png",
+          "cacheControl": "public, max-age=86400",
+          "cacheStatus": "MISS",
+          "age": null,
+          "ray": "a610fd4dcb9fc09d-SIN"
+        },
+        {
+          "url": "https://3f5114e1.filecompresser.pages.dev/logo.png",
+          "status": 200,
+          "bytes": 22361,
+          "sha256": "20c05cf089e1341eb498002013670d4d7d0e587549c32bbad116c04d464ebbab",
+          "type": "image/png",
+          "cacheControl": "public, max-age=86400",
+          "cacheStatus": null,
+          "age": null,
+          "ray": "a610fd4d19a89d4e-SIN"
+        }
+      ],
+      "pass": true
+    },
+    "settingsChanged": false,
+    "broadPurge": false,
+    "pixelIdentity": "Both223\u00d768 RGBA, byte-identical decoded pixels; prior lossless logo optimization.",
+    "browserCacheLimit": "Existing browser copies can remain fresh for the unchanged86400-second cache lifetime; their pixels/branding are identical. No attempt was made to erase visitor browser caches."
+  },
+  "privacy": "No analytics or RUM re-enabled; no user filenames or selected file data transmitted.",
+  "fallback": {
+    "source": "0197d180403db5992a5a90ae44f716bbacae632c",
+    "cloudflare": "5ecc7f32-5c39-462e-8b66-aa2485f49d9b",
+    "checkpoint": "checkpoint/2026-11-27-phase2-start-02b078d"
+  },
+  "logs": [
+    {
+      "file": ".qa-results/phase2/release-record/github-initial-ci.log",
+      "sha256": "70a5f59456b63378a5c92d4bf626ec48a7b0c160abf1d4bcb612d2d0c6c60839"
+    },
+    {
+      "file": ".qa-results/phase2/release-record/github-cms-ci.log",
+      "sha256": "79545e3adb4761ca696bc2b7466777f23332a2185cdca754dc5dfe4fdebbb4ba"
+    },
+    {
+      "file": ".qa-results/phase2/release-record/cloudflare-initial-build.log",
+      "sha256": "a0fa621190db1f1a611b5f26dda0eb171a38e0da9e632f94771d8b733a931ad2"
+    },
+    {
+      "file": ".qa-results/phase2/release-record/cloudflare-cms-build.log",
+      "sha256": "6586edda978fae33065922576c252eda863e125f11efc8a66dd5b30acb485b7a"
+    }
+  ],
+  "completedAt": "2026-11-27T12:42:33.968007+00:00",
+  "finalAcceptance": {
+    "liveWorkflow": "docs/evidence/2026-11-27/browser-functional-acceptance-LIVE.json",
+    "publicAccessibility": "docs/evidence/2026-11-27/public-accessibility-correlated.json",
+    "sharedHostLighthouse": "docs/evidence/2026-11-27/lighthouse-measurements.json",
+    "independentOfficialHomepage": "docs/evidence/2026-11-27/pagespeed-independent-home.json",
+    "cms": "docs/evidence/2026-11-27/cms-publishing-roundtrip.json",
+    "searchRequests": "docs/evidence/2026-11-27/search-indexing-requests.json",
+    "localPreview": "docs/evidence/2026-11-27/local-preview-verification.json"
+  },
+  "limitations": [
+    "Exact sample/artifact/browser/viewport scopes apply; not all devices/files/assistive technologies.",
+    "Performance scores vary; onlyone official homepage analysis reached100in all four categories for bothformfactors.",
+    "Original failed/blocked/partial attempts are preserved, including unresolved historical7events\u2014not retroactively relabeled.",
+    "Field data/ranking gains and universal subsecond processing are not established."
+  ]
+}

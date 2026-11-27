@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "capturedAt": "2026-11-27T12:39:31.886668+00:00",
+  "status": "PASS_LOCAL_FINAL_SOURCE_MIRROR",
+  "sourceCommit": "5fdf646b2b1465c150777e4872a020d4cbd2ac24",
+  "preview": "http://127.0.0.1:3221",
+  "buildId": "Dxf5SxcNuZAThX2bpVQj1",
+  "homepageSha256": "ca79c4abf7c695f89dc38034bb9db441d61c098caaa1720aadb34d4a4ec6edb3",
+  "gates": [
+    {
+      "arguments": [
+        "node",
+        "scripts/check-cms-inputs.mjs"
+      ],
+      "startedAt": "2026-11-27T12:33:35.470805+00:00",
+      "exitCode": 0,
+      "finishedAt": "2026-11-27T12:33:35.530237+00:00"
+    },
+    {
+      "arguments": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "startedAt": "2026-11-27T12:33:35.530640+00:00",
+      "exitCode": 0,
+      "finishedAt": "2026-11-27T12:34:32.256935+00:00"
+    },
+    {
+      "arguments": [
+        "node",
+        "scripts/cms-security.mjs",
+        "--verify-admin"
+      ],
+      "startedAt": "2026-11-27T12:34:32.258083+00:00",
+      "exitCode": 0,
+      "finishedAt": "2026-11-27T12:34:41.427349+00:00"
+    },
+    {
+      "arguments": [
+        "npm",
+        "run",
+        "check:public"
+      ],
+      "startedAt": "2026-11-27T12:34:41.427770+00:00",
+      "exitCode": 0,
+      "finishedAt": "2026-11-27T12:34:41.731796+00:00"
+    },
+    {
+      "arguments": [
+        "npm",
+        "run",
+        "check:export"
+      ],
+      "startedAt": "2026-11-27T12:34:41.732343+00:00",
+      "exitCode": 0,
+      "finishedAt": "2026-11-27T12:34:42.295393+00:00"
+    }
+  ],
+  "sourceProof": ".qa-results/phase2/release-final-mirror/source-proof.json",
+  "runtimeInputs": 159,
+  "unchangedFromFrozenI": 158,
+  "onlyChange": "Homepagefaq[4].a verified exactly against genuine Tina commit",
+  "workersAndMediaManifestMatchFrozenI": true,
+  "routes": 28,
+  "canonicalUrls": 27,
+  "draftExcluded": true,
+  "visibleFaqAndStructuredDataMatch": true,
+  "localAdmin": "Separately verified local-mode admin retained; this export is never a production upload. Normal GitHub/Cloudflare already built cloud-mode admin.",
+  "retainedI": {
+    "preview": "http://127.0.0.1:3220",
+    "homepageSha256": "e893578da90e565766c33104ebd7092f79ffea6cc710efd5d4ccf2fbfbe98c7c"
+  },
+  "limitations": [
+    "Source/build/asset/route/FAQ/server identity checks only;877tests and final79 browser workflows apply to their explicitly recorded CI/public artifacts.",
+    "No new browser suite or performance measurement was run on this mirror."
+  ]
+}

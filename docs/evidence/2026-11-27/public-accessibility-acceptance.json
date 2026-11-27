@@ -1,0 +1,467 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-11-27T12:32:32.157Z",
+  "status": "PASS_WITH_MANUAL_SVG_DISPOSITION",
+  "deployment": {
+    "publicUrl": "https://filecompresser.com",
+    "sourceCommit": "5fdf646b2b1465c150777e4872a020d4cbd2ac24",
+    "cloudflareDeploymentId": "3f5114e1-8094-4a07-9022-4a566e8feb0e",
+    "homepageSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+    "identityBefore": {
+      "status": "PASS",
+      "checks": 16
+    },
+    "identityAfter": {
+      "status": "PASS",
+      "checks": 16
+    }
+  },
+  "automatedAccessibility": {
+    "status": "PASS",
+    "tool": "axe-core",
+    "version": "4.14.1",
+    "auditSource": "scripts/accessibility-audit.mjs",
+    "auditSourceSha256": "1c5113de04a0d9a76647738f0fe8dc074f18241a3acd15a60afb14fae4123737",
+    "auditSourceUnchanged": true,
+    "browser": "Chromium 156.0.8078.47",
+    "viewport": {
+      "width": 1280,
+      "height": 720,
+      "dpr": 1
+    },
+    "tags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21a",
+      "wcag21aa",
+      "wcag22aa"
+    ],
+    "viewCount": 29,
+    "violationCount": 0,
+    "incompleteCheckCount": 4,
+    "routes": [
+      {
+        "route": "/",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/about",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/blog",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/privacy",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/terms",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/disclaimer",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/contact",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/sitemap",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/blog/compressing-files-for-the-web",
+        "violations": 0,
+        "incomplete": 1
+      },
+      {
+        "route": "/blog/what-privacy-claim-really-means",
+        "violations": 0,
+        "incomplete": 1
+      },
+      {
+        "route": "/blog/choosing-a-compression-mode",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/blog/honest-file-size-reporting",
+        "violations": 0,
+        "incomplete": 1
+      },
+      {
+        "route": "/blog/how-browser-compression-works",
+        "violations": 0,
+        "incomplete": 1
+      },
+      {
+        "route": "/compress",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/image-compressor",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/jpg-compressor",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/jpeg-compressor",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/png-compressor",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/webp-compressor",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/gif-compressor",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/video-compressor",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/webm-to-mp4",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/mp3-compressor",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/wav-compressor",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/pdf-compressor",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/zip-compressor",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/archive-compressor",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/wav-to-mp3",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/404-missing",
+        "violations": 0,
+        "incomplete": 0
+      }
+    ]
+  },
+  "svgManualReview": {
+    "status": "MANUAL_DISPOSITION_REUSED_FOR_IDENTICAL_SOURCE_AND_ACTUAL_LIVE_DOM",
+    "automatedIncompletesRetained": true,
+    "notAnAutomatedContrastPass": true,
+    "figureCount": 4,
+    "textNodeCount": 51,
+    "actualLiveSvgTreesAndNodesMatchTestedI": true,
+    "actualComputedForegroundsAndPaletteMatchI": true,
+    "actualDeliveredStylesheetBytesMatchI": true,
+    "retainedBackingPaintOrderBasis": "Previously reviewed identical whole SVG trees and palette; no changed backing shapes or paint order.",
+    "minimumRetainedRecomputedRatio": 4.5785863222047025,
+    "retainedManualEvidence": ".qa-results/phase2/svg-contrast-i/comparison.json",
+    "figures": [
+      {
+        "route": "/blog/compressing-files-for-the-web",
+        "id": "fig-formattree",
+        "viewBox": "0 0 720 290",
+        "liveSvgSha256": "223223b8e9740149cd8ee7e416c8bc71d8548f86ba5eae843d87b5e11a560c39",
+        "entireMarkupAndPaintOrderIdenticalToI": true
+      },
+      {
+        "route": "/blog/what-privacy-claim-really-means",
+        "id": "fig-dataflow",
+        "viewBox": "0 0 720 290",
+        "liveSvgSha256": "eab5aa7d3569faced70740bfea0e915dc3663e21b34b83c7ab411ea041ac7ece",
+        "entireMarkupAndPaintOrderIdenticalToI": true
+      },
+      {
+        "route": "/blog/honest-file-size-reporting",
+        "id": "fig-sizebars",
+        "viewBox": "0 0 720 230",
+        "liveSvgSha256": "af45c3ebfa3bb877e84ef90c1862bf6f90ba199c19a29eae51123fcd5bb73ba0",
+        "entireMarkupAndPaintOrderIdenticalToI": true
+      },
+      {
+        "route": "/blog/how-browser-compression-works",
+        "id": "fig-pipeline",
+        "viewBox": "0 0 720 210",
+        "liveSvgSha256": "c68acb03c97bb2e124ffcb14a73e0d0688e6a011f50a86a6c7ff974e33f85258",
+        "entireMarkupAndPaintOrderIdenticalToI": true
+      }
+    ],
+    "freshActualValidation": ".qa-results/phase2/final-public-axe29-correlated/independent-actual-validation.json"
+  },
+  "strictNetworkObserver": {
+    "status": "PASS",
+    "rawRequestFailures": 5,
+    "exactFulfilledHeadClassifications": 5,
+    "nativeRejectedHeads": 0,
+    "getFailures": 0,
+    "unresolvedDiagnostics": 0,
+    "expectedMissingPageConsole": 1,
+    "classification": "Each retained raw HEAD cancellation has its own HTTP 200, unique matching CDP request and fulfilled native 200 promise, plus successful route tree HTTP 200 response from the same document. No GET/rejectedHEAD/general abort exclusion.",
+    "proofSummary": [
+      {
+        "documentUrl": "https://filecompresser.com/about",
+        "requestId": "526557.71",
+        "ownStatus": 200,
+        "uniqueNativePromiseFulfilled": true,
+        "nativeStatus": 200,
+        "nativeBodyNull": false,
+        "uniqueCdpMatch": true,
+        "followingTreeStatus": 200,
+        "rawCancellationRetained": true
+      },
+      {
+        "documentUrl": "https://filecompresser.com/privacy",
+        "requestId": "526557.151",
+        "ownStatus": 200,
+        "uniqueNativePromiseFulfilled": true,
+        "nativeStatus": 200,
+        "nativeBodyNull": false,
+        "uniqueCdpMatch": true,
+        "followingTreeStatus": 200,
+        "rawCancellationRetained": true
+      },
+      {
+        "documentUrl": "https://filecompresser.com/terms",
+        "requestId": "526557.191",
+        "ownStatus": 200,
+        "uniqueNativePromiseFulfilled": true,
+        "nativeStatus": 200,
+        "nativeBodyNull": false,
+        "uniqueCdpMatch": true,
+        "followingTreeStatus": 200,
+        "rawCancellationRetained": true
+      },
+      {
+        "documentUrl": "https://filecompresser.com/disclaimer",
+        "requestId": "526557.230",
+        "ownStatus": 200,
+        "uniqueNativePromiseFulfilled": true,
+        "nativeStatus": 200,
+        "nativeBodyNull": false,
+        "uniqueCdpMatch": true,
+        "followingTreeStatus": 200,
+        "rawCancellationRetained": true
+      },
+      {
+        "documentUrl": "https://filecompresser.com/contact",
+        "requestId": "526557.269",
+        "ownStatus": 200,
+        "uniqueNativePromiseFulfilled": true,
+        "nativeStatus": 200,
+        "nativeBodyNull": false,
+        "uniqueCdpMatch": true,
+        "followingTreeStatus": 200,
+        "rawCancellationRetained": true
+      }
+    ],
+    "publicProof": "docs/evidence/2026-11-27/public-accessibility-correlated.json",
+    "rawEvidence": ".qa-results/phase2/final-public-axe29-correlated/observations.json",
+    "independentReview": ".qa-results/phase2/final-public-axe29-correlated/independent-actual-validation.json"
+  },
+  "browserClosure": {
+    "auditChildExitCode": 0,
+    "signal": null,
+    "closedNormally": true,
+    "disconnected": true
+  },
+  "evidence": [
+    {
+      "path": ".qa-results/phase2/final-public-axe29-correlated/completion.json",
+      "sha256": "8110329e8ec4b5147c69178b192c8ef07080354787f59cdbab754f1c0e8838ce"
+    },
+    {
+      "path": ".qa-results/phase2/final-public-axe29-correlated/axe-results.json",
+      "sha256": "f3fd7d9c457d1825bb833662e2154c387ddf1d4209716558c0a06c4614f7ee2d"
+    },
+    {
+      "path": ".qa-results/phase2/final-public-axe29-correlated/observations.json",
+      "sha256": "8dd4d864d52ba07385a34974e9a03224aaeaa8e9a66c8fd15b3da66c3de98a70"
+    },
+    {
+      "path": ".qa-results/phase2/final-public-axe29-correlated/diagnostic-review.json",
+      "sha256": "691a84868184aad3f65da41afa03017105439eca116c55188574397be27819a5"
+    },
+    {
+      "path": ".qa-results/phase2/final-public-axe29-correlated/identity-before.json",
+      "sha256": "2c7bfc33f3dd32f12fd7092534e9d773ec06bf6412eda0302e104d080f8aa563"
+    },
+    {
+      "path": ".qa-results/phase2/final-public-axe29-correlated/identity-after.json",
+      "sha256": "dfc4bf61c005b2103aec1db15e50bf7b5cdc815487474fc4826dce7647fb77bd"
+    },
+    {
+      "path": ".qa-results/phase2/final-public-axe29-correlated/svg-manual-disposition.json",
+      "sha256": "c14139b76ef0389d2085481a2bcd6be1713a529e312e7934371f6980e9cde3ad"
+    },
+    {
+      "path": ".qa-results/phase2/final-public-axe29-correlated/acceptance-summary.json",
+      "sha256": "6dff993b8d0c5dd07938568f351d6bde42338589dc5265b5d7a88ffeef580025"
+    },
+    {
+      "path": ".qa-results/phase2/final-public-axe29-correlated/independent-actual-validation.json",
+      "sha256": "1213e3d03c308dfad3dc2d818e5ac5fa712a11a9f3d875caf16d19026a6a664f"
+    }
+  ],
+  "limitations": [
+    "Default-page Chromium axe checks do not certify all interactive states, assistive technologies, physical devices or complete WCAG compliance.",
+    "Four automated SVG color-contrast incompletes remain separate from the manual disposition.",
+    "Five raw HEAD cancellations are retained and individually proven only for the fresh correlated run; native response bodyNull was false, so no empty-body claim is made.",
+    "The earlier strict wrapper remains FAIL7 with unresolved original events; the successful repeat does not retrospectively classify or erase it. Local responsive/state and live functional evidence have separate scopes."
+  ],
+  "observerConfiguration": {
+    "shippedAuditSourceUnchanged": true,
+    "defaultChromeOptionsAndViewportUnchanged": true,
+    "expandedWcagTagsUnchanged": true,
+    "privateReadOnlyCorrelation": true,
+    "previousDocumentNetworkSettlementBeforeForcedNavigation": true,
+    "finalDocumentNetworkSettlementBeforeBrowserClose": true,
+    "applicationPrefetchOrPolicyChanged": false,
+    "scope": "One fresh bounded correlated retry; no performance claim or retroactive classification of the first attempt."
+  },
+  "retainedEarlierAttempt": {
+    "capturedAt": "2026-11-27T12:22:29.046Z",
+    "status": "FAIL",
+    "automatedAxeStatus": "PASS",
+    "automatedViewCount": 29,
+    "automatedViolationCount": 0,
+    "strictNetworkObserver": {
+      "status": "FAIL",
+      "unresolvedRequestFailures": 7,
+      "events": [
+        {
+          "method": "HEAD",
+          "url": "https://filecompresser.com/",
+          "resourceType": "fetch",
+          "isNavigation": false,
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "method": "GET",
+          "url": "https://filecompresser.com/__next._index.txt?_rsc=6Q1v7HcIw7d_mkmQ",
+          "resourceType": "fetch",
+          "isNavigation": false,
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "method": "GET",
+          "url": "https://filecompresser.com/__next.__PAGE__.txt?_rsc=IbqYazZHyjXYH_Ld",
+          "resourceType": "fetch",
+          "isNavigation": false,
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "method": "HEAD",
+          "url": "https://filecompresser.com/",
+          "resourceType": "fetch",
+          "isNavigation": false,
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "method": "HEAD",
+          "url": "https://filecompresser.com/",
+          "resourceType": "fetch",
+          "isNavigation": false,
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "method": "HEAD",
+          "url": "https://filecompresser.com/",
+          "resourceType": "fetch",
+          "isNavigation": false,
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "method": "HEAD",
+          "url": "https://filecompresser.com/",
+          "resourceType": "fetch",
+          "isNavigation": false,
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "expectedMissingPageConsole": 1,
+      "cause": "UNPROVEN",
+      "limitation": "Five HEAD requests to the homepage and two static RSC GET requests aborted during the multi-page audit. This observer did not capture timestamps, response status, native promise outcomes or CDP initiators for those requests, so their precise navigation correlation cannot be established. Original strict wrapper remains failed; no abort filter or application change was applied."
+    },
+    "browserClosure": {
+      "auditChildExitCode": 0,
+      "signal": null,
+      "closedNormally": true,
+      "disconnected": true
+    },
+    "evidence": [
+      {
+        "path": ".qa-results/phase2/final-public-axe29/completion.json",
+        "sha256": "7eb181fe8f5fb28e5bfffee83823bde4378338e44e00f73828fae23841408ff4"
+      },
+      {
+        "path": ".qa-results/phase2/final-public-axe29/axe-results.json",
+        "sha256": "f3fd7d9c457d1825bb833662e2154c387ddf1d4209716558c0a06c4614f7ee2d"
+      },
+      {
+        "path": ".qa-results/phase2/final-public-axe29/observations.json",
+        "sha256": "d4462e210583640f5ab79b6cbad9a8b7f9c2b97c10c69c867eba72fff0ca9af2"
+      },
+      {
+        "path": ".qa-results/phase2/final-public-axe29/diagnostic-review.json",
+        "sha256": "62a175fe8f36b11fe6c9f42f85e8a980657ec30c01ca02c607c7893d48b71fd4"
+      },
+      {
+        "path": ".qa-results/phase2/final-public-axe29/identity-before.json",
+        "sha256": "7670a21c2d9be6a3659e37822444c3d43f07a38e99f36f4464a3f0a57f409d51"
+      },
+      {
+        "path": ".qa-results/phase2/final-public-axe29/identity-after.json",
+        "sha256": "7bd2625ed250861c9b478ec0f0c4602daaf4003f481ce2f61864f7957db74c76"
+      },
+      {
+        "path": ".qa-results/phase2/final-public-axe29/svg-manual-disposition.json",
+        "sha256": "79d5a6305c185953cef91bb2928d7031979b082f070c4f22f145069983827c66"
+      }
+    ],
+    "retrospectivelyClassified": false,
+    "originalRawSha256Unchanged": true
+  }
+}

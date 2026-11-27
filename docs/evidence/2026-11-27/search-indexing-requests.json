@@ -1,0 +1,29 @@
+{
+  "capturedAt": "2026-11-27T12:14:21.571Z",
+  "source": "Native Google Search Console owner property; final published5fdf646",
+  "requests": [
+    {
+      "url": "https://filecompresser.com/webm-to-mp4",
+      "status": "ACCEPTED_PRIORITY_CRAWL_QUEUE",
+      "before": "URL is unknown to Google",
+      "message": "Indexing requested. URL was added to a priority crawl queue.",
+      "capturedAt": "2026-11-27T12:14:21.572Z"
+    },
+    {
+      "url": "https://filecompresser.com/contact",
+      "status": "ACCEPTED_INDEXING_REQUEST",
+      "before": "Discovered \u2013 currently not indexed",
+      "message": "Native inspection now shows Indexing requested and REQUEST AGAIN.",
+      "capturedAt": "2026-11-27T12:16:49.273Z"
+    },
+    {
+      "url": "https://filecompresser.com/jpg-compressor",
+      "status": "ACCEPTED_PRIORITY_CRAWL_QUEUE",
+      "before": "Discovered \u2013 currently not indexed",
+      "message": "Indexing requested. URL was added to a priority crawl queue.",
+      "capturedAt": "2026-11-27T12:19:15.672Z"
+    }
+  ],
+  "limitation": "Request acceptance is not proof of crawling, indexing or ranking gain.",
+  "completedAt": "2026-11-27T12:19:15.672Z"
+}

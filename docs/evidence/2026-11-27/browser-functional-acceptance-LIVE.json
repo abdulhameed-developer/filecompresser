@@ -1,0 +1,2000 @@
+{
+  "capturedAt": "2026-11-27T12:16:02.963Z",
+  "status": "PASS",
+  "scope": "Actual published deployment after genuine hosted Tina Save→Git→Cloudflare roundtrip. Generated acceptance fixtures only; no visitor files.",
+  "sourceCommit": "5fdf646b2b1465c150777e4872a020d4cbd2ac24",
+  "cloudflareDeploymentId": "3f5114e1-8094-4a07-9022-4a566e8feb0e",
+  "publicUrl": "https://filecompresser.com",
+  "immutableDeploymentUrl": "https://3f5114e1.filecompresser.pages.dev",
+  "publicHomepageSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+  "immutableHomepageSha256": "7231c8728f4460c638adfb44ce3e8b9c522a8739d109506999a9f70e5f71edc7",
+  "functionalHarness": {
+    "sha256": "15b8b7edcb4b59f9fa95b35946816db7671a1897dacabafb9ab37497fb66be21",
+    "cases": 79,
+    "passed": 79,
+    "originalAssertionsRetained": 110
+  },
+  "workflow": {
+    "browser": "156.0.8078.47",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "touchEmulation": false,
+    "caseCount": 79,
+    "passed": 79,
+    "downloads": 57,
+    "downloadHashesIndependentlyRechecked": true,
+    "downloadDirectory": ".qa-results/phase2/final-live-acceptance/live79-after-logo-purge/download-proofs",
+    "stateCaptures": 50,
+    "normalChildExit": {
+      "capturedAt": "2026-11-27T12:08:16.828Z",
+      "code": 0,
+      "signal": null
+    },
+    "consoleErrors": 0,
+    "failedResources": 0,
+    "exceptions": 0,
+    "uploadRequests": 0,
+    "captureErrors": 0,
+    "unexpectedBrowserLifecycleEvents": 0,
+    "evidence": ".qa-results/phase2/final-live-acceptance/live79-after-logo-purge/functionality.json"
+  },
+  "toolStatuses": [
+    {
+      "route": "/compress",
+      "alias": false,
+      "status": "PASS",
+      "outputCaseOrdinals": [
+        72
+      ],
+      "recoveryCaseOrdinal": 58,
+      "capturedStates": [
+        "default",
+        "populated",
+        "completed"
+      ]
+    },
+    {
+      "route": "/image-compressor",
+      "alias": false,
+      "status": "PASS",
+      "outputCaseOrdinals": [
+        3
+      ],
+      "recoveryCaseOrdinal": 59,
+      "capturedStates": [
+        "default",
+        "populated",
+        "completed",
+        "settings"
+      ]
+    },
+    {
+      "route": "/jpg-compressor",
+      "alias": false,
+      "status": "PASS",
+      "outputCaseOrdinals": [
+        1
+      ],
+      "recoveryCaseOrdinal": 60,
+      "capturedStates": [
+        "default",
+        "populated",
+        "completed",
+        "settings"
+      ]
+    },
+    {
+      "route": "/jpeg-compressor",
+      "alias": false,
+      "status": "PASS",
+      "outputCaseOrdinals": [
+        2
+      ],
+      "recoveryCaseOrdinal": 61,
+      "capturedStates": [
+        "default",
+        "populated",
+        "completed"
+      ]
+    },
+    {
+      "route": "/png-compressor",
+      "alias": false,
+      "status": "PASS",
+      "outputCaseOrdinals": [
+        4
+      ],
+      "recoveryCaseOrdinal": 62,
+      "capturedStates": [
+        "default",
+        "populated",
+        "completed",
+        "settings"
+      ]
+    },
+    {
+      "route": "/webp-compressor",
+      "alias": false,
+      "status": "PASS",
+      "outputCaseOrdinals": [
+        5
+      ],
+      "recoveryCaseOrdinal": 63,
+      "capturedStates": [
+        "default",
+        "populated",
+        "completed",
+        "settings"
+      ]
+    },
+    {
+      "route": "/gif-compressor",
+      "alias": false,
+      "status": "PASS",
+      "outputCaseOrdinals": [
+        34
+      ],
+      "recoveryCaseOrdinal": 64,
+      "capturedStates": [
+        "default",
+        "populated",
+        "completed"
+      ]
+    },
+    {
+      "route": "/video-compressor",
+      "alias": false,
+      "status": "PASS",
+      "outputCaseOrdinals": [
+        46,
+        47,
+        48,
+        49,
+        50
+      ],
+      "recoveryCaseOrdinal": 65,
+      "capturedStates": [
+        "default",
+        "populated",
+        "completed"
+      ]
+    },
+    {
+      "route": "/webm-to-mp4",
+      "alias": false,
+      "status": "PASS",
+      "outputCaseOrdinals": [
+        51
+      ],
+      "recoveryCaseOrdinal": 66,
+      "capturedStates": [
+        "default",
+        "populated",
+        "completed"
+      ]
+    },
+    {
+      "route": "/mp3-compressor",
+      "alias": false,
+      "status": "PASS",
+      "outputCaseOrdinals": [
+        37,
+        38,
+        39,
+        40
+      ],
+      "recoveryCaseOrdinal": 67,
+      "capturedStates": [
+        "default",
+        "populated",
+        "completed"
+      ]
+    },
+    {
+      "route": "/wav-compressor",
+      "alias": false,
+      "status": "PASS",
+      "outputCaseOrdinals": [
+        35
+      ],
+      "recoveryCaseOrdinal": 68,
+      "capturedStates": [
+        "default",
+        "populated",
+        "completed",
+        "settings"
+      ]
+    },
+    {
+      "route": "/pdf-compressor",
+      "alias": false,
+      "status": "PASS",
+      "outputCaseOrdinals": [
+        52
+      ],
+      "recoveryCaseOrdinal": 70,
+      "capturedStates": [
+        "default",
+        "populated",
+        "completed"
+      ]
+    },
+    {
+      "route": "/zip-compressor",
+      "alias": false,
+      "status": "PASS",
+      "outputCaseOrdinals": [
+        53,
+        75,
+        76
+      ],
+      "capturedStates": [
+        "default",
+        "populated",
+        "completed"
+      ]
+    },
+    {
+      "route": "/archive-compressor",
+      "alias": false,
+      "status": "PASS",
+      "outputCaseOrdinals": [
+        54,
+        74,
+        77,
+        78
+      ],
+      "recoveryCaseOrdinal": 71,
+      "capturedStates": [
+        "default",
+        "populated",
+        "completed"
+      ]
+    },
+    {
+      "route": "/wav-to-mp3",
+      "alias": true,
+      "status": "PASS",
+      "outputCaseOrdinals": [
+        36
+      ],
+      "recoveryCaseOrdinal": 69,
+      "capturedStates": [
+        "default",
+        "populated",
+        "completed"
+      ]
+    }
+  ],
+  "downloadProofs": [
+    {
+      "file": "001-image-compressed.jpg",
+      "output": "image-compressed.jpg",
+      "case": "/jpg-compressor decoded output",
+      "bytes": 12391,
+      "sha256": "968e31a6755ccc3c9c402168a7a9932f8e58bd12a81892c3139bc30e8ab8c711"
+    },
+    {
+      "file": "002-image-compressed.jpg",
+      "output": "image-compressed.jpg",
+      "case": "/jpeg-compressor decoded output",
+      "bytes": 12391,
+      "sha256": "968e31a6755ccc3c9c402168a7a9932f8e58bd12a81892c3139bc30e8ab8c711"
+    },
+    {
+      "file": "003-image-compressed.jpg",
+      "output": "image-compressed.jpg",
+      "case": "/image-compressor decoded output",
+      "bytes": 12391,
+      "sha256": "968e31a6755ccc3c9c402168a7a9932f8e58bd12a81892c3139bc30e8ab8c711"
+    },
+    {
+      "file": "004-image-compressed.png",
+      "output": "image-compressed.png",
+      "case": "/png-compressor decoded output",
+      "bytes": 3296,
+      "sha256": "ea6a297bf4269622bb3b09b6e9898f898a6b498a4e3d690eea3312e877c626ff"
+    },
+    {
+      "file": "005-image.webp",
+      "output": "image.webp",
+      "case": "/webp-compressor decoded output",
+      "bytes": 5174,
+      "sha256": "69e51edd3bb895c5e784b10ef02745c298553efdaab5419aa4c186b254b4b7c8"
+    },
+    {
+      "file": "006-image-compressed.jpg",
+      "output": "image-compressed.jpg",
+      "case": "Image comparison zoom, mobile bounds, background scroll and keyboard recovery",
+      "bytes": 12391,
+      "sha256": "968e31a6755ccc3c9c402168a7a9932f8e58bd12a81892c3139bc30e8ab8c711"
+    },
+    {
+      "file": "007-image.jpg",
+      "output": "image.jpg",
+      "case": "Enter in settings does not start processing; Done then the primary action succeeds",
+      "bytes": 16876,
+      "sha256": "fd9d57be62459a151153e0bee92a745f37a44efd1debcfd03b9a5ae18205d263"
+    },
+    {
+      "file": "008-image-compressed.jpg",
+      "output": "image-compressed.jpg",
+      "case": "/jpg-compressor real Balanced preset",
+      "bytes": 12391,
+      "sha256": "968e31a6755ccc3c9c402168a7a9932f8e58bd12a81892c3139bc30e8ab8c711"
+    },
+    {
+      "file": "009-image-compressed.jpg",
+      "output": "image-compressed.jpg",
+      "case": "/jpg-compressor real High quality preset",
+      "bytes": 16859,
+      "sha256": "37500e32b4b5c82b8f22af2383647bdcd0606e1cc1bff5a6e390475d36095f6e"
+    },
+    {
+      "file": "010-image-compressed.jpg",
+      "output": "image-compressed.jpg",
+      "case": "/jpg-compressor real Maximum preset",
+      "bytes": 8125,
+      "sha256": "f103efff42a9821988c6a6671ff4920bc030e6233550e42ee0d0f43fad29c9c8"
+    },
+    {
+      "file": "011-image.webp",
+      "output": "image.webp",
+      "case": "/webp-compressor real Balanced preset",
+      "bytes": 5174,
+      "sha256": "69e51edd3bb895c5e784b10ef02745c298553efdaab5419aa4c186b254b4b7c8"
+    },
+    {
+      "file": "012-image.webp",
+      "output": "image.webp",
+      "case": "/webp-compressor real High quality preset",
+      "bytes": 5174,
+      "sha256": "69e51edd3bb895c5e784b10ef02745c298553efdaab5419aa4c186b254b4b7c8"
+    },
+    {
+      "file": "013-image.webp",
+      "output": "image.webp",
+      "case": "/webp-compressor real Maximum preset",
+      "bytes": 5174,
+      "sha256": "69e51edd3bb895c5e784b10ef02745c298553efdaab5419aa4c186b254b4b7c8"
+    },
+    {
+      "file": "014-image-compressed.png",
+      "output": "image-compressed.png",
+      "case": "PNG real Lossless preset",
+      "bytes": 3296,
+      "sha256": "ea6a297bf4269622bb3b09b6e9898f898a6b498a4e3d690eea3312e877c626ff"
+    },
+    {
+      "file": "015-image-compressed.png",
+      "output": "image-compressed.png",
+      "case": "PNG real Smart preset",
+      "bytes": 3296,
+      "sha256": "ea6a297bf4269622bb3b09b6e9898f898a6b498a4e3d690eea3312e877c626ff"
+    },
+    {
+      "file": "016-image-compressed.png",
+      "output": "image-compressed.png",
+      "case": "PNG real Maximum preset",
+      "bytes": 2563,
+      "sha256": "80d3632715ff952df8c5fe98f8ede544763cbda8b0deade7dbbb8766c8f47c7e"
+    },
+    {
+      "file": "017-image-converted.webp",
+      "output": "image-converted.webp",
+      "case": "PNG to WEBP real High quality preset",
+      "bytes": 8174,
+      "sha256": "41bd541acfcd2b3df0e6bbff18bef07e6f2862fb79132f1549394221206b5d1c"
+    },
+    {
+      "file": "018-image-converted.webp",
+      "output": "image-converted.webp",
+      "case": "PNG to WEBP real Maximum preset",
+      "bytes": 5556,
+      "sha256": "6903fae35dd581ad773b8103d9a588774c106d4ea3c6bf3f5fb98bb918fbf258"
+    },
+    {
+      "file": "019-image-compressed.png",
+      "output": "image-compressed.png",
+      "case": "/png-compressor genuine target output and truthful limit status",
+      "bytes": 2535,
+      "sha256": "53b2b143f24bff57b241dad1b0a5fed9700ce89f4653151332db6dd3ec4eeddf"
+    },
+    {
+      "file": "020-image-compressed.webp",
+      "output": "image-compressed.webp",
+      "case": "/webp-compressor genuine target output and truthful limit status",
+      "bytes": 4992,
+      "sha256": "06fb34ca433596b7c04238d26f2645062df45fe6227bc9da5e947863aaf29331"
+    },
+    {
+      "file": "021-image-compressed.jpg",
+      "output": "image-compressed.jpg",
+      "case": "JPEG real custom quality 10%",
+      "bytes": 3697,
+      "sha256": "31ba07f47b87e9b226bb7dd55a48fa44cc950f9726b5875a570d1d28fd681323"
+    },
+    {
+      "file": "022-image-compressed.jpg",
+      "output": "image-compressed.jpg",
+      "case": "JPEG real custom quality 100%",
+      "bytes": 16859,
+      "sha256": "37500e32b4b5c82b8f22af2383647bdcd0606e1cc1bff5a6e390475d36095f6e"
+    },
+    {
+      "file": "023-image.jpg",
+      "output": "image.jpg",
+      "case": "JPG target size and stable KB input",
+      "bytes": 16876,
+      "sha256": "fd9d57be62459a151153e0bee92a745f37a44efd1debcfd03b9a5ae18205d263"
+    },
+    {
+      "file": "024-image-converted.jpg",
+      "output": "image-converted.jpg",
+      "case": "Image conversion to jpeg",
+      "bytes": 12777,
+      "sha256": "ce83914a92b9d648e8c8aeb447105ac3e4c5f38408254c2bd4e15b2f4fa45cd2"
+    },
+    {
+      "file": "025-image-converted.png",
+      "output": "image-converted.png",
+      "case": "Image conversion to png",
+      "bytes": 23679,
+      "sha256": "6433a5cceee043ce0e91269d831597bb2e707aa48b2ff1cdcbff9c54e25b9b93"
+    },
+    {
+      "file": "026-image-converted.webp",
+      "output": "image-converted.webp",
+      "case": "Image conversion to webp",
+      "bytes": 6668,
+      "sha256": "3e834ee79899a0facee219cf4dc5c35abc828862a10eb12fe1722db3a60115a3"
+    },
+    {
+      "file": "027-alpha-converted.webp",
+      "output": "alpha-converted.webp",
+      "case": "Transparent JPG conversion is refused without losing the input",
+      "bytes": 572,
+      "sha256": "a8e1dd62f2e62414b556945016c9ba9bdacf1ea3f3566d43d3325f66dfcd1be3"
+    },
+    {
+      "file": "028-image-compressed.jpg",
+      "output": "image-compressed.jpg",
+      "case": "Unreachable image target is reported honestly",
+      "bytes": 5552,
+      "sha256": "50fed6bd59ef2d6abfa6fcdfba23883857d0520faf323629e9c7e5de9fd1eaec"
+    },
+    {
+      "file": "029-animation.gif",
+      "output": "animation.gif",
+      "case": "GIF animation and finite loop preservation",
+      "bytes": 16010,
+      "sha256": "056e28401c5cd5fb98bcdfb9881a504ed40c101d33584f776a768cf6344a4034"
+    },
+    {
+      "file": "030-tone.mp3",
+      "output": "tone.mp3",
+      "case": "/wav-compressor .wav genuine audio source/output",
+      "bytes": 50157,
+      "sha256": "a51af823394215ae291e5030281922e0d7d0db832c7592d6248a18adcf685076"
+    },
+    {
+      "file": "031-tone.mp3",
+      "output": "tone.mp3",
+      "case": "/wav-to-mp3 .wav genuine audio source/output",
+      "bytes": 50157,
+      "sha256": "a51af823394215ae291e5030281922e0d7d0db832c7592d6248a18adcf685076"
+    },
+    {
+      "file": "032-tone.mp3",
+      "output": "tone.mp3",
+      "case": "/mp3-compressor .mp3 genuine audio source/output",
+      "bytes": 41840,
+      "sha256": "37a02740181be595785f3fe6e0b54ef420bad928d83e7a9e4974e0de051388ab"
+    },
+    {
+      "file": "033-tone.mp3",
+      "output": "tone.mp3",
+      "case": "/mp3-compressor .m4a genuine audio source/output",
+      "bytes": 51120,
+      "sha256": "0762ef6e9245fe9eac3600964e262a2af986e681f3bfd318039f80d3285d3ea1"
+    },
+    {
+      "file": "034-tone.mp3",
+      "output": "tone.mp3",
+      "case": "/mp3-compressor .flac genuine audio source/output",
+      "bytes": 50157,
+      "sha256": "a51af823394215ae291e5030281922e0d7d0db832c7592d6248a18adcf685076"
+    },
+    {
+      "file": "035-tone.mp3",
+      "output": "tone.mp3",
+      "case": "/mp3-compressor .ogg genuine audio source/output",
+      "bytes": 50157,
+      "sha256": "43a2c62ba132f42faaed0803b8469688e96027c03e33fc3623c4da0117f2a4df"
+    },
+    {
+      "file": "036-tone-opus.mp3",
+      "output": "tone-opus.mp3",
+      "case": "Ogg Opus input decoded to genuine audible MP3",
+      "bytes": 49581,
+      "sha256": "7cbac26b2d7959805e3fb27f6672c5628cc49ccb0e9cac9ad26e3d1e589f2e2f"
+    },
+    {
+      "file": "037-tone-alac.mp3",
+      "output": "tone-alac.mp3",
+      "case": "ALAC in M4A input decoded to genuine audible MP3",
+      "bytes": 49671,
+      "sha256": "730bdcb039e1016ddb1dba5826b8d87ca440f279f242d040833a889e7a586ffc"
+    },
+    {
+      "file": "038-tone-8000.mp3",
+      "output": "tone-8000.mp3",
+      "case": "Low-sample-rate audio: 8000 Hz at 96k",
+      "bytes": 13437,
+      "sha256": "68bea24a752eb43c8eb074ab853681a68d589f32b7c4f0abb2b15746fc9bc60c"
+    },
+    {
+      "file": "039-tone-16000.mp3",
+      "output": "tone-16000.mp3",
+      "case": "Low-sample-rate audio: 16000 Hz at 320k",
+      "bytes": 43245,
+      "sha256": "9f647d1ffd1c4c6913470bd5688f45933ebab7eaf82fe0afb08012c0e912264f"
+    },
+    {
+      "file": "040-tone-22050.mp3",
+      "output": "tone-22050.mp3",
+      "case": "Low-sample-rate audio: 22050 Hz at 320k",
+      "bytes": 43245,
+      "sha256": "3af9bd6c5b01bcfa8c7009f8fc1141220e410f2b08d012f6c05556433818ca81"
+    },
+    {
+      "file": "041-video.mp4",
+      "output": "video.mp4",
+      "case": "H264/AAC MP4 input produces decoded H264/AAC MP4",
+      "bytes": 17238,
+      "sha256": "88d437440f33f0e6d3296e8f2f81ad873b15132766f0b3b40ce521dfb5df61bd"
+    },
+    {
+      "file": "042-video-compressed.mp4",
+      "output": "video-compressed.mp4",
+      "case": "H264/AAC MOV input produces decoded H264/AAC MP4",
+      "bytes": 22437,
+      "sha256": "ce212770322b5ec2a95618ff72f70df2406b5643f31caa62a58cd1a657a6b3fd"
+    },
+    {
+      "file": "043-video-hevc-compressed.mp4",
+      "output": "video-hevc-compressed.mp4",
+      "case": "HEVC/AAC MP4 input produces decoded H264/AAC MP4",
+      "bytes": 22380,
+      "sha256": "ec05fa47987d203f3fd8982e2731833ca959ee9739337ed345b3f346673a2128"
+    },
+    {
+      "file": "044-video-prores-compressed.mp4",
+      "output": "video-prores-compressed.mp4",
+      "case": "ProRes/PCM MOV input produces decoded H264/AAC MP4",
+      "bytes": 23644,
+      "sha256": "ca40b8f25614938837362d863b295d9a93048a6f82b34ec9ffcfbcc2a3edbe9a"
+    },
+    {
+      "file": "045-video-vp9-compressed.mp4",
+      "output": "video-vp9-compressed.mp4",
+      "case": "VP9/AAC MP4 input produces decoded H264/AAC MP4",
+      "bytes": 22349,
+      "sha256": "33f517601b20fd4eae841698f3b4d3e8287518288810db740c6c235ad34f4805"
+    },
+    {
+      "file": "046-video.mp4",
+      "output": "video.mp4",
+      "case": "WebM converter downloads a valid H264/AAC MP4 with original duration and dimensions",
+      "bytes": 37369,
+      "sha256": "6dbdffe343bc736bca3e0f672188c471b9d3059449d4ad28f2162cb4481025be"
+    },
+    {
+      "file": "047-misnamed-compressed.pdf",
+      "output": "misnamed-compressed.pdf",
+      "case": "PDF readable content and page count",
+      "bytes": 731,
+      "sha256": "2aa15ddf72bf2a17bb4d276ed3a1e482738ed732365a15c4d7f8261dc64ba72a"
+    },
+    {
+      "file": "048-archive.zip",
+      "output": "archive.zip",
+      "case": "ZIP batch round trip and full original total",
+      "bytes": 13835,
+      "sha256": "528f98462c53cb403307f5358df2130dbc59b041605267e5c1e7ec24fd640d8d"
+    },
+    {
+      "file": "049-filecompresser-archive-compressor.zip",
+      "output": "filecompresser-archive-compressor.zip",
+      "case": "Extraction downloads every file without compression claims",
+      "bytes": 233,
+      "sha256": "7a04b51d51f36177c0f3360921fdcbb89ce4c6873d11d3ddfed94baa4bb843b7"
+    },
+    {
+      "file": "050-one.txt",
+      "output": "one.txt",
+      "case": "Extraction downloads every file without compression claims",
+      "bytes": 5,
+      "sha256": "a7937b64b8caa58f03721bb6bacf5c78cb235febe0e70b1b84cd99541461a08e"
+    },
+    {
+      "file": "051-filecompresser-compress.zip",
+      "output": "filecompresser-compress.zip",
+      "case": "Mixed generic batch dispatch",
+      "bytes": 34401,
+      "sha256": "196e5e923a9c50bc3d874601fd7fe91ef5a4c4ebbcdd11b16524860f76e4fc92"
+    },
+    {
+      "file": "052-cancel-compressed.mp4",
+      "output": "cancel-compressed.mp4",
+      "case": "Cancel all prevents waiting video and retry succeeds",
+      "bytes": 760632,
+      "sha256": "60d855207f99501f2173fc981070a40f2fbb32c1fc8c28d6adaa233707054d57"
+    },
+    {
+      "file": "053-filecompresser-archive-compressor.zip",
+      "output": "filecompresser-archive-compressor.zip",
+      "case": "Permanent ZIP failures require a replacement and reject futile submits",
+      "bytes": 233,
+      "sha256": "7ee90af72097926baab67453ef019f6ec7614c18998a0b9e5d3fe15b5478d79b"
+    },
+    {
+      "file": "054-archive.zip",
+      "output": "archive.zip",
+      "case": "ZIP creation preserves zero-byte entries (1 inputs)",
+      "bytes": 118,
+      "sha256": "38d3617ec96869c25de31120804c745f034859d8b8d6e049b5092f20b9fa5664"
+    },
+    {
+      "file": "055-archive.zip",
+      "output": "archive.zip",
+      "case": "ZIP creation preserves zero-byte entries (2 inputs)",
+      "bytes": 989,
+      "sha256": "9ec4e684ff90afa993e40582f4bd5e57ab98389c10f7ed858df8816eb4d97e38"
+    },
+    {
+      "file": "056-empty.txt",
+      "output": "empty.txt",
+      "case": "ZIP extraction downloads a genuine zero-byte file",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "057-worker.bin",
+      "output": "worker.bin",
+      "case": "A real ZIP Worker startup failure remains retryable and recovers",
+      "bytes": 524288,
+      "sha256": "b727666913c6db8b72b74ce50f1b9c4a4931225e32cc184e2592781007ff2acf"
+    }
+  ],
+  "beforeAfterIdentity": {
+    "workflow": {
+      "before": {
+        "publicHomeSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+        "immutableHomeSha256": "7231c8728f4460c638adfb44ce3e8b9c522a8739d109506999a9f70e5f71edc7",
+        "footerRule": {
+          "publicSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+          "immutableSha256": "7231c8728f4460c638adfb44ce3e8b9c522a8739d109506999a9f70e5f71edc7",
+          "publicBytes": 110378,
+          "immutableBytes": 110411,
+          "rawEqual": false,
+          "mode": "exact evidenced Cloudflare footer email-comment removal",
+          "removedBytes": 33,
+          "immutableMarkerCounts": {
+            "opening": 1,
+            "closing": 1
+          },
+          "publicMarkerCounts": {
+            "opening": 0,
+            "closing": 0
+          },
+          "unchangedAnchor": "<a href=\"mailto:info@filecompresser.com\">info@filecompresser.com</a>",
+          "allRemainingBytesIdentical": true
+        },
+        "resources": [
+          {
+            "name": "public-home",
+            "status": 200,
+            "bytes": 110378,
+            "sha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb"
+          },
+          {
+            "name": "immutable-home",
+            "status": 200,
+            "bytes": 110411,
+            "sha256": "7231c8728f4460c638adfb44ce3e8b9c522a8739d109506999a9f70e5f71edc7"
+          },
+          {
+            "name": "image-pipeline.mjs",
+            "status": 200,
+            "bytes": 15533,
+            "sha256": "8e9ce49d7e90115d20ecc30cc130a06746d9b03b5b164e4e56f1e81f1d7987c6"
+          },
+          {
+            "name": "image-engine.mjs",
+            "status": 200,
+            "bytes": 1174,
+            "sha256": "5179b8034f0272e92d54b8b9e2bb6aea6844658d66f1eab372fefb9ea6361f5a"
+          },
+          {
+            "name": "image-canvas.mjs",
+            "status": 200,
+            "bytes": 15269,
+            "sha256": "96e366066cc5720a4a9267c878d05af80b591cc5e69bde773f71b8f5adbc4173"
+          },
+          {
+            "name": "image-metadata.mjs",
+            "status": 200,
+            "bytes": 10124,
+            "sha256": "a584b568d2735f3fb1f345157c2c118a3ab63e9e1cb3377684c03caff09b3ec9"
+          },
+          {
+            "name": "image-png.mjs",
+            "status": 200,
+            "bytes": 11710,
+            "sha256": "2c15e4efe4e413f37655028c8d95dd2092476f473e126a4dc9b0cda72923053f"
+          },
+          {
+            "name": "logo.png",
+            "status": 200,
+            "bytes": 22361,
+            "sha256": "20c05cf089e1341eb498002013670d4d7d0e587549c32bbad116c04d464ebbab"
+          },
+          {
+            "name": "/blog/dataflow-768.webp",
+            "status": 200,
+            "bytes": 81616,
+            "sha256": "b6d3610bfb6450121055d2c0871e0d3f983fa27cbb77a6c3e1eb3e1b04418d35"
+          },
+          {
+            "name": "/blog/formattree-768.webp",
+            "status": 200,
+            "bytes": 65586,
+            "sha256": "fd7725e5033e1e91585d740e2ffc8fc9e57655aad3668880112dfa79c297d130"
+          },
+          {
+            "name": "/blog/pipeline-768.webp",
+            "status": 200,
+            "bytes": 48054,
+            "sha256": "60c903060071cbcc48559ff12479daee2c9091772ceb392e7b7b51e1dcd63d94"
+          },
+          {
+            "name": "/blog/qualitycurve-768.webp",
+            "status": 200,
+            "bytes": 65190,
+            "sha256": "372bdb9ddd4d518067add9e27ebbfeaccfbec8d65e23f3af181cc8a3f84fe753"
+          },
+          {
+            "name": "/blog/sizebars-768.webp",
+            "status": 200,
+            "bytes": 66696,
+            "sha256": "959d058e481e4e66377e4d4f20b723d8bf2bef69e904df3e7b1e1e71dfa32991"
+          },
+          {
+            "name": "blog",
+            "status": 200,
+            "bytes": 45216,
+            "sha256": "c2c83d81fd6e706c958cd75e3c4a27974622ddf03e4bb7277eeb5e8994dc7fa7"
+          },
+          {
+            "name": "sitemap.xml",
+            "status": 200,
+            "bytes": 3659,
+            "sha256": "5568b4c5821bb1c7e6fe7f5be7457b5c7fda44f395ccfa77048de57d3265e069"
+          },
+          {
+            "name": "unpublished-draft",
+            "status": 404,
+            "bytes": 32239,
+            "sha256": "c23e6e0cae19a5a37255ab643c9dadae1634ddd54c719aece3a1f9c5ae8e9a6d"
+          }
+        ],
+        "evidence": ".qa-results/phase2/final-live-acceptance/live79-after-logo-purge/identity-before.json"
+      },
+      "after": {
+        "publicHomeSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+        "immutableHomeSha256": "7231c8728f4460c638adfb44ce3e8b9c522a8739d109506999a9f70e5f71edc7",
+        "footerRule": {
+          "publicSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+          "immutableSha256": "7231c8728f4460c638adfb44ce3e8b9c522a8739d109506999a9f70e5f71edc7",
+          "publicBytes": 110378,
+          "immutableBytes": 110411,
+          "rawEqual": false,
+          "mode": "exact evidenced Cloudflare footer email-comment removal",
+          "removedBytes": 33,
+          "immutableMarkerCounts": {
+            "opening": 1,
+            "closing": 1
+          },
+          "publicMarkerCounts": {
+            "opening": 0,
+            "closing": 0
+          },
+          "unchangedAnchor": "<a href=\"mailto:info@filecompresser.com\">info@filecompresser.com</a>",
+          "allRemainingBytesIdentical": true
+        },
+        "resources": [
+          {
+            "name": "public-home",
+            "status": 200,
+            "bytes": 110378,
+            "sha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb"
+          },
+          {
+            "name": "immutable-home",
+            "status": 200,
+            "bytes": 110411,
+            "sha256": "7231c8728f4460c638adfb44ce3e8b9c522a8739d109506999a9f70e5f71edc7"
+          },
+          {
+            "name": "image-pipeline.mjs",
+            "status": 200,
+            "bytes": 15533,
+            "sha256": "8e9ce49d7e90115d20ecc30cc130a06746d9b03b5b164e4e56f1e81f1d7987c6"
+          },
+          {
+            "name": "image-engine.mjs",
+            "status": 200,
+            "bytes": 1174,
+            "sha256": "5179b8034f0272e92d54b8b9e2bb6aea6844658d66f1eab372fefb9ea6361f5a"
+          },
+          {
+            "name": "image-canvas.mjs",
+            "status": 200,
+            "bytes": 15269,
+            "sha256": "96e366066cc5720a4a9267c878d05af80b591cc5e69bde773f71b8f5adbc4173"
+          },
+          {
+            "name": "image-metadata.mjs",
+            "status": 200,
+            "bytes": 10124,
+            "sha256": "a584b568d2735f3fb1f345157c2c118a3ab63e9e1cb3377684c03caff09b3ec9"
+          },
+          {
+            "name": "image-png.mjs",
+            "status": 200,
+            "bytes": 11710,
+            "sha256": "2c15e4efe4e413f37655028c8d95dd2092476f473e126a4dc9b0cda72923053f"
+          },
+          {
+            "name": "logo.png",
+            "status": 200,
+            "bytes": 22361,
+            "sha256": "20c05cf089e1341eb498002013670d4d7d0e587549c32bbad116c04d464ebbab"
+          },
+          {
+            "name": "/blog/dataflow-768.webp",
+            "status": 200,
+            "bytes": 81616,
+            "sha256": "b6d3610bfb6450121055d2c0871e0d3f983fa27cbb77a6c3e1eb3e1b04418d35"
+          },
+          {
+            "name": "/blog/formattree-768.webp",
+            "status": 200,
+            "bytes": 65586,
+            "sha256": "fd7725e5033e1e91585d740e2ffc8fc9e57655aad3668880112dfa79c297d130"
+          },
+          {
+            "name": "/blog/pipeline-768.webp",
+            "status": 200,
+            "bytes": 48054,
+            "sha256": "60c903060071cbcc48559ff12479daee2c9091772ceb392e7b7b51e1dcd63d94"
+          },
+          {
+            "name": "/blog/qualitycurve-768.webp",
+            "status": 200,
+            "bytes": 65190,
+            "sha256": "372bdb9ddd4d518067add9e27ebbfeaccfbec8d65e23f3af181cc8a3f84fe753"
+          },
+          {
+            "name": "/blog/sizebars-768.webp",
+            "status": 200,
+            "bytes": 66696,
+            "sha256": "959d058e481e4e66377e4d4f20b723d8bf2bef69e904df3e7b1e1e71dfa32991"
+          },
+          {
+            "name": "blog",
+            "status": 200,
+            "bytes": 45216,
+            "sha256": "c2c83d81fd6e706c958cd75e3c4a27974622ddf03e4bb7277eeb5e8994dc7fa7"
+          },
+          {
+            "name": "sitemap.xml",
+            "status": 200,
+            "bytes": 3659,
+            "sha256": "5568b4c5821bb1c7e6fe7f5be7457b5c7fda44f395ccfa77048de57d3265e069"
+          },
+          {
+            "name": "unpublished-draft",
+            "status": 404,
+            "bytes": 32239,
+            "sha256": "c23e6e0cae19a5a37255ab643c9dadae1634ddd54c719aece3a1f9c5ae8e9a6d"
+          }
+        ],
+        "evidence": ".qa-results/phase2/final-live-acceptance/live79-after-logo-purge/identity-after.json"
+      }
+    },
+    "delivery": {
+      "before": {
+        "publicHomeSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+        "immutableHomeSha256": "7231c8728f4460c638adfb44ce3e8b9c522a8739d109506999a9f70e5f71edc7",
+        "footerRule": {
+          "publicSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+          "immutableSha256": "7231c8728f4460c638adfb44ce3e8b9c522a8739d109506999a9f70e5f71edc7",
+          "publicBytes": 110378,
+          "immutableBytes": 110411,
+          "rawEqual": false,
+          "mode": "exact evidenced Cloudflare footer email-comment removal",
+          "removedBytes": 33,
+          "immutableMarkerCounts": {
+            "opening": 1,
+            "closing": 1
+          },
+          "publicMarkerCounts": {
+            "opening": 0,
+            "closing": 0
+          },
+          "unchangedAnchor": "<a href=\"mailto:info@filecompresser.com\">info@filecompresser.com</a>",
+          "allRemainingBytesIdentical": true
+        },
+        "resources": [
+          {
+            "name": "public-home",
+            "status": 200,
+            "bytes": 110378,
+            "sha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb"
+          },
+          {
+            "name": "immutable-home",
+            "status": 200,
+            "bytes": 110411,
+            "sha256": "7231c8728f4460c638adfb44ce3e8b9c522a8739d109506999a9f70e5f71edc7"
+          },
+          {
+            "name": "image-pipeline.mjs",
+            "status": 200,
+            "bytes": 15533,
+            "sha256": "8e9ce49d7e90115d20ecc30cc130a06746d9b03b5b164e4e56f1e81f1d7987c6"
+          },
+          {
+            "name": "image-engine.mjs",
+            "status": 200,
+            "bytes": 1174,
+            "sha256": "5179b8034f0272e92d54b8b9e2bb6aea6844658d66f1eab372fefb9ea6361f5a"
+          },
+          {
+            "name": "image-canvas.mjs",
+            "status": 200,
+            "bytes": 15269,
+            "sha256": "96e366066cc5720a4a9267c878d05af80b591cc5e69bde773f71b8f5adbc4173"
+          },
+          {
+            "name": "image-metadata.mjs",
+            "status": 200,
+            "bytes": 10124,
+            "sha256": "a584b568d2735f3fb1f345157c2c118a3ab63e9e1cb3377684c03caff09b3ec9"
+          },
+          {
+            "name": "image-png.mjs",
+            "status": 200,
+            "bytes": 11710,
+            "sha256": "2c15e4efe4e413f37655028c8d95dd2092476f473e126a4dc9b0cda72923053f"
+          },
+          {
+            "name": "logo.png",
+            "status": 200,
+            "bytes": 22361,
+            "sha256": "20c05cf089e1341eb498002013670d4d7d0e587549c32bbad116c04d464ebbab"
+          },
+          {
+            "name": "/blog/dataflow-768.webp",
+            "status": 200,
+            "bytes": 81616,
+            "sha256": "b6d3610bfb6450121055d2c0871e0d3f983fa27cbb77a6c3e1eb3e1b04418d35"
+          },
+          {
+            "name": "/blog/formattree-768.webp",
+            "status": 200,
+            "bytes": 65586,
+            "sha256": "fd7725e5033e1e91585d740e2ffc8fc9e57655aad3668880112dfa79c297d130"
+          },
+          {
+            "name": "/blog/pipeline-768.webp",
+            "status": 200,
+            "bytes": 48054,
+            "sha256": "60c903060071cbcc48559ff12479daee2c9091772ceb392e7b7b51e1dcd63d94"
+          },
+          {
+            "name": "/blog/qualitycurve-768.webp",
+            "status": 200,
+            "bytes": 65190,
+            "sha256": "372bdb9ddd4d518067add9e27ebbfeaccfbec8d65e23f3af181cc8a3f84fe753"
+          },
+          {
+            "name": "/blog/sizebars-768.webp",
+            "status": 200,
+            "bytes": 66696,
+            "sha256": "959d058e481e4e66377e4d4f20b723d8bf2bef69e904df3e7b1e1e71dfa32991"
+          },
+          {
+            "name": "blog",
+            "status": 200,
+            "bytes": 45216,
+            "sha256": "c2c83d81fd6e706c958cd75e3c4a27974622ddf03e4bb7277eeb5e8994dc7fa7"
+          },
+          {
+            "name": "sitemap.xml",
+            "status": 200,
+            "bytes": 3659,
+            "sha256": "5568b4c5821bb1c7e6fe7f5be7457b5c7fda44f395ccfa77048de57d3265e069"
+          },
+          {
+            "name": "unpublished-draft",
+            "status": 404,
+            "bytes": 32239,
+            "sha256": "c23e6e0cae19a5a37255ab643c9dadae1634ddd54c719aece3a1f9c5ae8e9a6d"
+          }
+        ],
+        "evidence": ".qa-results/phase2/final-live-acceptance/delivery4-final/identity-before.json"
+      },
+      "after": {
+        "publicHomeSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+        "immutableHomeSha256": "7231c8728f4460c638adfb44ce3e8b9c522a8739d109506999a9f70e5f71edc7",
+        "footerRule": {
+          "publicSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+          "immutableSha256": "7231c8728f4460c638adfb44ce3e8b9c522a8739d109506999a9f70e5f71edc7",
+          "publicBytes": 110378,
+          "immutableBytes": 110411,
+          "rawEqual": false,
+          "mode": "exact evidenced Cloudflare footer email-comment removal",
+          "removedBytes": 33,
+          "immutableMarkerCounts": {
+            "opening": 1,
+            "closing": 1
+          },
+          "publicMarkerCounts": {
+            "opening": 0,
+            "closing": 0
+          },
+          "unchangedAnchor": "<a href=\"mailto:info@filecompresser.com\">info@filecompresser.com</a>",
+          "allRemainingBytesIdentical": true
+        },
+        "resources": [
+          {
+            "name": "public-home",
+            "status": 200,
+            "bytes": 110378,
+            "sha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb"
+          },
+          {
+            "name": "immutable-home",
+            "status": 200,
+            "bytes": 110411,
+            "sha256": "7231c8728f4460c638adfb44ce3e8b9c522a8739d109506999a9f70e5f71edc7"
+          },
+          {
+            "name": "image-pipeline.mjs",
+            "status": 200,
+            "bytes": 15533,
+            "sha256": "8e9ce49d7e90115d20ecc30cc130a06746d9b03b5b164e4e56f1e81f1d7987c6"
+          },
+          {
+            "name": "image-engine.mjs",
+            "status": 200,
+            "bytes": 1174,
+            "sha256": "5179b8034f0272e92d54b8b9e2bb6aea6844658d66f1eab372fefb9ea6361f5a"
+          },
+          {
+            "name": "image-canvas.mjs",
+            "status": 200,
+            "bytes": 15269,
+            "sha256": "96e366066cc5720a4a9267c878d05af80b591cc5e69bde773f71b8f5adbc4173"
+          },
+          {
+            "name": "image-metadata.mjs",
+            "status": 200,
+            "bytes": 10124,
+            "sha256": "a584b568d2735f3fb1f345157c2c118a3ab63e9e1cb3377684c03caff09b3ec9"
+          },
+          {
+            "name": "image-png.mjs",
+            "status": 200,
+            "bytes": 11710,
+            "sha256": "2c15e4efe4e413f37655028c8d95dd2092476f473e126a4dc9b0cda72923053f"
+          },
+          {
+            "name": "logo.png",
+            "status": 200,
+            "bytes": 22361,
+            "sha256": "20c05cf089e1341eb498002013670d4d7d0e587549c32bbad116c04d464ebbab"
+          },
+          {
+            "name": "/blog/dataflow-768.webp",
+            "status": 200,
+            "bytes": 81616,
+            "sha256": "b6d3610bfb6450121055d2c0871e0d3f983fa27cbb77a6c3e1eb3e1b04418d35"
+          },
+          {
+            "name": "/blog/formattree-768.webp",
+            "status": 200,
+            "bytes": 65586,
+            "sha256": "fd7725e5033e1e91585d740e2ffc8fc9e57655aad3668880112dfa79c297d130"
+          },
+          {
+            "name": "/blog/pipeline-768.webp",
+            "status": 200,
+            "bytes": 48054,
+            "sha256": "60c903060071cbcc48559ff12479daee2c9091772ceb392e7b7b51e1dcd63d94"
+          },
+          {
+            "name": "/blog/qualitycurve-768.webp",
+            "status": 200,
+            "bytes": 65190,
+            "sha256": "372bdb9ddd4d518067add9e27ebbfeaccfbec8d65e23f3af181cc8a3f84fe753"
+          },
+          {
+            "name": "/blog/sizebars-768.webp",
+            "status": 200,
+            "bytes": 66696,
+            "sha256": "959d058e481e4e66377e4d4f20b723d8bf2bef69e904df3e7b1e1e71dfa32991"
+          },
+          {
+            "name": "blog",
+            "status": 200,
+            "bytes": 45216,
+            "sha256": "c2c83d81fd6e706c958cd75e3c4a27974622ddf03e4bb7277eeb5e8994dc7fa7"
+          },
+          {
+            "name": "sitemap.xml",
+            "status": 200,
+            "bytes": 3659,
+            "sha256": "5568b4c5821bb1c7e6fe7f5be7457b5c7fda44f395ccfa77048de57d3265e069"
+          },
+          {
+            "name": "unpublished-draft",
+            "status": 404,
+            "bytes": 32239,
+            "sha256": "c23e6e0cae19a5a37255ab643c9dadae1634ddd54c719aece3a1f9c5ae8e9a6d"
+          }
+        ],
+        "evidence": ".qa-results/phase2/final-live-acceptance/delivery4-final/identity-after.json"
+      }
+    },
+    "faqCapture": {
+      "before": {
+        "publicHomeSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+        "immutableHomeSha256": "7231c8728f4460c638adfb44ce3e8b9c522a8739d109506999a9f70e5f71edc7",
+        "footerRule": {
+          "publicSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+          "immutableSha256": "7231c8728f4460c638adfb44ce3e8b9c522a8739d109506999a9f70e5f71edc7",
+          "publicBytes": 110378,
+          "immutableBytes": 110411,
+          "rawEqual": false,
+          "mode": "exact evidenced Cloudflare footer email-comment removal",
+          "removedBytes": 33,
+          "immutableMarkerCounts": {
+            "opening": 1,
+            "closing": 1
+          },
+          "publicMarkerCounts": {
+            "opening": 0,
+            "closing": 0
+          },
+          "unchangedAnchor": "<a href=\"mailto:info@filecompresser.com\">info@filecompresser.com</a>",
+          "allRemainingBytesIdentical": true
+        },
+        "resources": [
+          {
+            "name": "public-home",
+            "status": 200,
+            "bytes": 110378,
+            "sha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb"
+          },
+          {
+            "name": "immutable-home",
+            "status": 200,
+            "bytes": 110411,
+            "sha256": "7231c8728f4460c638adfb44ce3e8b9c522a8739d109506999a9f70e5f71edc7"
+          },
+          {
+            "name": "image-pipeline.mjs",
+            "status": 200,
+            "bytes": 15533,
+            "sha256": "8e9ce49d7e90115d20ecc30cc130a06746d9b03b5b164e4e56f1e81f1d7987c6"
+          },
+          {
+            "name": "image-engine.mjs",
+            "status": 200,
+            "bytes": 1174,
+            "sha256": "5179b8034f0272e92d54b8b9e2bb6aea6844658d66f1eab372fefb9ea6361f5a"
+          },
+          {
+            "name": "image-canvas.mjs",
+            "status": 200,
+            "bytes": 15269,
+            "sha256": "96e366066cc5720a4a9267c878d05af80b591cc5e69bde773f71b8f5adbc4173"
+          },
+          {
+            "name": "image-metadata.mjs",
+            "status": 200,
+            "bytes": 10124,
+            "sha256": "a584b568d2735f3fb1f345157c2c118a3ab63e9e1cb3377684c03caff09b3ec9"
+          },
+          {
+            "name": "image-png.mjs",
+            "status": 200,
+            "bytes": 11710,
+            "sha256": "2c15e4efe4e413f37655028c8d95dd2092476f473e126a4dc9b0cda72923053f"
+          },
+          {
+            "name": "logo.png",
+            "status": 200,
+            "bytes": 22361,
+            "sha256": "20c05cf089e1341eb498002013670d4d7d0e587549c32bbad116c04d464ebbab"
+          },
+          {
+            "name": "/blog/dataflow-768.webp",
+            "status": 200,
+            "bytes": 81616,
+            "sha256": "b6d3610bfb6450121055d2c0871e0d3f983fa27cbb77a6c3e1eb3e1b04418d35"
+          },
+          {
+            "name": "/blog/formattree-768.webp",
+            "status": 200,
+            "bytes": 65586,
+            "sha256": "fd7725e5033e1e91585d740e2ffc8fc9e57655aad3668880112dfa79c297d130"
+          },
+          {
+            "name": "/blog/pipeline-768.webp",
+            "status": 200,
+            "bytes": 48054,
+            "sha256": "60c903060071cbcc48559ff12479daee2c9091772ceb392e7b7b51e1dcd63d94"
+          },
+          {
+            "name": "/blog/qualitycurve-768.webp",
+            "status": 200,
+            "bytes": 65190,
+            "sha256": "372bdb9ddd4d518067add9e27ebbfeaccfbec8d65e23f3af181cc8a3f84fe753"
+          },
+          {
+            "name": "/blog/sizebars-768.webp",
+            "status": 200,
+            "bytes": 66696,
+            "sha256": "959d058e481e4e66377e4d4f20b723d8bf2bef69e904df3e7b1e1e71dfa32991"
+          },
+          {
+            "name": "blog",
+            "status": 200,
+            "bytes": 45216,
+            "sha256": "c2c83d81fd6e706c958cd75e3c4a27974622ddf03e4bb7277eeb5e8994dc7fa7"
+          },
+          {
+            "name": "sitemap.xml",
+            "status": 200,
+            "bytes": 3659,
+            "sha256": "5568b4c5821bb1c7e6fe7f5be7457b5c7fda44f395ccfa77048de57d3265e069"
+          },
+          {
+            "name": "unpublished-draft",
+            "status": 404,
+            "bytes": 32239,
+            "sha256": "c23e6e0cae19a5a37255ab643c9dadae1634ddd54c719aece3a1f9c5ae8e9a6d"
+          }
+        ],
+        "evidence": ".qa-results/phase2/final-live-acceptance/faq-viewports-final/identity-before.json"
+      },
+      "after": {
+        "publicHomeSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+        "immutableHomeSha256": "7231c8728f4460c638adfb44ce3e8b9c522a8739d109506999a9f70e5f71edc7",
+        "footerRule": {
+          "publicSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+          "immutableSha256": "7231c8728f4460c638adfb44ce3e8b9c522a8739d109506999a9f70e5f71edc7",
+          "publicBytes": 110378,
+          "immutableBytes": 110411,
+          "rawEqual": false,
+          "mode": "exact evidenced Cloudflare footer email-comment removal",
+          "removedBytes": 33,
+          "immutableMarkerCounts": {
+            "opening": 1,
+            "closing": 1
+          },
+          "publicMarkerCounts": {
+            "opening": 0,
+            "closing": 0
+          },
+          "unchangedAnchor": "<a href=\"mailto:info@filecompresser.com\">info@filecompresser.com</a>",
+          "allRemainingBytesIdentical": true
+        },
+        "resources": [
+          {
+            "name": "public-home",
+            "status": 200,
+            "bytes": 110378,
+            "sha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb"
+          },
+          {
+            "name": "immutable-home",
+            "status": 200,
+            "bytes": 110411,
+            "sha256": "7231c8728f4460c638adfb44ce3e8b9c522a8739d109506999a9f70e5f71edc7"
+          },
+          {
+            "name": "image-pipeline.mjs",
+            "status": 200,
+            "bytes": 15533,
+            "sha256": "8e9ce49d7e90115d20ecc30cc130a06746d9b03b5b164e4e56f1e81f1d7987c6"
+          },
+          {
+            "name": "image-engine.mjs",
+            "status": 200,
+            "bytes": 1174,
+            "sha256": "5179b8034f0272e92d54b8b9e2bb6aea6844658d66f1eab372fefb9ea6361f5a"
+          },
+          {
+            "name": "image-canvas.mjs",
+            "status": 200,
+            "bytes": 15269,
+            "sha256": "96e366066cc5720a4a9267c878d05af80b591cc5e69bde773f71b8f5adbc4173"
+          },
+          {
+            "name": "image-metadata.mjs",
+            "status": 200,
+            "bytes": 10124,
+            "sha256": "a584b568d2735f3fb1f345157c2c118a3ab63e9e1cb3377684c03caff09b3ec9"
+          },
+          {
+            "name": "image-png.mjs",
+            "status": 200,
+            "bytes": 11710,
+            "sha256": "2c15e4efe4e413f37655028c8d95dd2092476f473e126a4dc9b0cda72923053f"
+          },
+          {
+            "name": "logo.png",
+            "status": 200,
+            "bytes": 22361,
+            "sha256": "20c05cf089e1341eb498002013670d4d7d0e587549c32bbad116c04d464ebbab"
+          },
+          {
+            "name": "/blog/dataflow-768.webp",
+            "status": 200,
+            "bytes": 81616,
+            "sha256": "b6d3610bfb6450121055d2c0871e0d3f983fa27cbb77a6c3e1eb3e1b04418d35"
+          },
+          {
+            "name": "/blog/formattree-768.webp",
+            "status": 200,
+            "bytes": 65586,
+            "sha256": "fd7725e5033e1e91585d740e2ffc8fc9e57655aad3668880112dfa79c297d130"
+          },
+          {
+            "name": "/blog/pipeline-768.webp",
+            "status": 200,
+            "bytes": 48054,
+            "sha256": "60c903060071cbcc48559ff12479daee2c9091772ceb392e7b7b51e1dcd63d94"
+          },
+          {
+            "name": "/blog/qualitycurve-768.webp",
+            "status": 200,
+            "bytes": 65190,
+            "sha256": "372bdb9ddd4d518067add9e27ebbfeaccfbec8d65e23f3af181cc8a3f84fe753"
+          },
+          {
+            "name": "/blog/sizebars-768.webp",
+            "status": 200,
+            "bytes": 66696,
+            "sha256": "959d058e481e4e66377e4d4f20b723d8bf2bef69e904df3e7b1e1e71dfa32991"
+          },
+          {
+            "name": "blog",
+            "status": 200,
+            "bytes": 45216,
+            "sha256": "c2c83d81fd6e706c958cd75e3c4a27974622ddf03e4bb7277eeb5e8994dc7fa7"
+          },
+          {
+            "name": "sitemap.xml",
+            "status": 200,
+            "bytes": 3659,
+            "sha256": "5568b4c5821bb1c7e6fe7f5be7457b5c7fda44f395ccfa77048de57d3265e069"
+          },
+          {
+            "name": "unpublished-draft",
+            "status": 404,
+            "bytes": 32239,
+            "sha256": "c23e6e0cae19a5a37255ab643c9dadae1634ddd54c719aece3a1f9c5ae8e9a6d"
+          }
+        ],
+        "evidence": ".qa-results/phase2/final-live-acceptance/faq-viewports-final/identity-after.json"
+      }
+    }
+  },
+  "ordinaryDelivery": {
+    "cases": 4,
+    "passed": 4,
+    "normalClosures": true,
+    "evidence": ".qa-results/phase2/final-live-acceptance/delivery4-final/results.json",
+    "results": [
+      {
+        "browser": "chromium",
+        "version": "156.0.8078.47",
+        "route": "/png-compressor",
+        "status": 200,
+        "navigationProtocol": "h2",
+        "publicHtmlSha256": "f18fe4b5672fbf4fa07b247c5f201715d7749fd43d7d45d5e6fa98b2e404b1d2",
+        "immutableHtmlSha256": "f81ca17cdc186a3d76dbbe3cdf9ee266a3c62742a70cfe67df78a40bd07c4d32",
+        "footerRemovedBytes": 33,
+        "allOtherHtmlBytesIdentical": true,
+        "consoleErrors": 0,
+        "failedResources": 0,
+        "exceptions": 0,
+        "writeRequests": 0
+      },
+      {
+        "browser": "chromium",
+        "version": "156.0.8078.47",
+        "route": "/webm-to-mp4",
+        "status": 200,
+        "navigationProtocol": "h3",
+        "publicHtmlSha256": "af78aa93ca72e79c327e48e5c10b9e2faf4464e8cf823eca20b15cbff649c393",
+        "immutableHtmlSha256": "8ef5fdc5e1e40bd13fa6b2e61f45ee2dd74d2618ccf67ae5322064f4dabcd3f9",
+        "footerRemovedBytes": 33,
+        "allOtherHtmlBytesIdentical": true,
+        "consoleErrors": 0,
+        "failedResources": 0,
+        "exceptions": 0,
+        "writeRequests": 0
+      },
+      {
+        "browser": "firefox",
+        "version": "155.0",
+        "route": "/png-compressor",
+        "status": 200,
+        "navigationProtocol": "h3",
+        "publicHtmlSha256": "f18fe4b5672fbf4fa07b247c5f201715d7749fd43d7d45d5e6fa98b2e404b1d2",
+        "immutableHtmlSha256": "f81ca17cdc186a3d76dbbe3cdf9ee266a3c62742a70cfe67df78a40bd07c4d32",
+        "footerRemovedBytes": 33,
+        "allOtherHtmlBytesIdentical": true,
+        "consoleErrors": 0,
+        "failedResources": 0,
+        "exceptions": 0,
+        "writeRequests": 0
+      },
+      {
+        "browser": "firefox",
+        "version": "155.0",
+        "route": "/webm-to-mp4",
+        "status": 200,
+        "navigationProtocol": "h3",
+        "publicHtmlSha256": "af78aa93ca72e79c327e48e5c10b9e2faf4464e8cf823eca20b15cbff649c393",
+        "immutableHtmlSha256": "8ef5fdc5e1e40bd13fa6b2e61f45ee2dd74d2618ccf67ae5322064f4dabcd3f9",
+        "footerRemovedBytes": 33,
+        "allOtherHtmlBytesIdentical": true,
+        "consoleErrors": 0,
+        "failedResources": 0,
+        "exceptions": 0,
+        "writeRequests": 0
+      }
+    ]
+  },
+  "faqCapture": {
+    "cases": 2,
+    "passed": 2,
+    "normalClosure": true,
+    "networkSettled": true,
+    "decodedAndVisuallyInspected": true,
+    "noEditing": true,
+    "evidence": ".qa-results/phase2/final-live-acceptance/faq-viewports-final/results.json",
+    "visualReview": ".qa-results/phase2/final-live-acceptance/faq-viewports-final/decoded-visual-review.json",
+    "captures": [
+      {
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "screenshot": ".qa-results/phase2/final-live-acceptance/faq-viewports-final/homepage-expanded-faq-1280.png",
+        "sha256": "996c88ac087e00efb13fabdc95d60a6bfb87d8f4ddde606d167bbef311b288b9",
+        "box": {
+          "x": 220,
+          "y": 451.109375,
+          "width": 840,
+          "height": 209.75,
+          "right": 1060,
+          "bottom": 660.859375
+        },
+        "headerBottom": 76,
+        "question": "Will compression reduce image or video quality?",
+        "answer": "PNG starts in Lossless mode, preserving decoded pixels. JPG and WebP start in Balanced mode and use lossy encoding. Optional Smart or Maximum PNG settings can reduce colors. Video and audio re-encoding can also change quality. Use Compare for images and check downloaded media before replacing the original."
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "screenshot": ".qa-results/phase2/final-live-acceptance/faq-viewports-final/homepage-expanded-faq-390.png",
+        "sha256": "abc7475ed3c338d0445c4a209d6c036af6474505258bb41592d61b1002cc74a7",
+        "box": {
+          "x": 20,
+          "y": 296.859375,
+          "width": 350,
+          "height": 331.5,
+          "right": 370,
+          "bottom": 628.359375
+        },
+        "headerBottom": 66,
+        "question": "Will compression reduce image or video quality?",
+        "answer": "PNG starts in Lossless mode, preserving decoded pixels. JPG and WebP start in Balanced mode and use lossy encoding. Optional Smart or Maximum PNG settings can reduce colors. Video and audio re-encoding can also change quality. Use Compare for images and check downloaded media before replacing the original."
+      }
+    ]
+  },
+  "history": {
+    "failedLogoPreflight": {
+      "status": "FAIL_BEFORE_BROWSER",
+      "workflowCases": 0,
+      "evidence": ".qa-results/phase2/final-live-acceptance/live79-final/identity-before.json",
+      "cause": "Stale custom-domain edge cache served exact old0197 logo bytes while final immutable/source had the optimized PNG.",
+      "publicBefore": {
+        "name": "public",
+        "url": "https://filecompresser.com/logo.png",
+        "status": 200,
+        "headers": {
+          "content-type": "image/png",
+          "content-length": "23298",
+          "cache-control": "public, max-age=86400",
+          "etag": "\"bee91719093334c965cebffc867c343e\"",
+          "age": "4891",
+          "cf-cache-status": "HIT",
+          "cf-ray": "a610f986ba0f558c-SIN"
+        },
+        "bytes": 23298,
+        "sha256": "60fef559f8d5dccebd929b0bfa792f8d6ff3ca534b787d2f9abe8a15804f8a54"
+      },
+      "expectedLogoSha256": "20c05cf089e1341eb498002013670d4d7d0e587549c32bbad116c04d464ebbab"
+    },
+    "targetedCorrection": {
+      "url": "https://filecompresser.com/logo.png",
+      "scope": "Root native exact-URL purge only; no sitewide purge, cache policy, DNS or TLS changes and no SHA waiver.",
+      "evidence": ".qa-results/phase2/release-record/logo-targeted-purge-after.json",
+      "publishedAndImmutableExactAfter": [
+        {
+          "url": "https://filecompresser.com/logo.png",
+          "status": 200,
+          "bytes": 22361,
+          "sha256": "20c05cf089e1341eb498002013670d4d7d0e587549c32bbad116c04d464ebbab",
+          "cacheStatus": "MISS"
+        },
+        {
+          "url": "https://3f5114e1.filecompresser.pages.dev/logo.png",
+          "status": 200,
+          "bytes": 22361,
+          "sha256": "20c05cf089e1341eb498002013670d4d7d0e587549c32bbad116c04d464ebbab",
+          "cacheStatus": null
+        }
+      ]
+    },
+    "footerTransformGuard": {
+      "tests": 20,
+      "passed": 20,
+      "allowed": "Only exact evidenced removal of one16-byte opening and one17-byte closing comment around unchanged literal footer email; every other byte must match.",
+      "helperSha256": "c742d1e2fdba32b8ac1fbe0236c1fe2ea10e9dce3c33f694bdddc897ef5e283c",
+      "evidence": ".qa-results/phase2/final-live-acceptance/email-marker-proof/guard-tests.json"
+    },
+    "preparationGuard": {
+      "tests": 17,
+      "passed": 17,
+      "networkDisabled": true,
+      "evidence": ".qa-results/phase2/final-live-acceptance/preparation-tests.json"
+    }
+  },
+  "retainedLocalScopes": {
+    "H": "docs/evidence/2026-11-27/browser-functional-acceptance-H.json",
+    "I": "docs/evidence/2026-11-27/browser-functional-acceptance-I.json",
+    "note": "H four-browser316 and I Chromium79/editorial45 remain their own local artifacts; not relabeled as live."
+  },
+  "limitations": [
+    "These generated files and options are sampled acceptance, not every possible file/size/codec or physical-device certification.",
+    "Live whole-suite uses Chromium desktop; separate ordinary Firefox delivery is not a live Firefox whole-suite run.",
+    "Functional/visual acceptance does not establish Lighthouse performance, field INP, ranking gains or complete vulnerability absence.",
+    "Earlier intermittent network/interstitial/unstyled old-production failures remain retained; current successful checks do not establish global network reliability."
+  ],
+  "webmViewportAddon": {
+    "status": "PASS",
+    "capturedAt": "2026-11-27T12:21:00.950Z",
+    "scope": "Separate actual public WebM ready/converted viewport proof. Two additional states and one additional generated-fixture download; the main suite remains79/79 with57 downloads.",
+    "browserVersion": "156.0.8078.47",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "normalBrowserClose": true,
+    "exitStatus": 0,
+    "states": [
+      {
+        "state": "ready",
+        "pass": true,
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "screenshot": "live-webm-to-mp4-ready-1280.png",
+        "sha256": "1dbf3f585994ff5b0c429fbe307720aee0ac15c1f2c8a519ab25c492689e027f",
+        "geometry": {
+          "header": {
+            "x": 0,
+            "y": 0,
+            "width": 1280,
+            "height": 76,
+            "right": 1280,
+            "bottom": 76
+          },
+          "workspace": {
+            "x": 160,
+            "y": 294.75,
+            "width": 960,
+            "height": 594.484375,
+            "right": 1120,
+            "bottom": 889.234375
+          },
+          "action": {
+            "x": 183,
+            "y": 515.75,
+            "width": 914,
+            "height": 77,
+            "right": 1097,
+            "bottom": 592.75
+          },
+          "file": {
+            "x": 183,
+            "y": 673.546875,
+            "width": 914,
+            "height": 156.6875,
+            "right": 1097,
+            "bottom": 830.234375
+          },
+          "output": {
+            "x": 183,
+            "y": 604.75,
+            "width": 914,
+            "height": 20.796875,
+            "right": 1097,
+            "bottom": 625.546875
+          },
+          "bodyWidth": 1280,
+          "scrollY": 22
+        }
+      },
+      {
+        "state": "converted",
+        "pass": true,
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "screenshot": "live-webm-to-mp4-converted-1280.png",
+        "sha256": "66071d7323565a211f3f0ab201a35cbef5ff2b4826791c6559fc2884f5f12411",
+        "geometry": {
+          "header": {
+            "x": 0,
+            "y": 0,
+            "width": 1280,
+            "height": 76,
+            "right": 1280,
+            "bottom": 76
+          },
+          "workspace": {
+            "x": 160,
+            "y": 178.75,
+            "width": 960,
+            "height": 701.78125,
+            "right": 1120,
+            "bottom": 880.53125
+          },
+          "action": {
+            "x": 183,
+            "y": 399.75,
+            "width": 914,
+            "height": 77,
+            "right": 1097,
+            "bottom": 476.75
+          },
+          "file": {
+            "x": 183,
+            "y": 557.546875,
+            "width": 914,
+            "height": 209.1875,
+            "right": 1097,
+            "bottom": 766.734375
+          },
+          "output": {
+            "x": 183,
+            "y": 488.75,
+            "width": 914,
+            "height": 20.796875,
+            "right": 1097,
+            "bottom": 509.546875
+          },
+          "bodyWidth": 1280,
+          "scrollY": 138
+        }
+      }
+    ],
+    "generatedSource": {
+      "file": "generated-video.webm",
+      "bytes": 19921,
+      "sha256": "cad10b9b6aad162552061d48a2fd45a3b738218dc5584be98de4e8b10ceeb71c",
+      "provenance": "Generated color/test-pattern plus tone fixture retained from the successful full LIVE79 audit; no user media."
+    },
+    "download": {
+      "file": "converted-video.mp4",
+      "bytes": 37369,
+      "sha256": "6dbdffe343bc736bca3e0f672188c471b9d3059449d4ad28f2162cb4481025be",
+      "suggestedFilename": "generated-video.mp4"
+    },
+    "nativeOutputValidation": {
+      "pass": true,
+      "container": "mov,mp4,m4a,3gp,3g2,mj2",
+      "videoCodec": "h264",
+      "audioCodec": "aac",
+      "width": 320,
+      "height": 240,
+      "sourceDuration": 1.029,
+      "outputDuration": 1.03,
+      "fullDecode": true,
+      "decodedAudioPeak": 5108,
+      "decodedAudioBytes": 47952
+    },
+    "diagnostics": {
+      "console": [],
+      "exceptions": [],
+      "failedResources": [],
+      "writes": []
+    },
+    "identity": {
+      "before": {
+        "status": "PASS",
+        "sourceCommit": "5fdf646b2b1465c150777e4872a020d4cbd2ac24",
+        "cloudflareDeploymentId": "3f5114e1-8094-4a07-9022-4a566e8feb0e",
+        "resources": [
+          {
+            "name": "public-home",
+            "status": 200,
+            "sha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+            "bytes": 110378
+          },
+          {
+            "name": "immutable-home",
+            "status": 200,
+            "sha256": "7231c8728f4460c638adfb44ce3e8b9c522a8739d109506999a9f70e5f71edc7",
+            "bytes": 110411
+          },
+          {
+            "name": "image-pipeline.mjs",
+            "status": 200,
+            "sha256": "8e9ce49d7e90115d20ecc30cc130a06746d9b03b5b164e4e56f1e81f1d7987c6",
+            "bytes": 15533
+          },
+          {
+            "name": "image-engine.mjs",
+            "status": 200,
+            "sha256": "5179b8034f0272e92d54b8b9e2bb6aea6844658d66f1eab372fefb9ea6361f5a",
+            "bytes": 1174
+          },
+          {
+            "name": "image-canvas.mjs",
+            "status": 200,
+            "sha256": "96e366066cc5720a4a9267c878d05af80b591cc5e69bde773f71b8f5adbc4173",
+            "bytes": 15269
+          },
+          {
+            "name": "image-metadata.mjs",
+            "status": 200,
+            "sha256": "a584b568d2735f3fb1f345157c2c118a3ab63e9e1cb3377684c03caff09b3ec9",
+            "bytes": 10124
+          },
+          {
+            "name": "image-png.mjs",
+            "status": 200,
+            "sha256": "2c15e4efe4e413f37655028c8d95dd2092476f473e126a4dc9b0cda72923053f",
+            "bytes": 11710
+          },
+          {
+            "name": "logo.png",
+            "status": 200,
+            "sha256": "20c05cf089e1341eb498002013670d4d7d0e587549c32bbad116c04d464ebbab",
+            "bytes": 22361
+          },
+          {
+            "name": "/blog/dataflow-768.webp",
+            "status": 200,
+            "sha256": "b6d3610bfb6450121055d2c0871e0d3f983fa27cbb77a6c3e1eb3e1b04418d35",
+            "bytes": 81616
+          },
+          {
+            "name": "/blog/formattree-768.webp",
+            "status": 200,
+            "sha256": "fd7725e5033e1e91585d740e2ffc8fc9e57655aad3668880112dfa79c297d130",
+            "bytes": 65586
+          },
+          {
+            "name": "/blog/pipeline-768.webp",
+            "status": 200,
+            "sha256": "60c903060071cbcc48559ff12479daee2c9091772ceb392e7b7b51e1dcd63d94",
+            "bytes": 48054
+          },
+          {
+            "name": "/blog/qualitycurve-768.webp",
+            "status": 200,
+            "sha256": "372bdb9ddd4d518067add9e27ebbfeaccfbec8d65e23f3af181cc8a3f84fe753",
+            "bytes": 65190
+          },
+          {
+            "name": "/blog/sizebars-768.webp",
+            "status": 200,
+            "sha256": "959d058e481e4e66377e4d4f20b723d8bf2bef69e904df3e7b1e1e71dfa32991",
+            "bytes": 66696
+          },
+          {
+            "name": "blog",
+            "status": 200,
+            "sha256": "c2c83d81fd6e706c958cd75e3c4a27974622ddf03e4bb7277eeb5e8994dc7fa7",
+            "bytes": 45216
+          },
+          {
+            "name": "sitemap.xml",
+            "status": 200,
+            "sha256": "5568b4c5821bb1c7e6fe7f5be7457b5c7fda44f395ccfa77048de57d3265e069",
+            "bytes": 3659
+          },
+          {
+            "name": "unpublished-draft",
+            "status": 404,
+            "sha256": "c23e6e0cae19a5a37255ab643c9dadae1634ddd54c719aece3a1f9c5ae8e9a6d",
+            "bytes": 32239
+          }
+        ],
+        "homepageHtmlEquivalence": {
+          "publicSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+          "immutableSha256": "7231c8728f4460c638adfb44ce3e8b9c522a8739d109506999a9f70e5f71edc7",
+          "publicBytes": 110378,
+          "immutableBytes": 110411,
+          "rawEqual": false,
+          "mode": "exact evidenced Cloudflare footer email-comment removal",
+          "removedBytes": 33,
+          "immutableMarkerCounts": {
+            "opening": 1,
+            "closing": 1
+          },
+          "publicMarkerCounts": {
+            "opening": 0,
+            "closing": 0
+          },
+          "unchangedAnchor": "<a href=\"mailto:info@filecompresser.com\">info@filecompresser.com</a>",
+          "allRemainingBytesIdentical": true
+        }
+      },
+      "after": {
+        "status": "PASS",
+        "sourceCommit": "5fdf646b2b1465c150777e4872a020d4cbd2ac24",
+        "cloudflareDeploymentId": "3f5114e1-8094-4a07-9022-4a566e8feb0e",
+        "resources": [
+          {
+            "name": "public-home",
+            "status": 200,
+            "sha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+            "bytes": 110378
+          },
+          {
+            "name": "immutable-home",
+            "status": 200,
+            "sha256": "7231c8728f4460c638adfb44ce3e8b9c522a8739d109506999a9f70e5f71edc7",
+            "bytes": 110411
+          },
+          {
+            "name": "image-pipeline.mjs",
+            "status": 200,
+            "sha256": "8e9ce49d7e90115d20ecc30cc130a06746d9b03b5b164e4e56f1e81f1d7987c6",
+            "bytes": 15533
+          },
+          {
+            "name": "image-engine.mjs",
+            "status": 200,
+            "sha256": "5179b8034f0272e92d54b8b9e2bb6aea6844658d66f1eab372fefb9ea6361f5a",
+            "bytes": 1174
+          },
+          {
+            "name": "image-canvas.mjs",
+            "status": 200,
+            "sha256": "96e366066cc5720a4a9267c878d05af80b591cc5e69bde773f71b8f5adbc4173",
+            "bytes": 15269
+          },
+          {
+            "name": "image-metadata.mjs",
+            "status": 200,
+            "sha256": "a584b568d2735f3fb1f345157c2c118a3ab63e9e1cb3377684c03caff09b3ec9",
+            "bytes": 10124
+          },
+          {
+            "name": "image-png.mjs",
+            "status": 200,
+            "sha256": "2c15e4efe4e413f37655028c8d95dd2092476f473e126a4dc9b0cda72923053f",
+            "bytes": 11710
+          },
+          {
+            "name": "logo.png",
+            "status": 200,
+            "sha256": "20c05cf089e1341eb498002013670d4d7d0e587549c32bbad116c04d464ebbab",
+            "bytes": 22361
+          },
+          {
+            "name": "/blog/dataflow-768.webp",
+            "status": 200,
+            "sha256": "b6d3610bfb6450121055d2c0871e0d3f983fa27cbb77a6c3e1eb3e1b04418d35",
+            "bytes": 81616
+          },
+          {
+            "name": "/blog/formattree-768.webp",
+            "status": 200,
+            "sha256": "fd7725e5033e1e91585d740e2ffc8fc9e57655aad3668880112dfa79c297d130",
+            "bytes": 65586
+          },
+          {
+            "name": "/blog/pipeline-768.webp",
+            "status": 200,
+            "sha256": "60c903060071cbcc48559ff12479daee2c9091772ceb392e7b7b51e1dcd63d94",
+            "bytes": 48054
+          },
+          {
+            "name": "/blog/qualitycurve-768.webp",
+            "status": 200,
+            "sha256": "372bdb9ddd4d518067add9e27ebbfeaccfbec8d65e23f3af181cc8a3f84fe753",
+            "bytes": 65190
+          },
+          {
+            "name": "/blog/sizebars-768.webp",
+            "status": 200,
+            "sha256": "959d058e481e4e66377e4d4f20b723d8bf2bef69e904df3e7b1e1e71dfa32991",
+            "bytes": 66696
+          },
+          {
+            "name": "blog",
+            "status": 200,
+            "sha256": "c2c83d81fd6e706c958cd75e3c4a27974622ddf03e4bb7277eeb5e8994dc7fa7",
+            "bytes": 45216
+          },
+          {
+            "name": "sitemap.xml",
+            "status": 200,
+            "sha256": "5568b4c5821bb1c7e6fe7f5be7457b5c7fda44f395ccfa77048de57d3265e069",
+            "bytes": 3659
+          },
+          {
+            "name": "unpublished-draft",
+            "status": 404,
+            "sha256": "c23e6e0cae19a5a37255ab643c9dadae1634ddd54c719aece3a1f9c5ae8e9a6d",
+            "bytes": 32239
+          }
+        ],
+        "homepageHtmlEquivalence": {
+          "publicSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+          "immutableSha256": "7231c8728f4460c638adfb44ce3e8b9c522a8739d109506999a9f70e5f71edc7",
+          "publicBytes": 110378,
+          "immutableBytes": 110411,
+          "rawEqual": false,
+          "mode": "exact evidenced Cloudflare footer email-comment removal",
+          "removedBytes": 33,
+          "immutableMarkerCounts": {
+            "opening": 1,
+            "closing": 1
+          },
+          "publicMarkerCounts": {
+            "opening": 0,
+            "closing": 0
+          },
+          "unchangedAnchor": "<a href=\"mailto:info@filecompresser.com\">info@filecompresser.com</a>",
+          "allRemainingBytesIdentical": true
+        }
+      }
+    },
+    "privateEvidenceDirectory": ".qa-results/phase2/final-live-acceptance/webm-viewport-addon-final"
+  }
+}

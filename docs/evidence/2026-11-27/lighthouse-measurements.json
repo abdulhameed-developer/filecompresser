@@ -1,12 +1,12 @@
 {
   "schema": 1,
-  "capturedAt": "2026-11-27T11:43:21.334Z",
-  "status": "LOCAL_MEASUREMENTS_COMPLETE_FINAL_PRODUCTION_PENDING",
+  "capturedAt": "2026-11-27T12:39:32.585Z",
+  "status": "FINAL_PRODUCTION_SCORED_WITH_RETAINED_DELIVERY_FAILURES",
   "boundaries": [
     "Local and public measurements are separate environments.",
     "All attempts are retained; blocked, partial-delivery and incomplete identity attempts are excluded from clean comparisons.",
     "Shared host CPU/memory load caused substantial variance even for identical baseline bytes. No universal score or field Core Web Vitals claim.",
-    "PageSpeed Insights API independent attempt returned HTTP429 quota exhaustion; no valid external score.",
+    "Earlier keyless PageSpeed API attempt returned HTTP429; a separate official UI homepage analysis later scored100in all four categories on mobile and desktop, without a comparable before report.",
     "All valid candidate I local audits have accessibility, best practices and SEO100; mobile performance remains variable.",
     "New article variants demonstrably reduce mobile illustration transfer; paired modeled Lighthouse results do not establish causal LCP/score improvement."
   ],
@@ -18,6 +18,327 @@
   "beforeProduction": {
     "source": "0197d180403db5992a5a90ae44f716bbacae632c",
     "cloudflare": "5ecc7f32-5c39-462e-8b66-aa2485f49d9b"
+  },
+  "finalProduction": {
+    "capturedAt": "2026-11-27T11:58:41.182Z",
+    "sourceCommit": "5fdf646b2b1465c150777e4872a020d4cbd2ac24",
+    "implementationCommit": "417fcfb8215837d2307fa4c6af992de06d94f32c",
+    "cloudflareDeploymentId": "3f5114e1-8094-4a07-9022-4a566e8feb0e",
+    "immutableDeploymentUrl": "https://3f5114e1.filecompresser.pages.dev",
+    "githubCiRun": 45993970761,
+    "githubCiStatus": "success",
+    "cloudflareNativeStatus": "success",
+    "cmsRoundtripVerified": true,
+    "proofs": [
+      "cms-release-roundtrip/native-reopen-proof.json",
+      "cms-release-roundtrip/semantic-git-proof.json",
+      "cms-release-roundtrip/public-dom-schema-proof.json",
+      "release-record/cloudflare-cms-build-ax.txt",
+      "release-record/cloudflare-cms-build.log",
+      "release-record/github-cms-ci.json"
+    ],
+    "homepages": [
+      {
+        "name": "public",
+        "base": "https://filecompresser.com",
+        "status": 200,
+        "sha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+        "bytes": 110378
+      },
+      {
+        "name": "immutable",
+        "base": "https://3f5114e1.filecompresser.pages.dev",
+        "status": 200,
+        "sha256": "7231c8728f4460c638adfb44ce3e8b9c522a8739d109506999a9f70e5f71edc7",
+        "bytes": 110411
+      }
+    ],
+    "selectionRule": "First complete valid styled-page score per route/mode; only blocked/partial targets received one normal retry, with original failures retained. Valid lower scores were not rerun.",
+    "selected": [
+      {
+        "route": "/",
+        "mode": "mobile",
+        "scores": {
+          "performance": 95,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100
+        },
+        "metrics": {
+          "first-contentful-paint": 1268.88,
+          "largest-contentful-paint": 1268.88,
+          "total-blocking-time": 246,
+          "cumulative-layout-shift": 0,
+          "speed-index": 1508.9388500027435
+        },
+        "series": "final-production",
+        "label": "final-production-five-routes",
+        "capturedAt": "2026-11-27T12:24:04.005Z"
+      },
+      {
+        "route": "/",
+        "mode": "desktop",
+        "scores": {
+          "performance": 100,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100
+        },
+        "metrics": {
+          "first-contentful-paint": 371.02099999999996,
+          "largest-contentful-paint": 371.02099999999996,
+          "total-blocking-time": 35,
+          "cumulative-layout-shift": 0,
+          "speed-index": 657.775649997995
+        },
+        "series": "final-production-normal-retries",
+        "label": "home-desktop-normal-retry",
+        "capturedAt": "2026-11-27T12:28:18.261Z"
+      },
+      {
+        "route": "/jpg-compressor",
+        "mode": "mobile",
+        "scores": {
+          "performance": 94,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100
+        },
+        "metrics": {
+          "first-contentful-paint": 1156.43,
+          "largest-contentful-paint": 1156.43,
+          "total-blocking-time": 298.0000000000002,
+          "cumulative-layout-shift": 0,
+          "speed-index": 1867.0156649365476
+        },
+        "series": "final-production",
+        "label": "final-production-five-routes",
+        "capturedAt": "2026-11-27T12:24:38.173Z"
+      },
+      {
+        "route": "/jpg-compressor",
+        "mode": "desktop",
+        "scores": {
+          "performance": 100,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100
+        },
+        "metrics": {
+          "first-contentful-paint": 327.0970000000001,
+          "largest-contentful-paint": 327.0970000000001,
+          "total-blocking-time": 0,
+          "cumulative-layout-shift": 0,
+          "speed-index": 1105.1120583329564
+        },
+        "series": "final-production",
+        "label": "final-production-five-routes",
+        "capturedAt": "2026-11-27T12:24:52.892Z"
+      },
+      {
+        "route": "/webm-to-mp4",
+        "mode": "mobile",
+        "scores": {
+          "performance": 99,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100
+        },
+        "metrics": {
+          "first-contentful-paint": 1035.4009999999998,
+          "largest-contentful-paint": 1035.4009999999998,
+          "total-blocking-time": 115,
+          "cumulative-layout-shift": 0,
+          "speed-index": 1364.5846759973551
+        },
+        "series": "final-production-normal-retries",
+        "label": "webm-mobile-normal-retry",
+        "capturedAt": "2026-11-27T12:28:33.846Z"
+      },
+      {
+        "route": "/webm-to-mp4",
+        "mode": "desktop",
+        "scores": {
+          "performance": 99,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100
+        },
+        "metrics": {
+          "first-contentful-paint": 385.043,
+          "largest-contentful-paint": 385.043,
+          "total-blocking-time": 93,
+          "cumulative-layout-shift": 0,
+          "speed-index": 761.6648371667844
+        },
+        "series": "final-production-normal-retries",
+        "label": "webm-desktop-normal-retry",
+        "capturedAt": "2026-11-27T12:28:50.920Z"
+      },
+      {
+        "route": "/pdf-compressor",
+        "mode": "mobile",
+        "scores": {
+          "performance": 96,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100
+        },
+        "metrics": {
+          "first-contentful-paint": 1111.2350000000001,
+          "largest-contentful-paint": 1111.2350000000001,
+          "total-blocking-time": 221,
+          "cumulative-layout-shift": 0,
+          "speed-index": 1454.4799532284228
+        },
+        "series": "final-production",
+        "label": "final-production-five-routes",
+        "capturedAt": "2026-11-27T12:25:40.586Z"
+      },
+      {
+        "route": "/pdf-compressor",
+        "mode": "desktop",
+        "scores": {
+          "performance": 100,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100
+        },
+        "metrics": {
+          "first-contentful-paint": 324.367,
+          "largest-contentful-paint": 324.367,
+          "total-blocking-time": 0,
+          "cumulative-layout-shift": 0,
+          "speed-index": 685.698483333419
+        },
+        "series": "final-production-normal-retries",
+        "label": "pdf-desktop-robots-fetch-normal-retry",
+        "capturedAt": "2026-11-27T12:29:07.541Z"
+      },
+      {
+        "route": "/blog/how-browser-compression-works",
+        "mode": "mobile",
+        "scores": {
+          "performance": 96,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100
+        },
+        "metrics": {
+          "first-contentful-paint": 1129.493,
+          "largest-contentful-paint": 2198.493,
+          "total-blocking-time": 194,
+          "cumulative-layout-shift": 0,
+          "speed-index": 1399.0815944062979
+        },
+        "series": "final-production",
+        "label": "final-production-five-routes",
+        "capturedAt": "2026-11-27T12:26:09.600Z"
+      },
+      {
+        "route": "/blog/how-browser-compression-works",
+        "mode": "desktop",
+        "scores": {
+          "performance": 100,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100
+        },
+        "metrics": {
+          "first-contentful-paint": 333.12,
+          "largest-contentful-paint": 514.12,
+          "total-blocking-time": 12.5,
+          "cumulative-layout-shift": 0,
+          "speed-index": 777.4600421301427
+        },
+        "series": "final-production",
+        "label": "final-production-five-routes",
+        "capturedAt": "2026-11-27T12:26:24.730Z"
+      }
+    ],
+    "all10HaveValidScores": true
+  },
+  "independentOfficialHomepage": {
+    "schema": 1,
+    "capturedAt": "2026-11-27T12:37:51.348Z",
+    "status": "PASS_SINGLE_OFFICIAL_HOMEPAGE_ANALYSIS_MOBILE_AND_DESKTOP",
+    "scope": "One normal official PageSpeed Insights UI Analyze submission for the public homepage; both existing form-factor tabs inspected. Public URL only; no files, credentials, API keys or telemetry configuration sent.",
+    "reportTimeDisplayed": "Nov27,2026,5:33:58PM; Captured17:34GMT+5",
+    "sourceCommit": "5fdf646b2b1465c150777e4872a020d4cbd2ac24",
+    "cloudflare": "3f5114e1-8094-4a07-9022-4a566e8feb0e",
+    "publicHomeSha256After": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+    "records": [
+      {
+        "mode": "mobile",
+        "reportUrl": "https://pagespeed.web.dev/analysis/https-filecompresser-com/kwc3vmh94gyii0ebay94ps?form_factor=mobile",
+        "scores": {
+          "performance": 100,
+          "accessibility": 100,
+          "bestPractices": 100,
+          "seo": 100
+        },
+        "metricsDisplayed": {
+          "fcp": "1.0 s",
+          "lcp": "1.0 s",
+          "tbt": "30 ms",
+          "cls": "0",
+          "speedIndex": "1.1 s"
+        },
+        "device": "Emulated Moto G Power",
+        "throttling": "Slow 4G",
+        "browser": "HeadlessChromium157.0.8103.38",
+        "lighthouse": "13.6.0",
+        "fieldData": "No Data",
+        "screenshot": {
+          "file": "docs/evidence/2026-11-27/pagespeed-home-mobile.png",
+          "sha256": "0c749c7e471ab8c98c79ab255c4535fe3a2fef2ef92922e4ad574a06c6423627",
+          "bytes": 63648
+        },
+        "axEvidence": {
+          "file": ".qa-results/phase2/lighthouse/pagespeed-independent-final/mobile-ax.txt",
+          "sha256": "990e43761f8456a90abdcd2a14e6e926b5cfbd64d970d5e55cf131e61fb51888"
+        }
+      },
+      {
+        "mode": "desktop",
+        "reportUrl": "https://pagespeed.web.dev/analysis/https-filecompresser-com/kwc3vmh94gyii0ebay94ps?form_factor=desktop",
+        "scores": {
+          "performance": 100,
+          "accessibility": 100,
+          "bestPractices": 100,
+          "seo": 100
+        },
+        "metricsDisplayed": {
+          "fcp": "0.3 s",
+          "lcp": "0.3 s",
+          "tbt": "10 ms",
+          "cls": "0",
+          "speedIndex": "0.5 s"
+        },
+        "device": "Emulated Desktop",
+        "throttling": "Custom throttling",
+        "browser": "HeadlessChromium157.0.8103.38",
+        "lighthouse": "13.6.0",
+        "fieldData": "No Data",
+        "screenshot": {
+          "file": "docs/evidence/2026-11-27/pagespeed-home-desktop.png",
+          "sha256": "c8503f0c1c2c3dfc1b3341daab8c54359caef0d1e2197f93165923fa70078ccb",
+          "bytes": 65674
+        },
+        "axEvidence": {
+          "file": ".qa-results/phase2/lighthouse/pagespeed-independent-final/desktop-ax.txt",
+          "sha256": "d7fb03410b4552c8bac89ceb2dec6ad59f9f937db46ea0e97c11c1c40d600a2b"
+        }
+      }
+    ],
+    "boundaries": [
+      "Separate remote measurement from all local/shared-host Lighthouse series.",
+      "No comparable before-release official UI report was collected; no causal score-gain claim.",
+      "Homepage only, one analysis and two form factors; not all tools or physical devices.",
+      "Scores are lab results, not field Core Web Vitals or a complete accessibility/security certification.",
+      "Non-blocking optimization opportunities remain despite100 scores.",
+      "Earlier keyless PSI API request was HTTP429 blocked; that attempt remains preserved. No quota, authentication or security controls were bypassed."
+    ]
   },
   "records": [
     {
@@ -465,7 +786,7 @@
     {
       "series": "final-h-remaining-v2",
       "label": "old-production-before-release",
-      "environment": "Before-release production",
+      "environment": "Before-release production0197d18/5ecc7f32",
       "route": "/",
       "mode": "mobile",
       "capturedAt": "2026-11-27T10:39:17.950Z",
@@ -494,7 +815,7 @@
     {
       "series": "final-h-remaining-v2",
       "label": "old-production-before-release",
-      "environment": "Before-release production",
+      "environment": "Before-release production0197d18/5ecc7f32",
       "route": "/",
       "mode": "desktop",
       "status": "BLOCKED",
@@ -511,7 +832,7 @@
     {
       "series": "final-h-remaining-v2",
       "label": "old-production-before-release",
-      "environment": "Before-release production",
+      "environment": "Before-release production0197d18/5ecc7f32",
       "route": "/webm-to-mp4",
       "mode": "mobile",
       "capturedAt": "2026-11-27T10:39:48.601Z",
@@ -546,7 +867,7 @@
     {
       "series": "final-h-remaining-v2",
       "label": "old-production-before-release",
-      "environment": "Before-release production",
+      "environment": "Before-release production0197d18/5ecc7f32",
       "route": "/webm-to-mp4",
       "mode": "desktop",
       "capturedAt": "2026-11-27T10:40:06.645Z",
@@ -575,7 +896,7 @@
     {
       "series": "old-home-desktop-normal-retry",
       "label": "old-production-home-desktop-normal-retry",
-      "environment": "Before-release production",
+      "environment": "Before-release production0197d18/5ecc7f32",
       "route": "/",
       "mode": "desktop",
       "capturedAt": "2026-11-27T10:47:00.522Z",
@@ -1136,7 +1457,7 @@
     {
       "series": "final-i-local-and-before-production",
       "label": "old-production-additional-before-release",
-      "environment": "Before-release production",
+      "environment": "Before-release production0197d18/5ecc7f32",
       "route": "/jpg-compressor",
       "mode": "mobile",
       "capturedAt": "2026-11-27T11:27:20.515Z",
@@ -1165,7 +1486,7 @@
     {
       "series": "final-i-local-and-before-production",
       "label": "old-production-additional-before-release",
-      "environment": "Before-release production",
+      "environment": "Before-release production0197d18/5ecc7f32",
       "route": "/jpg-compressor",
       "mode": "desktop",
       "capturedAt": "2026-11-27T11:27:35.042Z",
@@ -1194,7 +1515,7 @@
     {
       "series": "final-i-local-and-before-production",
       "label": "old-production-additional-before-release",
-      "environment": "Before-release production",
+      "environment": "Before-release production0197d18/5ecc7f32",
       "route": "/pdf-compressor",
       "mode": "mobile",
       "capturedAt": "2026-11-27T11:27:51.057Z",
@@ -1229,7 +1550,7 @@
     {
       "series": "final-i-local-and-before-production",
       "label": "old-production-additional-before-release",
-      "environment": "Before-release production",
+      "environment": "Before-release production0197d18/5ecc7f32",
       "route": "/pdf-compressor",
       "mode": "desktop",
       "status": "BLOCKED",
@@ -1246,7 +1567,7 @@
     {
       "series": "final-i-local-and-before-production",
       "label": "old-production-additional-before-release",
-      "environment": "Before-release production",
+      "environment": "Before-release production0197d18/5ecc7f32",
       "route": "/blog/how-browser-compression-works",
       "mode": "mobile",
       "capturedAt": "2026-11-27T11:28:33.614Z",
@@ -1277,7 +1598,7 @@
     {
       "series": "final-i-local-and-before-production",
       "label": "old-production-additional-before-release",
-      "environment": "Before-release production",
+      "environment": "Before-release production0197d18/5ecc7f32",
       "route": "/blog/how-browser-compression-works",
       "mode": "desktop",
       "capturedAt": "2026-11-27T11:28:47.626Z",
@@ -1362,7 +1683,7 @@
     {
       "series": "old-production-partial-delivery-normal-retry",
       "label": "old-production-pdf-normal-retry",
-      "environment": "Before-release production",
+      "environment": "Before-release production0197d18/5ecc7f32",
       "route": "/pdf-compressor",
       "mode": "mobile",
       "status": "BLOCKED",
@@ -1379,7 +1700,7 @@
     {
       "series": "old-production-partial-delivery-normal-retry",
       "label": "old-production-pdf-normal-retry",
-      "environment": "Before-release production",
+      "environment": "Before-release production0197d18/5ecc7f32",
       "route": "/pdf-compressor",
       "mode": "desktop",
       "capturedAt": "2026-11-27T11:42:27.383Z",
@@ -1404,6 +1725,394 @@
       "failedRequests": [],
       "warnings": [],
       "rawReport": ".qa-results/phase2/lighthouse/old-production-partial-delivery-normal-retry/01-old-production-pdf-normal-retry/pdf-compressor-desktop.report.json"
+    },
+    {
+      "series": "final-production",
+      "label": "final-production-five-routes",
+      "environment": "Final production5fdf646/3f5114e1",
+      "route": "/",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T12:24:04.005Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 95,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1268.88,
+        "largest-contentful-paint": 1268.88,
+        "total-blocking-time": 246,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1508.9388500027435
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-production/01-final-production-five-routes/home-mobile.report.json"
+    },
+    {
+      "series": "final-production",
+      "label": "final-production-five-routes",
+      "environment": "Final production5fdf646/3f5114e1",
+      "route": "/",
+      "mode": "desktop",
+      "status": "BLOCKED",
+      "reason": "No valid Lighthouse scores",
+      "scores": null,
+      "metrics": null,
+      "lighthouseVersion": null,
+      "artifactUnchanged": true,
+      "homeSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": null
+    },
+    {
+      "series": "final-production",
+      "label": "final-production-five-routes",
+      "environment": "Final production5fdf646/3f5114e1",
+      "route": "/jpg-compressor",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T12:24:38.173Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 94,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1156.43,
+        "largest-contentful-paint": 1156.43,
+        "total-blocking-time": 298.0000000000002,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1867.0156649365476
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-production/01-final-production-five-routes/jpg-compressor-mobile.report.json"
+    },
+    {
+      "series": "final-production",
+      "label": "final-production-five-routes",
+      "environment": "Final production5fdf646/3f5114e1",
+      "route": "/jpg-compressor",
+      "mode": "desktop",
+      "capturedAt": "2026-11-27T12:24:52.892Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 327.0970000000001,
+        "largest-contentful-paint": 327.0970000000001,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1105.1120583329564
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-production/01-final-production-five-routes/jpg-compressor-desktop.report.json"
+    },
+    {
+      "series": "final-production",
+      "label": "final-production-five-routes",
+      "environment": "Final production5fdf646/3f5114e1",
+      "route": "/webm-to-mp4",
+      "mode": "mobile",
+      "status": "BLOCKED",
+      "reason": "No valid Lighthouse scores",
+      "scores": null,
+      "metrics": null,
+      "lighthouseVersion": null,
+      "artifactUnchanged": true,
+      "homeSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": null
+    },
+    {
+      "series": "final-production",
+      "label": "final-production-five-routes",
+      "environment": "Final production5fdf646/3f5114e1",
+      "route": "/webm-to-mp4",
+      "mode": "desktop",
+      "status": "BLOCKED",
+      "reason": "No valid Lighthouse scores",
+      "scores": null,
+      "metrics": null,
+      "lighthouseVersion": null,
+      "artifactUnchanged": true,
+      "homeSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": null
+    },
+    {
+      "series": "final-production",
+      "label": "final-production-five-routes",
+      "environment": "Final production5fdf646/3f5114e1",
+      "route": "/pdf-compressor",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T12:25:40.586Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 96,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1111.2350000000001,
+        "largest-contentful-paint": 1111.2350000000001,
+        "total-blocking-time": 221,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1454.4799532284228
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+      "failedRequests": [
+        {
+          "url": "https://filecompresser.com/site.webmanifest",
+          "status": -1,
+          "failure": null
+        }
+      ],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-production/01-final-production-five-routes/pdf-compressor-mobile.report.json"
+    },
+    {
+      "series": "final-production",
+      "label": "final-production-five-routes",
+      "environment": "Final production5fdf646/3f5114e1",
+      "route": "/pdf-compressor",
+      "mode": "desktop",
+      "capturedAt": "2026-11-27T12:25:54.817Z",
+      "status": "PARTIAL_DELIVERY",
+      "reason": "Lighthouse robots.txt request failed or timed out. Ordinary browser/Node requests separately returned valid200; excluded from clean before/after comparison.",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 92
+      },
+      "metrics": {
+        "first-contentful-paint": 313.703,
+        "largest-contentful-paint": 313.703,
+        "total-blocking-time": 4,
+        "cumulative-layout-shift": 0,
+        "speed-index": 672.6423583317396
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-production/01-final-production-five-routes/pdf-compressor-desktop.report.json"
+    },
+    {
+      "series": "final-production",
+      "label": "final-production-five-routes",
+      "environment": "Final production5fdf646/3f5114e1",
+      "route": "/blog/how-browser-compression-works",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T12:26:09.600Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 96,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1129.493,
+        "largest-contentful-paint": 2198.493,
+        "total-blocking-time": 194,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1399.0815944062979
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+      "failedRequests": [
+        {
+          "url": "https://filecompresser.com/site.webmanifest",
+          "status": -1,
+          "failure": null
+        }
+      ],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-production/01-final-production-five-routes/blog--how-browser-compression-works-mobile.report.json"
+    },
+    {
+      "series": "final-production",
+      "label": "final-production-five-routes",
+      "environment": "Final production5fdf646/3f5114e1",
+      "route": "/blog/how-browser-compression-works",
+      "mode": "desktop",
+      "capturedAt": "2026-11-27T12:26:24.730Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 333.12,
+        "largest-contentful-paint": 514.12,
+        "total-blocking-time": 12.5,
+        "cumulative-layout-shift": 0,
+        "speed-index": 777.4600421301427
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-production/01-final-production-five-routes/blog--how-browser-compression-works-desktop.report.json"
+    },
+    {
+      "series": "final-production-normal-retries",
+      "label": "home-desktop-normal-retry",
+      "environment": "Final production5fdf646/3f5114e1",
+      "route": "/",
+      "mode": "desktop",
+      "capturedAt": "2026-11-27T12:28:18.261Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 371.02099999999996,
+        "largest-contentful-paint": 371.02099999999996,
+        "total-blocking-time": 35,
+        "cumulative-layout-shift": 0,
+        "speed-index": 657.775649997995
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-production-normal-retries/home-desktop-normal-retry/01-home-desktop-normal-retry/home-desktop.report.json"
+    },
+    {
+      "series": "final-production-normal-retries",
+      "label": "webm-mobile-normal-retry",
+      "environment": "Final production5fdf646/3f5114e1",
+      "route": "/webm-to-mp4",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T12:28:33.846Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1035.4009999999998,
+        "largest-contentful-paint": 1035.4009999999998,
+        "total-blocking-time": 115,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1364.5846759973551
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-production-normal-retries/webm-mobile-normal-retry/01-webm-mobile-normal-retry/webm-to-mp4-mobile.report.json"
+    },
+    {
+      "series": "final-production-normal-retries",
+      "label": "webm-desktop-normal-retry",
+      "environment": "Final production5fdf646/3f5114e1",
+      "route": "/webm-to-mp4",
+      "mode": "desktop",
+      "capturedAt": "2026-11-27T12:28:50.920Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 385.043,
+        "largest-contentful-paint": 385.043,
+        "total-blocking-time": 93,
+        "cumulative-layout-shift": 0,
+        "speed-index": 761.6648371667844
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-production-normal-retries/webm-desktop-normal-retry/01-webm-desktop-normal-retry/webm-to-mp4-desktop.report.json"
+    },
+    {
+      "series": "final-production-normal-retries",
+      "label": "pdf-desktop-robots-fetch-normal-retry",
+      "environment": "Final production5fdf646/3f5114e1",
+      "route": "/pdf-compressor",
+      "mode": "desktop",
+      "capturedAt": "2026-11-27T12:29:07.541Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 324.367,
+        "largest-contentful-paint": 324.367,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "speed-index": 685.698483333419
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+      "failedRequests": [
+        {
+          "url": "https://filecompresser.com/site.webmanifest",
+          "status": -1,
+          "failure": null
+        }
+      ],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-production-normal-retries/pdf-desktop-robots-fetch-normal-retry/01-pdf-desktop-robots-fetch-normal-retry/pdf-compressor-desktop.report.json"
     }
   ],
   "payloadI": {
@@ -1702,6 +2411,386 @@
           "bytes": 55073,
           "gzipEstimate": 11690,
           "sha256": "5a49fbbb2cde2f7cf22adb011acc534a4e07e03c78edea99da06912bc7b8fc92"
+        },
+        "scripts": [
+          {
+            "path": "/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+            "bytes": 203721,
+            "gzipEstimate": 64055,
+            "sha256": "bc650dd5e12e5d105ffd07b23f99e65c5d379de8d82fb6ef2859e59bd440b06f"
+          },
+          {
+            "path": "/_next/static/chunks/794-a07363c91e88b990.js",
+            "bytes": 241844,
+            "gzipEstimate": 67196,
+            "sha256": "bd197af46e3a5b24285044246c865dc724c5980c87099552160d9a49ccae393d"
+          },
+          {
+            "path": "/_next/static/chunks/main-app-e0c5585404eeb003.js",
+            "bytes": 513,
+            "gzipEstimate": 222,
+            "sha256": "8641a2b06fc0703fdc23d73d01aa7beaac3fe70e87613142a9d8e75df6caef0d"
+          },
+          {
+            "path": "/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+            "bytes": 7642,
+            "gzipEstimate": 3246,
+            "sha256": "905bc34977bb55dd8fda0041a3dbe144347dc46e9cd747d71e6b326deb234d7d"
+          },
+          {
+            "path": "/_next/static/chunks/437-637def3bf7b62bbb.js",
+            "bytes": 14383,
+            "gzipEstimate": 5515,
+            "sha256": "e461fe4783f53e96082952c0d8338590bc788b597eca75fa17f5686f06855081"
+          },
+          {
+            "path": "/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+            "bytes": 11621,
+            "gzipEstimate": 3997,
+            "sha256": "65d4eb31f22d49f5d7f1ad9996a2fa7db987209bdc65a7a0881d9b912ced2f98"
+          },
+          {
+            "path": "/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+            "bytes": 1084,
+            "gzipEstimate": 597,
+            "sha256": "6a36f58ceb83c23ad8ed32c846188e5cf48a0e16f1269de4b4821f14fde1e08a"
+          },
+          {
+            "path": "/_next/static/chunks/app/blog/%5Bslug%5D/page-515a03fb2e247621.js",
+            "bytes": 235,
+            "gzipEstimate": 176,
+            "sha256": "1409e4acaacf0a1cbb5d766390fc278cc54e7cf6fa778fb88c2490e9ef4c1a8f"
+          },
+          {
+            "path": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+            "bytes": 112594,
+            "gzipEstimate": 39627,
+            "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683"
+          },
+          {
+            "path": "/_next/static/chunks/webpack-f6dd71d22e03e631.js",
+            "bytes": 3619,
+            "gzipEstimate": 1962,
+            "sha256": "66d9a0cc45ace1f45af81b1f8525f11828401509a696c0e66dd6ede3e7d96008"
+          }
+        ],
+        "styles": [
+          {
+            "path": "/_next/static/css/769988446751fec8.css",
+            "bytes": 44013,
+            "gzipEstimate": 9617,
+            "sha256": "eda5a7ed8a9be9a5893047cd2abdafffeafa53d566e375b40428694b6e641318"
+          },
+          {
+            "path": "/_next/static/css/11524cf513af25ac.css",
+            "bytes": 56052,
+            "gzipEstimate": 11312,
+            "sha256": "340201d8b91025f93fef7f7372caf4cabefc03358e7867c040939c95c3479361"
+          }
+        ],
+        "scriptBytes": 597256,
+        "scriptGzipEstimate": 186593,
+        "allReferencedBytes": 752394,
+        "allReferencedGzipEstimate": 219212
+      }
+    ]
+  },
+  "payloadFinalMirror": {
+    "capturedAt": "2026-11-27T12:37:50.626Z",
+    "method": "Unique script src and stylesheet href references in exported HTML; raw file bytes and per-resource gzip estimates. Includes legacy nomodule references; not actual modern-browser transfers. Inline scripts are already included in HTML bytes. No codec/WASM startup is exercised.",
+    "routes": [
+      {
+        "route": "/",
+        "html": {
+          "path": "/index.html",
+          "bytes": 110411,
+          "gzipEstimate": 19663,
+          "sha256": "ca79c4abf7c695f89dc38034bb9db441d61c098caaa1720aadb34d4a4ec6edb3"
+        },
+        "scripts": [
+          {
+            "path": "/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+            "bytes": 203721,
+            "gzipEstimate": 64055,
+            "sha256": "bc650dd5e12e5d105ffd07b23f99e65c5d379de8d82fb6ef2859e59bd440b06f"
+          },
+          {
+            "path": "/_next/static/chunks/794-a07363c91e88b990.js",
+            "bytes": 241844,
+            "gzipEstimate": 67196,
+            "sha256": "bd197af46e3a5b24285044246c865dc724c5980c87099552160d9a49ccae393d"
+          },
+          {
+            "path": "/_next/static/chunks/main-app-e0c5585404eeb003.js",
+            "bytes": 513,
+            "gzipEstimate": 222,
+            "sha256": "8641a2b06fc0703fdc23d73d01aa7beaac3fe70e87613142a9d8e75df6caef0d"
+          },
+          {
+            "path": "/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+            "bytes": 7642,
+            "gzipEstimate": 3246,
+            "sha256": "905bc34977bb55dd8fda0041a3dbe144347dc46e9cd747d71e6b326deb234d7d"
+          },
+          {
+            "path": "/_next/static/chunks/437-637def3bf7b62bbb.js",
+            "bytes": 14383,
+            "gzipEstimate": 5515,
+            "sha256": "e461fe4783f53e96082952c0d8338590bc788b597eca75fa17f5686f06855081"
+          },
+          {
+            "path": "/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+            "bytes": 11621,
+            "gzipEstimate": 3997,
+            "sha256": "65d4eb31f22d49f5d7f1ad9996a2fa7db987209bdc65a7a0881d9b912ced2f98"
+          },
+          {
+            "path": "/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+            "bytes": 1084,
+            "gzipEstimate": 597,
+            "sha256": "6a36f58ceb83c23ad8ed32c846188e5cf48a0e16f1269de4b4821f14fde1e08a"
+          },
+          {
+            "path": "/_next/static/chunks/978-27c11cf6899d1747.js",
+            "bytes": 63758,
+            "gzipEstimate": 21593,
+            "sha256": "26df262ef694cb27e5abab6ea6b59f6703a416602c082bf829d853452f47e58e"
+          },
+          {
+            "path": "/_next/static/chunks/app/page-f6b5a0c2ab1dba17.js",
+            "bytes": 6595,
+            "gzipEstimate": 2686,
+            "sha256": "f3096a47bf989cd40726c16ebd582eccd6e9bd89030d9982183bef5d45d89335"
+          },
+          {
+            "path": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+            "bytes": 112594,
+            "gzipEstimate": 39627,
+            "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683"
+          },
+          {
+            "path": "/_next/static/chunks/webpack-f6dd71d22e03e631.js",
+            "bytes": 3619,
+            "gzipEstimate": 1962,
+            "sha256": "66d9a0cc45ace1f45af81b1f8525f11828401509a696c0e66dd6ede3e7d96008"
+          }
+        ],
+        "styles": [
+          {
+            "path": "/_next/static/css/769988446751fec8.css",
+            "bytes": 44013,
+            "gzipEstimate": 9617,
+            "sha256": "eda5a7ed8a9be9a5893047cd2abdafffeafa53d566e375b40428694b6e641318"
+          },
+          {
+            "path": "/_next/static/css/11524cf513af25ac.css",
+            "bytes": 56052,
+            "gzipEstimate": 11312,
+            "sha256": "340201d8b91025f93fef7f7372caf4cabefc03358e7867c040939c95c3479361"
+          }
+        ],
+        "scriptBytes": 667374,
+        "scriptGzipEstimate": 210696,
+        "allReferencedBytes": 877850,
+        "allReferencedGzipEstimate": 251288
+      },
+      {
+        "route": "/image-compressor",
+        "html": {
+          "path": "/image-compressor.html",
+          "bytes": 87082,
+          "gzipEstimate": 16071,
+          "sha256": "f437d5e6915f8c35a2b39a7c673c53a47d7c3e816ec211948656f3585daae0df"
+        },
+        "scripts": [
+          {
+            "path": "/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+            "bytes": 203721,
+            "gzipEstimate": 64055,
+            "sha256": "bc650dd5e12e5d105ffd07b23f99e65c5d379de8d82fb6ef2859e59bd440b06f"
+          },
+          {
+            "path": "/_next/static/chunks/794-a07363c91e88b990.js",
+            "bytes": 241844,
+            "gzipEstimate": 67196,
+            "sha256": "bd197af46e3a5b24285044246c865dc724c5980c87099552160d9a49ccae393d"
+          },
+          {
+            "path": "/_next/static/chunks/main-app-e0c5585404eeb003.js",
+            "bytes": 513,
+            "gzipEstimate": 222,
+            "sha256": "8641a2b06fc0703fdc23d73d01aa7beaac3fe70e87613142a9d8e75df6caef0d"
+          },
+          {
+            "path": "/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+            "bytes": 7642,
+            "gzipEstimate": 3246,
+            "sha256": "905bc34977bb55dd8fda0041a3dbe144347dc46e9cd747d71e6b326deb234d7d"
+          },
+          {
+            "path": "/_next/static/chunks/437-637def3bf7b62bbb.js",
+            "bytes": 14383,
+            "gzipEstimate": 5515,
+            "sha256": "e461fe4783f53e96082952c0d8338590bc788b597eca75fa17f5686f06855081"
+          },
+          {
+            "path": "/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+            "bytes": 11621,
+            "gzipEstimate": 3997,
+            "sha256": "65d4eb31f22d49f5d7f1ad9996a2fa7db987209bdc65a7a0881d9b912ced2f98"
+          },
+          {
+            "path": "/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+            "bytes": 1084,
+            "gzipEstimate": 597,
+            "sha256": "6a36f58ceb83c23ad8ed32c846188e5cf48a0e16f1269de4b4821f14fde1e08a"
+          },
+          {
+            "path": "/_next/static/chunks/978-27c11cf6899d1747.js",
+            "bytes": 63758,
+            "gzipEstimate": 21593,
+            "sha256": "26df262ef694cb27e5abab6ea6b59f6703a416602c082bf829d853452f47e58e"
+          },
+          {
+            "path": "/_next/static/chunks/app/%5Btool%5D/page-8855eab75167a372.js",
+            "bytes": 226,
+            "gzipEstimate": 175,
+            "sha256": "013606ec7c93f49b045fa0d46dc469ee0974d2e4f6142ca70e751def6fb876d1"
+          },
+          {
+            "path": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+            "bytes": 112594,
+            "gzipEstimate": 39627,
+            "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683"
+          },
+          {
+            "path": "/_next/static/chunks/webpack-f6dd71d22e03e631.js",
+            "bytes": 3619,
+            "gzipEstimate": 1962,
+            "sha256": "66d9a0cc45ace1f45af81b1f8525f11828401509a696c0e66dd6ede3e7d96008"
+          }
+        ],
+        "styles": [
+          {
+            "path": "/_next/static/css/769988446751fec8.css",
+            "bytes": 44013,
+            "gzipEstimate": 9617,
+            "sha256": "eda5a7ed8a9be9a5893047cd2abdafffeafa53d566e375b40428694b6e641318"
+          },
+          {
+            "path": "/_next/static/css/11524cf513af25ac.css",
+            "bytes": 56052,
+            "gzipEstimate": 11312,
+            "sha256": "340201d8b91025f93fef7f7372caf4cabefc03358e7867c040939c95c3479361"
+          }
+        ],
+        "scriptBytes": 661005,
+        "scriptGzipEstimate": 208185,
+        "allReferencedBytes": 848152,
+        "allReferencedGzipEstimate": 245185
+      },
+      {
+        "route": "/webm-to-mp4",
+        "html": {
+          "path": "/webm-to-mp4.html",
+          "bytes": 54553,
+          "gzipEstimate": 9845,
+          "sha256": "31211722bafa71a0001b851bbc0141b2d4bf57ea4222821ee61fa7ea64ccdc51"
+        },
+        "scripts": [
+          {
+            "path": "/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+            "bytes": 203721,
+            "gzipEstimate": 64055,
+            "sha256": "bc650dd5e12e5d105ffd07b23f99e65c5d379de8d82fb6ef2859e59bd440b06f"
+          },
+          {
+            "path": "/_next/static/chunks/794-a07363c91e88b990.js",
+            "bytes": 241844,
+            "gzipEstimate": 67196,
+            "sha256": "bd197af46e3a5b24285044246c865dc724c5980c87099552160d9a49ccae393d"
+          },
+          {
+            "path": "/_next/static/chunks/main-app-e0c5585404eeb003.js",
+            "bytes": 513,
+            "gzipEstimate": 222,
+            "sha256": "8641a2b06fc0703fdc23d73d01aa7beaac3fe70e87613142a9d8e75df6caef0d"
+          },
+          {
+            "path": "/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+            "bytes": 7642,
+            "gzipEstimate": 3246,
+            "sha256": "905bc34977bb55dd8fda0041a3dbe144347dc46e9cd747d71e6b326deb234d7d"
+          },
+          {
+            "path": "/_next/static/chunks/437-637def3bf7b62bbb.js",
+            "bytes": 14383,
+            "gzipEstimate": 5515,
+            "sha256": "e461fe4783f53e96082952c0d8338590bc788b597eca75fa17f5686f06855081"
+          },
+          {
+            "path": "/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+            "bytes": 11621,
+            "gzipEstimate": 3997,
+            "sha256": "65d4eb31f22d49f5d7f1ad9996a2fa7db987209bdc65a7a0881d9b912ced2f98"
+          },
+          {
+            "path": "/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+            "bytes": 1084,
+            "gzipEstimate": 597,
+            "sha256": "6a36f58ceb83c23ad8ed32c846188e5cf48a0e16f1269de4b4821f14fde1e08a"
+          },
+          {
+            "path": "/_next/static/chunks/978-27c11cf6899d1747.js",
+            "bytes": 63758,
+            "gzipEstimate": 21593,
+            "sha256": "26df262ef694cb27e5abab6ea6b59f6703a416602c082bf829d853452f47e58e"
+          },
+          {
+            "path": "/_next/static/chunks/app/%5Btool%5D/page-8855eab75167a372.js",
+            "bytes": 226,
+            "gzipEstimate": 175,
+            "sha256": "013606ec7c93f49b045fa0d46dc469ee0974d2e4f6142ca70e751def6fb876d1"
+          },
+          {
+            "path": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+            "bytes": 112594,
+            "gzipEstimate": 39627,
+            "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683"
+          },
+          {
+            "path": "/_next/static/chunks/webpack-f6dd71d22e03e631.js",
+            "bytes": 3619,
+            "gzipEstimate": 1962,
+            "sha256": "66d9a0cc45ace1f45af81b1f8525f11828401509a696c0e66dd6ede3e7d96008"
+          }
+        ],
+        "styles": [
+          {
+            "path": "/_next/static/css/769988446751fec8.css",
+            "bytes": 44013,
+            "gzipEstimate": 9617,
+            "sha256": "eda5a7ed8a9be9a5893047cd2abdafffeafa53d566e375b40428694b6e641318"
+          },
+          {
+            "path": "/_next/static/css/11524cf513af25ac.css",
+            "bytes": 56052,
+            "gzipEstimate": 11312,
+            "sha256": "340201d8b91025f93fef7f7372caf4cabefc03358e7867c040939c95c3479361"
+          }
+        ],
+        "scriptBytes": 661005,
+        "scriptGzipEstimate": 208185,
+        "allReferencedBytes": 815623,
+        "allReferencedGzipEstimate": 238959
+      },
+      {
+        "route": "/blog/how-browser-compression-works",
+        "html": {
+          "path": "/blog/how-browser-compression-works.html",
+          "bytes": 55073,
+          "gzipEstimate": 11690,
+          "sha256": "91ea9fe3eb55601ff873299eb86247a7df10f772b037d8c558cfffa9cee8c2b1"
         },
         "scripts": [
           {

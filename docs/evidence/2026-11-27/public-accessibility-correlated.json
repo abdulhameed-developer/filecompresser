@@ -1,0 +1,807 @@
+{
+  "capturedAt": "2026-11-27T12:32:32.157Z",
+  "status": "PASS",
+  "scope": "Fresh actual public accessibility and strictly correlated resource observation. The deployed29-view axe script/rules/routes remain unchanged; private instrumentation adds normal network settlement between forced navigations and exact HEAD/CDP/native-promise traces. No application or infrastructure change.",
+  "sourceCommit": "5fdf646b2b1465c150777e4872a020d4cbd2ac24",
+  "cloudflareDeploymentId": "3f5114e1-8094-4a07-9022-4a566e8feb0e",
+  "publicHomepageSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+  "browserVersion": "156.0.8078.47",
+  "launchOptions": {
+    "executablePath": "/usr/bin/google-chrome",
+    "args": [
+      "--no-sandbox"
+    ]
+  },
+  "viewport": {
+    "width": 1280,
+    "height": 720,
+    "dpr": 1
+  },
+  "normalChildExit": {
+    "exitCode": 0,
+    "signal": null
+  },
+  "normalBrowserClose": true,
+  "browserDisconnected": true,
+  "auditSource": {
+    "path": "scripts/accessibility-audit.mjs",
+    "sha256Before": "1c5113de04a0d9a76647738f0fe8dc074f18241a3acd15a60afb14fae4123737",
+    "sha256After": "1c5113de04a0d9a76647738f0fe8dc074f18241a3acd15a60afb14fae4123737"
+  },
+  "automatedAccessibility": {
+    "views": 29,
+    "violations": 0,
+    "routes": [
+      {
+        "route": "/",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/about",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/blog",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/privacy",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/terms",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/disclaimer",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/contact",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/sitemap",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/blog/compressing-files-for-the-web",
+        "violations": 0,
+        "incomplete": 1
+      },
+      {
+        "route": "/blog/what-privacy-claim-really-means",
+        "violations": 0,
+        "incomplete": 1
+      },
+      {
+        "route": "/blog/choosing-a-compression-mode",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/blog/honest-file-size-reporting",
+        "violations": 0,
+        "incomplete": 1
+      },
+      {
+        "route": "/blog/how-browser-compression-works",
+        "violations": 0,
+        "incomplete": 1
+      },
+      {
+        "route": "/compress",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/image-compressor",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/jpg-compressor",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/jpeg-compressor",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/png-compressor",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/webp-compressor",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/gif-compressor",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/video-compressor",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/webm-to-mp4",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/mp3-compressor",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/wav-compressor",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/pdf-compressor",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/zip-compressor",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/archive-compressor",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/wav-to-mp3",
+        "violations": 0,
+        "incomplete": 0
+      },
+      {
+        "route": "/404-missing",
+        "violations": 0,
+        "incomplete": 0
+      }
+    ],
+    "incompleteViews": 4,
+    "manualSvgDisposition": {
+      "status": "MANUAL_DISPOSITION_REUSED_FOR_IDENTICAL_SOURCE_AND_LIVE_DOM",
+      "automatedIncompleteRetained": true,
+      "automatedContrastPassClaimed": false,
+      "figureCount": 4,
+      "nodeCount": 51,
+      "actualLiveSvgTreesAndNodesMatchI": true,
+      "actualComputedForegroundsMatchManual": true,
+      "actualDeliveredStylesheetsMatchI": true,
+      "backingPaintOrderAndPaletteMatchPriorManual": true,
+      "minimumRecomputedRatio": 4.5785863222047025,
+      "sourceReport": ".qa-results/phase2/svg-contrast-i/comparison.json",
+      "limitation": "Existing manual SVG backing/paint-order disposition reused only for identical full SVG trees, target nodes, computed foreground/palette and delivered stylesheet bytes. Not screen-reader certification or an automated contrast pass."
+    }
+  },
+  "strictResourceObservation": {
+    "rawFailedRequests": 5,
+    "rawHeadCancellations": 5,
+    "classifiedExactFulfilledHeads": 5,
+    "unresolvedFailedRequests": 0,
+    "rejectedNativeHeadPromises": 0,
+    "getFailures": 0,
+    "expectedRequested404DocumentConsole": 1,
+    "observerFailures": 0,
+    "proofs": [
+      {
+        "rawFailure": {
+          "page": "https://filecompresser.com/about",
+          "url": "https://filecompresser.com/",
+          "method": "HEAD",
+          "error": "net::ERR_ABORTED",
+          "resourceType": "fetch",
+          "navigation": false,
+          "responseStatus": 200,
+          "documentUrl": "https://filecompresser.com/about",
+          "startedAtEpochMs": 1795782714895,
+          "startTimeSource": "Observed request event wall time"
+        },
+        "cdp": {
+          "requestId": "526557.71",
+          "method": "HEAD",
+          "url": "https://filecompresser.com/",
+          "documentUrl": "https://filecompresser.com/about",
+          "startedAtEpochMs": 1795782714880.397,
+          "status": 200,
+          "error": "net::ERR_ABORTED",
+          "canceled": true,
+          "loaderId": "AAD50D224BDA1302EA6322E187B66042",
+          "frameId": "D241B673F2C30CB3767E35A15642C251"
+        },
+        "nativePromise": {
+          "id": 1,
+          "url": "https://filecompresser.com/",
+          "documentUrl": "https://filecompresser.com/about",
+          "startedAtEpochMs": 1795782714881,
+          "fulfilled": true,
+          "status": 200,
+          "bodyNull": false
+        },
+        "followingSuccessfulRouteTree": {
+          "url": "https://filecompresser.com/__next._tree.txt?_rsc=Sdev7PUlRw12F58X",
+          "method": "GET",
+          "status": 200,
+          "mimeType": "text/plain",
+          "rsc": "1",
+          "documentUrl": "https://filecompresser.com/about",
+          "startedAtEpochMs": 1795782715198,
+          "startTimeSource": "Observed request event wall time"
+        },
+        "predicateSource": "node_modules/next/dist/client/components/segment-cache/cache.js:fetchRouteOnCacheMiss output-export HEAD branch",
+        "correlation": "Own raw2xx fetch/non-navigation; unique nearby CDP HEAD and native promise before success filtering; exact response status and same HEAD/document/tree origin."
+      },
+      {
+        "rawFailure": {
+          "page": "https://filecompresser.com/privacy",
+          "url": "https://filecompresser.com/",
+          "method": "HEAD",
+          "error": "net::ERR_ABORTED",
+          "resourceType": "fetch",
+          "navigation": false,
+          "responseStatus": 200,
+          "documentUrl": "https://filecompresser.com/privacy",
+          "startedAtEpochMs": 1795782717948,
+          "startTimeSource": "Observed request event wall time"
+        },
+        "cdp": {
+          "requestId": "526557.151",
+          "method": "HEAD",
+          "url": "https://filecompresser.com/",
+          "documentUrl": "https://filecompresser.com/privacy",
+          "startedAtEpochMs": 1795782717934.8809,
+          "status": 200,
+          "error": "net::ERR_ABORTED",
+          "canceled": true,
+          "loaderId": "E840E7F4CBBFD416DE03D01E514A7486",
+          "frameId": "D241B673F2C30CB3767E35A15642C251"
+        },
+        "nativePromise": {
+          "id": 1,
+          "url": "https://filecompresser.com/",
+          "documentUrl": "https://filecompresser.com/privacy",
+          "startedAtEpochMs": 1795782717936,
+          "fulfilled": true,
+          "status": 200,
+          "bodyNull": false
+        },
+        "followingSuccessfulRouteTree": {
+          "url": "https://filecompresser.com/__next._tree.txt?_rsc=WzUDN3am5ctH078F",
+          "method": "GET",
+          "status": 200,
+          "mimeType": "text/plain",
+          "rsc": "1",
+          "documentUrl": "https://filecompresser.com/privacy",
+          "startedAtEpochMs": 1795782718259,
+          "startTimeSource": "Observed request event wall time"
+        },
+        "predicateSource": "node_modules/next/dist/client/components/segment-cache/cache.js:fetchRouteOnCacheMiss output-export HEAD branch",
+        "correlation": "Own raw2xx fetch/non-navigation; unique nearby CDP HEAD and native promise before success filtering; exact response status and same HEAD/document/tree origin."
+      },
+      {
+        "rawFailure": {
+          "page": "https://filecompresser.com/terms",
+          "url": "https://filecompresser.com/",
+          "method": "HEAD",
+          "error": "net::ERR_ABORTED",
+          "resourceType": "fetch",
+          "navigation": false,
+          "responseStatus": 200,
+          "documentUrl": "https://filecompresser.com/terms",
+          "startedAtEpochMs": 1795782719590,
+          "startTimeSource": "Observed request event wall time"
+        },
+        "cdp": {
+          "requestId": "526557.191",
+          "method": "HEAD",
+          "url": "https://filecompresser.com/",
+          "documentUrl": "https://filecompresser.com/terms",
+          "startedAtEpochMs": 1795782719581.08,
+          "status": 200,
+          "error": "net::ERR_ABORTED",
+          "canceled": true,
+          "loaderId": "33D06B890E927FC0A4EF8920F248A49E",
+          "frameId": "D241B673F2C30CB3767E35A15642C251"
+        },
+        "nativePromise": {
+          "id": 1,
+          "url": "https://filecompresser.com/",
+          "documentUrl": "https://filecompresser.com/terms",
+          "startedAtEpochMs": 1795782719582,
+          "fulfilled": true,
+          "status": 200,
+          "bodyNull": false
+        },
+        "followingSuccessfulRouteTree": {
+          "url": "https://filecompresser.com/__next._tree.txt?_rsc=pfWg1qw4uMxqj7N2",
+          "method": "GET",
+          "status": 200,
+          "mimeType": "text/plain",
+          "rsc": "1",
+          "documentUrl": "https://filecompresser.com/terms",
+          "startedAtEpochMs": 1795782719884,
+          "startTimeSource": "Observed request event wall time"
+        },
+        "predicateSource": "node_modules/next/dist/client/components/segment-cache/cache.js:fetchRouteOnCacheMiss output-export HEAD branch",
+        "correlation": "Own raw2xx fetch/non-navigation; unique nearby CDP HEAD and native promise before success filtering; exact response status and same HEAD/document/tree origin."
+      },
+      {
+        "rawFailure": {
+          "page": "https://filecompresser.com/disclaimer",
+          "url": "https://filecompresser.com/",
+          "method": "HEAD",
+          "error": "net::ERR_ABORTED",
+          "resourceType": "fetch",
+          "navigation": false,
+          "responseStatus": 200,
+          "documentUrl": "https://filecompresser.com/disclaimer",
+          "startedAtEpochMs": 1795782721263,
+          "startTimeSource": "Observed request event wall time"
+        },
+        "cdp": {
+          "requestId": "526557.230",
+          "method": "HEAD",
+          "url": "https://filecompresser.com/",
+          "documentUrl": "https://filecompresser.com/disclaimer",
+          "startedAtEpochMs": 1795782721247.931,
+          "status": 200,
+          "error": "net::ERR_ABORTED",
+          "canceled": true,
+          "loaderId": "FFF1C1D85CF7716F74AED8DDD6982766",
+          "frameId": "D241B673F2C30CB3767E35A15642C251"
+        },
+        "nativePromise": {
+          "id": 1,
+          "url": "https://filecompresser.com/",
+          "documentUrl": "https://filecompresser.com/disclaimer",
+          "startedAtEpochMs": 1795782721248,
+          "fulfilled": true,
+          "status": 200,
+          "bodyNull": false
+        },
+        "followingSuccessfulRouteTree": {
+          "url": "https://filecompresser.com/__next._tree.txt?_rsc=W2xJebh4Ld-kz8-n",
+          "method": "GET",
+          "status": 200,
+          "mimeType": "text/plain",
+          "rsc": "1",
+          "documentUrl": "https://filecompresser.com/disclaimer",
+          "startedAtEpochMs": 1795782721460,
+          "startTimeSource": "Observed request event wall time"
+        },
+        "predicateSource": "node_modules/next/dist/client/components/segment-cache/cache.js:fetchRouteOnCacheMiss output-export HEAD branch",
+        "correlation": "Own raw2xx fetch/non-navigation; unique nearby CDP HEAD and native promise before success filtering; exact response status and same HEAD/document/tree origin."
+      },
+      {
+        "rawFailure": {
+          "page": "https://filecompresser.com/contact",
+          "url": "https://filecompresser.com/",
+          "method": "HEAD",
+          "error": "net::ERR_ABORTED",
+          "resourceType": "fetch",
+          "navigation": false,
+          "responseStatus": 200,
+          "documentUrl": "https://filecompresser.com/contact",
+          "startedAtEpochMs": 1795782723053,
+          "startTimeSource": "Observed request event wall time"
+        },
+        "cdp": {
+          "requestId": "526557.269",
+          "method": "HEAD",
+          "url": "https://filecompresser.com/",
+          "documentUrl": "https://filecompresser.com/contact",
+          "startedAtEpochMs": 1795782723042.78,
+          "status": 200,
+          "error": "net::ERR_ABORTED",
+          "canceled": true,
+          "loaderId": "4664D3B6E3DB19C95FBA59510C944B8D",
+          "frameId": "D241B673F2C30CB3767E35A15642C251"
+        },
+        "nativePromise": {
+          "id": 1,
+          "url": "https://filecompresser.com/",
+          "documentUrl": "https://filecompresser.com/contact",
+          "startedAtEpochMs": 1795782723043,
+          "fulfilled": true,
+          "status": 200,
+          "bodyNull": false
+        },
+        "followingSuccessfulRouteTree": {
+          "url": "https://filecompresser.com/__next._tree.txt?_rsc=h2vb-LAkAGynSY5z",
+          "method": "GET",
+          "status": 200,
+          "mimeType": "text/plain",
+          "rsc": "1",
+          "documentUrl": "https://filecompresser.com/contact",
+          "startedAtEpochMs": 1795782723423,
+          "startTimeSource": "Observed request event wall time"
+        },
+        "predicateSource": "node_modules/next/dist/client/components/segment-cache/cache.js:fetchRouteOnCacheMiss output-export HEAD branch",
+        "correlation": "Own raw2xx fetch/non-navigation; unique nearby CDP HEAD and native promise before success filtering; exact response status and same HEAD/document/tree origin."
+      }
+    ],
+    "rule": "Only the original own2xx fulfilled non-navigation HEAD with unique matching native promise/CDP request and same-document successful RSC route-tree is classified. No GET, rejected HEAD, ambiguous correlation or other failure exclusion."
+  },
+  "actualDeliveredStylesheets": [
+    {
+      "pathname": "/_next/static/css/769988446751fec8.css",
+      "status": 200,
+      "sha256": "eda5a7ed8a9be9a5893047cd2abdafffeafa53d566e375b40428694b6e641318",
+      "bytes": 44013
+    },
+    {
+      "pathname": "/_next/static/css/11524cf513af25ac.css",
+      "status": 200,
+      "sha256": "340201d8b91025f93fef7f7372caf4cabefc03358e7867c040939c95c3479361",
+      "bytes": 56052
+    }
+  ],
+  "sourceVisualChecks": {
+    "actualPageDomChecks": 29,
+    "expectedDocumentChecksAllPass": true,
+    "allDeliveredStylesheetsHashMatchedI": true,
+    "manualSvgFigures": 4,
+    "manualSvgTextNodes": 51,
+    "wholeSvgTreeComputedForegroundAndPaletteEquality": true,
+    "automatedIncompleteChecksRetained": true
+  },
+  "beforeAfterIdentity": {
+    "before": {
+      "status": "PASS",
+      "sourceCommit": "5fdf646b2b1465c150777e4872a020d4cbd2ac24",
+      "cloudflareDeploymentId": "3f5114e1-8094-4a07-9022-4a566e8feb0e",
+      "homeDeliveryEquivalence": {
+        "publicSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+        "immutableSha256": "7231c8728f4460c638adfb44ce3e8b9c522a8739d109506999a9f70e5f71edc7",
+        "publicBytes": 110378,
+        "immutableBytes": 110411,
+        "rawEqual": false,
+        "mode": "exact evidenced Cloudflare footer email-comment removal",
+        "removedBytes": 33,
+        "immutableMarkerCounts": {
+          "opening": 1,
+          "closing": 1
+        },
+        "publicMarkerCounts": {
+          "opening": 0,
+          "closing": 0
+        },
+        "unchangedAnchor": "<a href=\"mailto:info@filecompresser.com\">info@filecompresser.com</a>",
+        "allRemainingBytesIdentical": true
+      },
+      "resources": [
+        {
+          "name": "public-home",
+          "status": 200,
+          "sha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+          "bytes": 110378
+        },
+        {
+          "name": "immutable-home",
+          "status": 200,
+          "sha256": "7231c8728f4460c638adfb44ce3e8b9c522a8739d109506999a9f70e5f71edc7",
+          "bytes": 110411
+        },
+        {
+          "name": "image-pipeline.mjs",
+          "status": 200,
+          "sha256": "8e9ce49d7e90115d20ecc30cc130a06746d9b03b5b164e4e56f1e81f1d7987c6",
+          "bytes": 15533
+        },
+        {
+          "name": "image-engine.mjs",
+          "status": 200,
+          "sha256": "5179b8034f0272e92d54b8b9e2bb6aea6844658d66f1eab372fefb9ea6361f5a",
+          "bytes": 1174
+        },
+        {
+          "name": "image-canvas.mjs",
+          "status": 200,
+          "sha256": "96e366066cc5720a4a9267c878d05af80b591cc5e69bde773f71b8f5adbc4173",
+          "bytes": 15269
+        },
+        {
+          "name": "image-metadata.mjs",
+          "status": 200,
+          "sha256": "a584b568d2735f3fb1f345157c2c118a3ab63e9e1cb3377684c03caff09b3ec9",
+          "bytes": 10124
+        },
+        {
+          "name": "image-png.mjs",
+          "status": 200,
+          "sha256": "2c15e4efe4e413f37655028c8d95dd2092476f473e126a4dc9b0cda72923053f",
+          "bytes": 11710
+        },
+        {
+          "name": "logo.png",
+          "status": 200,
+          "sha256": "20c05cf089e1341eb498002013670d4d7d0e587549c32bbad116c04d464ebbab",
+          "bytes": 22361
+        },
+        {
+          "name": "/blog/dataflow-768.webp",
+          "status": 200,
+          "sha256": "b6d3610bfb6450121055d2c0871e0d3f983fa27cbb77a6c3e1eb3e1b04418d35",
+          "bytes": 81616
+        },
+        {
+          "name": "/blog/formattree-768.webp",
+          "status": 200,
+          "sha256": "fd7725e5033e1e91585d740e2ffc8fc9e57655aad3668880112dfa79c297d130",
+          "bytes": 65586
+        },
+        {
+          "name": "/blog/pipeline-768.webp",
+          "status": 200,
+          "sha256": "60c903060071cbcc48559ff12479daee2c9091772ceb392e7b7b51e1dcd63d94",
+          "bytes": 48054
+        },
+        {
+          "name": "/blog/qualitycurve-768.webp",
+          "status": 200,
+          "sha256": "372bdb9ddd4d518067add9e27ebbfeaccfbec8d65e23f3af181cc8a3f84fe753",
+          "bytes": 65190
+        },
+        {
+          "name": "/blog/sizebars-768.webp",
+          "status": 200,
+          "sha256": "959d058e481e4e66377e4d4f20b723d8bf2bef69e904df3e7b1e1e71dfa32991",
+          "bytes": 66696
+        },
+        {
+          "name": "blog",
+          "status": 200,
+          "sha256": "c2c83d81fd6e706c958cd75e3c4a27974622ddf03e4bb7277eeb5e8994dc7fa7",
+          "bytes": 45216
+        },
+        {
+          "name": "sitemap.xml",
+          "status": 200,
+          "sha256": "5568b4c5821bb1c7e6fe7f5be7457b5c7fda44f395ccfa77048de57d3265e069",
+          "bytes": 3659
+        },
+        {
+          "name": "unpublished-draft",
+          "status": 404,
+          "sha256": "c23e6e0cae19a5a37255ab643c9dadae1634ddd54c719aece3a1f9c5ae8e9a6d",
+          "bytes": 32239
+        }
+      ]
+    },
+    "after": {
+      "status": "PASS",
+      "sourceCommit": "5fdf646b2b1465c150777e4872a020d4cbd2ac24",
+      "cloudflareDeploymentId": "3f5114e1-8094-4a07-9022-4a566e8feb0e",
+      "homeDeliveryEquivalence": {
+        "publicSha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+        "immutableSha256": "7231c8728f4460c638adfb44ce3e8b9c522a8739d109506999a9f70e5f71edc7",
+        "publicBytes": 110378,
+        "immutableBytes": 110411,
+        "rawEqual": false,
+        "mode": "exact evidenced Cloudflare footer email-comment removal",
+        "removedBytes": 33,
+        "immutableMarkerCounts": {
+          "opening": 1,
+          "closing": 1
+        },
+        "publicMarkerCounts": {
+          "opening": 0,
+          "closing": 0
+        },
+        "unchangedAnchor": "<a href=\"mailto:info@filecompresser.com\">info@filecompresser.com</a>",
+        "allRemainingBytesIdentical": true
+      },
+      "resources": [
+        {
+          "name": "public-home",
+          "status": 200,
+          "sha256": "b9b1447995a491f935edd32245c0ac0cf2d3ab1d71ff1705b998f7f3ef816aeb",
+          "bytes": 110378
+        },
+        {
+          "name": "immutable-home",
+          "status": 200,
+          "sha256": "7231c8728f4460c638adfb44ce3e8b9c522a8739d109506999a9f70e5f71edc7",
+          "bytes": 110411
+        },
+        {
+          "name": "image-pipeline.mjs",
+          "status": 200,
+          "sha256": "8e9ce49d7e90115d20ecc30cc130a06746d9b03b5b164e4e56f1e81f1d7987c6",
+          "bytes": 15533
+        },
+        {
+          "name": "image-engine.mjs",
+          "status": 200,
+          "sha256": "5179b8034f0272e92d54b8b9e2bb6aea6844658d66f1eab372fefb9ea6361f5a",
+          "bytes": 1174
+        },
+        {
+          "name": "image-canvas.mjs",
+          "status": 200,
+          "sha256": "96e366066cc5720a4a9267c878d05af80b591cc5e69bde773f71b8f5adbc4173",
+          "bytes": 15269
+        },
+        {
+          "name": "image-metadata.mjs",
+          "status": 200,
+          "sha256": "a584b568d2735f3fb1f345157c2c118a3ab63e9e1cb3377684c03caff09b3ec9",
+          "bytes": 10124
+        },
+        {
+          "name": "image-png.mjs",
+          "status": 200,
+          "sha256": "2c15e4efe4e413f37655028c8d95dd2092476f473e126a4dc9b0cda72923053f",
+          "bytes": 11710
+        },
+        {
+          "name": "logo.png",
+          "status": 200,
+          "sha256": "20c05cf089e1341eb498002013670d4d7d0e587549c32bbad116c04d464ebbab",
+          "bytes": 22361
+        },
+        {
+          "name": "/blog/dataflow-768.webp",
+          "status": 200,
+          "sha256": "b6d3610bfb6450121055d2c0871e0d3f983fa27cbb77a6c3e1eb3e1b04418d35",
+          "bytes": 81616
+        },
+        {
+          "name": "/blog/formattree-768.webp",
+          "status": 200,
+          "sha256": "fd7725e5033e1e91585d740e2ffc8fc9e57655aad3668880112dfa79c297d130",
+          "bytes": 65586
+        },
+        {
+          "name": "/blog/pipeline-768.webp",
+          "status": 200,
+          "sha256": "60c903060071cbcc48559ff12479daee2c9091772ceb392e7b7b51e1dcd63d94",
+          "bytes": 48054
+        },
+        {
+          "name": "/blog/qualitycurve-768.webp",
+          "status": 200,
+          "sha256": "372bdb9ddd4d518067add9e27ebbfeaccfbec8d65e23f3af181cc8a3f84fe753",
+          "bytes": 65190
+        },
+        {
+          "name": "/blog/sizebars-768.webp",
+          "status": 200,
+          "sha256": "959d058e481e4e66377e4d4f20b723d8bf2bef69e904df3e7b1e1e71dfa32991",
+          "bytes": 66696
+        },
+        {
+          "name": "blog",
+          "status": 200,
+          "sha256": "c2c83d81fd6e706c958cd75e3c4a27974622ddf03e4bb7277eeb5e8994dc7fa7",
+          "bytes": 45216
+        },
+        {
+          "name": "sitemap.xml",
+          "status": 200,
+          "sha256": "5568b4c5821bb1c7e6fe7f5be7457b5c7fda44f395ccfa77048de57d3265e069",
+          "bytes": 3659
+        },
+        {
+          "name": "unpublished-draft",
+          "status": 404,
+          "sha256": "c23e6e0cae19a5a37255ab643c9dadae1634ddd54c719aece3a1f9c5ae8e9a6d",
+          "bytes": 32239
+        }
+      ]
+    }
+  },
+  "preparationControls": {
+    "status": "PASS",
+    "retainedActualSuccessfulHeadProofs": 13,
+    "constructedNegativeGuards": [
+      {
+        "name": "Canceled GET never borrows a matching successful HEAD",
+        "constructedOffline": true,
+        "expected": "UNRESOLVED_DIAGNOSTIC",
+        "pass": true
+      },
+      {
+        "name": "Canceled RSC GET remains unresolved",
+        "constructedOffline": true,
+        "expected": "UNRESOLVED_DIAGNOSTIC",
+        "pass": true
+      },
+      {
+        "name": "HEAD with missing own status remains unresolved",
+        "constructedOffline": true,
+        "expected": "UNRESOLVED_DIAGNOSTIC",
+        "pass": true
+      },
+      {
+        "name": "HEAD503 cannot borrow fulfilled200",
+        "constructedOffline": true,
+        "expected": "UNRESOLVED_DIAGNOSTIC",
+        "pass": true
+      },
+      {
+        "name": "Cross-origin HEAD cannot borrow local success",
+        "constructedOffline": true,
+        "expected": "UNRESOLVED_DIAGNOSTIC",
+        "pass": true
+      },
+      {
+        "name": "Rejected exact native HEAD promise never qualifies",
+        "constructedOffline": true,
+        "expected": "UNRESOLVED_DIAGNOSTIC",
+        "pass": true
+      },
+      {
+        "name": "Image failure cannot qualify",
+        "constructedOffline": true,
+        "expected": "UNRESOLVED_DIAGNOSTIC",
+        "pass": true
+      },
+      {
+        "name": "Missing raw failure aborts review",
+        "pass": true,
+        "constructedOffline": true
+      },
+      {
+        "name": "Changed raw correlation aborts review",
+        "pass": true,
+        "constructedOffline": true
+      }
+    ],
+    "retainedRealNegativeControls": [
+      {
+        "method": "HEAD",
+        "error": "net::ERR_FAILED",
+        "disposition": "UNRESOLVED_DIAGNOSTIC",
+        "pass": true
+      },
+      {
+        "method": "GET",
+        "error": "net::ERR_ABORTED",
+        "disposition": "UNRESOLVED_DIAGNOSTIC",
+        "pass": true
+      }
+    ],
+    "browserLaunchedForControls": false
+  },
+  "independentReview": {
+    "status": "PASS",
+    "evidence": ".qa-results/phase2/final-public-axe29-correlated/independent-actual-validation.json",
+    "reviewer": "Independent SEO/accessibility agent"
+  },
+  "preservedHistory": {
+    "originalStrictWrapper": "FAIL",
+    "rawUnresolvedAbortCount": 7,
+    "retrospectivelyClassified": false,
+    "originalEvidenceDirectory": ".qa-results/phase2/final-public-axe29",
+    "originalObservationsSha256": "d4462e210583640f5ab79b6cbad9a8b7f9c2b97c10c69c867eba72fff0ca9af2",
+    "automatedAxe29WasAlreadyZeroViolations": true
+  },
+  "privateEvidenceDirectory": ".qa-results/phase2/final-public-axe29-correlated",
+  "limitations": [
+    "Automated accessibility results are not a complete accessibility or screen-reader certification.",
+    "Four SVG checks remain automated incomplete; the existing manual disposition is reused only after exact live SVG/node/palette/stylesheet equality checks.",
+    "The original seven raw aborts remain unresolved because that attempt omitted the correlation records; this separate measured retry does not erase them.",
+    "Native HEAD promise observation returns the original fetch promise and response unchanged, does not consume bodies or alter requests. Any rejected native HEAD is separately a failure."
+  ]
+}

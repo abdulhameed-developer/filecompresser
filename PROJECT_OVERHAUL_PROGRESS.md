@@ -2,7 +2,52 @@
 
 ## Phase 2 — competitive product work (27 November 2026)
 
-**IN PROGRESS.** Starting source is clean `02b078d` on `main`, matching the remote. The production application baseline remains `0197d18` / Cloudflare `5ecc7f32`; all results below this section describe their explicitly recorded historical scope until rerun. Automatic analytics/RUM remains disabled. No Phase 2 deployment has occurred.
+**VERIFIED PRODUCT RELEASE — 27 NOVEMBER 2026.** The implementation and factual CMS follow-up are live. Code `417fcfb8215837d2307fa4c6af992de06d94f32c` passes CI `45993057996` / Cloudflare `6e2b0b9c`; genuine Tina commit `5fdf646b2b1465c150777e4872a020d4cbd2ac24` passes CI `45993970761` / final Cloudflare `3f5114e1-8094-4a07-9022-4a566e8feb0e`. Both builds include all 877 tests and the proper cloud-mode CMS build. The final local preview is **http://127.0.0.1:3221**; immutable I/3220 and all older checkpoints remain. Automatic analytics/RUM stays disabled.
+
+| Final area | Actual result and boundary |
+| --- | --- |
+| Every route | 29 independent local view reviews, including every article/alias/recovery page; I responsive 348/348 across 12 widths and 87 visual comparisons. Current public 29-view source/style/accessibility scan and new public FAQ viewports also pass |
+| All 14 tools + WAV alias | Current live 79/79 workflows, 57 independently rehashed downloads, 50 states, zero strict workflow diagnostics; 16 identity checks before/after. Separate real WebM addon: 2 states / 1 MP4 passes |
+| Cross-browser/mobile | Retained H 316/316 across Chrome, Firefox, Linux WebKit and 390 px touch; I three-engine editorial 45/45; current default Chrome/Firefox delivery 4/4. Physical-device certification is not claimed |
+| Accessibility | Current correlated public 29/29, 0 automated violations. Four SVG incompletes remain manually reviewed across 51 exact live nodes. Five raw HEAD events individually proven successful; no GET/rejected-HEAD exclusions or unresolved diagnostics. Earlier uninstrumented observer FAIL (7) retained |
+| Performance | Ten complete final representative shared-host scores: mobile 94–99, desktop 99–100; all A/BP/SEO 100. Original 3 blocked / 1 partial final attempts retained; one normal retry each, no valid low scores rerun. Separate official Google homepage analysis: 100/100/100/100 mobile and desktop, one analysis only; field data: No Data |
+| CMS publishing | Native latest-list freshness/label-focus/Save/reload/reopen → GitHub → Cloudflare → exact public FAQ/schema PASS. Only faq[4].a changed; all sections and existing WebM link preserved. Lists/numbers/links/safe HTML remain supported |
+| SEO | 27 canonical URLs / 28 served routes, draft excluded; Google: 11 queries / 24 indexed examples / all 22 countries reviewed. One request each for WebM, Contact and JPG accepted; no indexing/ranking gain inferred |
+| Security/privacy | 0 production npm advisories; explicit verified editor backport disposition/raw reports retained. No visitor-file endpoint/telemetry added. Selected generated/licensed benchmark files only. No vulnerability-free certification |
+| Final local mirror | Build Dxf5SxcNuZAThX2bpVQj1, home SHA ca79c4abf7c695f89dc38034bb9db441d61c098caaa1720aadb34d4a4ec6edb3; source/build/assets/worker/28 routes / 27 canonical URLs/FAQ/schema/server gates PASS. No fresh whole browser suite implied for this mirror; local admin is not deployable |
+| Recovery | Starting branch checkpoint/2026-11-27-phase2-start-02b078d and verified bundle/archive preserved. Previous production 0197d18/5ecc7f32 remains an identified fallback |
+
+[Final acceptance report](docs/PHASE2-ACCEPTANCE-REPORT.md) · [Per-tool scorecard](docs/FILECOMPRESSER-PRODUCT-SCORECARD.md) · [Live evidence](docs/evidence/2026-11-27/browser-functional-acceptance-LIVE.json) · [Official homepage PageSpeed evidence](docs/evidence/2026-11-27/pagespeed-independent-home.json).
+
+### Current per-tool live register
+
+| Tool route | Real output check | Live result |
+| --- | --- | --- |
+| `/compress` | Output case(s) 72; exact downloaded-file validation | **PASS** |
+| `/image-compressor` | Output case(s) 3; exact downloaded-file validation | **PASS** |
+| `/jpg-compressor` | Output case(s) 1; exact downloaded-file validation | **PASS** |
+| `/jpeg-compressor` | Output case(s) 2; exact downloaded-file validation | **PASS** |
+| `/png-compressor` | Output case(s) 4; exact downloaded-file validation | **PASS** |
+| `/webp-compressor` | Output case(s) 5; exact downloaded-file validation | **PASS** |
+| `/gif-compressor` | Output case(s) 34; exact downloaded-file validation | **PASS** |
+| `/video-compressor` | Output case(s) 46, 47, 48, 49, 50; exact downloaded-file validation | **PASS** |
+| `/webm-to-mp4` | Output case(s) 51; exact downloaded-file validation | **PASS** |
+| `/mp3-compressor` | Output case(s) 37, 38, 39, 40; exact downloaded-file validation | **PASS** |
+| `/wav-compressor` | Output case(s) 35; exact downloaded-file validation | **PASS** |
+| `/pdf-compressor` | Output case(s) 52; exact downloaded-file validation | **PASS** |
+| `/zip-compressor` | Output case(s) 53, 75, 76; exact downloaded-file validation | **PASS** |
+| `/archive-compressor` | Output case(s) 54, 74, 77, 78; exact downloaded-file validation | **PASS** |
+| `/wav-to-mp3` (WAV alias) | Output case(s) 36; exact downloaded-file validation | **PASS** |
+
+Case ordinals map to the complete live JSON; invalid-input/recovery checks remain separate from output success. These samples do not certify every possible file or processing duration.
+
+### Published-release findings
+
+The first strict live preflight stopped before any browser workflow because `/logo.png` was an old cache HIT (Age 4,891 seconds): 23,298 bytes from `0197d18`, versus the exact 22,361-byte optimized file on the immutable final deployment. Their 223 × 68 decoded RGBA pixels are identical. A native Cloudflare **exact URL purge of `https://filecompresser.com/logo.png` only** corrected delivery; an ordinary canonical GET returned MISS and the expected source SHA. No broad purge, cache policy, DNS, TLS or analytics setting changed. The failed preflight is retained; checksums were never waived. Existing browser copies can remain fresh for the unchanged one-day lifetime, with identical branding.
+
+The public domain also removes exactly the two known `email_off` comments around the unchanged footer email link; the immutable host retains them. A 20-case QA guard permits only that exact 33-byte transformation and rejects changed body/script/anchor/extra/missing/duplicate markers. Both raw HTML hashes remain pinned separately. This is a measured delivery transformation, not a broad normalization or relaxed content check.
+
+The fresh post-purge live run passes all 16 identity records before/after,79 workflows and57-download acceptance. Default Chrome/Firefox delivery4/4, new public29-view correlated axe and ten complete representative production Lighthouse scores also pass in their stated scopes. [Release evidence](docs/evidence/2026-11-27/release-verification.json) and [native CMS proof](docs/evidence/2026-11-27/cms-publishing-roundtrip.json) preserve the actual identities.
 
 ### Candidate I — local acceptance passed; hosted release pending
 
@@ -23,7 +68,7 @@ Independent comparison verifies 159 runtime inputs, with 150 of H's 152 unchange
 | Automated accessibility | PASS: 29/29 expanded axe views, zero violations; four SVG contrast incompletes separately reviewed across 51 unchanged targets |
 | Visual comparison | PASS: all 87 full-page comparisons reviewed; 80 exact matches, remaining changes limited to reviewed responsive artwork and intrinsic-ratio rounding |
 | Lighthouse | Valid local mobile/desktop scores recorded, with substantial shared-host variance; no universal 100 claim. Before-release public failures include a timed-out robots fetch, failed stylesheet delivery and an interstitial, retained as failed/blocked attempts |
-| Git / CI / Cloudflare / hosted Tina / final live | PENDING: no Phase 2 commit, push or deployment yet |
+| Git / CI / Cloudflare / hosted Tina / final live | PASS within stated scope: code417fcfb/Tina5fdf646, bothCI/cloud builds; nativeCMS/publicschema; live79/57 +delivery4; correlatedaxe29; representativeLH10 +separateofficialhomepage analysis |
 
 The later local mobile controls varied even for unchanged baseline bytes (performance 89/76/96 versus I 88/97/96). All valid I local audits score 100 for accessibility, best practices and SEO; mobile performance remains variable. The article's actual responsive transfer falls from 65,252 to 48,054 bytes on higher-density mobile, but modeled Lighthouse LCP does not establish a reliable speed improvement. The independent PageSpeed API attempt is BLOCKED by its shared quota (HTTP 429), with no valid score.
 
@@ -34,6 +79,10 @@ Some ordinary Chrome Lighthouse attempts failed public resources with QUIC idle 
 The complete [Lighthouse measurement ledger](docs/evidence/2026-11-27/lighthouse-measurements.json) separates local, before-release production, blocked and partial-delivery attempts. Fresh I HTML-referenced resources total 667,374 raw JS bytes versus 702,082 at baseline; the combined per-resource gzip estimate is 251,037 versus 260,001 bytes (8,964 fewer). This includes legacy nomodule references and is an artifact estimate, not actual browser transfer.
 
 Before-release production measurements are now home mobile96, desktop100 on a normal retry; WebM mobile98/desktop100, A/BP/SEO100. The first home-desktop Chrome interstitial is retained as blocked, with no valid score; the ordinary retry used no certificate/TLS/HTTP3 bypass and no infrastructure change. Both public homepage identity checks match `453cba02f60a5ed6d7953708ad5d9d5afe9ecf85fd09591980b6781dcd725eeb`.
+
+### Retained candidate history
+
+The following entries preserve stage-by-stage observations and failed attempts. Pending/running statements inside older candidate records describe that historical stage; the verified current release is summarized above.
 
 ### Retained verified H — complete local gates
 

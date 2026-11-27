@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-11-27T11:58:41.182Z",
+  "status": "VERIFIED_HOSTED_SAVE_GIT_BUILD_AND_PUBLIC_ANSWER",
+  "publicUrl": "https://filecompresser.com/",
+  "release": {
+    "implementationCommit": "417fcfb8215837d2307fa4c6af992de06d94f32c",
+    "sourceCommit": "5fdf646b2b1465c150777e4872a020d4cbd2ac24",
+    "githubCi": {
+      "runId": 45993970761,
+      "status": "success",
+      "sourceTestsPassed": 877
+    },
+    "cloudflare": {
+      "deploymentId": "3f5114e1-8094-4a07-9022-4a566e8feb0e",
+      "immutableUrl": "https://3f5114e1.filecompresser.pages.dev",
+      "status": "success"
+    }
+  },
+  "hostedEditor": {
+    "realSaveUsed": true,
+    "reloadedAndReopened": true,
+    "field": "faq.4.a",
+    "question": "Will compression reduce image or video quality?",
+    "savedAnswer": "PNG starts in Lossless mode, preserving decoded pixels. JPG and WebP start in Balanced mode and use lossy encoding. Optional Smart or Maximum PNG settings can reduce colors. Video and audio re-encoding can also change quality. Use Compare for images and check downloaded media before replacing the original.",
+    "answerSha256": "842a846d0b46df70722798111a59e141b4b60bd07d0b627eac934acd407890b2",
+    "nativeLabelFocusedId": "faq.4.a",
+    "saveDisabledOnReopen": true,
+    "resetDisabledOnReopen": true,
+    "beforeSave": {
+      "noUnsavedChanges": true,
+      "numberedBodyMatchedCommitted": true,
+      "numberedField": "sections.6.body",
+      "numberedBodySha256": "dfd8a8ce809efe5a1b48b8554a5b91eac9681198ad742e7aebd97ae0a84241c2",
+      "bulletBodyMatchedCommitted": true,
+      "bulletField": "sections.8.body",
+      "bulletBodySha256": "2bd4fef40dee2adf5760a64eba2a3818753414242064a97f33fbec567ed1b154"
+    }
+  },
+  "sourceReview": {
+    "semanticChangedPaths": [
+      "faq.4.a"
+    ],
+    "allSectionsPreserved": true,
+    "formatsAndWebmFaqPreserved": true,
+    "runtimeInputs": 159,
+    "unchangedInputs": 158,
+    "changedInputs": [
+      "content/home/home.json"
+    ]
+  },
+  "publicChecks": {
+    "expandedVisibleAnswerMatchesSavedAndCommitted": true,
+    "faqStructuredDataMatchesSavedAndCommitted": true,
+    "question": "Will compression reduce image or video quality?",
+    "answerSha256": "842a846d0b46df70722798111a59e141b4b60bd07d0b627eac934acd407890b2",
+    "orderedSteps": 3,
+    "benefitBullets": 7,
+    "canonical": "https://filecompresser.com/",
+    "robots": "index, follow",
+    "observedAnalyticsScriptSources": [],
+    "analyticsScope": "No analytics script sources found in the observed public DOM; this is not a guarantee about future configuration."
+  },
+  "accessibilityScope": {
+    "isolatedEditorScenariosPassed": 6,
+    "specificHostedFocusedControls": [
+      "sections.6.body",
+      "sections.8.body",
+      "faq.4.a"
+    ],
+    "scope": "Observed native label focus, existing list fields and saved/reopened answer. Not every vendor field or complete admin accessibility certification."
+  },
+  "screenshots": [
+    {
+      "path": "docs/evidence/2026-11-27/screenshots/tina-bullets-live.png",
+      "sha256": "fa79bd236a75d5e7196cb0a578bd2ef541f88ac51629176b962df9c02e24ae85",
+      "scope": "Actual hosted Tina editor, not a public-homepage screenshot."
+    },
+    {
+      "path": "docs/evidence/2026-11-27/screenshots/tina-saved-faq-live.png",
+      "sha256": "ff6d64a13e0ef114fa744ba19b2b84b36c07632b06b3d7247b8ad324cbfa8df8",
+      "scope": "Actual hosted Tina editor, not a public-homepage screenshot."
+    }
+  ],
+  "boundaries": [
+    "The genuine hosted write changed one existing plain-text FAQ answer. Existing bullet/numbered bodies were inspected and preserved, not newly authored in this save.",
+    "Safe HTML and links have separate source/isolated-editor coverage; this run does not claim a new hosted HTML/list write or every hosted date-validation scenario.",
+    "This public publishing roundtrip is distinct from final site-wide functional/Lighthouse acceptance and search indexing/ranking outcomes."
+  ],
+  "privateEvidence": [
+    ".qa-results/phase2/release-record/final-deployment.json",
+    ".qa-results/phase2/cms-release-roundtrip/native-reopen-proof.json",
+    ".qa-results/phase2/cms-release-roundtrip/native-numbered-before.json",
+    ".qa-results/phase2/cms-release-roundtrip/native-bullets-before.json",
+    ".qa-results/phase2/cms-release-roundtrip/semantic-git-proof.json",
+    ".qa-results/phase2/cms-release-roundtrip/final-source-delta.json",
+    ".qa-results/phase2/cms-release-roundtrip/public-dom-schema-proof.json"
+  ]
+}

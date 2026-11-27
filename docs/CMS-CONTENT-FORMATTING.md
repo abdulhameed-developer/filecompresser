@@ -4,7 +4,7 @@ The public site is built from content committed by Tina to GitHub. A save appear
 
 ## Homepage and tool pages
 
-Open the Homepage or Tool pages collection. Add a Content section, enter its heading, and use its content field:
+Open **Homepage** or **Tool pages**, then **Content sections**. Open an existing section or add one, enter its heading, and use **Content — paragraphs, lists, links or safe HTML**. This is a text field: type `- ` for a bullet or `1. ` for a numbered item; there is no separate bullet-toolbar button here. Use one item per line:
 
 ```text
 Choose an image and [compare compression modes](/blog/choosing-a-compression-mode).
@@ -53,7 +53,7 @@ About, Contact and legal page sections provide paragraph items, bullet items and
 - Save, confirm Tina's GitHub commit, confirm Cloudflare's matching successful production deployment, then inspect the exact public URL.
 - If validation fails, correct the named field. Do not bypass the deployment checks. Never paste credentials into content.
 
-For a published, unarchived article, **Last updated cannot be earlier than Publication date**. The two date fields and the incoming Publish/Archive toggles share this check, so publishing a draft or restoring an archived article cannot bypass it. Last updated remains optional and clearable; drafts and archived articles can retain unfinished date ordering. Fourteen callback/reader parity cases passed for these rules, including valid dates, clearing and publication-state changes. These date callbacks have not been separately exercised in the hosted editor. The native isolated editor tested lists, HTML and links; the connected save → GitHub → Cloudflare → public-site chain is now verified with a real FAQ/link correction.
+For a published, unarchived article, **Last updated cannot be earlier than Publication date**. The two date fields and the incoming Publish/Archive toggles share this check, so publishing a draft or restoring an archived article cannot bypass it. Last updated remains optional and clearable; drafts and archived articles can retain unfinished date ordering. Fourteen callback/reader parity cases passed for these rules, including valid dates, clearing and publication-state changes. These date callbacks have not been separately exercised in the hosted editor. The native isolated editor tested lists, HTML and links. The 26 November FAQ/link release verified its save → GitHub → Cloudflare → public-site chain. The new 27 November hosted-editor roundtrip also has independent public proof below. For future edits, still confirm the actual public answer rather than inferring delivery from the saved form.
 
 The section, introduction/FAQ and article HTML/paragraph fields use the same validation module as the public content reader. Invalid HTML and unsafe Markdown links therefore receive field-level feedback in Tina before a save can become a failed hosting build. Ordinary article paragraphs still treat HTML-like text literally; use Safe HTML to render supported markup.
 
@@ -61,10 +61,22 @@ Dedicated **Helpful link**, article **Link**, optional **Author page**, and info
 
 Field validation checks address syntax and safety; it does not fetch the destination or confirm that a page/section exists. Use a real published path and a matching section ID, then include the destination in the site's link/release checks.
 
-The code and Tina schema lock are now deployed together. On 26 November 2026, the connected editor saved and reopened a real homepage FAQ/link correction, GitHub received its exact change, Cloudflare built it successfully, and the public answer, link and FAQ structured data were verified. Local callback tests do not establish every hosted template or date-validation scenario; the progress report keeps those boundaries explicit.
+In the verified 26 November release, the code and Tina schema lock were deployed together. On that date, the connected editor saved and reopened a real homepage FAQ/link correction, GitHub received its exact change, Cloudflare built it successfully, and the public answer, link and FAQ structured data were verified. Local callback tests do not establish every hosted template or date-validation scenario; the progress report keeps those boundaries explicit.
 
 ## Saving and publishing
 
 For homepage/tool content, open **Content sections**, choose a section, and enter `- item`, `1. item` or `[link text](/page)` in **Content — paragraphs, lists, links or safe HTML**. Its help text now shows literal HTML examples. Blog articles have separate **Bullet list**, **Numbered list**, **Link** and **Safe HTML** blocks.
 
-**Save** updates GitHub through Tina. The public site changes after Cloudflare's matching build succeeds; it is not an instant preview update. The two verified release builds took about four and five minutes. A validation error disables Save, and a failed hosting build keeps the previous working public release. Check the exact saved commit and its build status before treating a change as published.
+**Save** updates GitHub through Tina. The public site changes after Cloudflare's matching build succeeds; it is not an instant preview update. Historical verified builds took about four and five minutes, which is not a promise for the next build. A validation error disables Save; Save and Reset are also disabled when there are no unsaved changes. A failed hosting build keeps the previous working public release. Check the exact saved commit, its build status and the actual public answer before treating a change as published.
+
+## Verified hosted-editor save — 27 November 2026
+
+The Phase 2 code commit `417fcfb8215837d2307fa4c6af992de06d94f32c` passed GitHub CI run `45993057996` with 877 tests and the initial Cloudflare build `6e2b0b9c-58f8-47b0-93b9-310cea77e097`. The new hosted Tina editor was then used directly, rather than simulating a save locally.
+
+Before editing, the existing numbered steps and bullet-benefit content matched the committed text exactly, with Save and Reset disabled. Only the existing quality FAQ answer was changed to explain Lossless PNG and Balanced JPG/WebP defaults. The real Save completed; after reload and reopen, the exact answer remained, its native label focused the answer field, and Save/Reset were disabled again.
+
+Tina created commit `5fdf646b2b1465c150777e4872a020d4cbd2ac24`. Its semantic change is exactly `faq.4.a`; all content sections and the existing formats/WebM FAQ are preserved. The numbered and bullet bodies were inspected without changing them, so this is not a claim of a new hosted HTML/list save.
+
+See [where the homepage bullets are entered](evidence/2026-11-27/screenshots/tina-bullets-live.png) and [the saved/reopened FAQ in the hosted editor](evidence/2026-11-27/screenshots/tina-saved-faq-live.png). These screenshots show Tina, not proof of the new answer on the public homepage.
+
+The matching final Cloudflare deployment `3f5114e1-8094-4a07-9022-4a566e8feb0e`, from Tina commit `5fdf646b2b1465c150777e4872a020d4cbd2ac24`, succeeded. GitHub CI run `45993970761` also succeeded with 877 tests. On the public homepage, the expanded answer exactly matches the saved/committed text and the FAQ structured data; the three numbered steps and seven benefit bullets remain, and the observed DOM contains no analytics script sources. This completes the actual hosted Save → GitHub → Cloudflare → public-answer check. [Compact publishing evidence](evidence/2026-11-27/cms-publishing-roundtrip.json) records the identities, hashes and limits. Six isolated editor scenarios and these specific native controls do not certify every vendor field, every date rule or complete admin accessibility.
