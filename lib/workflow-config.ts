@@ -1,9 +1,12 @@
 import type { CompressionLevel, EngineKind, ProcessingOptions, QueueItem, SettingValue, ToolDefinition, WorkflowConfig } from './types'
 import { optionsForQueue } from './image-settings'
 
+// Color-reducing PNG optimization is an explicit choice, including mixed queues.
+const DEFAULT_IMAGE_SETTINGS = { imageMode: 'balanced', pngMode: 'lossless' } as const
+
 export function workflowDefaults(tool: ToolDefinition): Record<string, SettingValue> {
   return {
-    ...(tool.engine === 'image-compress' ? { imageMode: 'maximum', pngMode: 'maximum' } : {}),
+    ...(tool.engine === 'image-compress' ? DEFAULT_IMAGE_SETTINGS : {}),
     ...Object.fromEntries((tool.settings ?? []).map(setting => [setting.id, setting.defaultValue])),
   }
 }
@@ -60,8 +63,8 @@ export function scopeWorkflowOptions(tool: ToolDefinition, scope: QueueItem[], l
     options.level = 'recommended'
     // Only the image defaults carry into mixed queues. Hidden transformations
     // and targets never apply; media keep their own recommended defaults.
-    options.imageMode = 'maximum'
-    options.pngMode = 'maximum'
+    options.imageMode = DEFAULT_IMAGE_SETTINGS.imageMode
+    options.pngMode = DEFAULT_IMAGE_SETTINGS.pngMode
   }
   return options
 }

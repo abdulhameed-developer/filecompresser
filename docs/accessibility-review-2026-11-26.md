@@ -1,6 +1,8 @@
 # Accessibility verification — 26 November 2026
 
-The public-page axe scan covered 29 views, using WCAG 2/2.1/2.2 A/AA rules: all canonical pages, the WAV alias and the 404. It reported **zero violations** and **four incomplete color-contrast checks** on SVG article diagrams. An incomplete result requires review; it is not an automated pass.
+The public-page axe scan covered 29 views with its configured rule subset: all canonical pages, the WAV alias and the 404. It reported **zero violations** and **four incomplete color-contrast checks** on SVG article diagrams. An incomplete result requires review; it is not an automated pass.
+
+Scope clarification added 27 November: that original selection used `wcag2a`, `wcag2aa`, `wcag21aa` and `wcag22aa`; it omitted `wcag21a`. The zero-violation result applies to that selection. Phase 2 adds the missing tag, corrects the upload-label finding it exposed and records fresh results in [the follow-up review](visual-review-2026-11-27.md). The separate 51-node SVG manual disposition below retains its original scope.
 
 The four rules cover 51 SVG text nodes across the browser-processing, privacy, file-size and web-format articles. Axe could not resolve their backgrounds because SVG rectangles paint backgrounds without setting CSS `backgroundColor` on the text.
 

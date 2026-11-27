@@ -7,7 +7,7 @@ import {
 } from '../validation'
 import { blobToUint8Array } from '../format'
 import type { CancelSignal, ProcessedResult, ProgressCallback } from '../types'
-import { ProcessingError } from '../types'
+import { ARCHIVE_INPUT_FAILURE_CODES, ProcessingError } from '../types'
 
 export interface ZipCreateOptions {
   compressionLevel?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
@@ -139,7 +139,7 @@ function manifest(bytes: Uint8Array, allowUnsafe = false): Entry[] {
   const fail = (
     message = 'This ZIP is corrupted or uses an unsupported archive structure.',
   ): never => {
-    throw new ProcessingError(message)
+    throw new ProcessingError(message, ARCHIVE_INPUT_FAILURE_CODES.invalid)
   }
   const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength)
   const u16 = (offset: number) => view.getUint16(offset, true)
@@ -267,6 +267,7 @@ async function readArchive(
   if (file.size > ARCHIVE_LIMITS.maxArchiveBytes)
     throw new ProcessingError(
       'This archive is larger than the 150 MB input limit.',
+      ARCHIVE_INPUT_FAILURE_CODES.invalid,
     )
   const bytes = await blobToUint8Array(file)
   assertNotCancelled(signal)
@@ -279,17 +280,33 @@ const crcTable = Uint32Array.from({ length: 256 }, (_, value) => {
     value = value & 1 ? 0xedb88320 ^ (value >>> 1) : value >>> 1
   return value >>> 0
 })
+
+/**
+ * Share a short CPU budget across all entries and their CRC checks. Yielding
+ * after every tiny file incurs the browser's nested-timer minimum hundreds of
+ * times; a time budget keeps large batches responsive without those delays.
+ */
+function archiveYield(signal?: CancelSignal): () => Promise<void> {
+  let lastYield = performance.now()
+  return async () => {
+    assertNotCancelled(signal)
+    if (performance.now() - lastYield < 8) return
+    await new Promise<void>((resolve) => setTimeout(resolve, 0))
+    assertNotCancelled(signal)
+    lastYield = performance.now()
+  }
+}
+
 async function crc32(
   bytes: Uint8Array,
-  signal?: CancelSignal,
+  yieldIfNeeded: () => Promise<void>,
 ): Promise<number> {
   let crc = 0xffffffff
   for (let index = 0; index < bytes.length; index++) {
     crc = crcTable[(crc ^ bytes[index]) & 255] ^ (crc >>> 8)
-    if (index > 0 && index % (1024 * 1024) === 0) {
-      assertNotCancelled(signal)
-      await new Promise<void>((resolve) => setTimeout(resolve, 0))
-    }
+    // Check between bounded chunks rather than spending an entire large entry
+    // on the main thread. The time budget is shared with surrounding entries.
+    if (index > 0 && (index & 0xffff) === 0) await yieldIfNeeded()
   }
   return (crc ^ 0xffffffff) >>> 0
 }
@@ -303,7 +320,7 @@ export async function extractZip(
   const bytes = await readArchive(file, signal)
   const files = manifest(bytes).filter((entry) => !entry.directory)
   if (!files.length)
-    throw new ProcessingError('This archive does not contain any files.')
+    throw new ProcessingError('This archive does not contain any files.', ARCHIVE_INPUT_FAILURE_CODES.empty)
   onProgress?.(0, `Extracting ${files.length} files…`)
   try {
     const contents = await cancellable<Unzipped>(
@@ -312,24 +329,25 @@ export async function extractZip(
       signal,
     )
     const results: ExtractedEntry[] = []
+    const yieldIfNeeded = archiveYield(signal)
     for (const entry of files) {
       assertNotCancelled(signal)
       const data = contents[entry.name]
       if (
         !data ||
         data.length !== entry.size ||
-        (await crc32(data, signal)) !== entry.crc
+        (await crc32(data, yieldIfNeeded)) !== entry.crc
       )
         throw new ProcessingError(
           'This ZIP failed its integrity check. No files were offered for download.',
+          ARCHIVE_INPUT_FAILURE_CODES.integrity,
         )
       results.push({
         path: sanitizeArchivePath(entry.name)!,
         size: data.length,
         blob: new Blob([data]),
       })
-      // Yield between entries so cancellation remains responsive during integrity checks.
-      await new Promise<void>((resolve) => setTimeout(resolve, 0))
+      await yieldIfNeeded()
     }
     assertNotCancelled(signal)
     onProgress?.(100, 'Done')

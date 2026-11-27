@@ -1,0 +1,3180 @@
+{
+  "schemaVersion": 3,
+  "capturedAt": "2026-11-27T11:21:53.510625+00:00",
+  "scope": "Current local production-configured artifact I. Fresh I image compatibility, accessibility, responsive/default visual and Chromium processing results are distinguished from retained H interaction/cross-browser results. Not a live-deployment, physical-device or full assistive-technology certification.",
+  "artifact": {
+    "buildId": "0y43p4TdfUlmfFqlz8TuJ",
+    "homepageSha256": "e893578da90e565766c33104ebd7092f79ffea6cc710efd5d4ccf2fbfbe98c7c",
+    "sourceBase": "02b078d0915a578ec45ce5cf89494dc0185e2218",
+    "robots": "index, follow",
+    "canonical": "https://filecompresser.com",
+    "sourceTests": 877,
+    "sourceTestFiles": 56
+  },
+  "sourceDeltaFromH": {
+    "runtimeInputCount": 159,
+    "approvedChangedOrAddedPaths": [
+      "app/blog/[slug]/page.tsx",
+      "components/BlogImage.tsx",
+      "lib/stock-blog-art-data.mjs",
+      "lib/stock-blog-art.ts",
+      "public/blog/dataflow-768.webp",
+      "public/blog/formattree-768.webp",
+      "public/blog/pipeline-768.webp",
+      "public/blog/qualitycurve-768.webp",
+      "public/blog/sizebars-768.webp"
+    ],
+    "coreWorkspaceCssQueueCodecsWorkersDialogLogoAdminHarnessUnchanged": true,
+    "equalFields": [
+      "sourceWorkspaceSha256",
+      "sourceCssSha256",
+      "sourceFilePreviewSha256",
+      "sourceFileDropzoneSha256",
+      "sourceImageClientSha256",
+      "sourceZipSha256",
+      "sourceQueueSha256",
+      "sourceQueueEligibilitySha256",
+      "sourceTypesSha256",
+      "sourceFileItemSha256",
+      "sourceDialogScrollSha256",
+      "logoSha256",
+      "adminSha256",
+      "imageWorkers",
+      "functionalHarness"
+    ],
+    "privateEvidence": [
+      ".qa-results/phase2/release-i/application-source-files.json",
+      ".qa-results/phase2/release-i/artifact.json"
+    ]
+  },
+  "publicAccessibility": {
+    "status": "tested-and-passed-on-I",
+    "axeVersion": "4.14.1",
+    "tags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21a",
+      "wcag21aa",
+      "wcag22aa"
+    ],
+    "views": 29,
+    "violations": 0,
+    "routes": [
+      {
+        "route": "/",
+        "violations": 0,
+        "incompleteChecks": 0
+      },
+      {
+        "route": "/about",
+        "violations": 0,
+        "incompleteChecks": 0
+      },
+      {
+        "route": "/blog",
+        "violations": 0,
+        "incompleteChecks": 0
+      },
+      {
+        "route": "/privacy",
+        "violations": 0,
+        "incompleteChecks": 0
+      },
+      {
+        "route": "/terms",
+        "violations": 0,
+        "incompleteChecks": 0
+      },
+      {
+        "route": "/disclaimer",
+        "violations": 0,
+        "incompleteChecks": 0
+      },
+      {
+        "route": "/contact",
+        "violations": 0,
+        "incompleteChecks": 0
+      },
+      {
+        "route": "/sitemap",
+        "violations": 0,
+        "incompleteChecks": 0
+      },
+      {
+        "route": "/blog/compressing-files-for-the-web",
+        "violations": 0,
+        "incompleteChecks": 1
+      },
+      {
+        "route": "/blog/what-privacy-claim-really-means",
+        "violations": 0,
+        "incompleteChecks": 1
+      },
+      {
+        "route": "/blog/choosing-a-compression-mode",
+        "violations": 0,
+        "incompleteChecks": 0
+      },
+      {
+        "route": "/blog/honest-file-size-reporting",
+        "violations": 0,
+        "incompleteChecks": 1
+      },
+      {
+        "route": "/blog/how-browser-compression-works",
+        "violations": 0,
+        "incompleteChecks": 1
+      },
+      {
+        "route": "/compress",
+        "violations": 0,
+        "incompleteChecks": 0
+      },
+      {
+        "route": "/image-compressor",
+        "violations": 0,
+        "incompleteChecks": 0
+      },
+      {
+        "route": "/jpg-compressor",
+        "violations": 0,
+        "incompleteChecks": 0
+      },
+      {
+        "route": "/jpeg-compressor",
+        "violations": 0,
+        "incompleteChecks": 0
+      },
+      {
+        "route": "/png-compressor",
+        "violations": 0,
+        "incompleteChecks": 0
+      },
+      {
+        "route": "/webp-compressor",
+        "violations": 0,
+        "incompleteChecks": 0
+      },
+      {
+        "route": "/gif-compressor",
+        "violations": 0,
+        "incompleteChecks": 0
+      },
+      {
+        "route": "/video-compressor",
+        "violations": 0,
+        "incompleteChecks": 0
+      },
+      {
+        "route": "/webm-to-mp4",
+        "violations": 0,
+        "incompleteChecks": 0
+      },
+      {
+        "route": "/mp3-compressor",
+        "violations": 0,
+        "incompleteChecks": 0
+      },
+      {
+        "route": "/wav-compressor",
+        "violations": 0,
+        "incompleteChecks": 0
+      },
+      {
+        "route": "/pdf-compressor",
+        "violations": 0,
+        "incompleteChecks": 0
+      },
+      {
+        "route": "/zip-compressor",
+        "violations": 0,
+        "incompleteChecks": 0
+      },
+      {
+        "route": "/archive-compressor",
+        "violations": 0,
+        "incompleteChecks": 0
+      },
+      {
+        "route": "/wav-to-mp3",
+        "violations": 0,
+        "incompleteChecks": 0
+      },
+      {
+        "route": "/404-missing",
+        "violations": 0,
+        "incompleteChecks": 0
+      }
+    ],
+    "privateEvidence": ".qa-results/phase2/release-i/ui/axe-result.json"
+  },
+  "manualSvgContrast": {
+    "status": "manual-disposition-retained-on-exact-I-source-match",
+    "automatedIncompleteChecksRetained": 4,
+    "textNodes": 51,
+    "minimumRecalculatedContrast": 4.5785863222047025,
+    "requiredNormalTextContrast": 4.5,
+    "basis": "Every entire containing SVG, selected node, coordinate/transform, exported palette/figure rule and global stylesheet matches the prior individually reviewed source. Prior backing/paint-order assignments apply only on that exact match; all 51 sRGB ratios recalculated. This is not a fabricated automated contrast pass or fresh assistive-technology/computed-style certification.",
+    "figures": [
+      {
+        "route": "/blog/compressing-files-for-the-web",
+        "id": "fig-formattree",
+        "viewBox": "0 0 720 290",
+        "fullSvgSha256": "223223b8e9740149cd8ee7e416c8bc71d8548f86ba5eae843d87b5e11a560c39",
+        "baselineFullSvgSha256": "223223b8e9740149cd8ee7e416c8bc71d8548f86ba5eae843d87b5e11a560c39",
+        "fullSvgMarkupIdentical": true
+      },
+      {
+        "route": "/blog/what-privacy-claim-really-means",
+        "id": "fig-dataflow",
+        "viewBox": "0 0 720 290",
+        "fullSvgSha256": "eab5aa7d3569faced70740bfea0e915dc3663e21b34b83c7ab411ea041ac7ece",
+        "baselineFullSvgSha256": "eab5aa7d3569faced70740bfea0e915dc3663e21b34b83c7ab411ea041ac7ece",
+        "fullSvgMarkupIdentical": true
+      },
+      {
+        "route": "/blog/honest-file-size-reporting",
+        "id": "fig-sizebars",
+        "viewBox": "0 0 720 230",
+        "fullSvgSha256": "af45c3ebfa3bb877e84ef90c1862bf6f90ba199c19a29eae51123fcd5bb73ba0",
+        "baselineFullSvgSha256": "af45c3ebfa3bb877e84ef90c1862bf6f90ba199c19a29eae51123fcd5bb73ba0",
+        "fullSvgMarkupIdentical": true
+      },
+      {
+        "route": "/blog/how-browser-compression-works",
+        "id": "fig-pipeline",
+        "viewBox": "0 0 720 210",
+        "fullSvgSha256": "c68acb03c97bb2e124ffcb14a73e0d0688e6a011f50a86a6c7ff974e33f85258",
+        "baselineFullSvgSha256": "c68acb03c97bb2e124ffcb14a73e0d0688e6a011f50a86a6c7ff974e33f85258",
+        "fullSvgMarkupIdentical": true
+      }
+    ],
+    "nodes": [
+      {
+        "route": "/blog/compressing-files-for-the-web",
+        "target": [
+          "text[x=\"12\"]"
+        ],
+        "text": "Start from what the file is for, not from its extension.",
+        "coordinates": {
+          "x": "12",
+          "y": "24",
+          "textAnchor": null,
+          "ancestorTransforms": []
+        },
+        "fill": "var(--muted)",
+        "foreground": "#5f716a",
+        "backing": "#f4f7f5",
+        "backingBasis": "SVG background, with no filled rect behind this label",
+        "recomputedContrastRatio": 4.7992682946934115,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/compressing-files-for-the-web",
+        "target": [
+          "text[y=\"56\"]"
+        ],
+        "text": "A photo on a page",
+        "coordinates": {
+          "x": "104",
+          "y": "56",
+          "textAnchor": null,
+          "ancestorTransforms": []
+        },
+        "fill": "var(--ink)",
+        "foreground": "#163b31",
+        "backing": "#f4f7f5",
+        "backingBasis": "SVG background, with no filled rect behind this label",
+        "recomputedContrastRatio": 11.425387533428022,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/compressing-files-for-the-web",
+        "target": [
+          "text[y=\"74\"]"
+        ],
+        "text": "WEBP, or JPG for old browsers",
+        "coordinates": {
+          "x": "104",
+          "y": "74",
+          "textAnchor": null,
+          "ancestorTransforms": []
+        },
+        "fill": "var(--muted)",
+        "foreground": "#5f716a",
+        "backing": "#f4f7f5",
+        "backingBasis": "SVG background, with no filled rect behind this label",
+        "recomputedContrastRatio": 4.7992682946934115,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/compressing-files-for-the-web",
+        "target": [
+          "text[y=\"102\"]"
+        ],
+        "text": "Flat colour, hard edges",
+        "coordinates": {
+          "x": "104",
+          "y": "102",
+          "textAnchor": null,
+          "ancestorTransforms": []
+        },
+        "fill": "var(--ink)",
+        "foreground": "#163b31",
+        "backing": "#f4f7f5",
+        "backingBasis": "SVG background, with no filled rect behind this label",
+        "recomputedContrastRatio": 11.425387533428022,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/compressing-files-for-the-web",
+        "target": [
+          "text[y=\"120\"]"
+        ],
+        "text": "PNG \u2014 lossless",
+        "coordinates": {
+          "x": "104",
+          "y": "120",
+          "textAnchor": null,
+          "ancestorTransforms": []
+        },
+        "fill": "var(--muted)",
+        "foreground": "#5f716a",
+        "backing": "#f4f7f5",
+        "backingBasis": "SVG background, with no filled rect behind this label",
+        "recomputedContrastRatio": 4.7992682946934115,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/compressing-files-for-the-web",
+        "target": [
+          "text[y=\"148\"]"
+        ],
+        "text": "Transparency required",
+        "coordinates": {
+          "x": "104",
+          "y": "148",
+          "textAnchor": null,
+          "ancestorTransforms": []
+        },
+        "fill": "var(--ink)",
+        "foreground": "#163b31",
+        "backing": "#f4f7f5",
+        "backingBasis": "SVG background, with no filled rect behind this label",
+        "recomputedContrastRatio": 11.425387533428022,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/compressing-files-for-the-web",
+        "target": [
+          "text[y=\"166\"]"
+        ],
+        "text": "PNG or WEBP, never JPG",
+        "coordinates": {
+          "x": "104",
+          "y": "166",
+          "textAnchor": null,
+          "ancestorTransforms": []
+        },
+        "fill": "var(--muted)",
+        "foreground": "#5f716a",
+        "backing": "#f4f7f5",
+        "backingBasis": "SVG background, with no filled rect behind this label",
+        "recomputedContrastRatio": 4.7992682946934115,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/compressing-files-for-the-web",
+        "target": [
+          "text[y=\"194\"]"
+        ],
+        "text": "Video for the web",
+        "coordinates": {
+          "x": "104",
+          "y": "194",
+          "textAnchor": null,
+          "ancestorTransforms": []
+        },
+        "fill": "var(--ink)",
+        "foreground": "#163b31",
+        "backing": "#f4f7f5",
+        "backingBasis": "SVG background, with no filled rect behind this label",
+        "recomputedContrastRatio": 11.425387533428022,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/compressing-files-for-the-web",
+        "target": [
+          "text[y=\"212\"]"
+        ],
+        "text": "H.264 in MP4",
+        "coordinates": {
+          "x": "104",
+          "y": "212",
+          "textAnchor": null,
+          "ancestorTransforms": []
+        },
+        "fill": "var(--muted)",
+        "foreground": "#5f716a",
+        "backing": "#f4f7f5",
+        "backingBasis": "SVG background, with no filled rect behind this label",
+        "recomputedContrastRatio": 4.7992682946934115,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/compressing-files-for-the-web",
+        "target": [
+          "text[y=\"240\"]"
+        ],
+        "text": "Audio for the web",
+        "coordinates": {
+          "x": "104",
+          "y": "240",
+          "textAnchor": null,
+          "ancestorTransforms": []
+        },
+        "fill": "var(--ink)",
+        "foreground": "#163b31",
+        "backing": "#f4f7f5",
+        "backingBasis": "SVG background, with no filled rect behind this label",
+        "recomputedContrastRatio": 11.425387533428022,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/compressing-files-for-the-web",
+        "target": [
+          "text[y=\"258\"]"
+        ],
+        "text": "MP3",
+        "coordinates": {
+          "x": "104",
+          "y": "258",
+          "textAnchor": null,
+          "ancestorTransforms": []
+        },
+        "fill": "var(--muted)",
+        "foreground": "#5f716a",
+        "backing": "#f4f7f5",
+        "backingBasis": "SVG background, with no filled rect behind this label",
+        "recomputedContrastRatio": 4.7992682946934115,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/what-privacy-claim-really-means",
+        "target": [
+          "text[y=\"24\"][x=\"12\"][fill=\"var(--ink)\"]"
+        ],
+        "text": "Your file",
+        "coordinates": {
+          "x": "12",
+          "y": "24",
+          "textAnchor": null,
+          "ancestorTransforms": []
+        },
+        "fill": "var(--ink)",
+        "foreground": "#163b31",
+        "backing": "#f4f7f5",
+        "backingBasis": "SVG background, with no filled rect behind this label",
+        "recomputedContrastRatio": 11.425387533428022,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/what-privacy-claim-really-means",
+        "target": [
+          "text[x=\"90\"][y=\"98\"][fill=\"var(--ink)\"]"
+        ],
+        "text": "Browser tab",
+        "coordinates": {
+          "x": "90",
+          "y": "98",
+          "textAnchor": "middle",
+          "ancestorTransforms": []
+        },
+        "fill": "var(--ink)",
+        "foreground": "#163b31",
+        "backing": "#eef6d8",
+        "backingBasis": "Outer/local-memory rect and same-color inner nodes",
+        "recomputedContrastRatio": 11.037998556954731,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/what-privacy-claim-really-means",
+        "target": [
+          "text[x=\"90\"][y=\"116\"][fill=\"var(--muted)\"]"
+        ],
+        "text": "memory",
+        "coordinates": {
+          "x": "90",
+          "y": "116",
+          "textAnchor": "middle",
+          "ancestorTransforms": []
+        },
+        "fill": "var(--muted)",
+        "foreground": "#5f716a",
+        "backing": "#eef6d8",
+        "backingBasis": "Outer/local-memory rect and same-color inner nodes",
+        "recomputedContrastRatio": 4.636544393463588,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/what-privacy-claim-really-means",
+        "target": [
+          "text[x=\"234\"][y=\"98\"][fill=\"var(--ink)\"]"
+        ],
+        "text": "Download",
+        "coordinates": {
+          "x": "234",
+          "y": "98",
+          "textAnchor": "middle",
+          "ancestorTransforms": []
+        },
+        "fill": "var(--ink)",
+        "foreground": "#163b31",
+        "backing": "#eef6d8",
+        "backingBasis": "Outer/local-memory rect and same-color inner nodes",
+        "recomputedContrastRatio": 11.037998556954731,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/what-privacy-claim-really-means",
+        "target": [
+          "text[x=\"234\"][y=\"116\"][fill=\"var(--muted)\"]"
+        ],
+        "text": "a real file",
+        "coordinates": {
+          "x": "234",
+          "y": "116",
+          "textAnchor": "middle",
+          "ancestorTransforms": []
+        },
+        "fill": "var(--muted)",
+        "foreground": "#5f716a",
+        "backing": "#eef6d8",
+        "backingBasis": "Outer/local-memory rect and same-color inner nodes",
+        "recomputedContrastRatio": 4.636544393463588,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/what-privacy-claim-really-means",
+        "target": [
+          "text[y=\"80\"]"
+        ],
+        "text": "one path",
+        "coordinates": {
+          "x": "162",
+          "y": "80",
+          "textAnchor": "middle",
+          "ancestorTransforms": []
+        },
+        "fill": "var(--ok)",
+        "foreground": "#4d7a12",
+        "backing": "#eef6d8",
+        "backingBasis": "Outer/local-memory rect and same-color inner nodes",
+        "recomputedContrastRatio": 4.5785863222047025,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/what-privacy-claim-really-means",
+        "target": [
+          "text[x=\"162\"][y=\"172\"][fill=\"var(--muted)\"]"
+        ],
+        "text": "never crosses the network",
+        "coordinates": {
+          "x": "162",
+          "y": "172",
+          "textAnchor": "middle",
+          "ancestorTransforms": []
+        },
+        "fill": "var(--muted)",
+        "foreground": "#5f716a",
+        "backing": "#f4f7f5",
+        "backingBasis": "SVG background, with no filled rect behind this label",
+        "recomputedContrastRatio": 4.7992682946934115,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/what-privacy-claim-really-means",
+        "target": [
+          "text[x=\"400\"][y=\"24\"][fill=\"var(--ink)\"]"
+        ],
+        "text": "Page and engines",
+        "coordinates": {
+          "x": "400",
+          "y": "24",
+          "textAnchor": null,
+          "ancestorTransforms": []
+        },
+        "fill": "var(--ink)",
+        "foreground": "#163b31",
+        "backing": "#f4f7f5",
+        "backingBasis": "SVG background, with no filled rect behind this label",
+        "recomputedContrastRatio": 11.425387533428022,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/what-privacy-claim-really-means",
+        "target": [
+          "text[x=\"482\"][y=\"98\"][fill=\"var(--ink)\"]"
+        ],
+        "text": "FFmpeg core",
+        "coordinates": {
+          "x": "482",
+          "y": "98",
+          "textAnchor": "middle",
+          "ancestorTransforms": []
+        },
+        "fill": "var(--ink)",
+        "foreground": "#163b31",
+        "backing": "#ffffff",
+        "backingBasis": "Page/engine node rect",
+        "recomputedContrastRatio": 12.323577080276936,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/what-privacy-claim-really-means",
+        "target": [
+          "text[x=\"482\"][y=\"116\"][fill=\"var(--muted)\"]"
+        ],
+        "text": "on first use",
+        "coordinates": {
+          "x": "482",
+          "y": "116",
+          "textAnchor": "middle",
+          "ancestorTransforms": []
+        },
+        "fill": "var(--muted)",
+        "foreground": "#5f716a",
+        "backing": "#ffffff",
+        "backingBasis": "Page/engine node rect",
+        "recomputedContrastRatio": 5.176555507245727,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/what-privacy-claim-really-means",
+        "target": [
+          "text[x=\"628\"][y=\"98\"][fill=\"var(--ink)\"]"
+        ],
+        "text": "Page assets",
+        "coordinates": {
+          "x": "628",
+          "y": "98",
+          "textAnchor": "middle",
+          "ancestorTransforms": []
+        },
+        "fill": "var(--ink)",
+        "foreground": "#163b31",
+        "backing": "#ffffff",
+        "backingBasis": "Page/engine node rect",
+        "recomputedContrastRatio": 12.323577080276936,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/what-privacy-claim-really-means",
+        "target": [
+          "text[x=\"628\"][y=\"116\"][fill=\"var(--muted)\"]"
+        ],
+        "text": "Same origin",
+        "coordinates": {
+          "x": "628",
+          "y": "116",
+          "textAnchor": "middle",
+          "ancestorTransforms": []
+        },
+        "fill": "var(--muted)",
+        "foreground": "#5f716a",
+        "backing": "#ffffff",
+        "backingBasis": "Page/engine node rect",
+        "recomputedContrastRatio": 5.176555507245727,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/what-privacy-claim-really-means",
+        "target": [
+          "text[x=\"564\"]"
+        ],
+        "text": "fetched over the network, carrying no file",
+        "coordinates": {
+          "x": "564",
+          "y": "172",
+          "textAnchor": "middle",
+          "ancestorTransforms": []
+        },
+        "fill": "var(--muted)",
+        "foreground": "#5f716a",
+        "backing": "#f4f7f5",
+        "backingBasis": "SVG background, with no filled rect behind this label",
+        "recomputedContrastRatio": 4.7992682946934115,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/what-privacy-claim-really-means",
+        "target": [
+          "text[y=\"222\"]"
+        ],
+        "text": "Page assets travel over the network.",
+        "coordinates": {
+          "x": "360",
+          "y": "222",
+          "textAnchor": "middle",
+          "ancestorTransforms": []
+        },
+        "fill": "var(--lime)",
+        "foreground": "#c9ed4b",
+        "backing": "#163b31",
+        "backingBasis": "Dark explanatory band",
+        "recomputedContrastRatio": 9.212622738761395,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/what-privacy-claim-really-means",
+        "target": [
+          "text[y=\"248\"]"
+        ],
+        "text": "Your selected files are processed on your device.",
+        "coordinates": {
+          "x": "360",
+          "y": "248",
+          "textAnchor": "middle",
+          "ancestorTransforms": []
+        },
+        "fill": "#fff",
+        "foreground": "#ffffff",
+        "backing": "#163b31",
+        "backingBasis": "Dark explanatory band",
+        "recomputedContrastRatio": 12.323577080276936,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/honest-file-size-reporting",
+        "target": [
+          "text[y=\"32\"]"
+        ],
+        "text": "Genuinely smaller",
+        "coordinates": {
+          "x": "12",
+          "y": "32",
+          "textAnchor": null,
+          "ancestorTransforms": []
+        },
+        "fill": "var(--ink)",
+        "foreground": "#163b31",
+        "backing": "#f4f7f5",
+        "backingBasis": "SVG background, with no filled rect behind this label",
+        "recomputedContrastRatio": 11.425387533428022,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/honest-file-size-reporting",
+        "target": [
+          "text[y=\"53\"]"
+        ],
+        "text": "original",
+        "coordinates": {
+          "x": "16",
+          "y": "53",
+          "textAnchor": null,
+          "ancestorTransforms": []
+        },
+        "fill": "var(--muted)",
+        "foreground": "#5f716a",
+        "backing": "#f4f7f5",
+        "backingBasis": "SVG background, with no filled rect behind this label",
+        "recomputedContrastRatio": 4.7992682946934115,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/honest-file-size-reporting",
+        "target": [
+          "text[y=\"75\"]"
+        ],
+        "text": "output",
+        "coordinates": {
+          "x": "16",
+          "y": "75",
+          "textAnchor": null,
+          "ancestorTransforms": []
+        },
+        "fill": "var(--ink)",
+        "foreground": "#163b31",
+        "backing": "#eef6d8",
+        "backingBasis": "Output bar fill; original bars are transparent",
+        "recomputedContrastRatio": 11.037998556954731,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/honest-file-size-reporting",
+        "target": [
+          "text[y=\"62\"][x=\"430\"][font-size=\"12\"]"
+        ],
+        "text": "60% smaller",
+        "coordinates": {
+          "x": "430",
+          "y": "62",
+          "textAnchor": null,
+          "ancestorTransforms": []
+        },
+        "fill": "var(--ink)",
+        "foreground": "#163b31",
+        "backing": "#f4f7f5",
+        "backingBasis": "SVG background, with no filled rect behind this label",
+        "recomputedContrastRatio": 11.425387533428022,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/honest-file-size-reporting",
+        "target": [
+          "text[y=\"92\"]"
+        ],
+        "text": "The same size",
+        "coordinates": {
+          "x": "12",
+          "y": "92",
+          "textAnchor": null,
+          "ancestorTransforms": []
+        },
+        "fill": "var(--ink)",
+        "foreground": "#163b31",
+        "backing": "#f4f7f5",
+        "backingBasis": "SVG background, with no filled rect behind this label",
+        "recomputedContrastRatio": 11.425387533428022,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/honest-file-size-reporting",
+        "target": [
+          "text[y=\"113\"]"
+        ],
+        "text": "original",
+        "coordinates": {
+          "x": "16",
+          "y": "113",
+          "textAnchor": null,
+          "ancestorTransforms": []
+        },
+        "fill": "var(--muted)",
+        "foreground": "#5f716a",
+        "backing": "#f4f7f5",
+        "backingBasis": "SVG background, with no filled rect behind this label",
+        "recomputedContrastRatio": 4.7992682946934115,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/honest-file-size-reporting",
+        "target": [
+          "text[y=\"135\"]"
+        ],
+        "text": "output",
+        "coordinates": {
+          "x": "16",
+          "y": "135",
+          "textAnchor": null,
+          "ancestorTransforms": []
+        },
+        "fill": "var(--ink)",
+        "foreground": "#163b31",
+        "backing": "#ffffff",
+        "backingBasis": "Output bar fill; original bars are transparent",
+        "recomputedContrastRatio": 12.323577080276936,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/honest-file-size-reporting",
+        "target": [
+          "text[y=\"122\"][x=\"430\"][font-size=\"12\"]"
+        ],
+        "text": "no size change",
+        "coordinates": {
+          "x": "430",
+          "y": "122",
+          "textAnchor": null,
+          "ancestorTransforms": []
+        },
+        "fill": "var(--ink)",
+        "foreground": "#163b31",
+        "backing": "#f4f7f5",
+        "backingBasis": "SVG background, with no filled rect behind this label",
+        "recomputedContrastRatio": 11.425387533428022,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/honest-file-size-reporting",
+        "target": [
+          "text[y=\"152\"]"
+        ],
+        "text": "Larger",
+        "coordinates": {
+          "x": "12",
+          "y": "152",
+          "textAnchor": null,
+          "ancestorTransforms": []
+        },
+        "fill": "var(--ink)",
+        "foreground": "#163b31",
+        "backing": "#f4f7f5",
+        "backingBasis": "SVG background, with no filled rect behind this label",
+        "recomputedContrastRatio": 11.425387533428022,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/honest-file-size-reporting",
+        "target": [
+          "text[y=\"173\"]"
+        ],
+        "text": "original",
+        "coordinates": {
+          "x": "16",
+          "y": "173",
+          "textAnchor": null,
+          "ancestorTransforms": []
+        },
+        "fill": "var(--muted)",
+        "foreground": "#5f716a",
+        "backing": "#f4f7f5",
+        "backingBasis": "SVG background, with no filled rect behind this label",
+        "recomputedContrastRatio": 4.7992682946934115,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/honest-file-size-reporting",
+        "target": [
+          "text[y=\"195\"]"
+        ],
+        "text": "output",
+        "coordinates": {
+          "x": "16",
+          "y": "195",
+          "textAnchor": null,
+          "ancestorTransforms": []
+        },
+        "fill": "var(--ink)",
+        "foreground": "#163b31",
+        "backing": "#fbeae7",
+        "backingBasis": "Output bar fill; original bars are transparent",
+        "recomputedContrastRatio": 10.57766522997366,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/honest-file-size-reporting",
+        "target": [
+          "text[y=\"182\"][x=\"430\"][font-size=\"12\"]"
+        ],
+        "text": "6% larger (rounded)",
+        "coordinates": {
+          "x": "430",
+          "y": "182",
+          "textAnchor": null,
+          "ancestorTransforms": []
+        },
+        "fill": "var(--ink)",
+        "foreground": "#163b31",
+        "backing": "#f4f7f5",
+        "backingBasis": "SVG background, with no filled rect behind this label",
+        "recomputedContrastRatio": 11.425387533428022,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/honest-file-size-reporting",
+        "target": [
+          "text[y=\"218\"]"
+        ],
+        "text": "Only the first row is a saving. The other two are reported, never dressed up.",
+        "coordinates": {
+          "x": "12",
+          "y": "218",
+          "textAnchor": null,
+          "ancestorTransforms": []
+        },
+        "fill": "var(--muted)",
+        "foreground": "#5f716a",
+        "backing": "#f4f7f5",
+        "backingBasis": "SVG background, with no filled rect behind this label",
+        "recomputedContrastRatio": 4.7992682946934115,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/how-browser-compression-works",
+        "target": [
+          "text[x=\"73\"][y=\"95\"][font-weight=\"700\"]"
+        ],
+        "text": "Select file",
+        "coordinates": {
+          "x": "73",
+          "y": "95",
+          "textAnchor": "middle",
+          "ancestorTransforms": []
+        },
+        "fill": "var(--ink)",
+        "foreground": "#163b31",
+        "backing": "#ffffff",
+        "backingBasis": "Node rect behind label/subtitle",
+        "recomputedContrastRatio": 12.323577080276936,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/how-browser-compression-works",
+        "target": [
+          "text[x=\"73\"][y=\"113\"][fill=\"var(--muted)\"]"
+        ],
+        "text": "in this tab",
+        "coordinates": {
+          "x": "73",
+          "y": "113",
+          "textAnchor": "middle",
+          "ancestorTransforms": []
+        },
+        "fill": "var(--muted)",
+        "foreground": "#5f716a",
+        "backing": "#ffffff",
+        "backingBasis": "Node rect behind label/subtitle",
+        "recomputedContrastRatio": 5.176555507245727,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/how-browser-compression-works",
+        "target": [
+          "text[x=\"215\"][y=\"95\"][font-weight=\"700\"]"
+        ],
+        "text": "Validate",
+        "coordinates": {
+          "x": "215",
+          "y": "95",
+          "textAnchor": "middle",
+          "ancestorTransforms": []
+        },
+        "fill": "var(--ink)",
+        "foreground": "#163b31",
+        "backing": "#ffffff",
+        "backingBasis": "Node rect behind label/subtitle",
+        "recomputedContrastRatio": 12.323577080276936,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/how-browser-compression-works",
+        "target": [
+          "text[x=\"215\"][y=\"113\"][fill=\"var(--muted)\"]"
+        ],
+        "text": "check bytes",
+        "coordinates": {
+          "x": "215",
+          "y": "113",
+          "textAnchor": "middle",
+          "ancestorTransforms": []
+        },
+        "fill": "var(--muted)",
+        "foreground": "#5f716a",
+        "backing": "#ffffff",
+        "backingBasis": "Node rect behind label/subtitle",
+        "recomputedContrastRatio": 5.176555507245727,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/how-browser-compression-works",
+        "target": [
+          "text[fill=\"#fff\"]"
+        ],
+        "text": "Encode",
+        "coordinates": {
+          "x": "357",
+          "y": "95",
+          "textAnchor": "middle",
+          "ancestorTransforms": []
+        },
+        "fill": "#fff",
+        "foreground": "#ffffff",
+        "backing": "#163b31",
+        "backingBasis": "Node rect behind label/subtitle",
+        "recomputedContrastRatio": 12.323577080276936,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/how-browser-compression-works",
+        "target": [
+          "text[fill=\"var(--lime)\"]"
+        ],
+        "text": "local engine",
+        "coordinates": {
+          "x": "357",
+          "y": "113",
+          "textAnchor": "middle",
+          "ancestorTransforms": []
+        },
+        "fill": "var(--lime)",
+        "foreground": "#c9ed4b",
+        "backing": "#163b31",
+        "backingBasis": "Node rect behind label/subtitle",
+        "recomputedContrastRatio": 9.212622738761395,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/how-browser-compression-works",
+        "target": [
+          "text[x=\"499\"][y=\"95\"][font-weight=\"700\"]"
+        ],
+        "text": "Measure",
+        "coordinates": {
+          "x": "499",
+          "y": "95",
+          "textAnchor": "middle",
+          "ancestorTransforms": []
+        },
+        "fill": "var(--ink)",
+        "foreground": "#163b31",
+        "backing": "#ffffff",
+        "backingBasis": "Node rect behind label/subtitle",
+        "recomputedContrastRatio": 12.323577080276936,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/how-browser-compression-works",
+        "target": [
+          "text[x=\"499\"][y=\"113\"][fill=\"var(--muted)\"]"
+        ],
+        "text": "actual bytes",
+        "coordinates": {
+          "x": "499",
+          "y": "113",
+          "textAnchor": "middle",
+          "ancestorTransforms": []
+        },
+        "fill": "var(--muted)",
+        "foreground": "#5f716a",
+        "backing": "#ffffff",
+        "backingBasis": "Node rect behind label/subtitle",
+        "recomputedContrastRatio": 5.176555507245727,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/how-browser-compression-works",
+        "target": [
+          "text[x=\"641\"][y=\"95\"][font-weight=\"700\"]"
+        ],
+        "text": "Download",
+        "coordinates": {
+          "x": "641",
+          "y": "95",
+          "textAnchor": "middle",
+          "ancestorTransforms": []
+        },
+        "fill": "var(--ink)",
+        "foreground": "#163b31",
+        "backing": "#ffffff",
+        "backingBasis": "Node rect behind label/subtitle",
+        "recomputedContrastRatio": 12.323577080276936,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/how-browser-compression-works",
+        "target": [
+          "text[x=\"641\"][y=\"113\"][fill=\"var(--muted)\"]"
+        ],
+        "text": "a real file",
+        "coordinates": {
+          "x": "641",
+          "y": "113",
+          "textAnchor": "middle",
+          "ancestorTransforms": []
+        },
+        "fill": "var(--muted)",
+        "foreground": "#5f716a",
+        "backing": "#ffffff",
+        "backingBasis": "Node rect behind label/subtitle",
+        "recomputedContrastRatio": 5.176555507245727,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/how-browser-compression-works",
+        "target": [
+          "text[y=\"26\"]"
+        ],
+        "text": "Everything below runs on your device",
+        "coordinates": {
+          "x": "360",
+          "y": "26",
+          "textAnchor": "middle",
+          "ancestorTransforms": []
+        },
+        "fill": "var(--ink)",
+        "foreground": "#163b31",
+        "backing": "#f4f7f5",
+        "backingBasis": "SVG background, with no filled rect behind this label",
+        "recomputedContrastRatio": 11.425387533428022,
+        "required": 4.5
+      },
+      {
+        "route": "/blog/how-browser-compression-works",
+        "target": [
+          "text[y=\"185\"]"
+        ],
+        "text": "There is no upload step, and no endpoint to upload it to",
+        "coordinates": {
+          "x": "360",
+          "y": "185",
+          "textAnchor": "middle",
+          "ancestorTransforms": []
+        },
+        "fill": "var(--ink)",
+        "foreground": "#163b31",
+        "backing": "#eef6d8",
+        "backingBasis": "Footer information band",
+        "recomputedContrastRatio": 11.037998556954731,
+        "required": 4.5
+      }
+    ],
+    "privateEvidence": ".qa-results/phase2/svg-contrast-i/comparison.json"
+  },
+  "responsive": {
+    "status": "tested-and-passed-on-I",
+    "routes": [
+      "/",
+      "/compress",
+      "/image-compressor",
+      "/jpg-compressor",
+      "/jpeg-compressor",
+      "/png-compressor",
+      "/webp-compressor",
+      "/gif-compressor",
+      "/video-compressor",
+      "/webm-to-mp4",
+      "/mp3-compressor",
+      "/wav-compressor",
+      "/wav-to-mp3",
+      "/pdf-compressor",
+      "/zip-compressor",
+      "/archive-compressor",
+      "/about",
+      "/blog",
+      "/blog/how-browser-compression-works",
+      "/blog/honest-file-size-reporting",
+      "/blog/choosing-a-compression-mode",
+      "/blog/what-privacy-claim-really-means",
+      "/blog/compressing-files-for-the-web",
+      "/contact",
+      "/privacy",
+      "/terms",
+      "/disclaimer",
+      "/sitemap",
+      "/404-missing"
+    ],
+    "widths": [
+      390,
+      1440,
+      320,
+      375,
+      430,
+      760,
+      768,
+      900,
+      901,
+      1024,
+      1280,
+      1920
+    ],
+    "height": 900,
+    "measurements": 348,
+    "failures": 0,
+    "artifactUnchanged": true,
+    "privateEvidence": ".qa-results/phase2/release-i/ui/responsive/responsive-results.json"
+  },
+  "editorialImageDelivery": {
+    "status": "tested-and-passed-on-I",
+    "nativeCases": 45,
+    "engines": [
+      "chromium",
+      "webkit",
+      "firefox"
+    ],
+    "scope": "Actual native image delivery/decode/metadata/layout/request checks on five published articles. Chromium/WebKit use1/1.75/1 DPR; Firefox uses fresh browsers with native1/1.7647058823529411/1 after navigation, explicitly distinguished from nominal1.75. Modern WebP support only; unknown/replaced CMS images and nonempty captions are separately source/SSR tested. No forced source, DOM/CSS edit or upload. Not encoding/Lighthouse performance evidence.",
+    "cases": [
+      {
+        "route": "/blog/how-browser-compression-works",
+        "engine": "chromium",
+        "version": "156.0.8078.47",
+        "viewport": [
+          390,
+          900
+        ],
+        "requestedDpr": 1,
+        "actualDpr": 1,
+        "currentPath": "/blog/pipeline-640.webp",
+        "fallbackSrc": "/uploads/pipeline.webp",
+        "authoredAlt": "Folders pass through a green press inside a browser-shaped frame.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/honest-file-size-reporting",
+        "engine": "chromium",
+        "version": "156.0.8078.47",
+        "viewport": [
+          390,
+          900
+        ],
+        "requestedDpr": 1,
+        "actualDpr": 1,
+        "currentPath": "/blog/sizebars-640.webp",
+        "fallbackSrc": "/blog/sizebars.jpg",
+        "authoredAlt": "A brass scale comparing a paper stack with a compact folded file.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/choosing-a-compression-mode",
+        "engine": "chromium",
+        "version": "156.0.8078.47",
+        "viewport": [
+          390,
+          900
+        ],
+        "requestedDpr": 1,
+        "actualDpr": 1,
+        "currentPath": "/blog/qualitycurve-640.webp",
+        "fallbackSrc": "/blog/qualitycurve.jpg",
+        "authoredAlt": "Three botanical image tiles with different levels of detail beside a quality dial.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/what-privacy-claim-really-means",
+        "engine": "chromium",
+        "version": "156.0.8078.47",
+        "viewport": [
+          390,
+          900
+        ],
+        "requestedDpr": 1,
+        "actualDpr": 1,
+        "currentPath": "/blog/dataflow-640.webp",
+        "fallbackSrc": "/blog/dataflow.jpg",
+        "authoredAlt": "A file protected by a glass screen inside a laptop-shaped courtyard.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/compressing-files-for-the-web",
+        "engine": "chromium",
+        "version": "156.0.8078.47",
+        "viewport": [
+          390,
+          900
+        ],
+        "requestedDpr": 1,
+        "actualDpr": 1,
+        "currentPath": "/blog/formattree-640.webp",
+        "fallbackSrc": "/blog/formattree.jpg",
+        "authoredAlt": "Photographic, transparent and compact file sculptures beside a browser doorway.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/how-browser-compression-works",
+        "engine": "chromium",
+        "version": "156.0.8078.47",
+        "viewport": [
+          412,
+          823
+        ],
+        "requestedDpr": 1.75,
+        "actualDpr": 1.75,
+        "currentPath": "/blog/pipeline-768.webp",
+        "fallbackSrc": "/uploads/pipeline.webp",
+        "authoredAlt": "Folders pass through a green press inside a browser-shaped frame.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/honest-file-size-reporting",
+        "engine": "chromium",
+        "version": "156.0.8078.47",
+        "viewport": [
+          412,
+          823
+        ],
+        "requestedDpr": 1.75,
+        "actualDpr": 1.75,
+        "currentPath": "/blog/sizebars-768.webp",
+        "fallbackSrc": "/blog/sizebars.jpg",
+        "authoredAlt": "A brass scale comparing a paper stack with a compact folded file.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/choosing-a-compression-mode",
+        "engine": "chromium",
+        "version": "156.0.8078.47",
+        "viewport": [
+          412,
+          823
+        ],
+        "requestedDpr": 1.75,
+        "actualDpr": 1.75,
+        "currentPath": "/blog/qualitycurve-768.webp",
+        "fallbackSrc": "/blog/qualitycurve.jpg",
+        "authoredAlt": "Three botanical image tiles with different levels of detail beside a quality dial.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/what-privacy-claim-really-means",
+        "engine": "chromium",
+        "version": "156.0.8078.47",
+        "viewport": [
+          412,
+          823
+        ],
+        "requestedDpr": 1.75,
+        "actualDpr": 1.75,
+        "currentPath": "/blog/dataflow-768.webp",
+        "fallbackSrc": "/blog/dataflow.jpg",
+        "authoredAlt": "A file protected by a glass screen inside a laptop-shaped courtyard.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/compressing-files-for-the-web",
+        "engine": "chromium",
+        "version": "156.0.8078.47",
+        "viewport": [
+          412,
+          823
+        ],
+        "requestedDpr": 1.75,
+        "actualDpr": 1.75,
+        "currentPath": "/blog/formattree-768.webp",
+        "fallbackSrc": "/blog/formattree.jpg",
+        "authoredAlt": "Photographic, transparent and compact file sculptures beside a browser doorway.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/how-browser-compression-works",
+        "engine": "chromium",
+        "version": "156.0.8078.47",
+        "viewport": [
+          1440,
+          900
+        ],
+        "requestedDpr": 1,
+        "actualDpr": 1,
+        "currentPath": "/blog/pipeline.webp",
+        "fallbackSrc": "/uploads/pipeline.webp",
+        "authoredAlt": "Folders pass through a green press inside a browser-shaped frame.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/honest-file-size-reporting",
+        "engine": "chromium",
+        "version": "156.0.8078.47",
+        "viewport": [
+          1440,
+          900
+        ],
+        "requestedDpr": 1,
+        "actualDpr": 1,
+        "currentPath": "/blog/sizebars.webp",
+        "fallbackSrc": "/blog/sizebars.jpg",
+        "authoredAlt": "A brass scale comparing a paper stack with a compact folded file.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/choosing-a-compression-mode",
+        "engine": "chromium",
+        "version": "156.0.8078.47",
+        "viewport": [
+          1440,
+          900
+        ],
+        "requestedDpr": 1,
+        "actualDpr": 1,
+        "currentPath": "/blog/qualitycurve.webp",
+        "fallbackSrc": "/blog/qualitycurve.jpg",
+        "authoredAlt": "Three botanical image tiles with different levels of detail beside a quality dial.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/what-privacy-claim-really-means",
+        "engine": "chromium",
+        "version": "156.0.8078.47",
+        "viewport": [
+          1440,
+          900
+        ],
+        "requestedDpr": 1,
+        "actualDpr": 1,
+        "currentPath": "/blog/dataflow.webp",
+        "fallbackSrc": "/blog/dataflow.jpg",
+        "authoredAlt": "A file protected by a glass screen inside a laptop-shaped courtyard.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/compressing-files-for-the-web",
+        "engine": "chromium",
+        "version": "156.0.8078.47",
+        "viewport": [
+          1440,
+          900
+        ],
+        "requestedDpr": 1,
+        "actualDpr": 1,
+        "currentPath": "/blog/formattree.webp",
+        "fallbackSrc": "/blog/formattree.jpg",
+        "authoredAlt": "Photographic, transparent and compact file sculptures beside a browser doorway.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/how-browser-compression-works",
+        "engine": "webkit",
+        "version": "26.5",
+        "viewport": [
+          390,
+          900
+        ],
+        "requestedDpr": 1,
+        "actualDpr": 1,
+        "currentPath": "/blog/pipeline-640.webp",
+        "fallbackSrc": "/uploads/pipeline.webp",
+        "authoredAlt": "Folders pass through a green press inside a browser-shaped frame.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/honest-file-size-reporting",
+        "engine": "webkit",
+        "version": "26.5",
+        "viewport": [
+          390,
+          900
+        ],
+        "requestedDpr": 1,
+        "actualDpr": 1,
+        "currentPath": "/blog/sizebars-640.webp",
+        "fallbackSrc": "/blog/sizebars.jpg",
+        "authoredAlt": "A brass scale comparing a paper stack with a compact folded file.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/choosing-a-compression-mode",
+        "engine": "webkit",
+        "version": "26.5",
+        "viewport": [
+          390,
+          900
+        ],
+        "requestedDpr": 1,
+        "actualDpr": 1,
+        "currentPath": "/blog/qualitycurve-640.webp",
+        "fallbackSrc": "/blog/qualitycurve.jpg",
+        "authoredAlt": "Three botanical image tiles with different levels of detail beside a quality dial.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/what-privacy-claim-really-means",
+        "engine": "webkit",
+        "version": "26.5",
+        "viewport": [
+          390,
+          900
+        ],
+        "requestedDpr": 1,
+        "actualDpr": 1,
+        "currentPath": "/blog/dataflow-640.webp",
+        "fallbackSrc": "/blog/dataflow.jpg",
+        "authoredAlt": "A file protected by a glass screen inside a laptop-shaped courtyard.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/compressing-files-for-the-web",
+        "engine": "webkit",
+        "version": "26.5",
+        "viewport": [
+          390,
+          900
+        ],
+        "requestedDpr": 1,
+        "actualDpr": 1,
+        "currentPath": "/blog/formattree-640.webp",
+        "fallbackSrc": "/blog/formattree.jpg",
+        "authoredAlt": "Photographic, transparent and compact file sculptures beside a browser doorway.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/how-browser-compression-works",
+        "engine": "webkit",
+        "version": "26.5",
+        "viewport": [
+          412,
+          823
+        ],
+        "requestedDpr": 1.75,
+        "actualDpr": 1.75,
+        "currentPath": "/blog/pipeline-768.webp",
+        "fallbackSrc": "/uploads/pipeline.webp",
+        "authoredAlt": "Folders pass through a green press inside a browser-shaped frame.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/honest-file-size-reporting",
+        "engine": "webkit",
+        "version": "26.5",
+        "viewport": [
+          412,
+          823
+        ],
+        "requestedDpr": 1.75,
+        "actualDpr": 1.75,
+        "currentPath": "/blog/sizebars-768.webp",
+        "fallbackSrc": "/blog/sizebars.jpg",
+        "authoredAlt": "A brass scale comparing a paper stack with a compact folded file.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/choosing-a-compression-mode",
+        "engine": "webkit",
+        "version": "26.5",
+        "viewport": [
+          412,
+          823
+        ],
+        "requestedDpr": 1.75,
+        "actualDpr": 1.75,
+        "currentPath": "/blog/qualitycurve-768.webp",
+        "fallbackSrc": "/blog/qualitycurve.jpg",
+        "authoredAlt": "Three botanical image tiles with different levels of detail beside a quality dial.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/what-privacy-claim-really-means",
+        "engine": "webkit",
+        "version": "26.5",
+        "viewport": [
+          412,
+          823
+        ],
+        "requestedDpr": 1.75,
+        "actualDpr": 1.75,
+        "currentPath": "/blog/dataflow-768.webp",
+        "fallbackSrc": "/blog/dataflow.jpg",
+        "authoredAlt": "A file protected by a glass screen inside a laptop-shaped courtyard.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/compressing-files-for-the-web",
+        "engine": "webkit",
+        "version": "26.5",
+        "viewport": [
+          412,
+          823
+        ],
+        "requestedDpr": 1.75,
+        "actualDpr": 1.75,
+        "currentPath": "/blog/formattree-768.webp",
+        "fallbackSrc": "/blog/formattree.jpg",
+        "authoredAlt": "Photographic, transparent and compact file sculptures beside a browser doorway.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/how-browser-compression-works",
+        "engine": "webkit",
+        "version": "26.5",
+        "viewport": [
+          1440,
+          900
+        ],
+        "requestedDpr": 1,
+        "actualDpr": 1,
+        "currentPath": "/blog/pipeline.webp",
+        "fallbackSrc": "/uploads/pipeline.webp",
+        "authoredAlt": "Folders pass through a green press inside a browser-shaped frame.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/honest-file-size-reporting",
+        "engine": "webkit",
+        "version": "26.5",
+        "viewport": [
+          1440,
+          900
+        ],
+        "requestedDpr": 1,
+        "actualDpr": 1,
+        "currentPath": "/blog/sizebars.webp",
+        "fallbackSrc": "/blog/sizebars.jpg",
+        "authoredAlt": "A brass scale comparing a paper stack with a compact folded file.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/choosing-a-compression-mode",
+        "engine": "webkit",
+        "version": "26.5",
+        "viewport": [
+          1440,
+          900
+        ],
+        "requestedDpr": 1,
+        "actualDpr": 1,
+        "currentPath": "/blog/qualitycurve.webp",
+        "fallbackSrc": "/blog/qualitycurve.jpg",
+        "authoredAlt": "Three botanical image tiles with different levels of detail beside a quality dial.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/what-privacy-claim-really-means",
+        "engine": "webkit",
+        "version": "26.5",
+        "viewport": [
+          1440,
+          900
+        ],
+        "requestedDpr": 1,
+        "actualDpr": 1,
+        "currentPath": "/blog/dataflow.webp",
+        "fallbackSrc": "/blog/dataflow.jpg",
+        "authoredAlt": "A file protected by a glass screen inside a laptop-shaped courtyard.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/compressing-files-for-the-web",
+        "engine": "webkit",
+        "version": "26.5",
+        "viewport": [
+          1440,
+          900
+        ],
+        "requestedDpr": 1,
+        "actualDpr": 1,
+        "currentPath": "/blog/formattree.webp",
+        "fallbackSrc": "/blog/formattree.jpg",
+        "authoredAlt": "Photographic, transparent and compact file sculptures beside a browser doorway.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/how-browser-compression-works",
+        "engine": "firefox",
+        "version": "155.0",
+        "viewport": [
+          390,
+          900
+        ],
+        "requestedDpr": 1,
+        "actualDpr": 1,
+        "currentPath": "/blog/pipeline-640.webp",
+        "fallbackSrc": "/uploads/pipeline.webp",
+        "authoredAlt": "Folders pass through a green press inside a browser-shaped frame.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/honest-file-size-reporting",
+        "engine": "firefox",
+        "version": "155.0",
+        "viewport": [
+          390,
+          900
+        ],
+        "requestedDpr": 1,
+        "actualDpr": 1,
+        "currentPath": "/blog/sizebars-640.webp",
+        "fallbackSrc": "/blog/sizebars.jpg",
+        "authoredAlt": "A brass scale comparing a paper stack with a compact folded file.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/choosing-a-compression-mode",
+        "engine": "firefox",
+        "version": "155.0",
+        "viewport": [
+          390,
+          900
+        ],
+        "requestedDpr": 1,
+        "actualDpr": 1,
+        "currentPath": "/blog/qualitycurve-640.webp",
+        "fallbackSrc": "/blog/qualitycurve.jpg",
+        "authoredAlt": "Three botanical image tiles with different levels of detail beside a quality dial.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/what-privacy-claim-really-means",
+        "engine": "firefox",
+        "version": "155.0",
+        "viewport": [
+          390,
+          900
+        ],
+        "requestedDpr": 1,
+        "actualDpr": 1,
+        "currentPath": "/blog/dataflow-640.webp",
+        "fallbackSrc": "/blog/dataflow.jpg",
+        "authoredAlt": "A file protected by a glass screen inside a laptop-shaped courtyard.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/compressing-files-for-the-web",
+        "engine": "firefox",
+        "version": "155.0",
+        "viewport": [
+          390,
+          900
+        ],
+        "requestedDpr": 1,
+        "actualDpr": 1,
+        "currentPath": "/blog/formattree-640.webp",
+        "fallbackSrc": "/blog/formattree.jpg",
+        "authoredAlt": "Photographic, transparent and compact file sculptures beside a browser doorway.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/how-browser-compression-works",
+        "engine": "firefox",
+        "version": "155.0",
+        "viewport": [
+          412,
+          823
+        ],
+        "requestedDpr": 1.75,
+        "actualDpr": 1.7647058823529411,
+        "currentPath": "/blog/pipeline-768.webp",
+        "fallbackSrc": "/uploads/pipeline.webp",
+        "authoredAlt": "Folders pass through a green press inside a browser-shaped frame.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/honest-file-size-reporting",
+        "engine": "firefox",
+        "version": "155.0",
+        "viewport": [
+          412,
+          823
+        ],
+        "requestedDpr": 1.75,
+        "actualDpr": 1.7647058823529411,
+        "currentPath": "/blog/sizebars-768.webp",
+        "fallbackSrc": "/blog/sizebars.jpg",
+        "authoredAlt": "A brass scale comparing a paper stack with a compact folded file.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/choosing-a-compression-mode",
+        "engine": "firefox",
+        "version": "155.0",
+        "viewport": [
+          412,
+          823
+        ],
+        "requestedDpr": 1.75,
+        "actualDpr": 1.7647058823529411,
+        "currentPath": "/blog/qualitycurve-768.webp",
+        "fallbackSrc": "/blog/qualitycurve.jpg",
+        "authoredAlt": "Three botanical image tiles with different levels of detail beside a quality dial.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/what-privacy-claim-really-means",
+        "engine": "firefox",
+        "version": "155.0",
+        "viewport": [
+          412,
+          823
+        ],
+        "requestedDpr": 1.75,
+        "actualDpr": 1.7647058823529411,
+        "currentPath": "/blog/dataflow-768.webp",
+        "fallbackSrc": "/blog/dataflow.jpg",
+        "authoredAlt": "A file protected by a glass screen inside a laptop-shaped courtyard.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/compressing-files-for-the-web",
+        "engine": "firefox",
+        "version": "155.0",
+        "viewport": [
+          412,
+          823
+        ],
+        "requestedDpr": 1.75,
+        "actualDpr": 1.7647058823529411,
+        "currentPath": "/blog/formattree-768.webp",
+        "fallbackSrc": "/blog/formattree.jpg",
+        "authoredAlt": "Photographic, transparent and compact file sculptures beside a browser doorway.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/how-browser-compression-works",
+        "engine": "firefox",
+        "version": "155.0",
+        "viewport": [
+          1440,
+          900
+        ],
+        "requestedDpr": 1,
+        "actualDpr": 1,
+        "currentPath": "/blog/pipeline.webp",
+        "fallbackSrc": "/uploads/pipeline.webp",
+        "authoredAlt": "Folders pass through a green press inside a browser-shaped frame.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/honest-file-size-reporting",
+        "engine": "firefox",
+        "version": "155.0",
+        "viewport": [
+          1440,
+          900
+        ],
+        "requestedDpr": 1,
+        "actualDpr": 1,
+        "currentPath": "/blog/sizebars.webp",
+        "fallbackSrc": "/blog/sizebars.jpg",
+        "authoredAlt": "A brass scale comparing a paper stack with a compact folded file.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/choosing-a-compression-mode",
+        "engine": "firefox",
+        "version": "155.0",
+        "viewport": [
+          1440,
+          900
+        ],
+        "requestedDpr": 1,
+        "actualDpr": 1,
+        "currentPath": "/blog/qualitycurve.webp",
+        "fallbackSrc": "/blog/qualitycurve.jpg",
+        "authoredAlt": "Three botanical image tiles with different levels of detail beside a quality dial.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/what-privacy-claim-really-means",
+        "engine": "firefox",
+        "version": "155.0",
+        "viewport": [
+          1440,
+          900
+        ],
+        "requestedDpr": 1,
+        "actualDpr": 1,
+        "currentPath": "/blog/dataflow.webp",
+        "fallbackSrc": "/blog/dataflow.jpg",
+        "authoredAlt": "A file protected by a glass screen inside a laptop-shaped courtyard.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      },
+      {
+        "route": "/blog/compressing-files-for-the-web",
+        "engine": "firefox",
+        "version": "155.0",
+        "viewport": [
+          1440,
+          900
+        ],
+        "requestedDpr": 1,
+        "actualDpr": 1,
+        "currentPath": "/blog/formattree.webp",
+        "fallbackSrc": "/blog/formattree.jpg",
+        "authoredAlt": "Photographic, transparent and compact file sculptures beside a browser doorway.",
+        "caption": null,
+        "decoded": true,
+        "sourceSelectionMetadataAndNoDuplicateMobileFullRequestPassed": true
+      }
+    ],
+    "retainedFirefoxSetupAttempt": {
+      "folder": ".qa-results/phase2/release-i/ui/image-firefox",
+      "passed": 8,
+      "failed": 7,
+      "dprIssue": "Context-only1.75 is1.75 on about:blank but resets1 after navigation, so actual640 selection was correct for actual DPR. Native launch preference retains after-navigation1.7647058823529411 and requires768.",
+      "timeouts": "Original30s networkidle timeouts retained; their cause is not proven. All15 fresh-profile cases passed the same30s boundary with zero pending requests/diagnostics; no application fix or timeout increase claimed.",
+      "controls": [
+        ".qa-results/phase2/release-i/ui/ff-normal-profile-probe/probe.json",
+        ".qa-results/phase2/release-i/ui/ff-pref-profile-probe/probe.json"
+      ]
+    },
+    "privateEvidence": ".qa-results/phase2/release-i/image-delivery-acceptance.json"
+  },
+  "individualToolRegression": {
+    "status": "tested-and-passed-on-I",
+    "browser": "Chromium",
+    "cases": 79,
+    "retainedAndRehashedDownloads": 57,
+    "strictBrowserDiagnostics": 0,
+    "privateEvidence": ".qa-results/phase2/release-i/chromium-desktop/functionality.json",
+    "otherBrowsers": "The four H suites316/316 remain H evidence for unchanged core source; not four new I suites."
+  },
+  "defaultVisualReview": {
+    "status": "independently-reviewed-on-I",
+    "viewsCompared": 87,
+    "widths": [
+      390,
+      768,
+      1440
+    ],
+    "identicalFullPages": 80,
+    "differentFullPages": 7,
+    "changedFilesDirectlyReviewed": [
+      "blog--choosing-a-compression-mode-768.png",
+      "blog--compressing-files-for-the-web-768.png",
+      "blog--honest-file-size-reporting-768.png",
+      "blog--how-browser-compression-works-390.png",
+      "blog--how-browser-compression-works-768.png",
+      "blog--what-privacy-claim-really-means-768.png",
+      "home-768.png"
+    ],
+    "basis": "All87 complete screenshots compared as decoded RGB;80 are byte-for-pixel identical to independently reviewed H complete pages. Five768 article changes lie strictly in their hero rectangles and home768 strictly in its three guide thumbnails; every pixel outside those rectangles is unchanged, carrying the individual H top-to-footer review forward. All six actual changed regions were directly opened in native unscaled H/I source pairs. Pipeline390 was independently opened in four consecutive native unscaled parts through its footer because the existing640x427 variant creates a0.1875px intrinsic-ratio shift and downstream text antialiasing; no clipping, hierarchy, spacing or readability regression was found. All five actual new768 images were also opened at native Chromium412/DPR1.75 scale. Original screenshots are unmodified.",
+    "privateEvidence": [
+      ".qa-results/phase2/image-delivery-i/visual-fullpages/full-page-comparison.json",
+      ".qa-results/phase2/image-delivery-i/visual-fullpages/reviewed.json",
+      ".qa-results/phase2/image-delivery-i/visual-native/index.json"
+    ]
+  },
+  "retainedHScopes": {
+    "controlledFrontend": {
+      "artifact": {
+        "buildId": "vfZQ5yf4p_TqDNwIrY5px",
+        "homepageSha256": "1eb1cb5d48e22a1b54fcdbc60bba42d15897a13c3c079bb369a4bf04136e2034"
+      },
+      "status": "tested-and-passed-on-H; not rerun or relabeled as I",
+      "result": {
+        "status": "tested-and-passed",
+        "checks": [
+          "actual dropzone accessibility name matches visible label/hint/formats; Enter/Space open the real chooser; drag name changes and restores consistently",
+          "server-derived directory renders all14, searches correct WebM target, and resets empty search",
+          "result/comparison chunk absent before selection",
+          "held result chunk has honest accessible loading row; file validation/action and real Settings remain usable",
+          "real file details replace loading row and lossy/output policy is visible; Balanced verified in Settings",
+          "real JPEG processing disables upload/tab stop, clears an active drag highlight/name, rejects copy/drop and keeps the original queue",
+          "actual JPEG processing and decoded original/result comparison open, load, Escape and return",
+          "actual download independently probes/decodes as JPEG with original dimensions",
+          "two-file result loading rows remain accessible and correctly sized; real rows replace them without page overflow",
+          "real gated PNG preflight says Checking images with disabled action, releases to Ready, and actual Lossless processing/download preserves every decoded RGBA sample and dimensions",
+          "default favicon actualGET200 correctMIME and exact sourcePNG bytes"
+        ],
+        "pageErrors": 0,
+        "failedResources": 0,
+        "artifactUnchanged": true,
+        "dropzone": {
+          "normal": {
+            "role": "button",
+            "name": "Drop files here to get started or browse files from your device JPG \u00b7 PNG \u00b7 WEBP \u00b7 GIF \u00b7 PDF \u00b7 MP4 \u00b7 MOV \u00b7 MP3 \u00b7 WAV \u00b7 ZIP"
+          },
+          "visible": "Drop files here to get started or browse files from your device JPG \u00b7 PNG \u00b7 WEBP \u00b7 GIF \u00b7 PDF \u00b7 MP4 \u00b7 MOV \u00b7 MP3 \u00b7 WAV \u00b7 ZIP",
+          "activations": [
+            {
+              "key": "Enter",
+              "realFileChooserOpened": true,
+              "emptyChoiceKeptQueueEmpty": true
+            },
+            {
+              "key": "Space",
+              "realFileChooserOpened": true,
+              "emptyChoiceKeptQueueEmpty": true
+            }
+          ],
+          "drag": {
+            "role": "button",
+            "name": "Drop them here or browse files from your device JPG \u00b7 PNG \u00b7 WEBP \u00b7 GIF \u00b7 PDF \u00b7 MP4 \u00b7 MOV \u00b7 MP3 \u00b7 WAV \u00b7 ZIP"
+          },
+          "dragVisible": "Drop them here or browse files from your device JPG \u00b7 PNG \u00b7 WEBP \u00b7 GIF \u00b7 PDF \u00b7 MP4 \u00b7 MOV \u00b7 MP3 \u00b7 WAV \u00b7 ZIP",
+          "restored": {
+            "role": "button",
+            "name": "Drop files here to get started or browse files from your device JPG \u00b7 PNG \u00b7 WEBP \u00b7 GIF \u00b7 PDF \u00b7 MP4 \u00b7 MOV \u00b7 MP3 \u00b7 WAV \u00b7 ZIP"
+          },
+          "scope": "Real Chrome accessibility tree and trusted keyboard file-chooser activation; not a certification of a particular voice-control product or screen reader."
+        },
+        "disabledDrag": {
+          "before": {
+            "role": "button",
+            "name": "Drop them here or choose from your device"
+          },
+          "disabled": {
+            "role": "button",
+            "name": "Add more files or choose from your device"
+          },
+          "visibleText": "Add more files",
+          "referencedName": "Add more files or choose from your device",
+          "dropEffect": "none",
+          "blockedDroppedFilename": "must-not-be-added.png",
+          "queueRemainedOne": true,
+          "method": "Actual active-drag\u2192processing-disabled transition. Only the genuine JPEG worker script is held briefly, then released unchanged; no mocked result or encoding-time claim."
+        },
+        "outputs": {
+          "jpeg": {
+            "sourceBytes": 1097638,
+            "bytes": 210656,
+            "sha256": "1a40d032e57809f913b08dd0e7caef197892fca0ee27d449db74d65b45561c5f",
+            "probe": {
+              "codec_name": "mjpeg",
+              "width": 1280,
+              "height": 1599
+            }
+          },
+          "png": {
+            "bytes": 83020,
+            "sha256": "67181c1d03a5e42876abcf23d312ac169442bfb0c4af29261142a0d601143e7e",
+            "decodedRgbaExact": true,
+            "rgbaSha256": "0ea5d4de0eb32ac8961d07fd9b9218256141c0f98d304372d69de9ea8b31328f",
+            "probe": {
+              "codec_name": "png",
+              "width": 1440,
+              "height": 900
+            }
+          }
+        },
+        "timingScope": "Gated genuine chunk/worker requests were released unchanged; no encoding-time claim.",
+        "privateEvidence": ".qa-results/phase2/release-h/ui/frontend-retry/frontend-boundary-audit.json",
+        "retainedQaExpectationFailure": ".qa-results/phase2/release-h/ui/frontend/",
+        "qaCorrection": "A compact hidden referenced hint legitimately extends the disabled accessible name. Actual Chrome AX must equal all resolved labelledby text and contain the visible label; role, disabled state, blocked drag/drop, queue invariant and real output checks remain."
+      }
+    },
+    "sharedInteractions": {
+      "artifact": {
+        "buildId": "vfZQ5yf4p_TqDNwIrY5px",
+        "homepageSha256": "1eb1cb5d48e22a1b54fcdbc60bba42d15897a13c3c079bb369a4bf04136e2034"
+      },
+      "status": "tested-and-passed-on-H; not rerun or relabeled as I",
+      "result": {
+        "status": "tested-and-passed",
+        "groups": [
+          {
+            "name": "navigation",
+            "pass": true,
+            "exitCode": 0
+          },
+          {
+            "name": "role",
+            "pass": true,
+            "exitCode": 0
+          },
+          {
+            "name": "a11y-manual",
+            "pass": true,
+            "exitCode": 0
+          },
+          {
+            "name": "design-system",
+            "pass": true,
+            "exitCode": 0
+          },
+          {
+            "name": "premium-ui",
+            "pass": true,
+            "exitCode": 0
+          }
+        ],
+        "navigationChecks": 20,
+        "designSystemChecks": 18,
+        "premiumChecks": 36,
+        "artifactUnchanged": true,
+        "privateEvidence": ".qa-results/phase2/release-h/ui/shared-ui/summary.json"
+      }
+    },
+    "populatedWorkspaces": {
+      "artifact": {
+        "buildId": "vfZQ5yf4p_TqDNwIrY5px",
+        "homepageSha256": "1eb1cb5d48e22a1b54fcdbc60bba42d15897a13c3c079bb369a4bf04136e2034"
+      },
+      "status": "tested-and-passed-on-H; not rerun or relabeled as I",
+      "result": {
+        "status": "tested-and-passed",
+        "cases": 84,
+        "layouts": [
+          {
+            "widths": [
+              320,
+              390,
+              768,
+              1440
+            ],
+            "height": 900,
+            "cases": 56
+          },
+          {
+            "widths": [
+              320
+            ],
+            "height": 568,
+            "cases": 14
+          },
+          {
+            "widths": [
+              844
+            ],
+            "height": 430,
+            "cases": 14
+          }
+        ],
+        "longFilenames": true,
+        "targetGeometryScope": "Immediate Target\u2192fill/focus on short/landscape; complete focus frame and five interior pointer samples must be exposed between actual header/footer. Native forward/back tab loop, Escape/Done/backdrop and trigger/scroll return remain.",
+        "casesPerRoute": [
+          {
+            "route": "/compress",
+            "width": 320,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/image-compressor",
+            "width": 320,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/jpg-compressor",
+            "width": 320,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/jpeg-compressor",
+            "width": 320,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/png-compressor",
+            "width": 320,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/webp-compressor",
+            "width": 320,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/gif-compressor",
+            "width": 320,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/video-compressor",
+            "width": 320,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/webm-to-mp4",
+            "width": 320,
+            "height": 900,
+            "modal": false,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/mp3-compressor",
+            "width": 320,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/wav-compressor",
+            "width": 320,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/pdf-compressor",
+            "width": 320,
+            "height": 900,
+            "modal": false,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/zip-compressor",
+            "width": 320,
+            "height": 900,
+            "modal": false,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/archive-compressor",
+            "width": 320,
+            "height": 900,
+            "modal": false,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/compress",
+            "width": 390,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/image-compressor",
+            "width": 390,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/jpg-compressor",
+            "width": 390,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/jpeg-compressor",
+            "width": 390,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/png-compressor",
+            "width": 390,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/webp-compressor",
+            "width": 390,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/gif-compressor",
+            "width": 390,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/video-compressor",
+            "width": 390,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/webm-to-mp4",
+            "width": 390,
+            "height": 900,
+            "modal": false,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/mp3-compressor",
+            "width": 390,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/wav-compressor",
+            "width": 390,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/pdf-compressor",
+            "width": 390,
+            "height": 900,
+            "modal": false,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/zip-compressor",
+            "width": 390,
+            "height": 900,
+            "modal": false,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/archive-compressor",
+            "width": 390,
+            "height": 900,
+            "modal": false,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/compress",
+            "width": 768,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/image-compressor",
+            "width": 768,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/jpg-compressor",
+            "width": 768,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/jpeg-compressor",
+            "width": 768,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/png-compressor",
+            "width": 768,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/webp-compressor",
+            "width": 768,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/gif-compressor",
+            "width": 768,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/video-compressor",
+            "width": 768,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/webm-to-mp4",
+            "width": 768,
+            "height": 900,
+            "modal": false,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/mp3-compressor",
+            "width": 768,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/wav-compressor",
+            "width": 768,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/pdf-compressor",
+            "width": 768,
+            "height": 900,
+            "modal": false,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/zip-compressor",
+            "width": 768,
+            "height": 900,
+            "modal": false,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/archive-compressor",
+            "width": 768,
+            "height": 900,
+            "modal": false,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/compress",
+            "width": 1440,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/image-compressor",
+            "width": 1440,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/jpg-compressor",
+            "width": 1440,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/jpeg-compressor",
+            "width": 1440,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/png-compressor",
+            "width": 1440,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/webp-compressor",
+            "width": 1440,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/gif-compressor",
+            "width": 1440,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/video-compressor",
+            "width": 1440,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/webm-to-mp4",
+            "width": 1440,
+            "height": 900,
+            "modal": false,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/mp3-compressor",
+            "width": 1440,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/wav-compressor",
+            "width": 1440,
+            "height": 900,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/pdf-compressor",
+            "width": 1440,
+            "height": 900,
+            "modal": false,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/zip-compressor",
+            "width": 1440,
+            "height": 900,
+            "modal": false,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/archive-compressor",
+            "width": 1440,
+            "height": 900,
+            "modal": false,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/compress",
+            "width": 320,
+            "height": 568,
+            "modal": true,
+            "pass": true,
+            "targetExposed": true
+          },
+          {
+            "route": "/image-compressor",
+            "width": 320,
+            "height": 568,
+            "modal": true,
+            "pass": true,
+            "targetExposed": true
+          },
+          {
+            "route": "/jpg-compressor",
+            "width": 320,
+            "height": 568,
+            "modal": true,
+            "pass": true,
+            "targetExposed": true
+          },
+          {
+            "route": "/jpeg-compressor",
+            "width": 320,
+            "height": 568,
+            "modal": true,
+            "pass": true,
+            "targetExposed": true
+          },
+          {
+            "route": "/png-compressor",
+            "width": 320,
+            "height": 568,
+            "modal": true,
+            "pass": true,
+            "targetExposed": true
+          },
+          {
+            "route": "/webp-compressor",
+            "width": 320,
+            "height": 568,
+            "modal": true,
+            "pass": true,
+            "targetExposed": true
+          },
+          {
+            "route": "/gif-compressor",
+            "width": 320,
+            "height": 568,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/video-compressor",
+            "width": 320,
+            "height": 568,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/webm-to-mp4",
+            "width": 320,
+            "height": 568,
+            "modal": false,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/mp3-compressor",
+            "width": 320,
+            "height": 568,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/wav-compressor",
+            "width": 320,
+            "height": 568,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/pdf-compressor",
+            "width": 320,
+            "height": 568,
+            "modal": false,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/zip-compressor",
+            "width": 320,
+            "height": 568,
+            "modal": false,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/archive-compressor",
+            "width": 320,
+            "height": 568,
+            "modal": false,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/compress",
+            "width": 844,
+            "height": 430,
+            "modal": true,
+            "pass": true,
+            "targetExposed": true
+          },
+          {
+            "route": "/image-compressor",
+            "width": 844,
+            "height": 430,
+            "modal": true,
+            "pass": true,
+            "targetExposed": true
+          },
+          {
+            "route": "/jpg-compressor",
+            "width": 844,
+            "height": 430,
+            "modal": true,
+            "pass": true,
+            "targetExposed": true
+          },
+          {
+            "route": "/jpeg-compressor",
+            "width": 844,
+            "height": 430,
+            "modal": true,
+            "pass": true,
+            "targetExposed": true
+          },
+          {
+            "route": "/png-compressor",
+            "width": 844,
+            "height": 430,
+            "modal": true,
+            "pass": true,
+            "targetExposed": true
+          },
+          {
+            "route": "/webp-compressor",
+            "width": 844,
+            "height": 430,
+            "modal": true,
+            "pass": true,
+            "targetExposed": true
+          },
+          {
+            "route": "/gif-compressor",
+            "width": 844,
+            "height": 430,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/video-compressor",
+            "width": 844,
+            "height": 430,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/webm-to-mp4",
+            "width": 844,
+            "height": 430,
+            "modal": false,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/mp3-compressor",
+            "width": 844,
+            "height": 430,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/wav-compressor",
+            "width": 844,
+            "height": 430,
+            "modal": true,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/pdf-compressor",
+            "width": 844,
+            "height": 430,
+            "modal": false,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/zip-compressor",
+            "width": 844,
+            "height": 430,
+            "modal": false,
+            "pass": true,
+            "targetExposed": null
+          },
+          {
+            "route": "/archive-compressor",
+            "width": 844,
+            "height": 430,
+            "modal": false,
+            "pass": true,
+            "targetExposed": null
+          }
+        ],
+        "privateEvidence": [
+          ".qa-results/phase2/release-h/ui/workspace/summary.json",
+          ".qa-results/phase2/release-h/ui/workspace-short/summary.json",
+          ".qa-results/phase2/release-h/ui/workspace-landscape/summary.json"
+        ]
+      }
+    },
+    "compiledCrossBrowserModalClosure": {
+      "artifact": {
+        "buildId": "vfZQ5yf4p_TqDNwIrY5px",
+        "homepageSha256": "1eb1cb5d48e22a1b54fcdbc60bba42d15897a13c3c079bb369a4bf04136e2034"
+      },
+      "status": "tested-and-passed-on-H; not rerun or relabeled as I",
+      "result": {
+        "status": "tested-and-passed",
+        "cases": 32,
+        "immediateTargetCases": 24,
+        "trustedEmulatedTouchCases": 8,
+        "browsers": [
+          "Chromium156",
+          "Linux WebKit26.5",
+          "Firefox155"
+        ],
+        "viewports": [
+          [
+            320,
+            568
+          ],
+          [
+            844,
+            430
+          ],
+          [
+            390,
+            900
+          ],
+          [
+            1440,
+            900
+          ]
+        ],
+        "injectedCssDomOrListener": false,
+        "artifactUnchanged": true,
+        "privateEvidence": ".qa-results/phase2/release-h/modals/acceptance.json"
+      }
+    },
+    "resourceDiagnosis": {
+      "artifact": {
+        "buildId": "vfZQ5yf4p_TqDNwIrY5px",
+        "homepageSha256": "1eb1cb5d48e22a1b54fcdbc60bba42d15897a13c3c079bb369a4bf04136e2034"
+      },
+      "status": "tested-and-passed-on-H; not rerun or relabeled as I",
+      "result": {
+        "status": "tested-and-narrowly-classified",
+        "rawCanceledHeadDiagnosticsRetained": 13,
+        "matchingFulfilledHeadPromises": 13,
+        "classifiedSuccessfulHeads": 13,
+        "unclassifiedFailedResources": 0,
+        "intentional404ConsoleMessages": 2,
+        "boundary": "Only raw methodHEAD/fetch/non-navigation with own2xxResponse plus unique nearby CDP HEAD and fulfilled native promise, matching statuses/same origin/document/starttime and successful same-origin following RSC route-tree GET qualifies. Every raw cancellation/initiator remains. Deliberately rejected HEAD and real aborted GET controls remain failures. No general ERR_ABORTED, URL or prefetch exclusion; original functionality guard is unchanged.",
+        "sourceCaller": "Next16.4.5 segment-cache/cache.js fetchRouteOnCacheMiss output-export HEAD branch",
+        "strictOfflineRecheck": {
+          "actual13UniquelyCorrelate": true,
+          "ownRaw2xxAndSameOriginRequired": true,
+          "ambiguousRequestOrPromiseRejected": true,
+          "constructedNegativeControls": 8,
+          "retainedRealBrowserNegativeControls": 2,
+          "preNetworkRejectedPromiseIsIndependentFailure": true,
+          "observedRejectedActual": 0,
+          "rawCaptureUnchanged": true
+        },
+        "privateEvidence": [
+          ".qa-results/phase2/release-h/ui/non-tool-visual/capture-report.json",
+          ".qa-results/phase2/head-negative-controls/strict-recheck-h/result.json",
+          ".qa-results/phase2/head-negative-controls/controls.json",
+          ".qa-results/phase2/head-negative-controls/classifier-result.json",
+          ".qa-results/phase2/head-negative-controls/independent-review-after/result.json"
+        ],
+        "independentReview": {
+          "status": "passed",
+          "actualHeadEvents": 13,
+          "constructedNegatives": 9,
+          "retainedRealBrowserNegatives": 2,
+          "preNetworkObservedRejectionFailsCapture": true,
+          "helperSha256": "a9e42f3529ef3a5ac6bdc5afca461c468bc98a763cae1ef6fc279309bde2568f",
+          "rawReportSha256": "3f62fa29ea42a522efeeac6d499b2b499d697eb9788fe556c0abb9f507999d55",
+          "rawReportUnchanged": true,
+          "newConcreteGapsFound": []
+        }
+      }
+    },
+    "webmViewportProof": {
+      "artifact": {
+        "buildId": "vfZQ5yf4p_TqDNwIrY5px",
+        "homepageSha256": "1eb1cb5d48e22a1b54fcdbc60bba42d15897a13c3c079bb369a4bf04136e2034"
+      },
+      "status": "tested-and-passed-on-H; not rerun or relabeled as I",
+      "result": {
+        "status": "tested-and-passed",
+        "download": {
+          "file": "sample-audio-video.mp4",
+          "bytes": 94579,
+          "sha256": "86a8b7a19825fcf327426cf7d272f2eb472146f9225d338c9e8216bb23e352e1",
+          "codecs": [
+            "h264",
+            "aac"
+          ],
+          "width": 320,
+          "height": 240,
+          "duration": "1.208000",
+          "decoded": true
+        },
+        "nativeCompletedViewport": ".qa-results/phase2/release-h/ui/webm-proof/webm-completed-viewport-1280.png",
+        "normalizedTopFullPage": ".qa-results/phase2/release-h/ui/webm-proof/webm-completed-normalized-full-1280.png",
+        "scope": "One genuine WebM-to-MP4 operation with a generated audiovisual sample. Native completed viewport is captured before scrolling; an additional full-page evidence capture alone is normalized to document top and the native scroll restored. This is not a performance benchmark.",
+        "privateEvidence": ".qa-results/phase2/release-h/ui/webm-proof/webm-completed-proof.json"
+      }
+    },
+    "settledNavigationProof": {
+      "artifact": {
+        "buildId": "vfZQ5yf4p_TqDNwIrY5px",
+        "homepageSha256": "1eb1cb5d48e22a1b54fcdbc60bba42d15897a13c3c079bb369a4bf04136e2034"
+      },
+      "status": "tested-and-passed-on-H; not rerun or relabeled as I",
+      "result": {
+        "status": "tested-and-passed",
+        "states": [
+          {
+            "name": "nav-tools-trigger-focus-settled-1440",
+            "selector": ".navTools button",
+            "opacity": 1,
+            "visibility": "visible",
+            "outlineStyle": "solid",
+            "active": true,
+            "bounds": {
+              "x": 549.8125,
+              "y": 15.5,
+              "width": 80.578125,
+              "height": 44,
+              "top": 15.5,
+              "right": 630.390625,
+              "bottom": 59.5,
+              "left": 549.8125
+            }
+          },
+          {
+            "name": "dropdown-item-focus-settled-1440",
+            "selector": ".toolsDropdownInner a[href=\"/compress\"]",
+            "opacity": 1,
+            "visibility": "visible",
+            "outlineStyle": "solid",
+            "active": true,
+            "bounds": {
+              "x": 381,
+              "y": 132,
+              "width": 137.515625,
+              "height": 44,
+              "top": 132,
+              "right": 518.515625,
+              "bottom": 176,
+              "left": 381
+            }
+          },
+          {
+            "name": "webm-active-keyboard-focus-settled-1440",
+            "selector": ".toolsDropdownInner a[href=\"/webm-to-mp4\"]",
+            "opacity": 1,
+            "visibility": "visible",
+            "outlineStyle": "none",
+            "active": true,
+            "bounds": {
+              "x": 613.65625,
+              "y": 224,
+              "width": 183.71875,
+              "height": 44,
+              "top": 224,
+              "right": 797.375,
+              "bottom": 268,
+              "left": 613.65625
+            }
+          },
+          {
+            "name": "nav-mobile-media-expanded-settled-390",
+            "selector": ".mobileMenu",
+            "opacity": 1,
+            "visibility": "visible",
+            "outlineStyle": "none",
+            "active": false,
+            "bounds": {
+              "x": 0,
+              "y": 66,
+              "width": 390,
+              "height": 834,
+              "top": 66,
+              "right": 390,
+              "bottom": 900,
+              "left": 0
+            }
+          }
+        ],
+        "scope": "Settled native keyboard default-item focus, pointer-initiated selected-tool focus and mobile layout expansion; no motion disabled or app DOM/CSS changed.",
+        "observationNotes": [
+          "Selected WebM image filename retains keyboard-focus wording, but the actual action followed a mouse click and outline:none is ordinary pointer-initiated focus; it is not a focus-visible proof.",
+          "The additional mobile screenshot uses a desktop context at 390px; actual emulated touch is evidenced separately in the 32-case compiled gate."
+        ],
+        "privateEvidence": ".qa-results/phase2/release-h/ui/settled-nav/settled-nav-proof.json"
+      }
+    }
+  },
+  "historicalFindingsRetained": {
+    "E": "Expanded wcag21a audit exposed real upload-label word-boundary mismatch. Literal JSX spaces fixed it without changing names/styles/rules.",
+    "F": "Short-screen bounds-only acceptance missed Target input painted under footer; original red remains.",
+    "G": "Reserved body fixed layout but immediate Target focus remained clipped in real WebKit; original compiled red and rejected CSS-only candidate retained.",
+    "H": "Actual compiled focus reveal closes the reproduced defect across32 real browser/touch cases and84 workspace cases. Earlier injected prototypes are not relabeled compiled-release evidence."
+  },
+  "limitations": [
+    "Automated rules do not certify complete accessibility. Four SVG contrast incompletes are explicitly manual, not hidden.",
+    "Desktop browser emulation is not physical-device, virtual-keyboard, screen-reader or voice-control product testing.",
+    "These measured workflows/settings do not exhaust every codec, device, file or size boundary.",
+    "Finite animation entrance-state captures are retained separately; selected proof waits actual animation completion without disabling motion.",
+    "A full-page screenshot at an action-autoscrolled position can composite the sticky header mid-page; dedicated viewport/top-normalized proof identifies this capture boundary.",
+    "The retained local-mode CMS admin must not be deployed as a cloud admin. Local checks are not live-deployment verification.",
+    "Native Firefox profile requested1.75 but this binary retains1.7647058823529411 after navigation; both are recorded. No exact1.75 Firefox claim or source-selection assertion relaxation.",
+    "Current published custom image has no caption; nonempty-caption and changed/unknown CMS-image fallback are source/SSR tests, not a fabricated native CMS save.",
+    "Lighthouse and hosted release/CMS roundtrip have separate evidence; image compatibility tests do not establish a performance score."
+  ]
+}

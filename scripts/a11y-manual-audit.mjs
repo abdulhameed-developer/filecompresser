@@ -285,22 +285,39 @@ console.log('\n6. Upload control')
 await page.goto(`${BASE}/jpg-compressor`, { waitUntil: 'networkidle' })
 const dropzone = await page.evaluate(() => {
   const el = document.querySelector('.dropzone')
+  const labelIds = (el?.getAttribute('aria-labelledby') || '').split(/\s+/).filter(Boolean)
+  const labels = labelIds.map(id => document.getElementById(id))
+  const normalize = text => (text || '').replace(/\s+/g, ' ').trim()
   return {
     role: el?.getAttribute('role'),
     tabIndex: el?.getAttribute('tabindex'),
-    label: el?.getAttribute('aria-label'),
-    formatsIncluded: /JPG.*JPEG.*JFIF/.test(el?.getAttribute('aria-label') || ''),
-    describedBy: !!document.getElementById(
-      el?.getAttribute('aria-describedby') || '',
-    ),
+    labelIds,
+    allLabelReferencesResolve: labels.length > 0 && labels.every(Boolean),
+    referencedLabel: normalize(labels.map(label => label?.textContent).join(' ')),
+    visibleLabel: normalize(el?.innerText),
+    visibleHint: normalize(el?.querySelector('p')?.textContent),
   }
 })
+const axSession = await page.context().newCDPSession(page)
+try {
+  const { root: documentRoot } = await axSession.send('DOM.getDocument')
+  const { nodeId } = await axSession.send('DOM.querySelector', { nodeId: documentRoot.nodeId, selector: '.dropzone' })
+  const { nodes } = await axSession.send('Accessibility.getPartialAXTree', { nodeId, fetchRelatives: false })
+  const button = nodes.find(node => node.role?.value === 'button' && !node.ignored)
+  dropzone.actualRole = button?.role?.value
+  dropzone.actualName = button?.name?.value
+} finally { await axSession.detach() }
 check(
-  'dropzone is a focusable button with a name and description',
+  'dropzone is a focusable button whose actual accessible name includes its visible label, hint and formats',
   dropzone.role === 'button' &&
     dropzone.tabIndex === '0' &&
-    !!dropzone.label &&
-    (dropzone.describedBy || dropzone.formatsIncluded),
+    dropzone.actualRole === 'button' &&
+    dropzone.allLabelReferencesResolve &&
+    dropzone.referencedLabel === dropzone.visibleLabel &&
+    dropzone.actualName === dropzone.visibleLabel &&
+    !!dropzone.visibleHint &&
+    dropzone.actualName.includes(dropzone.visibleHint) &&
+    /JPG.*JPEG.*JFIF/.test(dropzone.actualName),
   JSON.stringify(dropzone),
 )
 

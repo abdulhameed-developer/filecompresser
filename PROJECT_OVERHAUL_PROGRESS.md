@@ -1,6 +1,156 @@
 # FileCompresser product overhaul — engineering progress
 
-Last updated: 2026-11-26 (Asia/Karachi). Local verification, authenticated release, real hosted Tina publishing and the final 74-case live tool regression have passed. Exact performance, vendor-editor and device/assistive-technology limitations remain visible; this is not a claim of perfection or complete accessibility certification.
+## Phase 2 — competitive product work (27 November 2026)
+
+**IN PROGRESS.** Starting source is clean `02b078d` on `main`, matching the remote. The production application baseline remains `0197d18` / Cloudflare `5ecc7f32`; all results below this section describe their explicitly recorded historical scope until rerun. Automatic analytics/RUM remains disabled. No Phase 2 deployment has occurred.
+
+### Candidate I — local acceptance passed; hosted release pending
+
+H's complete quiet local Lighthouse series found tool-page performance98–100, but the browser-processing article scored80 mobile with modeled LCP5.3s. Its authored65,252-byte1200×800 cover bypasses the existing responsive stock picture; eager/high priority and discovery already pass. Independent source review confirms that `sizes` alone cannot generate candidates under static `images.unoptimized`. Actual unthrottled LCP was210ms; the whole simulated5.3s is not attributed to image bytes alone.
+
+The correction keeps CMS content/uploads, authored source/alt/caption and desktop source intact. A server-only pinned-byte check reuses responsive stock artwork only for an identical known upload; unknown or overwritten images fall back to their authored source. Five 768 × 512 stock variants preserve the 3:2 aspect ratio. The pure picture component supplies 640/768/1200 sources and the article's actual gutter-aware size. Processing workers, workspace, CSS and dependencies remain unchanged from H. H evidence below stays H evidence.
+
+**I source/build gates now PASS:**56 files /877 tests, zero skipped; lint/types, CMS29 preflight, dependency disposition, complete production-public build, admin/assets/export/crawl/source/codec/package checks. Frozen preview **http://127.0.0.1:3220**, build `0y43p4TdfUlmfFqlz8TuJ`, home SHA `e893578da90e565766c33104ebd7092f79ffea6cc710efd5d4ccf2fbfbe98c7c`. Exact manifest/logs: `.qa-results/phase2/release-i/`.
+
+Independent comparison verifies 159 runtime inputs, with 150 of H's 152 unchanged, only the article page/pure picture edited and seven stock-helper/asset additions. Workers, media-core manifest, processing/workspace/queue/CSS, content/upload originals, logo, local admin and 79/57 harness remain unchanged. This does not relabel H's four complete browser suites as I.
+
+| Current I gate | Verified result |
+| --- | --- |
+| Source and production-public build | PASS: 56 files / 877 tests, zero skipped; complete gate chain exits 0 |
+| Full Chromium tool workflows | PASS: 79/79 cases, 57 independently rehashed downloads, 50 state captures; zero strict browser/resource/upload/lifecycle errors; normal child and controller exits |
+| Editorial image delivery | PASS: 45/45 actual article/profile cases across Chromium, WebKit and Firefox, including native high-density source selection; original Firefox setup failures retained separately |
+| Route responsiveness | PASS: 348/348 checks, 29 views at all 12 recorded widths |
+| Automated accessibility | PASS: 29/29 expanded axe views, zero violations; four SVG contrast incompletes separately reviewed across 51 unchanged targets |
+| Visual comparison | PASS: all 87 full-page comparisons reviewed; 80 exact matches, remaining changes limited to reviewed responsive artwork and intrinsic-ratio rounding |
+| Lighthouse | Valid local mobile/desktop scores recorded, with substantial shared-host variance; no universal 100 claim. Before-release public failures include a timed-out robots fetch, failed stylesheet delivery and an interstitial, retained as failed/blocked attempts |
+| Git / CI / Cloudflare / hosted Tina / final live | PENDING: no Phase 2 commit, push or deployment yet |
+
+The later local mobile controls varied even for unchanged baseline bytes (performance 89/76/96 versus I 88/97/96). All valid I local audits score 100 for accessibility, best practices and SEO; mobile performance remains variable. The article's actual responsive transfer falls from 65,252 to 48,054 bytes on higher-density mobile, but modeled Lighthouse LCP does not establish a reliable speed improvement. The independent PageSpeed API attempt is BLOCKED by its shared quota (HTTP 429), with no valid score.
+
+### Before-release delivery investigation
+
+Some ordinary Chrome Lighthouse attempts failed public resources with QUIC idle timeouts or connection resets. One article was scored without either stylesheet and is excluded from styled-page comparisons; its apparent touch-target issue is not attributed to source CSS. The PDF mobile robots audit explicitly timed out rather than reporting malformed rules. Both robots and manifest subsequently returned 200 with identical public/immutable bytes over ordinary Node HTTPS. Serialized default Chrome/Firefox delivery probes pass all six home/PDF/article observations: applied CSS, decoded images, robots/manifest 200, zero browser/resource errors; most navigation and all robots/manifest requests used HTTP/3. This short check does not establish global reliability or erase earlier failures. A QA trigger incorrectly matched successful QUIC connection metadata and unnecessarily started a separate protocol diagnostic; its three failed navigations and the corrected trigger's four offline controls are preserved. They provide no basis for disabling HTTP/3. No DNS, TLS, protocol, caching, analytics or public infrastructure setting has been changed.
+
+The complete [Lighthouse measurement ledger](docs/evidence/2026-11-27/lighthouse-measurements.json) separates local, before-release production, blocked and partial-delivery attempts. Fresh I HTML-referenced resources total 667,374 raw JS bytes versus 702,082 at baseline; the combined per-resource gzip estimate is 251,037 versus 260,001 bytes (8,964 fewer). This includes legacy nomodule references and is an artifact estimate, not actual browser transfer.
+
+Before-release production measurements are now home mobile96, desktop100 on a normal retry; WebM mobile98/desktop100, A/BP/SEO100. The first home-desktop Chrome interstitial is retained as blocked, with no valid score; the ordinary retry used no certificate/TLS/HTTP3 bypass and no infrastructure change. Both public homepage identity checks match `453cba02f60a5ed6d7953708ad5d9d5afe9ecf85fd09591980b6781dcd725eeb`.
+
+### Retained verified H — complete local gates
+
+Frozen preview: **http://127.0.0.1:3219**. Build `vfZQ5yf4p_TqDNwIrY5px`; home SHA `1eb1cb5d48e22a1b54fcdbc60bba42d15897a13c3c079bb369a4bf04136e2034`. The complete source suite passes **55 files / 857 tests**, zero skipped. Lint, types, CMS29 preflight, dependency disposition, production-public build, admin/asset/export/crawl/source/codec/package gates all pass. Manifest, 152 runtime/content/config input hashes and durable completion records are retained in `.qa-results/phase2/release-h/`; its local-mode admin is never uploaded.
+
+The actual compiled H modal passes **32/32** focused cases without injected CSS, DOM or listeners: eight immediate Target-to-input cases each in Chromium156, WebKit26.5 and Firefox155, plus eight Chromium touch cases. Full focus outlines, five pointer hit points, keyboard/Escape/Done, focus and scroll return are verified. The four full functional matrices are now running serially against this exact artifact. Coverage includes79 checks and57 saved downloads per run; all original110 assertions and32 original check-call bodies remain unchanged/in order (AST proof `nonimage/harness-G-review.json`). No full H browser or production pass is claimed before execution.
+
+H also corrects disabled drag feedback and gates collective ZIP row Retry/repeat actions using the same eligibility as the primary action and backend. Meaningful red-before/green-after tests preserve cancellation, removal, restoration and existing downloads. Image/media codec and ZIP-engine hashes are unchanged from G.
+
+| H verification | Exact current result |
+| --- | --- |
+| Source / build / content / dependencies | PASS 55 files / 857 tests, zero skipped; complete gate chain exits0 |
+| Immediate Target-field usability | PASS 32/32 compiled cases, three engines plus touch; no injected fix |
+| Chromium desktop full tools | PASS 79/79;57 persisted downloads independently rehashed,50 state captures, zero recorded browser/resource/upload/lifecycle errors, normal exit0 |
+| WebKit / Firefox / touch full tools | PASS 79/79 each, 57 persisted downloads rehashed per run, normal exits0, zero strict diagnostics. All four full runs total 316/316 cases and 228 downloads; desktop/touch retain 50 state captures each |
+| Full responsive / shared / axe / populated-state sweeps | PASS348/348 route/width checks;84 populated/modal cases;29 expanded axe views (zero violations,4 explicit manual SVG incompletes/51 verified nodes);11 frontend cases;5 shared groups;32 compiled immediate modal checks. All browsers close normally; exact H remains unchanged |
+| Non-tool capture / strict request evidence | PASS28/28 full mobile/desktop captures, all images decoded. Actual13 fulfilled200 HEAD artifacts independently reclassified with same-origin/own-status/unique correspondence and explicit rejected-promise guard; false-positive counterexamples and real negative controls retained. No app/strict functional guard changed |
+| Lighthouse | Six valid interleaved mobile-home controls: baseline98/98/98, H96/97/97;A/BP/SEO100. Initial runner then failed its post-desktop identity fetch while both servers stayed alive. Reproduced a closed-socket QA weakness; fresh standard HTTP identity sockets now verified, original attempt retained. Remaining13 audits run in `lighthouse/final-h-remaining-v2/`; browser audit settings unchanged |
+| Git / Cloudflare / native hosted CMS / live acceptance | Pending; production remains the recorded pre-phase release |
+
+### Release held — actual short-screen and ZIP UX findings
+
+F passed its four full functional suites and348 responsive measurements, but actual short-screen visual review found the custom Target KB input painted behind the sticky modal footer at320×568 and844×430. Earlier viewport-only assertions missed that occlusion. The strengthened test fails on original F; pointer hit-testing, real typed input and trusted emulated touch scrolling are now required. The plain scrolling body physically reserves header/footer and removes a2px nested-dialog overflow. G still clipped12px on immediate Chrome focus, and WebKit did not scroll the new field; both failed attempts are retained. H adds a guarded one-frame focus reveal that adjusts only the modal body's scroll position. The actual rebuilt H passes 32/32 cases across the three engines and touch.
+
+The failed-state review also found futile Retry/Extract actions for immutable invalid/CRC/empty ZIP inputs, plus valid zero-byte files rejected by ZIP creation. Stable archive error codes and shared frontend/backend eligibility now correct these cases; unknown/transient/cancel retries stay available. ZIP creation blocks an entire invalid collective scope instead of silently omitting a file, and oversized201–300MB inputs cannot retain a futile retry merely because the queue's total limit is300MB. Empty ZIP entries remain valid; an empty archive is a separate input with no files. Six focused G cases pass with five real downloads; native independent CRC/SHA extraction verifies standalone and mixed empty-file archives. H adds the independently found row-action consistency correction. No decoder/path/CRC guard is weakened.
+
+The strict non-tool capture retained13 raw Chrome fetch-cancellation events. CDP identifies Next's redirect-resolution **HEAD** probe: observed200 responses and fulfilled fetch promises precede the cancellation; matching segment GETs succeed. Native positive and negative controls distinguish fulfilled2xx HEADs from a rejected HEAD and genuinely aborted GET. Only the narrowly proven successful-HEAD artifact can be classified in that capture helper; raw events stay retained. Original full-functional resource/privacy assertions remain unchanged. No speculative prefetch/CDN/protocol change is justified.
+
+### Retained candidate F verification
+
+Preview: **http://127.0.0.1:3217**. Frozen build `uFK_GwNQKW1BAEFJBZTww`; home SHA `18435e16d07a32bde4f0d55d8cdc5fc9006b6163d65fa478f6d26ac035e1ce4d`. Exact manifest and gate logs: `.qa-results/phase2/release-final-acceptance/`. All five workers, CSS, workspace and local admin match E; only upload text word boundaries changed. Local-mode admin is never directly deployed.
+
+| Final F gate | Current result |
+| --- | --- |
+| Source / dependency / production-public build | **PASS**: 53 files / 824 tests, zero skipped; lint/types, CMS29 preflight, dependency disposition, admin/assets/export/crawl/source/codec/package checks |
+| Production configuration | **PASS**: HTTPS canonical, `index, follow`, 27 canonical URLs / 28 served routes, draft absent from public discovery |
+| Expanded automated accessibility | **PASS29/29 views**, zero violations including WCAG2.1A. Four contrast incompletes remain unchanged; all51 SVG targets and complete SVG/palette/backings match prior reviewed source, recalculated minimum4.5786:1 |
+| Four full browser functional matrices | **PASS296/296**: Chromium desktop74, Linux WebKit74, Firefox15574,390×844 tap-mode Chromium74. Each run retains52 verified download hashes; desktop/touch each50 states. No console/resource/page/upload/lifecycle/capture failures; exact F/harness unchanged |
+| Final responsive / shared / populated states / visual review | F controlled frontend11/11 passes; fresh responsive348/shared/workspace/non-tool sweeps running serially. All15 F desktop tool defaults and all29 F390px pages are pixel-identical to the individually reviewed E pages. E348/348 remains exact E evidence |
+| Performance / Lighthouse | Final repeated local and fresh production audits prepared; no final replacement score yet |
+| Git / Cloudflare / hosted CMS / live acceptance | Pending final local gates; current public release remains0197d18 /5ecc7f32 |
+
+### Final accessibility recheck — E failure and F correction
+
+E's expanded 29-view axe run correctly failed `label-content-name-mismatch` on all16 upload-containing views; the13 non-upload views had no automated violations. This remains a failed E gate even though its Chromium accessibility-tree name matched visible lines. A separate390/1280px diagnostic captured the installed axe strings: adjacent block text joined as `startedor` and `deviceJPG`, while ARIA ID references inserted word spaces. Adding only literal JSX word separators after the heading/hint makes the unchanged rule pass in normal and drag states, preserving visual `innerText`, existing names and layout. Two source regressions were demonstrated red before and green after. No rule, ARIA label or control was removed to obtain a pass. F source gates pass53 files/824 tests, lint/types, CMS29 preflight, dependency disposition and the production-public build/admin/asset/export/crawl/source/codec/package checks. Frozen build`uFK_GwNQKW1BAEFJBZTww` is served at http://127.0.0.1:3217 with home SHA`18435e16d07a32bde4f0d55d8cdc5fc9006b6163d65fa478f6d26ac035e1ce4d`. Final F browser suites are not yet claimed. Source gate logs and exact manifest: `.qa-results/phase2/release-final-acceptance/`.
+
+### Retained candidate E acceptance
+
+**Retained E preview: http://127.0.0.1:3211** — immutable export `.qa-results/phase2/release-verified/export/`, build `t6z3cxJkJn2Ovnf43hpvK`, home SHA `823f6e5db8d2e92468078ef3754c8d60d48afe2b2d6c3da7862187b52df6d71f`. Manifest `release-verified/artifact.json` records exact CSS, workspace, preview, dropzone, logo and all worker hashes. Its later expanded axe finding and the resulting F correction are recorded above.
+
+| Final E gate | Current exact result |
+| --- | --- |
+| Source / dependency / build | **PASS**: 52 files / **822 tests**, zero skipped; lint/types, CMS29 preflight, dependency disposition, public build, admin guard, assets, paired codec/secrets/package checks |
+| Production metadata configuration | **PASS**: explicit HTTPS canonical + indexing variables, actual `index, follow`, 27 sitemap addresses / 28 served routes / 27 unique titles and descriptions; draft excluded from public blog/route/sitemap |
+| Chromium desktop functional | **PASS74/74**: 50 state captures, 52 saved download SHA proofs, zero console/resource/page/upload/lifecycle failures; artifact/harness unchanged |
+| WebKit resource regression | **PASS15/15** on E, no guard exclusions; same D recovery run was14/15 and B whole run73/74 with real thumbnail errors |
+| E WebKit / Firefox / touch matrices | **WebKit PASS74/74**, zero recorded console/resource/page/upload/lifecycle errors and52 download proofs. Firefox/touch were not run on E; final F matrices receive separate evidence |
+| E responsive / expanded axe / shared states | **Responsive PASS348/348**; expanded axe **FAIL16** upload views. Remaining E sweeps stopped correctly; F correction and actual final gates are recorded above |
+| Fresh Lighthouse | Diagnostic controlled home pair: baseline68, D73 performance; A/BP/SEO100 each. These are one pair, not final E or production scores. Final quiet repeated/local/live audits pending |
+| Git / production | No Phase2 commit/push/deployment yet. Production still0197d18/5ecc7f32; the source is not declared live from local acceptance |
+
+E closes two additional issues found through independent final QA. A real WebKit image-resource race came from thumbnail effect cleanup revoking a blob while the same-file image remained rendered during geometry refinement. Its existing capped192×120 PNG is now a self-contained data URL; original files, geometry and processing outputs are untouched. Red-before/green-after source and strict native-browser regressions are retained. Lighthouse also exposed an upload **label-in-name** mismatch despite a100 accessibility category score. The control now references its actual visible heading/hint/format text. The old axe tag selection omitted WCAG2.1A; both final runners now include it. This does not retroactively broaden historical zero-violation results. Exact-pixel logo recompression saved937bytes/4.02%, not the speculative21KB Lighthouse estimate.
+
+Two external SIGTERM143 interruptions (a static server and a58-pass-prefix WebKit run) are retained and are **not counted as full passes**. No agent sent cleanup signals; cause remains unproved. Long QA now uses detached owned process groups, durable PIDs/logs and explicit exit/completion files. Shared host memory/swap pressure is recorded; headless work remains serial unless at least2.5GB is available. No broad cleanup or user-process termination is authorized.
+
+### Retained Phase2 investigation and superseded artifact notes
+
+Recovery: `checkpoint/2026-11-27-phase2-start-02b078d`, with a separate Git bundle and source archive under `.qa-results/phase2/recovery/`. Earlier checkpoints and failed attempts are preserved.
+
+Superseded **production-configured local candidate D: http://127.0.0.1:3210**. Build `5Qwtkopn4_oiiibMrJDhg`, home SHA `c9f266b169b20575bf467a49c83e4c5db8b87a7dd79299497eb3b2ba86b5827d`; `release-ready/artifact.json` binds exact source, CSS and worker bytes. Source is frozen: **52 files / 820 tests pass**, lint/types/dependency and CMS29 preflight pass. Explicit production variables produce `index, follow`, canonical `https://filecompresser.com`, 27 sitemap URLs and a clean 28-route crawl. Its compiled local-mode CMS admin is retained from the verified B build and must never be directly uploaded. Git/Cloudflare will rebuild the hosted cloud-mode admin through the existing workflow. No Phase 2 commit/push/deployment yet.
+
+Candidate B passed Chromium desktop **74/74**, Chromium390×844 touch **74/74** and Firefox155 **74/74**, with actual outputs/downloads and zero recorded browser/resource/upload errors. Its Linux WebKit26.5 run passed all73 feature/output cases but the final resource assertion recorded ten `blob:` request failures with undefined failure descriptions; classification is under investigation and **74/74 is not claimed**. The original failure remains retained. D incorporates subsequent real visual findings and requires its own acceptance.
+
+A pre-Lighthouse configuration check caught an incorrectly described local build: B/C had preview `noindex` and localhost canonicals, while the baseline/A had production metadata. Their functional/visual evidence remains valid for those exact preview artifacts; no production SEO or Lighthouse parity is inferred. Original mode descriptions and explicit corrections are retained in their manifests. D was rebuilt with production variables; its first crawler invocation correctly rejected mismatched preview expectations, then the complete verification chain passed under the matching production environment (`release-ready/production-gates.log`). No mismatched Lighthouse score or deployment was produced.
+
+Late visual findings fixed in D: loading paragraph spans the single-file grid; WAV/nonimage modal fields fill their available column by clearing inherited auto margins/min-width; extraction/ZIP/WebM/WAV empty introductions match the actual task; pending image inspection is labeled **Checking images** instead of Ready (new test demonstrated red, then all38 workflow UI tests passed); singular attention/extraction captions are correct. Actual final rendered checks are pending. One factual PNG benchmark article remains **unpublished** and is explicitly excluded from public routes, blog and sitemap.
+
+
+| Stage | Status | Evidence / next gate |
+| --- | --- | --- |
+| Read previous evidence, source and current release | PASS for complete progress ledger; current remote matches | Original Phase 2 brief retained in the owner's attachment; supporting visual, accessibility, CMS and SEO reports reviewed |
+| Image benchmark and competitor comparisons | MEASURED, FINAL UI QA RUNNING | Fifteen licensed/generated inputs; 90 baseline outputs, 42 rejected-candidate outputs, 42 selected outputs; 17 genuine competitor downloads. Independent Gaussian SSIM/PSNR, dimensions, alpha and visual sheets. Provider timing/repetition limits remain explicit |
+| Image engine improvements | IMPLEMENTED, FINAL QA PENDING | Existing JPEG uses MozJPEG. Independent review found the UI overrides implicit Balanced/Lossless engine defaults with Maximum for both, including mixed queues. Corrected to Balanced/Lossless, with visible policy and explicit optional color reduction; fast PNG searches and bounded worker reuse are under final measurement |
+| Other engines | ENGINE CHECKS PASS; UI RETEST PENDING | Matched 500-entry ZIP extraction median 2,334.7 → 130 ms, every output byte checked. Forty-six real media-WASM cases pass (45 outputs + one expected rejection); five generated PDF/ZIP cases independently checked |
+| Product UX, performance and accessibility | IMPLEMENTED; FINAL RENDER/INTERACTION QA PENDING | Supported Tina text-control labels: six actual isolated-editor checks pass, plus independent native field/label inspection. Frozen H compact server/client boundaries and deferred file-result code reduce homepage artifact JS references by34,758 raw bytes; net estimated HTML/JS/CSS gzip reduction9,011 bytes. Includes legacy nomodule references; these are artifact estimates, not Lighthouse or CDN-transfer results. Earlier candidate measurements remain in their own JSON records |
+| Search, CMS and infrastructure | IN PROGRESS | Fresh GSC/Bing observations captured; hosted Tina content opens with Save disabled and no edits. Cloudflare confirms production baseline, existing build command and RUM Disable selected. No tracking, DNS or destructive infrastructure changes |
+| Final source / browser / output / Lighthouse gates | SOURCE/BUILD PASS; FINAL BROWSER/LIGHTHOUSE RUNNING | 52 files / 820 passed, zero skipped; lint/types/dependency gate, CMS build, public export, admin guard and route/metadata checks pass. Candidate D `5Qwtkopn4_oiiibMrJDhg`, homepage SHA `c9f266b169b20575bf467a49c83e4c5db8b87a7dd79299497eb3b2ba86b5827d`, image pipeline source/export SHA `8e9ce49d7e90115d20ecc30cc130a06746d9b03b5b164e4e56f1e81f1d7987c6`. Earlier artifact A independently passed all 74 desktop cases; B is being retested. No browser result is inferred from source gates |
+| Release | NOT DEPLOYED | Verify production build and reviewed changes before any existing-workflow release |
+
+Phase 2 measurement reports: `docs/COMPRESSION-COMPETITIVE-BENCHMARK.md` and `docs/FILECOMPRESSER-PRODUCT-SCORECARD.md` are being prepared. Unmeasured competitor results, physical-device checks, field INP and ranking gains must remain explicitly unclaimed.
+
+### Phase 2 findings and safeguards
+
+| Issue | Result / verification boundary |
+| --- | --- |
+| Interface defaults differed from implicit engine defaults | **FIXED**: workspace previously forced Maximum for photos and PNG, including mixed queues. JPEG/WebP now start Balanced and PNG Lossless. Optional color reduction stays available, with visible format/dimension/quality-policy information. Two policy regressions were demonstrated failing before the correction; final source tests pass. Prior live Maximum selection was independently captured in the built-in browser |
+| PNG repeated expensive palette and optimization work | **FIXED + MEASURED**: Lossless bytes remain unchanged across all seven PNG fixtures. Smart uses one 256-color trial plus the existing lossless comparison. Maximum uses a bounded palette search and lower effort with unchanged fidelity/alpha guards. Actual byte/quality trade-offs, rather than blanket wins, are recorded in the competitive report |
+| Faster experimental lossless strategy worsened size | **REJECTED**: gradient +67.6% and 16-bit +54.1% output-size regressions; its raw 42-output run remains preserved. No such default-effort change was selected |
+| Per-operation image worker initialization and redundant JPEG readiness decode | **FIXED**: at most one initialized idle encoder; cleanup scheduled after30 idle seconds, with possible suspension/background-timer delay. Exclusive request IDs, immediate cancellation/error disposal and independent PNG/WebP alpha probes remain. JPEG readiness reads validated headers/orientation; actual processing still decodes and validates. Actual worker/probe/cancel/retry/invalid-profile/idle-cleanup checks pass. This header probe does not prove a JPEG's entropy stream is decodable |
+| ZIP per-entry waits | **FIXED + MEASURED**: cooperative CPU-budget yielding replaces unconditional timer delay for each entry. CRC, paths, limits and cancellation checks retained; three regressions and independent native extraction pass |
+| Vendor CMS field labels | **FIXED LOCALLY** through supported field plugins, preserving original parsers/validators/components. Real label focus, invalid state, disabled Save, valid save/reopen and mobile checks pass. Hosted release verification remains pending |
+| Default browser favicon request | **FIXED LOCALLY**: ICO container uses the exact existing PNG artwork; generated allowlist/integrity checks pass. Actual final HTTP check pending |
+| Target precision during PNG performance work | **PRESERVED**: restored the prior stronger ≤4 MP Target effort so a known 80,000-byte limit can still be met losslessly. An intermediate successful build had copied the worker before this final correction; exact source/export fingerprint comparison caught it before any browser acceptance or deployment. Rebuilt and reran the full 818-test suite; all final worker bytes now match. Both build logs remain retained |
+
+Frozen local preview: **http://127.0.0.1:3000**, served from `.qa-results/phase2/final/export/`. The compiled local-mode admin is never a production upload. Source/build evidence: `.qa-results/phase2/final/source-gates.log` (intermediate 817 tests and CMS build), `target-restored-gates.log` (final 818 tests/public build), and `artifact.json` (exact frozen identity).
+
+Current candidate B preview: **http://127.0.0.1:3208**, frozen separately at `.qa-results/phase2/release-candidate/export/`; the earlier artifact A on port 3000 is retained. B includes the independently discovered deferred-detail loading fix and actual semantic numbered/bulleted homepage lists, preserving every authored word. Exact B build/source/worker identities are in `release-candidate/artifact.json`. Lint/typecheck and all **819 tests** pass in `source-final.log`; full CMS/public/admin/crawl gates pass in `gates-retry.log`.
+
+Retained failed attempts: `release-candidate/gates.log` caught a cancellation test reading an asynchronously loaded card too early (the cancellation assertions passed). It now waits for the actual cancelled-card state, preserving the assertion. The first B browser capture helper incorrectly waited for a deliberately hidden file input to be visible; the repeated setup failures were stopped, retained, and corrected to await attachment. Neither failure is relabeled a product pass. B full browser acceptance remains pending its actual repeat.
+
+Current Cloudflare read-only review also recorded Standard cache / four-hour browser TTL, automatic Full TLS mode, active universal certificate, TLS1.3 and HTTP2/3 enabled, Rocket Loader/Speed Brain off, and RUM disabled. No bulk recommended settings, purge, DNS or protocol changes were applied. Ordinary Node GETs subsequently returned200 for the exact live worker, PNG and WebM pages with Brotli, `max-age=0, must-revalidate`, CF DYNAMIC and no Age. Thus the dashboard four-hour setting did not establish a delivered cache override; no cache change was justified. Native PNG navigation encountered repeated QUIC errors while hosted admin loaded; ordinary browser cross-checks remain separate from those HTTP results.
+
+Fresh search observations: GSC 3-month Web totals remain 2 clicks / 60 impressions / 3.3% CTR / position 27.8. Page indexing now reports 24 indexed and six excluded: three intended HTTP/www redirects, intentionally noindexed notices, and `/contact` + `/jpg-compressor` discovered but not indexed. Exact WebM inspection is unknown to Google, discovered but not crawled in Bing; Bing's actual live test reports eligible/no SEO issues. Native browser review confirms the live sitemap contains 27 canonical URLs including WebM. The 26-count search sitemap reports do not identify a missing URL; no robots/canonical changes or indexing requests were made. A separate Python HTTP fetch returned 403; it is not substituted for the successfully rendered browser sitemap. Search details and qualitative opportunities: `docs/SEO-PHASE2-REVIEW.md`.
+
+---
+
+Historical Phase 1 record — 2026-11-26 (Asia/Karachi). Local verification, authenticated release, real hosted Tina publishing and the final 74-case live tool regression passed for that release. Exact performance, vendor-editor and device/assistive-technology limitations remain visible; this is not a claim of perfection or complete accessibility certification.
 
 ## Rules for evidence
 

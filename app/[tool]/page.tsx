@@ -14,6 +14,7 @@ import Icon from '@/components/Icon'
 import EditorialContent from '@/components/EditorialContent'
 import { InlineEditorialText } from '@/components/EditorialText'
 import { getToolContent, resolveEditorialFaq } from '@/lib/content'
+import { workspaceTool } from '@/lib/workspace-tool'
 
 export function generateStaticParams() {
   return [...allToolSlugs(), 'wav-to-mp3'].map((tool) => ({ tool }))
@@ -97,7 +98,7 @@ export default async function ToolPage({ params }: { params: Promise<{ tool: str
           </p>
         )}
 
-        <ToolWorkspace tool={tool} />
+        <ToolWorkspace tool={workspaceTool(tool)} />
 
         <EditorialContent content={content} />
 

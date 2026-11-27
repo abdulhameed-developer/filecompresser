@@ -4,7 +4,7 @@
   "sections": [
     {
       "heading": "Keep a copy of your original JPG",
-      "body": "Add the photograph and review the default Maximum mode. Choose Balanced for a more moderate trade-off. Compare faces, textures and text at the same scale. High quality retains more detail at a potentially larger size; Maximum prioritizes smaller output with a greater risk of visible artifacts."
+      "body": "Add the photograph and review the default Balanced mode for a moderate quality trade-off. Compare faces, textures and text at the same scale. High quality retains more detail at a potentially larger size; Maximum is an optional stronger mode that prioritizes smaller output with a greater risk of visible artifacts."
     },
     {
       "heading": "A target size is a limit, not an exact byte count",

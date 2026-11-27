@@ -55,6 +55,19 @@ it.each(TOOLS.map(tool => [tool.slug]))('starts %s with upload and no premature 
 })
 
 describe('original → draft → applied result journeys', () => {
+  it('labels the workspace as checking while image compatibility is pending', async () => {
+    let finishProbe!: (formats: string[]) => void
+    mocks.formats.mockImplementationOnce(() => new Promise(resolve => { finishProbe = resolve }))
+    await mount(); await upload([image()])
+    expect(container.querySelector('.workflowPhase')?.textContent).toBe('Checking images')
+    expect(primary()?.disabled).toBe(true)
+    await act(async () => { container.querySelector('form')!.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true })); await flush() })
+    expect(mocks.process).not.toHaveBeenCalled()
+    await act(async () => { finishProbe(['jpeg', 'png', 'webp']); await flush(); await flush() })
+    expect(container.querySelector('.workflowPhase')?.textContent).toBe('Ready')
+    expect(primary()?.disabled).toBe(false)
+  })
+
   it('does not process through an implicit form submit while settings are open', async () => {
     await mount(); await upload([image()])
     await click(button('Settings')!)
@@ -82,7 +95,12 @@ describe('original → draft → applied result journeys', () => {
     expect(cancel.isConnected).toBe(false)
     expect(primary()).not.toBe(cancel)
     expect(mocks.process).toHaveBeenCalledTimes(2)
-    expect(container.textContent).toContain('Latest attempt cancelled')
+    // File details are loaded independently of the immediate action bar.
+    // Wait for that real view state instead of assuming two timer turns load it.
+    await vi.waitFor(async () => {
+      await act(async () => { await flush() })
+      expect(container.textContent).toContain('Latest attempt cancelled')
+    })
   })
   it('compresses, changes quality, keeps the old artifact clearly labeled, and recompresses the original', async () => {
     await mount()
@@ -93,14 +111,14 @@ describe('original → draft → applied result journeys', () => {
     expect(container.querySelector('form')?.firstElementChild?.classList.contains('workflowActionBar')).toBe(true)
     await click(primary()!)
     expect(mocks.process.mock.calls[0][0].file).toBe(original)
-    expect(container.querySelector('.workflowConfig')?.textContent).toContain('Quality 60%')
+    expect(container.querySelector('.workflowConfig')?.textContent).toContain('Quality 82%')
     expect(button('Download file')).toBeDefined()
     const quality = container.querySelector<HTMLInputElement>('input[type=range]')!
     await change(quality, '74')
     expect(container.querySelector('.customQualityLabel')?.textContent).toBe('Custom quality')
     expect(container.querySelectorAll('.imageModeOption[aria-pressed=true]')).toHaveLength(0)
     expect(container.querySelector('.previousResultNotice')?.textContent).toContain('Recompress to apply')
-    expect(container.querySelector('.workflowConfig')?.textContent).toContain('Quality 60%')
+    expect(container.querySelector('.workflowConfig')?.textContent).toContain('Quality 82%')
     expect(button('Download previous')).toBeDefined()
     expect(primary()?.textContent).toContain('Recompress')
     await act(async () => { Simulate.submit(container.querySelector('form')!); await flush(); await flush() })
@@ -163,7 +181,7 @@ describe('original → draft → applied result journeys', () => {
     expect(mocks.process.mock.calls[2][0].file).toBe(first)
     const cards = container.querySelectorAll('.resultFile')
     expect(cards[0].querySelector('.workflowConfig')?.textContent).toContain('Quality 74%')
-    expect(cards[1].querySelector('.workflowConfig')?.textContent).toContain('Quality 60%')
+    expect(cards[1].querySelector('.workflowConfig')?.textContent).toContain('Quality 82%')
     expect(cards[1].querySelector('.previousResultNotice')).toBeNull()
     expect(cards[1].classList.contains('dirtyResultFile')).toBe(false)
     expect(cards[1].querySelector('.fileDownloadButton')).not.toBeNull()
@@ -182,6 +200,14 @@ describe('original → draft → applied result journeys', () => {
     await click(primary()!)
     expect(mocks.process).toHaveBeenCalledTimes(1)
     expect(mocks.process.mock.calls[0][0].options.quality).toBe(.74)
+  })
+
+  it('does not show image policy for a general queue containing only a PDF', async () => {
+    await mount('compress')
+    await upload([new File(['%PDF-1.7\n'], 'document.pdf') as unknown as globalThis.File])
+    expect(container.textContent).not.toContain('PNG uses Lossless')
+    expect(container.querySelector('.imageOutputPolicy')).toBeNull()
+    expect(primary()?.disabled).toBe(false)
   })
 
   it('processes an exact target without exposing or requesting image resizing', async () => {
@@ -243,7 +269,7 @@ describe('original → draft → applied result journeys', () => {
     expect(container.querySelector('.compactDownloads')?.textContent).toContain('1 current · 1 previous result')
     expect(container.querySelectorAll('.previousResultNotice')).toHaveLength(1)
     expect(container.querySelectorAll('.resultFile')[0].textContent).toContain('Quality 74%')
-    expect(container.querySelectorAll('.resultFile')[1].textContent).toContain('Quality 60%')
+    expect(container.querySelectorAll('.resultFile')[1].textContent).toContain('Quality 82%')
   })
 
   it('announces an actual missed target at the top while preserving the available download', async () => {
@@ -353,19 +379,20 @@ it('keeps selection and processing scope across paged compact cards, then clears
   expect(container.querySelector('.compactDownloads')).toBeNull()
 })
 
-it('uses Maximum on upload and reset, while an explicit Balanced choice remains available', async () => {
+it('uses Balanced on upload and reset, while stronger compression remains an explicit choice', async () => {
   await mount(); await upload([image()])
-  expect(container.querySelector('.imageModeOption[aria-pressed=true]')?.textContent).toBe('Maximum')
-  expect((container.querySelector('input[type=range]') as HTMLInputElement).value).toBe('60')
-  await click(button('Balanced')!)
+  expect(container.querySelector('.imageModeOption[aria-pressed=true]')?.textContent).toBe('Balanced')
   expect((container.querySelector('input[type=range]') as HTMLInputElement).value).toBe('82')
+  expect(container.querySelector('.imageOutputPolicy')?.textContent).toContain('lossy encoding')
+  await click(button('Maximum')!)
+  expect((container.querySelector('input[type=range]') as HTMLInputElement).value).toBe('60')
   await click(primary()!)
-  expect(mocks.process.mock.calls[0][0].options).toMatchObject({ imageMode: 'balanced', quality: .82 })
+  expect(mocks.process.mock.calls[0][0].options).toMatchObject({ imageMode: 'maximum', quality: .6 })
   await click(button('Reset')!)
-  expect(container.querySelector('.imageModeOption[aria-pressed=true]')?.textContent).toBe('Maximum')
+  expect(container.querySelector('.imageModeOption[aria-pressed=true]')?.textContent).toBe('Balanced')
   expect(primary()?.textContent).toContain('Recompress')
   await click(primary()!)
-  expect(mocks.process.mock.calls[1][0].options).toMatchObject({ imageMode: 'maximum', quality: .6 })
+  expect(mocks.process.mock.calls[1][0].options).toMatchObject({ imageMode: 'balanced', quality: .82 })
 })
 
 it('opens and focuses collapsed settings from the main action without starting processing', async () => {
@@ -394,13 +421,112 @@ it('keeps converter settings contextual and exposes its fixed output format', as
   expect(container.querySelector('.workflowSettingsShortcut')).toBeNull()
 })
 
-it('defaults PNG to Maximum while keeping Lossless available without a JPEG quality slider', async () => {
+it('defaults PNG to Lossless and discloses color reduction only when chosen', async () => {
   await mount('png-compressor')
   await upload([new File([new Uint8Array([137, 80, 78, 71, 13, 10, 26, 10])], 'graphic.png', { type: 'image/png' }) as unknown as globalThis.File])
-  expect(container.querySelector('.pngModeBlock .imageModeOption[aria-pressed=true]')?.textContent).toBe('Maximum')
-  expect(container.querySelector('input[type=range]')).toBeNull()
-  await click(button('Lossless')!)
   expect(container.querySelector('.pngModeBlock .imageModeOption[aria-pressed=true]')?.textContent).toBe('Lossless')
+  expect(container.querySelector('.imageOutputPolicy')?.textContent).toContain('Lossless keeps pixels unchanged')
+  expect(container.querySelector('input[type=range]')).toBeNull()
+  await click(button('Smart')!)
+  expect(container.querySelector('.pngModeBlock .imageModeOption[aria-pressed=true]')?.textContent).toBe('Smart')
+  expect(container.querySelector('.imageOutputPolicy')?.textContent).toContain('Smart can reduce colors')
   await click(button('Reset')!)
-  expect(container.querySelector('.pngModeBlock .imageModeOption[aria-pressed=true]')?.textContent).toBe('Maximum')
+  expect(container.querySelector('.pngModeBlock .imageModeOption[aria-pressed=true]')?.textContent).toBe('Lossless')
+})
+
+describe('archive recovery controls', () => {
+  const zipInput = (name = 'source.zip') => new File([new Uint8Array([0x50, 0x4b, 3, 4, 0])], name) as unknown as globalThis.File
+  const extracted = () => [{ blob: new Blob(['safe']), filename: 'safe.txt', mimeType: 'text/plain' }]
+
+  it.each(['archive-invalid', 'archive-integrity', 'archive-empty'])('requires a replacement for %s and recovers after replacing the ZIP', async code => {
+    await mount('archive-compressor'); await upload([zipInput('blocked.zip')])
+    mocks.process.mockRejectedValueOnce(new ProcessingError('This ZIP cannot be extracted.', code))
+    await click(primary()!)
+    await vi.waitFor(() => expect(container.querySelector('.fileError')?.textContent).toContain('cannot be extracted'))
+    expect(primary()).toBeNull()
+    expect(button('Retry')).toBeUndefined()
+    expect(container.querySelector('.workflowActionContext')?.textContent).toContain('Remove this ZIP and choose another file.')
+    expect(container.querySelector('.fileError')?.textContent).toContain('Remove this ZIP and choose another file.')
+    expect(container.querySelector('.downloadActions')).toBeNull()
+    await click(button('Clear all')!)
+    await upload([zipInput('replacement.zip')])
+    expect(container.querySelector('.workflowStatus.status-error')).toBeNull()
+    mocks.process.mockResolvedValueOnce(extracted())
+    await click(primary()!)
+    expect(mocks.process).toHaveBeenCalledTimes(2)
+    expect(container.querySelector('.workflowPhase')?.textContent).toBe('Results ready')
+    expect(container.querySelector('.fileError')).toBeNull()
+  })
+
+  it('still offers and successfully executes Retry for a temporary archive failure', async () => {
+    await mount('archive-compressor'); await upload([zipInput()])
+    mocks.process.mockRejectedValueOnce(new Error('Worker unavailable; try again.')).mockResolvedValueOnce(extracted())
+    await click(primary()!)
+    await vi.waitFor(() => expect(button('Retry')).toBeDefined())
+    expect(primary()?.disabled).toBe(false)
+    await click(button('Retry')!)
+    expect(mocks.process).toHaveBeenCalledTimes(2)
+    expect(container.querySelector('.workflowPhase')?.textContent).toBe('Results ready')
+  })
+
+  it.each([1, 2])('creates a ZIP from %i zero-byte files without extraction or percentage wording', async count => {
+    await mount('zip-compressor')
+    const files = Array.from({ length: count }, (_, index) => new File([], `empty-${index}.txt`) as unknown as globalThis.File)
+    await upload(files)
+    expect(primary()?.disabled).toBe(false)
+    mocks.process.mockResolvedValueOnce({ blob: new Blob(['archive']), filename: 'archive.zip', mimeType: 'application/zip' })
+    await click(primary()!)
+    expect(mocks.process.mock.calls[0][0].allFiles).toEqual(files)
+    expect(container.querySelector('.workflowPhase')?.textContent).toBe('Results ready')
+    expect(container.querySelector('.workflowActionContext')?.textContent).toContain('ZIP ready')
+    expect(container.textContent).not.toMatch(/extracted|NaN|Infinity|\d+%/)
+    expect(button('Download file')).toBeDefined()
+  })
+
+  it.each(['failed', 'cancelled'])('blocks %s ZIP-create row retries while an oversized sibling is present', async status => {
+    await mount('zip-compressor')
+    const valid = new File(['keep'], 'valid.txt') as unknown as globalThis.File
+    await upload([valid])
+    mocks.process.mockRejectedValueOnce(status === 'cancelled'
+      ? new ProcessingError('Processing was cancelled.', 'cancelled')
+      : new Error('Temporary archive worker failure.'))
+    await click(primary()!)
+    await vi.waitFor(() => expect(button('Retry')).toBeDefined())
+    const oversized = new File(['x'], 'oversized.bin') as unknown as globalThis.File
+    Object.defineProperty(oversized, 'size', { value: 201 * 1024 * 1024 })
+    await upload([oversized])
+    await vi.waitFor(() => expect(container.textContent).toContain('larger than 200 MB'))
+    expect(primary()).toBeNull()
+    expect(button('Retry')).toBeUndefined()
+    expect(mocks.process).toHaveBeenCalledTimes(1)
+    const remove = [...container.querySelectorAll<HTMLButtonElement>('.fileRemoveButton')].find(element => element.getAttribute('aria-label')?.includes('oversized.bin'))!
+    await click(remove)
+    expect(button('Retry')).toBeDefined()
+    expect(primary()?.disabled).toBe(false)
+    mocks.process.mockResolvedValueOnce({ blob: new Blob(['zip']), filename: 'archive.zip', mimeType: 'application/zip' })
+    await click(button('Retry')!)
+    expect(mocks.process).toHaveBeenCalledTimes(2)
+    expect(mocks.process.mock.calls[1][0].allFiles).toEqual([valid])
+    expect(container.querySelector('.workflowPhase')?.textContent).toBe('Results ready')
+    expect(button('Download file')).toBeDefined()
+  })
+
+  it('offers no futile action for an oversized ZIP-create row and recovers after removal', async () => {
+    await mount('zip-compressor')
+    const oversized = new File(['x'], 'oversized.bin') as unknown as globalThis.File
+    Object.defineProperty(oversized, 'size', { value: 201 * 1024 * 1024 })
+    const valid = new File(['keep'], 'valid.txt') as unknown as globalThis.File
+    await upload([oversized, valid])
+    await vi.waitFor(() => expect(container.querySelector('.fileError')?.textContent).toContain('larger than 200 MB'))
+    expect(primary()).toBeNull()
+    expect(button('Retry')).toBeUndefined()
+    expect(container.querySelector('.workflowActionContext')?.textContent).toContain('Remove files over the limit')
+    const remove = [...container.querySelectorAll<HTMLButtonElement>('.fileRemoveButton')].find(element => element.getAttribute('aria-label')?.includes('oversized.bin'))!
+    await click(remove)
+    expect(primary()?.disabled).toBe(false)
+    mocks.process.mockResolvedValueOnce({ blob: new Blob(['zip']), filename: 'archive.zip', mimeType: 'application/zip' })
+    await click(primary()!)
+    expect(mocks.process).toHaveBeenCalledTimes(1)
+    expect(mocks.process.mock.calls[0][0].allFiles).toEqual([valid])
+  })
 })

@@ -50,7 +50,7 @@ function image(format: Format, width: number, height: number, size: number, bitD
 
 function adapter(config: { size?: number | ((q: number) => number); alpha?: boolean; outputAlpha?: boolean; pixelsEqual?: boolean; wrongDimensions?: boolean; wrongFormat?: boolean; wrongBitDepth?: boolean; afterEncode?: () => void } = {}) {
   const close = vi.fn()
-  const encode = vi.fn(async (format: Format, quality: number) => {
+  const encode = vi.fn(async (format: Format, quality: number, _effort?: number) => {
     const output = image(config.wrongFormat ? 'webp' : format, config.wrongDimensions ? 100 : outputWidth, outputHeight, typeof config.size === 'function' ? config.size(quality) : config.size ?? 500, config.wrongBitDepth ? 8 : pngBitDepth)
     config.afterEncode?.()
     return { blob: output, encoder: 'Test adapter' }
@@ -285,11 +285,27 @@ describe('verified maximum-byte target', () => {
     expect(result.targetNote).toContain('original is available unchanged')
   })
 
-  it.each([{ width: 2000, height: 1500, effort: 4 }, { width: 4000, height: 3000, effort: 2 }])('bounds PNG DEFLATE effort without changing $width×$height geometry', async ({ width, height, effort }) => {
+  it.each([{ width: 2000, height: 1500, effort: 2 }, { width: 4000, height: 3000, effort: 2 }])('bounds PNG DEFLATE effort without changing $width×$height geometry', async ({ width, height, effort }) => {
     const codec = adapter({ size: 500 })
     const result = await runImagePipeline(png(width, height), { pngMode: 'maximum' }, codec)
     expect(codec.encode).toHaveBeenCalledExactlyOnceWith('png', undefined, effort)
     expect(result.inspection).toMatchObject({ inputWidth: width, inputHeight: height, outputWidth: width, outputHeight: height })
+  })
+
+  it('keeps the stronger lossless Target attempt when a faster pass would miss the byte ceiling', async () => {
+    // Measured gradient boundary: level2=82,808B; level4=72,797B. An80KB
+    // maximum must not cause color loss merely because a faster pass misses it.
+    const codec = adapter({ size: 72797 })
+    const encode = codec.encode.getMockImplementation()!
+    codec.encode.mockImplementation(async (format: Format, quality: number, effort?: number) => {
+      const candidate = await encode(format, quality, effort)
+      return effort === 4 ? candidate : { ...candidate, blob: png(1600, 900, 82808) }
+    })
+    const result = await runImagePipeline(png(1600, 900, 239911), { pngMode: 'target', targetSize: 80000 }, codec)
+    expect(result.outcome).toBe('target-met')
+    expect(result.blob.size).toBe(72797)
+    expect(result.inspection).toMatchObject({ compressionKind: 'lossless', outputWidth: 1600, outputHeight: 900 })
+    expect(codec.encode).toHaveBeenCalledTimes(1)
   })
 
   it('verifies PNG pixels, alpha and dimensions in target mode as well', async () => {

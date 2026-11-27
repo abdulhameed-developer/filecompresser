@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-26",
+  "updated": "2026-11-27",
   "title": "Choosing image compression modes and target sizes",
   "description": "Compare JPEG/WebP quality and PNG Lossless, Smart, Maximum or Target size. Understand preserved dimensions and when an original stays unchanged.",
   "date": "2026-09-12",
@@ -22,7 +22,7 @@
     },
     {
       "_template": "p",
-      "text": "Maximum is the default for images. Balanced is available for JPEG and WebP when you prefer a more moderate quality trade-off. It aims for a practical compromise between encoded size and visible detail. Results depend on the image and its existing encoding, so inspect faces, text, gradients and fine textures at the same scale."
+      "text": "Balanced is the default for JPEG and WebP. It aims for a practical compromise between encoded size and visible detail. Maximum is an optional stronger trade-off. Results depend on the image and its existing encoding, so inspect faces, text, gradients and fine textures at the same scale. PNG starts in its separate Lossless mode."
     },
     {
       "_template": "h2",
@@ -58,11 +58,11 @@
     },
     {
       "_template": "h2",
-      "text": "PNG: Maximum by default, with a Lossless choice"
+      "text": "PNG: Lossless by default, optional color reduction"
     },
     {
       "_template": "p",
-      "text": "Lossless preserves the decoded PNG pixels and transparency. Smart, Maximum and Target size may reduce colors while preserving transparency values; their color changes can be visible. Dimensions stay unchanged. PNG uses these named modes rather than the JPEG/WebP quality slider."
+      "text": "The default Lossless mode preserves the decoded PNG pixels and transparency. Choose Smart, Maximum or Target size explicitly to allow color reduction. Those modes preserve checked transparency values, but their color changes can be visible. Dimensions stay unchanged. PNG uses these named modes rather than the JPEG/WebP quality slider."
     },
     {
       "_template": "p",

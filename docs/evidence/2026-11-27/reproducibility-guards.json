@@ -1,0 +1,115 @@
+{
+  "scope": "QA helper hardening only; retained current and historical image benchmark results are unchanged.",
+  "fixture": {
+    "timestamp": "2026-11-27T11:43:58.856Z",
+    "scope": "Pure fixture guard; no browser launched or current/historical benchmark run changed",
+    "scriptSha256": "faaa910ad68996d0d1360d1aca198a28f6441258fcb76da9bae96bfa5b4bd59a",
+    "checks": [
+      {
+        "name": "Actual generated PNG exact manifest size/hash passes",
+        "passed": true
+      },
+      {
+        "name": "Wrong declared byte size rejected",
+        "passed": true
+      },
+      {
+        "name": "Wrong declared SHA rejected",
+        "passed": true
+      },
+      {
+        "name": "Same-size changed bytes rejected before browser launch",
+        "passed": true
+      },
+      {
+        "name": "Escaping input path rejected",
+        "passed": true
+      }
+    ]
+  },
+  "comparisonSheet": {
+    "timestamp": "2026-11-27T11:43:58.736322+00:00",
+    "scope": "New generated16x16 opaque RGBA fixtures only; no browser, benchmark run, production or historical output changed.",
+    "rendererScriptSha256": "c8f1a33a6ede06ccef1719cc4643d7e96aef0f0d022ca028f0300374b42a5f45",
+    "checks": [
+      {
+        "name": "Fresh pair is rendered, never claimed reused",
+        "passed": true,
+        "reused": false,
+        "sheetSha256": "3ec8ab0a4c471845a1a389fd24f1cb79c9edba60959b3599f5381a16678e2dca"
+      },
+      {
+        "name": "Identical files/decoded arrays/renderer/libraries reuse exact sheet",
+        "passed": true,
+        "reused": true,
+        "sheetSha256": "3ec8ab0a4c471845a1a389fd24f1cb79c9edba60959b3599f5381a16678e2dca"
+      },
+      {
+        "name": "Same identifier with changed output SHA/decoded pixels regenerates",
+        "passed": true,
+        "reused": false,
+        "sheetSha256": "e912019a5b4c2c1abf4bc7a2186b37b9b5045c0ea64150de47b7ded832caa875"
+      },
+      {
+        "name": "Changed source/reference SHA/decoded pixels regenerates",
+        "passed": true,
+        "reused": false,
+        "sheetSha256": "bb40b90c5fd1dbfd5ef9a86b99d6b1c189b6daf0729d72f9266968d22d6879e2"
+      },
+      {
+        "name": "Renderer source/parameters changed",
+        "passed": true,
+        "reused": false,
+        "sheetSha256": "bb40b90c5fd1dbfd5ef9a86b99d6b1c189b6daf0729d72f9266968d22d6879e2"
+      },
+      {
+        "name": "Cache format version changed",
+        "passed": true,
+        "reused": false,
+        "sheetSha256": "bb40b90c5fd1dbfd5ef9a86b99d6b1c189b6daf0729d72f9266968d22d6879e2"
+      },
+      {
+        "name": "Rendering library version changed",
+        "passed": true,
+        "reused": false,
+        "sheetSha256": "bb40b90c5fd1dbfd5ef9a86b99d6b1c189b6daf0729d72f9266968d22d6879e2"
+      },
+      {
+        "name": "Tampered existing sheet regenerates despite matching pair key",
+        "passed": true,
+        "reused": false,
+        "sheetSha256": "bb40b90c5fd1dbfd5ef9a86b99d6b1c189b6daf0729d72f9266968d22d6879e2"
+      },
+      {
+        "name": "Historical sheet without pair sidecar regenerates",
+        "passed": true,
+        "reused": false,
+        "sheetSha256": "bb40b90c5fd1dbfd5ef9a86b99d6b1c189b6daf0729d72f9266968d22d6879e2"
+      },
+      {
+        "name": "Corrupt sidecar regenerates",
+        "passed": true,
+        "reused": false,
+        "sheetSha256": "bb40b90c5fd1dbfd5ef9a86b99d6b1c189b6daf0729d72f9266968d22d6879e2"
+      },
+      {
+        "name": "Changed decoded reference interpretation regenerates",
+        "passed": true,
+        "reused": false,
+        "sheetSha256": "6699ac1854ee5b47ff61a0c91dd6bee2e92b4bf1242bbad3cf0b98e91152b06c"
+      },
+      {
+        "name": "Restored original decoded interpretation does not reuse altered-reference sheet",
+        "passed": true,
+        "reused": false,
+        "sheetSha256": "bb40b90c5fd1dbfd5ef9a86b99d6b1c189b6daf0729d72f9266968d22d6879e2"
+      },
+      {
+        "name": "Exact current pair can then reuse again",
+        "passed": true,
+        "reused": true,
+        "sheetSha256": "bb40b90c5fd1dbfd5ef9a86b99d6b1c189b6daf0729d72f9266968d22d6879e2"
+      }
+    ]
+  }
+}

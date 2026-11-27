@@ -142,7 +142,14 @@ export async function choosePngCandidate(lossless, options, { quantize, verify, 
   if (mode === 'lossless' || mode === 'target' && best.blob.size <= targetBytes) return best
   if (!quantize) return { ...best, note: unavailableNote }
   let accepted = 0, tested = 0
-  for (const colorLimit of PNG_COLOR_LIMITS) {
+  // Smart tests one higher-color candidate. Maximum starts at 64 colors and
+  // searches 32/16 if fidelity permits; if 64 fails it tries 128/256 instead.
+  // Target keeps the greatest-color-first search for its maximum-byte limit.
+  // Compare actual tested sizes. This bounded heuristic is not an exhaustive
+  // proof of the smallest possible PNG or of invisible color changes.
+  const colorLimits = mode === 'smart' ? [256] : mode === 'maximum' ? [64, 32, 16] : [...PNG_COLOR_LIMITS]
+  for (let index = 0; index < colorLimits.length; index++) {
+    const colorLimit = colorLimits[index]
     assertActive()
     progress(`Testing PNG color reduction with up to ${colorLimit} colors…`)
     let trial
@@ -161,7 +168,11 @@ export async function choosePngCandidate(lossless, options, { quantize, verify, 
     // Stop conservatively at the first rejected fidelity level instead of
     // spending more CPU on progressively smaller color limits. This does not
     // assume that PNG byte size is monotonic or promise an exhaustive optimum.
-    if (!pngQualityAccepted(trial.verified, mode)) break
+    if (!pngQualityAccepted(trial.verified, mode)) {
+      if (mode === 'maximum' && index === 0 && colorLimit === 64) { colorLimits.splice(1, 2, 128, 256); continue }
+      if (mode === 'maximum' && colorLimit === 128 && colorLimits[index + 1] === 256) continue
+      break
+    }
     if (trial.verified.pixelsEqual && options.allowLosslessColorTrial !== false) {
       trial.compressionKind = 'lossless'
       trial.metadataNote = `${trial.metadataNote ?? ''} Decoded pixels were verified unchanged.`.trim()

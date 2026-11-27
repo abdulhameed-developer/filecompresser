@@ -2,7 +2,9 @@
 
 Reviewed: 26 November 2026. This is a prioritized working plan, not a traffic or ranking forecast. Read-only Google Search Console, Bing Webmaster and Bing Keyword Research observations are recorded below. Monthly keyword search volumes and competitor processing speeds have **not** been measured. The wider keyword candidates remain qualitative; the explicitly recorded property and research-tool metrics are the measured evidence.
 
-Implementation statements describe the reviewed local source. Production publication of this overhaul and connected CMS publishing have not been verified.
+The 26 November implementation was released as code commit `0197d18`, Cloudflare deployment `5ecc7f32-5c39-462e-8b66-aa2485f49d9b`. A real hosted Tina FAQ/link save, matching Git commit and successful deployment, and the resulting public content were verified. Those results apply to the recorded release and tested workflow; they do not establish that later changes have shipped or that every editor scenario was tested. See `PROJECT_OVERHAUL_PROGRESS.md` for exact evidence and limitations.
+
+The [27 November Phase 2 review](SEO-PHASE2-REVIEW.md) retains these baselines and records the refreshed account observations, URL-level indexing findings, per-tool search intent and evidence-led editorial queue. The figures below remain explicitly dated historical observations.
 
 ## Product readiness comes first
 

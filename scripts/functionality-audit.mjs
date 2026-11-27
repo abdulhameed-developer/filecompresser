@@ -2,6 +2,7 @@
  * QA dependencies live in PW_TOOLS; no fixtures are copied to public/.
  */
 import { createRequire } from 'node:module'
+import { createHash } from 'node:crypto'
 import {
   mkdtempSync,
   mkdirSync,
@@ -25,6 +26,14 @@ const qa = createRequire(
 const browsers = qa('playwright-core')
 const browserName = process.env.TEST_BROWSER || 'chromium'
 if (!['chromium', 'firefox', 'webkit'].includes(browserName)) throw new Error('Unsupported TEST_BROWSER')
+const configuredViewport = {
+  width: Number(process.env.QA_VIEWPORT_WIDTH || 1280),
+  height: Number(process.env.QA_VIEWPORT_HEIGHT || 900),
+}
+if (Object.values(configuredViewport).some(value => !Number.isInteger(value) || value < 240 || value > 4096)) throw new Error('QA viewport dimensions must be integers from 240 to 4096')
+const touchEmulation = process.env.QA_TOUCH === '1'
+const captureFullStates = process.env.QA_CAPTURE_STATES === '1'
+const traceResources = process.env.QA_RESOURCE_TRACE === '1'
 const ffmpeg = process.env.FFMPEG_PATH || qa('ffmpeg-static')
 const ffprobe = process.env.FFPROBE_PATH || qa('ffprobe-static').path
 const chrome =
@@ -166,6 +175,29 @@ writeFileSync(
 )
 const hostile = path.join(fixtures, 'hostile.zip')
 writeFileSync(hostile, zipSync({ '../unsafe.txt': new Uint8Array([1]) }))
+const corruptZip = path.join(fixtures, 'corrupt-crc.zip')
+const corruptZipBytes = zipSync({ 'broken.txt': new Uint8Array([1, 2, 3]) }, { level: 0 })
+const corruptZipView = new DataView(corruptZipBytes.buffer, corruptZipBytes.byteOffset, corruptZipBytes.byteLength)
+corruptZipBytes[30 + corruptZipView.getUint16(26, true) + corruptZipView.getUint16(28, true)] ^= 0xff
+writeFileSync(corruptZip, corruptZipBytes)
+const emptyZip = path.join(fixtures, 'empty-archive.zip')
+writeFileSync(emptyZip, zipSync({}))
+const emptyText = path.join(fixtures, 'empty.txt')
+writeFileSync(emptyText, new Uint8Array())
+const emptyEntryZip = path.join(fixtures, 'empty-entry.zip')
+writeFileSync(emptyEntryZip, zipSync({ 'empty.txt': new Uint8Array() }))
+// A genuinely large deflated entry exercises fflate's asynchronous Worker path.
+const workerSource = new Uint8Array(512 * 1024)
+let archiveSeed = 0x4f38a621
+for (let index = 0; index < workerSource.length; index++) {
+  archiveSeed ^= archiveSeed << 13; archiveSeed ^= archiveSeed >>> 17; archiveSeed ^= archiveSeed << 5
+  workerSource[index] = (index & 3) === 0 ? archiveSeed & 255 : 0
+}
+const workerZip = path.join(fixtures, 'worker-retry.zip')
+const workerZipBytes = zipSync({ 'worker.bin': workerSource }, { level: 1 })
+if (new DataView(workerZipBytes.buffer, workerZipBytes.byteOffset, workerZipBytes.byteLength).getUint32(18, true) > workerSource.length * 0.8)
+  throw new Error('The Worker retry fixture must exercise fflate’s asynchronous path, not its barely-compressed synchronous shortcut.')
+writeFileSync(workerZip, workerZipBytes)
 const fake = path.join(fixtures, 'fake.mp3')
 writeFileSync(fake, new Uint8Array([0xff]))
 const oversized = path.join(fixtures, 'oversized.jpg')
@@ -179,7 +211,8 @@ const browser = await browsers[browserName].launch(browserName === 'chromium' ? 
 } : { headless: true, ...(process.env.TEST_BROWSER_PATH ? { executablePath: process.env.TEST_BROWSER_PATH } : {}) })
 const context = await browser.newContext({
   acceptDownloads: true,
-  viewport: { width: 1280, height: 900 },
+  viewport: configuredViewport,
+  ...(touchEmulation ? { hasTouch: true, ...(browserName !== 'firefox' ? { isMobile: true } : {}) } : {}),
 })
 context.setDefaultTimeout(30_000)
 if (process.env.QA_ACTION_TRACE) await context.addInitScript(traceScroll => {
@@ -203,6 +236,21 @@ if (process.env.QA_ACTION_TRACE) await context.addInitScript(traceScroll => {
   }
 }, process.env.QA_ACTION_TRACE === 'scroll')
 const page = await context.newPage()
+// Default desktop actions stay unchanged; the optional touch run uses real
+// emulated tap events rather than claiming mouse clicks exercise touch input.
+const activate = locator => touchEmulation ? locator.tap() : locator.click()
+const stateCaptureKeys = new Set()
+const stateCaptureErrors = []
+async function captureToolState(state) {
+  if (!captureFullStates || !await page.locator('input[type=file]').count()) return
+  const route = new URL(page.url()).pathname
+  const key = `${route}:${state}`
+  if (stateCaptureKeys.has(key)) return
+  const filename = `${route.slice(1).replaceAll('/', '-')}-${state}${state === 'settings' ? '' : '-full'}.png`
+  await page.locator('.filePreview img').evaluateAll(images => Promise.all(images.map(image => image.decode())))
+  await page.screenshot({ path: path.join(evidence, filename), fullPage: state !== 'settings' })
+  stateCaptureKeys.add(key)
+}
 const browserLifecycle = []
 let currentCase = ''
 let currentStep = ''
@@ -215,6 +263,26 @@ page.on('close', () => { if (!closingBrowser) browserLifecycle.push({ event: 'un
 const errors = []
 const consoleMessages = []
 const failedResources = []
+const resourceTrace = []
+const downloadProofs = []
+const downloadProofTasks = []
+if (traceResources) {
+  page.on('requestfailed', request => resourceTrace.push({ event: 'requestfailed', capturedAt: new Date().toISOString(), currentCase, currentStep, url: request.url(), resourceType: request.resourceType(), isNavigationRequest: request.isNavigationRequest(), failure: request.failure(), method: request.method(), frameUrl: request.frame()?.url() }))
+  page.on('console', message => { if (['error', 'warning'].includes(message.type())) resourceTrace.push({ event: 'console', capturedAt: new Date().toISOString(), currentCase, currentStep, type: message.type(), text: message.text(), location: message.location() }) })
+  page.on('download', download => {
+    const proof = { event: 'download', capturedAt: new Date().toISOString(), currentCase, currentStep, url: download.url(), suggestedFilename: download.suggestedFilename() }
+    downloadProofs.push(proof)
+    downloadProofTasks.push(download.path().then(file => {
+      if (!file) throw Error('Download returned no local path')
+      const bytes = readFileSync(file)
+      const downloadDirectory = path.join(evidence, 'download-proofs')
+      mkdirSync(downloadDirectory, { recursive: true })
+      const savedPath = path.join(downloadDirectory, `${String(downloadProofs.indexOf(proof) + 1).padStart(3, '0')}-${path.basename(download.suggestedFilename())}`)
+      writeFileSync(savedPath, bytes)
+      Object.assign(proof, { completedAt: new Date().toISOString(), savedPath, bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex') })
+    }).catch(error => { proof.error = String(error) }))
+  })
+}
 const pendingRequests = new Map()
 page.on('request', request => pendingRequests.set(request, { url: request.url(), type: request.resourceType(), method: request.method(), startedAt: new Date().toISOString() }))
 page.on('requestfinished', request => pendingRequests.delete(request))
@@ -234,7 +302,7 @@ const caseRange = process.env.QA_CASE_RANGE?.split('-').map(Number)
 if (caseRange && (caseRange.length !== 2 || caseRange.some(value => !Number.isInteger(value) || value < 1) || caseRange[0] > caseRange[1])) throw Error('QA_CASE_RANGE must be a positive inclusive range, for example51-74')
 const timings = []
 const comparisonDiagnostics = []
-const writeProgress = () => writeFileSync(path.join(evidence, 'functionality-progress.json'), JSON.stringify({ capturedAt: new Date().toISOString(), caseFilter: process.env.QA_CASE_FILTER || null, caseRange: process.env.QA_CASE_RANGE || null, currentCase, completed: results.length, passed: results.filter(result => result.pass).length, results, browserLifecycle, errors, consoleMessages, failedResources, requests }, null, 2) + '\n')
+const writeProgress = () => writeFileSync(path.join(evidence, 'functionality-progress.json'), JSON.stringify({ capturedAt: new Date().toISOString(), browserName, browserVersion: browser.version(), configuredViewport, touchEmulation, captureFullStates, traceResources, resourceTrace, downloadProofs, stateCaptures: [...stateCaptureKeys], stateCaptureErrors, caseFilter: process.env.QA_CASE_FILTER || null, caseRange: process.env.QA_CASE_RANGE || null, currentCase, completed: results.length, passed: results.filter(result => result.pass).length, results, browserLifecycle, errors, consoleMessages, failedResources, requests }, null, 2) + '\n')
 const bounded = (promise, ms, label) => new Promise((resolve, reject) => {
   const timer = setTimeout(() => reject(Error(`${label} did not respond within ${ms}ms`)), ms)
   promise.then(value => { clearTimeout(timer); resolve(value) }, error => { clearTimeout(timer); reject(error) })
@@ -276,6 +344,13 @@ async function check(name, work) {
       })
       .catch(() => {})
   } finally {
+    if (captureFullStates && !page.isClosed()) {
+      try {
+        if (await page.locator('.file.status-completed').count()) await captureToolState('completed')
+      } catch (error) {
+        stateCaptureErrors.push({ currentCase, state: 'completed', error: String(error) })
+      }
+    }
     if (process.env.QA_ACTION_TRACE && !page.isClosed()) await readUiState().then(state => writeFileSync(path.join(evidence, `case-${results.length}-action-state.json`), JSON.stringify(state, null, 2))).catch(() => {})
     writeProgress()
   }
@@ -283,6 +358,10 @@ async function check(name, work) {
 async function upload(route, files) {
   currentStep = 'navigate'
   await page.goto(base + route, { waitUntil: 'networkidle' })
+  if (captureFullStates) {
+    await page.locator('input[type=file]').waitFor({ state: 'attached' })
+    await captureToolState('default')
+  }
   currentStep = 'select-files'
   await page.locator('input[type=file]').setInputFiles(files)
   currentStep = 'await-file-validation'
@@ -291,6 +370,7 @@ async function upload(route, files) {
     null,
     { timeout: 30_000 },
   )
+  if (captureFullStates && await page.locator('.file:not(.status-failed)').count()) await captureToolState('populated')
 }
 async function processAndDownload(route, source, configure) {
   await upload(route, source)
@@ -303,10 +383,10 @@ async function processAndDownload(route, source, configure) {
     await closeSettings()
   }
   currentStep = 'ready-screenshot'
-  await page.screenshot({ path: path.join(evidence, `${route.slice(1)}-ready.png`) })
+  if (!captureFullStates) await page.screenshot({ path: path.join(evidence, `${route.slice(1)}-ready.png`) })
   const startedAt = performance.now()
   currentStep = 'primary-click'
-  await page.locator('.compressBtn').click()
+  await activate(page.locator('.compressBtn'))
   currentStep = 'await-start'
   await page.locator('.file.status-validating, .file.status-processing, .file.status-completed, .file.status-failed').first().waitFor({ timeout: 15_000 })
   currentStep = 'await-processing-complete'
@@ -318,11 +398,11 @@ async function processAndDownload(route, source, configure) {
   assert.deepEqual(failure, [])
   const processingMs = Math.round(performance.now() - startedAt)
   currentStep = 'completed-screenshot'
-  await page.screenshot({ path: path.join(evidence, `${route.slice(1)}-completed.png`) })
+  if (!captureFullStates) await page.screenshot({ path: path.join(evidence, `${route.slice(1)}-completed.png`) })
   assert.equal(await page.locator('.compressBtn').count(), 0, 'Completed-only queues must not offer processing zero files')
   const promise = page.waitForEvent('download')
   currentStep = 'download-click'
-  await page.getByRole('button', { name: 'Download file', exact: true }).click()
+  await activate(page.getByRole('button', { name: 'Download file', exact: true }))
   currentStep = 'await-download'
   const download = await promise
   const out = path.join(
@@ -336,11 +416,12 @@ async function processAndDownload(route, source, configure) {
   return out
 }
 async function openSettings() {
-  await page.getByRole('button', { name: 'Settings', exact: true }).click()
+  await activate(page.getByRole('button', { name: 'Settings', exact: true }))
   await page.getByRole('dialog', { name: 'Settings', exact: true }).waitFor()
+  await captureToolState('settings')
 }
 async function closeSettings() {
-  await page.getByRole('button', { name: 'Done', exact: true }).click()
+  await activate(page.getByRole('button', { name: 'Done', exact: true }))
   await page.getByRole('dialog', { name: 'Settings', exact: true }).waitFor({ state: 'hidden' })
 }
 function probe(file) {
@@ -365,6 +446,11 @@ function decode(file) {
   execFileSync(ffmpeg, ['-v', 'error', '-i', file, '-f', 'null', '-'], {
     timeout: 60000,
   })
+}
+function nativeZipEntries(file) {
+  return JSON.parse(execFileSync(process.env.PYTHON_PATH || 'python3', ['-c',
+    'import sys,json,zipfile,hashlib\nwith zipfile.ZipFile(sys.argv[1]) as archive:\n if archive.testzip() is not None: raise ValueError("ZIP CRC check failed")\n print(json.dumps([{"name":info.filename,"bytes":info.file_size,"sha256":hashlib.sha256(archive.read(info)).hexdigest()} for info in archive.infolist()]))',
+    file], { timeout: 30000 }).toString())
 }
 function assertImageGeometry(input, output) {
   const before = probe(input).streams[0]
@@ -435,7 +521,7 @@ try {
       samples.push({ label: 'settle-before-click', positions: await settle() })
       await sample('before-open')
       const lockedScrollY = await page.evaluate(() => window.scrollY)
-      await trigger.click()
+      await activate(trigger)
       const dialog = page.getByRole('dialog', { name: 'Inspect the actual image', exact: true })
       await dialog.waitFor()
       await sample('after-open')
@@ -467,11 +553,12 @@ try {
       assert.equal(await trigger.evaluate(element => element === document.activeElement), true)
       assert.equal(await page.evaluate(() => window.scrollY), lockedScrollY, 'Closing comparison must restore the same viewport')
     }
+    await page.setViewportSize(configuredViewport)
   })
   await check('Enter in settings does not start processing; Done then the primary action succeeds', async () => {
     await upload('/jpg-compressor', jpg)
     await openSettings()
-    await page.getByRole('button', { name: 'Target size', exact: true }).click()
+    await activate(page.getByRole('button', { name: 'Target size', exact: true }))
     await page.getByLabel('Custom maximum (KB)', { exact: true }).fill('50')
     await page.getByLabel('Custom maximum (KB)', { exact: true }).press('Enter')
     await page.waitForTimeout(100)
@@ -479,11 +566,11 @@ try {
     assert.equal(await page.locator('.file.status-processing,.file.status-completed,.file.status-failed').count(), 0)
     assert.equal(await page.locator('.settingsDialog').evaluate(element => element.open), true)
     await closeSettings()
-    await page.locator('.compressBtn:enabled').click()
+    await activate(page.locator('.compressBtn:enabled'))
     await page.locator('.status-completed').waitFor({ timeout: 180_000 })
     assert.equal(await page.locator('.fileError').count(), 0)
     const promise = page.waitForEvent('download')
-    await page.getByRole('button', { name: 'Download file', exact: true }).click()
+    await activate(page.getByRole('button', { name: 'Download file', exact: true }))
     const download = await promise
     const file = await download.path()
     assertImageGeometry(jpg, file)
@@ -493,7 +580,7 @@ try {
   for (const [route, input, codec] of [['/jpg-compressor', jpg, 'mjpeg'], ['/webp-compressor', webp, 'webp']]) {
     const sizes = {}
     for (const mode of ['Balanced', 'High quality', 'Maximum']) await check(`${route} real ${mode} preset`, async () => {
-      const out = await processAndDownload(route, input, () => page.getByRole('button', { name: mode, exact: true }).click())
+      const out = await processAndDownload(route, input, () => activate(page.getByRole('button', { name: mode, exact: true })))
       assert.equal(probe(out).streams[0].codec_name, codec)
       const geometry = assertImageGeometry(input, out)
       decode(out)
@@ -506,7 +593,7 @@ try {
     })
   }
   for (const mode of ['Lossless', 'Smart', 'Maximum']) await check(`PNG real ${mode} preset`, async () => {
-    const out = await processAndDownload('/png-compressor', png, () => page.getByRole('button', { name: mode, exact: true }).click())
+    const out = await processAndDownload('/png-compressor', png, () => activate(page.getByRole('button', { name: mode, exact: true })))
     assert.equal(probe(out).streams[0].codec_name, 'png')
     const geometry = assertImageGeometry(png, out)
     decode(out)
@@ -517,7 +604,7 @@ try {
   for (const mode of ['High quality', 'Maximum']) await check(`PNG to WEBP real ${mode} preset`, async () => {
     const out = await processAndDownload('/image-compressor', png, async () => {
       await page.getByLabel('Save as', { exact: true }).selectOption('webp')
-      await page.getByRole('button', { name: mode, exact: true }).click()
+      await activate(page.getByRole('button', { name: mode, exact: true }))
     })
     assert.equal(probe(out).streams[0].codec_name, 'webp')
     assertImageGeometry(png, out)
@@ -531,7 +618,7 @@ try {
   })
   for (const [route, input] of [['/png-compressor', png], ['/webp-compressor', webp]]) await check(`${route} genuine target output and truthful limit status`, async () => {
     const out = await processAndDownload(route, input, async () => {
-      await page.getByRole('button', { name: 'Target size', exact: true }).click()
+      await activate(page.getByRole('button', { name: 'Target size', exact: true }))
       await page.getByLabel('Custom maximum (KB)', { exact: true }).fill('5')
     })
     const bytes = readFileSync(out).length
@@ -543,7 +630,7 @@ try {
   const customSizes = {}
   for (const quality of [10, 100]) await check(`JPEG real custom quality ${quality}%`, async () => {
     const out = await processAndDownload('/jpg-compressor', jpg, async () => {
-      await page.getByRole('button', { name: 'Balanced', exact: true }).click()
+      await activate(page.getByRole('button', { name: 'Balanced', exact: true }))
       await page.locator('input[type=range]').press(quality === 10 ? 'Home' : 'End')
       assert.equal(await page.locator('input[type=range]').inputValue(), String(quality))
     })
@@ -558,7 +645,7 @@ try {
   })
   await check('JPG target size and stable KB input', async () => {
     const out = await processAndDownload('/jpg-compressor', jpg, async () => {
-      await page.getByRole('button', { name: 'Target size', exact: true }).click()
+      await activate(page.getByRole('button', { name: 'Target size', exact: true }))
       await page.getByLabel('Custom maximum (KB)', { exact: true }).fill('20')
       assert.equal(
         await page.getByLabel('Custom maximum (KB)', { exact: true }).inputValue(),
@@ -602,7 +689,7 @@ try {
   )
   await check('Unreachable image target is reported honestly', async () => {
     const out = await processAndDownload('/jpg-compressor', jpg, async () => {
-      await page.getByRole('button', { name: 'Target size', exact: true }).click()
+      await activate(page.getByRole('button', { name: 'Target size', exact: true }))
       await page.getByLabel('Custom maximum (KB)', { exact: true }).fill('1')
     })
     assert(readFileSync(out).length > 1000)
@@ -611,12 +698,12 @@ try {
   await check('PNG target controls are contextual and retain exact byte units', async () => {
     await upload('/png-compressor', png)
     await openSettings()
-    await page.getByRole('button', { name: 'Maximum', exact: true }).click()
+    await activate(page.getByRole('button', { name: 'Maximum', exact: true }))
     assert.equal(
       await page.getByLabel('Custom maximum (KB)', { exact: true }).count(),
       0,
     )
-    await page.getByRole('button', { name: 'Target size', exact: true }).click()
+    await activate(page.getByRole('button', { name: 'Target size', exact: true }))
     await page.getByLabel('Custom maximum (KB)', { exact: true }).fill('20')
     assert.match(await page.locator('.exactTarget').innerText(), /20,000 bytes/)
     await closeSettings()
@@ -679,7 +766,7 @@ try {
     assertDurationPreserved(before, after)
     decode(out)
     assertAudibleOutput(out)
-    await page.locator('.fileCardDetails > summary').click()
+    await activate(page.locator('.fileCardDetails > summary'))
     const notes = (await page.locator('.fileNote').allTextContents()).join(' ')
     assert.match(notes, new RegExp(`${bitrate.replace('k', '')} kbps`))
     assert.match(notes, /Resampling does not restore missing detail/)
@@ -763,15 +850,13 @@ try {
     'Extraction downloads every file without compression claims',
     async () => {
       await upload('/archive-compressor', zipPath)
-      await page.locator('.compressBtn').click()
+      await activate(page.locator('.compressBtn'))
       await page.locator('.file.status-completed').first().waitFor()
       assert.equal(await page.locator('.file.status-completed').count(), 1)
       assert.equal(await page.locator('.savings').count(), 0)
-      await page
-        .getByRole('button', { name: 'Prepare ZIP (2 files)', exact: true })
-        .click()
+      await activate(page.getByRole('button', { name: 'Prepare ZIP (2 files)', exact: true }))
       const promise = page.waitForEvent('download')
-      await page.getByRole('link', { name: 'Save ZIP (2 files)', exact: true }).click()
+      await activate(page.getByRole('link', { name: 'Save ZIP (2 files)', exact: true }))
       const downloaded = await promise
       const bytes = readFileSync(await downloaded.path())
       const entries = unzipSync(bytes)
@@ -780,21 +865,21 @@ try {
         new TextDecoder().decode(entries['folder__two.txt']),
         'second',
       )
-      await page.locator('.fileCardDetails > summary').click()
+      await activate(page.locator('.fileCardDetails > summary'))
       const individualPromise = page.waitForEvent('download')
-      await page.getByRole('button', { name: 'Download one.txt', exact: true }).click()
+      await activate(page.getByRole('button', { name: 'Download one.txt', exact: true }))
       const individual = await individualPromise
       assert.equal(readFileSync(await individual.path(), 'utf8'), 'first')
     },
   )
   await check('Unsafe archive is blocked', async () => {
     await upload('/archive-compressor', hostile)
-    await page.locator('.compressBtn').click()
+    await activate(page.locator('.compressBtn'))
     await page.locator('.status-failed').waitFor()
     assert.match(await page.locator('.fileError').innerText(), /unsafe/)
     assert.equal(await page.locator('.downloadActions').count(), 0)
     await page.screenshot({ path: path.join(evidence, 'unsafe-archive-error.png') })
-    await page.getByRole('button', { name: 'Clear all', exact: true }).click()
+    await activate(page.getByRole('button', { name: 'Clear all', exact: true }))
     await page.locator('input[type=file]').setInputFiles(zipPath)
     await page.locator('.compressBtn:enabled').waitFor()
     assert.equal(await page.locator('.workflowStatus.status-error').count(), 0, 'A valid replacement queue must not display the previous failed-run banner')
@@ -809,7 +894,7 @@ try {
       assert.equal(await page.locator('.compressBtn').count(), 0, 'Invalid-only queues must not offer processing')
       assert.equal(await page.locator('.downloadActions').count(), 0)
       await page.screenshot({ path: path.join(evidence, `invalid-${path.basename(input)}.png`) })
-      await page.getByRole('button', { name: 'Clear all', exact: true }).click()
+      await activate(page.getByRole('button', { name: 'Clear all', exact: true }))
       await page.locator('input[type=file]').setInputFiles(input === fake ? mp3 : jpg)
       await page.locator('.compressBtn:enabled').waitFor()
       assert.equal(await page.locator('.status-failed').count(), 0, 'Choosing a valid replacement must recover the workspace')
@@ -829,11 +914,11 @@ try {
     assert.equal(await page.locator('.compressBtn').count(), 0)
     assert.equal(await page.locator('.downloadActions').count(), 0)
     await page.screenshot({ path: path.join(evidence, `${route.slice(1)}-rejected-input.png`) })
-    await page.getByRole('button', { name: 'Clear all', exact: true }).click()
+    await activate(page.getByRole('button', { name: 'Clear all', exact: true }))
     await page.locator('input[type=file]').setInputFiles(fake)
     await page.locator('.status-failed').waitFor()
     assert.equal(await page.locator('.compressBtn').count(), 0)
-    await page.getByRole('button', { name: 'Clear all', exact: true }).click()
+    await activate(page.getByRole('button', { name: 'Clear all', exact: true }))
     await page.locator('input[type=file]').setInputFiles(valid)
     await page.locator('.compressBtn:enabled').waitFor()
     assert.equal(await page.locator('.status-failed').count(), 0)
@@ -841,16 +926,16 @@ try {
   })
   await check('Mixed generic batch dispatch', async () => {
     await upload('/compress', [jpg, wav, pdfPath])
-    await page.locator('.compressBtn').click()
+    await activate(page.locator('.compressBtn'))
     await page.waitForFunction(
       () => document.querySelectorAll('.file.status-completed').length === 3,
       {},
       { timeout: 180000 },
     )
     assert.equal(await page.locator('.fileError').count(), 0)
-    await page.getByRole('button', { name: 'Prepare ZIP (3 files)', exact: true }).click()
+    await activate(page.getByRole('button', { name: 'Prepare ZIP (3 files)', exact: true }))
     const promise = page.waitForEvent('download')
-    await page.getByRole('link', { name: 'Save ZIP (3 files)', exact: true }).click()
+    await activate(page.getByRole('link', { name: 'Save ZIP (3 files)', exact: true }))
     const download = await promise
     const entries = unzipSync(readFileSync(await download.path()))
     assert.equal(Object.keys(entries).length, 3)
@@ -880,12 +965,10 @@ try {
     'Cancel all prevents waiting video and retry succeeds',
     async () => {
       await upload('/video-compressor', [longVideo, video])
-      await page.locator('.compressBtn').click()
+      await activate(page.locator('.compressBtn'))
       await page.locator('.status-processing').waitFor()
       await page.screenshot({ path: path.join(evidence, 'video-processing-before-cancel.png') })
-      await page
-        .getByRole('button', { name: 'Cancel processing', exact: true })
-        .click()
+      await activate(page.getByRole('button', { name: 'Cancel processing', exact: true }))
       await page.waitForFunction(
         () => !document.querySelector('.status-processing'),
       )
@@ -893,15 +976,11 @@ try {
         document.querySelector('.workflowStatus')?.textContent.includes('cancelled'),
       )
       assert.equal(await page.locator('.file.status-cancelled').count(), 2)
-      await page
-        .locator('.fileActions button')
-        .filter({ hasText: 'Retry' })
-        .first()
-        .click()
+      await activate(page.locator('.fileActions button').filter({ hasText: 'Retry' }).first())
       await page.locator('.status-completed').waitFor({ timeout: 180000 })
       assert.equal(await page.locator('.status-failed').count(), 0)
       const promise = page.waitForEvent('download')
-      await page.getByRole('button', { name: 'Download file', exact: true }).click()
+      await activate(page.getByRole('button', { name: 'Download file', exact: true }))
       const download = await promise
       const output = await download.path()
       assert.equal(probe(output).streams.find(stream => stream.codec_type === 'video').codec_name, 'h264')
@@ -913,7 +992,7 @@ try {
     const sizes = {}
     for (const quality of [10, 100]) await check(`WebP real custom quality ${quality}%`, async () => {
       const out = await processAndDownload('/webp-compressor', webp, async () => {
-        await page.getByRole('button', { name: 'Balanced', exact: true }).click()
+        await activate(page.getByRole('button', { name: 'Balanced', exact: true }))
         await page.locator('input[type=range]').press(quality === 10 ? 'Home' : 'End')
         assert.equal(await page.locator('input[type=range]').inputValue(), String(quality))
       })
@@ -925,6 +1004,113 @@ try {
       return { quality, bytes: sizes[quality] }
     })
   }
+  await check('Permanent ZIP failures require a replacement and reject futile submits', async () => {
+    const rejected = []
+    for (const [input, expected] of [[hostile, /unsafe file path/i], [corruptZip, /integrity check/i], [emptyZip, /does not contain any files/i]]) {
+      await upload('/archive-compressor', input)
+      await activate(page.locator('.compressBtn'))
+      await page.locator('.file.status-failed').waitFor()
+      assert.match(await page.locator('.fileError').innerText(), expected)
+      assert.match(await page.locator('.fileError').innerText(), /Remove this ZIP and choose another file/)
+      assert.equal(await page.locator('.compressBtn').count(), 0)
+      assert.equal(await page.getByRole('button', { name: /^Retry / }).count(), 0)
+      assert.equal(await page.locator('.downloadActions').count(), 0)
+      const attemptedRun = await page.evaluate(() => new Promise(resolve => {
+        let started = false
+        const observer = new MutationObserver(() => { if (document.querySelector('.file.status-validating,.file.status-processing')) started = true })
+        observer.observe(document.querySelector('.workflowForm'), { subtree: true, attributes: true, attributeFilter: ['class'] })
+        document.querySelector('.workflowForm').dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }))
+        setTimeout(() => { observer.disconnect(); resolve(started) }, 100)
+      }))
+      assert.equal(attemptedRun, false, 'A forced submit must not restart permanently invalid ZIP input')
+      await page.waitForTimeout(350)
+      await page.screenshot({ path: path.join(evidence, `terminal-${path.basename(input)}.png`) })
+      rejected.push(path.basename(input))
+      await activate(page.getByRole('button', { name: 'Clear all', exact: true }))
+    }
+    // Replace in the same workspace instead of navigating away from the error.
+    await page.locator('input[type=file]').setInputFiles(zipPath)
+    await page.locator('.compressBtn:enabled').waitFor()
+    assert.equal(await page.locator('.workflowStatus.status-error').count(), 0)
+    await activate(page.locator('.compressBtn'))
+    await page.locator('.file.status-completed').waitFor()
+    await activate(page.getByRole('button', { name: 'Prepare ZIP (2 files)', exact: true }))
+    const promise = page.waitForEvent('download')
+    await activate(page.getByRole('link', { name: 'Save ZIP (2 files)', exact: true }))
+    const downloaded = await promise
+    const entries = unzipSync(readFileSync(await downloaded.path()))
+    assert.equal(new TextDecoder().decode(entries['one.txt']), 'first')
+    assert.equal(new TextDecoder().decode(entries['folder__two.txt']), 'second')
+    return { rejected, replacement: 'Two real extracted files downloaded with exact bytes' }
+  })
+  for (const sources of [[emptyText], [emptyText, pdfPath]]) await check(`ZIP creation preserves zero-byte entries (${sources.length} inputs)`, async () => {
+    const out = await processAndDownload('/zip-compressor', sources)
+    const entries = nativeZipEntries(out)
+    assert.deepEqual(entries.map(entry => entry.name).sort(), sources.map(source => path.basename(source)).sort())
+    for (const source of sources) {
+      const entry = entries.find(entry => entry.name === path.basename(source))
+      assert.equal(entry.bytes, readFileSync(source).length)
+      assert.equal(entry.sha256, createHash('sha256').update(readFileSync(source)).digest('hex'))
+    }
+    assert.equal(entries.find(entry => entry.name === 'empty.txt').bytes, 0)
+    if (sources.length === 1) {
+      assert.match(await page.locator('.workflowActionContext').innerText(), /ZIP ready/)
+      assert.doesNotMatch(await page.locator('.workflowForm').innerText(), /extracted|NaN|Infinity|\d+%/)
+    }
+    await page.waitForTimeout(350)
+    await page.screenshot({ path: path.join(evidence, `zip-create-empty-${sources.length}-completed.png`) })
+    return { independentlyCheckedBy: 'Python zipfile CRC/content hashes', entries }
+  })
+  await check('ZIP extraction downloads a genuine zero-byte file', async () => {
+    await upload('/archive-compressor', emptyEntryZip)
+    await activate(page.locator('.compressBtn'))
+    await page.locator('.file.status-completed').waitFor()
+    assert.match(await page.locator('.workflowActionContext').innerText(), /1 extracted file ready/)
+    const promise = page.waitForEvent('download')
+    await activate(page.getByRole('button', { name: 'Download file', exact: true }))
+    const download = await promise
+    assert.equal(download.suggestedFilename(), 'empty.txt')
+    assert.equal(readFileSync(await download.path()).length, 0)
+    await page.waitForTimeout(350)
+    await page.screenshot({ path: path.join(evidence, 'empty-entry-extracted.png') })
+  })
+  await check('A real ZIP Worker startup failure remains retryable and recovers', async () => {
+    await upload('/archive-compressor', workerZip)
+    await page.evaluate(() => {
+      globalThis.__archiveOriginalWorker = globalThis.Worker
+      globalThis.__archiveWorkerFailures = 0
+      globalThis.Worker = new Proxy(globalThis.Worker, { construct(target, args, newTarget) {
+        if (String(args[0]).startsWith('blob:')) {
+          globalThis.__archiveWorkerFailures++
+          throw new DOMException('Controlled temporary Worker startup failure', 'SecurityError')
+        }
+        return Reflect.construct(target, args, newTarget)
+      } })
+    })
+    let failures
+    try {
+      await activate(page.locator('.compressBtn'))
+      await page.locator('.file.status-failed').waitFor()
+      failures = await page.evaluate(() => globalThis.__archiveWorkerFailures)
+      assert.ok(failures > 0, 'The real fflate Worker path must exercise the injected startup failure')
+      assert.equal(await page.getByRole('button', { name: /^Retry / }).count(), 1)
+      assert.equal(await page.locator('.compressBtn:enabled').count(), 1)
+      assert.doesNotMatch(await page.locator('.fileError').innerText(), /Remove this ZIP and choose another file/)
+      await page.waitForTimeout(350)
+      await page.screenshot({ path: path.join(evidence, 'temporary-archive-worker-error.png') })
+    } finally {
+      await page.evaluate(() => { globalThis.Worker = globalThis.__archiveOriginalWorker })
+    }
+    await activate(page.getByRole('button', { name: /^Retry / }))
+    await page.locator('.file.status-completed').waitFor()
+    const promise = page.waitForEvent('download')
+    await activate(page.getByRole('button', { name: 'Download file', exact: true }))
+    const download = await promise
+    assert.deepEqual(readFileSync(await download.path()), Buffer.from(workerSource))
+    await page.waitForTimeout(350)
+    await page.screenshot({ path: path.join(evidence, 'temporary-archive-worker-recovered.png') })
+    return { actualWorkerFailuresExercised: failures, recoveredOutputBytes: workerSource.length }
+  })
   await check(
     'No file-upload requests or unhandled browser exceptions',
     async () => {
@@ -935,9 +1121,10 @@ try {
   )
 } finally {
   clearInterval(telemetry)
+  await Promise.allSettled(downloadProofTasks)
   writeFileSync(
     path.join(evidence, browserName === 'chromium' ? 'functionality.json' : `functionality-${browserName}.json`),
-    JSON.stringify({ caseFilter: process.env.QA_CASE_FILTER || null, caseRange: process.env.QA_CASE_RANGE || null, results, timings, comparisonDiagnostics, browserLifecycle, fixtures, errors, consoleMessages, failedResources, requests }, null, 2),
+    JSON.stringify({ browserName, browserVersion: browser.version(), configuredViewport, touchEmulation, captureFullStates, traceResources, resourceTrace, downloadProofs, stateCaptures: [...stateCaptureKeys], stateCaptureErrors, caseFilter: process.env.QA_CASE_FILTER || null, caseRange: process.env.QA_CASE_RANGE || null, results, timings, comparisonDiagnostics, browserLifecycle, fixtures, errors, consoleMessages, failedResources, requests }, null, 2),
   )
   closingBrowser = true
   await browser.close()

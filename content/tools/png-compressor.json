@@ -1,6 +1,6 @@
 {
   "heading": "Can I reduce a PNG and keep its transparent background?",
-  "introduction": "Maximum is the default for PNG and may reduce colors while preserving transparency. Choose Lossless to preserve decoded pixels, or Smart for more conservative color reduction. Dimensions stay unchanged.",
+  "introduction": "PNG starts in Lossless mode to preserve decoded pixels and transparency. Choose Smart for conservative color reduction, or Maximum for a stronger trade-off. Color-reducing modes are optional. Dimensions stay unchanged.",
   "sections": [
     {
       "heading": "Use PNG for graphics that need it",
@@ -17,7 +17,7 @@
   ],
   "faq": [],
   "seoTitle": "PNG Compressor — Keep Transparent Images",
-  "seoDescription": "Compress PNG files with Maximum by default or choose Lossless to preserve decoded pixels. Preserve transparency and default dimensions; verify actual size and unmet targets.",
+  "seoDescription": "Compress PNG files losslessly by default, preserving decoded pixels, transparency and dimensions. Optional color-reduction modes show the trade-off and actual size.",
   "links": [
     {
       "label": "Compare transparent image formats",

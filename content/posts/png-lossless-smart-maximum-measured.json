@@ -1,0 +1,98 @@
+{
+  "published": false,
+  "archived": false,
+  "title": "PNG Lossless, Smart or Maximum: what changes in a real test?",
+  "description": "Three generated PNGs show how file size, exact pixels and visible color changes differ between Lossless, Smart and Maximum compression.",
+  "date": "2026-11-27",
+  "readingTime": "5 min",
+  "figure": "qualitycurve",
+  "category": "Image compression",
+  "tags": ["PNG", "lossless compression", "image quality"],
+  "seoTitle": "PNG Lossless vs Smart vs Maximum: Measured Results",
+  "seoDescription": "Compare actual PNG byte sizes for a screenshot, transparent graphic and gradient. Learn when to keep exact pixels or explicitly allow color reduction.",
+  "body": [
+    {
+      "_template": "callout",
+      "title": "About the cover illustration",
+      "text": "The cover is a conceptual illustration of a size–quality trade-off, not the measured test files or a benchmark chart. Actual byte counts appear in the table below."
+    },
+    {
+      "_template": "p",
+      "text": "A smaller PNG is not automatically a better result. Lossless compression preserves decoded pixels; color reduction can save more bytes by changing those pixels. FileCompresser starts in Lossless mode, with Smart and Maximum available when you explicitly accept that trade-off. Original display dimensions are preserved in all three modes."
+    },
+    {
+      "_template": "h2",
+      "text": "The same three files, three settings"
+    },
+    {
+      "_template": "p",
+      "text": "On 27 November 2026, we tested generated artwork: a 1440 × 900 screenshot, a 768 × 512 graphic with continuous transparency and a 1600 × 900 gradient. Each mode received the same original bytes, rather than a previous compressed result. Two runs per mode produced identical output hashes. We independently decoded the downloads to check dimensions, pixel samples and alpha values. These are selected local engineering-build results, not a claim that every PNG will behave this way."
+    },
+    {
+      "_template": "table",
+      "caption": "Actual byte counts. All outputs retained the source display dimensions. Smaller numbers do not imply equal image quality.",
+      "columns": ["Generated PNG", "Original bytes", "Lossless bytes", "Smart bytes", "Maximum bytes"],
+      "rows": [
+        { "cells": ["Screenshot, 1440 × 900", "3,890,236", "83,020", "44,357", "31,045"] },
+        { "cells": ["Transparent graphic, 768 × 512", "74,504", "29,945", "29,945", "11,216"] },
+        { "cells": ["Gradient, 1600 × 900", "239,911", "82,808", "82,808", "82,808"] }
+      ]
+    },
+    {
+      "_template": "h2",
+      "text": "Lossless: keep the decoded pixels"
+    },
+    {
+      "_template": "p",
+      "text": "All three Lossless outputs had exactly the same decoded pixel values as their inputs. The screenshot shrank dramatically because its original encoding was inefficient. Another encoding of the same screenshot pixels was already 111,968 bytes: producing the same 83,020-byte Lossless output saved about 25.9%, rather than 97.9%. The reduction percentage describes the starting file, not image quality."
+    },
+    {
+      "_template": "h2",
+      "text": "Smart: allow a more conservative color trade-off"
+    },
+    {
+      "_template": "p",
+      "text": "Smart produced a 44,357-byte screenshot, smaller than Lossless. Its text looked close to the source in our native-scale visual review, but decoded colors were not identical. For the transparent graphic and gradient, the selected Smart result retained the Lossless pixels and byte counts. Choosing a color-reduction mode does not mean every file must lose colors. The tool keeps a lossless candidate when its accepted color-reduced candidate is not smaller."
+    },
+    {
+      "_template": "h2",
+      "text": "Maximum: inspect the smaller result carefully"
+    },
+    {
+      "_template": "p",
+      "text": "Maximum reduced the screenshot to 31,045 bytes and the transparent graphic to 11,216 bytes. Alpha values remained exact in both outputs, but preserving transparency did not preserve every RGB color. Our transparent graphic showed visible color banding and a greener text tone. The gradient retained its exact Lossless result instead. Maximum is an optional size–quality trade-off, not a promise of invisible changes or the smallest possible file."
+    },
+    {
+      "_template": "callout",
+      "title": "Exact transparency does not mean identical appearance",
+      "text": "A transparent pixel has both color and opacity. Checking alpha verifies opacity values; it cannot establish that RGB colors are unchanged. Inspect transparent graphics against both light and dark backgrounds, especially around lettering, gradients and soft edges."
+    },
+    {
+      "_template": "h2",
+      "text": "Choose a mode for the actual image"
+    },
+    {
+      "_template": "ol",
+      "items": [
+        "Open the PNG compressor and choose your original file. Start with the default Lossless mode.",
+        "Download and compare the actual byte count. An already efficient source may remain unchanged, with 0% reduction.",
+        "If you need a smaller file, open Settings and explicitly choose Smart or Maximum. Recompress from the retained original.",
+        "Use Compare and inspect the downloaded file at its intended display size. Check text, edges, gradients and transparency on light and dark backgrounds.",
+        "Keep the source. If an upload form has a strict byte limit, use the separate Target size mode and check whether the result is marked Target met."
+      ]
+    },
+    {
+      "_template": "link",
+      "text": "Try the PNG compressor",
+      "href": "/png-compressor"
+    },
+    {
+      "_template": "h2",
+      "text": "What this test does not establish"
+    },
+    {
+      "_template": "p",
+      "text": "Three generated 8-bit PNGs do not represent every photograph, color profile, high-precision image or device. Numerical color-error guards are heuristics, not guarantees of invisible changes. Exact decoded pixels also do not imply identical file bytes or complete metadata preservation. The test ran locally in Chrome 156 on a Linux desktop with an Intel Core i5-2400; it does not establish processing times on phones or production networks. We do not promise universal savings, microsecond processing or the best possible encoding."
+    }
+  ]
+}

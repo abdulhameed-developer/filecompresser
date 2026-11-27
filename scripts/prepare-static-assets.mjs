@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto'
 import { constants } from 'node:fs'
-import { copyFile, mkdir, rm, writeFile } from 'node:fs/promises'
+import { copyFile, mkdir, readFile, rm, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { checkUploads } from './check-uploads.mjs'
@@ -13,7 +13,25 @@ import { prepareImageCodecs } from './prepare-image-codecs.mjs'
 export const WASM_CHUNK_SIZE = 16 * 1024 * 1024
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex')
 
+// Bare browser/admin pages also request /favicon.ico. Embed the existing PNG
+// unchanged in a standard single-frame ICO instead of creating different art.
+async function prepareFallbackIcon(root) {
+  const png = await readFile(path.join(root, 'public/favicon-32.png'))
+  if (!png.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])) ||
+      png.readUInt32BE(16) !== 32 || png.readUInt32BE(20) !== 32) throw Error('Review the 32px favicon source before generating its ICO wrapper.')
+  const header = Buffer.alloc(22)
+  header.writeUInt16LE(1, 2)
+  header.writeUInt16LE(1, 4)
+  header[6] = header[7] = 32
+  header.writeUInt16LE(1, 10)
+  header.writeUInt16LE(32, 12)
+  header.writeUInt32LE(png.length, 14)
+  header.writeUInt32LE(header.length, 18)
+  await writeFile(path.join(root, 'public/favicon.ico'), Buffer.concat([header, png]))
+}
+
 export async function prepareStaticAssets(root = process.cwd(), options = {}) {
+  await prepareFallbackIcon(root)
   await checkUploads(root)
   await prepareRedirects(root)
   const adminOutput = path.join(root, 'public/admin')

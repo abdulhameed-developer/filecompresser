@@ -6,6 +6,14 @@ export type FileStatus =
   | 'failed'
   | 'cancelled'
 
+/** Proven immutable ZIP input failures; unknown decoder/resource errors may retry. */
+export const ARCHIVE_INPUT_FAILURE_CODES = {
+  invalid: 'archive-invalid',
+  integrity: 'archive-integrity',
+  empty: 'archive-empty',
+} as const
+export type ArchiveInputFailureCode = typeof ARCHIVE_INPUT_FAILURE_CODES[keyof typeof ARCHIVE_INPUT_FAILURE_CODES]
+
 export type CompressionLevel = 'recommended' | 'maximum'
 
 /** Image modes have separate encoder policies; media retain their existing levels. */
@@ -121,6 +129,8 @@ export interface QueueItem {
   /** Human-readable stage label, e.g. "Encoding…". Announced politely for screen readers. */
   stage?: string
   error?: string
+  /** Set only by a ZIP-extract run; changing options cannot repair these bytes. */
+  archiveFailureCode?: ArchiveInputFailureCode
   result?: ProcessedResult
   outputSize?: number
   objectUrl?: string

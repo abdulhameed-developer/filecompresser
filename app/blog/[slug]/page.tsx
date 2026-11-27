@@ -9,6 +9,7 @@ import BlogContent from '@/components/BlogContent'
 import BlogImage from '@/components/BlogImage'
 import { BLOG_ART } from '@/lib/blog-art'
 import { getTool } from '@/lib/tools'
+import { stockBlogFigure } from '@/lib/stock-blog-art'
 
 export function generateStaticParams() {
   return allPostSlugs().map((slug) => ({ slug }))
@@ -65,6 +66,7 @@ export default async function BlogPostPage({
   if (!post) notFound()
   const image = postImage(post)
   const author = postAuthor(post)
+  const responsiveFigure = post.featuredImage ? stockBlogFigure(image.src) : post.figure
 
   const others = postsByDate()
     .filter((p) => p.slug !== post.slug)
@@ -139,7 +141,7 @@ export default async function BlogPostPage({
       {post.updated && post.updated !== post.date && <p className="postUpdated">Updated <time dateTime={post.updated}>{formatDate(post.updated)}</time></p>}
 
       <figure className="articleHero">
-        {post.featuredImage ? <Image src={image.src} alt={image.alt} width={1200} height={800} sizes="(max-width: 860px) 100vw, 860px" loading="eager" fetchPriority="high" style={{ width: '100%', height: 'auto' }} /> : <BlogImage figure={post.figure} sizes="(max-width: 860px) 100vw, 860px" priority />}
+        {responsiveFigure ? <BlogImage figure={responsiveFigure} sizes="(max-width: 900px) calc(100vw - 40px), 860px" priority alt={image.alt} fallbackSrc={post.featuredImage ? image.src : undefined} /> : <Image src={image.src} alt={image.alt} width={1200} height={800} sizes="(max-width: 900px) calc(100vw - 40px), 860px" loading="eager" fetchPriority="high" style={{ width: '100%', height: 'auto' }} />}
         {image.caption && <figcaption>{image.caption}</figcaption>}
       </figure>
       {post.tags?.length ? <ul className="postTags" aria-label="Article topics">{post.tags.map(tag => <li key={tag}>{tag}</li>)}</ul> : null}

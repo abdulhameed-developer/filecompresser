@@ -14,6 +14,37 @@ export const IMAGE_OUTPUT_FORMATS: Record<ImageFormat, OutputFormatOption> = {
 const FORMAT_ALIASES: Record<string, ImageFormat> = { jpeg: 'jpeg', jpg: 'jpeg', jfif: 'jpeg', jpe: 'jpeg', png: 'png', webp: 'webp' }
 const WORKER_URL = '/image-worker/image-engine.mjs'
 const JOB_TIMEOUT_MS = 180_000
+const WORKER_IDLE_MS = 30_000
+let nextJobId = 0
+let idleWorker: { worker: Worker; timer: ReturnType<typeof setTimeout> } | undefined
+
+/** Keep at most one initialized encoder, never a source File or decoded bitmap. */
+function releaseIdleWorker() {
+  if (!idleWorker) return
+  clearTimeout(idleWorker.timer)
+  idleWorker.worker.terminate()
+  idleWorker = undefined
+}
+
+if (typeof window !== 'undefined') window.addEventListener('pagehide', releaseIdleWorker)
+
+function acquireWorker(probe: boolean) {
+  // Optional UI probes do not displace a warm encoding engine.
+  if (!probe && idleWorker) {
+    const { worker, timer } = idleWorker
+    clearTimeout(timer)
+    idleWorker = undefined
+    return worker
+  }
+  return new Worker(WORKER_URL, { type: 'module', name: 'FileCompresser image encoder' })
+}
+
+function retainWorker(worker: Worker) {
+  worker.onmessage = null
+  worker.onerror = null
+  if (idleWorker) { worker.terminate(); return }
+  idleWorker = { worker, timer: setTimeout(releaseIdleWorker, WORKER_IDLE_MS) }
+}
 
 export function isImageFormat(value: unknown): value is ImageFormat {
   return value === 'jpeg' || value === 'png' || value === 'webp'
@@ -72,9 +103,9 @@ export interface ImageSourceProbe {
 
 type WorkerOutput = PipelineResult | ImageProbe
 type WorkerMessage =
-  | { type: 'progress'; progress: number; message: string }
-  | { type: 'result' | 'probe'; result: WorkerOutput }
-  | { type: 'error'; message: string; code?: string }
+  | { jobId: number; type: 'progress'; progress: number; message: string }
+  | { jobId: number; type: 'result' | 'probe'; result: WorkerOutput }
+  | { jobId: number; type: 'error'; message: string; code?: string }
 
 function describeImageError(error: unknown, signal?: CancelSignal): Error {
   if (signal?.cancelled) return new ProcessingError('Processing was cancelled.', 'cancelled')
@@ -89,38 +120,55 @@ function describeImageError(error: unknown, signal?: CancelSignal): Error {
   return new ProcessingError(candidate.message || 'This image could not be compressed in your browser.')
 }
 
-/** Each job owns its worker. Cancellation terminates the decoder/WASM immediately. */
+/** Exclusive job ownership; cancellation/errors terminate immediately, success
+ * can retain one idle WASM engine for the next file, with cleanup scheduled after 30 seconds. */
 function runWorker(file: File, options: ImageCompressOptions, onProgress?: ProgressCallback, signal?: CancelSignal, probe = false): Promise<WorkerOutput> {
   assertNotCancelled(signal)
   if (typeof Worker === 'undefined') return Promise.reject(new ProcessingError('Image workers are unavailable.', 'worker-unavailable'))
   return new Promise((resolve, reject) => {
     let worker: Worker
-    try { worker = new Worker(WORKER_URL, { type: 'module', name: 'FileCompresser image encoder' }) }
+    try { worker = acquireWorker(probe) }
     catch { reject(new ProcessingError('Image workers are unavailable.', 'worker-unavailable')); return }
     let settled = false
+    const jobId = ++nextJobId
     let release = () => {}
     const finish = (error?: Error, result?: WorkerOutput) => {
       if (settled) return
+      if (!error && !result) error = new ProcessingError('The image worker produced no output.')
       settled = true
       clearTimeout(timer)
       release()
-      worker.terminate()
+      worker.onmessage = null
+      worker.onerror = null
+      if (error || probe) worker.terminate()
+      else retainWorker(worker)
       if (error) reject(error)
       else if (result) resolve(result)
-      else reject(new ProcessingError('The image worker produced no output.'))
     }
     const timer = setTimeout(() => finish(new ProcessingError('This image took too long to process on this device. Try one file at a time, another format, or another device. No partial output was returned.', 'image-timeout')), JOB_TIMEOUT_MS)
     release = listenForCancellation(signal, () => finish(new ProcessingError('Processing was cancelled.', 'cancelled')))
+    if (settled) { release(); return }
     worker.onmessage = (event: MessageEvent<WorkerMessage>) => {
       const data = event.data
+      // A late response from an earlier job can never settle a new lease.
+      if (data && typeof data.jobId === 'number' && data.jobId !== jobId) return
       if (signal?.cancelled) { finish(new ProcessingError('Processing was cancelled.', 'cancelled')); return }
-      if (!data || typeof data.type !== 'string') { finish(new ProcessingError('The image worker returned an invalid response.')); return }
+      if (!data || data.jobId !== jobId || typeof data.type !== 'string') { finish(new ProcessingError('The image worker returned an invalid response.')); return }
       if (data.type === 'progress') onProgress?.(data.progress, data.message)
       else if (data.type === 'error') finish(new ProcessingError(data.message, data.code))
-      else if (data.type === 'result' || data.type === 'probe') finish(undefined, data.result)
+      else if (data.type === 'result' || data.type === 'probe') {
+        if ((data.type === 'probe') !== probe || !data.result || typeof data.result !== 'object') {
+          finish(new ProcessingError('The image worker returned an invalid output response.')); return
+        }
+        if (!probe && (!('blob' in data.result) || !(data.result.blob instanceof Blob) || data.result.blob.size <= 0 ||
+            !data.result.inspection || !isImageFormat(data.result.inspection.outputFormat))) {
+          finish(new ProcessingError('The image worker produced no valid encoded file.')); return
+        }
+        finish(undefined, data.result)
+      } else finish(new ProcessingError('The image worker returned an invalid response.'))
     }
     worker.onerror = () => finish(new ProcessingError('The image worker could not start in this browser.', 'worker-unavailable'))
-    try { worker.postMessage({ file, options, probe }) }
+    try { worker.postMessage({ file, options, probe, jobId }) }
     catch (error) { finish(describeImageError(error, signal)) }
   })
 }
@@ -151,11 +199,18 @@ async function runImageJob(file: File, options: ImageCompressOptions, onProgress
   }
 }
 
-/** Inspect alpha off the UI thread before offering a JPEG conversion. */
+/** Inspect alpha off the UI thread where needed. JPEG headers establish that
+ * the format has no alpha; this is not a promise that its scan data decodes. */
 export async function availableOutputFormats(file: File, signal?: CancelSignal, onProbe?: (probe: ImageSourceProbe) => void): Promise<ImageFormat[]> {
   let probe: ImageProbe
   try {
-    const result = await runImageJob(file, {}, undefined, signal, true)
+    const header = await inspectImageHeader(file, () => Boolean(signal?.cancelled))
+    assertNotCancelled(signal)
+    // Avoid a full-resolution JPEG bitmap, canvas and alpha scan merely to
+    // enable the output picker. Actual processing still decodes and validates.
+    const result = header.format === 'jpeg'
+      ? { format: 'jpeg' as const, width: header.width, height: header.height, hasAlpha: false, jpegSafe: true }
+      : await runImageJob(file, {}, undefined, signal, true)
     assertNotCancelled(signal)
     if (!('hasAlpha' in result) || !isImageFormat(result.format) || typeof result.hasAlpha !== 'boolean' ||
         !Number.isInteger(result.width) || !Number.isInteger(result.height) || result.width <= 0 || result.height <= 0 || result.width * result.height > 32_000_000 ||

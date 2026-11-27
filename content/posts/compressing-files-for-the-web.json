@@ -12,7 +12,7 @@
   "title": "Choosing the right format for smaller web files",
   "description": "A practical guide to image formats, audio bitrate, video codecs and the limits of PDF optimization.",
   "date": "2026-09-20",
-  "updated": "2026-11-26",
+  "updated": "2026-11-27",
   "readingTime": "5 min",
   "figure": "formattree",
   "seoDescription": "Choose JPG, PNG, WebP, MP3 or MP4 for your task. Understand transparency, lossy encoding, audio bitrate and PDF optimization limits.",
@@ -29,7 +29,7 @@
       "_template": "ul",
       "items": [
         "JPG/JPEG: a practical choice for photographs. Re-encoding is lossy, and JPEG cannot store transparency.",
-        "PNG: useful for screenshots, diagrams and transparent artwork. Maximum is the default and may reduce colors. Choose Lossless to preserve decoded pixels. Smart, Maximum and Target size may reduce colors while preserving transparency; visible color changes are possible. Original dimensions are kept. Re-encoding can also normalize color or remove metadata.",
+        "PNG: useful for screenshots, diagrams and transparent artwork. Lossless is the default and preserves decoded pixels. Smart, Maximum and Target size are optional color-reduction modes that preserve checked transparency values; visible color changes are possible. Original dimensions are kept. Re-encoding can also normalize color or remove metadata.",
         "WebP: supports transparency and can be useful for compact web images. FileCompresser offers JPG, PNG and WebP output for supported still images; compare the downloaded result before publishing."
       ]
     },

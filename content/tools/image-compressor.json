@@ -28,11 +28,11 @@
     },
     {
       "heading": "Maximum",
-      "body": "Maximum is the default mode for the general image compressor. It applies a stronger compression trade-off to reduce file size. For JPEG and WebP, this can affect visible image detail.\n"
+      "body": "Maximum is an optional stronger compression mode. It applies a greater quality trade-off to reduce file size. For JPEG and WebP, this can affect visible image detail.\n"
     },
     {
       "heading": "Balanced",
-      "body": "Balanced offers a more moderate approach. It is useful when you want to reduce file size without choosing the strongest compression setting."
+      "body": "Balanced is the default for JPEG and WebP. It offers a more moderate approach when you want to reduce file size without choosing the strongest compression setting."
     },
     {
       "heading": "High Quality",
@@ -40,7 +40,7 @@
     },
     {
       "heading": "PNG Lossless",
-      "body": "PNG Lossless preserves decoded image pixels. It is a suitable option when exact pixel appearance matters more than achieving the smallest possible file.\n"
+      "body": "PNG starts in Lossless mode, which preserves decoded image pixels and transparency. Choose Smart, Maximum or Target size explicitly when color reduction is acceptable.\n"
     },
     {
       "heading": "Target Size",

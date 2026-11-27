@@ -18,3 +18,24 @@ export function lockDialogScroll(): () => void {
     root.style.scrollBehavior = previous.behavior
   }
 }
+
+/** Keep the full focused control/ring inside the modal's own scrollport. */
+export function revealFocusedDialogControl(body: HTMLElement, target: EventTarget | null): void {
+  if (!(target instanceof HTMLElement) || !body.contains(target)) return
+  // Native focus may reveal only an input caret, and WebKit may not scroll a
+  // newly expanded panel. Measure after that focus and the React layout update.
+  requestAnimationFrame(() => {
+    const document = body.ownerDocument
+    if (!body.isConnected || !target.isConnected || !body.closest<HTMLDialogElement>('dialog')?.open || target.matches(':disabled') || !body.contains(target) || !(target === document.activeElement || target.contains(document.activeElement))) return
+    const frame = target.closest<HTMLElement>('.numberField') || target
+    const box = frame.getBoundingClientRect()
+    const port = body.getBoundingClientRect()
+    if (port.height <= 0) return
+    const style = getComputedStyle(frame)
+    const clearance = 8 + (parseFloat(style.outlineWidth) || 0) + Math.max(0, parseFloat(style.outlineOffset) || 0)
+    const delta = box.bottom > port.bottom - clearance
+      ? box.bottom - port.bottom + clearance
+      : box.top < port.top + clearance ? box.top - port.top - clearance : 0
+    if (delta) body.scrollTop += delta
+  })
+}

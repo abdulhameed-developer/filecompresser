@@ -50,10 +50,11 @@ export async function runImagePipeline(file, options, adapter, hooks = {}) {
   // Compression and format conversion never change display dimensions, even
   // when an old caller supplies former resize options.
   const geometry = { width: header.width, height: header.height }
-  // Large-image measurements showed much higher CPU cost for level4. Keep
-  // real color-reduction modes/guards, but bound extra DEFLATE effort above4MP.
-  // This is an effort policy, not a fixed processing-time guarantee.
-  const pngEffort = (pngMode === 'maximum' || pngMode === 'target') && geometry.width * geometry.height <= 4_000_000 ? 4 : 2
+  // Keep the established level 2 lossless baseline. The measured level 1 trial
+  // was faster but substantially larger on gradients and 16-bit PNGs.
+  // Target retains its stronger small-image lossless attempt: lowering it can
+  // force color reduction or miss a limit that level 4 meets without pixel loss.
+  const pngEffort = pngMode === 'target' && geometry.width * geometry.height <= 4_000_000 ? 4 : 2
   const converted = outputFormat !== header.format
   let decoded
   let attempts = 0
@@ -121,6 +122,8 @@ export async function runImagePipeline(file, options, adapter, hooks = {}) {
           throw new ImagePipelineError('The encoded image lost transparency. No flattened output was returned.', 'transparency')
         return verified
       }
+      // Compare every color-reduction mode with an independently verified
+      // lossless candidate; a lossy file must not replace a smaller lossless one.
       candidate = await choosePngCandidate(await encode(undefined), { mode: pngMode, targetBytes, allowLosslessColorTrial: !header.hasProfile && !decoded.hasAlpha && header.orientation === 1 }, {
         // Cheap trial optimization happens before selection. The expensive
         // refinement below is performed only once for the chosen lossy file.

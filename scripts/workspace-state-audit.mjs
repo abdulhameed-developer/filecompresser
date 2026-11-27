@@ -9,7 +9,10 @@ import { zipSync } from 'fflate'
 import { PDFDocument } from 'pdf-lib'
 
 const qa = createRequire(path.join(process.env.PW_TOOLS || path.join(process.env.HOME, 'pwtools'), 'qa.cjs'))
-const { chromium } = qa('playwright-core')
+const axeQa = process.env.AXE_TOOLS ? createRequire(path.join(process.env.AXE_TOOLS, 'qa.cjs')) : qa
+const browsers = qa('playwright-core')
+const browserName = process.env.TEST_BROWSER || 'chromium'
+if (!['chromium', 'firefox', 'webkit'].includes(browserName)) throw Error('Unsupported TEST_BROWSER')
 const ffmpeg = process.env.FFMPEG_PATH || qa('ffmpeg-static')
 const fixtures = mkdtempSync(path.join(tmpdir(), 'filecompresser-workspace-'))
 const output = process.env.QA_OUTPUT || '.qa-results/workspace-states'
@@ -43,7 +46,9 @@ const base = (process.argv[2] || 'http://127.0.0.1:3000').replace(/\/$/, '')
 const widths = process.env.STATE_WIDTHS ? process.env.STATE_WIDTHS.split(',').map(Number) : [320, 390, 768, 1440]
 const height = process.env.STATE_HEIGHT ? Number(process.env.STATE_HEIGHT) : 900
 const selectedTools = process.env.STATE_TOOLS ? tools.filter(([slug]) => process.env.STATE_TOOLS.split(',').includes(slug)) : tools
-const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || '/usr/bin/google-chrome', args: ['--no-sandbox', '--disable-dev-shm-usage'] })
+const browser = await browsers[browserName].launch(browserName === 'chromium'
+  ? { executablePath: process.env.CHROME_PATH || '/usr/bin/google-chrome', args: ['--no-sandbox', '--disable-dev-shm-usage'] }
+  : { headless: true, ...(process.env.TEST_BROWSER_PATH ? { executablePath: process.env.TEST_BROWSER_PATH } : {}) })
 const page = await browser.newPage()
 const results = []
 const errors = []
@@ -59,8 +64,20 @@ try {
       record.sourceName = sourceName
       await page.locator('input[type=file]').setInputFiles(process.env.STATE_LONG_FILENAMES ? { name: sourceName, mimeType: '', buffer: readFileSync(file) } : file)
       await page.locator('.workflowPrimaryActions .compressBtn:enabled').waitFor({ timeout: 15_000 })
+      // The ready action can precede the deferred file-details chunk. Capture
+      // and inspect the real source row, rather than its loading placeholder.
+      await page.locator('.fileTitle strong').first().waitFor({ timeout: 15_000 })
       assert.equal(await page.locator('.fileError').count(), 0)
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Populated workspace overflows horizontally')
+      record.selectionScrollY = await page.evaluate(() => window.scrollY)
+      // Let finite entrance animations finish, then capture the entire document
+      // from its top so the sticky header is not composited mid-page. This only
+      // normalizes evidence capture; the original selection scroll is retained.
+      await page.evaluate(async () => {
+        await Promise.allSettled(document.getAnimations().filter(animation => Number.isFinite(animation.effect?.getComputedTiming().endTime)).map(animation => animation.finished))
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+        await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))
+      })
       await page.screenshot({ path: path.join(output, `${slug}-${width}-ready.png`), fullPage: true })
       const details = page.locator('.fileCardDetails').first()
       await details.locator('summary').click()
@@ -82,7 +99,58 @@ try {
         assert.ok(geometry.x >= 0 && geometry.right <= width && geometry.y >= 0 && geometry.bottom <= height)
         const doneBox = await page.getByRole('button', { name: 'Done', exact: true }).boundingBox()
         assert.ok(doneBox.y >= geometry.y && doneBox.y + doneBox.height <= geometry.bottom, 'Modal Done action must remain visible inside the viewport')
+        if (['mp3-compressor', 'wav-compressor', 'video-compressor'].includes(slug)) {
+          record.settingsFieldLayout = await page.locator('.settingsDialog .settings').evaluate(container => {
+            const parent = container.getBoundingClientRect()
+            return [...container.querySelectorAll(':scope > .settingField')].map(field => {
+              const box = field.getBoundingClientRect()
+              return { containerWidth: parent.width, fieldWidth: box.width, left: box.left - parent.left }
+            })
+          })
+          assert.ok(record.settingsFieldLayout.length > 0)
+          assert.ok(record.settingsFieldLayout.every(field => Math.abs(field.left) <= 1 && field.fieldWidth >= field.containerWidth - 1), 'Dialog fields must fill their available column without the legacy auto margin')
+        }
         assert.ok(geometry.focusedInside && geometry.locked)
+        if (process.env.STATE_TARGET_LAYOUT && await page.getByRole('button', { name: 'Target size', exact: true }).count()) {
+          await page.getByRole('button', { name: 'Target size', exact: true }).click()
+          const target = page.getByRole('spinbutton', { name: 'Custom maximum (KB)', exact: true })
+          await target.fill('50')
+          await target.focus()
+          await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))))
+          const targetBox = await target.boundingBox()
+          const targetDone = await page.getByRole('button', { name: 'Done', exact: true }).boundingBox()
+          const visibility = await target.evaluate(input => {
+            const box = input.getBoundingClientRect()
+            const dialog = input.closest('.settingsDialog')
+            const header = dialog.querySelector('.settingsDialogHeader').getBoundingClientRect()
+            const footer = dialog.querySelector('.settingsDialogFooter').getBoundingClientRect()
+            const focusFrame = input.closest('.numberField') || input
+            const frameBox = focusFrame.getBoundingClientRect()
+            const frameStyle = getComputedStyle(focusFrame)
+            const ring = (parseFloat(frameStyle.outlineWidth) || 0) + Math.max(0, parseFloat(frameStyle.outlineOffset) || 0)
+            // Sample inside the four corner regions, clear of rounded painted
+            // borders, and at center. A viewport box alone misses sticky overlap.
+            const inset = Math.min(8, box.width / 4, box.height / 4)
+            const points = [[box.left + inset, box.top + inset], [box.right - inset, box.top + inset], [box.left + inset, box.bottom - inset], [box.right - inset, box.bottom - inset], [box.left + box.width / 2, box.top + box.height / 2]]
+            return {
+              aboveFooter: box.bottom <= footer.top + 1,
+              belowHeader: box.top >= header.bottom - 1,
+              focusRingAboveFooter: frameBox.bottom + ring <= footer.top + 1,
+              focusRingBelowHeader: frameBox.top - ring >= header.bottom - 1,
+              focusRing: { top: frameBox.top - ring, bottom: frameBox.bottom + ring, footerTop: footer.top, headerBottom: header.bottom },
+              hitTests: points.map(([x, y]) => {
+                const hit = document.elementFromPoint(x, y)
+                return { x, y, reachesInput: hit === input || input.contains(hit), actualElement: hit ? `${hit.tagName}.${hit.className}` : null }
+              }),
+            }
+          })
+          record.targetLayout = { input: targetBox, done: targetDone, visibility }
+          assert.ok(targetBox.x >= 0 && targetBox.x + targetBox.width <= width && targetBox.y >= 0 && targetBox.y + targetBox.height <= height, 'Focused custom target input must fit within the short viewport')
+          assert.ok(targetDone.y >= 0 && targetDone.y + targetDone.height <= height, 'Target settings must retain the visible Done action')
+          assert.ok(visibility.aboveFooter && visibility.belowHeader && visibility.focusRingAboveFooter && visibility.focusRingBelowHeader && visibility.hitTests.every(point => point.reachesInput), 'Focused custom target and its complete focus ring must remain exposed between the dialog header/footer and reachable at all four corners and its center')
+          assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false)
+          await page.screenshot({ path: path.join(output, `${slug}-${width}-target-settings.png`) })
+        }
         await page.getByRole('button', { name: 'Close settings', exact: true }).focus()
         await page.keyboard.press('Shift+Tab')
         assert.equal(await page.getByRole('button', { name: 'Done', exact: true }).evaluate(el => el === document.activeElement), true)
@@ -90,8 +158,8 @@ try {
         assert.equal(await page.getByRole('button', { name: 'Close settings', exact: true }).evaluate(el => el === document.activeElement), true)
         await page.screenshot({ path: path.join(output, `${slug}-${width}-settings.png`) })
         if ([390, 1440].includes(width)) {
-          await page.addScriptTag({ path: qa.resolve('axe-core/axe.min.js') })
-          const violations = await page.evaluate(async () => (await window.axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'] } })).violations.map(item => ({ id: item.id, nodes: item.nodes.map(node => node.target) })))
+          await page.addScriptTag({ path: axeQa.resolve('axe-core/axe.min.js') })
+          const violations = await page.evaluate(async () => (await window.axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'] } })).violations.map(item => ({ id: item.id, nodes: item.nodes.map(node => node.target) })))
           record.violations = violations
           assert.deepEqual(violations, [])
         }
@@ -119,7 +187,7 @@ try {
       await page.screenshot({ path: path.join(output, `${slug}-${width}-failure.png`) }).catch(() => {})
     }
     results.push(record)
-    writeFileSync(path.join(output, 'summary.json'), JSON.stringify({ base, capturedAt: new Date().toISOString(), fixtures, results, errors }, null, 2) + '\n')
+    writeFileSync(path.join(output, 'summary.json'), JSON.stringify({ base, browserName, browserVersion: browser.version(), capturedAt: new Date().toISOString(), fixtures, results, errors }, null, 2) + '\n')
   }
 } finally { await browser.close() }
 console.log(`${results.filter(result => result.pass).length}/${results.length} populated workspace checks passed`)

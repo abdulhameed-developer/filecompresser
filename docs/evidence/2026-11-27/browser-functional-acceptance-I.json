@@ -1,0 +1,277 @@
+{
+  "capturedAt": "2026-11-27T11:15:00.035Z",
+  "candidate": "I",
+  "status": "PASS",
+  "scope": "Fresh final editorial-image candidate Chromium79 plus three-engine image45 acceptance. H four-browser316 remains original H evidence; it is not relabeled as I.",
+  "artifact": {
+    "buildId": "0y43p4TdfUlmfFqlz8TuJ",
+    "homepageSha256": "e893578da90e565766c33104ebd7092f79ffea6cc710efd5d4ccf2fbfbe98c7c",
+    "applicationSourceManifestSha256": "766af921614d45f8a457b109bcac4b6c82609c5c303568adc5f8825ad478c24b",
+    "mode": "Production-public configuration, explicit site origin/indexing; local CMS admin retained unchanged from separately verified B build; never directly deploy local admin",
+    "canonical": "https://filecompresser.com",
+    "robots": "index, follow",
+    "imageWorkers": {
+      "image-pipeline.mjs": "8e9ce49d7e90115d20ecc30cc130a06746d9b03b5b164e4e56f1e81f1d7987c6",
+      "image-engine.mjs": "5179b8034f0272e92d54b8b9e2bb6aea6844658d66f1eab372fefb9ea6361f5a",
+      "image-canvas.mjs": "96e366066cc5720a4a9267c878d05af80b591cc5e69bde773f71b8f5adbc4173",
+      "image-metadata.mjs": "a584b568d2735f3fb1f345157c2c118a3ab63e9e1cb3377684c03caff09b3ec9",
+      "image-png.mjs": "2c15e4efe4e413f37655028c8d95dd2092476f473e126a4dc9b0cda72923053f"
+    },
+    "logoSha256": "20c05cf089e1341eb498002013670d4d7d0e587549c32bbad116c04d464ebbab"
+  },
+  "sourceGates": {
+    "sourceTests": 877,
+    "sourceTestFiles": 56,
+    "scope": "Root production-public source/build gate evidence recorded in immutable candidate manifest"
+  },
+  "functionalHarness": {
+    "sha256": "15b8b7edcb4b59f9fa95b35946816db7671a1897dacabafb9ab37497fb66be21",
+    "caseCount": 79,
+    "expectedDownloads": 57
+  },
+  "chromium": {
+    "browserVersion": "156.0.8078.47",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "total": 79,
+    "passed": 79,
+    "downloads": 57,
+    "downloadHashesRecheckedAgain": true,
+    "stateCaptures": [
+      "/jpg-compressor:default",
+      "/jpg-compressor:populated",
+      "/jpg-compressor:completed",
+      "/jpeg-compressor:default",
+      "/jpeg-compressor:populated",
+      "/jpeg-compressor:completed",
+      "/image-compressor:default",
+      "/image-compressor:populated",
+      "/image-compressor:completed",
+      "/png-compressor:default",
+      "/png-compressor:populated",
+      "/png-compressor:completed",
+      "/webp-compressor:default",
+      "/webp-compressor:populated",
+      "/webp-compressor:completed",
+      "/jpg-compressor:settings",
+      "/webp-compressor:settings",
+      "/png-compressor:settings",
+      "/image-compressor:settings",
+      "/gif-compressor:default",
+      "/gif-compressor:populated",
+      "/gif-compressor:completed",
+      "/wav-compressor:default",
+      "/wav-compressor:populated",
+      "/wav-compressor:completed",
+      "/wav-to-mp3:default",
+      "/wav-to-mp3:populated",
+      "/wav-to-mp3:completed",
+      "/mp3-compressor:default",
+      "/mp3-compressor:populated",
+      "/mp3-compressor:completed",
+      "/wav-compressor:settings",
+      "/video-compressor:default",
+      "/video-compressor:populated",
+      "/video-compressor:completed",
+      "/webm-to-mp4:default",
+      "/webm-to-mp4:populated",
+      "/webm-to-mp4:completed",
+      "/pdf-compressor:default",
+      "/pdf-compressor:populated",
+      "/pdf-compressor:completed",
+      "/zip-compressor:default",
+      "/zip-compressor:populated",
+      "/zip-compressor:completed",
+      "/archive-compressor:default",
+      "/archive-compressor:populated",
+      "/archive-compressor:completed",
+      "/compress:default",
+      "/compress:populated",
+      "/compress:completed"
+    ],
+    "stateCaptureErrors": [],
+    "consoleMessages": [],
+    "failedResources": [],
+    "exceptions": [],
+    "uploadRequests": [],
+    "browserLifecycle": [],
+    "normalChildExit": {
+      "code": 0,
+      "signal": null,
+      "capturedAt": "2026-11-27T11:13:53.929Z"
+    },
+    "sourceAndArtifactUnchanged": true,
+    "evidenceDirectory": ".qa-results/phase2/release-i/chromium-desktop"
+  },
+  "sourceIdentityComparison": {
+    "capturedAt": "2026-11-27T11:15:00.027Z",
+    "scope": "Offline H to I source/export identity comparison; no browser, network or application mutation",
+    "beforeBuild": "vfZQ5yf4p_TqDNwIrY5px",
+    "afterBuild": "0y43p4TdfUlmfFqlz8TuJ",
+    "beforeHomepage": "1eb1cb5d48e22a1b54fcdbc60bba42d15897a13c3c079bb369a4bf04136e2034",
+    "afterHomepage": "e893578da90e565766c33104ebd7092f79ffea6cc710efd5d4ccf2fbfbe98c7c",
+    "runtimeInputs": 159,
+    "currentRuntimeInputsMatchFrozenI": true,
+    "publicSourceAssetsVerifiedInExport": 28,
+    "frozenExportHomepageHashesVerified": true,
+    "changes": [
+      {
+        "file": "app/blog/[slug]/page.tsx",
+        "kind": "modified",
+        "before": "f1127331f055ab25bb4335fb30fb1ac60dcb17050560a48b4d2823af7f24f158",
+        "after": "a7e642c36744399f14abc18175a472c86d3e5843e3d81ccaa62d9f0f62a82a62"
+      },
+      {
+        "file": "components/BlogImage.tsx",
+        "kind": "modified",
+        "before": "c05da1925b53dc7f6de298f7988300937afeccec9cfd6ed41713fa7c0c4ad83f",
+        "after": "500136e8d0ab3cd220de2ee0cac4d0152462083f8413b1503de6536aa4cca67a"
+      },
+      {
+        "file": "lib/stock-blog-art-data.mjs",
+        "kind": "added",
+        "after": "e70b490358cdb1036ef2396f35e7128723033c75de7f4e3ac690562b01337e09"
+      },
+      {
+        "file": "lib/stock-blog-art.ts",
+        "kind": "added",
+        "after": "45d2a33c7419124b30a3071f5800225b7a9142df9f05740eac52d87310ff555a"
+      },
+      {
+        "file": "public/blog/dataflow-768.webp",
+        "kind": "added",
+        "after": "b6d3610bfb6450121055d2c0871e0d3f983fa27cbb77a6c3e1eb3e1b04418d35"
+      },
+      {
+        "file": "public/blog/formattree-768.webp",
+        "kind": "added",
+        "after": "fd7725e5033e1e91585d740e2ffc8fc9e57655aad3668880112dfa79c297d130"
+      },
+      {
+        "file": "public/blog/pipeline-768.webp",
+        "kind": "added",
+        "after": "60c903060071cbcc48559ff12479daee2c9091772ceb392e7b7b51e1dcd63d94"
+      },
+      {
+        "file": "public/blog/qualitycurve-768.webp",
+        "kind": "added",
+        "after": "372bdb9ddd4d518067add9e27ebbfeaccfbec8d65e23f3af181cc8a3f84fe753"
+      },
+      {
+        "file": "public/blog/sizebars-768.webp",
+        "kind": "added",
+        "after": "959d058e481e4e66377e4d4f20b723d8bf2bef69e904df3e7b1e1e71dfa32991"
+      }
+    ],
+    "approvedChangesOnly": true,
+    "workingInterfaceAndProcessingUnchanged": true,
+    "imageWorkersUnchanged": true,
+    "mediaCoreManifestUnchanged": true,
+    "logoUnchanged": true,
+    "localAdminUnchanged": true,
+    "publicCanonicalAndIndexingUnchanged": true,
+    "functionalHarness": {
+      "sha256": "15b8b7edcb4b59f9fa95b35946816db7671a1897dacabafb9ab37497fb66be21",
+      "caseCount": 79,
+      "expectedDownloads": 57
+    },
+    "localCmsLimitation": "The local CMS admin is retained for verification and must never be directly deployed.",
+    "priorHAcceptance": "docs/evidence/2026-11-27/browser-functional-acceptance-H.json",
+    "limitations": [
+      "New editorial source/markup and generated image bytes still require their own focused/browser checks.",
+      "This comparison does not relabel H four-browser results as I.",
+      "Final published deployment and genuine hosted Tina save remain separate proof."
+    ],
+    "pass": true
+  },
+  "imageDelivery": {
+    "cases": 45,
+    "status": "PASS",
+    "scope": "Actual native image delivery/decode/metadata/layout/request checks on five published articles. Chromium/WebKit use1/1.75/1 DPR; Firefox uses fresh browsers with native1/1.7647058823529411/1 after navigation, explicitly distinguished from nominal1.75. Modern WebP support only; unknown/replaced CMS images and nonempty captions are separately source/SSR tested. No forced source, DOM/CSS edit or upload. Not encoding/Lighthouse performance evidence.",
+    "groups": [
+      {
+        "browser": "chromium",
+        "browserVersion": "156.0.8078.47",
+        "cases": 15,
+        "nativeFirefoxPreference": null,
+        "actualDprValues": [
+          1,
+          1.75
+        ],
+        "evidenceDirectory": ".qa-results/phase2/release-i/ui/image-chromium"
+      },
+      {
+        "browser": "webkit",
+        "browserVersion": "26.5",
+        "cases": 15,
+        "nativeFirefoxPreference": null,
+        "actualDprValues": [
+          1,
+          1.75
+        ],
+        "evidenceDirectory": ".qa-results/phase2/release-i/ui/image-webkit"
+      },
+      {
+        "browser": "firefox",
+        "browserVersion": "155.0",
+        "cases": 5,
+        "nativeFirefoxPreference": "1",
+        "actualDprValues": [
+          1
+        ],
+        "evidenceDirectory": ".qa-results/phase2/release-i/ui/image-firefox-retry-390"
+      },
+      {
+        "browser": "firefox",
+        "browserVersion": "155.0",
+        "cases": 5,
+        "nativeFirefoxPreference": "1.75",
+        "actualDprValues": [
+          1.7647058823529411
+        ],
+        "evidenceDirectory": ".qa-results/phase2/release-i/ui/image-firefox-retry-412"
+      },
+      {
+        "browser": "firefox",
+        "browserVersion": "155.0",
+        "cases": 5,
+        "nativeFirefoxPreference": "1",
+        "actualDprValues": [
+          1
+        ],
+        "evidenceDirectory": ".qa-results/phase2/release-i/ui/image-firefox-retry-1440"
+      }
+    ],
+    "artifactUnchanged": true,
+    "allBrowsersClosedNormally": true,
+    "retainedFirefoxAttempt": {
+      "folder": ".qa-results/phase2/release-i/ui/image-firefox",
+      "passed": 8,
+      "failed": 7,
+      "dprIssue": "Context-only1.75 is1.75 on about:blank but resets1 after navigation, so actual640 selection was correct for actual DPR. Native launch preference retains after-navigation1.7647058823529411 and requires768.",
+      "timeouts": "Original30s networkidle timeouts retained; their cause is not proven. All15 fresh-profile cases passed the same30s boundary with zero pending requests/diagnostics; no application fix or timeout increase claimed.",
+      "controls": [
+        ".qa-results/phase2/release-i/ui/ff-normal-profile-probe/probe.json",
+        ".qa-results/phase2/release-i/ui/ff-pref-profile-probe/probe.json"
+      ]
+    },
+    "evidencePath": ".qa-results/phase2/release-i/image-delivery-acceptance.json",
+    "evidenceSha256": "5f04240c1f96f0cb5f5d0dbd880c94ea18eb7d38bfb6d399d12204ecff65193f"
+  },
+  "retainedH": {
+    "report": "docs/evidence/2026-11-27/browser-functional-acceptance-H.json",
+    "sha256": "6421b05aeaf160bf5842a650915b520a64120e5cd02e6fc3573f780a691b26c7",
+    "buildId": "vfZQ5yf4p_TqDNwIrY5px",
+    "wholeSuiteCases": 316,
+    "downloads": 228,
+    "scope": "Four complete79-case source-H suites across Chromium/Linux WebKit/Firefox/touch. All processing/queue/workspace/CSS/worker inputs are unchanged in I; editorial-image source delta is explicitly separate."
+  },
+  "limitations": [
+    "Local CMS admin must never be directly deployed; production cloud CMS build/hosted save and final live deployment remain separate.",
+    "No four-browser whole-suite I rerun or I physical-phone/macOS-Safari certification is claimed.",
+    "Functional acceptance is not comparative processing or Lighthouse performance evidence.",
+    "Firefox image DPR uses actual native1.76470588 in its high-density profile; nominal1.75 emulation reset/timeouts remain retained."
+  ]
+}

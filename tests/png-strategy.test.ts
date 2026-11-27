@@ -109,6 +109,21 @@ describe('real PNG color reduction and alpha preservation', () => {
     expect(pngDecodedSamplesEqual(original, indexed(21, 128), UPNG)).toBe(false)
     expect(pngDecodedSamplesEqual(original, original.slice(), UPNG)).toBe(true)
   })
+
+  it('does not discard malformed ICC metadata merely because decoded pixels happen to match', async () => {
+    const pixels = new Uint8Array([20, 40, 60, 255, 80, 100, 120, 255])
+    const bare = new Uint8Array(UPNG.encode([pixels.buffer], 2, 1, 0))
+    const withProfile = (label: string) => new Uint8Array(Buffer.concat([
+      bare.subarray(0, 33),
+      pngChunk('iCCP', Buffer.concat([Buffer.from('Fixture\0\0'), deflateSync(Buffer.from(label))])),
+      bare.subarray(33),
+    ]))
+    const original = withProfile('Not a valid ICC profile; preserve, do not silently strip')
+    expect(await inspectImageHeader(new Blob([original]))).toMatchObject({ format: 'png', hasProfile: true })
+    expect(pngDecodedSamplesEqual(original, original.slice(), UPNG)).toBe(true)
+    expect(pngDecodedSamplesEqual(original, bare, UPNG)).toBe(false)
+    expect(pngDecodedSamplesEqual(original, withProfile('A different invalid profile'), UPNG)).toBe(false)
+  })
 })
 
 describe('bounded, honest PNG strategy selection', () => {
@@ -143,6 +158,7 @@ describe('bounded, honest PNG strategy selection', () => {
   it('finds distinct Smart/Maximum results and compares actual nonmonotonic byte sizes', async () => {
     const smart = candidates(), maximum = candidates()
     expect((await choosePngCandidate(smart.lossless, { mode: 'smart' }, smart)).blob.size).toBe(400)
+    expect(smart.quantize).toHaveBeenCalledExactlyOnceWith(256)
     const output = await choosePngCandidate(maximum.lossless, { mode: 'maximum' }, maximum)
     expect(output.blob.size).toBe(200)
     expect(output.colorLimit).toBe(32)
@@ -184,5 +200,31 @@ describe('bounded, honest PNG strategy selection', () => {
       cancelled = true
       return candidate
     }, cancelled: () => cancelled })).rejects.toThrow('cancelled')
+  })
+
+  it('keeps a smaller verified lossless result instead of a larger lossy Smart result', async () => {
+    const codec = candidates()
+    const lossless = { ...codec.lossless, blob: new Blob([new Uint8Array(300)]) }
+    const output = await choosePngCandidate(lossless, { mode: 'smart' }, codec)
+    expect(output.blob).toBe(lossless.blob)
+    expect(output.compressionKind).toBe('lossless')
+    expect(codec.quantize).toHaveBeenCalledExactlyOnceWith(256)
+  })
+
+  it('tries greater color counts when64colors fail the Maximum fidelity guard', async () => {
+    const codec = candidates()
+    const verify = vi.fn(async (candidate: { colorLimit?: number }) => candidate.colorLimit ? fidelity(candidate.colorLimit === 256 ? 40 : 20, candidate.colorLimit === 256 ? 15 : 100) : fidelity(Infinity, 0, true))
+    const output = await choosePngCandidate(codec.lossless, { mode: 'maximum' }, { ...codec, verify })
+    expect(codec.quantize.mock.calls.map(call => call[0])).toEqual([64, 128, 256])
+    expect(output.colorLimit).toBe(256)
+    expect(output.compressionKind).toBe('lossy')
+  })
+
+  it('does not spend CPU on smaller palettes after a rejected32color trial', async () => {
+    const codec = candidates()
+    const verify = vi.fn(async (candidate: { colorLimit?: number }) => candidate.colorLimit ? fidelity(candidate.colorLimit === 64 ? 40 : 20, candidate.colorLimit === 64 ? 15 : 100) : fidelity(Infinity, 0, true))
+    const output = await choosePngCandidate(codec.lossless, { mode: 'maximum' }, { ...codec, verify })
+    expect(codec.quantize.mock.calls.map(call => call[0])).toEqual([64, 32])
+    expect(output.colorLimit).toBe(64)
   })
 })

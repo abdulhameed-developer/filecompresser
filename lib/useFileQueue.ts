@@ -9,6 +9,7 @@ import { concurrencyFor, engineForFormat, processFile } from './process'
 import { revokeItemUrl } from './downloads'
 import { imageSettingsError } from './image-settings'
 import { sameWorkflowSources, scopeWorkflowOptions, workflowConfig, workflowDefaults } from './workflow-config'
+import { canProcessQueueItem, isArchiveInputFailureCode } from './queue-eligibility'
 
 export type StatusMessage = { kind: 'idle' | 'info' | 'success' | 'error'; text: string }
 const QUEUE_BYTES = 300 * 1024 * 1024
@@ -123,7 +124,7 @@ export function useFileQueue(tool: ToolDefinition) {
   const validate = useCallback(async (item: QueueItem, signal: ReturnType<typeof createCancelSignal>) => {
     const currentTool = toolRef.current
     assertNotCancelled(signal)
-    if (!item.file.size) throw new ProcessingError('This file is empty.')
+    if (!item.file.size && currentTool.engine !== 'zip-create') throw new ProcessingError('This file is empty.')
     if (item.file.size > currentTool.maxFileSize)
       throw new ProcessingError(`This file is larger than ${currentTool.maxFileSize / 1024 / 1024} MB, which this tool allows.`)
     let format: string | undefined
@@ -255,10 +256,11 @@ export function useFileQueue(tool: ToolDefinition) {
     // must use the same visible effective settings as the current workspace.
     const configurationScope = mode === 'force' && !batch ? scopedItems() : scope
     const configs = new Map(scope.map(item => [item.id, configFor(item, configurationScope)]))
+    const eligible = (item: QueueItem) => canProcessQueueItem(item, configs.get(item.id)!.engine, currentTool.maxFileSize)
+    // A collective ZIP must include every input; never silently omit bad rows.
+    if (batch && scope.some(item => !eligible(item))) return
     const requested = scope.filter(item => {
-      if (['validating', 'processing'].includes(item.status)) return false
-      // Validation-rejected sources have no supported format and cannot be retried.
-      if (item.status === 'failed' && !item.inputFormat && currentTool.engine !== 'zip-create') return false
+      if (!eligible(item)) return false
       if (mode === 'force') return true
       if (mode === 'changed') return !!item.appliedConfig && isDirty(item, configs.get(item.id)!)
       if (mode === 'selected') return item.status !== 'completed' || isDirty(item, configs.get(item.id)!)
@@ -282,16 +284,17 @@ export function useFileQueue(tool: ToolDefinition) {
       const config = configs.get(item.id)!
       const current = () => mounted.current && version === epoch.current && itemsRef.current.some(row => row.id === item.id && row.activeRunId === runId)
       const patchInputs = (value: Partial<QueueItem>) => update(previous => previous.map(row => inputs.some(input => input.id === row.id) && row.activeRunId === runId ? { ...row, ...value } : row))
+      let engine: EngineKind | null = null
       try {
         assertNotCancelled(signal)
         if (!current()) return 'cancelled'
-        patchInputs({ status: 'validating', error: undefined, progress: 0, stage: 'Checking original file…' })
+        patchInputs({ status: 'validating', error: undefined, archiveFailureCode: undefined, progress: 0, stage: 'Checking original file…' })
         for (const input of inputs) {
           assertNotCancelled(signals.current.get(input.id))
           if (!itemsRef.current.some(row => row.id === input.id)) throw new ProcessingError('A batch input was removed. Retry with the remaining original files.', 'cancelled')
           await validate(input, signal)
         }
-        let engine: EngineKind | null = currentTool.engine
+        engine = currentTool.engine
         if (currentTool.slug === 'compress') engine = await engineForFormat(await detectFormat(item.file))
         if (!engine) throw new ProcessingError('This file type is not supported by this tool.')
         assertNotCancelled(signal)
@@ -311,7 +314,7 @@ export function useFileQueue(tool: ToolDefinition) {
           if (!inputs.some(input => input.id === row.id) || row.activeRunId !== runId) return row
           revokeItemUrl(row)
           const owner = row.id === item.id
-          return { ...row, status: 'completed', progress: 100, stage: undefined, error: undefined, activeRunId: undefined, runConfig: undefined,
+          return { ...row, status: 'completed', progress: 100, stage: undefined, error: undefined, archiveFailureCode: undefined, activeRunId: undefined, runConfig: undefined,
             appliedConfig: configs.get(row.id), batchOwnerId: batch ? item.id : undefined,
             artifact: owner ? artifact : undefined, result: owner ? outputs[0] : undefined, outputs: owner ? outputs : undefined,
             outputSize: owner ? outputs.reduce((sum, output) => sum + output.blob.size, 0) : undefined,
@@ -322,8 +325,9 @@ export function useFileQueue(tool: ToolDefinition) {
         return 'completed'
       } catch (error) {
         const cancelled = signal.cancelled || isCancellation(error)
+        const archiveFailureCode = !cancelled && engine === 'zip-extract' && error instanceof ProcessingError && isArchiveInputFailureCode(error.code) ? error.code : undefined
         if (mounted.current && version === epoch.current) patchInputs({ status: cancelled ? 'cancelled' : 'failed', progress: 0, stage: undefined,
-          error: cancelled ? undefined : error instanceof Error ? error.message : 'This file could not be processed.', activeRunId: undefined, runConfig: undefined,
+          error: cancelled ? undefined : error instanceof Error ? error.message : 'This file could not be processed.', archiveFailureCode, activeRunId: undefined, runConfig: undefined,
         })
         return cancelled ? 'cancelled' : 'failed'
       }

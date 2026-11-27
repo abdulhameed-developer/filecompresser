@@ -1,0 +1,1789 @@
+{
+  "schema": 1,
+  "capturedAt": "2026-11-27T11:43:21.334Z",
+  "status": "LOCAL_MEASUREMENTS_COMPLETE_FINAL_PRODUCTION_PENDING",
+  "boundaries": [
+    "Local and public measurements are separate environments.",
+    "All attempts are retained; blocked, partial-delivery and incomplete identity attempts are excluded from clean comparisons.",
+    "Shared host CPU/memory load caused substantial variance even for identical baseline bytes. No universal score or field Core Web Vitals claim.",
+    "PageSpeed Insights API independent attempt returned HTTP429 quota exhaustion; no valid external score.",
+    "All valid candidate I local audits have accessibility, best practices and SEO100; mobile performance remains variable.",
+    "New article variants demonstrably reduce mobile illustration transfer; paired modeled Lighthouse results do not establish causal LCP/score improvement."
+  ],
+  "localCandidate": {
+    "buildId": "0y43p4TdfUlmfFqlz8TuJ",
+    "homeSha256": "e893578da90e565766c33104ebd7092f79ffea6cc710efd5d4ccf2fbfbe98c7c",
+    "tests": 877
+  },
+  "beforeProduction": {
+    "source": "0197d180403db5992a5a90ae44f716bbacae632c",
+    "cloudflare": "5ecc7f32-5c39-462e-8b66-aa2485f49d9b"
+  },
+  "records": [
+    {
+      "series": "final-h-local",
+      "label": "baseline-home-mobile-1",
+      "environment": "Local production-public export",
+      "route": "/",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T10:31:54.926Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1822.1889,
+        "largest-contentful-paint": 1822.1889,
+        "total-blocking-time": 86.45277499999975,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1822.1889
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "9c1934306727b0c50c6f4affe953bb9f92966fe17d55658181a4386c888a5931",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-h-local/01-baseline-home-mobile-1/home-mobile.report.json"
+    },
+    {
+      "series": "final-h-local",
+      "label": "final-H-home-mobile-1",
+      "environment": "Local production-public export",
+      "route": "/",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T10:32:08.826Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 96,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1963.533,
+        "largest-contentful-paint": 1963.533,
+        "total-blocking-time": 140.61674999999923,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1963.533
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "1eb1cb5d48e22a1b54fcdbc60bba42d15897a13c3c079bb369a4bf04136e2034",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-h-local/02-final-H-home-mobile-1/home-mobile.report.json"
+    },
+    {
+      "series": "final-h-local",
+      "label": "baseline-home-mobile-2",
+      "environment": "Local production-public export",
+      "route": "/",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T10:32:22.138Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1811.5394000000001,
+        "largest-contentful-paint": 1811.5394000000001,
+        "total-blocking-time": 83.11515000000009,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1811.5394000000001
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "9c1934306727b0c50c6f4affe953bb9f92966fe17d55658181a4386c888a5931",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-h-local/03-baseline-home-mobile-2/home-mobile.report.json"
+    },
+    {
+      "series": "final-h-local",
+      "label": "final-H-home-mobile-2",
+      "environment": "Local production-public export",
+      "route": "/",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T10:32:36.659Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 97,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1972.4611999999997,
+        "largest-contentful-paint": 1972.4611999999997,
+        "total-blocking-time": 93.38470000000007,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1972.4611999999997
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "1eb1cb5d48e22a1b54fcdbc60bba42d15897a13c3c079bb369a4bf04136e2034",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-h-local/04-final-H-home-mobile-2/home-mobile.report.json"
+    },
+    {
+      "series": "final-h-local",
+      "label": "baseline-home-mobile-3",
+      "environment": "Local production-public export",
+      "route": "/",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T10:32:49.844Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1823.4813,
+        "largest-contentful-paint": 1823.4813,
+        "total-blocking-time": 92.12967499999968,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1823.4813
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "9c1934306727b0c50c6f4affe953bb9f92966fe17d55658181a4386c888a5931",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-h-local/05-baseline-home-mobile-3/home-mobile.report.json"
+    },
+    {
+      "series": "final-h-local",
+      "label": "final-H-home-mobile-3",
+      "environment": "Local production-public export",
+      "route": "/",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T10:33:03.015Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 97,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1961.8892,
+        "largest-contentful-paint": 1961.8892,
+        "total-blocking-time": 73,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1961.8892
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "1eb1cb5d48e22a1b54fcdbc60bba42d15897a13c3c079bb369a4bf04136e2034",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-h-local/06-final-H-home-mobile-3/home-mobile.report.json"
+    },
+    {
+      "series": "final-h-local",
+      "label": "final-H-home-desktop",
+      "status": "EXCLUDED",
+      "reason": "Controller did not finish post-audit artifact identity verification; retained raw attempt.",
+      "scores": null
+    },
+    {
+      "series": "final-h-remaining-v2",
+      "label": "final-H-home-desktop",
+      "environment": "Local production-public export",
+      "route": "/",
+      "mode": "desktop",
+      "capturedAt": "2026-11-27T10:37:17.065Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 488.8348,
+        "largest-contentful-paint": 488.8348,
+        "total-blocking-time": 94.58259999999984,
+        "cumulative-layout-shift": 0,
+        "speed-index": 639.9979599990404
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "1eb1cb5d48e22a1b54fcdbc60bba42d15897a13c3c079bb369a4bf04136e2034",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-h-remaining-v2/01-final-H-home-desktop/home-desktop.report.json"
+    },
+    {
+      "series": "final-h-remaining-v2",
+      "label": "final-H-important-routes",
+      "environment": "Local production-public export",
+      "route": "/jpg-compressor",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T10:37:33.037Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1663.1764000000003,
+        "largest-contentful-paint": 1663.1764000000003,
+        "total-blocking-time": 83.5,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1663.1764000000003
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "1eb1cb5d48e22a1b54fcdbc60bba42d15897a13c3c079bb369a4bf04136e2034",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-h-remaining-v2/02-final-H-important-routes/jpg-compressor-mobile.report.json"
+    },
+    {
+      "series": "final-h-remaining-v2",
+      "label": "final-H-important-routes",
+      "environment": "Local production-public export",
+      "route": "/jpg-compressor",
+      "mode": "desktop",
+      "capturedAt": "2026-11-27T10:37:45.968Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 409.4919,
+        "largest-contentful-paint": 409.4919,
+        "total-blocking-time": 8.627025000000003,
+        "cumulative-layout-shift": 0,
+        "speed-index": 409.4919
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "1eb1cb5d48e22a1b54fcdbc60bba42d15897a13c3c079bb369a4bf04136e2034",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-h-remaining-v2/02-final-H-important-routes/jpg-compressor-desktop.report.json"
+    },
+    {
+      "series": "final-h-remaining-v2",
+      "label": "final-H-important-routes",
+      "environment": "Local production-public export",
+      "route": "/webm-to-mp4",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T10:37:58.806Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1663.8595,
+        "largest-contentful-paint": 1663.8595,
+        "total-blocking-time": 108,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1663.8595
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "1eb1cb5d48e22a1b54fcdbc60bba42d15897a13c3c079bb369a4bf04136e2034",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-h-remaining-v2/02-final-H-important-routes/webm-to-mp4-mobile.report.json"
+    },
+    {
+      "series": "final-h-remaining-v2",
+      "label": "final-H-important-routes",
+      "environment": "Local production-public export",
+      "route": "/webm-to-mp4",
+      "mode": "desktop",
+      "capturedAt": "2026-11-27T10:38:11.948Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 407.69370000000004,
+        "largest-contentful-paint": 407.69370000000004,
+        "total-blocking-time": 6.076575000000048,
+        "cumulative-layout-shift": 0,
+        "speed-index": 407.69370000000004
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "1eb1cb5d48e22a1b54fcdbc60bba42d15897a13c3c079bb369a4bf04136e2034",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-h-remaining-v2/02-final-H-important-routes/webm-to-mp4-desktop.report.json"
+    },
+    {
+      "series": "final-h-remaining-v2",
+      "label": "final-H-important-routes",
+      "environment": "Local production-public export",
+      "route": "/pdf-compressor",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T10:38:24.966Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1658.3364000000001,
+        "largest-contentful-paint": 1658.3364000000001,
+        "total-blocking-time": 86,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1658.3364000000001
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "1eb1cb5d48e22a1b54fcdbc60bba42d15897a13c3c079bb369a4bf04136e2034",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-h-remaining-v2/02-final-H-important-routes/pdf-compressor-mobile.report.json"
+    },
+    {
+      "series": "final-h-remaining-v2",
+      "label": "final-H-important-routes",
+      "environment": "Local production-public export",
+      "route": "/pdf-compressor",
+      "mode": "desktop",
+      "capturedAt": "2026-11-27T10:38:37.908Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 428.7789,
+        "largest-contentful-paint": 428.7789,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "speed-index": 459.04839250032563
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "1eb1cb5d48e22a1b54fcdbc60bba42d15897a13c3c079bb369a4bf04136e2034",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-h-remaining-v2/02-final-H-important-routes/pdf-compressor-desktop.report.json"
+    },
+    {
+      "series": "final-h-remaining-v2",
+      "label": "final-H-important-routes",
+      "environment": "Local production-public export",
+      "route": "/blog/how-browser-compression-works",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T10:38:51.208Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 80,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1658.5603,
+        "largest-contentful-paint": 5295.84045,
+        "total-blocking-time": 90,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1658.5603
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "1eb1cb5d48e22a1b54fcdbc60bba42d15897a13c3c079bb369a4bf04136e2034",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-h-remaining-v2/02-final-H-important-routes/blog--how-browser-compression-works-mobile.report.json"
+    },
+    {
+      "series": "final-h-remaining-v2",
+      "label": "final-H-important-routes",
+      "environment": "Local production-public export",
+      "route": "/blog/how-browser-compression-works",
+      "mode": "desktop",
+      "capturedAt": "2026-11-27T10:39:04.028Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 414.36429999999996,
+        "largest-contentful-paint": 1051.5464499999998,
+        "total-blocking-time": 4,
+        "cumulative-layout-shift": 0,
+        "speed-index": 414.36429999999996
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "1eb1cb5d48e22a1b54fcdbc60bba42d15897a13c3c079bb369a4bf04136e2034",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-h-remaining-v2/02-final-H-important-routes/blog--how-browser-compression-works-desktop.report.json"
+    },
+    {
+      "series": "final-h-remaining-v2",
+      "label": "old-production-before-release",
+      "environment": "Before-release production",
+      "route": "/",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T10:39:17.950Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 96,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1555.958,
+        "largest-contentful-paint": 1555.958,
+        "total-blocking-time": 216,
+        "cumulative-layout-shift": 0,
+        "speed-index": 2240.408048867291
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "453cba02f60a5ed6d7953708ad5d9d5afe9ecf85fd09591980b6781dcd725eeb",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-h-remaining-v2/03-old-production-before-release/home-mobile.report.json"
+    },
+    {
+      "series": "final-h-remaining-v2",
+      "label": "old-production-before-release",
+      "environment": "Before-release production",
+      "route": "/",
+      "mode": "desktop",
+      "status": "BLOCKED",
+      "reason": "No valid Lighthouse scores",
+      "scores": null,
+      "metrics": null,
+      "lighthouseVersion": null,
+      "artifactUnchanged": true,
+      "homeSha256": "453cba02f60a5ed6d7953708ad5d9d5afe9ecf85fd09591980b6781dcd725eeb",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": null
+    },
+    {
+      "series": "final-h-remaining-v2",
+      "label": "old-production-before-release",
+      "environment": "Before-release production",
+      "route": "/webm-to-mp4",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T10:39:48.601Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1085.123,
+        "largest-contentful-paint": 1085.123,
+        "total-blocking-time": 151,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1764.1952607162173
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "453cba02f60a5ed6d7953708ad5d9d5afe9ecf85fd09591980b6781dcd725eeb",
+      "failedRequests": [
+        {
+          "url": "https://filecompresser.com/site.webmanifest",
+          "status": -1,
+          "failure": null
+        }
+      ],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-h-remaining-v2/03-old-production-before-release/webm-to-mp4-mobile.report.json"
+    },
+    {
+      "series": "final-h-remaining-v2",
+      "label": "old-production-before-release",
+      "environment": "Before-release production",
+      "route": "/webm-to-mp4",
+      "mode": "desktop",
+      "capturedAt": "2026-11-27T10:40:06.645Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 350.241,
+        "largest-contentful-paint": 350.241,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "speed-index": 678.2647749997943
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "453cba02f60a5ed6d7953708ad5d9d5afe9ecf85fd09591980b6781dcd725eeb",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-h-remaining-v2/03-old-production-before-release/webm-to-mp4-desktop.report.json"
+    },
+    {
+      "series": "old-home-desktop-normal-retry",
+      "label": "old-production-home-desktop-normal-retry",
+      "environment": "Before-release production",
+      "route": "/",
+      "mode": "desktop",
+      "capturedAt": "2026-11-27T10:47:00.522Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 545.95,
+        "largest-contentful-paint": 545.95,
+        "total-blocking-time": 9,
+        "cumulative-layout-shift": 0,
+        "speed-index": 827.4938916675063
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "453cba02f60a5ed6d7953708ad5d9d5afe9ecf85fd09591980b6781dcd725eeb",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/old-home-desktop-normal-retry/01-old-production-home-desktop-normal-retry/home-desktop.report.json"
+    },
+    {
+      "series": "final-i-local-and-before-production",
+      "label": "baseline-home-mobile-1",
+      "environment": "Local production-public export",
+      "route": "/",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T11:22:15.189Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 89,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1865.6100999999999,
+        "largest-contentful-paint": 1865.6100999999999,
+        "total-blocking-time": 396.69495000000006,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1865.6100999999999
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "9c1934306727b0c50c6f4affe953bb9f92966fe17d55658181a4386c888a5931",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-i-local-and-before-production/01-baseline-home-mobile-1/home-mobile.report.json"
+    },
+    {
+      "series": "final-i-local-and-before-production",
+      "label": "final-I-home-mobile-1",
+      "environment": "Local production-public export",
+      "route": "/",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T11:22:45.546Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 88,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 2122.3683,
+        "largest-contentful-paint": 2122.3683,
+        "total-blocking-time": 369.22377499999993,
+        "cumulative-layout-shift": 0,
+        "speed-index": 2122.3683
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "e893578da90e565766c33104ebd7092f79ffea6cc710efd5d4ccf2fbfbe98c7c",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-i-local-and-before-production/02-final-I-home-mobile-1/home-mobile.report.json"
+    },
+    {
+      "series": "final-i-local-and-before-production",
+      "label": "baseline-home-mobile-2",
+      "environment": "Local production-public export",
+      "route": "/",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T11:23:02.840Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 76,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1867.5554000000002,
+        "largest-contentful-paint": 1867.5554000000002,
+        "total-blocking-time": 1028.2223,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1867.5554000000002
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "9c1934306727b0c50c6f4affe953bb9f92966fe17d55658181a4386c888a5931",
+      "failedRequests": [],
+      "warnings": [
+        "The tested device appears to have a slower CPU than  Lighthouse expects. This can negatively affect your performance score. Learn more about [calibrating an appropriate CPU slowdown multiplier](https://github.com/GoogleChrome/lighthouse/blob/main/docs/throttling.md#cpu-throttling)."
+      ],
+      "rawReport": ".qa-results/phase2/lighthouse/final-i-local-and-before-production/03-baseline-home-mobile-2/home-mobile.report.json"
+    },
+    {
+      "series": "final-i-local-and-before-production",
+      "label": "final-I-home-mobile-2",
+      "environment": "Local production-public export",
+      "route": "/",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T11:23:20.401Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 97,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1959.8597,
+        "largest-contentful-paint": 1959.8597,
+        "total-blocking-time": 79.5,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1959.8597
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "e893578da90e565766c33104ebd7092f79ffea6cc710efd5d4ccf2fbfbe98c7c",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-i-local-and-before-production/04-final-I-home-mobile-2/home-mobile.report.json"
+    },
+    {
+      "series": "final-i-local-and-before-production",
+      "label": "baseline-home-mobile-3",
+      "environment": "Local production-public export",
+      "route": "/",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T11:23:37.356Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 96,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1824.0784,
+        "largest-contentful-paint": 1824.0784,
+        "total-blocking-time": 167.48039999999992,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1824.0784
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "9c1934306727b0c50c6f4affe953bb9f92966fe17d55658181a4386c888a5931",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-i-local-and-before-production/05-baseline-home-mobile-3/home-mobile.report.json"
+    },
+    {
+      "series": "final-i-local-and-before-production",
+      "label": "final-I-home-mobile-3",
+      "environment": "Local production-public export",
+      "route": "/",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T11:23:52.126Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 96,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1983.9605999999999,
+        "largest-contentful-paint": 1983.9605999999999,
+        "total-blocking-time": 167.5295500000002,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1983.9605999999999
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "e893578da90e565766c33104ebd7092f79ffea6cc710efd5d4ccf2fbfbe98c7c",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-i-local-and-before-production/06-final-I-home-mobile-3/home-mobile.report.json"
+    },
+    {
+      "series": "final-i-local-and-before-production",
+      "label": "final-I-home-desktop",
+      "environment": "Local production-public export",
+      "route": "/",
+      "mode": "desktop",
+      "capturedAt": "2026-11-27T11:24:07.217Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 471.1872,
+        "largest-contentful-paint": 471.1872,
+        "total-blocking-time": 17,
+        "cumulative-layout-shift": 0,
+        "speed-index": 471.1872
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "e893578da90e565766c33104ebd7092f79ffea6cc710efd5d4ccf2fbfbe98c7c",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-i-local-and-before-production/07-final-I-home-desktop/home-desktop.report.json"
+    },
+    {
+      "series": "final-i-local-and-before-production",
+      "label": "final-I-tool-routes",
+      "environment": "Local production-public export",
+      "route": "/jpg-compressor",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T11:24:22.210Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1662.7268,
+        "largest-contentful-paint": 1662.7268,
+        "total-blocking-time": 93.5,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1662.7268
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "e893578da90e565766c33104ebd7092f79ffea6cc710efd5d4ccf2fbfbe98c7c",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-i-local-and-before-production/08-final-I-tool-routes/jpg-compressor-mobile.report.json"
+    },
+    {
+      "series": "final-i-local-and-before-production",
+      "label": "final-I-tool-routes",
+      "environment": "Local production-public export",
+      "route": "/jpg-compressor",
+      "mode": "desktop",
+      "capturedAt": "2026-11-27T11:24:38.657Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 415.1294,
+        "largest-contentful-paint": 415.1294,
+        "total-blocking-time": 50.21765000000005,
+        "cumulative-layout-shift": 0,
+        "speed-index": 551.0678691682775
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "e893578da90e565766c33104ebd7092f79ffea6cc710efd5d4ccf2fbfbe98c7c",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-i-local-and-before-production/08-final-I-tool-routes/jpg-compressor-desktop.report.json"
+    },
+    {
+      "series": "final-i-local-and-before-production",
+      "label": "final-I-tool-routes",
+      "environment": "Local production-public export",
+      "route": "/webm-to-mp4",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T11:24:53.687Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1675.7437,
+        "largest-contentful-paint": 1675.7437,
+        "total-blocking-time": 104,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1675.7437
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "e893578da90e565766c33104ebd7092f79ffea6cc710efd5d4ccf2fbfbe98c7c",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-i-local-and-before-production/08-final-I-tool-routes/webm-to-mp4-mobile.report.json"
+    },
+    {
+      "series": "final-i-local-and-before-production",
+      "label": "final-I-tool-routes",
+      "environment": "Local production-public export",
+      "route": "/webm-to-mp4",
+      "mode": "desktop",
+      "capturedAt": "2026-11-27T11:25:07.886Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 422.5825,
+        "largest-contentful-paint": 422.5825,
+        "total-blocking-time": 27.354375000000005,
+        "cumulative-layout-shift": 0,
+        "speed-index": 524.4432062495202
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "e893578da90e565766c33104ebd7092f79ffea6cc710efd5d4ccf2fbfbe98c7c",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-i-local-and-before-production/08-final-I-tool-routes/webm-to-mp4-desktop.report.json"
+    },
+    {
+      "series": "final-i-local-and-before-production",
+      "label": "final-I-tool-routes",
+      "environment": "Local production-public export",
+      "route": "/pdf-compressor",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T11:25:26.244Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 79,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1693.4768,
+        "largest-contentful-paint": 1693.4768,
+        "total-blocking-time": 870.3924,
+        "cumulative-layout-shift": 0,
+        "speed-index": 2141.8392062275466
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "e893578da90e565766c33104ebd7092f79ffea6cc710efd5d4ccf2fbfbe98c7c",
+      "failedRequests": [],
+      "warnings": [
+        "The tested device appears to have a slower CPU than  Lighthouse expects. This can negatively affect your performance score. Learn more about [calibrating an appropriate CPU slowdown multiplier](https://github.com/GoogleChrome/lighthouse/blob/main/docs/throttling.md#cpu-throttling)."
+      ],
+      "rawReport": ".qa-results/phase2/lighthouse/final-i-local-and-before-production/08-final-I-tool-routes/pdf-compressor-mobile.report.json"
+    },
+    {
+      "series": "final-i-local-and-before-production",
+      "label": "final-I-tool-routes",
+      "environment": "Local production-public export",
+      "route": "/pdf-compressor",
+      "mode": "desktop",
+      "capturedAt": "2026-11-27T11:25:45.074Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 556.18435,
+        "largest-contentful-paint": 556.18435,
+        "total-blocking-time": 56.407825,
+        "cumulative-layout-shift": 0,
+        "speed-index": 861.6279315639594
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "e893578da90e565766c33104ebd7092f79ffea6cc710efd5d4ccf2fbfbe98c7c",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-i-local-and-before-production/08-final-I-tool-routes/pdf-compressor-desktop.report.json"
+    },
+    {
+      "series": "final-i-local-and-before-production",
+      "label": "pre-editorial-H-article-mobile-1",
+      "environment": "Local production-public export",
+      "route": "/blog/how-browser-compression-works",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T11:26:05.294Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 82,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1691.8042999999998,
+        "largest-contentful-paint": 3735.7553749999997,
+        "total-blocking-time": 312.5,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1691.8042999999998
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "1eb1cb5d48e22a1b54fcdbc60bba42d15897a13c3c079bb369a4bf04136e2034",
+      "failedRequests": [],
+      "warnings": [
+        "The tested device appears to have a slower CPU than  Lighthouse expects. This can negatively affect your performance score. Learn more about [calibrating an appropriate CPU slowdown multiplier](https://github.com/GoogleChrome/lighthouse/blob/main/docs/throttling.md#cpu-throttling)."
+      ],
+      "rawReport": ".qa-results/phase2/lighthouse/final-i-local-and-before-production/09-pre-editorial-H-article-mobile-1/blog--how-browser-compression-works-mobile.report.json"
+    },
+    {
+      "series": "final-i-local-and-before-production",
+      "label": "final-I-article-mobile-1",
+      "environment": "Local production-public export",
+      "route": "/blog/how-browser-compression-works",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T11:26:22.161Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 72,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1699.7812,
+        "largest-contentful-paint": 5498.1718,
+        "total-blocking-time": 326.1094000000003,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1699.7812
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "e893578da90e565766c33104ebd7092f79ffea6cc710efd5d4ccf2fbfbe98c7c",
+      "failedRequests": [],
+      "warnings": [
+        "The tested device appears to have a slower CPU than  Lighthouse expects. This can negatively affect your performance score. Learn more about [calibrating an appropriate CPU slowdown multiplier](https://github.com/GoogleChrome/lighthouse/blob/main/docs/throttling.md#cpu-throttling)."
+      ],
+      "rawReport": ".qa-results/phase2/lighthouse/final-i-local-and-before-production/10-final-I-article-mobile-1/blog--how-browser-compression-works-mobile.report.json"
+    },
+    {
+      "series": "final-i-local-and-before-production",
+      "label": "pre-editorial-H-article-mobile-2",
+      "environment": "Local production-public export",
+      "route": "/blog/how-browser-compression-works",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T11:26:39.423Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 63,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1904.3368500000001,
+        "largest-contentful-paint": 5812.01055,
+        "total-blocking-time": 554.4999999999995,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1904.3368500000001
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "1eb1cb5d48e22a1b54fcdbc60bba42d15897a13c3c079bb369a4bf04136e2034",
+      "failedRequests": [],
+      "warnings": [
+        "The tested device appears to have a slower CPU than  Lighthouse expects. This can negatively affect your performance score. Learn more about [calibrating an appropriate CPU slowdown multiplier](https://github.com/GoogleChrome/lighthouse/blob/main/docs/throttling.md#cpu-throttling)."
+      ],
+      "rawReport": ".qa-results/phase2/lighthouse/final-i-local-and-before-production/11-pre-editorial-H-article-mobile-2/blog--how-browser-compression-works-mobile.report.json"
+    },
+    {
+      "series": "final-i-local-and-before-production",
+      "label": "final-I-article-mobile-2",
+      "environment": "Local production-public export",
+      "route": "/blog/how-browser-compression-works",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T11:26:54.308Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 80,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1658.6759000000002,
+        "largest-contentful-paint": 5155.513850000001,
+        "total-blocking-time": 92.5,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1658.6759000000002
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "e893578da90e565766c33104ebd7092f79ffea6cc710efd5d4ccf2fbfbe98c7c",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-i-local-and-before-production/12-final-I-article-mobile-2/blog--how-browser-compression-works-mobile.report.json"
+    },
+    {
+      "series": "final-i-local-and-before-production",
+      "label": "final-I-article-desktop",
+      "environment": "Local production-public export",
+      "route": "/blog/how-browser-compression-works",
+      "mode": "desktop",
+      "capturedAt": "2026-11-27T11:27:07.004Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 405.5719,
+        "largest-contentful-paint": 1032.3578499999999,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "speed-index": 405.5719
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "e893578da90e565766c33104ebd7092f79ffea6cc710efd5d4ccf2fbfbe98c7c",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-i-local-and-before-production/13-final-I-article-desktop/blog--how-browser-compression-works-desktop.report.json"
+    },
+    {
+      "series": "final-i-local-and-before-production",
+      "label": "old-production-additional-before-release",
+      "environment": "Before-release production",
+      "route": "/jpg-compressor",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T11:27:20.515Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 96,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1219.777,
+        "largest-contentful-paint": 1219.777,
+        "total-blocking-time": 218,
+        "cumulative-layout-shift": 0,
+        "speed-index": 2006.1002476173396
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "453cba02f60a5ed6d7953708ad5d9d5afe9ecf85fd09591980b6781dcd725eeb",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-i-local-and-before-production/14-old-production-additional-before-release/jpg-compressor-mobile.report.json"
+    },
+    {
+      "series": "final-i-local-and-before-production",
+      "label": "old-production-additional-before-release",
+      "environment": "Before-release production",
+      "route": "/jpg-compressor",
+      "mode": "desktop",
+      "capturedAt": "2026-11-27T11:27:35.042Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 327.96250000000003,
+        "largest-contentful-paint": 327.96250000000003,
+        "total-blocking-time": 18,
+        "cumulative-layout-shift": 0,
+        "speed-index": 604.3600875005312
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "453cba02f60a5ed6d7953708ad5d9d5afe9ecf85fd09591980b6781dcd725eeb",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-i-local-and-before-production/14-old-production-additional-before-release/jpg-compressor-desktop.report.json"
+    },
+    {
+      "series": "final-i-local-and-before-production",
+      "label": "old-production-additional-before-release",
+      "environment": "Before-release production",
+      "route": "/pdf-compressor",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T11:27:51.057Z",
+      "status": "PARTIAL_DELIVERY",
+      "reason": "Lighthouse robots.txt request failed or timed out. Ordinary browser/Node requests separately returned valid200; excluded from clean before/after comparison.",
+      "scores": {
+        "performance": 89,
+        "accessibility": 100,
+        "best-practices": 96,
+        "seo": 92
+      },
+      "metrics": {
+        "first-contentful-paint": 1051,
+        "largest-contentful-paint": 1051,
+        "total-blocking-time": 335,
+        "cumulative-layout-shift": 0,
+        "speed-index": 5070.374713576013
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "453cba02f60a5ed6d7953708ad5d9d5afe9ecf85fd09591980b6781dcd725eeb",
+      "failedRequests": [
+        {
+          "url": "https://filecompresser.com/site.webmanifest",
+          "status": -1,
+          "failure": null
+        }
+      ],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-i-local-and-before-production/14-old-production-additional-before-release/pdf-compressor-mobile.report.json"
+    },
+    {
+      "series": "final-i-local-and-before-production",
+      "label": "old-production-additional-before-release",
+      "environment": "Before-release production",
+      "route": "/pdf-compressor",
+      "mode": "desktop",
+      "status": "BLOCKED",
+      "reason": "No valid Lighthouse scores",
+      "scores": null,
+      "metrics": null,
+      "lighthouseVersion": null,
+      "artifactUnchanged": true,
+      "homeSha256": "453cba02f60a5ed6d7953708ad5d9d5afe9ecf85fd09591980b6781dcd725eeb",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": null
+    },
+    {
+      "series": "final-i-local-and-before-production",
+      "label": "old-production-additional-before-release",
+      "environment": "Before-release production",
+      "route": "/blog/how-browser-compression-works",
+      "mode": "mobile",
+      "capturedAt": "2026-11-27T11:28:33.614Z",
+      "status": "MEASURED",
+      "reason": null,
+      "scores": {
+        "performance": 97,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1053.1955,
+        "largest-contentful-paint": 2383.1955,
+        "total-blocking-time": 131,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1720.9988040003745
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "453cba02f60a5ed6d7953708ad5d9d5afe9ecf85fd09591980b6781dcd725eeb",
+      "failedRequests": [],
+      "warnings": [
+        "The tested device appears to have a slower CPU than  Lighthouse expects. This can negatively affect your performance score. Learn more about [calibrating an appropriate CPU slowdown multiplier](https://github.com/GoogleChrome/lighthouse/blob/main/docs/throttling.md#cpu-throttling)."
+      ],
+      "rawReport": ".qa-results/phase2/lighthouse/final-i-local-and-before-production/14-old-production-additional-before-release/blog--how-browser-compression-works-mobile.report.json"
+    },
+    {
+      "series": "final-i-local-and-before-production",
+      "label": "old-production-additional-before-release",
+      "environment": "Before-release production",
+      "route": "/blog/how-browser-compression-works",
+      "mode": "desktop",
+      "capturedAt": "2026-11-27T11:28:47.626Z",
+      "status": "PARTIAL_DELIVERY",
+      "reason": "Both stylesheets failed ERR_CONNECTION_RESET; page visibly unstyled. Raw scores retained, not a styled-page accessibility/performance comparison.",
+      "scores": {
+        "performance": 77,
+        "accessibility": 96,
+        "best-practices": 96,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1776.5070000000003,
+        "largest-contentful-paint": 1776.5070000000003,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "speed-index": 7787.250019333059
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "453cba02f60a5ed6d7953708ad5d9d5afe9ecf85fd09591980b6781dcd725eeb",
+      "failedRequests": [
+        {
+          "url": "https://filecompresser.com/logo.png",
+          "status": -1,
+          "failure": null
+        },
+        {
+          "url": "https://filecompresser.com/uploads/pipeline.webp",
+          "status": -1,
+          "failure": null
+        },
+        {
+          "url": "https://filecompresser.com/_next/static/css/769988446751fec8.css",
+          "status": -1,
+          "failure": null
+        },
+        {
+          "url": "https://filecompresser.com/_next/static/css/4117a7542646ea44.css",
+          "status": -1,
+          "failure": null
+        },
+        {
+          "url": "https://filecompresser.com/_next/static/chunks/webpack-5a166e5648a937d3.js",
+          "status": -1,
+          "failure": null
+        },
+        {
+          "url": "https://filecompresser.com/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+          "status": -1,
+          "failure": null
+        },
+        {
+          "url": "https://filecompresser.com/_next/static/chunks/app/layout-a4d0d3a66f98ccea.js",
+          "status": -1,
+          "failure": null
+        },
+        {
+          "url": "https://filecompresser.com/_next/static/chunks/app/error-4efa7dd1cdd433d4.js",
+          "status": -1,
+          "failure": null
+        },
+        {
+          "url": "https://filecompresser.com/logo.png",
+          "status": -1,
+          "failure": null
+        },
+        {
+          "url": "https://filecompresser.com/favicon-32.png",
+          "status": -1,
+          "failure": null
+        },
+        {
+          "url": "https://filecompresser.com/apple-touch-icon.png",
+          "status": -1,
+          "failure": null
+        }
+      ],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/final-i-local-and-before-production/14-old-production-additional-before-release/blog--how-browser-compression-works-desktop.report.json"
+    },
+    {
+      "series": "old-production-partial-delivery-normal-retry",
+      "label": "old-production-pdf-normal-retry",
+      "environment": "Before-release production",
+      "route": "/pdf-compressor",
+      "mode": "mobile",
+      "status": "BLOCKED",
+      "reason": "No valid Lighthouse scores",
+      "scores": null,
+      "metrics": null,
+      "lighthouseVersion": null,
+      "artifactUnchanged": true,
+      "homeSha256": "453cba02f60a5ed6d7953708ad5d9d5afe9ecf85fd09591980b6781dcd725eeb",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": null
+    },
+    {
+      "series": "old-production-partial-delivery-normal-retry",
+      "label": "old-production-pdf-normal-retry",
+      "environment": "Before-release production",
+      "route": "/pdf-compressor",
+      "mode": "desktop",
+      "capturedAt": "2026-11-27T11:42:27.383Z",
+      "status": "PARTIAL_DELIVERY",
+      "reason": "Lighthouse robots.txt request failed or timed out. Ordinary browser/Node requests separately returned valid200; excluded from clean before/after comparison.",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 92
+      },
+      "metrics": {
+        "first-contentful-paint": 416.8514999999999,
+        "largest-contentful-paint": 416.8514999999999,
+        "total-blocking-time": 54.5,
+        "cumulative-layout-shift": 0,
+        "speed-index": 736.5874623899666
+      },
+      "lighthouseVersion": "13.6.0",
+      "artifactUnchanged": true,
+      "homeSha256": "453cba02f60a5ed6d7953708ad5d9d5afe9ecf85fd09591980b6781dcd725eeb",
+      "failedRequests": [],
+      "warnings": [],
+      "rawReport": ".qa-results/phase2/lighthouse/old-production-partial-delivery-normal-retry/01-old-production-pdf-normal-retry/pdf-compressor-desktop.report.json"
+    }
+  ],
+  "payloadI": {
+    "capturedAt": "2026-11-27T11:40:38.731Z",
+    "method": "Unique script src and stylesheet href references in exported HTML; raw file bytes and per-resource gzip estimates. Includes legacy nomodule references; not actual modern-browser transfers. Inline scripts are already included in HTML bytes. No codec/WASM startup is exercised.",
+    "routes": [
+      {
+        "route": "/",
+        "html": {
+          "path": "/index.html",
+          "bytes": 109914,
+          "gzipEstimate": 19412,
+          "sha256": "e893578da90e565766c33104ebd7092f79ffea6cc710efd5d4ccf2fbfbe98c7c"
+        },
+        "scripts": [
+          {
+            "path": "/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+            "bytes": 203721,
+            "gzipEstimate": 64055,
+            "sha256": "bc650dd5e12e5d105ffd07b23f99e65c5d379de8d82fb6ef2859e59bd440b06f"
+          },
+          {
+            "path": "/_next/static/chunks/794-a07363c91e88b990.js",
+            "bytes": 241844,
+            "gzipEstimate": 67196,
+            "sha256": "bd197af46e3a5b24285044246c865dc724c5980c87099552160d9a49ccae393d"
+          },
+          {
+            "path": "/_next/static/chunks/main-app-e0c5585404eeb003.js",
+            "bytes": 513,
+            "gzipEstimate": 222,
+            "sha256": "8641a2b06fc0703fdc23d73d01aa7beaac3fe70e87613142a9d8e75df6caef0d"
+          },
+          {
+            "path": "/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+            "bytes": 7642,
+            "gzipEstimate": 3246,
+            "sha256": "905bc34977bb55dd8fda0041a3dbe144347dc46e9cd747d71e6b326deb234d7d"
+          },
+          {
+            "path": "/_next/static/chunks/437-637def3bf7b62bbb.js",
+            "bytes": 14383,
+            "gzipEstimate": 5515,
+            "sha256": "e461fe4783f53e96082952c0d8338590bc788b597eca75fa17f5686f06855081"
+          },
+          {
+            "path": "/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+            "bytes": 11621,
+            "gzipEstimate": 3997,
+            "sha256": "65d4eb31f22d49f5d7f1ad9996a2fa7db987209bdc65a7a0881d9b912ced2f98"
+          },
+          {
+            "path": "/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+            "bytes": 1084,
+            "gzipEstimate": 597,
+            "sha256": "6a36f58ceb83c23ad8ed32c846188e5cf48a0e16f1269de4b4821f14fde1e08a"
+          },
+          {
+            "path": "/_next/static/chunks/978-27c11cf6899d1747.js",
+            "bytes": 63758,
+            "gzipEstimate": 21593,
+            "sha256": "26df262ef694cb27e5abab6ea6b59f6703a416602c082bf829d853452f47e58e"
+          },
+          {
+            "path": "/_next/static/chunks/app/page-f6b5a0c2ab1dba17.js",
+            "bytes": 6595,
+            "gzipEstimate": 2686,
+            "sha256": "f3096a47bf989cd40726c16ebd582eccd6e9bd89030d9982183bef5d45d89335"
+          },
+          {
+            "path": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+            "bytes": 112594,
+            "gzipEstimate": 39627,
+            "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683"
+          },
+          {
+            "path": "/_next/static/chunks/webpack-f6dd71d22e03e631.js",
+            "bytes": 3619,
+            "gzipEstimate": 1962,
+            "sha256": "66d9a0cc45ace1f45af81b1f8525f11828401509a696c0e66dd6ede3e7d96008"
+          }
+        ],
+        "styles": [
+          {
+            "path": "/_next/static/css/769988446751fec8.css",
+            "bytes": 44013,
+            "gzipEstimate": 9617,
+            "sha256": "eda5a7ed8a9be9a5893047cd2abdafffeafa53d566e375b40428694b6e641318"
+          },
+          {
+            "path": "/_next/static/css/11524cf513af25ac.css",
+            "bytes": 56052,
+            "gzipEstimate": 11312,
+            "sha256": "340201d8b91025f93fef7f7372caf4cabefc03358e7867c040939c95c3479361"
+          }
+        ],
+        "scriptBytes": 667374,
+        "scriptGzipEstimate": 210696,
+        "allReferencedBytes": 877353,
+        "allReferencedGzipEstimate": 251037
+      },
+      {
+        "route": "/image-compressor",
+        "html": {
+          "path": "/image-compressor.html",
+          "bytes": 87082,
+          "gzipEstimate": 16072,
+          "sha256": "5b233d43cf47838621b6c88c18c006167347cc6acc6412aca9111d61484b7a07"
+        },
+        "scripts": [
+          {
+            "path": "/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+            "bytes": 203721,
+            "gzipEstimate": 64055,
+            "sha256": "bc650dd5e12e5d105ffd07b23f99e65c5d379de8d82fb6ef2859e59bd440b06f"
+          },
+          {
+            "path": "/_next/static/chunks/794-a07363c91e88b990.js",
+            "bytes": 241844,
+            "gzipEstimate": 67196,
+            "sha256": "bd197af46e3a5b24285044246c865dc724c5980c87099552160d9a49ccae393d"
+          },
+          {
+            "path": "/_next/static/chunks/main-app-e0c5585404eeb003.js",
+            "bytes": 513,
+            "gzipEstimate": 222,
+            "sha256": "8641a2b06fc0703fdc23d73d01aa7beaac3fe70e87613142a9d8e75df6caef0d"
+          },
+          {
+            "path": "/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+            "bytes": 7642,
+            "gzipEstimate": 3246,
+            "sha256": "905bc34977bb55dd8fda0041a3dbe144347dc46e9cd747d71e6b326deb234d7d"
+          },
+          {
+            "path": "/_next/static/chunks/437-637def3bf7b62bbb.js",
+            "bytes": 14383,
+            "gzipEstimate": 5515,
+            "sha256": "e461fe4783f53e96082952c0d8338590bc788b597eca75fa17f5686f06855081"
+          },
+          {
+            "path": "/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+            "bytes": 11621,
+            "gzipEstimate": 3997,
+            "sha256": "65d4eb31f22d49f5d7f1ad9996a2fa7db987209bdc65a7a0881d9b912ced2f98"
+          },
+          {
+            "path": "/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+            "bytes": 1084,
+            "gzipEstimate": 597,
+            "sha256": "6a36f58ceb83c23ad8ed32c846188e5cf48a0e16f1269de4b4821f14fde1e08a"
+          },
+          {
+            "path": "/_next/static/chunks/978-27c11cf6899d1747.js",
+            "bytes": 63758,
+            "gzipEstimate": 21593,
+            "sha256": "26df262ef694cb27e5abab6ea6b59f6703a416602c082bf829d853452f47e58e"
+          },
+          {
+            "path": "/_next/static/chunks/app/%5Btool%5D/page-8855eab75167a372.js",
+            "bytes": 226,
+            "gzipEstimate": 175,
+            "sha256": "013606ec7c93f49b045fa0d46dc469ee0974d2e4f6142ca70e751def6fb876d1"
+          },
+          {
+            "path": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+            "bytes": 112594,
+            "gzipEstimate": 39627,
+            "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683"
+          },
+          {
+            "path": "/_next/static/chunks/webpack-f6dd71d22e03e631.js",
+            "bytes": 3619,
+            "gzipEstimate": 1962,
+            "sha256": "66d9a0cc45ace1f45af81b1f8525f11828401509a696c0e66dd6ede3e7d96008"
+          }
+        ],
+        "styles": [
+          {
+            "path": "/_next/static/css/769988446751fec8.css",
+            "bytes": 44013,
+            "gzipEstimate": 9617,
+            "sha256": "eda5a7ed8a9be9a5893047cd2abdafffeafa53d566e375b40428694b6e641318"
+          },
+          {
+            "path": "/_next/static/css/11524cf513af25ac.css",
+            "bytes": 56052,
+            "gzipEstimate": 11312,
+            "sha256": "340201d8b91025f93fef7f7372caf4cabefc03358e7867c040939c95c3479361"
+          }
+        ],
+        "scriptBytes": 661005,
+        "scriptGzipEstimate": 208185,
+        "allReferencedBytes": 848152,
+        "allReferencedGzipEstimate": 245186
+      },
+      {
+        "route": "/webm-to-mp4",
+        "html": {
+          "path": "/webm-to-mp4.html",
+          "bytes": 54553,
+          "gzipEstimate": 9846,
+          "sha256": "8b99a003eaff6df3b152bb4bc5374d70023953ac2ab8f4143c0839c209e13071"
+        },
+        "scripts": [
+          {
+            "path": "/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+            "bytes": 203721,
+            "gzipEstimate": 64055,
+            "sha256": "bc650dd5e12e5d105ffd07b23f99e65c5d379de8d82fb6ef2859e59bd440b06f"
+          },
+          {
+            "path": "/_next/static/chunks/794-a07363c91e88b990.js",
+            "bytes": 241844,
+            "gzipEstimate": 67196,
+            "sha256": "bd197af46e3a5b24285044246c865dc724c5980c87099552160d9a49ccae393d"
+          },
+          {
+            "path": "/_next/static/chunks/main-app-e0c5585404eeb003.js",
+            "bytes": 513,
+            "gzipEstimate": 222,
+            "sha256": "8641a2b06fc0703fdc23d73d01aa7beaac3fe70e87613142a9d8e75df6caef0d"
+          },
+          {
+            "path": "/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+            "bytes": 7642,
+            "gzipEstimate": 3246,
+            "sha256": "905bc34977bb55dd8fda0041a3dbe144347dc46e9cd747d71e6b326deb234d7d"
+          },
+          {
+            "path": "/_next/static/chunks/437-637def3bf7b62bbb.js",
+            "bytes": 14383,
+            "gzipEstimate": 5515,
+            "sha256": "e461fe4783f53e96082952c0d8338590bc788b597eca75fa17f5686f06855081"
+          },
+          {
+            "path": "/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+            "bytes": 11621,
+            "gzipEstimate": 3997,
+            "sha256": "65d4eb31f22d49f5d7f1ad9996a2fa7db987209bdc65a7a0881d9b912ced2f98"
+          },
+          {
+            "path": "/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+            "bytes": 1084,
+            "gzipEstimate": 597,
+            "sha256": "6a36f58ceb83c23ad8ed32c846188e5cf48a0e16f1269de4b4821f14fde1e08a"
+          },
+          {
+            "path": "/_next/static/chunks/978-27c11cf6899d1747.js",
+            "bytes": 63758,
+            "gzipEstimate": 21593,
+            "sha256": "26df262ef694cb27e5abab6ea6b59f6703a416602c082bf829d853452f47e58e"
+          },
+          {
+            "path": "/_next/static/chunks/app/%5Btool%5D/page-8855eab75167a372.js",
+            "bytes": 226,
+            "gzipEstimate": 175,
+            "sha256": "013606ec7c93f49b045fa0d46dc469ee0974d2e4f6142ca70e751def6fb876d1"
+          },
+          {
+            "path": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+            "bytes": 112594,
+            "gzipEstimate": 39627,
+            "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683"
+          },
+          {
+            "path": "/_next/static/chunks/webpack-f6dd71d22e03e631.js",
+            "bytes": 3619,
+            "gzipEstimate": 1962,
+            "sha256": "66d9a0cc45ace1f45af81b1f8525f11828401509a696c0e66dd6ede3e7d96008"
+          }
+        ],
+        "styles": [
+          {
+            "path": "/_next/static/css/769988446751fec8.css",
+            "bytes": 44013,
+            "gzipEstimate": 9617,
+            "sha256": "eda5a7ed8a9be9a5893047cd2abdafffeafa53d566e375b40428694b6e641318"
+          },
+          {
+            "path": "/_next/static/css/11524cf513af25ac.css",
+            "bytes": 56052,
+            "gzipEstimate": 11312,
+            "sha256": "340201d8b91025f93fef7f7372caf4cabefc03358e7867c040939c95c3479361"
+          }
+        ],
+        "scriptBytes": 661005,
+        "scriptGzipEstimate": 208185,
+        "allReferencedBytes": 815623,
+        "allReferencedGzipEstimate": 238960
+      },
+      {
+        "route": "/blog/how-browser-compression-works",
+        "html": {
+          "path": "/blog/how-browser-compression-works.html",
+          "bytes": 55073,
+          "gzipEstimate": 11690,
+          "sha256": "5a49fbbb2cde2f7cf22adb011acc534a4e07e03c78edea99da06912bc7b8fc92"
+        },
+        "scripts": [
+          {
+            "path": "/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+            "bytes": 203721,
+            "gzipEstimate": 64055,
+            "sha256": "bc650dd5e12e5d105ffd07b23f99e65c5d379de8d82fb6ef2859e59bd440b06f"
+          },
+          {
+            "path": "/_next/static/chunks/794-a07363c91e88b990.js",
+            "bytes": 241844,
+            "gzipEstimate": 67196,
+            "sha256": "bd197af46e3a5b24285044246c865dc724c5980c87099552160d9a49ccae393d"
+          },
+          {
+            "path": "/_next/static/chunks/main-app-e0c5585404eeb003.js",
+            "bytes": 513,
+            "gzipEstimate": 222,
+            "sha256": "8641a2b06fc0703fdc23d73d01aa7beaac3fe70e87613142a9d8e75df6caef0d"
+          },
+          {
+            "path": "/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+            "bytes": 7642,
+            "gzipEstimate": 3246,
+            "sha256": "905bc34977bb55dd8fda0041a3dbe144347dc46e9cd747d71e6b326deb234d7d"
+          },
+          {
+            "path": "/_next/static/chunks/437-637def3bf7b62bbb.js",
+            "bytes": 14383,
+            "gzipEstimate": 5515,
+            "sha256": "e461fe4783f53e96082952c0d8338590bc788b597eca75fa17f5686f06855081"
+          },
+          {
+            "path": "/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+            "bytes": 11621,
+            "gzipEstimate": 3997,
+            "sha256": "65d4eb31f22d49f5d7f1ad9996a2fa7db987209bdc65a7a0881d9b912ced2f98"
+          },
+          {
+            "path": "/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+            "bytes": 1084,
+            "gzipEstimate": 597,
+            "sha256": "6a36f58ceb83c23ad8ed32c846188e5cf48a0e16f1269de4b4821f14fde1e08a"
+          },
+          {
+            "path": "/_next/static/chunks/app/blog/%5Bslug%5D/page-515a03fb2e247621.js",
+            "bytes": 235,
+            "gzipEstimate": 176,
+            "sha256": "1409e4acaacf0a1cbb5d766390fc278cc54e7cf6fa778fb88c2490e9ef4c1a8f"
+          },
+          {
+            "path": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+            "bytes": 112594,
+            "gzipEstimate": 39627,
+            "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683"
+          },
+          {
+            "path": "/_next/static/chunks/webpack-f6dd71d22e03e631.js",
+            "bytes": 3619,
+            "gzipEstimate": 1962,
+            "sha256": "66d9a0cc45ace1f45af81b1f8525f11828401509a696c0e66dd6ede3e7d96008"
+          }
+        ],
+        "styles": [
+          {
+            "path": "/_next/static/css/769988446751fec8.css",
+            "bytes": 44013,
+            "gzipEstimate": 9617,
+            "sha256": "eda5a7ed8a9be9a5893047cd2abdafffeafa53d566e375b40428694b6e641318"
+          },
+          {
+            "path": "/_next/static/css/11524cf513af25ac.css",
+            "bytes": 56052,
+            "gzipEstimate": 11312,
+            "sha256": "340201d8b91025f93fef7f7372caf4cabefc03358e7867c040939c95c3479361"
+          }
+        ],
+        "scriptBytes": 597256,
+        "scriptGzipEstimate": 186593,
+        "allReferencedBytes": 752394,
+        "allReferencedGzipEstimate": 219212
+      }
+    ]
+  }
+}

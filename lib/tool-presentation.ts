@@ -1,5 +1,6 @@
 import type { ToolDefinition } from './types'
 import type { IconName } from '@/components/Icon'
+export type ToolCard = Pick<ToolDefinition, 'slug' | 'title' | 'category'> & { summary: string; icon: IconName }
 export const TOOL_SUMMARIES: Record<string, string> = {
   compress: 'One queue for supported file types.', 'image-compressor': 'JPG, PNG and WebP in one place.',
   'jpg-compressor': 'Smaller photographic JPG files.', 'jpeg-compressor': 'Quality controls for JPEG photos.',

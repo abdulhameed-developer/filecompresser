@@ -1,0 +1,2717 @@
+{
+  "media": {
+    "runtime": "Direct shipped WASM in Node/V8 with production engine orchestration; browser UI not covered",
+    "sourceHashes": {
+      "lib/engines/video.ts": "5060d357f0827bfc3a220901b50cff5be7efad4caa0988bc1477b7d25d820b92",
+      "lib/engines/audio.ts": "8b3f60301f11b513850e699cca5afb8cbd9030027b15504e0f6686c603c8f808",
+      "lib/engines/media-inspection.ts": "746a4c4e6f870de4be0b9679b6f9a6fcf67563924aac80f5a511818e91742123"
+    },
+    "wasmSha256": "584febef0d37a76379d5c2c53539250e78c250e2c5f2710493301ea55198d5ab",
+    "loadMs": 90,
+    "pass": true,
+    "results": [
+      {
+        "name": "VP8 + Opus \u2192 H.264 + AAC",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 57351,
+        "outputBytes": 117724,
+        "durationMs": 399,
+        "outcome": "converted",
+        "note": "Converted WebM to H.264/AAC MP4 while preserving display dimensions.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "vp8",
+              "codec_type": "video",
+              "width": 320,
+              "height": 240,
+              "nb_read_frames": "18",
+              "avg_frame_rate": "12/1",
+              "start_time": "0.000000"
+            },
+            {
+              "codec_name": "opus",
+              "codec_type": "audio",
+              "sample_rate": "48000",
+              "channels": 1,
+              "nb_read_frames": "76",
+              "avg_frame_rate": "0/0",
+              "start_time": "-0.007000"
+            }
+          ],
+          "format": {
+            "format_name": "matroska,webm",
+            "duration": "1.508000",
+            "size": "57351",
+            "bit_rate": "304249"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 320,
+              "height": 240,
+              "bit_rate": "492768",
+              "duration": "1.500000",
+              "nb_read_frames": "18",
+              "avg_frame_rate": "12/1",
+              "start_time": "0.000000"
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "48000",
+              "channels": 1,
+              "bit_rate": "122767",
+              "duration": "1.507000",
+              "nb_read_frames": "72",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "duration": "1.508000",
+            "size": "117724",
+            "bit_rate": "624530"
+          }
+        }
+      },
+      {
+        "name": "VP9 + Opus \u2192 H.264 + AAC",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 61884,
+        "outputBytes": 118888,
+        "durationMs": 363,
+        "outcome": "converted",
+        "note": "Converted WebM to H.264/AAC MP4 while preserving display dimensions.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "vp9",
+              "codec_type": "video",
+              "width": 320,
+              "height": 240,
+              "nb_read_frames": "18",
+              "avg_frame_rate": "12/1",
+              "start_time": "0.000000"
+            },
+            {
+              "codec_name": "opus",
+              "codec_type": "audio",
+              "sample_rate": "48000",
+              "channels": 1,
+              "nb_read_frames": "76",
+              "avg_frame_rate": "0/0",
+              "start_time": "-0.007000"
+            }
+          ],
+          "format": {
+            "format_name": "matroska,webm",
+            "duration": "1.508000",
+            "size": "61884",
+            "bit_rate": "328297"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 320,
+              "height": 240,
+              "bit_rate": "499002",
+              "duration": "1.500000",
+              "nb_read_frames": "18",
+              "avg_frame_rate": "12/1",
+              "start_time": "0.000000"
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "48000",
+              "channels": 1,
+              "bit_rate": "122767",
+              "duration": "1.507000",
+              "nb_read_frames": "72",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "duration": "1.508000",
+            "size": "118888",
+            "bit_rate": "630705"
+          }
+        }
+      },
+      {
+        "name": "Unknown-duration VFR VP9 \u2192 H.264",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 36438,
+        "outputBytes": 71136,
+        "durationMs": 81,
+        "outcome": "converted",
+        "note": "Converted WebM to H.264/AAC MP4 while preserving display dimensions.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "vp9",
+              "codec_type": "video",
+              "width": 320,
+              "height": 240,
+              "nb_read_frames": "12",
+              "avg_frame_rate": "12/1",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "matroska,webm",
+            "size": "36438"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 320,
+              "height": 240,
+              "bit_rate": "374133",
+              "duration": "1.500000",
+              "nb_read_frames": "12",
+              "avg_frame_rate": "8/1",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "duration": "1.500000",
+            "size": "71136",
+            "bit_rate": "379392"
+          }
+        }
+      },
+      {
+        "name": "Compatible H.264 + AAC remux",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 98312,
+        "outputBytes": 99076,
+        "durationMs": 25,
+        "outcome": "converted",
+        "note": "Converted to MP4 without re-encoding the compatible H.264 video. Original video quality and display dimensions are preserved.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 320,
+              "height": 240,
+              "nb_read_frames": "18",
+              "avg_frame_rate": "12/1",
+              "start_time": "0.000000"
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "48000",
+              "channels": 1,
+              "nb_read_frames": "72",
+              "avg_frame_rate": "0/0",
+              "start_time": "-0.021000"
+            }
+          ],
+          "format": {
+            "format_name": "matroska,webm",
+            "size": "98312"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 320,
+              "height": 240,
+              "bit_rate": "445973",
+              "duration": "1.521000",
+              "nb_read_frames": "18",
+              "avg_frame_rate": "12/1",
+              "start_time": "0.021000"
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "48000",
+              "channels": 1,
+              "bit_rate": "69694",
+              "duration": "1.536000",
+              "nb_read_frames": "72",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "duration": "1.536000",
+            "size": "99076",
+            "bit_rate": "516020"
+          }
+        }
+      },
+      {
+        "name": "MP4 compression",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 98951,
+        "outputBytes": 49302,
+        "durationMs": 418,
+        "outcome": "reduced",
+        "note": "Encoded as H.264/AAC MP4 while preserving display dimensions.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 320,
+              "height": 240,
+              "bit_rate": "445973",
+              "duration": "1.500000",
+              "nb_read_frames": "18",
+              "avg_frame_rate": "12/1",
+              "start_time": "0.000000"
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "48000",
+              "channels": 1,
+              "bit_rate": "70343",
+              "duration": "1.500000",
+              "nb_read_frames": "71",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "duration": "1.500000",
+            "size": "98951",
+            "bit_rate": "527738"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 320,
+              "height": 240,
+              "bit_rate": "124426",
+              "duration": "1.500000",
+              "nb_read_frames": "18",
+              "avg_frame_rate": "12/1",
+              "start_time": "0.000000"
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "48000",
+              "channels": 1,
+              "bit_rate": "124401",
+              "duration": "1.514000",
+              "nb_read_frames": "71",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "duration": "1.515000",
+            "size": "49302",
+            "bit_rate": "260340"
+          }
+        }
+      },
+      {
+        "name": "MOV \u2192 MP4",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 99002,
+        "outputBytes": 49302,
+        "durationMs": 369,
+        "outcome": "converted",
+        "note": "Converted MOV to H.264/AAC MP4 while preserving display dimensions.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 320,
+              "height": 240,
+              "bit_rate": "445973",
+              "duration": "1.500000",
+              "nb_read_frames": "18",
+              "avg_frame_rate": "12/1",
+              "start_time": "0.000000"
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "48000",
+              "channels": 1,
+              "bit_rate": "70343",
+              "duration": "1.500000",
+              "nb_read_frames": "71",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "duration": "1.500000",
+            "size": "99002",
+            "bit_rate": "528010"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 320,
+              "height": 240,
+              "bit_rate": "124426",
+              "duration": "1.500000",
+              "nb_read_frames": "18",
+              "avg_frame_rate": "12/1",
+              "start_time": "0.000000"
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "48000",
+              "channels": 1,
+              "bit_rate": "124401",
+              "duration": "1.514000",
+              "nb_read_frames": "71",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "duration": "1.515000",
+            "size": "49302",
+            "bit_rate": "260340"
+          }
+        }
+      },
+      {
+        "name": "HEVC MP4 \u2192 compatible H.264 MP4",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 25431,
+        "outputBytes": 45023,
+        "durationMs": 413,
+        "outcome": "converted",
+        "note": "Converted the source codecs to compatible H.264/AAC MP4 while preserving display dimensions. A compatibility conversion can produce a larger file.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "hevc",
+              "codec_type": "video",
+              "width": 320,
+              "height": 240,
+              "bit_rate": "39786",
+              "duration": "1.500000",
+              "nb_read_frames": "18",
+              "avg_frame_rate": "12/1",
+              "start_time": "0.000000"
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "48000",
+              "channels": 1,
+              "bit_rate": "70343",
+              "duration": "1.500000",
+              "nb_read_frames": "71",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "duration": "1.500000",
+            "size": "25431",
+            "bit_rate": "135632"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 320,
+              "height": 240,
+              "bit_rate": "101392",
+              "duration": "1.500000",
+              "nb_read_frames": "18",
+              "avg_frame_rate": "12/1",
+              "start_time": "0.000000"
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "48000",
+              "channels": 1,
+              "bit_rate": "124401",
+              "duration": "1.514000",
+              "nb_read_frames": "71",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "duration": "1.515000",
+            "size": "45023",
+            "bit_rate": "237745"
+          }
+        }
+      },
+      {
+        "name": "VP9 MP4 \u2192 compatible H.264 MP4",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 44428,
+        "outputBytes": 52761,
+        "durationMs": 360,
+        "outcome": "converted",
+        "note": "Converted the source codecs to compatible H.264/AAC MP4 while preserving display dimensions. A compatibility conversion can produce a larger file.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "vp9",
+              "codec_type": "video",
+              "width": 320,
+              "height": 240,
+              "bit_rate": "155285",
+              "duration": "1.500000",
+              "nb_read_frames": "18",
+              "avg_frame_rate": "12/1",
+              "start_time": "0.000000"
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "48000",
+              "channels": 1,
+              "bit_rate": "70343",
+              "duration": "1.500000",
+              "nb_read_frames": "71",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "duration": "1.500000",
+            "size": "44428",
+            "bit_rate": "236949"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 320,
+              "height": 240,
+              "bit_rate": "143045",
+              "duration": "1.500000",
+              "nb_read_frames": "18",
+              "avg_frame_rate": "12/1",
+              "start_time": "0.000000"
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "48000",
+              "channels": 1,
+              "bit_rate": "124401",
+              "duration": "1.514000",
+              "nb_read_frames": "71",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "duration": "1.515000",
+            "size": "52761",
+            "bit_rate": "278605"
+          }
+        }
+      },
+      {
+        "name": "Portrait video recommended, original",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 88645,
+        "outputBytes": 35493,
+        "durationMs": 222,
+        "outcome": "reduced",
+        "note": "Encoded as H.264/AAC MP4 while preserving display dimensions.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 480,
+              "height": 720,
+              "bit_rate": "1317984",
+              "duration": "0.500000",
+              "nb_read_frames": "4",
+              "avg_frame_rate": "8/1",
+              "start_time": "0.000000"
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "48000",
+              "channels": 1,
+              "bit_rate": "72046",
+              "duration": "0.500000",
+              "nb_read_frames": "24",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "duration": "0.500000",
+            "size": "88645",
+            "bit_rate": "1418320"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 480,
+              "height": 720,
+              "bit_rate": "410000",
+              "duration": "0.500000",
+              "nb_read_frames": "4",
+              "avg_frame_rate": "8/1",
+              "start_time": "0.000000"
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "48000",
+              "channels": 1,
+              "bit_rate": "123615",
+              "duration": "0.512000",
+              "nb_read_frames": "24",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "duration": "0.512000",
+            "size": "35493",
+            "bit_rate": "554578"
+          }
+        }
+      },
+      {
+        "name": "Portrait video recommended, 1080",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 88645,
+        "outputBytes": 35493,
+        "durationMs": 220,
+        "outcome": "reduced",
+        "note": "Encoded as H.264/AAC MP4 while preserving display dimensions.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 480,
+              "height": 720,
+              "bit_rate": "1317984",
+              "duration": "0.500000",
+              "nb_read_frames": "4",
+              "avg_frame_rate": "8/1",
+              "start_time": "0.000000"
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "48000",
+              "channels": 1,
+              "bit_rate": "72046",
+              "duration": "0.500000",
+              "nb_read_frames": "24",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "duration": "0.500000",
+            "size": "88645",
+            "bit_rate": "1418320"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 480,
+              "height": 720,
+              "bit_rate": "410000",
+              "duration": "0.500000",
+              "nb_read_frames": "4",
+              "avg_frame_rate": "8/1",
+              "start_time": "0.000000"
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "48000",
+              "channels": 1,
+              "bit_rate": "123615",
+              "duration": "0.512000",
+              "nb_read_frames": "24",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "duration": "0.512000",
+            "size": "35493",
+            "bit_rate": "554578"
+          }
+        }
+      },
+      {
+        "name": "Portrait video recommended, 720",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 88645,
+        "outputBytes": 35493,
+        "durationMs": 228,
+        "outcome": "reduced",
+        "note": "Encoded as H.264/AAC MP4 while preserving display dimensions.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 480,
+              "height": 720,
+              "bit_rate": "1317984",
+              "duration": "0.500000",
+              "nb_read_frames": "4",
+              "avg_frame_rate": "8/1",
+              "start_time": "0.000000"
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "48000",
+              "channels": 1,
+              "bit_rate": "72046",
+              "duration": "0.500000",
+              "nb_read_frames": "24",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "duration": "0.500000",
+            "size": "88645",
+            "bit_rate": "1418320"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 480,
+              "height": 720,
+              "bit_rate": "410000",
+              "duration": "0.500000",
+              "nb_read_frames": "4",
+              "avg_frame_rate": "8/1",
+              "start_time": "0.000000"
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "48000",
+              "channels": 1,
+              "bit_rate": "123615",
+              "duration": "0.512000",
+              "nb_read_frames": "24",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "duration": "0.512000",
+            "size": "35493",
+            "bit_rate": "554578"
+          }
+        }
+      },
+      {
+        "name": "Portrait video recommended, 480",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 88645,
+        "outputBytes": 20743,
+        "durationMs": 157,
+        "outcome": "resized",
+        "note": "Resized to your selected resolution and encoded as H.264/AAC MP4. Dimensions are rounded down to even pixels for compatible playback.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 480,
+              "height": 720,
+              "bit_rate": "1317984",
+              "duration": "0.500000",
+              "nb_read_frames": "4",
+              "avg_frame_rate": "8/1",
+              "start_time": "0.000000"
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "48000",
+              "channels": 1,
+              "bit_rate": "72046",
+              "duration": "0.500000",
+              "nb_read_frames": "24",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "duration": "0.500000",
+            "size": "88645",
+            "bit_rate": "1418320"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 320,
+              "height": 480,
+              "bit_rate": "174000",
+              "duration": "0.500000",
+              "nb_read_frames": "4",
+              "avg_frame_rate": "8/1",
+              "start_time": "0.000000"
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "48000",
+              "channels": 1,
+              "bit_rate": "123615",
+              "duration": "0.512000",
+              "nb_read_frames": "24",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "duration": "0.512000",
+            "size": "20743",
+            "bit_rate": "324109"
+          }
+        }
+      },
+      {
+        "name": "Portrait video maximum, original",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 88645,
+        "outputBytes": 23722,
+        "durationMs": 166,
+        "outcome": "reduced",
+        "note": "Encoded as H.264/AAC MP4 while preserving display dimensions.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 480,
+              "height": 720,
+              "bit_rate": "1317984",
+              "duration": "0.500000",
+              "nb_read_frames": "4",
+              "avg_frame_rate": "8/1",
+              "start_time": "0.000000"
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "48000",
+              "channels": 1,
+              "bit_rate": "72046",
+              "duration": "0.500000",
+              "nb_read_frames": "24",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "duration": "0.500000",
+            "size": "88645",
+            "bit_rate": "1418320"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 480,
+              "height": 720,
+              "bit_rate": "250144",
+              "duration": "0.500000",
+              "nb_read_frames": "4",
+              "avg_frame_rate": "8/1",
+              "start_time": "0.000000"
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "48000",
+              "channels": 1,
+              "bit_rate": "96915",
+              "duration": "0.512000",
+              "nb_read_frames": "24",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "duration": "0.512000",
+            "size": "23722",
+            "bit_rate": "370656"
+          }
+        }
+      },
+      {
+        "name": "Portrait video maximum, 1080",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 88645,
+        "outputBytes": 23722,
+        "durationMs": 166,
+        "outcome": "reduced",
+        "note": "Encoded as H.264/AAC MP4 while preserving display dimensions.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 480,
+              "height": 720,
+              "bit_rate": "1317984",
+              "duration": "0.500000",
+              "nb_read_frames": "4",
+              "avg_frame_rate": "8/1",
+              "start_time": "0.000000"
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "48000",
+              "channels": 1,
+              "bit_rate": "72046",
+              "duration": "0.500000",
+              "nb_read_frames": "24",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "duration": "0.500000",
+            "size": "88645",
+            "bit_rate": "1418320"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 480,
+              "height": 720,
+              "bit_rate": "250144",
+              "duration": "0.500000",
+              "nb_read_frames": "4",
+              "avg_frame_rate": "8/1",
+              "start_time": "0.000000"
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "48000",
+              "channels": 1,
+              "bit_rate": "96915",
+              "duration": "0.512000",
+              "nb_read_frames": "24",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "duration": "0.512000",
+            "size": "23722",
+            "bit_rate": "370656"
+          }
+        }
+      },
+      {
+        "name": "Portrait video maximum, 720",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 88645,
+        "outputBytes": 23722,
+        "durationMs": 162,
+        "outcome": "reduced",
+        "note": "Encoded as H.264/AAC MP4 while preserving display dimensions.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 480,
+              "height": 720,
+              "bit_rate": "1317984",
+              "duration": "0.500000",
+              "nb_read_frames": "4",
+              "avg_frame_rate": "8/1",
+              "start_time": "0.000000"
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "48000",
+              "channels": 1,
+              "bit_rate": "72046",
+              "duration": "0.500000",
+              "nb_read_frames": "24",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "duration": "0.500000",
+            "size": "88645",
+            "bit_rate": "1418320"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 480,
+              "height": 720,
+              "bit_rate": "250144",
+              "duration": "0.500000",
+              "nb_read_frames": "4",
+              "avg_frame_rate": "8/1",
+              "start_time": "0.000000"
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "48000",
+              "channels": 1,
+              "bit_rate": "96915",
+              "duration": "0.512000",
+              "nb_read_frames": "24",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "duration": "0.512000",
+            "size": "23722",
+            "bit_rate": "370656"
+          }
+        }
+      },
+      {
+        "name": "Portrait video maximum, 480",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 88645,
+        "outputBytes": 16204,
+        "durationMs": 138,
+        "outcome": "resized",
+        "note": "Resized to your selected resolution and encoded as H.264/AAC MP4. Dimensions are rounded down to even pixels for compatible playback.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 480,
+              "height": 720,
+              "bit_rate": "1317984",
+              "duration": "0.500000",
+              "nb_read_frames": "4",
+              "avg_frame_rate": "8/1",
+              "start_time": "0.000000"
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "48000",
+              "channels": 1,
+              "bit_rate": "72046",
+              "duration": "0.500000",
+              "nb_read_frames": "24",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "duration": "0.500000",
+            "size": "88645",
+            "bit_rate": "1418320"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 320,
+              "height": 480,
+              "bit_rate": "129856",
+              "duration": "0.500000",
+              "nb_read_frames": "4",
+              "avg_frame_rate": "8/1",
+              "start_time": "0.000000"
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "48000",
+              "channels": 1,
+              "bit_rate": "96915",
+              "duration": "0.512000",
+              "nb_read_frames": "24",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "duration": "0.512000",
+            "size": "16204",
+            "bit_rate": "253187"
+          }
+        }
+      },
+      {
+        "name": "Odd portrait rounds down to even pixels only for explicit 480 cap",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 19713,
+        "outputBytes": 5591,
+        "durationMs": 92,
+        "outcome": "resized",
+        "note": "Resized to your selected resolution and encoded as H.264/AAC MP4. Dimensions are rounded down to even pixels for compatible playback.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 321,
+              "height": 481,
+              "bit_rate": "301424",
+              "duration": "0.500000",
+              "nb_read_frames": "4",
+              "avg_frame_rate": "8/1",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "duration": "0.500000",
+            "size": "19713",
+            "bit_rate": "315408"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 320,
+              "height": 480,
+              "bit_rate": "75024",
+              "duration": "0.500000",
+              "nb_read_frames": "4",
+              "avg_frame_rate": "8/1",
+              "start_time": "0.000000"
+            }
+          ],
+          "format": {
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "duration": "0.500000",
+            "size": "5591",
+            "bit_rate": "89456"
+          }
+        }
+      },
+      {
+        "name": "Odd portrait original dimensions rejected without unrequested resizing",
+        "pass": true,
+        "outputVerified": false
+      },
+      {
+        "name": "GIF recommended",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 16010,
+        "outputBytes": 16010,
+        "durationMs": 54,
+        "outcome": "unchanged",
+        "note": "No smaller safe result was found. Your original file is unchanged (0% reduction).",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "gif",
+              "codec_type": "video",
+              "width": 160,
+              "height": 120,
+              "nb_read_frames": "8",
+              "avg_frame_rate": "95/12"
+            }
+          ],
+          "format": {
+            "format_name": "gif",
+            "size": "16010"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "gif",
+              "codec_type": "video",
+              "width": 160,
+              "height": 120,
+              "nb_read_frames": "8",
+              "avg_frame_rate": "95/12"
+            }
+          ],
+          "format": {
+            "format_name": "gif",
+            "size": "16010"
+          }
+        }
+      },
+      {
+        "name": "GIF maximum",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 16010,
+        "outputBytes": 16010,
+        "durationMs": 45,
+        "outcome": "unchanged",
+        "note": "No smaller safe result was found. Your original file is unchanged (0% reduction).",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "gif",
+              "codec_type": "video",
+              "width": 160,
+              "height": 120,
+              "nb_read_frames": "8",
+              "avg_frame_rate": "95/12"
+            }
+          ],
+          "format": {
+            "format_name": "gif",
+            "size": "16010"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "gif",
+              "codec_type": "video",
+              "width": 160,
+              "height": 120,
+              "nb_read_frames": "8",
+              "avg_frame_rate": "95/12"
+            }
+          ],
+          "format": {
+            "format_name": "gif",
+            "size": "16010"
+          }
+        }
+      },
+      {
+        "name": "Unoptimized GIF recommended",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 34872,
+        "outputBytes": 24106,
+        "durationMs": 44,
+        "outcome": "reduced",
+        "note": "Animation dimensions, frame delays and loop count preserved. Maximum mode uses a smaller color palette; other metadata may be removed.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "gif",
+              "codec_type": "video",
+              "width": 160,
+              "height": 120,
+              "nb_read_frames": "8",
+              "avg_frame_rate": "95/12"
+            }
+          ],
+          "format": {
+            "format_name": "gif",
+            "size": "34872"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "gif",
+              "codec_type": "video",
+              "width": 160,
+              "height": 120,
+              "nb_read_frames": "8",
+              "avg_frame_rate": "95/12"
+            }
+          ],
+          "format": {
+            "format_name": "gif",
+            "size": "24106"
+          }
+        }
+      },
+      {
+        "name": "Unoptimized GIF maximum",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 34872,
+        "outputBytes": 21956,
+        "durationMs": 43,
+        "outcome": "reduced",
+        "note": "Animation dimensions, frame delays and loop count preserved. Maximum mode uses a smaller color palette; other metadata may be removed.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "gif",
+              "codec_type": "video",
+              "width": 160,
+              "height": 120,
+              "nb_read_frames": "8",
+              "avg_frame_rate": "95/12"
+            }
+          ],
+          "format": {
+            "format_name": "gif",
+            "size": "34872"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "gif",
+              "codec_type": "video",
+              "width": 160,
+              "height": 120,
+              "nb_read_frames": "8",
+              "avg_frame_rate": "95/12"
+            }
+          ],
+          "format": {
+            "format_name": "gif",
+            "size": "21956"
+          }
+        }
+      },
+      {
+        "name": "WAV \u2192 MP3",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 352878,
+        "outputBytes": 24809,
+        "durationMs": 105,
+        "outcome": "converted",
+        "note": "Encoded as MP3 at 96 kbps. MP3 encoding is lossy.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "pcm_s16le",
+              "codec_type": "audio",
+              "sample_rate": "44100",
+              "channels": 2,
+              "bit_rate": "1411200",
+              "duration": "2.000000",
+              "nb_read_frames": "87",
+              "avg_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "format_name": "wav",
+            "duration": "2.000000",
+            "size": "352878",
+            "bit_rate": "1411512"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio",
+              "sample_rate": "44100",
+              "channels": 2,
+              "bit_rate": "96000",
+              "duration": "2.037551",
+              "nb_read_frames": "78",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.025057"
+            }
+          ],
+          "format": {
+            "format_name": "mp3",
+            "duration": "2.037551",
+            "size": "24809",
+            "bit_rate": "97407"
+          }
+        }
+      },
+      {
+        "name": "WAV \u2192 MP3 at 128 kbps",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 352878,
+        "outputBytes": 33062,
+        "durationMs": 86,
+        "outcome": "converted",
+        "note": "Encoded as MP3 at 128 kbps. MP3 encoding is lossy.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "pcm_s16le",
+              "codec_type": "audio",
+              "sample_rate": "44100",
+              "channels": 2,
+              "bit_rate": "1411200",
+              "duration": "2.000000",
+              "nb_read_frames": "87",
+              "avg_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "format_name": "wav",
+            "duration": "2.000000",
+            "size": "352878",
+            "bit_rate": "1411512"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio",
+              "sample_rate": "44100",
+              "channels": 2,
+              "bit_rate": "128000",
+              "duration": "2.037551",
+              "nb_read_frames": "78",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.025057"
+            }
+          ],
+          "format": {
+            "format_name": "mp3",
+            "duration": "2.037551",
+            "size": "33062",
+            "bit_rate": "129810"
+          }
+        }
+      },
+      {
+        "name": "WAV \u2192 MP3 at 192 kbps",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 352878,
+        "outputBytes": 49572,
+        "durationMs": 79,
+        "outcome": "converted",
+        "note": "Encoded as MP3 at 192 kbps. MP3 encoding is lossy.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "pcm_s16le",
+              "codec_type": "audio",
+              "sample_rate": "44100",
+              "channels": 2,
+              "bit_rate": "1411200",
+              "duration": "2.000000",
+              "nb_read_frames": "87",
+              "avg_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "format_name": "wav",
+            "duration": "2.000000",
+            "size": "352878",
+            "bit_rate": "1411512"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio",
+              "sample_rate": "44100",
+              "channels": 2,
+              "bit_rate": "192000",
+              "duration": "2.037551",
+              "nb_read_frames": "78",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.025057"
+            }
+          ],
+          "format": {
+            "format_name": "mp3",
+            "duration": "2.037551",
+            "size": "49572",
+            "bit_rate": "194633"
+          }
+        }
+      },
+      {
+        "name": "WAV \u2192 MP3 at 256 kbps",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 352878,
+        "outputBytes": 66081,
+        "durationMs": 88,
+        "outcome": "converted",
+        "note": "Encoded as MP3 at 256 kbps. MP3 encoding is lossy.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "pcm_s16le",
+              "codec_type": "audio",
+              "sample_rate": "44100",
+              "channels": 2,
+              "bit_rate": "1411200",
+              "duration": "2.000000",
+              "nb_read_frames": "87",
+              "avg_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "format_name": "wav",
+            "duration": "2.000000",
+            "size": "352878",
+            "bit_rate": "1411512"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio",
+              "sample_rate": "44100",
+              "channels": 2,
+              "bit_rate": "256000",
+              "duration": "2.037551",
+              "nb_read_frames": "78",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.025057"
+            }
+          ],
+          "format": {
+            "format_name": "mp3",
+            "duration": "2.037551",
+            "size": "66081",
+            "bit_rate": "259452"
+          }
+        }
+      },
+      {
+        "name": "WAV \u2192 MP3 at 320 kbps",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 352878,
+        "outputBytes": 82591,
+        "durationMs": 82,
+        "outcome": "converted",
+        "note": "Encoded as MP3 at 320 kbps. MP3 encoding is lossy.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "pcm_s16le",
+              "codec_type": "audio",
+              "sample_rate": "44100",
+              "channels": 2,
+              "bit_rate": "1411200",
+              "duration": "2.000000",
+              "nb_read_frames": "87",
+              "avg_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "format_name": "wav",
+            "duration": "2.000000",
+            "size": "352878",
+            "bit_rate": "1411512"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio",
+              "sample_rate": "44100",
+              "channels": 2,
+              "bit_rate": "320000",
+              "duration": "2.037551",
+              "nb_read_frames": "78",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.025057"
+            }
+          ],
+          "format": {
+            "format_name": "mp3",
+            "duration": "2.037551",
+            "size": "82591",
+            "bit_rate": "324275"
+          }
+        }
+      },
+      {
+        "name": "MP3 compression",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 49571,
+        "outputBytes": 24809,
+        "durationMs": 45,
+        "outcome": "reduced",
+        "note": "Encoded as MP3 at 96 kbps. MP3 encoding is lossy.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio",
+              "sample_rate": "44100",
+              "channels": 2,
+              "bit_rate": "192000",
+              "duration": "2.037551",
+              "nb_read_frames": "78",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.025057"
+            }
+          ],
+          "format": {
+            "format_name": "mp3",
+            "duration": "2.037551",
+            "size": "49571",
+            "bit_rate": "194629"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio",
+              "sample_rate": "44100",
+              "channels": 2,
+              "bit_rate": "96000",
+              "duration": "2.037551",
+              "nb_read_frames": "78",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.025057"
+            }
+          ],
+          "format": {
+            "format_name": "mp3",
+            "duration": "2.037551",
+            "size": "24809",
+            "bit_rate": "97407"
+          }
+        }
+      },
+      {
+        "name": "Low-rate WAV 8000 Hz \u2192 96 kbps MP3",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 32078,
+        "outputBytes": 13437,
+        "durationMs": 47,
+        "outcome": "converted",
+        "note": "Encoded as MP3 at 96 kbps. MP3 encoding is lossy. Sample rate changed from 8,000 Hz to 16,000 Hz for MP3 compatibility. Resampling does not restore missing detail.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "pcm_s16le",
+              "codec_type": "audio",
+              "sample_rate": "8000",
+              "channels": 2,
+              "bit_rate": "256000",
+              "duration": "1.000000",
+              "nb_read_frames": "8",
+              "avg_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "format_name": "wav",
+            "duration": "1.000000",
+            "size": "32078",
+            "bit_rate": "256624"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio",
+              "sample_rate": "16000",
+              "channels": 2,
+              "bit_rate": "96000",
+              "duration": "1.080000",
+              "nb_read_frames": "29",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.069062"
+            }
+          ],
+          "format": {
+            "format_name": "mp3",
+            "duration": "1.080000",
+            "size": "13437",
+            "bit_rate": "99533"
+          }
+        }
+      },
+      {
+        "name": "Low-rate WAV 8000 Hz \u2192 128 kbps MP3",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 32078,
+        "outputBytes": 17901,
+        "durationMs": 24,
+        "outcome": "converted",
+        "note": "Encoded as MP3 at 128 kbps. MP3 encoding is lossy. Sample rate changed from 8,000 Hz to 16,000 Hz for MP3 compatibility. Resampling does not restore missing detail.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "pcm_s16le",
+              "codec_type": "audio",
+              "sample_rate": "8000",
+              "channels": 2,
+              "bit_rate": "256000",
+              "duration": "1.000000",
+              "nb_read_frames": "8",
+              "avg_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "format_name": "wav",
+            "duration": "1.000000",
+            "size": "32078",
+            "bit_rate": "256624"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio",
+              "sample_rate": "16000",
+              "channels": 2,
+              "bit_rate": "128000",
+              "duration": "1.080000",
+              "nb_read_frames": "29",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.069062"
+            }
+          ],
+          "format": {
+            "format_name": "mp3",
+            "duration": "1.080000",
+            "size": "17901",
+            "bit_rate": "132600"
+          }
+        }
+      },
+      {
+        "name": "Low-rate WAV 8000 Hz \u2192 160 kbps MP3",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 32078,
+        "outputBytes": 22365,
+        "durationMs": 23,
+        "outcome": "converted",
+        "note": "Encoded as MP3 at 160 kbps. MP3 encoding is lossy. Sample rate changed from 8,000 Hz to 16,000 Hz for MP3 compatibility. Resampling does not restore missing detail.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "pcm_s16le",
+              "codec_type": "audio",
+              "sample_rate": "8000",
+              "channels": 2,
+              "bit_rate": "256000",
+              "duration": "1.000000",
+              "nb_read_frames": "8",
+              "avg_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "format_name": "wav",
+            "duration": "1.000000",
+            "size": "32078",
+            "bit_rate": "256624"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio",
+              "sample_rate": "16000",
+              "channels": 2,
+              "bit_rate": "160000",
+              "duration": "1.080000",
+              "nb_read_frames": "29",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.069062"
+            }
+          ],
+          "format": {
+            "format_name": "mp3",
+            "duration": "1.080000",
+            "size": "22365",
+            "bit_rate": "165666"
+          }
+        }
+      },
+      {
+        "name": "Low-rate WAV 8000 Hz \u2192 192 kbps MP3",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 32078,
+        "outputBytes": 25965,
+        "durationMs": 30,
+        "outcome": "converted",
+        "note": "Encoded as MP3 at 192 kbps. MP3 encoding is lossy. Sample rate changed from 8,000 Hz to 32,000 Hz for MP3 compatibility. Resampling does not restore missing detail.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "pcm_s16le",
+              "codec_type": "audio",
+              "sample_rate": "8000",
+              "channels": 2,
+              "bit_rate": "256000",
+              "duration": "1.000000",
+              "nb_read_frames": "8",
+              "avg_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "format_name": "wav",
+            "duration": "1.000000",
+            "size": "32078",
+            "bit_rate": "256624"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio",
+              "sample_rate": "32000",
+              "channels": 2,
+              "bit_rate": "192000",
+              "duration": "1.044000",
+              "nb_read_frames": "29",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.034531"
+            }
+          ],
+          "format": {
+            "format_name": "mp3",
+            "duration": "1.044000",
+            "size": "25965",
+            "bit_rate": "198965"
+          }
+        }
+      },
+      {
+        "name": "Low-rate WAV 8000 Hz \u2192 256 kbps MP3",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 32078,
+        "outputBytes": 34605,
+        "durationMs": 33,
+        "outcome": "converted",
+        "note": "Encoded as MP3 at 256 kbps. MP3 encoding is lossy. Sample rate changed from 8,000 Hz to 32,000 Hz for MP3 compatibility. Resampling does not restore missing detail.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "pcm_s16le",
+              "codec_type": "audio",
+              "sample_rate": "8000",
+              "channels": 2,
+              "bit_rate": "256000",
+              "duration": "1.000000",
+              "nb_read_frames": "8",
+              "avg_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "format_name": "wav",
+            "duration": "1.000000",
+            "size": "32078",
+            "bit_rate": "256624"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio",
+              "sample_rate": "32000",
+              "channels": 2,
+              "bit_rate": "256000",
+              "duration": "1.044000",
+              "nb_read_frames": "29",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.034531"
+            }
+          ],
+          "format": {
+            "format_name": "mp3",
+            "duration": "1.044000",
+            "size": "34605",
+            "bit_rate": "265172"
+          }
+        }
+      },
+      {
+        "name": "Low-rate WAV 8000 Hz \u2192 320 kbps MP3",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 32078,
+        "outputBytes": 43245,
+        "durationMs": 33,
+        "outcome": "converted",
+        "note": "Encoded as MP3 at 320 kbps. MP3 encoding is lossy. Sample rate changed from 8,000 Hz to 32,000 Hz for MP3 compatibility. Resampling does not restore missing detail.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "pcm_s16le",
+              "codec_type": "audio",
+              "sample_rate": "8000",
+              "channels": 2,
+              "bit_rate": "256000",
+              "duration": "1.000000",
+              "nb_read_frames": "8",
+              "avg_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "format_name": "wav",
+            "duration": "1.000000",
+            "size": "32078",
+            "bit_rate": "256624"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio",
+              "sample_rate": "32000",
+              "channels": 2,
+              "bit_rate": "320000",
+              "duration": "1.044000",
+              "nb_read_frames": "29",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.034531"
+            }
+          ],
+          "format": {
+            "format_name": "mp3",
+            "duration": "1.044000",
+            "size": "43245",
+            "bit_rate": "331379"
+          }
+        }
+      },
+      {
+        "name": "Low-rate WAV 16000 Hz \u2192 96 kbps MP3",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 64078,
+        "outputBytes": 13437,
+        "durationMs": 29,
+        "outcome": "converted",
+        "note": "Encoded as MP3 at 96 kbps. MP3 encoding is lossy.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "pcm_s16le",
+              "codec_type": "audio",
+              "sample_rate": "16000",
+              "channels": 2,
+              "bit_rate": "512000",
+              "duration": "1.000000",
+              "nb_read_frames": "16",
+              "avg_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "format_name": "wav",
+            "duration": "1.000000",
+            "size": "64078",
+            "bit_rate": "512624"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio",
+              "sample_rate": "16000",
+              "channels": 2,
+              "bit_rate": "96000",
+              "duration": "1.080000",
+              "nb_read_frames": "29",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.069062"
+            }
+          ],
+          "format": {
+            "format_name": "mp3",
+            "duration": "1.080000",
+            "size": "13437",
+            "bit_rate": "99533"
+          }
+        }
+      },
+      {
+        "name": "Low-rate WAV 16000 Hz \u2192 128 kbps MP3",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 64078,
+        "outputBytes": 17901,
+        "durationMs": 44,
+        "outcome": "converted",
+        "note": "Encoded as MP3 at 128 kbps. MP3 encoding is lossy.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "pcm_s16le",
+              "codec_type": "audio",
+              "sample_rate": "16000",
+              "channels": 2,
+              "bit_rate": "512000",
+              "duration": "1.000000",
+              "nb_read_frames": "16",
+              "avg_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "format_name": "wav",
+            "duration": "1.000000",
+            "size": "64078",
+            "bit_rate": "512624"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio",
+              "sample_rate": "16000",
+              "channels": 2,
+              "bit_rate": "128000",
+              "duration": "1.080000",
+              "nb_read_frames": "29",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.069062"
+            }
+          ],
+          "format": {
+            "format_name": "mp3",
+            "duration": "1.080000",
+            "size": "17901",
+            "bit_rate": "132600"
+          }
+        }
+      },
+      {
+        "name": "Low-rate WAV 16000 Hz \u2192 160 kbps MP3",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 64078,
+        "outputBytes": 22365,
+        "durationMs": 30,
+        "outcome": "converted",
+        "note": "Encoded as MP3 at 160 kbps. MP3 encoding is lossy.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "pcm_s16le",
+              "codec_type": "audio",
+              "sample_rate": "16000",
+              "channels": 2,
+              "bit_rate": "512000",
+              "duration": "1.000000",
+              "nb_read_frames": "16",
+              "avg_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "format_name": "wav",
+            "duration": "1.000000",
+            "size": "64078",
+            "bit_rate": "512624"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio",
+              "sample_rate": "16000",
+              "channels": 2,
+              "bit_rate": "160000",
+              "duration": "1.080000",
+              "nb_read_frames": "29",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.069062"
+            }
+          ],
+          "format": {
+            "format_name": "mp3",
+            "duration": "1.080000",
+            "size": "22365",
+            "bit_rate": "165666"
+          }
+        }
+      },
+      {
+        "name": "Low-rate WAV 16000 Hz \u2192 192 kbps MP3",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 64078,
+        "outputBytes": 25965,
+        "durationMs": 38,
+        "outcome": "converted",
+        "note": "Encoded as MP3 at 192 kbps. MP3 encoding is lossy. Sample rate changed from 16,000 Hz to 32,000 Hz for MP3 compatibility. Resampling does not restore missing detail.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "pcm_s16le",
+              "codec_type": "audio",
+              "sample_rate": "16000",
+              "channels": 2,
+              "bit_rate": "512000",
+              "duration": "1.000000",
+              "nb_read_frames": "16",
+              "avg_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "format_name": "wav",
+            "duration": "1.000000",
+            "size": "64078",
+            "bit_rate": "512624"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio",
+              "sample_rate": "32000",
+              "channels": 2,
+              "bit_rate": "192000",
+              "duration": "1.044000",
+              "nb_read_frames": "29",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.034531"
+            }
+          ],
+          "format": {
+            "format_name": "mp3",
+            "duration": "1.044000",
+            "size": "25965",
+            "bit_rate": "198965"
+          }
+        }
+      },
+      {
+        "name": "Low-rate WAV 16000 Hz \u2192 256 kbps MP3",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 64078,
+        "outputBytes": 34605,
+        "durationMs": 50,
+        "outcome": "converted",
+        "note": "Encoded as MP3 at 256 kbps. MP3 encoding is lossy. Sample rate changed from 16,000 Hz to 32,000 Hz for MP3 compatibility. Resampling does not restore missing detail.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "pcm_s16le",
+              "codec_type": "audio",
+              "sample_rate": "16000",
+              "channels": 2,
+              "bit_rate": "512000",
+              "duration": "1.000000",
+              "nb_read_frames": "16",
+              "avg_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "format_name": "wav",
+            "duration": "1.000000",
+            "size": "64078",
+            "bit_rate": "512624"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio",
+              "sample_rate": "32000",
+              "channels": 2,
+              "bit_rate": "256000",
+              "duration": "1.044000",
+              "nb_read_frames": "29",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.034531"
+            }
+          ],
+          "format": {
+            "format_name": "mp3",
+            "duration": "1.044000",
+            "size": "34605",
+            "bit_rate": "265172"
+          }
+        }
+      },
+      {
+        "name": "Low-rate WAV 16000 Hz \u2192 320 kbps MP3",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 64078,
+        "outputBytes": 43245,
+        "durationMs": 44,
+        "outcome": "converted",
+        "note": "Encoded as MP3 at 320 kbps. MP3 encoding is lossy. Sample rate changed from 16,000 Hz to 32,000 Hz for MP3 compatibility. Resampling does not restore missing detail.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "pcm_s16le",
+              "codec_type": "audio",
+              "sample_rate": "16000",
+              "channels": 2,
+              "bit_rate": "512000",
+              "duration": "1.000000",
+              "nb_read_frames": "16",
+              "avg_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "format_name": "wav",
+            "duration": "1.000000",
+            "size": "64078",
+            "bit_rate": "512624"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio",
+              "sample_rate": "32000",
+              "channels": 2,
+              "bit_rate": "320000",
+              "duration": "1.044000",
+              "nb_read_frames": "29",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.034531"
+            }
+          ],
+          "format": {
+            "format_name": "mp3",
+            "duration": "1.044000",
+            "size": "43245",
+            "bit_rate": "331379"
+          }
+        }
+      },
+      {
+        "name": "Low-rate WAV 22050 Hz \u2192 96 kbps MP3",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 88278,
+        "outputBytes": 13210,
+        "durationMs": 43,
+        "outcome": "converted",
+        "note": "Encoded as MP3 at 96 kbps. MP3 encoding is lossy.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "pcm_s16le",
+              "codec_type": "audio",
+              "sample_rate": "22050",
+              "channels": 2,
+              "bit_rate": "705600",
+              "duration": "1.000000",
+              "nb_read_frames": "22",
+              "avg_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "format_name": "wav",
+            "duration": "1.000000",
+            "size": "88278",
+            "bit_rate": "706224"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio",
+              "sample_rate": "22050",
+              "channels": 2,
+              "bit_rate": "96000",
+              "duration": "1.071020",
+              "nb_read_frames": "40",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.050113"
+            }
+          ],
+          "format": {
+            "format_name": "mp3",
+            "duration": "1.071020",
+            "size": "13210",
+            "bit_rate": "98672"
+          }
+        }
+      },
+      {
+        "name": "Low-rate WAV 22050 Hz \u2192 128 kbps MP3",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 88278,
+        "outputBytes": 17598,
+        "durationMs": 42,
+        "outcome": "converted",
+        "note": "Encoded as MP3 at 128 kbps. MP3 encoding is lossy.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "pcm_s16le",
+              "codec_type": "audio",
+              "sample_rate": "22050",
+              "channels": 2,
+              "bit_rate": "705600",
+              "duration": "1.000000",
+              "nb_read_frames": "22",
+              "avg_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "format_name": "wav",
+            "duration": "1.000000",
+            "size": "88278",
+            "bit_rate": "706224"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio",
+              "sample_rate": "22050",
+              "channels": 2,
+              "bit_rate": "128000",
+              "duration": "1.071020",
+              "nb_read_frames": "40",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.050113"
+            }
+          ],
+          "format": {
+            "format_name": "mp3",
+            "duration": "1.071020",
+            "size": "17598",
+            "bit_rate": "131448"
+          }
+        }
+      },
+      {
+        "name": "Low-rate WAV 22050 Hz \u2192 160 kbps MP3",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 88278,
+        "outputBytes": 21987,
+        "durationMs": 44,
+        "outcome": "converted",
+        "note": "Encoded as MP3 at 160 kbps. MP3 encoding is lossy.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "pcm_s16le",
+              "codec_type": "audio",
+              "sample_rate": "22050",
+              "channels": 2,
+              "bit_rate": "705600",
+              "duration": "1.000000",
+              "nb_read_frames": "22",
+              "avg_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "format_name": "wav",
+            "duration": "1.000000",
+            "size": "88278",
+            "bit_rate": "706224"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio",
+              "sample_rate": "22050",
+              "channels": 2,
+              "bit_rate": "160000",
+              "duration": "1.071020",
+              "nb_read_frames": "40",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.050113"
+            }
+          ],
+          "format": {
+            "format_name": "mp3",
+            "duration": "1.071020",
+            "size": "21987",
+            "bit_rate": "164232"
+          }
+        }
+      },
+      {
+        "name": "Low-rate WAV 22050 Hz \u2192 192 kbps MP3",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 88278,
+        "outputBytes": 25965,
+        "durationMs": 55,
+        "outcome": "converted",
+        "note": "Encoded as MP3 at 192 kbps. MP3 encoding is lossy. Sample rate changed from 22,050 Hz to 32,000 Hz for MP3 compatibility. Resampling does not restore missing detail.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "pcm_s16le",
+              "codec_type": "audio",
+              "sample_rate": "22050",
+              "channels": 2,
+              "bit_rate": "705600",
+              "duration": "1.000000",
+              "nb_read_frames": "22",
+              "avg_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "format_name": "wav",
+            "duration": "1.000000",
+            "size": "88278",
+            "bit_rate": "706224"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio",
+              "sample_rate": "32000",
+              "channels": 2,
+              "bit_rate": "192000",
+              "duration": "1.044000",
+              "nb_read_frames": "29",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.034531"
+            }
+          ],
+          "format": {
+            "format_name": "mp3",
+            "duration": "1.044000",
+            "size": "25965",
+            "bit_rate": "198965"
+          }
+        }
+      },
+      {
+        "name": "Low-rate WAV 22050 Hz \u2192 256 kbps MP3",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 88278,
+        "outputBytes": 34605,
+        "durationMs": 52,
+        "outcome": "converted",
+        "note": "Encoded as MP3 at 256 kbps. MP3 encoding is lossy. Sample rate changed from 22,050 Hz to 32,000 Hz for MP3 compatibility. Resampling does not restore missing detail.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "pcm_s16le",
+              "codec_type": "audio",
+              "sample_rate": "22050",
+              "channels": 2,
+              "bit_rate": "705600",
+              "duration": "1.000000",
+              "nb_read_frames": "22",
+              "avg_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "format_name": "wav",
+            "duration": "1.000000",
+            "size": "88278",
+            "bit_rate": "706224"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio",
+              "sample_rate": "32000",
+              "channels": 2,
+              "bit_rate": "256000",
+              "duration": "1.044000",
+              "nb_read_frames": "29",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.034531"
+            }
+          ],
+          "format": {
+            "format_name": "mp3",
+            "duration": "1.044000",
+            "size": "34605",
+            "bit_rate": "265172"
+          }
+        }
+      },
+      {
+        "name": "Low-rate WAV 22050 Hz \u2192 320 kbps MP3",
+        "pass": true,
+        "outputVerified": true,
+        "inputBytes": 88278,
+        "outputBytes": 43245,
+        "durationMs": 54,
+        "outcome": "converted",
+        "note": "Encoded as MP3 at 320 kbps. MP3 encoding is lossy. Sample rate changed from 22,050 Hz to 32,000 Hz for MP3 compatibility. Resampling does not restore missing detail.",
+        "before": {
+          "streams": [
+            {
+              "codec_name": "pcm_s16le",
+              "codec_type": "audio",
+              "sample_rate": "22050",
+              "channels": 2,
+              "bit_rate": "705600",
+              "duration": "1.000000",
+              "nb_read_frames": "22",
+              "avg_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "format_name": "wav",
+            "duration": "1.000000",
+            "size": "88278",
+            "bit_rate": "706224"
+          }
+        },
+        "after": {
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio",
+              "sample_rate": "32000",
+              "channels": 2,
+              "bit_rate": "320000",
+              "duration": "1.044000",
+              "nb_read_frames": "29",
+              "avg_frame_rate": "0/0",
+              "start_time": "0.034531"
+            }
+          ],
+          "format": {
+            "format_name": "mp3",
+            "duration": "1.044000",
+            "size": "43245",
+            "bit_rate": "331379"
+          }
+        }
+      }
+    ]
+  },
+  "documents": {
+    "runtime": "v22.23.5",
+    "platform": "linux",
+    "method": "Bundled actual source engines in Node. Three repetitions; times include processing only, exclude generation and independent native output validation. First PDF repetition includes first-use module/runtime effects; all are the same process. Not browser UI or universal speed evidence.",
+    "sourceHashes": {
+      "lib/engines/pdf.ts": "b2b7e635557b8585738691d7adae77e46b3b05988d0c57b6dfdecec20f9edfe7",
+      "lib/engines/zip.ts": "5343d0bf8548bcdafd59f66578f29f50e4e1fc4d62c349811ca3c3a8a75472c8"
+    },
+    "records": [
+      {
+        "id": "text-24-pages",
+        "inputBytes": 273765,
+        "outputBytes": 21373,
+        "reductionPercent": 92.19293919967856,
+        "inputSha256": "8d63dc99028dc1199185e7edfc1bd0b28f9bc9cbae6c91e396c7cdce5a261567",
+        "outputSha256": "dbf5728454aa7d573d2c34e7c19cf502352d39cbec6f5cda8fb51c857b03ab31",
+        "outcome": "reduced",
+        "note": "Rewrote the document without document-info or catalog XMP metadata. Embedded content and attachments are not sanitized.",
+        "pages": 24,
+        "pageGeometryPreserved": true,
+        "independentTextExact": true,
+        "nativePdfInfoParsed": true,
+        "repetitionsMs": [
+          101.61027000000013,
+          93.43123600000013,
+          45.85965199999987
+        ],
+        "medianMs": 93.43123600000013
+      },
+      {
+        "id": "interactive-attachment",
+        "inputBytes": 119257,
+        "outputBytes": 2010,
+        "reductionPercent": 98.31456434423137,
+        "inputSha256": "b2db98fef7c80af260e9c8f490de3123592c781b44c3723ff253c003d3a33c33",
+        "outputSha256": "37709f94ac6b8b8a893e38d195e84dac80185f9363969a1e94eb3bc47662180b",
+        "outcome": "reduced",
+        "note": "Rewrote the document without document-info or catalog XMP metadata. Embedded content and attachments are not sanitized.",
+        "pages": 1,
+        "pageGeometryPreserved": true,
+        "independentTextExact": true,
+        "nativePdfInfoParsed": true,
+        "formValuePreserved": true,
+        "nativeAttachmentBytesExact": true,
+        "repetitionsMs": [
+          17.430742999999893,
+          29.4593160000004,
+          9.316499000000022
+        ],
+        "medianMs": 17.430742999999893
+      },
+      {
+        "id": "already-optimized",
+        "inputBytes": 857,
+        "outputBytes": 857,
+        "reductionPercent": 0,
+        "inputSha256": "465a7b1155b95032ac0cb70a37045d7c57abd8952b2bfff5e4be7254a1fcc11b",
+        "outputSha256": "465a7b1155b95032ac0cb70a37045d7c57abd8952b2bfff5e4be7254a1fcc11b",
+        "outcome": "unchanged",
+        "note": "No smaller safe result was found. Your original file is unchanged (0% reduction).",
+        "pages": 1,
+        "pageGeometryPreserved": true,
+        "independentTextExact": true,
+        "nativePdfInfoParsed": true,
+        "repetitionsMs": [
+          2.9863970000001245,
+          6.1676009999996495,
+          2.5616869999998926
+        ],
+        "medianMs": 2.9863970000001245
+      },
+      {
+        "id": "image-dominated-scan-surrogate",
+        "inputBytes": 37560,
+        "outputBytes": 37560,
+        "reductionPercent": 0,
+        "inputSha256": "d504b9564e57dae2d60f3d3671c3485477113b14c5494fd52dafb6925404a3c8",
+        "outputSha256": "d504b9564e57dae2d60f3d3671c3485477113b14c5494fd52dafb6925404a3c8",
+        "outcome": "unchanged",
+        "note": "No smaller safe result was found. Your original file is unchanged (0% reduction).",
+        "pages": 1,
+        "pageGeometryPreserved": true,
+        "independentTextExact": true,
+        "nativePdfInfoParsed": true,
+        "nativeRenderedScanExact": true,
+        "repetitionsMs": [
+          2.73910399999977,
+          3.0125480000001517,
+          2.3138779999999315
+        ],
+        "medianMs": 2.73910399999977
+      },
+      {
+        "id": "create-zip-500-files",
+        "sourceBytes": 101890,
+        "outputBytes": 70192,
+        "fileCount": 500,
+        "nativeZipByteHashesExact": true,
+        "repetitionsMs": [
+          183.35099200000013,
+          72.96962200000007,
+          82.77527400000054
+        ],
+        "medianMs": 82.77527400000054
+      }
+    ]
+  },
+  "scope": "Generated short fixtures, independently probed/decoded outputs. Direct engine/WASM timings exclude browser navigation, HTTP engine download and UI. B desktop/touch browser results recorded separately. Artificial PDF metadata redundancy is intentional, not typical-document savings; scan surrogate is synthetic."
+}

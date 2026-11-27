@@ -1,0 +1,43 @@
+{
+  "scope": "Original technical comparison sheets, copied without editing. Overview and unscaled360\u00d7260 center crops on black/white; difference amplified8\u00d7. These are measured-output visualizations, not UI screenshots or AI illustrations.",
+  "input": {
+    "name": "transparent.png",
+    "width": 768,
+    "height": 512,
+    "bytes": 74504,
+    "sha256": "401a6ca9ae7bbe6b7aec4aff94afade22ec12a1485f8797346cda88808853ac9",
+    "license": "CC0-1.0 generated fixture"
+  },
+  "sheets": [
+    {
+      "file": "docs/evidence/2026-11-27/quality/filecompresser-transparent-lossless.png",
+      "source": ".qa-results/phase2/image-lab/canonical-quality/fc-baseline-transparent-lossless-comparison.png",
+      "sheetSha256": "fbd4804d3327e2247b41b3c9b7148acda7f2e48ab6b9e39c57a63b5559517832",
+      "sheetBytes": 132716,
+      "mode": "Lossless / selected Smart",
+      "outputBytes": 29945,
+      "outputSha256": "d42201e50d9fa57552dc740224c1d450f8aa234583d256affb05b320fa0ab8f2",
+      "note": "Exact RGBA/alpha. Historical baseline sheet reused because selected current output hash is identical."
+    },
+    {
+      "file": "docs/evidence/2026-11-27/quality/filecompresser-transparent-maximum.png",
+      "source": ".qa-results/phase2/image-lab/canonical-quality/fc-candidate-png-transparent-maximum-comparison.png",
+      "sheetSha256": "0e1671bfddb060a5462df611ed961ac7ebe7471a82a735b07dc06fcaac030454",
+      "sheetBytes": 421368,
+      "mode": "Selected Maximum",
+      "outputBytes": 11216,
+      "outputSha256": "99d940d6f03edaecca7a8533067c4542afdaf3a8c83acb5cc69d5136bcb553c6",
+      "note": "Exact alpha, altered RGB; visible bands and greener text. No invisibility claim."
+    },
+    {
+      "file": "docs/evidence/2026-11-27/quality/11zon-transparent-default60.png",
+      "source": ".qa-results/phase2/competitors/11zon-quality/11zon-transparent-comparison.png",
+      "sheetSha256": "1230eb2c297b1fe194c3fd95f0c8ca8b521f8afb2250677c7a892e54fd80ee11",
+      "sheetBytes": 326002,
+      "mode": "11zon default60",
+      "outputBytes": 9793,
+      "outputSha256": "5f7b18d1c56ee661f2a85cd01e5d8871cb38dc1f262b64781649e03c9c674567",
+      "note": "Visible bands and changed alpha (maximum error9/255). Smaller output is not equivalent fidelity."
+    }
+  ]
+}

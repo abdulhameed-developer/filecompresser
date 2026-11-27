@@ -32,6 +32,7 @@ export default function FileDropzone({
 }: FileDropzoneProps) {
   const inputRef = useRef<HTMLInputElement>(null)
   const [drag, setDrag] = useState(false)
+  const activeDrag = drag && !disabled
   // Counting enter/leave pairs prevents the highlight from flickering when the
   // pointer crosses child elements inside the dropzone.
   const dragDepth = useRef(0)
@@ -55,6 +56,7 @@ export default function FileDropzone({
   const handleDragEnter = (event: DragEvent) => {
     event.preventDefault()
     event.stopPropagation()
+    if (disabled) return
     dragDepth.current += 1
     setDrag(true)
   }
@@ -73,7 +75,7 @@ export default function FileDropzone({
     event.preventDefault()
     event.stopPropagation()
     // Required on some browsers, or the drop event never fires.
-    if (event.dataTransfer) event.dataTransfer.dropEffect = 'copy'
+    if (event.dataTransfer) event.dataTransfer.dropEffect = disabled ? 'none' : 'copy'
   }
 
   const handleDrop = (event: DragEvent) => {
@@ -87,12 +89,12 @@ export default function FileDropzone({
 
   return (
     <div
-      className={`dropzone${drag ? ' drag' : ''}${disabled ? ' disabled' : ''}`}
+      className={`dropzone${activeDrag ? ' drag' : ''}${disabled ? ' disabled' : ''}`}
       role="button"
       tabIndex={disabled ? -1 : 0}
-      // Include the complete visible label so voice-control users can address
-      // the same words they see. Drag depth prevents repeated state changes.
-      aria-label={[drag ? 'Drop them here' : label, hint, formats].filter(Boolean).join('. ')}
+      // Name the control from its actual visible text, including drag-state
+      // changes, without inserting punctuation absent from the voice label.
+      aria-labelledby={`${hintId}-label ${hintId}${formats ? ` ${hintId}-formats` : ''}`}
       aria-disabled={disabled || undefined}
       onClick={open}
       onKeyDown={handleKeyDown}
@@ -137,7 +139,7 @@ export default function FileDropzone({
           It is level 2 so it sits directly under the page H1 — the previous H3
           skipped a level and broke the document outline. The visible text
           follows the drag state, as does its accessible name. */}
-      <h2 aria-hidden={drag || undefined}>{drag ? 'Drop them here' : label}</h2>
+      <h2 id={`${hintId}-label`}>{activeDrag ? 'Drop them here' : label}</h2>{' '}
       <p id={hintId}>
         {hint.includes('browse') ? (
           <>
@@ -146,8 +148,8 @@ export default function FileDropzone({
         ) : (
           hint
         )}
-      </p>
-      {formats && <div className="formats">{formats}</div>}
+      </p>{' '}
+      {formats && <div id={`${hintId}-formats`} className="formats">{formats}</div>}
     </div>
   )
 }

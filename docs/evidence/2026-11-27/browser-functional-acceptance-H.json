@@ -1,0 +1,731 @@
+{
+  "capturedAt": "2026-11-27T10:10:36.637Z",
+  "phase": "Phase 2",
+  "artifact": {
+    "buildId": "vfZQ5yf4p_TqDNwIrY5px",
+    "homepageSha256": "1eb1cb5d48e22a1b54fcdbc60bba42d15897a13c3c079bb369a4bf04136e2034",
+    "mode": "Production-public configuration, explicit site origin/indexing; local CMS admin retained unchanged from separately verified B build; never directly deploy local admin",
+    "canonical": "https://filecompresser.com",
+    "robots": "index, follow",
+    "imageWorkers": {
+      "image-pipeline.mjs": "8e9ce49d7e90115d20ecc30cc130a06746d9b03b5b164e4e56f1e81f1d7987c6",
+      "image-engine.mjs": "5179b8034f0272e92d54b8b9e2bb6aea6844658d66f1eab372fefb9ea6361f5a",
+      "image-canvas.mjs": "96e366066cc5720a4a9267c878d05af80b591cc5e69bde773f71b8f5adbc4173",
+      "image-metadata.mjs": "a584b568d2735f3fb1f345157c2c118a3ab63e9e1cb3377684c03caff09b3ec9",
+      "image-png.mjs": "2c15e4efe4e413f37655028c8d95dd2092476f473e126a4dc9b0cda72923053f"
+    },
+    "applicationSourceManifestSha256": "90a0f8cb4190ed74157e7ce77192c2a8247664e9706b5c87281e6844cff867c1",
+    "sourceWorkspaceSha256": "139139913d4967a0f07747e72730553d3a2944cfbe288b7bbd4248a55b8bb05d",
+    "sourceDialogScrollSha256": "d04349b6d93b56459a39f07579873a1211f37939db0f1e10feab1b9ff8f1c1da",
+    "sourceQueueEligibilitySha256": "59a647b41ed604d4bc21bc0cad30950ec613095a55f907353febf640724d3fc3",
+    "sourceFileItemSha256": "f70bb65cd36ab17a72e4921daab9bb5fbf506759808fe4df68bbbc4651d6ff4b"
+  },
+  "sourceTests": 857,
+  "sourceTestFiles": 55,
+  "harnessAssertionPreservation": {
+    "capturedAt": "2026-11-27T09:12:58.311Z",
+    "beforeSha256": "8c317dc1853a62a638e3b86c7ebdfe9ded09892965c9aef80d9f432ae206b59e",
+    "afterSha256": "15b8b7edcb4b59f9fa95b35946816db7671a1897dacabafb9ab37497fb66be21",
+    "originalExecutedCases": 74,
+    "newExecutedCases": 79,
+    "newCases": 5,
+    "originalAssertionCalls": 110,
+    "currentAssertionCalls": 133,
+    "allOriginalAssertionsUnchangedInOrder": true,
+    "originalCheckCallsites": 32,
+    "currentCheckCallsites": 36,
+    "allOriginalCaseBodiesUnchangedInOrder": true,
+    "strictResourceGuardUnchanged": true,
+    "newExpectedDownloadProofs": 57,
+    "scope": "Default full suite without optional WebP endpoints, filter or range; original74 cases preserved and5 genuine ZIP regressions inserted before final strict guard"
+  },
+  "runs": [
+    {
+      "label": "Chromium desktop",
+      "status": "PASS",
+      "browserVersion": "156.0.8078.47",
+      "configuredViewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "touchEmulation": false,
+      "total": 79,
+      "passed": 79,
+      "consoleMessages": 0,
+      "pageErrors": 0,
+      "failedResources": 0,
+      "fileUploadRequests": 0,
+      "browserLifecycleEvents": 0,
+      "stateCaptures": 50,
+      "stateCaptureErrors": 0,
+      "savedDownloadProofs": 57,
+      "homepageSha256": "1eb1cb5d48e22a1b54fcdbc60bba42d15897a13c3c079bb369a4bf04136e2034",
+      "harnessSha256": "15b8b7edcb4b59f9fa95b35946816db7671a1897dacabafb9ab37497fb66be21",
+      "artifactUnchanged": true,
+      "evidenceDirectory": ".qa-results/phase2/release-h/chromium-desktop"
+    },
+    {
+      "label": "Linux WebKit desktop",
+      "status": "PASS",
+      "browserVersion": "26.5",
+      "configuredViewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "touchEmulation": false,
+      "total": 79,
+      "passed": 79,
+      "consoleMessages": 0,
+      "pageErrors": 0,
+      "failedResources": 0,
+      "fileUploadRequests": 0,
+      "browserLifecycleEvents": 0,
+      "stateCaptures": 0,
+      "stateCaptureErrors": 0,
+      "savedDownloadProofs": 57,
+      "homepageSha256": "1eb1cb5d48e22a1b54fcdbc60bba42d15897a13c3c079bb369a4bf04136e2034",
+      "harnessSha256": "15b8b7edcb4b59f9fa95b35946816db7671a1897dacabafb9ab37497fb66be21",
+      "artifactUnchanged": true,
+      "evidenceDirectory": ".qa-results/phase2/release-h/webkit-desktop"
+    },
+    {
+      "label": "Firefox desktop",
+      "status": "PASS",
+      "browserVersion": "155.0",
+      "configuredViewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "touchEmulation": false,
+      "total": 79,
+      "passed": 79,
+      "consoleMessages": 0,
+      "pageErrors": 0,
+      "failedResources": 0,
+      "fileUploadRequests": 0,
+      "browserLifecycleEvents": 0,
+      "stateCaptures": 0,
+      "stateCaptureErrors": 0,
+      "savedDownloadProofs": 57,
+      "homepageSha256": "1eb1cb5d48e22a1b54fcdbc60bba42d15897a13c3c079bb369a4bf04136e2034",
+      "harnessSha256": "15b8b7edcb4b59f9fa95b35946816db7671a1897dacabafb9ab37497fb66be21",
+      "artifactUnchanged": true,
+      "evidenceDirectory": ".qa-results/phase2/release-h/firefox-desktop"
+    },
+    {
+      "label": "Chromium touch emulation",
+      "status": "PASS",
+      "browserVersion": "156.0.8078.47",
+      "configuredViewport": {
+        "width": 390,
+        "height": 844
+      },
+      "touchEmulation": true,
+      "total": 79,
+      "passed": 79,
+      "consoleMessages": 0,
+      "pageErrors": 0,
+      "failedResources": 0,
+      "fileUploadRequests": 0,
+      "browserLifecycleEvents": 0,
+      "stateCaptures": 50,
+      "stateCaptureErrors": 0,
+      "savedDownloadProofs": 57,
+      "homepageSha256": "1eb1cb5d48e22a1b54fcdbc60bba42d15897a13c3c079bb369a4bf04136e2034",
+      "harnessSha256": "15b8b7edcb4b59f9fa95b35946816db7671a1897dacabafb9ab37497fb66be21",
+      "artifactUnchanged": true,
+      "evidenceDirectory": ".qa-results/phase2/release-h/chromium-mobile"
+    }
+  ],
+  "toolProofs": [
+    {
+      "route": "/compress",
+      "realOutputAndRecovery": [
+        {
+          "label": "Chromium desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Linux WebKit desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Firefox desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Chromium touch emulation",
+          "status": "PASS"
+        }
+      ],
+      "desktopStateCaptures": [
+        "default",
+        "populated",
+        "completed"
+      ],
+      "mobileStateCaptures": [
+        "default",
+        "populated",
+        "completed"
+      ]
+    },
+    {
+      "route": "/image-compressor",
+      "realOutputAndRecovery": [
+        {
+          "label": "Chromium desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Linux WebKit desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Firefox desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Chromium touch emulation",
+          "status": "PASS"
+        }
+      ],
+      "desktopStateCaptures": [
+        "default",
+        "populated",
+        "completed",
+        "settings"
+      ],
+      "mobileStateCaptures": [
+        "default",
+        "populated",
+        "completed",
+        "settings"
+      ]
+    },
+    {
+      "route": "/jpg-compressor",
+      "realOutputAndRecovery": [
+        {
+          "label": "Chromium desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Linux WebKit desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Firefox desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Chromium touch emulation",
+          "status": "PASS"
+        }
+      ],
+      "desktopStateCaptures": [
+        "default",
+        "populated",
+        "completed",
+        "settings"
+      ],
+      "mobileStateCaptures": [
+        "default",
+        "populated",
+        "completed",
+        "settings"
+      ]
+    },
+    {
+      "route": "/jpeg-compressor",
+      "realOutputAndRecovery": [
+        {
+          "label": "Chromium desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Linux WebKit desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Firefox desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Chromium touch emulation",
+          "status": "PASS"
+        }
+      ],
+      "desktopStateCaptures": [
+        "default",
+        "populated",
+        "completed"
+      ],
+      "mobileStateCaptures": [
+        "default",
+        "populated",
+        "completed"
+      ]
+    },
+    {
+      "route": "/png-compressor",
+      "realOutputAndRecovery": [
+        {
+          "label": "Chromium desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Linux WebKit desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Firefox desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Chromium touch emulation",
+          "status": "PASS"
+        }
+      ],
+      "desktopStateCaptures": [
+        "default",
+        "populated",
+        "completed",
+        "settings"
+      ],
+      "mobileStateCaptures": [
+        "default",
+        "populated",
+        "completed",
+        "settings"
+      ]
+    },
+    {
+      "route": "/webp-compressor",
+      "realOutputAndRecovery": [
+        {
+          "label": "Chromium desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Linux WebKit desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Firefox desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Chromium touch emulation",
+          "status": "PASS"
+        }
+      ],
+      "desktopStateCaptures": [
+        "default",
+        "populated",
+        "completed",
+        "settings"
+      ],
+      "mobileStateCaptures": [
+        "default",
+        "populated",
+        "completed",
+        "settings"
+      ]
+    },
+    {
+      "route": "/gif-compressor",
+      "realOutputAndRecovery": [
+        {
+          "label": "Chromium desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Linux WebKit desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Firefox desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Chromium touch emulation",
+          "status": "PASS"
+        }
+      ],
+      "desktopStateCaptures": [
+        "default",
+        "populated",
+        "completed"
+      ],
+      "mobileStateCaptures": [
+        "default",
+        "populated",
+        "completed"
+      ]
+    },
+    {
+      "route": "/video-compressor",
+      "realOutputAndRecovery": [
+        {
+          "label": "Chromium desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Linux WebKit desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Firefox desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Chromium touch emulation",
+          "status": "PASS"
+        }
+      ],
+      "desktopStateCaptures": [
+        "default",
+        "populated",
+        "completed"
+      ],
+      "mobileStateCaptures": [
+        "default",
+        "populated",
+        "completed"
+      ]
+    },
+    {
+      "route": "/webm-to-mp4",
+      "realOutputAndRecovery": [
+        {
+          "label": "Chromium desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Linux WebKit desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Firefox desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Chromium touch emulation",
+          "status": "PASS"
+        }
+      ],
+      "desktopStateCaptures": [
+        "default",
+        "populated",
+        "completed"
+      ],
+      "mobileStateCaptures": [
+        "default",
+        "populated",
+        "completed"
+      ]
+    },
+    {
+      "route": "/mp3-compressor",
+      "realOutputAndRecovery": [
+        {
+          "label": "Chromium desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Linux WebKit desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Firefox desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Chromium touch emulation",
+          "status": "PASS"
+        }
+      ],
+      "desktopStateCaptures": [
+        "default",
+        "populated",
+        "completed"
+      ],
+      "mobileStateCaptures": [
+        "default",
+        "populated",
+        "completed"
+      ]
+    },
+    {
+      "route": "/wav-compressor",
+      "realOutputAndRecovery": [
+        {
+          "label": "Chromium desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Linux WebKit desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Firefox desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Chromium touch emulation",
+          "status": "PASS"
+        }
+      ],
+      "desktopStateCaptures": [
+        "default",
+        "populated",
+        "completed",
+        "settings"
+      ],
+      "mobileStateCaptures": [
+        "default",
+        "populated",
+        "completed",
+        "settings"
+      ]
+    },
+    {
+      "route": "/pdf-compressor",
+      "realOutputAndRecovery": [
+        {
+          "label": "Chromium desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Linux WebKit desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Firefox desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Chromium touch emulation",
+          "status": "PASS"
+        }
+      ],
+      "desktopStateCaptures": [
+        "default",
+        "populated",
+        "completed"
+      ],
+      "mobileStateCaptures": [
+        "default",
+        "populated",
+        "completed"
+      ]
+    },
+    {
+      "route": "/zip-compressor",
+      "realOutputAndRecovery": [
+        {
+          "label": "Chromium desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Linux WebKit desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Firefox desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Chromium touch emulation",
+          "status": "PASS"
+        }
+      ],
+      "desktopStateCaptures": [
+        "default",
+        "populated",
+        "completed"
+      ],
+      "mobileStateCaptures": [
+        "default",
+        "populated",
+        "completed"
+      ]
+    },
+    {
+      "route": "/archive-compressor",
+      "realOutputAndRecovery": [
+        {
+          "label": "Chromium desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Linux WebKit desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Firefox desktop",
+          "status": "PASS"
+        },
+        {
+          "label": "Chromium touch emulation",
+          "status": "PASS"
+        }
+      ],
+      "desktopStateCaptures": [
+        "default",
+        "populated",
+        "completed"
+      ],
+      "mobileStateCaptures": [
+        "default",
+        "populated",
+        "completed"
+      ]
+    }
+  ],
+  "additionalAlias": "/wav-to-mp3 is exercised in every complete configured suite; /jpeg-compressor is independently exercised rather than treated as representative coverage.",
+  "strictFixEvidence": {
+    "before": ".qa-results/phase2/release-ready/webkit-recovery-resource-trace:14 workflow passes; strict guard fails on an image blob request with matching console URL",
+    "after": ".qa-results/phase2/release-verified/webkit-recovery:15/15, no resource/console failures; full74 strict WebKit also passes",
+    "sourceCause": "Thumbnail effect cleanup revoked the prior same-file blob while asynchronous geometry refinement still rendered its URL. Capped self-contained PNG thumbnails remove this stale-resource gap.",
+    "noGuardExceptions": true
+  },
+  "retainedAttempts": [
+    {
+      "directory": ".qa-results/phase2/release-candidate/webkit-desktop",
+      "status": "73/74: functional cases passed, original strict guard failed on10 unclassified blob loads; not relabeled as a pass"
+    },
+    {
+      "directory": ".qa-results/phase2/release-verified/webkit-desktop-interrupted-58",
+      "status": "External SIGTERM143 after58 completed passes; no final report and no full-pass claim"
+    },
+    {
+      "directory": ".qa-results/phase2/release-candidate/chromium-capture-setup-failed",
+      "status": "QA capture helper incorrectly waited for intentionally hidden file input; stopped, corrected and full runs repeated"
+    }
+  ],
+  "limitations": [
+    "Local candidate H public configuration uses production canonical/indexing; its local CMS admin must never be directly deployed.",
+    "Linux WebKit is not physical macOS/iOS Safari; touch emulation is not a physical phone.",
+    "Generated fixtures, supported modes and negative cases are sampled acceptance, not exhaustive format/file-size/assistive-technology certification.",
+    "Functional test timings are not performance benchmarks or universal speed promises.",
+    "Read-only old-production navigation/header observations are separate from this unreleased local candidate."
+  ],
+  "transparentGifAdditionalAcceptance": {
+    "inputBytes": 12103,
+    "sourceSha256": "b5fa657d041e9655d6a482f3a0aca0859ffc2984cf0ec23686f18e77660ad508",
+    "cases": [
+      {
+        "mode": "Recommended",
+        "outputBytes": 5204,
+        "sha256": "3d5ebc9573c3d050f62c36f3afd586ce8901ed43645ff328e8e11c639233accc",
+        "encodedCandidateExercised": true,
+        "frames": 12,
+        "pass": true
+      },
+      {
+        "mode": "Maximum",
+        "outputBytes": 5204,
+        "sha256": "3d5ebc9573c3d050f62c36f3afd586ce8901ed43645ff328e8e11c639233accc",
+        "encodedCandidateExercised": true,
+        "frames": 12,
+        "pass": true
+      }
+    ],
+    "independentPillowDisplayAndTimingPass": true,
+    "interpretation": "Pillow exposes a different RGB palette color under alpha0 in the re-encoded outputs. All alpha bytes, every visible pixel, black/white composited frames, timings, loop and dimensions match. Thus Pillow rawRGBA is not byte-identical; original FFmpeg normalizedRGBA result remains decoder-specific, and no universal hiddenRGB-preservation claim is made.",
+    "evidenceDirectory": ".qa-results/phase2/gif-transparency/run-1795765753390/evidence"
+  },
+  "separateOldProductionDeliveryObservation": {
+    "scope": "Read-only exact production URLs before Phase 2 deployment. Default transport, browser user agents and TLS validation. No cache purge, protocol bypass or query parameters.",
+    "total": 4,
+    "passed": 4,
+    "cases": [
+      {
+        "browser": "chromium",
+        "route": "/png-compressor",
+        "status": 200,
+        "protocol": "h3",
+        "worker": {
+          "url": "https://filecompresser.com/image-worker/image-engine.mjs",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "cf-cache-status": "DYNAMIC",
+            "content-encoding": "br",
+            "content-type": "application/javascript",
+            "etag": "W/\"551bacb89b7a3169957a12959d0b3236\""
+          },
+          "bytes": 1139,
+          "sha256": "72098f89fe58cb4f645fc3844eecc42de1def970836a528d4cedb5a747aeb439",
+          "protocol": "h3"
+        }
+      },
+      {
+        "browser": "chromium",
+        "route": "/webm-to-mp4",
+        "status": 200,
+        "protocol": "h3"
+      },
+      {
+        "browser": "firefox",
+        "route": "/png-compressor",
+        "status": 200,
+        "protocol": "h3",
+        "worker": {
+          "url": "https://filecompresser.com/image-worker/image-engine.mjs",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "cf-cache-status": "DYNAMIC",
+            "content-encoding": "br",
+            "content-type": "application/javascript",
+            "etag": "W/\"551bacb89b7a3169957a12959d0b3236\""
+          },
+          "bytes": 1139,
+          "sha256": "72098f89fe58cb4f645fc3844eecc42de1def970836a528d4cedb5a747aeb439",
+          "protocol": "h3"
+        }
+      },
+      {
+        "browser": "firefox",
+        "route": "/webm-to-mp4",
+        "status": 200,
+        "protocol": "h3"
+      }
+    ],
+    "limitation": "Read-only default-page/worker-delivery checks before Phase 2 deployment, not a production acceptance of this candidate.",
+    "evidencePath": ".qa-results/phase2/cloudflare/live-browser-before/results.json"
+  },
+  "qaRuntimeProvenance": {
+    "observedAt": "2026-11-27T10:10:36.741Z",
+    "chromiumAutomationVersion": "1.65.1",
+    "alternateBrowserAutomationVersion": "1.62.1",
+    "linuxWebKitPrivateDependency": {
+      "scope": "QA-local dependency resolution only. No browser binary, system library or production source changed.",
+      "libraryPath": "Trusted preinstalled primary-runtime Pillow dependency: pillow.libs/libavif-c6062d5f.so.16.4.2",
+      "librarySha256": "d12ec0b696860b292114b130ecac6082fc75c198c1b4fa57b26089e9b0a7eb6a",
+      "libraryVersion": "actual ABI-16 library, file version 16.4.2; not a different-major compatibility alias",
+      "source": "Trusted preinstalled primary runtime Pillow dependency",
+      "wrapperSha256": "d692b745ab55f59915cf1165c637d5f697f6ce1869b21407a860b03017cced4c",
+      "officialWrapper": "webkit-2336/minibrowser-wpe/MiniBrowser overwrites LD_LIBRARY_PATH; local wrapper reproduces official environment and adds the private ABI-16 directory",
+      "linkerCheck": "No unresolved libraries with bundled WebKit lib/sys directories and this private ABI-16 library; actual launch/workflows remain separate checks",
+      "privateProvenance": ".qa-results/phase2/qa-native-libs/provenance.json"
+    },
+    "runtimeResolutionChangedApplicationOrSystemFiles": false
+  },
+  "candidate": "H",
+  "functionalHarness": {
+    "sha256": "15b8b7edcb4b59f9fa95b35946816db7671a1897dacabafb9ab37497fb66be21",
+    "caseCount": 79,
+    "expectedDownloads": 57
+  },
+  "priorCandidateF": {
+    "retainedReport": "docs/evidence/2026-11-27/browser-functional-acceptance-F.json",
+    "scope": "Four74-case suites on F remain their original artifact evidence, not candidate H results."
+  },
+  "priorCandidateE": {
+    "retainedReport": "docs/evidence/2026-11-27/browser-functional-acceptance-E.json",
+    "disposition": "E functional runs retain their original scope; F was created only after the expanded accessible-name word-boundary defect was fixed. No E result is relabeled as F."
+  }
+}

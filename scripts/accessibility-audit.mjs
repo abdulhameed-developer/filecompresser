@@ -16,7 +16,7 @@ try {
   for (const route of routes) {
     await page.goto(`${base}${route}`)
     await page.addScriptTag({ path: axe.resolve('axe-core/axe.min.js') })
-    const result = await page.evaluate(async () => await globalThis.axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'] } }))
+    const result = await page.evaluate(async () => await globalThis.axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'] } }))
     results.push({ route, violations: result.violations.map(item => ({ id: item.id, impact: item.impact, nodes: item.nodes.map(node => node.target) })), incomplete: result.incomplete.length, incompleteDetails: result.incomplete.map(item => ({ id: item.id, impact: item.impact, nodes: item.nodes.map(node => ({ target: node.target, summary: node.failureSummary })) })) })
     console.log(route, result.violations.length)
   }

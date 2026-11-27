@@ -47,6 +47,7 @@ tsconfig.tsbuildinfo
 
 # Local verification evidence and independent assistant checkouts
 .qa-results/
+__pycache__/
 .claude/worktrees/
 
 !.env.example
@@ -64,3 +65,5 @@ public/_redirects
 
 # Generated installed dependency and native codec notices
 public/THIRD-PARTY-NOTICES.txt
+# Generated ICO container reuses the tracked favicon-32.png without re-encoding.
+public/favicon.ico

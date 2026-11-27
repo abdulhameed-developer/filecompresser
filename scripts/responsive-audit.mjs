@@ -442,31 +442,35 @@ async function prepareFullPageCapture() {
   return images
 }
 
-for (const width of WIDTHS) {
-  for (const route of ROUTES) {
-    await page.setViewportSize({ width, height: 900 })
-    await page.goto(BASE + route, { waitUntil: 'networkidle' })
-    const problems = await page.evaluate(auditPage)
-    // Capture the actual closed/default state after the deliberate menu tests.
-    // The menu keeps its DOM for a 140ms exit animation before unmounting.
-    await page.locator('.toolsDropdown').waitFor({ state: 'detached', timeout: 5000 })
-    const capture = [390, 768, 1440].includes(width)
-      ? path.join(evidence, `${route === '/' ? 'home' : route.slice(1).replaceAll('/', '--')}-${width}.png`)
-      : undefined
-    const images = capture ? await prepareFullPageCapture() : undefined
-    if (images) for (const image of images) if (!image.complete || !image.naturalWidth) problems.push(`image did not load: ${image.src}`)
-    if (capture) await page.screenshot({ path: capture, fullPage: true })
-    results.push({ route, width, height: 900, problems, screenshot: capture, images })
-    for (const p of problems) failures.push(`${width}px ${route} — ${p}`)
+try {
+  for (const width of WIDTHS) {
+    for (const route of ROUTES) {
+      await page.setViewportSize({ width, height: 900 })
+      await page.goto(BASE + route, { waitUntil: 'networkidle' })
+      const problems = await page.evaluate(auditPage)
+      // Capture the actual closed/default state after the deliberate menu tests.
+      // The menu keeps its DOM for a 140ms exit animation before unmounting.
+      await page.locator('.toolsDropdown').waitFor({ state: 'detached', timeout: 5000 })
+      const capture = [390, 768, 1440].includes(width)
+        ? path.join(evidence, `${route === '/' ? 'home' : route.slice(1).replaceAll('/', '--')}-${width}.png`)
+        : undefined
+      const images = capture ? await prepareFullPageCapture() : undefined
+      if (images) for (const image of images) if (!image.complete || !image.naturalWidth) problems.push(`image did not load: ${image.src}`)
+      if (capture) await page.screenshot({ path: capture, fullPage: true })
+      results.push({ route, width, height: 900, problems, screenshot: capture, images })
+      for (const p of problems) failures.push(`${width}px ${route} — ${p}`)
+    }
+    console.log(`${width}px: ${ROUTES.length} routes checked`)
+    writeFileSync(path.join(evidence, 'responsive-results.json'), JSON.stringify({ base: BASE, capturedAt: new Date().toISOString(), routes: ROUTES, widths: WIDTHS, results, failures }, null, 2) + '\n')
   }
-  console.log(`${width}px: ${ROUTES.length} routes checked`)
+} finally {
+  // Retain completed measurements and close the owned browser even if a
+  // local server or navigation fails halfway through a viewport sweep.
   writeFileSync(path.join(evidence, 'responsive-results.json'), JSON.stringify({ base: BASE, capturedAt: new Date().toISOString(), routes: ROUTES, widths: WIDTHS, results, failures }, null, 2) + '\n')
+  await browser.close()
 }
 
 console.log(`audited ${WIDTHS.length} widths x ${ROUTES.length} routes`)
-writeFileSync(path.join(evidence, 'responsive-results.json'), JSON.stringify({ base: BASE, capturedAt: new Date().toISOString(), routes: ROUTES, widths: WIDTHS, results, failures }, null, 2) + '\n')
-
-await browser.close()
 
 if (failures.length) {
   console.log(`\nFAIL — ${failures.length} finding(s):`)

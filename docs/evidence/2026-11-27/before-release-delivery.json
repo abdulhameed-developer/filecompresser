@@ -1,0 +1,226 @@
+{
+  "capturedAt": "2026-11-27T11:41:04.294Z",
+  "scope": "Read-only old-production default transport diagnosis before I publication; not I deployment acceptance or performance scoring",
+  "defaultCases": [
+    {
+      "browser": "chromium",
+      "version": "156.0.8078.47",
+      "normalClose": true,
+      "cases": [
+        {
+          "route": "/",
+          "status": 200,
+          "cssApplied": true,
+          "protocol": "h2",
+          "robots": {
+            "status": 200,
+            "protocol": "h3",
+            "sha256": "d9c5765bf2eb75998e37b1e1c779089fd22c5a7f084b30a0a21cb490a070bc90"
+          },
+          "manifest": {
+            "status": 200,
+            "protocol": "h3",
+            "sha256": "0ec6b6f1cee4233518d729e721db0dd3a8692cefba39f93e26602294948225d9",
+            "validJson": true
+          },
+          "diagnostics": {
+            "consoleErrors": 0,
+            "exceptions": 0,
+            "failedResources": 0,
+            "httpErrors": 0,
+            "visibleImagesDecoded": true,
+            "robots200": true,
+            "manifest200": true,
+            "manifestJson": true
+          },
+          "load": [
+            3.66,
+            3.33,
+            4.21
+          ]
+        },
+        {
+          "route": "/pdf-compressor",
+          "status": 200,
+          "cssApplied": true,
+          "protocol": "h3",
+          "robots": {
+            "status": 200,
+            "protocol": "h3",
+            "sha256": "d9c5765bf2eb75998e37b1e1c779089fd22c5a7f084b30a0a21cb490a070bc90"
+          },
+          "manifest": {
+            "status": 200,
+            "protocol": "h3",
+            "sha256": "0ec6b6f1cee4233518d729e721db0dd3a8692cefba39f93e26602294948225d9",
+            "validJson": true
+          },
+          "diagnostics": {
+            "consoleErrors": 0,
+            "exceptions": 0,
+            "failedResources": 0,
+            "httpErrors": 0,
+            "visibleImagesDecoded": true,
+            "robots200": true,
+            "manifest200": true,
+            "manifestJson": true
+          },
+          "load": [
+            3.66,
+            3.33,
+            4.21
+          ]
+        },
+        {
+          "route": "/blog/how-browser-compression-works",
+          "status": 200,
+          "cssApplied": true,
+          "protocol": "h3",
+          "robots": {
+            "status": 200,
+            "protocol": "h3",
+            "sha256": "d9c5765bf2eb75998e37b1e1c779089fd22c5a7f084b30a0a21cb490a070bc90"
+          },
+          "manifest": {
+            "status": 200,
+            "protocol": "h3",
+            "sha256": "0ec6b6f1cee4233518d729e721db0dd3a8692cefba39f93e26602294948225d9",
+            "validJson": true
+          },
+          "diagnostics": {
+            "consoleErrors": 0,
+            "exceptions": 0,
+            "failedResources": 0,
+            "httpErrors": 0,
+            "visibleImagesDecoded": true,
+            "robots200": true,
+            "manifest200": true,
+            "manifestJson": true
+          },
+          "load": [
+            3.45,
+            3.29,
+            4.2
+          ]
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "normalClose": true,
+      "cases": [
+        {
+          "route": "/",
+          "status": 200,
+          "cssApplied": true,
+          "protocol": "h3",
+          "robots": {
+            "status": 200,
+            "protocol": "h3",
+            "sha256": "d9c5765bf2eb75998e37b1e1c779089fd22c5a7f084b30a0a21cb490a070bc90"
+          },
+          "manifest": {
+            "status": 200,
+            "protocol": "h3",
+            "sha256": "0ec6b6f1cee4233518d729e721db0dd3a8692cefba39f93e26602294948225d9",
+            "validJson": true
+          },
+          "diagnostics": {
+            "consoleErrors": 0,
+            "exceptions": 0,
+            "failedResources": 0,
+            "httpErrors": 0,
+            "visibleImagesDecoded": true,
+            "robots200": true,
+            "manifest200": true,
+            "manifestJson": true
+          },
+          "load": [
+            3.41,
+            3.28,
+            4.19
+          ]
+        },
+        {
+          "route": "/pdf-compressor",
+          "status": 200,
+          "cssApplied": true,
+          "protocol": "h3",
+          "robots": {
+            "status": 200,
+            "protocol": "h3",
+            "sha256": "d9c5765bf2eb75998e37b1e1c779089fd22c5a7f084b30a0a21cb490a070bc90"
+          },
+          "manifest": {
+            "status": 200,
+            "protocol": "h3",
+            "sha256": "0ec6b6f1cee4233518d729e721db0dd3a8692cefba39f93e26602294948225d9",
+            "validJson": true
+          },
+          "diagnostics": {
+            "consoleErrors": 0,
+            "exceptions": 0,
+            "failedResources": 0,
+            "httpErrors": 0,
+            "visibleImagesDecoded": true,
+            "robots200": true,
+            "manifest200": true,
+            "manifestJson": true
+          },
+          "load": [
+            3.22,
+            3.24,
+            4.17
+          ]
+        },
+        {
+          "route": "/blog/how-browser-compression-works",
+          "status": 200,
+          "cssApplied": true,
+          "protocol": "h3",
+          "robots": {
+            "status": 200,
+            "protocol": "h3",
+            "sha256": "d9c5765bf2eb75998e37b1e1c779089fd22c5a7f084b30a0a21cb490a070bc90"
+          },
+          "manifest": {
+            "status": 200,
+            "protocol": "h3",
+            "sha256": "0ec6b6f1cee4233518d729e721db0dd3a8692cefba39f93e26602294948225d9",
+            "validJson": true
+          },
+          "diagnostics": {
+            "consoleErrors": 0,
+            "exceptions": 0,
+            "failedResources": 0,
+            "httpErrors": 0,
+            "visibleImagesDecoded": true,
+            "robots200": true,
+            "manifest200": true,
+            "manifestJson": true
+          },
+          "load": [
+            3.22,
+            3.24,
+            4.17
+          ]
+        }
+      ]
+    }
+  ],
+  "earlierFailures": {
+    "pdfDesktop": "CHROME_INTERSTITIAL_ERROR with null scores; blocked, not a numeric score.",
+    "pdfMobile": "Manifest QUIC idle failure and robots fetch timeout; robots syntax was not established invalid.",
+    "articleDesktop": "Both stylesheets failed ERR_CONNECTION_RESET; screenshot is unstyled HTML, so target-size A96 is not a styled-source accessibility comparison."
+  },
+  "limitations": [
+    "Single machine/network/edge and short sequential observations do not establish global reliability or root cause.",
+    "Ordinary shared contexts naturally warmed resource caches after home; protocol/cache details are retained.",
+    "Earlier transport failures remain real observed failures; current clean probes do not erase them.",
+    "No source, production data, Cloudflare settings, TLS, UA, proxy or cache-busting changes were made.",
+    "No repeated broad audit is warranted solely from this short diagnostic; final published release still requires its own identity/functional acceptance."
+  ],
+  "allBrowsersClosed": true,
+  "qaDiagnostic": "An error-trigger incorrectly matched successful QUIC connection metadata and launched three unnecessary --disable-quic diagnostic requests; all three reset. Original source/results retained. Trigger corrected and four offline controls pass. This is not a normal-browser or performance result and provides no basis for changing Cloudflare settings."
+}

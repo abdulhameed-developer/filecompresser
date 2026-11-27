@@ -16,33 +16,33 @@ export default function FilePreview({ item, dimensions }: { item: QueueItem; dim
   useEffect(() => {
     if (!['jpeg', 'png', 'webp'].includes(item.inputFormat ?? '') || item.file.size > 50 * 1024 * 1024 || typeof createImageBitmap !== 'function') return
     let disposed = false
-    let url: string | undefined
     const file = item.file
     const render = async () => {
       if (disposed) return
       let bitmap: ImageBitmap | undefined
+      let canvas: HTMLCanvasElement | undefined
       try {
         const geometry = width && height ? { width, height } : await inspectImageHeader(file, () => disposed)
         if (disposed || geometry.width * geometry.height > 32_000_000) return
         const scale = Math.min(192 / geometry.width, 120 / geometry.height, 1)
         bitmap = await createImageBitmap(file, { resizeWidth: Math.max(1, Math.round(geometry.width * scale)), resizeHeight: Math.max(1, Math.round(geometry.height * scale)), resizeQuality: 'low', imageOrientation: 'from-image' })
         if (disposed) return
-        const canvas = document.createElement('canvas')
+        canvas = document.createElement('canvas')
         canvas.width = bitmap.width
         canvas.height = bitmap.height
         const context = canvas.getContext('2d')
         if (!context) return
         context.drawImage(bitmap, 0, 0)
-        const blob = await new Promise<Blob | null>(resolve => canvas.toBlob(resolve, 'image/png'))
-        canvas.width = canvas.height = 0
-        if (disposed || !blob) return
-        url = URL.createObjectURL(blob)
+        // This is at most 192 × 120. A self-contained thumbnail stays valid when
+        // geometry refinement retires the previous effect before its replacement.
+        const url = canvas.toDataURL('image/png')
+        if (disposed) return
         setPreview({ file, url })
       } catch { /* A preview is optional; validation and processing own errors. */ }
-      finally { bitmap?.close() }
+      finally { bitmap?.close(); if (canvas) canvas.width = canvas.height = 0 }
     }
     pendingThumbnail = pendingThumbnail.then(render, render)
-    return () => { disposed = true; if (url) URL.revokeObjectURL(url) }
+    return () => { disposed = true }
   }, [item.file, item.inputFormat, width, height])
   const format = item.inputFormat === 'jpeg' ? 'JPG' : item.inputFormat?.toUpperCase() || 'FILE'
   const icon = ['mp3', 'wav', 'mp4', 'mov', 'webm', 'm4a', 'flac', 'ogg', 'gif'].includes(item.inputFormat ?? '') ? 'media' : item.inputFormat === 'zip' ? 'archive' : 'file'

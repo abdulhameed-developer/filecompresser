@@ -8,12 +8,13 @@ import { useFileQueue, type FileQueue } from '@/lib/useFileQueue'
 import { getTool } from '@/lib/tools'
 import CompressionSettings from '@/components/CompressionSettings'
 import type { ToolDefinition, SettingValue } from '@/lib/types'
+import { listenForCancellation, ProcessingError } from '@/lib/types'
 
 const mocks = vi.hoisted(() => ({ processFile: vi.fn() }))
 vi.mock('@/lib/process', () => ({
   processFile: mocks.processFile,
   concurrencyFor: () => 1,
-  engineForFormat: async (format: string) => format === 'pdf' ? 'pdf-compress' : 'image-compress',
+  engineForFormat: async (format: string) => format === 'pdf' ? 'pdf-compress' : format === 'zip' ? 'zip-extract' : 'image-compress',
 }))
 let root: Root, container: HTMLDivElement, queue: FileQueue
 const flush = () => new Promise((resolve) => setTimeout(resolve, 0))
@@ -114,7 +115,7 @@ describe('queue workflows', () => {
     expect(queue.settingsError).toBeNull()
     await run()
     expect(mocks.processFile).toHaveBeenCalledTimes(2)
-    expect(mocks.processFile.mock.calls[0][0].options).toEqual({ imageMode: 'maximum', quality: 0.6 })
+    expect(mocks.processFile.mock.calls[0][0].options).toEqual({ imageMode: 'balanced', quality: 0.82 })
     expect(mocks.processFile.mock.calls[1][0].options).toEqual({})
     expect(mocks.processFile.mock.calls.map(([request]) => request.engine)).toEqual(['image-compress', 'pdf-compress'])
   })
@@ -453,7 +454,7 @@ describe('source-preserving reprocessing', () => {
     await run()
     const id = queue.items[0].id
     const originalArtifact = queue.items[0].artifact!
-    await act(async () => queue.setSetting('imageMode', 'balanced'))
+    await act(async () => queue.setSetting('imageMode', 'maximum'))
     mocks.processFile.mockRejectedValueOnce(new Error('codec failed'))
     await act(async () => { queue.reprocessSelected([id]); await flush() })
     expect(queue.items[0].status).toBe('failed')
@@ -505,8 +506,8 @@ describe('source-preserving reprocessing', () => {
     expect(queue.settings.imageMode).toBe('maximum')
     expect(queue.items[0].dirty).toBe(false)
     await act(async () => queue.resetSettings())
-    expect(queue.settings).toMatchObject({ imageMode: 'maximum', pngMode: 'maximum' })
-    expect(queue.items[0].dirty).toBe(false)
+    expect(queue.settings).toMatchObject({ imageMode: 'balanced', pngMode: 'lossless' })
+    expect(queue.items[0].dirty).toBe(true)
   })
 
   it('reprocesses only selected changed sources and skips already matching successes', async () => {
@@ -593,7 +594,7 @@ describe('source-preserving reprocessing', () => {
     expect(queue.imageScope).toBe(false)
     await act(async () => { queue.retryItem(queue.items[0].id); await flush() })
     expect(mocks.processFile).toHaveBeenCalledTimes(3)
-    expect(mocks.processFile.mock.calls[2][0].options).toEqual({ imageMode: 'maximum', quality: 0.6 })
+    expect(mocks.processFile.mock.calls[2][0].options).toEqual({ imageMode: 'balanced', quality: 0.82 })
     expect(queue.items[0].status).toBe('completed')
     expect(queue.items[0].dirty).toBe(false)
     expect(queue.items[0].appliedConfig?.fingerprint).toBe(queue.items[0].draftConfig?.fingerprint)
@@ -608,7 +609,7 @@ describe('source-preserving reprocessing', () => {
     expect(queue.items[0].dirty).toBe(false)
     await act(async () => { queue.reprocessItem(queue.items[0].id); await flush() })
     expect(mocks.processFile.mock.calls[2][0].file).toBe(source)
-    expect(mocks.processFile.mock.calls[2][0].options).toEqual({ imageMode: 'maximum', quality: 0.6 })
+    expect(mocks.processFile.mock.calls[2][0].options).toEqual({ imageMode: 'balanced', quality: 0.82 })
     expect(queue.items[0].dirty).toBe(false)
   })
 
@@ -625,7 +626,7 @@ describe('source-preserving reprocessing', () => {
     expect(queue.imageScope).toBe(false)
     await act(async () => { queue.retryItem(queue.items[0].id); await flush() })
     expect(mocks.processFile).toHaveBeenCalledTimes(2)
-    expect(mocks.processFile.mock.calls[1][0].options).toEqual({ imageMode: 'maximum', quality: 0.6 })
+    expect(mocks.processFile.mock.calls[1][0].options).toEqual({ imageMode: 'balanced', quality: 0.82 })
     expect(queue.selectedIds).toEqual([])
     expect(queue.items[0].dirty).toBe(false)
   })
@@ -711,5 +712,97 @@ describe('source-preserving reprocessing', () => {
     expect(mocks.processFile.mock.calls[1][0].file).toBe(source)
     expect(queue.items).toHaveLength(1)
     expect(queue.resultItems.map(item => item.result?.filename)).toEqual(['new.txt'])
+  })
+
+  it.each(['archive-invalid', 'archive-integrity', 'archive-empty'])('never reprocesses an immutable ZIP after %s', async code => {
+    await mount('archive-compressor')
+    await add([new File([new Uint8Array([0x50, 0x4b, 3, 4, 0])], 'blocked.zip') as unknown as globalThis.File])
+    mocks.processFile.mockRejectedValueOnce(new ProcessingError('This archive cannot be extracted.', code))
+    await run()
+    const id = queue.items[0].id
+    for (const attempt of [() => queue.retryItem(id), () => queue.reprocessItem(id), () => queue.reprocessSelected([id]), () => queue.runAll()]) {
+      await act(async () => { attempt(); await flush(); await flush() })
+    }
+    expect(mocks.processFile).toHaveBeenCalledTimes(1)
+    expect(queue.items[0].status).toBe('failed')
+    expect(queue.items[0].archiveFailureCode).toBe(code)
+  })
+
+  it('applies terminal ZIP failure eligibility to the generic dispatcher too', async () => {
+    await mount('compress')
+    await add([new File([new Uint8Array([0x50, 0x4b, 3, 4, 0])], 'blocked.zip') as unknown as globalThis.File])
+    mocks.processFile.mockRejectedValueOnce(new ProcessingError('Bad archive integrity.', 'archive-integrity'))
+    await run()
+    await act(async () => { queue.retryItem(queue.items[0].id); await flush() })
+    expect(mocks.processFile).toHaveBeenCalledTimes(1)
+    expect(queue.items[0].archiveFailureCode).toBe('archive-integrity')
+  })
+
+  it.each([new Error('Worker unavailable'), new ProcessingError('Temporary resource failure', 'engine-unavailable')])('keeps unknown archive failures retryable: %s', async error => {
+    await mount('archive-compressor')
+    await add([new File([new Uint8Array([0x50, 0x4b, 3, 4, 0])], 'source.zip') as unknown as globalThis.File])
+    mocks.processFile.mockRejectedValueOnce(error)
+    await run()
+    expect(queue.items[0].archiveFailureCode).toBeUndefined()
+    await act(async () => { queue.retryItem(queue.items[0].id); await flush() })
+    expect(mocks.processFile).toHaveBeenCalledTimes(2)
+    expect(queue.items[0].status).toBe('completed')
+  })
+
+  it('does not classify a ZIP-create failure as an immutable extraction failure', async () => {
+    await mount('zip-compressor'); await add([jpeg()])
+    mocks.processFile.mockRejectedValueOnce(new ProcessingError('Unexpected worker failure.', 'archive-invalid'))
+    await run()
+    expect(queue.items[0].archiveFailureCode).toBeUndefined()
+    await act(async () => { queue.retryItem(queue.items[0].id); await flush() })
+    expect(mocks.processFile).toHaveBeenCalledTimes(2)
+    expect(queue.items[0].status).toBe('completed')
+  })
+
+  it('retains cancellation and retry for a ZIP extraction', async () => {
+    await mount('archive-compressor')
+    await add([new File([new Uint8Array([0x50, 0x4b, 3, 4, 0])], 'source.zip') as unknown as globalThis.File])
+    mocks.processFile.mockImplementationOnce(({ signal }) => new Promise((_resolve, reject) => {
+      listenForCancellation(signal, () => reject(new ProcessingError('Processing was cancelled.', 'cancelled')))
+    }))
+    await run()
+    const id = queue.items[0].id
+    await act(async () => { queue.cancelItem(id); await flush() })
+    expect(queue.items[0].status).toBe('cancelled')
+    expect(queue.items[0].archiveFailureCode).toBeUndefined()
+    await act(async () => { queue.retryItem(id); await flush() })
+    expect(mocks.processFile).toHaveBeenCalledTimes(2)
+    expect(queue.items[0].status).toBe('completed')
+  })
+
+  it.each([false, true])('preserves zero-byte files in ZIP creation (mixed: %s)', async mixed => {
+    await mount('zip-compressor')
+    const empty = new File([], 'empty.txt') as unknown as globalThis.File
+    const inputs = mixed ? [empty, jpeg()] : [empty]
+    await add(inputs)
+    expect(queue.items.every(item => item.status === 'queued')).toBe(true)
+    await run()
+    expect(mocks.processFile).toHaveBeenCalledTimes(1)
+    expect(mocks.processFile.mock.calls[0][0].allFiles).toEqual(inputs)
+    expect(queue.items.every(item => item.status === 'completed')).toBe(true)
+    expect(queue.items[0].artifact?.sourceBytes).toBe(mixed ? 4 : 0)
+  })
+
+  it('blocks an oversized ZIP-create input and the whole batch until it is removed', async () => {
+    await mount('zip-compressor')
+    const oversized = new File(['x'], 'oversized.bin') as unknown as globalThis.File
+    Object.defineProperty(oversized, 'size', { value: 201 * 1024 * 1024 })
+    const valid = jpeg('keep.jpg')
+    await add([oversized, valid])
+    expect(queue.items[0].status).toBe('failed')
+    expect(queue.items[1].status).toBe('queued')
+    await act(async () => { queue.retryItem(queue.items[0].id); await flush() })
+    await act(async () => { queue.reprocessItem(queue.items[1].id); await flush() })
+    await run()
+    expect(mocks.processFile).not.toHaveBeenCalled()
+    await act(async () => queue.removeItem(queue.items[0].id))
+    await run()
+    expect(mocks.processFile).toHaveBeenCalledTimes(1)
+    expect(mocks.processFile.mock.calls[0][0].allFiles).toEqual([valid])
   })
 })

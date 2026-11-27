@@ -182,7 +182,7 @@ export const TOOLS: ToolDefinition[] = [
     slug: 'png-compressor',
     title: 'PNG Compressor',
     description:
-      'Optimize PNG files with Maximum by default, or choose Lossless to preserve decoded pixels. Keep dimensions and transparency; efficient originals may be retained unchanged.',
+      'Optimize PNG files losslessly by default to preserve decoded pixels, dimensions and transparency. Color-reduction modes are optional; efficient originals may be retained unchanged.',
     category: 'image',
     engine: 'image-compress',
     accept: 'image/png,.png',

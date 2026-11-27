@@ -1,0 +1,121 @@
+{
+  "scope": "Selected original unedited screenshots. Exact source artifact scope is stated; before is intermediate B, not production baseline.",
+  "screenshots": [
+    {
+      "file": "docs/evidence/2026-11-27/screenshots/wav-settings-before-B.png",
+      "source": ".qa-results/phase2/release-candidate/chromium-desktop/wav-compressor-settings.png",
+      "sha256": "01d811c31443c0eed91d2dd061da6dde2bf1842d3b15180d7e0b5b4b1bee51c1",
+      "bytes": 181323,
+      "note": "Intermediate B before scoped inherited-margin correction"
+    },
+    {
+      "file": "docs/evidence/2026-11-27/screenshots/png-settings-final-F.png",
+      "source": ".qa-results/phase2/release-final-acceptance/chromium-desktop/png-compressor-settings.png",
+      "sha256": "a19931d6413b5a68d6dce5718f1e9c2362d327c6636a4d6e9aa0a02ab2b9b6aa",
+      "bytes": 182676,
+      "note": "Retained F (superseded by H) native PNG settings with default Lossless, original format and explicit alternative modes"
+    },
+    {
+      "file": "docs/evidence/2026-11-27/screenshots/wav-settings-final-F.png",
+      "source": ".qa-results/phase2/release-final-acceptance/chromium-desktop/wav-compressor-settings.png",
+      "sha256": "085d2c1f868e5c02cee71d56ddb7b450e94e9672c74667f4506bcacc1852428c",
+      "bytes": 181555,
+      "note": "Retained F (superseded by H) full-width audio dialog; unedited1280\u00d7900 capture"
+    },
+    {
+      "file": "docs/evidence/2026-11-27/screenshots/image-comparison-final-F.png",
+      "source": ".qa-results/phase2/release-final-acceptance/chromium-desktop/image-comparison-1280.png",
+      "sha256": "03242a9d4089fa71330329937b35be1e54700457c400addd06540d93590514ef",
+      "bytes": 108139,
+      "note": "Retained F (superseded by H) actual source/output comparison; generated image fixture"
+    },
+    {
+      "file": "docs/evidence/2026-11-27/screenshots/wav-settings-H.png",
+      "source": ".qa-results/phase2/release-h/chromium-desktop/wav-compressor-settings.png",
+      "sha256": "0d068e7293862dd1e53e75895c2c6ba93dc553129d5b6619394c243d711eec8a",
+      "bytes": 181561,
+      "artifactBuildId": "vfZQ5yf4p_TqDNwIrY5px",
+      "note": "Compiled H1280\u00d7900 full-width audio dialog; actual native modal, no image edits."
+    },
+    {
+      "file": "docs/evidence/2026-11-27/screenshots/png-settings-H.png",
+      "source": ".qa-results/phase2/release-h/chromium-desktop/png-compressor-settings.png",
+      "sha256": "327c8e987390a280e0561fb45a7a2e4f0eb0e9ac5210cad52bfc0154683b6beb",
+      "bytes": 159662,
+      "artifactBuildId": "vfZQ5yf4p_TqDNwIrY5px",
+      "note": "Compiled H1280\u00d7900 PNG default Lossless, original format and explicit alternatives."
+    },
+    {
+      "file": "docs/evidence/2026-11-27/screenshots/png-target-320-H.png",
+      "source": ".qa-results/phase2/release-h/modals/webkit-short/png-compressor-320-target-settings.png",
+      "sha256": "d5fd25ae1d7b63a46db23ad370ff7faf94ec1364bc03df41b3ac279ccbe0ed0c",
+      "bytes": 46315,
+      "artifactBuildId": "vfZQ5yf4p_TqDNwIrY5px",
+      "note": "Compiled H WebKit320\u00d7568 immediate Target focus; full input/ring above footer; no injected CSS/DOM/listeners."
+    },
+    {
+      "file": "docs/evidence/2026-11-27/screenshots/archive-replace-guidance-H.png",
+      "source": ".qa-results/phase2/release-h/chromium-desktop/terminal-hostile.zip.png",
+      "sha256": "4a9013778c0f882814c2dd47fab6375b78e7e293e85b60915121a9b2d50553fd",
+      "bytes": 97833,
+      "artifactBuildId": "vfZQ5yf4p_TqDNwIrY5px",
+      "note": "Compiled H unsafe ZIP rejection; replace guidance, no futile primary or row Retry; Remove and Clear all remain."
+    },
+    {
+      "file": "docs/evidence/2026-11-27/screenshots/png-target-320-before-F.png",
+      "source": ".qa-results/phase2/target-layout-diagnostic/red/png-compressor-320-failure.png",
+      "sha256": "4fa98be6ac5a5f3f8d3ec37231ddf461a3a955f79dced1688a630c6b58599e2a",
+      "bytes": 38436,
+      "artifactBuildId": "uFK_GwNQKW1BAEFJBZTww",
+      "note": "Retained failed F320\u00d7568 immediate Target state: custom maximum input is hidden by sticky footer. Same viewport/tool as H after; unedited screenshot."
+    },
+    {
+      "file": "docs/evidence/2026-11-27/screenshots/png-ready-390-H.png",
+      "source": ".qa-results/phase2/release-h/ui/frontend-retry/png-ready-390.png",
+      "sha256": "1c421e85a78fb2eeffd9ee0ca81ccadaea63d5fadde5f5007bcabaa4a539ab10",
+      "bytes": 68974,
+      "artifactBuildId": "vfZQ5yf4p_TqDNwIrY5px",
+      "note": "Compiled H390\u00d7844 PNG ready workspace; original format/dimensions and Lossless policy visible."
+    },
+    {
+      "file": "docs/evidence/2026-11-27/screenshots/png-completed-390-H.png",
+      "source": ".qa-results/phase2/release-h/ui/frontend-retry/png-completed-390.png",
+      "sha256": "7ecd46314b3c34cc6c794b10cfc355e39c5c3298b8c54cfd7f5cf166a0668a53",
+      "bytes": 60668,
+      "artifactBuildId": "vfZQ5yf4p_TqDNwIrY5px",
+      "note": "Compiled H390\u00d7844 genuine PNG result: 111968\u219283020B, original1440\u00d7900 dimensions; Compare/download accessible. Correct25.9%saving, not invented70%."
+    },
+    {
+      "file": "docs/evidence/2026-11-27/screenshots/dropdown-keyboard-focus-H.png",
+      "source": ".qa-results/phase2/release-h/ui/settled-nav/dropdown-item-focus-settled-1440.png",
+      "sha256": "de1040ef2e2f798dbb9f13854ce9df66f682041afe77efe82e1de6f7b62e6454",
+      "bytes": 108433,
+      "artifactBuildId": "vfZQ5yf4p_TqDNwIrY5px",
+      "note": "Compiled H1440px real keyboard-focus first dropdown item after entrance animation finishes; original transition capture retained separately."
+    },
+    {
+      "file": "docs/evidence/2026-11-27/screenshots/mobile-navigation-H.png",
+      "source": ".qa-results/phase2/release-h/ui/settled-nav/nav-mobile-media-expanded-settled-390.png",
+      "sha256": "b91b40f0bcd87b11134d0238508f6c5ad7e228f8532fea46a4b0e89d89ffcf65",
+      "bytes": 68945,
+      "artifactBuildId": "vfZQ5yf4p_TqDNwIrY5px",
+      "note": "Compiled H390px expanded media navigation, settled opacity; desktop-context viewport capture, not physical-device evidence."
+    },
+    {
+      "file": "docs/evidence/2026-11-27/screenshots/webm-ready-H.png",
+      "source": ".qa-results/phase2/release-h/ui/webm-proof/webm-ready-viewport-1280.png",
+      "sha256": "1b8ad7ae0a113c623dbbe427fe6934d8122341b67fc9d36795d422db9e873917",
+      "bytes": 102995,
+      "artifactBuildId": "vfZQ5yf4p_TqDNwIrY5px",
+      "note": "Compiled H1280px native viewport: fixed MP4 output and conversion primary action after real file selection."
+    },
+    {
+      "file": "docs/evidence/2026-11-27/screenshots/webm-converted-H.png",
+      "source": ".qa-results/phase2/release-h/ui/webm-proof/webm-completed-viewport-1280.png",
+      "sha256": "451c2062f98cf65eb5ef9cf48ede844072ef96a91acd45e1b389cc9cc5395faf",
+      "bytes": 92739,
+      "artifactBuildId": "vfZQ5yf4p_TqDNwIrY5px",
+      "note": "Compiled H1280px native viewport: genuine decoded MP4 result; converted/larger output is not misreported as compression savings."
+    }
+  ]
+}

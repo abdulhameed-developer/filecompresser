@@ -204,7 +204,7 @@ function QualityCurveFigure() {
     <div className="compressionModeGuide" id="fig-qualitycurve" role="group" aria-label="Qualitative guide to the four image compression modes">
       <p className="modeGuideIntro">Choose for your actual output requirement</p>
       <dl>{modes.map(mode => <div key={mode.name}><dt>{mode.name}</dt><dd>{mode.description}</dd></div>)}</dl>
-      <p className="modeGuideNote">This is qualitative guidance, not a measured size or quality chart. Original image dimensions are preserved. PNG starts with Maximum and has no quality slider. Maximum may reduce colors; choose Lossless when every decoded pixel must stay unchanged.</p>
+      <p className="modeGuideNote">This is qualitative guidance, not a measured size or quality chart. Original image dimensions are preserved. JPEG and WebP start with Balanced. PNG starts with Lossless and has no quality slider. Smart, Maximum and Target size are optional color-reduction modes; their changes may be visible.</p>
     </div>
   )
 }

@@ -8,6 +8,7 @@ import WorkflowSummary from './WorkflowSummary'
 import type { ImageOutcome, QueueItem, ToolDefinition } from '@/lib/types'
 import { formatBytes, savingsLabel } from '@/lib/format'
 import { downloadBlob } from '@/lib/downloads'
+import { ARCHIVE_REPLACE_GUIDANCE, canProcessQueueItem, hasTerminalArchiveFailure } from '@/lib/queue-eligibility'
 
 interface FileItemProps {
   item: QueueItem
@@ -23,6 +24,7 @@ interface FileItemProps {
   hideDownload?: boolean
   sourceInfo?: { width: number; height: number }
   busy?: boolean
+  runActionsAllowed?: boolean
   compact?: boolean
   expanded?: boolean
   onExpanded?: (open: boolean) => void
@@ -33,7 +35,7 @@ const OUTCOMES: Record<ImageOutcome, { label: string; tone: string }> = {
   'target-met': { label: 'Target met', tone: 'good' }, 'target-unmet': { label: 'Target not met', tone: 'warning' },
 }
 
-export default function FileItem({ item, tool, onRemove, onRetry, onCancel, onReprocess, onRestoreApplied, selected = true, showSelection, onSelect, hideDownload, sourceInfo, busy, compact = false, expanded = false, onExpanded }: FileItemProps) {
+export default function FileItem({ item, tool, onRemove, onRetry, onCancel, onReprocess, onRestoreApplied, selected = true, showSelection, onSelect, hideDownload, sourceInfo, busy, runActionsAllowed = true, compact = false, expanded = false, onExpanded }: FileItemProps) {
   const [comparing, setComparing] = useState(false)
   const [downloadError, setDownloadError] = useState('')
   const outputs = item.artifact?.outputs ?? item.outputs ?? (item.result ? [item.result] : [])
@@ -44,7 +46,10 @@ export default function FileItem({ item, tool, onRemove, onRetry, onCancel, onRe
   const outputSize = extraction ? outputs.reduce((sum, output) => sum + output.blob.size, 0) : result?.blob.size ?? item.outputSize
   const canDownload = Boolean(result)
   const active = ['validating', 'processing'].includes(item.status) || Boolean(item.activeRunId)
-  const canRetry = ['failed', 'cancelled'].includes(item.status) && Boolean(item.inputFormat || tool.engine === 'zip-create')
+  const effectiveEngine = item.draftConfig?.engine ?? tool.engine
+  const terminalArchiveFailure = hasTerminalArchiveFailure(item, effectiveEngine)
+  const canRun = runActionsAllowed && canProcessQueueItem(item, effectiveEngine, tool.maxFileSize)
+  const canRetry = ['failed', 'cancelled'].includes(item.status) && canRun
   const targetBytes = result?.targetBytes
   const outcome = targetBytes && targetBytes > 0 && outputSize !== undefined ? outputSize <= targetBytes ? 'target-met' : 'target-unmet' : result?.outcome
   const badge = outcome ? OUTCOMES[outcome] : undefined
@@ -55,7 +60,6 @@ export default function FileItem({ item, tool, onRemove, onRetry, onCancel, onRe
   const elapsed = inspection?.elapsedMs ?? result?.durationMs
   const changedDimensions = inspection && (inspection.inputWidth !== inspection.outputWidth || inspection.inputHeight !== inspection.outputHeight)
   const converted = result?.outcome === 'converted' || Boolean(inspection && inspection.inputFormat !== inspection.outputFormat)
-  const effectiveEngine = item.draftConfig?.engine ?? tool.engine
   const draftOutput = item.draftConfig?.options.outputFormat
   const conversionRequested = effectiveEngine === 'webm-to-mp4' || (effectiveEngine === 'audio-compress' && item.inputFormat !== 'mp3') || (effectiveEngine === 'image-compress' && Boolean(draftOutput) && draftOutput !== item.inputFormat)
   const applyAction = effectiveEngine === 'zip-create' ? 'Rebuild ZIP' : effectiveEngine === 'zip-extract' ? 'Extract again' : effectiveEngine === 'pdf-compress' ? 'Optimize again' : conversionRequested ? 'Convert again' : 'Recompress'
@@ -100,7 +104,7 @@ export default function FileItem({ item, tool, onRemove, onRetry, onCancel, onRe
       <p className="filePendingFacts">Source · {formatBytes(item.originalSize)}{item.inputFormat ? ` · ${formatName(item.inputFormat)}` : ''}{sourceInfo ? ` · ${sourceInfo.width.toLocaleString('en-US')} × ${sourceInfo.height.toLocaleString('en-US')} px` : ''}</p>
       {item.status !== 'completed' && <div className="fileStatus"><Icon className={active ? 'activityIcon' : ''} name={item.status === 'failed' ? 'error' : item.status === 'cancelled' ? 'close' : 'clock'} /><span>{item.status === 'processing' ? item.stage || 'Processing…' : item.status === 'validating' ? 'Checking file…' : item.status === 'queued' ? active ? 'Waiting for this run' : 'Ready' : item.status === 'cancelled' ? 'Latest attempt cancelled' : 'Latest attempt failed'}</span></div>}
       {item.status === 'processing' && <div className="progress" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={item.progress > 0 ? Math.round(item.progress) : undefined} aria-valuetext={item.stage ?? 'Processing'} aria-label={`Processing ${item.name}`}><div className={`progressBar${item.progress > 0 ? '' : ' indeterminate'}`} style={item.progress > 0 ? { width: `${item.progress}%` } : undefined} /></div>}
-      {item.status === 'failed' && item.error && <p className="fileError" role="alert">{item.error}</p>}
+      {item.status === 'failed' && item.error && <p className="fileError" role="alert">{item.error}{terminalArchiveFailure && <> {ARCHIVE_REPLACE_GUIDANCE}</>}</p>}
       {compact && previous && <p className="cardPreviousNotice">Previous result · {active ? 'New run in progress' : draftChanged ? 'Changes not applied' : 'Last successful run'}</p>}
       {compact && canDownload && <div className="fileCardResult"><span>{formatBytes(comparisonOriginalSize)} <Icon name="arrow" /> <strong>{formatBytes(outputSize ?? 0)}</strong></span><span>{extraction ? `${outputs.length} extracted` : outputSize !== undefined && comparisonOriginalSize > 0 ? savingsLabel(comparisonOriginalSize, outputSize) : ''}</span></div>}
       {compact ? <details className="fileCardDetails" open={expanded} onToggle={event => { if (event.currentTarget.open !== expanded) onExpanded?.(event.currentTarget.open) }}>
@@ -108,7 +112,7 @@ export default function FileItem({ item, tool, onRemove, onRetry, onCancel, onRe
         <div className="fileCardDetailBody"><p className="cardFullName">{item.name}</p><p className="cardSourceDetails">Source: {item.originalSize.toLocaleString('en-US')} bytes{item.inputFormat ? ` · ${formatName(item.inputFormat)}` : ''}{sourceInfo ? ` · ${sourceInfo.width.toLocaleString('en-US')} × ${sourceInfo.height.toLocaleString('en-US')} px` : ''}</p>
         {detailContent}
         {item.appliedConfig && draftChanged && onRestoreApplied && <button type="button" className="linkBtn" disabled={busy} onClick={() => onRestoreApplied(item.id)}>Use applied settings<span className="srInline"> for {item.name}</span></button>}
-        {item.status === 'completed' && selected && !item.dirty && onReprocess && !item.batchOwnerId && <button type="button" className="linkBtn" disabled={busy} onClick={() => onReprocess(item.id)}>{repeatAction}<span className="srInline"> {item.name}</span></button>}
+        {canRun && item.status === 'completed' && selected && !item.dirty && onReprocess && !item.batchOwnerId && <button type="button" className="linkBtn" disabled={busy} onClick={() => onReprocess(item.id)}>{repeatAction}<span className="srInline"> {item.name}</span></button>}
         </div>
       </details> : <>
         {detailContent}
@@ -121,7 +125,7 @@ export default function FileItem({ item, tool, onRemove, onRetry, onCancel, onRe
       {canDownload && !hideDownload && !extraction && <button type="button" className="linkBtn fileDownloadButton" onClick={() => download()}><Icon name="download" />{previous ? 'Download previous' : retained ? 'Download original' : 'Download'}<span className="srInline"> {result?.filename}</span></button>}
       {!compact && item.appliedConfig && draftChanged && onRestoreApplied && <button type="button" className="linkBtn" disabled={busy} onClick={() => onRestoreApplied(item.id)}>Use applied settings<span className="srInline"> for {item.name}</span></button>}
       {canRetry && <button type="button" className="linkBtn" disabled={busy} onClick={() => onRetry(item.id)}>Retry<span className="srInline"> {item.name}</span></button>}
-      {!compact && item.status === 'completed' && selected && !item.dirty && onReprocess && !item.batchOwnerId && <button type="button" className="linkBtn" disabled={busy} onClick={() => onReprocess(item.id)}>{repeatAction}<span className="srInline"> {item.name}</span></button>}
+      {!compact && canRun && item.status === 'completed' && selected && !item.dirty && onReprocess && !item.batchOwnerId && <button type="button" className="linkBtn" disabled={busy} onClick={() => onReprocess(item.id)}>{repeatAction}<span className="srInline"> {item.name}</span></button>}
       {active && <button type="button" className="linkBtn" onClick={event => { event.preventDefault(); onCancel(item.id) }}>Cancel<span className="srInline"> processing of {item.name}</span></button>}
       <button type="button" className="iconBtn fileRemoveButton" aria-label={effectiveEngine === 'zip-create' ? `Remove ${item.name} from ZIP inputs` : `Remove source and results for ${item.name}`} onClick={() => onRemove(item.id)}><Icon name="close" /></button>
     </div>

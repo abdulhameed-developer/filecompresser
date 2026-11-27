@@ -52,11 +52,20 @@ describe('effective workflow configuration', () => {
     expect(Object.isFrozen(snapshot.options)).toBe(true)
   })
 
-  it('uses Maximum image defaults and isolates hidden mixed-file transformations', () => {
-    expect(workflowDefaults(tool)).toMatchObject({ imageMode: 'maximum', pngMode: 'maximum' })
+  it('starts with balanced photos and lossless PNG, including hidden mixed-file settings', () => {
+    expect(workflowDefaults(tool)).toMatchObject({ imageMode: 'balanced', pngMode: 'lossless' })
     const mixed = [{ inputFormat: 'png' }, { inputFormat: 'pdf' }] as QueueItem[]
     expect(scopeWorkflowOptions(getTool('compress')!, mixed, 'maximum', {
       imageMode: 'target', pngMode: 'target', targetSize: 50000, quality: 0.4,
-    })).toEqual({ level: 'recommended', imageMode: 'maximum', pngMode: 'maximum' })
+    })).toEqual({ level: 'recommended', imageMode: 'balanced', pngMode: 'lossless' })
+  })
+
+  it('does not silently quantize PNG in a mixed batch or inherit a hidden conversion', () => {
+    const mixed = [{ inputFormat: 'png' }, { inputFormat: 'pdf' }] as QueueItem[]
+    const options = scopeWorkflowOptions(getTool('compress')!, mixed, 'maximum', {
+      imageMode: 'maximum', pngMode: 'maximum', outputFormat: 'webp', quality: 0.1,
+    })
+    expect(normalizedWorkflowOptions('image-compress', 'png', options)).toEqual({ pngMode: 'lossless' })
+    expect(normalizedWorkflowOptions('image-compress', 'jpeg', options)).toEqual({ imageMode: 'balanced', quality: 0.82 })
   })
 })

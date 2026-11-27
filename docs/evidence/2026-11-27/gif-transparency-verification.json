@@ -1,0 +1,285 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-11-27T07:49:14.008Z",
+  "scope": "Two actual browser UI operations and downloaded GIFs on final local artifact E; generated low-color moving-shape fixture, not a general size/quality or performance claim.",
+  "artifact": {
+    "buildId": "t6z3cxJkJn2Ovnf43hpvK",
+    "sourceBase": "02b078d0915a578ec45ce5cf89494dc0185e2218",
+    "homepageSha256": "823f6e5db8d2e92468078ef3754c8d60d48afe2b2d6c3da7862187b52df6d71f",
+    "robots": "index, follow",
+    "canonical": "https://filecompresser.com",
+    "sourceTests": 822
+  },
+  "gifEngineSourceSha256": "659339561444fdfd38600a9bd4644d9d011c9a621dd617c4df2ba1ed8aeb07ea",
+  "source": {
+    "filename": "moving-transparent.gif",
+    "bytes": 12103,
+    "sha256": "b5fa657d041e9655d6a482f3a0aca0859ffc2984cf0ec23686f18e77660ad508",
+    "dimensions": [
+      160,
+      120
+    ],
+    "frames": 12,
+    "delaysCentiseconds": [
+      8,
+      12,
+      20,
+      10,
+      16,
+      9,
+      14,
+      11,
+      18,
+      13,
+      17,
+      15
+    ],
+    "loopValue": 3,
+    "disposalMethods": [
+      2
+    ],
+    "intentionalFixtureOverhead": "Full 256-entry palettes with only four opaque colors plus transparency, optimize=False; real reduced output is required rather than original retention.",
+    "nativeDecodedRgbaSha256": "ddc1600edc5318f9c97a3aa2ca457967a0674a230dc32e4089e4d079f05703ea",
+    "nativeDecodedAlphaSha256": "70370035a3a98f548095d563592b24a508aee00d143eedc68e3c792c91d94239",
+    "nativeProbeFrameDurationsSeconds": [
+      "0.080000",
+      "0.120000",
+      "0.200000",
+      "0.100000",
+      "0.160000",
+      "0.090000",
+      "0.140000",
+      "0.110000",
+      "0.180000",
+      "0.130000",
+      "0.170000",
+      "0.150000"
+    ]
+  },
+  "method": "Native FFmpeg decodes all composited frames with min_delay=0, ignore_loop=1 and RGBA passthrough; compare every byte, plus native FFprobe frame timing/count/dimensions and raw GIF descriptor loop/delay checks. Independent Pillow compares each displayed frame, alpha, visible pixels and black/white composites.",
+  "cases": [
+    {
+      "mode": "Recommended",
+      "outputBytes": 5204,
+      "reductionPercent": 57.0024,
+      "outputSha256": "3d5ebc9573c3d050f62c36f3afd586ce8901ed43645ff328e8e11c639233accc",
+      "codec": "gif",
+      "realReducedCandidate": true,
+      "originalRetained": false,
+      "dimensions": [
+        160,
+        120
+      ],
+      "frameCount": 12,
+      "delaysCentiseconds": [
+        8,
+        12,
+        20,
+        10,
+        16,
+        9,
+        14,
+        11,
+        18,
+        13,
+        17,
+        15
+      ],
+      "nativeProbeFrameDurationsSeconds": [
+        "0.080000",
+        "0.120000",
+        "0.200000",
+        "0.100000",
+        "0.160000",
+        "0.090000",
+        "0.140000",
+        "0.110000",
+        "0.180000",
+        "0.130000",
+        "0.170000",
+        "0.150000"
+      ],
+      "loopValue": 3,
+      "nativeFFmpeg": {
+        "decodedRgbaSha256": "ddc1600edc5318f9c97a3aa2ca457967a0674a230dc32e4089e4d079f05703ea",
+        "decodedAlphaSha256": "70370035a3a98f548095d563592b24a508aee00d143eedc68e3c792c91d94239",
+        "rgbaIdenticalToSourceWithThisDecoder": true,
+        "allFrameAlphaIdentical": true,
+        "perFrameAlphaExact": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "independentPillow": {
+        "version": "12.1.1",
+        "allFrameAlphaExact": true,
+        "allVisiblePixelsExact": true,
+        "allBlackCompositesExact": true,
+        "allWhiteCompositesExact": true,
+        "allRawRgbaExact": false,
+        "fullyTransparentRgbDifferencePixelsPerFrame": [
+          18299,
+          18299,
+          18299,
+          18299,
+          18299,
+          18299,
+          18352,
+          18669,
+          18368,
+          18299,
+          18299,
+          18299
+        ],
+        "firstHiddenRgbaChange": [
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            255,
+            0,
+            0
+          ]
+        ]
+      },
+      "sameDimensions": true,
+      "sameFrameCount": true,
+      "sameDelays": true,
+      "sameLoop": true,
+      "pass": true
+    },
+    {
+      "mode": "Maximum",
+      "outputBytes": 5204,
+      "reductionPercent": 57.0024,
+      "outputSha256": "3d5ebc9573c3d050f62c36f3afd586ce8901ed43645ff328e8e11c639233accc",
+      "codec": "gif",
+      "realReducedCandidate": true,
+      "originalRetained": false,
+      "dimensions": [
+        160,
+        120
+      ],
+      "frameCount": 12,
+      "delaysCentiseconds": [
+        8,
+        12,
+        20,
+        10,
+        16,
+        9,
+        14,
+        11,
+        18,
+        13,
+        17,
+        15
+      ],
+      "nativeProbeFrameDurationsSeconds": [
+        "0.080000",
+        "0.120000",
+        "0.200000",
+        "0.100000",
+        "0.160000",
+        "0.090000",
+        "0.140000",
+        "0.110000",
+        "0.180000",
+        "0.130000",
+        "0.170000",
+        "0.150000"
+      ],
+      "loopValue": 3,
+      "nativeFFmpeg": {
+        "decodedRgbaSha256": "ddc1600edc5318f9c97a3aa2ca457967a0674a230dc32e4089e4d079f05703ea",
+        "decodedAlphaSha256": "70370035a3a98f548095d563592b24a508aee00d143eedc68e3c792c91d94239",
+        "rgbaIdenticalToSourceWithThisDecoder": true,
+        "allFrameAlphaIdentical": true,
+        "perFrameAlphaExact": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "independentPillow": {
+        "version": "12.1.1",
+        "allFrameAlphaExact": true,
+        "allVisiblePixelsExact": true,
+        "allBlackCompositesExact": true,
+        "allWhiteCompositesExact": true,
+        "allRawRgbaExact": false,
+        "fullyTransparentRgbDifferencePixelsPerFrame": [
+          18299,
+          18299,
+          18299,
+          18299,
+          18299,
+          18299,
+          18352,
+          18669,
+          18368,
+          18299,
+          18299,
+          18299
+        ],
+        "firstHiddenRgbaChange": [
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            255,
+            0,
+            0
+          ]
+        ]
+      },
+      "sameDimensions": true,
+      "sameFrameCount": true,
+      "sameDelays": true,
+      "sameLoop": true,
+      "pass": true
+    }
+  ],
+  "diagnostics": {
+    "pageErrors": [],
+    "failedResources": [],
+    "browserClosed": true,
+    "runnerErrors": []
+  },
+  "limitation": "Native FFmpeg normalizes transparent-pixel RGB. Its RGBA equality is decoder-specific: independent Pillow exposes black\u2192green hidden RGB under alpha0. Alpha, visible pixels and black/white display composites remain exact; no universal raw hidden-RGB or palette-index preservation claim. This small fixture does not certify all GIF palettes, disposal modes or maximum-size animations.",
+  "screenshotsAvailable": [
+    "recommended-settings.png",
+    "recommended-completed.png",
+    "maximum-settings.png",
+    "maximum-completed.png",
+    "frames-comparison.png"
+  ],
+  "pass": true
+}

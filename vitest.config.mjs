@@ -12,6 +12,9 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.dirname(fileURLToPath(import.meta.url)),
+      // Next supplies this marker internally. Unit tests execute the server
+      // modules directly, using Next's own empty server implementation.
+      'server-only': fileURLToPath(new URL('./node_modules/next/dist/compiled/server-only/empty.js', import.meta.url)),
     },
   },
 })
