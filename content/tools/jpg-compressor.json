@@ -90,7 +90,10 @@
       "q": "Can I compress JPG images without changing their dimensions?",
       "a": "Yes. Original display dimensions are preserved unless you enable resizing.\n"
     },
-    {},
+    {
+      "q": "Can I reduce a JPG to 100KB or 50KB?",
+      "a": "You can use Target Size to attempt a maximum file size. Whether the target is achievable depends on the photograph and acceptable quality.\n"
+    },
     {},
     {},
     {},
