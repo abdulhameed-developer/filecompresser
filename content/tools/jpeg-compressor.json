@@ -58,7 +58,10 @@
       "heading": "Product and Business Photography",
       "body": "Online stores and business websites often use many product photographs. Optimizing these files can help reduce storage requirements and the amount of data visitors download.\n"
     },
-    {},
+    {
+      "heading": "Does JPEG Compression Affect Image Quality?",
+      "body": "JPEG compression is lossy, so re-encoding can change the original pixels. The amount of visible change depends on the selected quality setting. Strong compression may affect fine textures, color transitions, faces, small lettering and detailed edges.\n\nA higher quality setting generally retains more detail, but it may create a larger output. For important photographs, compare both versions at the same scale. Keep the original file for future editing, printing or archiving. Repeatedly compressing an already compressed JPEG is not recommended. It can introduce additional artifacts without providing a useful reduction in file size.\n"
+    },
     {},
     {},
     {}
