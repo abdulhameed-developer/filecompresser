@@ -74,7 +74,10 @@
       "q": "Does a ZIP archive always reduce file size?",
       "a": "No. Files that are already compressed, such as many JPG images, MP3 files, and videos, may not become much smaller inside a ZIP archive.\n"
     },
-    {},
+    {
+      "q": "Can I use ZIP Creator on my phone?",
+      "a": "The tool works through a browser, so you can try it on a supported mobile browser. Processing capacity may depend on your device and the size of the selected files.\n"
+    },
     {},
     {}
   ],
