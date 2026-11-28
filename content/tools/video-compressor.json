@@ -72,7 +72,7 @@
     },
     {
       "heading": "Private Video Processing in Your Browser",
-      "body": "File Compresser processes selected videos directly on your device. Your video is not uploaded to the website's servers for conversion.\n"
+      "body": "File Compresser processes selected videos directly on your device. Your video is not uploaded to the website's servers for conversion. Your browser memory, available processing power and video duration can affect the result.\n\n"
     },
     {},
     {}
