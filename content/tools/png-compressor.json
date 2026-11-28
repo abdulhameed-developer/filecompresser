@@ -50,9 +50,10 @@
       "heading": "Private PNG Compression in Your Browser",
       "body": "File Compresser processes selected images on your device. Your PNG files are not uploaded to the website's servers.\n\nThe tool accepts PNG files up to 50 MB each. Queue limits are 500 files and 300 MB total, while image dimensions are subject to the 32-megapixel limit. Your device's available memory can also affect processing."
     },
-    {},
-    {},
-    {}
+    {
+      "heading": "Reduce PNG File Size with the Right Settings",
+      "body": "PNG images are valuable when transparency and clear graphics are important. However, large files can create unnecessary storage and upload problems.\n\nFile Compresser gives you different options for optimizing PNG images while keeping transparency. Choose Lossless when exact pixel appearance matters, or review the other modes when a smaller output is your priority.\n"
+    }
   ],
   "links": [
     {
