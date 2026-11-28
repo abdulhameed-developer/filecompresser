@@ -62,7 +62,10 @@
       "heading": "Does Video Compression Reduce Quality?",
       "body": "Video re-encoding can affect image and audio quality.\n\nThe final appearance depends on the original recording, selected resolution and encoding process. Lowering resolution can remove image detail, while stronger compression can affect textures, movement and small text.\n\nAudio may also change during conversion.\n\nFor this reason, always play the complete output before sharing it. Check important scenes, movement, spoken words and sound quality. Keep the original recording if you may need to edit it again or create another export.\n"
     },
-    {},
+    {
+      "heading": "Why Does the First Video Take Longer?",
+      "body": "The first video, audio or GIF processing job loads the required WebAssembly version of FFmpeg. This processing engine is approximately 21 MB and may be cached by your browser for later use.\n\nVideo encoding also requires processing power and memory. Long recordings and high-resolution videos can take considerable time, even when the input is within the stated file limit.\n\nFile Compresser accepts video files up to 200 MB per file. Media jobs have a five-minute processing limit. If a job fails, try a shorter clip or select a lower resolution.\n"
+    },
     {},
     {},
     {},
