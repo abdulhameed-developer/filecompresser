@@ -98,7 +98,10 @@
       "q": "Does changing JPEG to JPG reduce file size?",
       "a": "No. Renaming a file does not change its encoded image data. Actual compression requires re-encoding."
     },
-    {},
+    {
+      "q": "Can I compress JPEG without resizing it?",
+      "a": "Yes. Original display dimensions are maintained unless you enable the resizing option.\n"
+    },
     {},
     {},
     {}
