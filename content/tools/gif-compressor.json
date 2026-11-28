@@ -3,17 +3,18 @@
   "introduction": "Animated GIFs are commonly used in social media posts, website graphics, tutorials, product demonstrations and short reactions. They allow several image frames to play in sequence without requiring a separate video player.\n\nAlthough GIFs are useful for simple animations, their file sizes can become large. An animation with many frames, detailed colors or high dimensions may take up considerable storage space and require more time to load on a website.\n\nFile Compresser provides an online GIF Compressor that attempts to reduce the size of animated GIF files by optimizing their color palettes. You can process supported animations directly in your browser without installing software or uploading your files to an external server.\n\nThe tool is designed to check important animation properties so that reducing file size does not unnecessarily change the timing or looping of your GIF.\n",
   "sections": [
     {
-      "heading": "Choose a mode for the animation",
-      "body": "Start with Recommended, which uses up to 128 colors. Maximum uses up to 64 and can change subtle colors more visibly. Process the animation, then play the complete download rather than checking a single frame."
+      "heading": "What Is a GIF Compressor?",
+      "body": "A GIF compressor is a tool that optimizes animated or static GIF files to reduce their storage size.\n\nGIF images use a limited color palette. Each frame can contain information about the colors and visual changes needed to display the animation.\n\nOne way to reduce the size of a GIF is to use fewer colors. This can reduce the amount of image information stored in the animation, but it may also affect gradients, edges and subtle color differences.\n\nFile Compresser provides two main modes for animated GIF optimization: Recommended and Maximum.\n\nThe tool attempts to maintain the animation dimensions, frame delays and loop count. It does not simply reduce the frame rate to make the file smaller.\n"
     },
-    {
-      "heading": "Review motion, colors and looping",
-      "body": "Palette reduction can affect gradients and edges. Frame timing, frame count, dimensions, transparency and loop count are checked before a smaller candidate is offered. If timing cannot be safely preserved or no smaller result is found, the original is retained unchanged."
-    },
-    {
-      "heading": "When browser processing needs a smaller input",
-      "body": "GIF encoding uses the media engine and can consume substantial memory. This tool accepts files up to 50 MB, but a long or complex animation may still exceed the resources available to your browser. Keep the source and try a shorter animation if processing fails."
-    }
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
   ],
   "links": [
     {
