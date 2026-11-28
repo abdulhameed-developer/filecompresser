@@ -7,8 +7,8 @@
       "body": "A JPG compressor is an image optimization tool that reduces the amount of data used to store a photograph. JPG uses lossy compression. This means some image information is discarded during encoding to create a smaller file. The amount of information removed depends on the compression settings.\n\nA stronger compression setting can create a smaller file, but it can also affect visible details. Fine textures, faces, lettering and sharp edges may show changes when the quality is reduced too much. File Compresser provides different quality options so you can choose a result according to the purpose of your photograph.\n"
     },
     {
-      "heading": "A target size is a limit, not an exact byte count",
-      "body": "Target size searches actual encodes and verifies the final byte count. A 50 KB maximum means 50,000 bytes, not a promise of exactly that size. If no supported encode fits, the result is marked Target not met. Image dimensions stay unchanged."
+      "heading": "How to Compress a JPG Image Online",
+      "body": "You do not need professional editing software to reduce the size of an ordinary JPG photograph.\n\nFollow these steps:\n\nOpen the JPG Compressor on File Compresser.\nSelect a JPG or JPEG image from your device.\nWait for the file validation process.\nChoose Balanced, High Quality, Maximum or Target Size.\nEnable resizing only if you need smaller dimensions.\nStart the compression process.\nCompare the original and processed file sizes.\nCheck the photograph and download the suitable result.\n\nYou can also process supported batches instead of selecting only one photograph. Each result can be reviewed separately.\n"
     },
     {
       "heading": "Where JPG works well",
