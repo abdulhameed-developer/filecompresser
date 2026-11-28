@@ -74,7 +74,10 @@
       "q": "Can I compress a password-protected PDF?",
       "a": "No. Encrypted PDFs are not supported by the current tool. It also does not remove PDF passwords.\n"
     },
-    {},
+    {
+      "q": "Does it remove all PDF metadata?",
+      "a": "No. It removes selected metadata when safe, but it is not a complete metadata or privacy-cleaning tool.\n"
+    },
     {}
   ],
   "seoTitle": "PDF Compressor Online Free – Optimize PDF Files",
