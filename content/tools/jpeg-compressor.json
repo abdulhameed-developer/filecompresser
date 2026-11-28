@@ -94,7 +94,10 @@
       "q": "Is JPEG different from JPG?",
       "a": "No. JPEG and JPG are two extensions for the same image format.\n"
     },
-    {},
+    {
+      "q": "Does changing JPEG to JPG reduce file size?",
+      "a": "No. Renaming a file does not change its encoded image data. Actual compression requires re-encoding."
+    },
     {},
     {},
     {},
