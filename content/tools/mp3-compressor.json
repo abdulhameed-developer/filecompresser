@@ -15,9 +15,6 @@
       "body": "This tool changes the audio encoding; it is not a loudness or dynamic-range compressor. It accepts MP3 inputs up to 100 MB and uses the browser media engine, so long recordings can still need substantial processing time and memory."
     }
   ],
-  "faq": [],
-  "seoTitle": "MP3 Compressor — Choose a Lower Audio Bitrate",
-  "seoDescription": "Reduce MP3 file size by selecting a lower bitrate in your browser. Listen before keeping the result; re-encoding is lossy and does not restore detail.",
   "links": [
     {
       "label": "Why re-encoding does not always save space",
@@ -27,5 +24,8 @@
       "label": "How local media processing works",
       "href": "/blog/how-browser-compression-works"
     }
-  ]
+  ],
+  "faq": [],
+  "seoTitle": "MP3 Compressor Online Free – Reduce MP3 File Size",
+  "seoDescription": "Compress MP3 audio online by choosing a lower bitrate. Reduce file size, compare sound quality and process recordings privately in your browser.\n"
 }
