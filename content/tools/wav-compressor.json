@@ -78,7 +78,10 @@
       "q": "Should I delete my original WAV file after conversion?",
       "a": "It is better to keep the original if you may need to edit, process, or archive the recording later. The MP3 version is more suitable as a convenient listening or sharing copy.\n"
     },
-    {}
+    {
+      "q": "Can an MP3 file be converted back to the original WAV quality?",
+      "a": "No. Converting an MP3 back to WAV does not restore audio information removed during MP3 encoding.\n"
+    }
   ],
   "seoTitle": "WAV to MP3 Converter Online Free – Convert Audio",
   "seoDescription": "Convert WAV recordings to MP3 online for smaller, easier-to-share audio files. Choose a bitrate and process privately in your browser.\n"
