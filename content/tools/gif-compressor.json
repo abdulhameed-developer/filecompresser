@@ -1,6 +1,6 @@
 {
-  "heading": "How can I reduce an animated GIF?",
-  "introduction": "FileCompresser tries a reduced color palette while preserving animation dimensions, frame delays and loop count. Maximum changes the palette size rather than applying a fixed frame rate.",
+  "heading": "  GIF Compressor Online to Reduce Animated GIF File Size",
+  "introduction": "Animated GIFs are commonly used in social media posts, website graphics, tutorials, product demonstrations and short reactions. They allow several image frames to play in sequence without requiring a separate video player.\n\nAlthough GIFs are useful for simple animations, their file sizes can become large. An animation with many frames, detailed colors or high dimensions may take up considerable storage space and require more time to load on a website.\n\nFile Compresser provides an online GIF Compressor that attempts to reduce the size of animated GIF files by optimizing their color palettes. You can process supported animations directly in your browser without installing software or uploading your files to an external server.\n\nThe tool is designed to check important animation properties so that reducing file size does not unnecessarily change the timing or looping of your GIF.\n",
   "sections": [
     {
       "heading": "Choose a mode for the animation",
