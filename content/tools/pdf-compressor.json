@@ -15,9 +15,6 @@
       "body": "Open the download in your PDF reader and review pages, forms, links and appearance. Detected digitally signed and encrypted PDFs are refused. Keep the original because a successful parse and matching page count do not prove every document feature is unchanged."
     }
   ],
-  "faq": [],
-  "seoTitle": "PDF Optimizer — Rewrite Structure and Metadata",
-  "seoDescription": "Try local PDF structure optimization without downsampling pages. Smaller candidates are validated; an already efficient original is retained with its metadata.",
   "links": [
     {
       "label": "Why some PDFs barely shrink",
@@ -27,5 +24,8 @@
       "label": "What the local-processing privacy claim covers",
       "href": "/blog/what-privacy-claim-really-means"
     }
-  ]
+  ],
+  "faq": [],
+  "seoTitle": "PDF Compressor Online Free – Optimize PDF Files",
+  "seoDescription": "Optimize PDF files online with a structural rewrite and selected metadata removal. Check actual file size and process privately in your browser."
 }
