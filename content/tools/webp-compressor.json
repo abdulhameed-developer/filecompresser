@@ -90,7 +90,10 @@
       "q": "Does WebP compression change image dimensions?",
       "a": "No. Dimensions remain unchanged unless you enable resizing.\n"
     },
-    {}
+    {
+      "q": "Are my images uploaded to the website?",
+      "a": "No. Processing takes place in your browser.\n"
+    }
   ],
   "seoTitle": "WebP Compressor Online Free – Optimize WebP Images",
   "seoDescription": "Compress WebP images online for free. Reduce image size, maintain dimensions and transparency, and process files privately in your browser.\n"
