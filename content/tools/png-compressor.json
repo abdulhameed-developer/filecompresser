@@ -22,7 +22,10 @@
       "heading": "Lossless",
       "body": "Lossless mode preserves decoded image pixels. It is useful for screenshots, logos, diagrams and graphics where exact pixel appearance matters.\n\nIt may provide a smaller file through optimization of the stored data, but the result depends on the original PNG. Some images may already be efficient and show little or no reduction.\n"
     },
-    {},
+    {
+      "heading": "Smart",
+      "body": "Smart uses a more conservative approach to color reduction. It can be useful when you want to reduce the size of a PNG while keeping changes to visual detail under control. The actual result depends on the number of colors and complexity of the original image."
+    },
     {},
     {},
     {},
