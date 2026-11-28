@@ -42,7 +42,10 @@
       "heading": "Compress MP3 Files Privately in Your Browser",
       "body": "File Compresser processes MP3 files on your device through your browser. Your selected audio is not uploaded to a remote server for compression, and you do not need to create an account to use the tool.\n\nThe audio engine may need to download the first time you use a media tool. This initial download is around 21 MB and can be cached by your browser for later use. MP3 processing also has a five-minute job limit, so very long recordings may not finish within the available processing time.\n\nThe tool supports MP3 files up to 100 MB. If your audio is larger than this limit, you will need to use a smaller source file.\n"
     },
-    {}
+    {
+      "heading": "Reduce Your MP3 File Size Online",
+      "body": "If you need to make an audio file easier to store or share, File Compresser offers a straightforward way to re-encode MP3 files. Choose a suitable bitrate, process your audio, and compare the result before downloading it. Keep your original recording when sound quality is important, and select the setting that works best for your intended use.\n"
+    }
   ],
   "links": [
     {
