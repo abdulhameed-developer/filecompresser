@@ -78,7 +78,10 @@
       "q": "Is the GIF Compressor free?",
       "a": "Yes. You can use the available tool without creating an account or purchasing a subscription.\n"
     },
-    {},
+    {
+      "q": "Can I compress animated GIFs without changing their speed?",
+      "a": "The tool checks and preserves frame delays when it offers a suitable optimized result.\n"
+    },
     {},
     {},
     {},
