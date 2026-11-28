@@ -70,7 +70,10 @@
       "q": "Can I combine multiple files into one ZIP?",
       "a": "Yes. Select the files you want to include, create the archive, and download the resulting ZIP file.\n"
     },
-    {},
+    {
+      "q": "Does a ZIP archive always reduce file size?",
+      "a": "No. Files that are already compressed, such as many JPG images, MP3 files, and videos, may not become much smaller inside a ZIP archive.\n"
+    },
     {},
     {},
     {}
