@@ -74,7 +74,10 @@
       "q": "Does PNG Lossless reduce image quality?",
       "a": "Lossless mode preserves decoded image pixels. It may not produce a smaller file for every image.\n"
     },
-    {},
+    {
+      "q": "Why is my PNG still large?",
+      "a": "Some PNG files already use efficient compression. Images with complex details and many colors may also be difficult to reduce.\n"
+    },
     {},
     {},
     {}
