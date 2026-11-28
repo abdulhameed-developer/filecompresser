@@ -38,7 +38,10 @@
       "heading": "Does Creating a ZIP File Reduce File Size?",
       "body": "Creating a ZIP archive does not guarantee a smaller total file size. The result depends on the types of files you add.\n\nSome text documents and uncompressed files may become smaller when stored in a ZIP archive. However, many images, videos, and audio files already use compression. These formats may show little or no additional size reduction when packaged into a ZIP file.\n\nFile Compresser displays the combined size of the selected input files as the original size. This gives you a reference for comparing the archive with the files you selected.\n\nIf your main goal is to reduce the size of an image, video, audio file, or PDF, it may be more useful to process that file with its dedicated compression tool before adding it to an archive.\n"
     },
-    {}
+    {
+      "heading": "Check Your Files Before Creating an Archive",
+      "body": "Before creating a ZIP file, make sure you have selected the correct items. Review the file names and confirm that the collection includes everything you want to share.\n\nFile names may be normalized during archive creation. For this reason, it is useful to check the names and contents of the completed archive before sending it to someone else.\n\nAlso, remember that creating a ZIP file does not protect its contents with a password or make the files private from anyone who receives the archive. If you need to protect sensitive information, use an appropriate security method before sharing the files.\n"
+    }
   ],
   "links": [
     {
