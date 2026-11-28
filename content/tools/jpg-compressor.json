@@ -30,7 +30,10 @@
       "heading": "Target Size Compression",
       "body": "Sometimes an upload form requires a photograph below a specific file size. In this situation, a general quality preset may not be enough. The Target Size option searches for actual encodes and verifies the final file size in bytes. For example, a 50 KB maximum means 50,000 bytes.\n\nIt is important to understand that the requested size is a limit, not a promise that the final image will have exactly that number of bytes. If no suitable encoding meets the selected limit, the tool reports Target not met.\n"
     },
-    {},
+    {
+      "heading": "Can You Compress a JPG to 50KB?",
+      "body": "Yes, you can use the Target Size mode to attempt a maximum of 50 KB. However, the result depends on the original image. A large photograph with complex textures and many details may not reach 50 KB while maintaining acceptable quality.\n\nIf the target cannot be reached, consider the following options:\n\nChoose a less restrictive target size.\nEnable image resizing if smaller dimensions are acceptable.\nTry a stronger compression setting.\nKeep the original if the smaller version loses too much detail.\n\nDo not use a very small target simply because an upload form accepts it. A photograph should remain clear enough for the person viewing it.\n"
+    },
     {}
   ],
   "links": [
