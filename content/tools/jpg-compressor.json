@@ -98,8 +98,14 @@
       "q": "Is JPG the same as JPEG?",
       "a": "Yes. JPG and JPEG refer to the same image format. The difference is mainly in the file extension.\n"
     },
-    {},
-    {},
+    {
+      "q": "Why is my compressed JPG not smaller?",
+      "a": "The original photograph may already be efficiently compressed. If no smaller suitable result is found, the original is retained unchanged.\n"
+    },
+    {
+      "q": "Will a compressed JPG have a watermark?",
+      "a": "No. File Compresser does not add a watermark to the processed image.\n"
+    },
     {},
     {}
   ],
