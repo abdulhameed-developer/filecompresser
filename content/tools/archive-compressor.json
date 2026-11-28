@@ -26,7 +26,10 @@
       "heading": "Download Only the Files You Need",
       "body": "Sometimes you do not need every item inside an archive. File Compresser lets you download individual extracted files, which can help when you only need a specific document or image.\n"
     },
-    {},
+    {
+      "heading": "Manage Project Resources",
+      "body": "Developers, designers, students, and office teams often receive project files in ZIP format. Extracting the archive makes it easier to access the resources needed for a task.\n"
+    },
     {},
     {},
     {}
