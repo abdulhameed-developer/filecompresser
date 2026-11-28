@@ -34,7 +34,10 @@
       "heading": "Can You Compress a JPG to 50KB?",
       "body": "Yes, you can use the Target Size mode to attempt a maximum of 50 KB. However, the result depends on the original image. A large photograph with complex textures and many details may not reach 50 KB while maintaining acceptable quality.\n\nIf the target cannot be reached, consider the following options:\n\nChoose a less restrictive target size.\nEnable image resizing if smaller dimensions are acceptable.\nTry a stronger compression setting.\nKeep the original if the smaller version loses too much detail.\n\nDo not use a very small target simply because an upload form accepts it. A photograph should remain clear enough for the person viewing it.\n"
     },
-    {}
+    {
+      "heading": "Why Compress JPG Images?",
+      "body": "There are several practical reasons to reduce JPG file size.\n"
+    }
   ],
   "links": [
     {
