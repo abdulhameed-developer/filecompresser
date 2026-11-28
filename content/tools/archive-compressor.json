@@ -78,7 +78,10 @@
       "q": "Can I open RAR or 7z files?",
       "a": "No. The current tool supports ZIP archives, not RAR or 7z files. It also does not support encrypted, split, or ZIP64 archives.\n"
     },
-    {},
+    {
+      "q": "Can I download only one file from an archive?",
+      "a": "Yes. After extraction, you can download individual files instead of downloading the complete collection.\n"
+    },
     {},
     {}
   ],
