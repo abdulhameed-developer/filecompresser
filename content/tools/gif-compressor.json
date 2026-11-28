@@ -86,7 +86,10 @@
       "q": "Will GIF compression remove frames?",
       "a": "The optimization process checks the frame count and does not use a simple frame-rate reduction as its compression method.\n"
     },
-    {},
+    {
+      "q": "Why did my GIF remain the same size?",
+      "a": "The original may already be optimized, or a smaller candidate may not safely preserve the checked animation properties.\n"
+    },
     {},
     {}
   ],
