@@ -15,9 +15,6 @@
       "body": "The first media job downloads about 21 MB of engine code. Video encoding is CPU intensive; long or high-resolution clips can exceed browser memory even below the 200 MB input limit. Jobs stop after five minutes. If processing fails, try a shorter clip or a lower resolution."
     }
   ],
-  "faq": [],
-  "seoTitle": "Video Compressor for MP4 and MOV Clips",
-  "seoDescription": "Re-encode MP4 and MOV clips to H.264/AAC MP4 on your device. Choose a resolution cap and check playback, file size and browser processing limits.",
   "links": [
     {
       "label": "How the media engine runs on your device",
@@ -27,5 +24,8 @@
       "label": "Understand size savings and unchanged results",
       "href": "/blog/honest-file-size-reporting"
     }
-  ]
+  ],
+  "faq": [],
+  "seoTitle": "ideo Compressor Online Free – Compress MP4 & MOV",
+  "seoDescription": "Compress MP4 and MOV videos online for free. Convert to H.264 MP4, choose a resolution and reduce file size privately in your browser.\n"
 }
