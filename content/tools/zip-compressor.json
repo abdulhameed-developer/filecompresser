@@ -34,7 +34,10 @@
       "heading": "Simplify Downloads",
       "body": "If you provide several downloadable resources on a website, a ZIP archive can give visitors one file to download instead of requiring them to select each item individually.\n"
     },
-    {},
+    {
+      "heading": "Does Creating a ZIP File Reduce File Size?",
+      "body": "Creating a ZIP archive does not guarantee a smaller total file size. The result depends on the types of files you add.\n\nSome text documents and uncompressed files may become smaller when stored in a ZIP archive. However, many images, videos, and audio files already use compression. These formats may show little or no additional size reduction when packaged into a ZIP file.\n\nFile Compresser displays the combined size of the selected input files as the original size. This gives you a reference for comparing the archive with the files you selected.\n\nIf your main goal is to reduce the size of an image, video, audio file, or PDF, it may be more useful to process that file with its dedicated compression tool before adding it to an archive.\n"
+    },
     {}
   ],
   "links": [
