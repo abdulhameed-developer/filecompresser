@@ -70,7 +70,10 @@
       "q": "Does it reduce the size of scanned PDFs?",
       "a": "It may not produce a significant reduction in scanned PDFs because it does not downsample embedded page images. Image-based PDFs often need image optimization to achieve larger size reductions.\n"
     },
-    {},
+    {
+      "q": "Can I compress a password-protected PDF?",
+      "a": "No. Encrypted PDFs are not supported by the current tool. It also does not remove PDF passwords.\n"
+    },
     {},
     {}
   ],
