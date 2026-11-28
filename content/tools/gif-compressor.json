@@ -18,7 +18,10 @@
       "heading": "Recommended Mode",
       "body": "Recommended uses a palette of up to 128 colors. It is a practical starting point for people who want to reduce GIF size while avoiding the stronger color reduction of Maximum mode. It may be suitable for simple animations, reaction GIFs and short demonstrations.\n"
     },
-    {},
+    {
+      "heading": "Maximum Mode",
+      "body": "Maximum uses a palette of up to 64 colors. This can help reduce the file size further, but more noticeable color changes may occur.\n\nFor example, an animation with smooth gradients or subtle shades may show visible differences after processing. Always compare the original and final versions before using the optimized GIF.\n"
+    },
     {},
     {},
     {},
