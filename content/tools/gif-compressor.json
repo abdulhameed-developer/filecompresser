@@ -90,7 +90,10 @@
       "q": "Why did my GIF remain the same size?",
       "a": "The original may already be optimized, or a smaller candidate may not safely preserve the checked animation properties.\n"
     },
-    {},
+    {
+      "q": "Which GIF mode should I choose?",
+      "a": "Recommended is a good starting point. Maximum uses fewer colors and may provide stronger size reduction, with a greater chance of visible color changes.\n"
+    },
     {}
   ],
   "seoTitle": "GIF Compressor Online Free – Reduce Animated GIF Size",
