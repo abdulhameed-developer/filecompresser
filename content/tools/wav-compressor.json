@@ -61,7 +61,16 @@
       "href": "/blog/honest-file-size-reporting"
     }
   ],
-  "faq": [],
+  "faq": [
+    {
+      "q": "Is WAV to MP3 conversion free?",
+      "a": "The online converter can be used without installing a desktop application or creating an account. The only limits are the 100 MB file size and a queue of up to 500 files and 300 MB.\n"
+    },
+    {},
+    {},
+    {},
+    {}
+  ],
   "seoTitle": "WAV to MP3 Converter Online Free – Convert Audio",
   "seoDescription": "Convert WAV recordings to MP3 online for smaller, easier-to-share audio files. Choose a bitrate and process privately in your browser.\n"
 }
