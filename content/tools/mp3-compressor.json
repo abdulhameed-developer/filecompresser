@@ -62,7 +62,10 @@
       "q": "Is the MP3 Compressor free to use?",
       "a": "You can use the online tool without creating an account or installing desktop software. The only limits are the 100 MB file size and a queue of up to 500 files and 300 MB.\n"
     },
-    {},
+    {
+      "q": "Can I compress a 320 kbps MP3 file?",
+      "a": "Yes. You can re-encode a supported MP3 file using one of the available bitrate settings. Choosing a lower bitrate may reduce the file size, but it can also reduce audio quality.\n"
+    },
     {},
     {},
     {},
