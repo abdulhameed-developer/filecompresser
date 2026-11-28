@@ -58,7 +58,10 @@
       "heading": "Does JPG Compression Reduce Image Quality?",
       "body": "Yes, lossy JPEG encoding can change image quality. The extent of the change depends on the selected settings and original photograph. A lower-quality setting can affect fine details, gradients, skin textures and small text. The changes may be difficult to notice in some photographs but more visible in detailed images.\n\nAlways compare the original and compressed versions at the same size. Do not judge an image only by its thumbnail because small quality problems may become visible when the image is enlarged. It is also important to avoid repeatedly compressing the same JPG. Each lossy re-encoding can add further quality loss. Keep the original camera or editing file and create a separate compressed copy.\n"
     },
-    {}
+    {
+      "heading": "Does JPG Compression Change Image Dimensions?",
+      "body": "Not by default. File Compresser maintains the original display dimensions unless you enable the resizing option. If you need a smaller image for a website or online form, you can choose to reduce its width or height. The aspect ratio is preserved, and smaller images are not enlarged. Remember that reducing dimensions changes the actual image pixels, while compression changes how those pixels are encoded.\n"
+    }
   ],
   "links": [
     {
