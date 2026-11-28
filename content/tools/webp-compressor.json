@@ -34,7 +34,10 @@
       "heading": "Why Use WebP for Website Images?",
       "body": "WebP supports different image types and can be useful for modern websites.\n\nSome common applications include:\n\nProduct images on ecommerce websites.\nBlog photographs and featured images.\nWebsite banners and promotional graphics.\nIllustrations and decorative graphics.\nImages with transparent backgrounds.\nGeneral website photographs.\n\nChoosing WebP is not the only part of image optimization. You should also consider display dimensions, responsive image sizes, image delivery and the actual quality needed on the page.\n\nA large WebP file may still be unnecessarily heavy if its dimensions are much larger than the area where it appears.\n"
     },
-    {}
+    {
+      "heading": "Can WebP Preserve Transparency?",
+      "body": "Yes. WebP supports transparent areas, making it useful for certain graphics and product images.\n\nWhen working with a transparent WebP image, inspect the output against both light and dark backgrounds. This helps identify any unwanted edge changes.\n\nFile Compresser also prevents JPG output when a transparent source would otherwise need to be flattened. This avoids silently removing the original transparent background.\n"
+    }
   ],
   "links": [
     {
