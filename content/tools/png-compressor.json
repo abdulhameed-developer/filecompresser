@@ -65,7 +65,17 @@
       "href": "/blog/honest-file-size-reporting"
     }
   ],
-  "faq": [],
+  "faq": [
+    {
+      "q": "Can I compress PNG without losing transparency?",
+      "a": "Yes. The supported PNG processing modes are designed to preserve transparency values.\n"
+    },
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
   "seoTitle": "PNG Compressor Online Free – Reduce PNG File Size",
   "seoDescription": "Compress PNG images online while keeping transparent backgrounds. Choose lossless or color reduction settings and compare actual file sizes.\n"
 }
