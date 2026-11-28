@@ -1,6 +1,6 @@
 {
-  "heading": "What does this PDF optimizer actually reduce?",
-  "introduction": "This tool tries a PDF structure rewrite with selected metadata removed. Embedded photographs and scanned pages are not downsampled. If the candidate is not smaller, the original is returned unchanged, including its metadata.",
+  "heading": "Free PDF Compressor Online",
+  "introduction": "PDF files are commonly used for business documents, reports, forms, manuals, presentations, and study materials. They are easy to open on different devices and help keep document layouts consistent. However, some PDF files contain extra document information that may not be necessary for everyday use.\n\nA large PDF can be inconvenient to email, upload to a website, or share through an online form. A PDF compressor can help optimize a document and check whether its file size can be reduced.\n\nFile Compresser provides an online PDF Compressor that processes supported PDF files in your browser. The tool performs a structural rewrite and removes selected metadata when it is safe to do so. You can then compare the resulting file size and download the processed document.\n",
   "sections": [
     {
       "heading": "Try a structural rewrite",
