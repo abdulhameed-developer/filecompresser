@@ -54,6 +54,10 @@
       "heading": "Product Demonstrations",
       "body": "Online stores may use animated graphics to show product features or simple movements. Optimizing these files can help manage their storage size.\n"
     },
+    {
+      "heading": "Browser Processing and File Limits",
+      "body": "File Compresser processes GIF files directly on your device. The website loads its media processing engine when needed, and your browser may cache the required code for later use.\n\nThe tool accepts GIF files up to 50 MB. It also applies preflight limits of 1,000 frames, a 32-megapixel canvas and 64 million pixels across full-canvas frames.\n\nLong or complex animations can still require significant memory. If processing fails, try a shorter animation or a smaller source file.\n"
+    },
     {}
   ],
   "links": [
