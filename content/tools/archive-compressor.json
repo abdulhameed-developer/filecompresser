@@ -3,17 +3,18 @@
   "introduction": "ZIP files are commonly used to share multiple documents, images, videos, and other files in one archive. They help keep related files together and make it easier to transfer a collection as a single package. However, you need to extract the archive before you can access and use its individual contents.\n\nA ZIP extractor allows you to open a ZIP archive and retrieve the files stored inside it. File Compresser provides an online ZIP Extractor that lets you select a supported archive, extract its contents, and download the files directly through your browser.\n\nYou do not need to install a separate extraction program or create an account to use the tool. The extraction process runs on your device, so your selected archive does not need to be uploaded to an external server.",
   "sections": [
     {
-      "heading": "Inspect the extracted files",
-      "body": "Select the ZIP and start extraction. Review the result filenames and sizes before downloading. Keep the original archive until you have confirmed that the files you need open correctly."
+      "heading": "What Is a ZIP Extractor?",
+      "body": "A ZIP extractor is a tool that opens a ZIP archive and makes its stored files available for use. When someone combines several files into a ZIP archive, the items are packaged together. Extraction reverses this process and returns the individual files.\n\nFor example, if you receive a ZIP file containing a collection of reports, images, and documents, you can extract the archive to access those items separately.\n\nFile Compresser's ZIP Extractor supports ZIP archives. After extraction, you can download individual files or download the extracted contents together as a combined ZIP file."
     },
-    {
-      "heading": "Which archives are supported?",
-      "body": "This tool opens supported ZIP archives, not RAR or 7z files. Encrypted, split and ZIP64 archives are unsupported. Renaming a different archive format to .zip does not make it compatible."
-    },
-    {
-      "heading": "Why an archive may be refused",
-      "body": "The tool rejects unsafe paths, duplicate entry names, invalid integrity data and excessive expansion before offering output. Compressed input is limited to 150 MB, with additional limits on entries and extracted size. These checks reduce risk but cannot guarantee that any untrusted file inside an archive is safe to open."
-    }
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
   ],
   "links": [
     {
