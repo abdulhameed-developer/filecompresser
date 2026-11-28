@@ -58,7 +58,10 @@
       "heading": "Browser Processing and File Limits",
       "body": "File Compresser processes GIF files directly on your device. The website loads its media processing engine when needed, and your browser may cache the required code for later use.\n\nThe tool accepts GIF files up to 50 MB. It also applies preflight limits of 1,000 frames, a 32-megapixel canvas and 64 million pixels across full-canvas frames.\n\nLong or complex animations can still require significant memory. If processing fails, try a shorter animation or a smaller source file.\n"
     },
-    {}
+    {
+      "heading": "Reduce GIF Size Without Ignoring Animation Quality",
+      "body": "Animated GIFs can be useful for websites, tutorials and everyday sharing, but large files may create unnecessary storage and loading problems.\n\nFile Compresser provides a straightforward way to test GIF palette optimization while checking important animation properties.\n\nSelect your animation, choose a suitable mode and review the complete result before downloading. This helps you balance file size, color appearance and animation quality.\n"
+    }
   ],
   "links": [
     {
