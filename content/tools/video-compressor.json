@@ -110,7 +110,10 @@
       "q": "Why is my video not processing?",
       "a": "The source codec may be unsupported, or the video may require more memory or processing time than your browser can provide.\n"
     },
-    {}
+    {
+      "q": "Are videos uploaded to a server?",
+      "a": "No. Video processing takes place in your browser.\n"
+    }
   ],
   "seoTitle": "ideo Compressor Online Free – Compress MP4 & MOV",
   "seoDescription": "Compress MP4 and MOV videos online for free. Convert to H.264 MP4, choose a resolution and reduce file size privately in your browser.\n"
