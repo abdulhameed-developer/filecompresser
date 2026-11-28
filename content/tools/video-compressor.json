@@ -58,7 +58,10 @@
       "heading": "Prepare Videos for Presentations",
       "body": "Business presentations and educational material sometimes include video clips. Smaller files can make presentations easier to store and transfer.\n"
     },
-    {},
+    {
+      "heading": "Does Video Compression Reduce Quality?",
+      "body": "Video re-encoding can affect image and audio quality.\n\nThe final appearance depends on the original recording, selected resolution and encoding process. Lowering resolution can remove image detail, while stronger compression can affect textures, movement and small text.\n\nAudio may also change during conversion.\n\nFor this reason, always play the complete output before sharing it. Check important scenes, movement, spoken words and sound quality. Keep the original recording if you may need to edit it again or create another export.\n"
+    },
     {},
     {},
     {},
