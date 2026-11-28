@@ -22,7 +22,10 @@
       "heading": "1080p",
       "body": "A 1080p maximum-height setting can be useful for videos that need to retain a relatively high level of detail while allowing larger inputs to be reduced.\n"
     },
-    {},
+    {
+      "heading": "720p",
+      "body": "720p can be suitable for everyday sharing, presentations and general online viewing when full HD resolution is not necessary.\n"
+    },
     {},
     {},
     {},
