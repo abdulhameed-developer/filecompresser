@@ -82,7 +82,10 @@
       "q": "Why did my WebP image not get smaller?",
       "a": "It may already be efficiently compressed. The tool retains the original if no smaller suitable result is found.\n"
     },
-    {},
+    {
+      "q": "Can WebP keep a transparent background?",
+      "a": "Yes. WebP supports transparency, and the tool is designed to preserve transparent areas in supported processing.\n"
+    },
     {},
     {}
   ],
