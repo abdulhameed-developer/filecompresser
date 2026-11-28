@@ -26,7 +26,10 @@
       "heading": "Smart",
       "body": "Smart uses a more conservative approach to color reduction. It can be useful when you want to reduce the size of a PNG while keeping changes to visual detail under control. The actual result depends on the number of colors and complexity of the original image."
     },
-    {},
+    {
+      "heading": "Target Size",
+      "body": "Target Size attempts to create a PNG within a specified maximum file size. It tests actual encoded results and checks the final number of bytes.\n\nThe tool can report Target not met if the selected maximum cannot be reached. It is better to use a realistic target than to force an image into a size that makes its colors or details unsuitable.\n"
+    },
     {},
     {},
     {},
