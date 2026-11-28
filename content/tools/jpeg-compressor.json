@@ -30,7 +30,10 @@
       "heading": "High Quality",
       "body": "High Quality prioritizes image detail over stronger size reduction. It may be appropriate for photographs where appearance is more important than achieving the smallest output."
     },
-    {},
+    {
+      "heading": "Maximum",
+      "body": "Maximum uses a stronger compression trade-off to prioritize a smaller output. Check the final image carefully because fine details and textures may change.\n"
+    },
     {},
     {},
     {},
