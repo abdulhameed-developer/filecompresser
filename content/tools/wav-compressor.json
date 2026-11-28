@@ -6,7 +6,10 @@
       "heading": "What Is a WAV to MP3 Converter?",
       "body": "A WAV to MP3 converter is an online tool that changes audio from the WAV format into the MP3 format. WAV files commonly contain uncompressed PCM audio, which can preserve the original audio data but usually requires more storage space.\n\nMP3 uses lossy compression. It reduces the amount of audio data by removing information that may be less noticeable during normal listening. This can make the output file smaller, depending on the original WAV recording and the selected bitrate.\n\nThe conversion is not a lossless way to keep the original PCM samples. It creates a new audio file with a different encoding. If you need the original audio for professional editing or long-term archiving, keep the WAV version."
     },
-    {},
+    {
+      "heading": "How to Convert WAV to MP3 Online",
+      "body": "You can convert a WAV recording into an MP3 file by following these steps:\n\n1. Open the WAV to MP3 Converter page on File Compresser.\n2. Select a WAV file from your computer or device.\n3. Choose an output bitrate between 96 kbps and 320 kbps.\n4. Start the conversion process.\n5. Allow the browser to process the recording.\n6. Review the converted file and download it.\n\nThe tool handles the conversion in your browser. You do not need to upload the original WAV recording to an external server to complete the process."
+    },
     {},
     {},
     {},
