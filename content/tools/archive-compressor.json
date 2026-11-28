@@ -15,9 +15,6 @@
       "body": "The tool rejects unsafe paths, duplicate entry names, invalid integrity data and excessive expansion before offering output. Compressed input is limited to 150 MB, with additional limits on entries and extracted size. These checks reduce risk but cannot guarantee that any untrusted file inside an archive is safe to open."
     }
   ],
-  "faq": [],
-  "seoTitle": "ZIP Extractor — Open Archives in Your Browser",
-  "seoDescription": "Open supported ZIP archives locally and download their contents. Encrypted, split and ZIP64 files are unsupported; unsafe archives are refused.",
   "links": [
     {
       "label": "How local files are processed",
@@ -27,5 +24,8 @@
       "label": "What local extraction means for privacy",
       "href": "/blog/what-privacy-claim-really-means"
     }
-  ]
+  ],
+  "faq": [],
+  "seoTitle": "ZIP Extractor — Open Archives in Your Browser",
+  "seoDescription": "Open ZIP archives online and extract files directly in your browser. Download individual files or a combined ZIP without uploading your archive.\n"
 }
