@@ -42,7 +42,10 @@
       "heading": "Keep the Original WAV Recording",
       "body": "MP3 conversion is lossy, which means some audio information is removed during encoding. Once that information is removed, converting the MP3 back to WAV will not restore the original sound.\n\nFor this reason, keep your original WAV file if you plan to edit the recording, use it in a production project, or preserve it as an archive. Use the MP3 version as a convenient copy for listening, sharing, or online distribution.\n\nThe converter also does not retain embedded cover artwork in the output MP3. If artwork is important to your project, check the converted file and add the required artwork separately using an appropriate audio application."
     },
-    {}
+    {
+      "heading": "Convert WAV Files Privately in Your Browser",
+      "body": "File Compresser processes your selected WAV file directly in your browser. This means you do not need to send the recording to a remote server for conversion or create an account before using the tool.\n\nThe maximum supported WAV file size is 100 MB. Media processing uses a browser-based engine that may require an initial download of around 21 MB. Your browser can cache this engine for future use. Each processing job has a five-minute limit, and long recordings may need more processing resources.\n"
+    }
   ],
   "links": [
     {
