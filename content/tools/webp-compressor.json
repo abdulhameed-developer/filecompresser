@@ -6,7 +6,10 @@
       "heading": "What Is a WebP Compressor?",
       "body": "A WebP compressor is an image optimization tool that changes how a WebP image is encoded to manage its file size.\n\nDepending on the selected settings, the tool can create a smaller image while keeping its original dimensions. It can also help prepare images for different website requirements.\n\nHowever, compression does not always make an existing WebP image smaller. Many WebP files are already optimized, and further encoding may produce little benefit.\nFile Compresser checks the actual result. If ordinary same-format compression does not create a smaller suitable file, the original is retained unchanged.\n"
     },
-    {},
+    {
+      "heading": "How to Compress WebP Images Online",
+      "body": "The WebP compression process is simple and does not require technical experience.\n\n1. Visit the WebP Compressor page.\n2. Select a supported WebP image from your device.\n3. Wait for the website to validate the image.\n4. Choose Balanced, High Quality, Maximum or Target Size.\n5. Enable resizing only when different dimensions are required.\n6. Start processing.\n7. Compare the original and processed file sizes.\n8. Check the visual details and transparency.\n9. Download the result that suits your needs.\n\nYou can process multiple supported images in a queue and review their results separately.\n"
+    },
     {},
     {},
     {},
