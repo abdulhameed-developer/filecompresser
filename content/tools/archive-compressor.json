@@ -50,7 +50,10 @@
       "heading": "Extract ZIP Files Privately in Your Browser",
       "body": "File Compresser processes supported ZIP archives directly in your browser. Your selected archive does not need to be uploaded to an external server for extraction, and you do not need to create an account to use the tool.\n\nThe input file limit is 150 MB. The general processing queue supports up to 500 files and a combined queue size of up to 300 MB, subject to the tool's archive and extraction limits.\n\nProcessing capacity can also depend on your device and browser. Large archives with many files or a high amount of extracted data may require more memory and processing time."
     },
-    {}
+    {
+      "heading": "Extract ZIP Files Online with File Compresser",
+      "body": "If you need to open a ZIP archive without installing additional software, File Compresser provides a simple browser-based option. Select your supported ZIP file, extract its contents, and download the individual files or combined archive. Review unfamiliar files carefully before opening them, especially when the ZIP archive comes from an unknown source.\n"
+    }
   ],
   "links": [
     {
