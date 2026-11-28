@@ -37,7 +37,15 @@
     {
       "heading": "Can WebP Preserve Transparency?",
       "body": "Yes. WebP supports transparent areas, making it useful for certain graphics and product images.\n\nWhen working with a transparent WebP image, inspect the output against both light and dark backgrounds. This helps identify any unwanted edge changes.\n\nFile Compresser also prevents JPG output when a transparent source would otherwise need to be flattened. This avoids silently removing the original transparent background.\n"
-    }
+    },
+    {
+      "heading": "Does Compressing WebP Reduce Quality?",
+      "body": "It can. WebP lossy encoding changes image information to reduce file size. The amount of visible change depends on the selected quality mode and original image.\n\nStrong compression may affect:\n\nSmall text and lettering.\nFine textures in photographs.\nSmooth color gradients.\nSharp graphic edges.\nDetails around transparent areas.\n\nCompare the original and compressed images at the same scale. A smaller file is not automatically a better result if important visual details become difficult to see.\n"
+    },
+    {},
+    {},
+    {},
+    {}
   ],
   "links": [
     {
