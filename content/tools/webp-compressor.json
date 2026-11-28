@@ -42,7 +42,10 @@
       "heading": "Does Compressing WebP Reduce Quality?",
       "body": "It can. WebP lossy encoding changes image information to reduce file size. The amount of visible change depends on the selected quality mode and original image.\n\nStrong compression may affect:\n\nSmall text and lettering.\nFine textures in photographs.\nSmooth color gradients.\nSharp graphic edges.\nDetails around transparent areas.\n\nCompare the original and compressed images at the same scale. A smaller file is not automatically a better result if important visual details become difficult to see.\n"
     },
-    {},
+    {
+      "heading": "Should You Recompress an Existing WebP Image?",
+      "body": "Not every WebP image needs further compression.\n\nIf the image was already exported with efficient settings, another encoding attempt may not reduce its size. In some cases, the new result could even be larger.\n\nFile Compresser retains the original when ordinary same-format compression does not produce a smaller suitable result. This prevents an unnecessary larger file from being presented as a successful compression result.\n\nIf your image is still too large, consider whether resizing or another supported format is suitable for your use. These are separate changes and may affect image quality or compatibility.\n"
+    },
     {},
     {},
     {}
