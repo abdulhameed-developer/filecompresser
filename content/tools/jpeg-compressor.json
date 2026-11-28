@@ -89,7 +89,17 @@
       "href": "/blog/choosing-a-compression-mode"
     }
   ],
-  "faq": [],
+  "faq": [
+    {
+      "q": "Is JPEG different from JPG?",
+      "a": "No. JPEG and JPG are two extensions for the same image format.\n"
+    },
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
   "seoTitle": "JPEG Compressor — Optimize Camera Exports",
   "seoDescription": "Optimize JPEG photographs with browser-based quality controls and preserved dimensions. JPG and JPEG use the same format; review each result."
 }
