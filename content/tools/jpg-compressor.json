@@ -13,7 +13,16 @@
     {
       "heading": "Understanding JPG Compression Settings",
       "body": "The right setting depends on how you intend to use your image.\n"
-    }
+    },
+    {
+      "heading": "Maximum Compression",
+      "body": "Maximum is useful when reducing file size is the main priority. It applies a stronger quality trade-off and may produce more visible changes than other settings. This option can be useful for photographs that need to meet strict upload requirements, provided the final image remains clear enough.\n"
+    },
+    {},
+    {},
+    {},
+    {},
+    {}
   ],
   "links": [
     {
