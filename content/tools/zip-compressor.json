@@ -82,7 +82,10 @@
       "q": "Are my files uploaded to a server?",
       "a": "The ZIP creation process runs in your browser. Your selected files do not need to be uploaded to an external server to create the archive.\n"
     },
-    {}
+    {
+      "q": "What is the maximum supported file size?",
+      "a": "The general queue supports individual files up to 200 MB, with a combined queue limit of 300 MB and a maximum of 500 files.\n"
+    }
   ],
   "seoTitle": "ZIP Creator Online Free – Create ZIP Archives",
   "seoDescription": "Create a ZIP archive from multiple files online. Combine documents, images and media in your browser without uploading your files."
