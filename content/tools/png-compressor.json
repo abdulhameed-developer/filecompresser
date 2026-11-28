@@ -45,7 +45,14 @@
     {
       "heading": "Can You Resize a PNG?",
       "body": "Yes. File Compresser provides optional image resizing.\n\nThe original dimensions are preserved by default. You can enable resizing when a smaller width or height is needed for a website, email or digital document. The aspect ratio is maintained, and smaller images are not enlarged.\n\nRemember that resizing changes the actual image pixels. If exact dimensions are important, check the output before using it in your design or website.\n"
-    }
+    },
+    {
+      "heading": "Private PNG Compression in Your Browser",
+      "body": "File Compresser processes selected images on your device. Your PNG files are not uploaded to the website's servers.\n\nThe tool accepts PNG files up to 50 MB each. Queue limits are 500 files and 300 MB total, while image dimensions are subject to the 32-megapixel limit. Your device's available memory can also affect processing."
+    },
+    {},
+    {},
+    {}
   ],
   "links": [
     {
