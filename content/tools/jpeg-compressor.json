@@ -62,7 +62,10 @@
       "heading": "Does JPEG Compression Affect Image Quality?",
       "body": "JPEG compression is lossy, so re-encoding can change the original pixels. The amount of visible change depends on the selected quality setting. Strong compression may affect fine textures, color transitions, faces, small lettering and detailed edges.\n\nA higher quality setting generally retains more detail, but it may create a larger output. For important photographs, compare both versions at the same scale. Keep the original file for future editing, printing or archiving. Repeatedly compressing an already compressed JPEG is not recommended. It can introduce additional artifacts without providing a useful reduction in file size.\n"
     },
-    {},
+    {
+      "heading": "Can You Resize JPEG Images?",
+      "body": "Yes. File Compresser provides an optional resizing control.\n\nBy default, the original display dimensions are maintained. If you need a smaller photograph for a website, email or upload form, you can enable resizing and enter a maximum width or height.\n\nThe aspect ratio is preserved, and smaller images are not enlarged.\n\nResizing and compression are different processes. Resizing changes the pixel dimensions, while JPEG compression changes the way the image information is stored.\n"
+    },
     {},
     {}
   ],
