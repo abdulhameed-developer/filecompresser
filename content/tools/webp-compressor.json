@@ -50,7 +50,10 @@
       "heading": "Can You Resize WebP Images?",
       "body": "Yes. Original dimensions are preserved by default, but you can enable resizing when you need a smaller image.\n\nFor example, a large product photograph may not need its full original resolution when displayed in a small product listing.\n\nThe aspect ratio is maintained, and smaller images are not enlarged. Always check the resulting dimensions before adding the image to your website.\n"
     },
-    {},
+    {
+      "heading": "Private WebP Processing",
+      "body": "File Compresser processes WebP images directly in your browser using your device's resources. The tool supports WebP files up to 50 MB per image, with a queue limit of 500 files and 300 MB total. Large batches may require additional memory, depending on your device.\n"
+    },
     {}
   ],
   "links": [
