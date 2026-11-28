@@ -86,7 +86,10 @@
       "q": "Does the PNG compressor change image dimensions?",
       "a": "No. Dimensions remain unchanged unless you enable resizing.\n"
     },
-    {}
+    {
+      "q": "Are my PNG files uploaded?",
+      "a": "No. Processing runs directly in your browser.\n"
+    }
   ],
   "seoTitle": "PNG Compressor Online Free – Reduce PNG File Size",
   "seoDescription": "Compress PNG images online while keeping transparent backgrounds. Choose lossless or color reduction settings and compare actual file sizes.\n"
