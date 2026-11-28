@@ -66,7 +66,10 @@
       "q": "Is WAV to MP3 conversion free?",
       "a": "The online converter can be used without installing a desktop application or creating an account. The only limits are the 100 MB file size and a queue of up to 500 files and 300 MB.\n"
     },
-    {},
+    {
+      "q": "Does converting WAV to MP3 reduce quality?",
+      "a": "Yes. MP3 is a lossy format, so some audio information is removed during conversion. A higher bitrate can retain more detail than a lower one, but it cannot make the output lossless.\n"
+    },
     {},
     {},
     {}
