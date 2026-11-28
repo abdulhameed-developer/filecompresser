@@ -61,7 +61,12 @@
     {
       "heading": "Does JPG Compression Change Image Dimensions?",
       "body": "Not by default. File Compresser maintains the original display dimensions unless you enable the resizing option. If you need a smaller image for a website or online form, you can choose to reduce its width or height. The aspect ratio is preserved, and smaller images are not enlarged. Remember that reducing dimensions changes the actual image pixels, while compression changes how those pixels are encoded.\n"
-    }
+    },
+    {
+      "heading": "Is the JPG Compressor Private?",
+      "body": "File Compresser processes images in your browser using your device's processing resources. Your selected photographs are not sent to the website's servers. The tool supports JPG, JPEG and JFIF inputs up to 50 MB per file. Queue limits and device memory can affect batch processing, so smaller groups may work better on devices with limited resources.\n"
+    },
+    {}
   ],
   "links": [
     {
