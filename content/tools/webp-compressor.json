@@ -30,7 +30,10 @@
       "heading": "Target Size",
       "body": "Target Size attempts to keep the final image within a selected maximum number of bytes. The tool checks actual output size rather than relying on an estimate. If a suitable result cannot meet the requested limit, it reports that the target was not met.\n"
     },
-    {},
+    {
+      "heading": "Why Use WebP for Website Images?",
+      "body": "WebP supports different image types and can be useful for modern websites.\n\nSome common applications include:\n\nProduct images on ecommerce websites.\nBlog photographs and featured images.\nWebsite banners and promotional graphics.\nIllustrations and decorative graphics.\nImages with transparent backgrounds.\nGeneral website photographs.\n\nChoosing WebP is not the only part of image optimization. You should also consider display dimensions, responsive image sizes, image delivery and the actual quality needed on the page.\n\nA large WebP file may still be unnecessarily heavy if its dimensions are much larger than the area where it appears.\n"
+    },
     {}
   ],
   "links": [
