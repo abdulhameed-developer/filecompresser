@@ -66,7 +66,10 @@
       "heading": "Is the JPG Compressor Private?",
       "body": "File Compresser processes images in your browser using your device's processing resources. Your selected photographs are not sent to the website's servers. The tool supports JPG, JPEG and JFIF inputs up to 50 MB per file. Queue limits and device memory can affect batch processing, so smaller groups may work better on devices with limited resources.\n"
     },
-    {}
+    {
+      "heading": "Reduce JPG File Size Without Complicated Software",
+      "body": "A large JPG photograph does not always need professional editing software to become easier to share or upload. File Compresser provides a simple way to compress JPG and JPEG images with different quality modes and a target size option. Choose the settings according to your requirements, review the output and download the version that provides the right balance between file size and image quality.\n"
+    }
   ],
   "links": [
     {
