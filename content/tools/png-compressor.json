@@ -1,6 +1,6 @@
 {
-  "heading": "Can I reduce a PNG and keep its transparent background?",
-  "introduction": "PNG starts in Lossless mode to preserve decoded pixels and transparency. Choose Smart for conservative color reduction, or Maximum for a stronger trade-off. Color-reducing modes are optional. Dimensions stay unchanged.",
+  "heading": "  PNG Compressor Online to Reduce File Size and Keep Transparency",
+  "introduction": "PNG images are widely used for logos, screenshots, diagrams, icons and digital graphics. One of their main advantages is the ability to preserve transparent backgrounds. This makes PNG a useful format when an image needs to appear over different colors or backgrounds without showing a solid rectangle around it.\n\nHowever, PNG files can become large, especially when they contain detailed graphics, high-resolution screenshots or many colors. Large files may take longer to upload, use additional storage and increase the size of website resources.\n\nFile Compresser provides an online PNG Compressor that helps reduce PNG file size directly in your browser. You can choose different optimization modes, compare the original and processed image and keep control of the transparency and dimensions. The tool processes files on your device, so there is no need to upload your images to an external server or install additional software.\n",
   "sections": [
     {
       "heading": "Use PNG for graphics that need it",
