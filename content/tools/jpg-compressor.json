@@ -26,7 +26,10 @@
       "heading": "High Quality Compression",
       "body": "High Quality is suitable when you want to retain more visual detail. The resulting file may be larger, but it can be a better choice for product photographs, portraits and images containing important details.\n"
     },
-    {},
+    {
+      "heading": "Target Size Compression",
+      "body": "Sometimes an upload form requires a photograph below a specific file size. In this situation, a general quality preset may not be enough. The Target Size option searches for actual encodes and verifies the final file size in bytes. For example, a 50 KB maximum means 50,000 bytes.\n\nIt is important to understand that the requested size is a limit, not a promise that the final image will have exactly that number of bytes. If no suitable encoding meets the selected limit, the tool reports Target not met.\n"
+    },
     {},
     {}
   ],
