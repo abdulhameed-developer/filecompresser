@@ -3,17 +3,16 @@
   "introduction": "PDF files are commonly used for business documents, reports, forms, manuals, presentations, and study materials. They are easy to open on different devices and help keep document layouts consistent. However, some PDF files contain extra document information that may not be necessary for everyday use.\n\nA large PDF can be inconvenient to email, upload to a website, or share through an online form. A PDF compressor can help optimize a document and check whether its file size can be reduced.\n\nFile Compresser provides an online PDF Compressor that processes supported PDF files in your browser. The tool performs a structural rewrite and removes selected metadata when it is safe to do so. You can then compare the resulting file size and download the processed document.\n",
   "sections": [
     {
-      "heading": "Try a structural rewrite",
-      "body": "Add an unsigned, unencrypted PDF within the 50 MB limit. A rewritten candidate is parsed again and its page count checked. If it is not smaller, the original is retained with 0% reduction. This is a size optimizer, not a guarantee that metadata has been sanitized."
+      "heading": "What Is a PDF Compressor?",
+      "body": "A PDF compressor is a tool that attempts to reduce or optimize the size of a PDF document. PDF files can contain text, images, fonts, links, forms, and document information. Some of this information may be unnecessary for a particular use.\n\nFile Compresser uses a structural rewrite to optimize supported PDF files. It can remove selected document information, including current document information and catalog XMP metadata when it is safe to do so.\n\nHowever, the tool does not downsample embedded photographs or scanned page images. This is important because images can make up a large part of a PDF's total file size. If a document contains high-resolution scans or photographs, a structural rewrite may not produce a significant reduction.\n"
     },
-    {
-      "heading": "Know when another approach is needed",
-      "body": "Large scanned PDFs often need image or scan-resolution changes for a substantial reduction. Those operations are not offered here. The optimizer does not perform OCR, remove passwords or promise a particular percentage saving."
-    },
-    {
-      "heading": "Inspect the document before keeping it",
-      "body": "Open the download in your PDF reader and review pages, forms, links and appearance. Detected digitally signed and encrypted PDFs are refused. Keep the original because a successful parse and matching page count do not prove every document feature is unchanged."
-    }
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
   ],
   "links": [
     {
