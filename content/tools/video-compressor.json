@@ -74,7 +74,10 @@
       "heading": "Private Video Processing in Your Browser",
       "body": "File Compresser processes selected videos directly on your device. Your video is not uploaded to the website's servers for conversion. Your browser memory, available processing power and video duration can affect the result.\n\n"
     },
-    {},
+    {
+      "heading": "Compress Videos for Easier Sharing",
+      "body": "Large video files can create problems when uploading, storing or sharing recordings. A suitable compression setting can help make these files more manageable.\n\nFile Compresser provides an online way to convert supported MP4 and MOV videos into H.264 MP4 files. Choose the resolution that matches your requirements, process your video and check the complete output before downloading.\n"
+    },
     {}
   ],
   "links": [
