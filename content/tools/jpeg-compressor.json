@@ -110,7 +110,10 @@
       "q": "Will JPEG compression affect image quality?",
       "a": "It can. JPEG uses lossy encoding, and the selected quality setting determines the trade-off between image detail and file size.\n"
     },
-    {}
+    {
+      "q": "Are JPEG files uploaded to your server?",
+      "a": "No. Processing takes place directly in your browser.\n"
+    }
   ],
   "seoTitle": "JPEG Compressor — Optimize Camera Exports",
   "seoDescription": "Optimize JPEG photographs with browser-based quality controls and preserved dimensions. JPG and JPEG use the same format; review each result."
