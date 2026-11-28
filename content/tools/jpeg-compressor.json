@@ -6,7 +6,10 @@
       "heading": "   JPEG Compressor Online for Smaller and Optimized Photos",
       "body": "JPEG is one of the most commonly used image formats for digital photography. Cameras, smartphones, editing applications and websites use JPEG files because they can store detailed photographs in a relatively manageable file size.\n\nEven so, some JPEG images may need further optimization before they can be uploaded, shared or added to a website. A high-resolution camera export can be larger than necessary for an email attachment, while a website may benefit from smaller image downloads.\n\nThe File Compresser JPEG Compressor helps you re-encode JPEG photographs with different quality settings. You can maintain the original display dimensions, choose a suitable compression level and enable resizing when smaller dimensions are needed. All processing takes place in your browser. Your selected photographs are not uploaded to File Compresser servers.\n"
     },
-    {},
+    {
+      "heading": "What Is a JPEG Compressor?",
+      "body": "A JPEG compressor is a tool that changes how a JPEG image is encoded to reduce its file size. JPEG uses lossy compression, which means the encoding process can remove some image information. This helps reduce the amount of data required to store a photograph, but it can also affect visual quality.\n\nThe final result depends on the original photograph, its existing compression and the selected quality settings. File Compresser provides different options for people who want to reduce JPEG file size without making unnecessary changes to image dimensions.\n"
+    },
     {},
     {},
     {},
