@@ -77,8 +77,7 @@
     {
       "heading": "Compress Videos for Easier Sharing",
       "body": "Large video files can create problems when uploading, storing or sharing recordings. A suitable compression setting can help make these files more manageable.\n\nFile Compresser provides an online way to convert supported MP4 and MOV videos into H.264 MP4 files. Choose the resolution that matches your requirements, process your video and check the complete output before downloading.\n"
-    },
-    {}
+    }
   ],
   "links": [
     {
@@ -90,7 +89,17 @@
       "href": "/blog/honest-file-size-reporting"
     }
   ],
-  "faq": [],
+  "faq": [
+    {
+      "q": "Can I compress MP4 videos online?",
+      "a": "Yes. File Compresser supports compatible MP4 input files and creates H.264 MP4 output.\n"
+    },
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
   "seoTitle": "ideo Compressor Online Free – Compress MP4 & MOV",
   "seoDescription": "Compress MP4 and MOV videos online for free. Convert to H.264 MP4, choose a resolution and reduce file size privately in your browser.\n"
 }
