@@ -78,7 +78,10 @@
       "q": "Can I use ZIP Creator on my phone?",
       "a": "The tool works through a browser, so you can try it on a supported mobile browser. Processing capacity may depend on your device and the size of the selected files.\n"
     },
-    {},
+    {
+      "q": "Are my files uploaded to a server?",
+      "a": "The ZIP creation process runs in your browser. Your selected files do not need to be uploaded to an external server to create the archive.\n"
+    },
     {}
   ],
   "seoTitle": "ZIP Creator Online Free – Create ZIP Archives",
