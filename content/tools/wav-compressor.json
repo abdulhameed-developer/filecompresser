@@ -15,9 +15,6 @@
       "body": "The wav-compressor address and the wav-to-mp3 alias open this same conversion workflow. The input limit is 100 MB. Conversion loads the browser media engine and may need substantial time and memory for long recordings."
     }
   ],
-  "faq": [],
-  "seoTitle": "WAV to MP3 Converter — Smaller Audio Files",
-  "seoDescription": "Convert WAV recordings to MP3 locally at a chosen bitrate. Keep the WAV source: the smaller sharing copy uses lossy MP3 encoding.",
   "links": [
     {
       "label": "How local media encoding works",
@@ -27,5 +24,8 @@
       "label": "What the reported file sizes mean",
       "href": "/blog/honest-file-size-reporting"
     }
-  ]
+  ],
+  "faq": [],
+  "seoTitle": "WAV to MP3 Converter Online Free – Convert Audio",
+  "seoDescription": "Convert WAV recordings to MP3 online for smaller, easier-to-share audio files. Choose a bitrate and process privately in your browser.\n"
 }
