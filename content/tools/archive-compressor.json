@@ -34,7 +34,10 @@
       "heading": "Review Shared Documents",
       "body": "If someone sends you a ZIP archive containing reports, presentations, or other documents, you can extract the contents and review the individual files.\n"
     },
-    {},
+    {
+      "heading": "Download Individual Files or a Combined ZIP",
+      "body": "After extraction, you can choose how to download the available contents.\n\nIf you only need one item, downloading an individual file can save time and avoid storing unnecessary files. This may be useful when an archive contains several documents but you only need one report.\n\nIf you want to keep the extracted collection together, you can download the contents as a combined ZIP file. This option is useful when you plan to move the files to another device or share the collection again.\n\nRemember that extracting a ZIP archive does not reduce the size of its contents. Extraction simply opens the archive and makes its stored files available. The total extracted size may be larger than the original ZIP file because the archive contains compressed data.\n"
+    },
     {}
   ],
   "links": [
