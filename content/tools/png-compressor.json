@@ -42,7 +42,10 @@
       "heading": "PNG Compression for Websites",
       "body": "PNG is commonly used for website graphics that need transparency or sharp edges. However, using large PNG files unnecessarily can increase the amount of data visitors need to download.\n\nWebsite owners can review their PNG images and determine whether the format is still the best option. \n\nFor example, a transparent logo may be suitable for PNG, while a photograph may work better in JPG or WebP. The right format depends on the image content and intended display.\n\nIf a PNG cannot reach the required file size, a supported WebP conversion may be another option. However, format conversion is a separate operation and may change image quality.\n"
     },
-    {}
+    {
+      "heading": "Can You Resize a PNG?",
+      "body": "Yes. File Compresser provides optional image resizing.\n\nThe original dimensions are preserved by default. You can enable resizing when a smaller width or height is needed for a website, email or digital document.\nThe aspect ratio is maintained, and smaller images are not enlarged.\n\nRemember that resizing changes the actual image pixels. If exact dimensions are important, check the output before using it in your design or website.\n"
+    }
   ],
   "links": [
     {
