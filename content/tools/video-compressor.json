@@ -26,7 +26,10 @@
       "heading": "720p",
       "body": "720p can be suitable for everyday sharing, presentations and general online viewing when full HD resolution is not necessary.\n"
     },
-    {},
+    {
+      "heading": "480p",
+      "body": "480p provides a lower resolution option for situations where smaller dimensions are acceptable.\n\nThe tool does not enlarge smaller input videos. Always select a resolution based on how the final video will be viewed.\n"
+    },
     {},
     {},
     {}
