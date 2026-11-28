@@ -86,7 +86,10 @@
       "q": "Does extracting a ZIP file reduce its size?",
       "a": "No. Extraction opens the archive and returns its contents. It does not compress or optimize the extracted files."
     },
-    {}
+    {
+      "q": "Are extracted files automatically checked for viruses?",
+      "a": "The ZIP Extractor performs archive safety checks, but it is not a virus scanner. These checks do not guarantee that every extracted file is safe. Only open files from sources you trust.\n"
+    }
   ],
   "seoTitle": "ZIP Extractor — Open Archives in Your Browser",
   "seoDescription": "Open ZIP archives online and extract files directly in your browser. Download individual files or a combined ZIP without uploading your archive.\n"
