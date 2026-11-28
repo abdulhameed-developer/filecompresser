@@ -73,7 +73,17 @@
       "href": "/blog/honest-file-size-reporting"
     }
   ],
-  "faq": [],
+  "faq": [
+    {
+      "q": "Is the GIF Compressor free?",
+      "a": "Yes. You can use the available tool without creating an account or purchasing a subscription.\n"
+    },
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
   "seoTitle": "GIF Compressor Online Free – Reduce Animated GIF Size",
   "seoDescription": " Compress animated GIFs online for free. Reduce color palettes while preserving animation timing, dimensions and looping in your browser."
 }
