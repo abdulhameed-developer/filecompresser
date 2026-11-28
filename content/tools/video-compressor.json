@@ -34,7 +34,10 @@
       "heading": "What Is H.264 Video Encoding?",
       "body": "H.264 is a widely used video compression standard. It allows video information to be encoded in a format supported by many devices and applications.\n\nFile Compresser uses H.264 for its MP4 output. When the source contains audio, the output uses AAC audio encoding.\n\nThis combination is commonly used for everyday video sharing and playback.\n\nA file's extension alone does not guarantee that its original codec is supported. A video may have an MP4 or MOV extension but still contain an unsupported video stream. In that situation, the tool may reject the source.\n"
     },
-    {},
+    {
+      "heading": "Why Should You Compress Video Files?",
+      "body": "Video compression is useful for many everyday tasks.\n"
+    },
     {}
   ],
   "links": [
