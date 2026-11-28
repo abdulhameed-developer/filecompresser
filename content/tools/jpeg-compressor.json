@@ -38,7 +38,10 @@
       "heading": "Target Size",
       "body": "Target Size attempts to create an image within a selected maximum number of bytes. The tool tests actual encodes instead of relying on an estimated file size. If no supported result meets the selected maximum, it reports that the target was not met. A very restrictive target can affect the quality of a photograph, so always check whether the output remains suitable for its intended use.\n"
     },
-    {},
+    {
+      "heading": "Why Should You Optimize JPEG Photographs?",
+      "body": "JPEG optimization can be useful in several everyday situations.\n"
+    },
     {},
     {}
   ],
