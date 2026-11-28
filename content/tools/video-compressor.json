@@ -66,7 +66,10 @@
       "heading": "Why Does the First Video Take Longer?",
       "body": "The first video, audio or GIF processing job loads the required WebAssembly version of FFmpeg. This processing engine is approximately 21 MB and may be cached by your browser for later use.\n\nVideo encoding also requires processing power and memory. Long recordings and high-resolution videos can take considerable time, even when the input is within the stated file limit.\n\nFile Compresser accepts video files up to 200 MB per file. Media jobs have a five-minute processing limit. If a job fails, try a shorter clip or select a lower resolution.\n"
     },
-    {},
+    {
+      "heading": "Which Video Information Is Retained?",
+      "body": "The tool focuses on the primary video and audio streams. Subtitles and cover art are not retained in the output.\n\nIf your video depends on embedded subtitles or additional streams, keep the original file and use a workflow that supports those elements.\n\nAfter processing, check the MP4 in your preferred video player to confirm that the required picture and sound are present.\n"
+    },
     {},
     {},
     {}
