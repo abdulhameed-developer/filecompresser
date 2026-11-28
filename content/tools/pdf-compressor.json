@@ -42,7 +42,10 @@
       "heading": "Process PDF Files Privately in Your Browser",
       "body": "File Compresser processes supported PDF files directly in your browser. Your selected document does not need to be uploaded to an external server for the optimization process, and you do not need to create an account to use the tool.\n\nThe maximum supported PDF file size is 50 MB. The workflow is designed for supported, unsigned, and unencrypted PDF documents. If a file is protected or digitally signed, the tool will not process it.\n\nFor important documents, keep a separate original copy. After processing, open the downloaded PDF and check its pages, links, forms, and layout before sharing or replacing the original.\n"
     },
-    {}
+    {
+      "heading": "Optimize Your PDF Files Online",
+      "body": "Use File Compresser to check whether a supported PDF document can be optimized through a structural rewrite. Select your file, run the process, and review the actual result before downloading it. For important documents, always keep the original and check the processed PDF before sharing it.\n"
+    }
   ],
   "links": [
     {
