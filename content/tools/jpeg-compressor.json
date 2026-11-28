@@ -34,7 +34,10 @@
       "heading": "Maximum",
       "body": "Maximum uses a stronger compression trade-off to prioritize a smaller output. Check the final image carefully because fine details and textures may change.\n"
     },
-    {},
+    {
+      "heading": "Target Size",
+      "body": "Target Size attempts to create an image within a selected maximum number of bytes. The tool tests actual encodes instead of relying on an estimated file size. If no supported result meets the selected maximum, it reports that the target was not met. A very restrictive target can affect the quality of a photograph, so always check whether the output remains suitable for its intended use.\n"
+    },
     {},
     {},
     {}
