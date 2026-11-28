@@ -82,7 +82,10 @@
       "q": "Can I download only one file from an archive?",
       "a": "Yes. After extraction, you can download individual files instead of downloading the complete collection.\n"
     },
-    {},
+    {
+      "q": "Does extracting a ZIP file reduce its size?",
+      "a": "No. Extraction opens the archive and returns its contents. It does not compress or optimize the extracted files."
+    },
     {}
   ],
   "seoTitle": "ZIP Extractor — Open Archives in Your Browser",
