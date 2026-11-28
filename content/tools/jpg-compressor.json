@@ -22,7 +22,10 @@
       "heading": "Balanced Compression",
       "body": "Balanced provides a more moderate quality and file size trade-off. It is a practical starting point when you need a smaller JPG without using the strongest available compression.\n"
     },
-    {},
+    {
+      "heading": "High Quality Compression",
+      "body": "High Quality is suitable when you want to retain more visual detail. The resulting file may be larger, but it can be a better choice for product photographs, portraits and images containing important details.\n"
+    },
     {},
     {},
     {}
