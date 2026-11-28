@@ -22,7 +22,10 @@
       "heading": "Maximum Mode",
       "body": "Maximum uses a palette of up to 64 colors. This can help reduce the file size further, but more noticeable color changes may occur.\n\nFor example, an animation with smooth gradients or subtle shades may show visible differences after processing. Always compare the original and final versions before using the optimized GIF.\n"
     },
-    {},
+    {
+      "heading": "Why Do Animated GIFs Have Large File Sizes?",
+      "body": "Several factors affect the size of an animated GIF.\n\nNumber of frames: Every animation frame contains image information. More frames can increase the total amount of data.\nImage dimensions: A GIF with a large width and height generally requires more image data than a smaller animation.\nColor complexity: Animations containing many different colors and gradients may need more information to display their appearance.\nAnimation duration: Longer animations may contain more frames, which can increase the file size.\nVisual movement: Animations with frequent changes across the image can require more data than animations where only a small section changes.\n\nUnderstanding these factors can help you decide whether palette optimization is sufficient or whether you need to create a shorter or smaller animation.\n"
+    },
     {},
     {},
     {},
