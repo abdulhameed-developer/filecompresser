@@ -18,7 +18,10 @@
       "heading": "Maximum Compression",
       "body": "Maximum is useful when reducing file size is the main priority. It applies a stronger quality trade-off and may produce more visible changes than other settings. This option can be useful for photographs that need to meet strict upload requirements, provided the final image remains clear enough.\n"
     },
-    {},
+    {
+      "heading": "Balanced Compression",
+      "body": "Balanced provides a more moderate quality and file size trade-off. It is a practical starting point when you need a smaller JPG without using the strongest available compression.\n"
+    },
     {},
     {},
     {},
