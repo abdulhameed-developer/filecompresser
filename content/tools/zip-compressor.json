@@ -61,7 +61,17 @@
       "href": "/blog/what-privacy-claim-really-means"
     }
   ],
-  "faq": [],
+  "faq": [
+    {
+      "q": "Is the ZIP Creator free to use?",
+      "a": "You can use the online ZIP creation tool without installing desktop software or creating an account. The only limits are 200 MB per file and a queue of up to 500 files and 300 MB.\n"
+    },
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
   "seoTitle": "ZIP Creator Online Free – Create ZIP Archives",
   "seoDescription": "Create a ZIP archive from multiple files online. Combine documents, images and media in your browser without uploading your files."
 }
