@@ -94,7 +94,10 @@
       "q": "Can I reduce a JPG to 100KB or 50KB?",
       "a": "You can use Target Size to attempt a maximum file size. Whether the target is achievable depends on the photograph and acceptable quality.\n"
     },
-    {},
+    {
+      "q": "Is JPG the same as JPEG?",
+      "a": "Yes. JPG and JPEG refer to the same image format. The difference is mainly in the file extension.\n"
+    },
     {},
     {},
     {},
