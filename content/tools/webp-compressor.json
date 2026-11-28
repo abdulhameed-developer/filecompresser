@@ -15,9 +15,6 @@
       "body": "Compare actual file size, dimensions and visible detail together. A smaller image with unreadable text may be unsuitable. A requested conversion can increase bytes and is reported separately; it is never described as a saving."
     }
   ],
-  "faq": [],
-  "seoTitle": "WebP Compressor — Optimize Website Images",
-  "seoDescription": "Re-encode WebP images locally for website use. Compare file size, dimensions, detail and transparency before replacing an existing image.",
   "links": [
     {
       "label": "Compare WebP with JPG and PNG",
@@ -27,5 +24,8 @@
       "label": "Understand original-retained results",
       "href": "/blog/honest-file-size-reporting"
     }
-  ]
+  ],
+  "faq": [],
+  "seoTitle": "WebP Compressor Online Free – Optimize WebP Images",
+  "seoDescription": "Compress WebP images online for free. Reduce image size, maintain dimensions and transparency, and process files privately in your browser.\n"
 }
