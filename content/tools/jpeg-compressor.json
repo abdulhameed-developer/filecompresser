@@ -22,7 +22,10 @@
       "heading": "Select a Suitable JPEG Quality Setting",
       "body": "Not every photograph needs the same compression level. A small image for an online form may have different requirements from a high-quality product photograph.\n"
     },
-    {},
+    {
+      "heading": "Balanced",
+      "body": "Balanced offers a moderate approach to JPEG compression. It can be a useful starting point when you want to reduce file size while retaining a reasonable amount of visual detail.\n"
+    },
     {},
     {},
     {},
