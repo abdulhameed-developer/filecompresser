@@ -82,7 +82,10 @@
       "q": "Can I compress animated GIFs without changing their speed?",
       "a": "The tool checks and preserves frame delays when it offers a suitable optimized result.\n"
     },
-    {},
+    {
+      "q": "Will GIF compression remove frames?",
+      "a": "The optimization process checks the frame count and does not use a simple frame-rate reduction as its compression method.\n"
+    },
     {},
     {},
     {}
