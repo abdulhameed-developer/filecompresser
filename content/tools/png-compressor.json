@@ -3,17 +3,19 @@
   "introduction": "PNG images are widely used for logos, screenshots, diagrams, icons and digital graphics. One of their main advantages is the ability to preserve transparent backgrounds. This makes PNG a useful format when an image needs to appear over different colors or backgrounds without showing a solid rectangle around it.\n\nHowever, PNG files can become large, especially when they contain detailed graphics, high-resolution screenshots or many colors. Large files may take longer to upload, use additional storage and increase the size of website resources.\n\nFile Compresser provides an online PNG Compressor that helps reduce PNG file size directly in your browser. You can choose different optimization modes, compare the original and processed image and keep control of the transparency and dimensions. The tool processes files on your device, so there is no need to upload your images to an external server or install additional software.\n",
   "sections": [
     {
-      "heading": "Use PNG for graphics that need it",
-      "body": "PNG is useful for transparent artwork, screenshots and diagrams. Choose Lossless to preserve the decoded image pixels. Keep your original and check lettering, edges and transparent areas after processing."
+      "heading": "What Is a PNG Compressor?",
+      "body": "A PNG compressor is a tool that optimizes the way image data is stored in a PNG file. It can reduce unnecessary data and, depending on the selected method, reduce the number of colors used in the image.\n\nPNG uses lossless compression at the file-format level. However, a PNG optimization process can also use color reduction. These are two different approaches.\n\nLossless optimization preserves the decoded image pixels. Color reduction changes image colors to create a smaller file, although transparency can still be preserved. File Compresser provides separate options so you can choose the approach that suits your image.\n"
     },
-    {
-      "heading": "Choose whether colors may change",
-      "body": "Smart, Maximum and Target size may reduce the number of colors while preserving transparency values. Color changes can be visible, especially in gradients, text and fine detail. Quality checks limit measured color error but do not guarantee an invisible change; a suitable lossless result or the original may be kept instead."
-    },
-    {
-      "heading": "Check the actual size and target result",
-      "body": "Target size tries real PNG encodes, including color-reduced candidates, and checks their bytes against your maximum. An oversized result is marked Target not met. Ordinary same-format compression returns the original unchanged with 0% reduction if no smaller suitable result is found. If a target cannot be reached, consider a less restrictive limit or supported WebP conversion."
-    }
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
   ],
   "links": [
     {
