@@ -1,6 +1,6 @@
 {
   "heading": "ZIP Archive Extractor Online",
-  "introduction": "Add a supported ZIP to extract its contents on your device. Download the individual results, or use the combined ZIP option for several extracted files. Extraction is not counted as compression savings.",
+  "introduction": "ZIP files are commonly used to share multiple documents, images, videos, and other files in one archive. They help keep related files together and make it easier to transfer a collection as a single package. However, you need to extract the archive before you can access and use its individual contents.\n\nA ZIP extractor allows you to open a ZIP archive and retrieve the files stored inside it. File Compresser provides an online ZIP Extractor that lets you select a supported archive, extract its contents, and download the files directly through your browser.\n\nYou do not need to install a separate extraction program or create an account to use the tool. The extraction process runs on your device, so your selected archive does not need to be uploaded to an external server.",
   "sections": [
     {
       "heading": "Inspect the extracted files",
