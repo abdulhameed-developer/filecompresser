@@ -41,7 +41,12 @@
     {
       "heading": "Which Archive Formats Are Supported?",
       "body": "File Compresser's current extraction tool is designed for ZIP files. It does not support every archive format.\n\nThe current workflow does not support RAR or 7z files. Encrypted archives, split archives, and ZIP64 archives are also not supported.\n\nIf you receive an archive in one of these formats, you will need a compatible extraction application. Changing the file extension does not convert an unsupported archive into a standard ZIP file.\n\nThe maximum supported input size for the ZIP Extractor is 150 MB. Make sure your archive is within this limit before starting the process."
-    }
+    },
+    {
+      "heading": "How File Compresser Handles ZIP Archive Safety",
+      "body": "ZIP archives can contain many files and folder paths. Some archives may also be created in ways that cause problems when their contents are extracted.\n\nFile Compresser checks archive entries and rejects unsafe paths, duplicate names, invalid integrity data, and excessive file expansion. These checks help prevent common archive extraction problems.\n\nFor example, the tool checks for path patterns that could attempt to place extracted files outside the intended destination. It also checks for absolute paths, drive letters, control characters, and Windows reserved file names.\n\nThe extractor includes protection against archives that expand to an unusually large amount of data compared with their compressed size. This helps reduce the risk of processing archive bombs, including cases with a compression ratio above 100 times.\n\nThese checks improve extraction safety, but they do not guarantee that every file inside an archive is harmless. Extracted files may still contain unsafe or unwanted content. Only open files from sources you trust, and use appropriate security software when checking unfamiliar downloads."
+    },
+    {}
   ],
   "links": [
     {
