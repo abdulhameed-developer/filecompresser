@@ -34,7 +34,10 @@
       "heading": "Are Animation Speed and Looping Preserved?",
       "body": "The GIF Compressor is designed to preserve frame delays and loop count.\n\nIt does not apply a fixed frame-rate reduction as its main compression method. This helps maintain the original animation timing rather than making the GIF play faster or slower simply to reduce its size.\n\nAfter downloading, play the complete GIF to confirm that its speed, appearance and looping are suitable.\n"
     },
-    {},
+    {
+      "heading": "When Should You Compress a GIF?",
+      "body": "GIF compression can be useful in several situations.\n"
+    },
     {}
   ],
   "links": [
