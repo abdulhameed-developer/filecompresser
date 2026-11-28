@@ -26,7 +26,10 @@
       "heading": "192 kbps",
       "body": "A higher bitrate can help retain more sound detail than lower settings. It may be a suitable option for music or recordings where listening quality matters.\n"
     },
-    {},
+    {
+      "heading": "256 kbps and 320 kbps",
+      "body": "These higher settings use more data and usually create larger files. They can be useful when you want to retain more audio information during re-encoding.\n\nRemember that selecting a higher bitrate does not restore sound detail that was already lost in an earlier compression. It only changes how the existing audio is encoded in the new file.\n"
+    },
     {},
     {}
   ],
