@@ -70,7 +70,10 @@
       "heading": "What Happens to Image Metadata?",
       "body": "Re-encoding can normalize image colors to sRGB and remove some metadata. Camera photographs may also contain EXIF information, such as camera details and orientation data. An unchanged original retains its existing bytes and metadata. If metadata is important to your workflow, keep a separate original before processing.\n\nAlso, remember that removing metadata during image compression is not a substitute for reviewing privacy information in the original file.\n"
     },
-    {}
+    {
+      "heading": "Private JPEG Processing Without Uploads",
+      "body": "File Compresser uses browser-based processing, so selected JPEG photographs remain on your device during compression. There is no need to upload personal photographs to an external compression server. The website loads the required processing code, and your device performs the image operation. The tool supports files up to 50 MB each, with a queue limit of 500 files and 300 MB total. Device memory and image dimensions can affect processing performance.\n"
+    }
   ],
   "links": [
     {
