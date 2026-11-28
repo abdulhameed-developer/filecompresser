@@ -15,9 +15,6 @@
       "body": "JPG suits photographs and many opaque web images. It cannot preserve transparency. Inspect faces, fine textures and lettering, and keep the camera or design original because repeated lossy encoding can add artifacts."
     }
   ],
-  "faq": [],
-  "seoTitle": "JPG Compressor — Reduce Photo File Size",
-  "seoDescription": "Compress JPG and JPEG photos with original dimensions by default. Choose quality modes or a verified maximum-byte target, then inspect the real result.",
   "links": [
     {
       "label": "Compare image quality modes",
@@ -27,5 +24,8 @@
       "label": "Why an efficient file may stay unchanged",
       "href": "/blog/honest-file-size-reporting"
     }
-  ]
+  ],
+  "faq": [],
+  "seoTitle": "JPG & JPEG Compressor Online Free – Reduce JPG File Size",
+  "seoDescription": "Compress JPG images online for free. Reduce photo file size, choose quality settings and meet upload limits without uploading your files.\n"
 }
