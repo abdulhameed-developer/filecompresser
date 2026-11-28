@@ -57,7 +57,17 @@
       "href": "/blog/how-browser-compression-works"
     }
   ],
-  "faq": [],
+  "faq": [
+    {
+      "q": "Is the MP3 Compressor free to use?",
+      "a": "You can use the online tool without creating an account or installing desktop software. The only limits are the 100 MB file size and a queue of up to 500 files and 300 MB.\n"
+    },
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
   "seoTitle": "MP3 Compressor Online Free – Reduce MP3 File Size",
   "seoDescription": "Compress MP3 audio online by choosing a lower bitrate. Reduce file size, compare sound quality and process recordings privately in your browser.\n"
 }
