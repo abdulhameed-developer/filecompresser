@@ -26,7 +26,10 @@
       "heading": "Balanced",
       "body": "Balanced offers a moderate approach to JPEG compression. It can be a useful starting point when you want to reduce file size while retaining a reasonable amount of visual detail.\n"
     },
-    {},
+    {
+      "heading": "High Quality",
+      "body": "High Quality prioritizes image detail over stronger size reduction. It may be appropriate for photographs where appearance is more important than achieving the smallest output."
+    },
     {},
     {},
     {},
