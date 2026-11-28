@@ -14,7 +14,10 @@
       "heading": "Understand Video Resolution Settings",
       "body": "Resolution describes the number of pixels used to display a video. Higher resolutions contain more image detail but can also require more data. File Compresser provides different maximum-height options.\n"
     },
-    {},
+    {
+      "heading": "Keep Original",
+      "body": "Keep Original maintains the original video dimensions. Choose this option when you do not want to reduce the display resolution.\n\nHowever, H.264 encoding may require even dimensions. If the source has odd dimensions, the encoder may need a suitable explicitly selected resolution cap.\n"
+    },
     {},
     {},
     {},
