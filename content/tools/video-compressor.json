@@ -1,6 +1,6 @@
 {
-  "heading": "How do I make an MP4 or MOV clip easier to share?",
-  "introduction": "Re-encode a supported clip to H.264 video in an MP4 file, with AAC audio when the source has audio. A lower resolution cap can reduce the output, while encoding remains on your device.",
+  "heading": "  Video Compressor Online for Smaller MP4 and MOV Files",
+  "introduction": "Video files can take up a significant amount of storage space, especially when they are recorded in high resolution or contain several minutes of footage. Large videos can be difficult to share through email, upload to websites or send using messaging applications.\n\nA video compressor helps reduce file size by changing how video and audio information is encoded. Depending on the selected settings, it can also reduce video dimensions to create a more manageable file.\n\nFile Compresser offers an online Video Compressor for supported MP4 and MOV files. It converts compatible videos into MP4 using H.264 video encoding and AAC audio when the source contains audio.\n\nThe processing takes place directly in your browser. You do not need to upload your video to an external server or install a separate video editing application.\n",
   "sections": [
     {
       "heading": "Start with a practical resolution",
