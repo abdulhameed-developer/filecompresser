@@ -57,7 +57,17 @@
       "href": "/blog/what-privacy-claim-really-means"
     }
   ],
-  "faq": [],
+  "faq": [
+    {
+      "q": "Is the PDF Compressor free to use?",
+      "a": "You can access the online tool without installing desktop software or creating an account. The only limits are the 50 MB file size and a queue of up to 500 files and 300 MB.\n"
+    },
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
   "seoTitle": "PDF Compressor Online Free – Optimize PDF Files",
   "seoDescription": "Optimize PDF files online with a structural rewrite and selected metadata removal. Check actual file size and process privately in your browser."
 }
