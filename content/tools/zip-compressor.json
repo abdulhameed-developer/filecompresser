@@ -3,17 +3,18 @@
   "introduction": "Sharing several files separately can take extra time and make it harder for someone to keep everything organized. If you need to send documents, images, reports, or other files together, creating a ZIP archive can make the process more convenient.\n\nA ZIP file combines multiple files into a single archive. Instead of attaching each item separately, you can create one ZIP file and share it as a single download. This is useful for office documents, project folders, website resources, photos, and other collections of files.\n\nFile Compresser offers an online ZIP Creator that lets you select files and package them into a ZIP archive directly in your browser. You do not need to install additional software or create an account to create an archive.",
   "sections": [
     {
-      "heading": "Create one archive for sharing",
-      "body": "Select the files, start archive creation and download the ZIP when it is ready. The displayed original size is the combined size of the input files, so compare the archive against that total."
+      "heading": "What Is a ZIP Creator?",
+      "body": "A ZIP Creator is a tool that combines selected files into one ZIP archive. The archive keeps the files together in a single package, which can make storage, transfer, and sharing easier.\n\nA ZIP archive is not always a way to make files significantly smaller. Many common formats, such as JPG images, MP3 audio, MP4 videos, and other compressed files, have already been optimized for storage. Adding these files to a ZIP archive may not reduce their total size by much.\n\nThe main purpose of File Compresser's ZIP Creator is to package files into one archive. It uses the selected input files to create the ZIP file, so the original file data is stored inside the archive.\n"
     },
-    {
-      "heading": "Use ZIP to organize a delivery",
-      "body": "A ZIP can package documents and media into one attachment or download. It does not change the internal quality of the files. Check the archive contents with the ZIP Extractor before handing an important batch to someone else."
-    },
-    {
-      "heading": "Stay within browser limits",
-      "body": "The queue accepts up to 500 files and 300 MB in total, with a 200 MB per-file limit on this tool. Filenames may be normalized for the archive. Keep the originals and review the resulting names and contents before deleting any source files."
-    }
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
   ],
   "links": [
     {
