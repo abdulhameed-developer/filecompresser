@@ -14,7 +14,10 @@
       "heading": "Choose the Right MP3 Bitrate",
       "body": "Selecting the right bitrate is important because it affects both file size and sound quality. A lower setting can be useful when storage space is limited, while a higher setting may be more suitable when keeping audio detail is important.\n"
     },
-    {},
+    {
+      "heading": "96 kbps",
+      "body": "This is one of the lower available settings. It may be useful for spoken recordings where reducing file size is more important than keeping every audio detail. However, the result should be checked before using it for important recordings.\n"
+    },
     {},
     {},
     {},
