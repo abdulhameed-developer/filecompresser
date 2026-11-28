@@ -106,7 +106,10 @@
       "q": "Can I reduce JPEG to a specific file size?",
       "a": "You can use Target Size to attempt a maximum size in bytes. The target may not be achievable for every photograph.\n"
     },
-    {},
+    {
+      "q": "Will JPEG compression affect image quality?",
+      "a": "It can. JPEG uses lossy encoding, and the selected quality setting determines the trade-off between image detail and file size.\n"
+    },
     {}
   ],
   "seoTitle": "JPEG Compressor — Optimize Camera Exports",
