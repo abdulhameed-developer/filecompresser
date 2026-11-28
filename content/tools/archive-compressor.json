@@ -70,7 +70,10 @@
       "q": "Is the ZIP Extractor free to use?",
       "a": "You can use the online extraction tool without installing a desktop application or creating an account. The only limits are the 150 MB ZIP size and a queue of up to 500 files and 300 MB."
     },
-    {},
+    {
+      "q": "Can I extract ZIP files online without installing software?",
+      "a": "Yes. File Compresser lets you select a supported ZIP archive and extract its contents through your browser.\n"
+    },
     {},
     {},
     {},
