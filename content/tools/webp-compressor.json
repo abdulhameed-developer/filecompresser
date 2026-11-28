@@ -1,6 +1,6 @@
 {
-  "heading": "Should I recompress an existing WebP image?",
-  "introduction": "Try a new encode for a supported still WebP image, with original dimensions kept by default. If ordinary same-format compression finds no smaller result, the original is returned unchanged with 0% reduction.",
+  "heading": "WebP Compressor Online for Smaller Website Images",
+  "introduction": "Website images play an important role in how visitors experience a page. Product photographs, banners, illustrations and other graphics help people understand products and services. However, large image files can increase page weight and make websites slower to load.\n\nWebP is a modern image format developed for web use. It supports lossy and lossless compression, along with transparency and animation. Many website owners use WebP to prepare images that can be delivered efficiently to visitors.\n\nEven when an image is already saved in WebP format, there may be opportunities to reduce its size further. File Compresser provides a WebP Compressor that lets you re-encode supported still WebP images, compare file sizes and review image quality directly in your browser.\n\nYou do not need to install software or upload your photographs to an external server. Your device handles the image processing.\n",
   "sections": [
     {
       "heading": "Choose quality separately from dimensions",
