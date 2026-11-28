@@ -74,7 +74,10 @@
       "q": "Is WebP better than JPG?",
       "a": "Neither format is automatically better for every purpose. WebP supports transparency and different compression methods, while JPG remains widely supported for photographs. Choose according to image requirements and website compatibility.\n"
     },
-    {},
+    {
+      "q": "Can I compress an existing WebP image?",
+      "a": "Yes. You can try a new WebP encoding using the available quality settings.\n"
+    },
     {},
     {},
     {},
