@@ -102,7 +102,10 @@
       "q": "Can I compress JPEG without resizing it?",
       "a": "Yes. Original display dimensions are maintained unless you enable the resizing option.\n"
     },
-    {},
+    {
+      "q": "Can I reduce JPEG to a specific file size?",
+      "a": "You can use Target Size to attempt a maximum size in bytes. The target may not be achievable for every photograph.\n"
+    },
     {},
     {}
   ],
