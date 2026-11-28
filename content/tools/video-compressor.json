@@ -6,7 +6,10 @@
       "heading": "What Is a Video Compressor?",
       "body": "A video compressor is a tool that reduces the amount of data required to store a video.\n\nDigital videos contain a sequence of frames, along with audio and other possible streams. Their file size depends on factors such as resolution, bitrate, duration, frame rate, codec and visual complexity.\n\nVideo compression uses encoding methods to represent this information more efficiently.\n\nFile Compresser uses H.264 video encoding to prepare compatible video files in the MP4 container. This format is commonly used for sharing, website playback and everyday video storage.\n\nHowever, compression does not guarantee that every output will be smaller. The final result depends on the original video and the selected settings.\n"
     },
-    {},
+    {
+      "heading": "How to Compress a Video Online",
+      "body": "You can use File Compresser to prepare a supported video without installing desktop software.\n\nFollow these steps:\n\n1. Open the Video Compressor page.\n2. Select an MP4 or MOV video from your device.\n3. Wait for the website to validate the file.\n4. Choose the desired resolution setting.\n5. Start video processing.\n6. Allow the browser to encode the video.\n7. Download the resulting MP4.\n8. Play the complete video and check its quality.\n\nKeep your original video until you have confirmed that the new file plays correctly.\n"
+    },
     {},
     {},
     {},
