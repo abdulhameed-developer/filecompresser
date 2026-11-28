@@ -22,7 +22,10 @@
       "heading": "128 kbps",
       "body": "This setting can provide a practical balance for some everyday listening needs. It may work for basic voice recordings and audio that does not require high detail.\n"
     },
-    {},
+    {
+      "heading": "192 kbps",
+      "body": "A higher bitrate can help retain more sound detail than lower settings. It may be a suitable option for music or recordings where listening quality matters.\n"
+    },
     {},
     {},
     {}
