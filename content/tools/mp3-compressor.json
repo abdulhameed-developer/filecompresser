@@ -70,7 +70,10 @@
       "q": "Does a lower bitrate always create a smaller MP3?",
       "a": "Not every file produces the same result. The actual output depends on the source audio and selected settings. Check the resulting file size after processing.\n"
     },
-    {},
+    {
+      "q": "Does the MP3 Compressor change audio volume?",
+      "a": "No. The tool is designed to re-encode audio and reduce file size. It is not a loudness or dynamic-range compressor."
+    },
     {},
     {}
   ],
