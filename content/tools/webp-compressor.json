@@ -46,7 +46,10 @@
       "heading": "Should You Recompress an Existing WebP Image?",
       "body": "Not every WebP image needs further compression.\n\nIf the image was already exported with efficient settings, another encoding attempt may not reduce its size. In some cases, the new result could even be larger.\n\nFile Compresser retains the original when ordinary same-format compression does not produce a smaller suitable result. This prevents an unnecessary larger file from being presented as a successful compression result.\n\nIf your image is still too large, consider whether resizing or another supported format is suitable for your use. These are separate changes and may affect image quality or compatibility.\n"
     },
-    {},
+    {
+      "heading": "Can You Resize WebP Images?",
+      "body": "Yes. Original dimensions are preserved by default, but you can enable resizing when you need a smaller image.\n\nFor example, a large product photograph may not need its full original resolution when displayed in a small product listing.\n\nThe aspect ratio is maintained, and smaller images are not enlarged. Always check the resulting dimensions before adding the image to your website.\n"
+    },
     {},
     {}
   ],
