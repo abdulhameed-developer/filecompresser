@@ -6,7 +6,10 @@
       "heading": "What Is a GIF Compressor?",
       "body": "A GIF compressor is a tool that optimizes animated or static GIF files to reduce their storage size.\n\nGIF images use a limited color palette. Each frame can contain information about the colors and visual changes needed to display the animation.\n\nOne way to reduce the size of a GIF is to use fewer colors. This can reduce the amount of image information stored in the animation, but it may also affect gradients, edges and subtle color differences.\n\nFile Compresser provides two main modes for animated GIF optimization: Recommended and Maximum.\n\nThe tool attempts to maintain the animation dimensions, frame delays and loop count. It does not simply reduce the frame rate to make the file smaller.\n"
     },
-    {},
+    {
+      "heading": "How to Compress an Animated GIF Online",
+      "body": "You can reduce an animated GIF using a few simple steps.\n\n1. Open the GIF Compressor page on File Compresser.\n2. Select a supported GIF file from your device.\n3. Wait for the file validation process.\n4. Choose Recommended or Maximum.\n5. Start the optimization process.\n6. Allow the browser to process the animation.\n7. Compare the original and processed file sizes.\n8. Download the result and play the complete animation.\n\nIt is important to review the entire animation rather than checking only its first frame. Some visual changes may become noticeable only when the GIF moves.\n"
+    },
     {},
     {},
     {},
