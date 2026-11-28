@@ -94,7 +94,10 @@
       "q": "Which GIF mode should I choose?",
       "a": "Recommended is a good starting point. Maximum uses fewer colors and may provide stronger size reduction, with a greater chance of visible color changes.\n"
     },
-    {}
+    {
+      "q": "Are GIF files uploaded to File Compresser?",
+      "a": "No. The selected GIF is processed directly in your browser.\n"
+    }
   ],
   "seoTitle": "GIF Compressor Online Free – Reduce Animated GIF Size",
   "seoDescription": " Compress animated GIFs online for free. Reduce color palettes while preserving animation timing, dimensions and looping in your browser."
