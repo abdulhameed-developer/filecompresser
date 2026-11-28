@@ -38,7 +38,10 @@
       "heading": "Important Things to Know Before Processing a PDF",
       "body": "It is useful to understand what the tool does and does not change before selecting a document.\n\nScanned documents: A PDF made from scanned pages may contain large images. Since the tool does not reduce the resolution of embedded images, these documents may not become noticeably smaller.\nText and page content: The tool performs a structural rewrite rather than using OCR to recognize text in scanned pages. It does not turn scanned pages into searchable text.\nPasswords and encryption: The tool does not remove PDF passwords. Encrypted PDFs are not supported by the current workflow.\nDigital signatures: Signed PDFs are also refused by the tool. Processing a signed document can affect the validity of its signature, so do not use this workflow for signed files.\nForms and links: After processing, review interactive forms, links, and the appearance of important pages to make sure the document still works as expected.\nMetadata: Selected metadata may be removed when it is safe to do so, but this is not a complete privacy or metadata-cleaning service. Do not treat the tool as a way to remove every trace of information from a PDF.\n"
     },
-    {},
+    {
+      "heading": "Process PDF Files Privately in Your Browser",
+      "body": "File Compresser processes supported PDF files directly in your browser. Your selected document does not need to be uploaded to an external server for the optimization process, and you do not need to create an account to use the tool.\n\nThe maximum supported PDF file size is 50 MB. The workflow is designed for supported, unsigned, and unencrypted PDF documents. If a file is protected or digitally signed, the tool will not process it.\n\nFor important documents, keep a separate original copy. After processing, open the downloaded PDF and check its pages, links, forms, and layout before sharing or replacing the original.\n"
+    },
     {}
   ],
   "links": [
