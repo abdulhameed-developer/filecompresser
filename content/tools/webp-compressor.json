@@ -18,7 +18,10 @@
       "heading": "Balanced",
       "body": "Balanced provides a moderate quality and file size trade-off. It can be a suitable starting point when you want to optimize an image without applying the strongest compression.\n"
     },
-    {},
+    {
+      "heading": "High Quality",
+      "body": "High Quality prioritizes visual detail. It may produce a larger file, but it can be useful for photographs where colors, textures and small details matter."
+    },
     {},
     {},
     {},
