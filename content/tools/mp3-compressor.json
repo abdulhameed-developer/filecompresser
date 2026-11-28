@@ -37,7 +37,12 @@
     {
       "heading": "Does MP3 Compression Affect Sound Quality?",
       "body": "Yes. Changing an MP3 bitrate can affect sound quality because MP3 uses lossy audio compression. When an audio file is re-encoded at a lower bitrate, some audio information may be removed.\n\nThe difference may be difficult to notice in some voice recordings, but music and complex audio can show more noticeable changes. The result depends on the original recording and the selected bitrate.\n\nFor this reason, it is a good idea to keep your original MP3 file before processing it. You can then compare the original and compressed versions and decide whether the new file meets your needs.\n\nAlso, an MP3 compressor is not the same as a dynamic-range or loudness compressor. It reduces file size through audio re-encoding rather than controlling the difference between quiet and loud sounds.\n"
-    }
+    },
+    {
+      "heading": "Compress MP3 Files Privately in Your Browser",
+      "body": "File Compresser processes MP3 files on your device through your browser. Your selected audio is not uploaded to a remote server for compression, and you do not need to create an account to use the tool.\n\nThe audio engine may need to download the first time you use a media tool. This initial download is around 21 MB and can be cached by your browser for later use. MP3 processing also has a five-minute job limit, so very long recordings may not finish within the available processing time.\n\nThe tool supports MP3 files up to 100 MB. If your audio is larger than this limit, you will need to use a smaller source file.\n"
+    },
+    {}
   ],
   "links": [
     {
