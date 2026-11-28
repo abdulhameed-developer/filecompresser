@@ -74,7 +74,10 @@
       "q": "Can I convert a large WAV file?",
       "a": "The tool supports WAV files up to 100 MB. Files above this limit are not supported by the current workflow.\n"
     },
-    {},
+    {
+      "q": "Should I delete my original WAV file after conversion?",
+      "a": "It is better to keep the original if you may need to edit, process, or archive the recording later. The MP3 version is more suitable as a convenient listening or sharing copy.\n"
+    },
     {}
   ],
   "seoTitle": "WAV to MP3 Converter Online Free – Convert Audio",
