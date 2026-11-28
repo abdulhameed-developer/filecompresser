@@ -6,7 +6,10 @@
       "heading": "What Is a PDF Compressor?",
       "body": "A PDF compressor is a tool that attempts to reduce or optimize the size of a PDF document. PDF files can contain text, images, fonts, links, forms, and document information. Some of this information may be unnecessary for a particular use.\n\nFile Compresser uses a structural rewrite to optimize supported PDF files. It can remove selected document information, including current document information and catalog XMP metadata when it is safe to do so.\n\nHowever, the tool does not downsample embedded photographs or scanned page images. This is important because images can make up a large part of a PDF's total file size. If a document contains high-resolution scans or photographs, a structural rewrite may not produce a significant reduction.\n"
     },
-    {},
+    {
+      "heading": "How to Compress a PDF Online",
+      "body": "You can use the online PDF Compressor without installing a separate desktop application. Follow these steps:\n\n1. Open the PDF Compressor page on File Compresser.\n2. Select a PDF file from your device.\n3. Start the optimization process.\n4. Wait while the browser processes the document.\n5. Check the resulting file size.\n6. Download the processed PDF if it is suitable for your needs.\n\nThe tool checks the processed document again and verifies its page count. If the new version is not smaller, the original file is retained instead of being replaced with a larger result.\n"
+    },
     {},
     {},
     {},
