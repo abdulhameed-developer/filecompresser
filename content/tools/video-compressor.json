@@ -94,7 +94,10 @@
       "q": "Can I compress MP4 videos online?",
       "a": "Yes. File Compresser supports compatible MP4 input files and creates H.264 MP4 output.\n"
     },
-    {},
+    {
+      "q": "Can I compress MOV videos?",
+      "a": "Yes. Supported MOV videos can be converted into MP4.\n"
+    },
     {},
     {},
     {},
