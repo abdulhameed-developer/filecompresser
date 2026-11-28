@@ -54,7 +54,10 @@
       "heading": "Private WebP Processing",
       "body": "File Compresser processes WebP images directly in your browser using your device's resources. The tool supports WebP files up to 50 MB per image, with a queue limit of 500 files and 300 MB total. Large batches may require additional memory, depending on your device.\n"
     },
-    {}
+    {
+      "heading": "Optimize WebP Images for Your Website",
+      "body": "WebP can be a useful choice for website photographs, product images and transparent graphics. However, image size and visual quality should always be considered together. File Compresser makes it easy to test different WebP settings, compare actual file sizes and review the output before downloading.\n"
+    }
   ],
   "links": [
     {
