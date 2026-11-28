@@ -86,7 +86,10 @@
       "q": "Can WebP keep a transparent background?",
       "a": "Yes. WebP supports transparency, and the tool is designed to preserve transparent areas in supported processing.\n"
     },
-    {},
+    {
+      "q": "Does WebP compression change image dimensions?",
+      "a": "No. Dimensions remain unchanged unless you enable resizing.\n"
+    },
     {}
   ],
   "seoTitle": "WebP Compressor Online Free – Optimize WebP Images",
