@@ -30,7 +30,10 @@
       "heading": "Manage Project Resources",
       "body": "Developers, designers, students, and office teams often receive project files in ZIP format. Extracting the archive makes it easier to access the resources needed for a task.\n"
     },
-    {},
+    {
+      "heading": "Review Shared Documents",
+      "body": "If someone sends you a ZIP archive containing reports, presentations, or other documents, you can extract the contents and review the individual files.\n"
+    },
     {},
     {}
   ],
