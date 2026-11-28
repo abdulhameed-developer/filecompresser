@@ -30,7 +30,10 @@
       "heading": "Keep a Convenient Listening Copy",
       "body": "You may want to keep the original WAV file for editing and create an MP3 version for listening or sharing. This approach allows you to use each format for a different purpose.\n"
     },
-    {}
+    {
+      "heading": "Choose the Right MP3 Bitrate",
+      "body": "The bitrate determines how much data is used for each second of the converted audio. File Compresser provides options from 96 kbps to 320 kbps.\n\nA lower bitrate generally creates a smaller MP3 file but removes more audio information. A higher bitrate usually retains more detail but results in a larger file.\n\n96 kbps: This lower setting may suit some spoken recordings when smaller file size is the main priority.\n128 kbps: This can be a practical option for basic listening and general audio sharing.\n192 kbps: This provides a higher data rate and may be more suitable when you want to retain more sound detail.\n256 kbps: This setting uses more data and can be considered when audio quality is more important than getting the smallest file.\n320 kbps: This is the highest available bitrate in the tool. It creates a higher-bitrate MP3, but it does not turn the file into lossless audio or restore information removed during an earlier conversion.\n\nThe best setting depends on your recording, listening needs, and available storage. It is worth listening to the converted file before replacing or deleting the original.\n"
+    }
   ],
   "links": [
     {
