@@ -10,7 +10,10 @@
       "heading": "What Is a JPEG Compressor?",
       "body": "A JPEG compressor is a tool that changes how a JPEG image is encoded to reduce its file size. JPEG uses lossy compression, which means the encoding process can remove some image information. This helps reduce the amount of data required to store a photograph, but it can also affect visual quality.\n\nThe final result depends on the original photograph, its existing compression and the selected quality settings. File Compresser provides different options for people who want to reduce JPEG file size without making unnecessary changes to image dimensions.\n"
     },
-    {},
+    {
+      "heading": "JPG and JPEG: Is There Any Difference?",
+      "body": "JPG and JPEG are two file extensions for the same image format. The term JPEG comes from the Joint Photographic Experts Group, the organization associated with the format's development. The shorter JPG extension became common because older operating systems used three-character file extensions.\n\nBoth extensions represent the same underlying image format. Changing a filename from .jpeg to .jpg does not reduce its size or improve its quality. Actual compression requires re-encoding the image with different settings. File Compresser uses the same image processing engine for its JPG and JPEG tools.\n"
+    },
     {},
     {},
     {},
