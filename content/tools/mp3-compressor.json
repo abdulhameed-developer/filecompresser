@@ -18,7 +18,10 @@
       "heading": "96 kbps",
       "body": "This is one of the lower available settings. It may be useful for spoken recordings where reducing file size is more important than keeping every audio detail. However, the result should be checked before using it for important recordings.\n"
     },
-    {},
+    {
+      "heading": "128 kbps",
+      "body": "This setting can provide a practical balance for some everyday listening needs. It may work for basic voice recordings and audio that does not require high detail.\n"
+    },
     {},
     {},
     {},
