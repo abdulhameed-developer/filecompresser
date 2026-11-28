@@ -14,7 +14,10 @@
       "heading": "Understanding PNG Compression Modes",
       "body": "Choosing a suitable mode is important because PNG images can contain different types of visual information.\n"
     },
-    {},
+    {
+      "heading": "Maximum",
+      "body": "Maximum is the default mode on File Compresser's PNG tool. It may reduce the number of colors to create a smaller file while preserving transparency values.\n\nThis option can be useful when reducing file size is important. However, check the result carefully because color changes may affect gradients, lettering and fine details.\n"
+    },
     {},
     {},
     {},
