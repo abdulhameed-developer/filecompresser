@@ -10,7 +10,10 @@
       "heading": "How to Compress an MP3 File Online",
       "body": "You can reduce an MP3 file size in a few simple steps:\n\n1. Open the MP3 Compressor page on File Compresser.\n2. Select the MP3 file from your device.\n3. Choose the bitrate for the new audio file.\n4. Start the compression process.\n5. Wait for the browser to finish processing the audio.\n6. Check the resulting file and download it to your device.\n\nYou can use the tool without installing a separate audio application. The process runs in your browser, so your selected audio file does not need to be uploaded to an external server.\n"
     },
-    {},
+    {
+      "heading": "Choose the Right MP3 Bitrate",
+      "body": "Selecting the right bitrate is important because it affects both file size and sound quality. A lower setting can be useful when storage space is limited, while a higher setting may be more suitable when keeping audio detail is important.\n"
+    },
     {},
     {},
     {},
