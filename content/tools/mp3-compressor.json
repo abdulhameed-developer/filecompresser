@@ -6,7 +6,10 @@
       "heading": "What Is an MP3 Compressor?",
       "body": "An MP3 compressor is a tool that reduces the storage size of an MP3 audio file by re-encoding it at a selected bitrate. Bitrate refers to the amount of audio data used for each second of sound. It is usually measured in kilobits per second (kbps).\n\nA higher bitrate generally keeps more audio detail but creates a larger file. A lower bitrate uses less data and can produce a smaller file, although some sound detail may be lost.\n\nFor example, an MP3 saved at 320 kbps usually takes up more space than the same audio encoded at 128 kbps. The exact size reduction depends on the original file, its duration, and the selected output setting.\n\nFile Compresser gives you bitrate options from 96 kbps to 320 kbps, so you can select a setting that suits your storage and listening needs.\n"
     },
-    {},
+    {
+      "heading": "How to Compress an MP3 File Online",
+      "body": "You can reduce an MP3 file size in a few simple steps:\n\nOpen the MP3 Compressor page on File Compresser.\nSelect the MP3 file from your device.\nChoose the bitrate for the new audio file.\nStart the compression process.\nWait for the browser to finish processing the audio.\nCheck the resulting file and download it to your device.\n\nYou can use the tool without installing a separate audio application. The process runs in your browser, so your selected audio file does not need to be uploaded to an external server.\n"
+    },
     {},
     {},
     {},
