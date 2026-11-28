@@ -102,7 +102,10 @@
       "q": "Does the tool support 1080p and 720p?",
       "a": "Yes. You can choose a maximum-height setting of 1080p, 720p or 480p, or keep the original dimensions where supported.\n"
     },
-    {},
+    {
+      "q": "Will video compression reduce quality?",
+      "a": "It can. Re-encoding and lower resolution settings may affect visual and audio quality.\n"
+    },
     {},
     {}
   ],
