@@ -26,7 +26,10 @@
       "heading": "Maximum",
       "body": "Maximum uses a stronger compression trade-off to prioritize a smaller output. It is worth checking the final image carefully, particularly when it contains fine details or text.\n"
     },
-    {},
+    {
+      "heading": "Target Size",
+      "body": "Target Size attempts to keep the final image within a selected maximum number of bytes. The tool checks actual output size rather than relying on an estimate. If a suitable result cannot meet the requested limit, it reports that the target was not met.\n"
+    },
     {},
     {}
   ],
