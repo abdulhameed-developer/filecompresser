@@ -66,7 +66,10 @@
       "heading": "Can You Resize JPEG Images?",
       "body": "Yes. File Compresser provides an optional resizing control.\n\nBy default, the original display dimensions are maintained. If you need a smaller photograph for a website, email or upload form, you can enable resizing and enter a maximum width or height.\n\nThe aspect ratio is preserved, and smaller images are not enlarged.\n\nResizing and compression are different processes. Resizing changes the pixel dimensions, while JPEG compression changes the way the image information is stored.\n"
     },
-    {},
+    {
+      "heading": "What Happens to Image Metadata?",
+      "body": "Re-encoding can normalize image colors to sRGB and remove some metadata. Camera photographs may also contain EXIF information, such as camera details and orientation data. An unchanged original retains its existing bytes and metadata. If metadata is important to your workflow, keep a separate original before processing.\n\nAlso, remember that removing metadata during image compression is not a substitute for reviewing privacy information in the original file.\n"
+    },
     {}
   ],
   "links": [
