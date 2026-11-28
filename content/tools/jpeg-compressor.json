@@ -73,6 +73,10 @@
     {
       "heading": "Private JPEG Processing Without Uploads",
       "body": "File Compresser uses browser-based processing, so selected JPEG photographs remain on your device during compression. There is no need to upload personal photographs to an external compression server. The website loads the required processing code, and your device performs the image operation. The tool supports files up to 50 MB each, with a queue limit of 500 files and 300 MB total. Device memory and image dimensions can affect processing performance.\n"
+    },
+    {
+      "heading": "Optimize Your JPEG Images Online",
+      "body": "JPEG photographs are useful for websites, digital documents and everyday sharing, but unnecessarily large files can create upload and storage problems. File Compresser makes it easier to re-encode JPEG images with quality controls and optional resizing. Select your photograph, review the available settings and compare the result before downloading.\n\nUse the JPEG Compressor to prepare image files for websites, online forms, email attachments and other everyday tasks while keeping your original photographs under your control.\n"
     }
   ],
   "links": [
