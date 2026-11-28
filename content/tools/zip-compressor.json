@@ -41,7 +41,12 @@
     {
       "heading": "Check Your Files Before Creating an Archive",
       "body": "Before creating a ZIP file, make sure you have selected the correct items. Review the file names and confirm that the collection includes everything you want to share.\n\nFile names may be normalized during archive creation. For this reason, it is useful to check the names and contents of the completed archive before sending it to someone else.\n\nAlso, remember that creating a ZIP file does not protect its contents with a password or make the files private from anyone who receives the archive. If you need to protect sensitive information, use an appropriate security method before sharing the files.\n"
-    }
+    },
+    {
+      "heading": "Create ZIP Archives Privately in Your Browser",
+      "body": "File Compresser creates ZIP archives directly in your browser. Your selected files do not need to be uploaded to an external server for the archive to be created. You can use the tool without installing a separate ZIP application.\n\nThe general file queue supports up to 500 files, with a combined queue size of up to 300 MB. Individual files can be up to 200 MB, subject to the queue limit.\n\nThese limits help define which file collections can be processed in the browser. If your selection exceeds the supported limits, reduce the number or size of the files and try again.\n"
+    },
+    {}
   ],
   "links": [
     {
