@@ -10,7 +10,10 @@
       "heading": "How to Compress a Video Online",
       "body": "You can use File Compresser to prepare a supported video without installing desktop software.\n\nFollow these steps:\n\n1. Open the Video Compressor page.\n2. Select an MP4 or MOV video from your device.\n3. Wait for the website to validate the file.\n4. Choose the desired resolution setting.\n5. Start video processing.\n6. Allow the browser to encode the video.\n7. Download the resulting MP4.\n8. Play the complete video and check its quality.\n\nKeep your original video until you have confirmed that the new file plays correctly.\n"
     },
-    {},
+    {
+      "heading": "Understand Video Resolution Settings",
+      "body": "Resolution describes the number of pixels used to display a video. Higher resolutions contain more image detail but can also require more data. File Compresser provides different maximum-height options.\n"
+    },
     {},
     {},
     {},
