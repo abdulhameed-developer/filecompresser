@@ -45,6 +45,10 @@
     {
       "heading": "Convert WAV Files Privately in Your Browser",
       "body": "File Compresser processes your selected WAV file directly in your browser. This means you do not need to send the recording to a remote server for conversion or create an account before using the tool.\n\nThe maximum supported WAV file size is 100 MB. Media processing uses a browser-based engine that may require an initial download of around 21 MB. Your browser can cache this engine for future use. Each processing job has a five-minute limit, and long recordings may need more processing resources.\n"
+    },
+    {
+      "heading": "Convert WAV Audio to MP3 Online",
+      "body": "Use File Compresser when you need a convenient way to convert a supported WAV recording into MP3 format. Select your file, choose a bitrate, and download the converted audio after processing. Keep the original WAV recording for editing or archiving, and use the MP3 copy when a more convenient format is needed.\n"
     }
   ],
   "links": [
