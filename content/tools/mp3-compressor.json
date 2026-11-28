@@ -1,6 +1,6 @@
 {
-  "heading": "How can I make an existing MP3 smaller?",
-  "introduction": "Re-encode the MP3 at a lower audio bitrate. Lowering bitrate can reduce file size, but MP3 encoding is lossy, so listen to the result before replacing your recording.",
+  "heading": "MP3 Compressor Online",
+  "introduction": "Audio files can take up a lot of storage space, especially when you save music, interviews, podcasts, voice recordings, or other long audio tracks. Large MP3 files can also be difficult to share through email, messaging apps, and websites with file-size limits. An MP3 compressor helps reduce the size of an audio file by changing its audio bitrate.\n\nFile Compresser provides an online MP3 Compressor that lets you re-encode MP3 files directly in your browser. You can choose a bitrate, process your audio, and check the resulting file size before downloading it. There is no need to install desktop software or create an account to use the tool.\n",
   "sections": [
     {
       "heading": "Choose bitrate for the recording",
