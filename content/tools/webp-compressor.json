@@ -14,7 +14,10 @@
       "heading": "Choose the Right WebP Quality Mode",
       "body": "Different images require different compression settings. A product photograph may need more detail than a small decorative graphic.\n"
     },
-    {},
+    {
+      "heading": "Balanced",
+      "body": "Balanced provides a moderate quality and file size trade-off. It can be a suitable starting point when you want to optimize an image without applying the strongest compression.\n"
+    },
     {},
     {},
     {},
