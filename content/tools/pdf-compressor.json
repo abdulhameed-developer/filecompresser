@@ -30,6 +30,12 @@
       "heading": "Organize Business Documents",
       "body": "Invoices, reports, proposals, and other office documents may be stored and shared regularly. A PDF optimizer can be part of a document preparation process when you want to check whether a file can be made smaller.\n"
     },
+    {
+      "heading": "Why Does a PDF File Remain the Same Size?",
+      "body": "Not every PDF contains information that can be removed to produce a smaller file. A document made mostly of scanned pages or embedded photographs may remain almost the same size because the File Compresser PDF tool does not downsample those images.\n\nThe tool also does not promise a fixed percentage reduction. The result depends on the document structure and the information that can safely be removed.\n\nIf the processed version is not smaller, File Compresser keeps the original file. This helps avoid replacing a document with a version that takes up more space without providing a useful reduction.\n"
+    },
+    {},
+    {},
     {}
   ],
   "links": [
