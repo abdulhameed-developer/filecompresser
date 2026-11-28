@@ -3,17 +3,17 @@
   "introduction": "Audio files can take up a lot of storage space, especially when you save music, interviews, podcasts, voice recordings, or other long audio tracks. Large MP3 files can also be difficult to share through email, messaging apps, and websites with file-size limits. An MP3 compressor helps reduce the size of an audio file by changing its audio bitrate.\n\nFile Compresser provides an online MP3 Compressor that lets you re-encode MP3 files directly in your browser. You can choose a bitrate, process your audio, and check the resulting file size before downloading it. There is no need to install desktop software or create an account to use the tool.\n",
   "sections": [
     {
-      "heading": "Choose bitrate for the recording",
-      "body": "Add the MP3 and select an available target from 96 to 320 kbps. Compare a lower setting with the original, paying attention to speech clarity, music detail and quiet passages before keeping the download."
+      "heading": "What Is an MP3 Compressor?",
+      "body": "An MP3 compressor is a tool that reduces the storage size of an MP3 audio file by re-encoding it at a selected bitrate. Bitrate refers to the amount of audio data used for each second of sound. It is usually measured in kilobits per second (kbps).\n\nA higher bitrate generally keeps more audio detail but creates a larger file. A lower bitrate uses less data and can produce a smaller file, although some sound detail may be lost.\n\nFor example, an MP3 saved at 320 kbps usually takes up more space than the same audio encoded at 128 kbps. The exact size reduction depends on the original file, its duration, and the selected output setting.\n\nFile Compresser gives you bitrate options from 96 kbps to 320 kbps, so you can select a setting that suits your storage and listening needs.\n"
     },
-    {
-      "heading": "Higher bitrate cannot restore missing detail",
-      "body": "An MP3 has already discarded some audio information. Re-encoding at the same or a higher bitrate can add generation loss without a useful size saving. Keep an uncompressed source when one is available."
-    },
-    {
-      "heading": "Keep the distinction between file size and loudness",
-      "body": "This tool changes the audio encoding; it is not a loudness or dynamic-range compressor. It accepts MP3 inputs up to 100 MB and uses the browser media engine, so long recordings can still need substantial processing time and memory."
-    }
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
   ],
   "links": [
     {
