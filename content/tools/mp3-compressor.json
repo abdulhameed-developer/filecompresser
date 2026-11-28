@@ -34,7 +34,10 @@
       "heading": "Why Reduce the Size of an MP3 File?",
       "body": "There are several reasons to make an MP3 file smaller. A smaller file can be easier to store, transfer, and manage across different devices.\n\nSave storage space: Large audio collections can use a considerable amount of space on a computer or phone. Reducing file sizes can help manage your available storage.\nShare recordings more easily: Smaller audio files are often easier to send through email, messaging applications, or online platforms with attachment limits.\nManage podcast files: Podcast creators and people who save episodes may want smaller files for convenient storage and distribution.\nOrganize voice recordings: Interviews, lectures, meetings, and personal recordings can take up space when saved in large quantities. Re-encoding selected files may help reduce their storage requirements.\nPrepare audio for websites: Smaller audio files can be easier to manage when adding recordings or audio resources to a website.\n"
     },
-    {}
+    {
+      "heading": "Does MP3 Compression Affect Sound Quality?",
+      "body": "Yes. Changing an MP3 bitrate can affect sound quality because MP3 uses lossy audio compression. When an audio file is re-encoded at a lower bitrate, some audio information may be removed.\n\nThe difference may be difficult to notice in some voice recordings, but music and complex audio can show more noticeable changes. The result depends on the original recording and the selected bitrate.\n\nFor this reason, it is a good idea to keep your original MP3 file before processing it. You can then compare the original and compressed versions and decide whether the new file meets your needs.\n\nAlso, an MP3 compressor is not the same as a dynamic-range or loudness compressor. It reduces file size through audio re-encoding rather than controlling the difference between quiet and loud sounds.\n"
+    }
   ],
   "links": [
     {
