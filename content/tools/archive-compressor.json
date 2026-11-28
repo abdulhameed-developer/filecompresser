@@ -22,7 +22,10 @@
       "heading": "Access Individual Files",
       "body": "A ZIP archive may contain many different items. Extraction allows you to access the documents, images, and other files separately instead of keeping everything inside one compressed package."
     },
-    {},
+    {
+      "heading": "Download Only the Files You Need",
+      "body": "Sometimes you do not need every item inside an archive. File Compresser lets you download individual extracted files, which can help when you only need a specific document or image.\n"
+    },
     {},
     {},
     {},
