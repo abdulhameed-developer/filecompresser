@@ -74,7 +74,10 @@
       "q": "Does the MP3 Compressor change audio volume?",
       "a": "No. The tool is designed to re-encode audio and reduce file size. It is not a loudness or dynamic-range compressor."
     },
-    {},
+    {
+      "q": "Is my audio uploaded to a server?",
+      "a": "The tool processes your selected file in your browser. Your audio does not need to be uploaded to an external server for compression.\n"
+    },
     {}
   ],
   "seoTitle": "MP3 Compressor Online Free – Reduce MP3 File Size",
