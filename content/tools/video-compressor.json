@@ -70,7 +70,10 @@
       "heading": "Which Video Information Is Retained?",
       "body": "The tool focuses on the primary video and audio streams. Subtitles and cover art are not retained in the output.\n\nIf your video depends on embedded subtitles or additional streams, keep the original file and use a workflow that supports those elements.\n\nAfter processing, check the MP4 in your preferred video player to confirm that the required picture and sound are present.\n"
     },
-    {},
+    {
+      "heading": "Private Video Processing in Your Browser",
+      "body": "File Compresser processes selected videos directly on your device. Your video is not uploaded to the website's servers for conversion.\n"
+    },
     {},
     {}
   ],
