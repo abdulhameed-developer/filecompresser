@@ -66,7 +66,10 @@
       "q": "Is the ZIP Creator free to use?",
       "a": "You can use the online ZIP creation tool without installing desktop software or creating an account. The only limits are 200 MB per file and a queue of up to 500 files and 300 MB.\n"
     },
-    {},
+    {
+      "q": "Can I combine multiple files into one ZIP?",
+      "a": "Yes. Select the files you want to include, create the archive, and download the resulting ZIP file.\n"
+    },
     {},
     {},
     {},
