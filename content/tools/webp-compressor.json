@@ -78,7 +78,10 @@
       "q": "Can I compress an existing WebP image?",
       "a": "Yes. You can try a new WebP encoding using the available quality settings.\n"
     },
-    {},
+    {
+      "q": "Why did my WebP image not get smaller?",
+      "a": "It may already be efficiently compressed. The tool retains the original if no smaller suitable result is found.\n"
+    },
     {},
     {},
     {}
