@@ -70,7 +70,10 @@
       "q": "Does converting WAV to MP3 reduce quality?",
       "a": "Yes. MP3 is a lossy format, so some audio information is removed during conversion. A higher bitrate can retain more detail than a lower one, but it cannot make the output lossless.\n"
     },
-    {},
+    {
+      "q": "Can I convert a large WAV file?",
+      "a": "The tool supports WAV files up to 100 MB. Files above this limit are not supported by the current workflow.\n"
+    },
     {},
     {}
   ],
