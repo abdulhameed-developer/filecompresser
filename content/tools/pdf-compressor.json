@@ -78,7 +78,10 @@
       "q": "Does it remove all PDF metadata?",
       "a": "No. It removes selected metadata when safe, but it is not a complete metadata or privacy-cleaning tool.\n"
     },
-    {}
+    {
+      "q": "Is my PDF uploaded to a server?",
+      "a": "The tool processes supported documents in your browser. Your PDF does not need to be uploaded to an external server for optimization.\n"
+    }
   ],
   "seoTitle": "PDF Compressor Online Free – Optimize PDF Files",
   "seoDescription": "Optimize PDF files online with a structural rewrite and selected metadata removal. Check actual file size and process privately in your browser."
