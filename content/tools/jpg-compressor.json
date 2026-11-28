@@ -86,7 +86,10 @@
       "q": "Is the JPG Compressor free?",
       "a": "Yes. The tool is available online without registration or a paid subscription.\n"
     },
-    {},
+    {
+      "q": "Can I compress JPG images without changing their dimensions?",
+      "a": "Yes. Original display dimensions are preserved unless you enable resizing.\n"
+    },
     {},
     {},
     {},
