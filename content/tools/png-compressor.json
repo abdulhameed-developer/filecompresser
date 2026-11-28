@@ -6,7 +6,10 @@
       "heading": "What Is a PNG Compressor?",
       "body": "A PNG compressor is a tool that optimizes the way image data is stored in a PNG file. It can reduce unnecessary data and, depending on the selected method, reduce the number of colors used in the image.\n\nPNG uses lossless compression at the file-format level. However, a PNG optimization process can also use color reduction. These are two different approaches.\n\nLossless optimization preserves the decoded image pixels. Color reduction changes image colors to create a smaller file, although transparency can still be preserved. File Compresser provides separate options so you can choose the approach that suits your image.\n"
     },
-    {},
+    {
+      "heading": "How to Compress PNG Images Online",
+      "body": "You can reduce PNG file size without using a desktop image editing program.\n\nFollow these steps:\n\n1. Open the PNG Compressor page.\n2. Select a PNG image from your device.\n3. Wait for the image validation process.\n4. Review the available compression modes.\n5. Choose Lossless, Smart, Maximum or Target Size.\n6. Enable resizing only if you need different dimensions.\nStart processing.\n7. Compare the original and processed file sizes.\n8. Check the image, edges and transparent areas before downloading.\n\nThe tool keeps the original image dimensions unless you specifically enable resizing."
+    },
     {},
     {},
     {},
