@@ -3,6 +3,8 @@ import { editorialCollections } from './editorial.mjs'
 import { managedPageCollection } from './managed-pages.mjs'
 import { siteSettingsCollection } from './site-settings.mjs'
 import { editorialFieldValidator, editorialUrlFieldValidator } from '../lib/editorial-markup.mjs'
+import { withEditorialPolicy } from './editorial-policy.mjs'
+import { editorialImageFieldValidator } from '../lib/editorial-constraints.mjs'
 
 const htmlValidation = editorialFieldValidator({ htmlOnly: true })
 const paragraphValidation = editorialFieldValidator({ literalHtml: true })
@@ -46,7 +48,7 @@ const seoFields = () => [
   { ...textarea('seoDescription', 'SEO description', false), description: 'Optional. Write a useful search summary, usually around 140–160 characters. Empty uses the existing description.' },
 ]
 const postImageFields = (required = true) => [
-  { type: 'image', name: 'src', label: 'Image', required, description: 'Choose a raster image uploaded to this site.' },
+  { type: 'image', name: 'src', label: 'Image', required, ui: { validate: editorialImageFieldValidator({ required }) }, description: 'Choose a raster image uploaded to this site.' },
   { type: 'string', name: 'alt', label: 'Alternative text', required },
   { type: 'string', name: 'caption', label: 'Caption' },
 ]
@@ -67,7 +69,8 @@ export const collections = [
       { type: 'boolean', name: 'archived', label: 'Archive this post', description: 'Keeps the content file but removes the post from public pages and sitemaps after the next build. Add an appropriate redirect for an old indexed address.', ui: { validate(value, values = {}) { return publicationDateOrderError({ ...values, archived: value }) } } },
       { type: 'string', name: 'title', label: 'Post title', isTitle: true, required: true },
       textarea('description', 'Short introduction'),
-      date('date', 'Publication date', true), date('updated', 'Last updated'),
+      { ...date('date', 'Original publication date', true), description: 'Real first-publication date for search metadata. It is kept internally, not shown as a separate public date.' },
+      { ...date('updated', 'Last updated'), description: 'Use YYYY-MM-DD after a substantive change or meaningful editorial review. Visitors see only this Updated date. If empty, the original date is the truthful fallback.' },
       { type: 'string', name: 'readingTime', label: 'Reading time', required: true, description: 'For example: 5 min' },
       { type: 'string', name: 'figure', label: 'Fallback illustration', options: figureOptions, required: true },
       {
@@ -137,4 +140,4 @@ export const collections = [
   managedPageCollection,
   siteSettingsCollection,
   redirectCollection,
-]
+].map(withEditorialPolicy)

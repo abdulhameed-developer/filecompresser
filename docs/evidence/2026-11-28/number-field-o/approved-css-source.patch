@@ -1,0 +1,27 @@
+--- /home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/target-field-o/product-system.css.candidate-n.before	2026-11-28 19:37:36.658330588 +0500
++++ /home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/app/product-system.css	2026-11-28 19:37:36.695951565 +0500
+@@ -296,9 +296,10 @@
+ .toolCard .imageAdvancedBody .settingField { margin: 0; min-width: 0; }
+ .toolCard .settingField label > output { float: right; color: #42612d; }
+ .toolCard .imageAdvancedBody input[type=range] { width: 100%; min-height: 34px; accent-color: #527438; }
+-.toolCard .numberField { min-width: 0; }
++.toolCard .numberField { min-width: 0; border-color: #bacbbd; border-radius: 7px; }
++.toolCard .numberField:focus-within { border-color: var(--lime-deep); }
+ .toolCard .numberField input,.toolCard .settingField select { min-height: 48px; width: 100%; color: var(--ink); background: white; border: 1px solid #bacbbd; border-radius: 7px; padding: 11px 13px; font: 400 16px var(--font-sans); }
+-.toolCard .numberField input { padding-right: 48px; }
++.toolCard .numberField input { padding-inline: 13px; border: 0; border-radius: 0; background: transparent; }
+ .toolCard .numberField input:focus-visible { outline: none; }
+ .toolCard .numberField.invalid { border-color: var(--danger); }
+ .toolCard .numberField.invalid:focus-within { outline-color: var(--danger); }
+@@ -593,6 +594,11 @@
+   .workflowConfig { gap: 2px; }
+   .workflowConfig strong { display: block; width: 100%; }
+ }
++@media(max-width:480px) {
++  .workflowWorkspace .targetCustomRow { grid-template-columns: minmax(0,1fr); gap: 8px; }
++  .workflowWorkspace .targetCustomRow .exactTarget { margin-top: 0; }
++  .workflowWorkspace .targetCustomRow .exactTarget strong { display: inline; }
++}
+ 
+ /* Compact, bounded file gallery shared by every tool. */
+ .workflowBody { display: grid; gap: 20px; padding-top: 16px; align-items: start; }

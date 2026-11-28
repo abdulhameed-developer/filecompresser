@@ -1,0 +1,3495 @@
+{
+  "startedAt": "2026-11-28T12:53:47.262Z",
+  "base": "http://127.0.0.1:3332",
+  "historical": "http://127.0.0.1:3334",
+  "sourceManual": ".qa-results/phase2/svg-contrast-i/comparison.json",
+  "scope": "Fresh actual K51-node backing, contrast, text and paint review. Earlier exact local getBBox equality failed and remains failed. Authored markup/computed styles are compared separately; identical local geometry is not claimed. Automated SVG contrast incomplete results remain incomplete.",
+  "localGeometryIdentityClaimed": false,
+  "automatedContrastPassClaimed": false,
+  "figures": [
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "id": "fig-formattree",
+      "authoredChildMarkupIdentical": true,
+      "computedSvgStylesIdentical": true,
+      "rootViewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 420,
+        "height": 290
+      },
+      "geometryIdentityClaimed": false,
+      "nodes": 11,
+      "screenshot": ".qa-results/phase3/ui/k-fresh-svg-review-v2/fig-formattree-actual-k-1280.png",
+      "screenshotSha256": "ba9526f68bcacc4aedbeaef81cb6521fd6b40af0cd9f5c704dad871ba61d98e4",
+      "publicScreenshot": "docs/evidence/2026-11-28/svg-review-k/fig-formattree-actual-k-1280.png"
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "id": "fig-dataflow",
+      "authoredChildMarkupIdentical": true,
+      "computedSvgStylesIdentical": true,
+      "rootViewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 720,
+        "height": 290
+      },
+      "geometryIdentityClaimed": false,
+      "nodes": 15,
+      "screenshot": ".qa-results/phase3/ui/k-fresh-svg-review-v2/fig-dataflow-actual-k-1280.png",
+      "screenshotSha256": "0b9972819a6dd649d6721aa71e3d99cddb7c293ccb6741a47cb066c90837955d",
+      "publicScreenshot": "docs/evidence/2026-11-28/svg-review-k/fig-dataflow-actual-k-1280.png"
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "id": "fig-sizebars",
+      "authoredChildMarkupIdentical": true,
+      "computedSvgStylesIdentical": true,
+      "rootViewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 720,
+        "height": 230
+      },
+      "geometryIdentityClaimed": false,
+      "nodes": 13,
+      "screenshot": ".qa-results/phase3/ui/k-fresh-svg-review-v2/fig-sizebars-actual-k-1280.png",
+      "screenshotSha256": "78b589f7bbea03111c7f60bbb1afead7c768211c625591e83f99c35d803b5a2b",
+      "publicScreenshot": "docs/evidence/2026-11-28/svg-review-k/fig-sizebars-actual-k-1280.png"
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "id": "fig-pipeline",
+      "authoredChildMarkupIdentical": true,
+      "computedSvgStylesIdentical": true,
+      "rootViewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 720,
+        "height": 210
+      },
+      "geometryIdentityClaimed": false,
+      "nodes": 12,
+      "screenshot": ".qa-results/phase3/ui/k-fresh-svg-review-v2/fig-pipeline-actual-k-1280.png",
+      "screenshotSha256": "e50798b256c52e340a26f76e06dba228b2255a2b8b8bde3eff64f21c05a8d84d",
+      "publicScreenshot": "docs/evidence/2026-11-28/svg-review-k/fig-pipeline-actual-k-1280.png"
+    }
+  ],
+  "nodes": [
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "selector": "text[x=\"12\"]",
+      "text": "Start from what the file is for, not from its extension.",
+      "markup": "<text x=\"12\" y=\"24\" fill=\"var(--muted)\" font-size=\"11\">Start from what the file is for, not from its extension.</text>",
+      "style": {
+        "fill": "rgb(95, 113, 106)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "ui-monospace, SFMono-Regular, Menlo, monospace",
+        "font-size": "11px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "start",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 12,
+        "y": 13.671675682067871,
+        "width": 370.4479675292969,
+        "height": 12.910406112670898
+      },
+      "screenFont": 12.780387931034483,
+      "backing": null,
+      "actualBacking": "rgb(244, 247, 245)",
+      "backingBasis": "Actual diagram viewport background; no preceding filled rect contains actual text bounds",
+      "required": 4.5,
+      "measuredContrast": 4.7992682946934115,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "selector": "text[y=\"56\"]",
+      "text": "A photo on a page",
+      "markup": "<text x=\"104\" y=\"56\" fill=\"var(--ink)\" font-size=\"13\" font-family=\"var(--font-sans)\" font-weight=\"700\">A photo on a page</text>",
+      "style": {
+        "fill": "rgb(22, 59, 49)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "Inter, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+        "font-size": "13px",
+        "font-weight": "700",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "start",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 104,
+        "y": 42.22889709472656,
+        "width": 117.4174575805664,
+        "height": 17.21387481689453
+      },
+      "screenFont": 15.104094827586206,
+      "backing": null,
+      "actualBacking": "rgb(244, 247, 245)",
+      "backingBasis": "Actual diagram viewport background; no preceding filled rect contains actual text bounds",
+      "required": 4.5,
+      "measuredContrast": 11.425387533428022,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "selector": "text[y=\"74\"]",
+      "text": "WEBP, or JPG for old browsers",
+      "markup": "<text x=\"104\" y=\"74\" fill=\"var(--muted)\" font-size=\"12\">WEBP, or JPG for old browsers</text>",
+      "style": {
+        "fill": "rgb(95, 113, 106)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "ui-monospace, SFMono-Regular, Menlo, monospace",
+        "font-size": "12px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "start",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 104,
+        "y": 62.81098175048828,
+        "width": 209.44444274902344,
+        "height": 13.771100044250488
+      },
+      "screenFont": 13.942241379310344,
+      "backing": null,
+      "actualBacking": "rgb(244, 247, 245)",
+      "backingBasis": "Actual diagram viewport background; no preceding filled rect contains actual text bounds",
+      "required": 4.5,
+      "measuredContrast": 4.7992682946934115,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "selector": "text[y=\"102\"]",
+      "text": "Flat colour, hard edges",
+      "markup": "<text x=\"104\" y=\"102\" fill=\"var(--ink)\" font-size=\"13\" font-family=\"var(--font-sans)\" font-weight=\"700\">Flat colour, hard edges</text>",
+      "style": {
+        "fill": "rgb(22, 59, 49)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "Inter, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+        "font-size": "13px",
+        "font-weight": "700",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "start",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 104,
+        "y": 88.22889709472656,
+        "width": 146.77517700195312,
+        "height": 17.21387481689453
+      },
+      "screenFont": 15.104094827586206,
+      "backing": null,
+      "actualBacking": "rgb(244, 247, 245)",
+      "backingBasis": "Actual diagram viewport background; no preceding filled rect contains actual text bounds",
+      "required": 4.5,
+      "measuredContrast": 11.425387533428022,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "selector": "text[y=\"120\"]",
+      "text": "PNG \u2014 lossless",
+      "markup": "<text x=\"104\" y=\"120\" fill=\"var(--muted)\" font-size=\"12\">PNG \u2014 lossless</text>",
+      "style": {
+        "fill": "rgb(95, 113, 106)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "ui-monospace, SFMono-Regular, Menlo, monospace",
+        "font-size": "12px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "start",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 104,
+        "y": 108.81097412109375,
+        "width": 101.11807250976562,
+        "height": 13.771100044250488
+      },
+      "screenFont": 13.942241379310344,
+      "backing": null,
+      "actualBacking": "rgb(244, 247, 245)",
+      "backingBasis": "Actual diagram viewport background; no preceding filled rect contains actual text bounds",
+      "required": 4.5,
+      "measuredContrast": 4.7992682946934115,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "selector": "text[y=\"148\"]",
+      "text": "Transparency required",
+      "markup": "<text x=\"104\" y=\"148\" fill=\"var(--ink)\" font-size=\"13\" font-family=\"var(--font-sans)\" font-weight=\"700\">Transparency required</text>",
+      "style": {
+        "fill": "rgb(22, 59, 49)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "Inter, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+        "font-size": "13px",
+        "font-weight": "700",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "start",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 104,
+        "y": 134.22891235351562,
+        "width": 146.3044891357422,
+        "height": 17.21387481689453
+      },
+      "screenFont": 15.104094827586206,
+      "backing": null,
+      "actualBacking": "rgb(244, 247, 245)",
+      "backingBasis": "Actual diagram viewport background; no preceding filled rect contains actual text bounds",
+      "required": 4.5,
+      "measuredContrast": 11.425387533428022,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "selector": "text[y=\"166\"]",
+      "text": "PNG or WEBP, never JPG",
+      "markup": "<text x=\"104\" y=\"166\" fill=\"var(--muted)\" font-size=\"12\">PNG or WEBP, never JPG</text>",
+      "style": {
+        "fill": "rgb(95, 113, 106)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "ui-monospace, SFMono-Regular, Menlo, monospace",
+        "font-size": "12px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "start",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 104,
+        "y": 154.8109893798828,
+        "width": 158.8921356201172,
+        "height": 13.771100044250488
+      },
+      "screenFont": 13.942241379310344,
+      "backing": null,
+      "actualBacking": "rgb(244, 247, 245)",
+      "backingBasis": "Actual diagram viewport background; no preceding filled rect contains actual text bounds",
+      "required": 4.5,
+      "measuredContrast": 4.7992682946934115,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "selector": "text[y=\"194\"]",
+      "text": "Video for the web",
+      "markup": "<text x=\"104\" y=\"194\" fill=\"var(--ink)\" font-size=\"13\" font-family=\"var(--font-sans)\" font-weight=\"700\">Video for the web</text>",
+      "style": {
+        "fill": "rgb(22, 59, 49)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "Inter, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+        "font-size": "13px",
+        "font-weight": "700",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "start",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 104,
+        "y": 180.22889709472656,
+        "width": 114.3243408203125,
+        "height": 17.21387481689453
+      },
+      "screenFont": 15.104094827586206,
+      "backing": null,
+      "actualBacking": "rgb(244, 247, 245)",
+      "backingBasis": "Actual diagram viewport background; no preceding filled rect contains actual text bounds",
+      "required": 4.5,
+      "measuredContrast": 11.425387533428022,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "selector": "text[y=\"212\"]",
+      "text": "H.264 in MP4",
+      "markup": "<text x=\"104\" y=\"212\" fill=\"var(--muted)\" font-size=\"12\">H.264 in MP4</text>",
+      "style": {
+        "fill": "rgb(95, 113, 106)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "ui-monospace, SFMono-Regular, Menlo, monospace",
+        "font-size": "12px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "start",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 104,
+        "y": 200.81097412109375,
+        "width": 86.674560546875,
+        "height": 13.771100044250488
+      },
+      "screenFont": 13.942241379310344,
+      "backing": null,
+      "actualBacking": "rgb(244, 247, 245)",
+      "backingBasis": "Actual diagram viewport background; no preceding filled rect contains actual text bounds",
+      "required": 4.5,
+      "measuredContrast": 4.7992682946934115,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "selector": "text[y=\"240\"]",
+      "text": "Audio for the web",
+      "markup": "<text x=\"104\" y=\"240\" fill=\"var(--ink)\" font-size=\"13\" font-family=\"var(--font-sans)\" font-weight=\"700\">Audio for the web</text>",
+      "style": {
+        "fill": "rgb(22, 59, 49)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "Inter, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+        "font-size": "13px",
+        "font-weight": "700",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "start",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 104,
+        "y": 226.22889709472656,
+        "width": 115.70951843261719,
+        "height": 17.21387481689453
+      },
+      "screenFont": 15.104094827586206,
+      "backing": null,
+      "actualBacking": "rgb(244, 247, 245)",
+      "backingBasis": "Actual diagram viewport background; no preceding filled rect contains actual text bounds",
+      "required": 4.5,
+      "measuredContrast": 11.425387533428022,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "selector": "text[y=\"258\"]",
+      "text": "MP3",
+      "markup": "<text x=\"104\" y=\"258\" fill=\"var(--muted)\" font-size=\"12\">MP3</text>",
+      "style": {
+        "fill": "rgb(95, 113, 106)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "ui-monospace, SFMono-Regular, Menlo, monospace",
+        "font-size": "12px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "start",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 104,
+        "y": 246.81097412109375,
+        "width": 21.678730010986328,
+        "height": 13.771100044250488
+      },
+      "screenFont": 13.942241379310344,
+      "backing": null,
+      "actualBacking": "rgb(244, 247, 245)",
+      "backingBasis": "Actual diagram viewport background; no preceding filled rect contains actual text bounds",
+      "required": 4.5,
+      "measuredContrast": 4.7992682946934115,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "selector": "text[y=\"24\"][x=\"12\"][fill=\"var(--ink)\"]",
+      "text": "Your file",
+      "markup": "<text x=\"12\" y=\"24\" fill=\"var(--ink)\" font-size=\"13\" font-family=\"var(--font-sans)\" font-weight=\"700\">Your file</text>",
+      "style": {
+        "fill": "rgb(22, 59, 49)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "Inter, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+        "font-size": "13px",
+        "font-weight": "700",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "start",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 12,
+        "y": 10.252488136291504,
+        "width": 54.01052474975586,
+        "height": 17.184389114379883
+      },
+      "screenFont": 15.130010775862068,
+      "backing": null,
+      "actualBacking": "rgb(244, 247, 245)",
+      "backingBasis": "Actual diagram viewport background; no preceding filled rect contains actual text bounds",
+      "required": 4.5,
+      "measuredContrast": 11.425387533428022,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "selector": "text[x=\"90\"][y=\"98\"][fill=\"var(--ink)\"]",
+      "text": "Browser tab",
+      "markup": "<text x=\"90\" y=\"98\" text-anchor=\"middle\" fill=\"var(--ink)\" font-weight=\"700\" font-size=\"13\" font-family=\"var(--font-sans)\">Browser tab</text>",
+      "style": {
+        "fill": "rgb(22, 59, 49)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "Inter, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+        "font-size": "13px",
+        "font-weight": "700",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "middle",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 50.79140090942383,
+        "y": 84.25249481201172,
+        "width": 78.41720581054688,
+        "height": 17.184389114379883
+      },
+      "screenFont": 15.130010775862068,
+      "backing": {
+        "markup": "<rect x=\"40\" y=\"70\" width=\"100\" height=\"64\" rx=\"6\" fill=\"#eef6d8\" stroke=\"var(--line)\"></rect>",
+        "box": {
+          "x": 40,
+          "y": 70,
+          "width": 100,
+          "height": 64
+        },
+        "fill": "rgb(238, 246, 216)",
+        "opacity": "1",
+        "fillOpacity": "1"
+      },
+      "actualBacking": "rgb(238, 246, 216)",
+      "backingBasis": "Last preceding painted rect containing entire actual current text bounds",
+      "required": 4.5,
+      "measuredContrast": 11.037998556954731,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "selector": "text[x=\"90\"][y=\"116\"][fill=\"var(--muted)\"]",
+      "text": "memory",
+      "markup": "<text x=\"90\" y=\"116\" text-anchor=\"middle\" fill=\"var(--muted)\" font-size=\"11\">memory</text>",
+      "style": {
+        "fill": "rgb(95, 113, 106)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "ui-monospace, SFMono-Regular, Menlo, monospace",
+        "font-size": "11px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "middle",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 70.13726806640625,
+        "y": 105.68936920166016,
+        "width": 39.97250747680664,
+        "height": 12.88829231262207
+      },
+      "screenFont": 12.802316810344827,
+      "backing": {
+        "markup": "<rect x=\"40\" y=\"70\" width=\"100\" height=\"64\" rx=\"6\" fill=\"#eef6d8\" stroke=\"var(--line)\"></rect>",
+        "box": {
+          "x": 40,
+          "y": 70,
+          "width": 100,
+          "height": 64
+        },
+        "fill": "rgb(238, 246, 216)",
+        "opacity": "1",
+        "fillOpacity": "1"
+      },
+      "actualBacking": "rgb(238, 246, 216)",
+      "backingBasis": "Last preceding painted rect containing entire actual current text bounds",
+      "required": 4.5,
+      "measuredContrast": 4.636544393463588,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "selector": "text[x=\"234\"][y=\"98\"][fill=\"var(--ink)\"]",
+      "text": "Download",
+      "markup": "<text x=\"234\" y=\"98\" text-anchor=\"middle\" fill=\"var(--ink)\" font-weight=\"700\" font-size=\"13\" font-family=\"var(--font-sans)\">Download</text>",
+      "style": {
+        "fill": "rgb(22, 59, 49)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "Inter, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+        "font-size": "13px",
+        "font-weight": "700",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "middle",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 201.42349243164062,
+        "y": 84.25249481201172,
+        "width": 65.15299987792969,
+        "height": 17.184389114379883
+      },
+      "screenFont": 15.130010775862068,
+      "backing": {
+        "markup": "<rect x=\"184\" y=\"70\" width=\"100\" height=\"64\" rx=\"6\" fill=\"#eef6d8\" stroke=\"var(--line)\"></rect>",
+        "box": {
+          "x": 184,
+          "y": 70,
+          "width": 100,
+          "height": 64
+        },
+        "fill": "rgb(238, 246, 216)",
+        "opacity": "1",
+        "fillOpacity": "1"
+      },
+      "actualBacking": "rgb(238, 246, 216)",
+      "backingBasis": "Last preceding painted rect containing entire actual current text bounds",
+      "required": 4.5,
+      "measuredContrast": 11.037998556954731,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "selector": "text[x=\"234\"][y=\"116\"][fill=\"var(--muted)\"]",
+      "text": "a real file",
+      "markup": "<text x=\"234\" y=\"116\" text-anchor=\"middle\" fill=\"var(--muted)\" font-size=\"11\">a real file</text>",
+      "style": {
+        "fill": "rgb(95, 113, 106)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "ui-monospace, SFMono-Regular, Menlo, monospace",
+        "font-size": "11px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "middle",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 197.59056091308594,
+        "y": 105.68936920166016,
+        "width": 72.81885528564453,
+        "height": 12.88829231262207
+      },
+      "screenFont": 12.802316810344827,
+      "backing": {
+        "markup": "<rect x=\"184\" y=\"70\" width=\"100\" height=\"64\" rx=\"6\" fill=\"#eef6d8\" stroke=\"var(--line)\"></rect>",
+        "box": {
+          "x": 184,
+          "y": 70,
+          "width": 100,
+          "height": 64
+        },
+        "fill": "rgb(238, 246, 216)",
+        "opacity": "1",
+        "fillOpacity": "1"
+      },
+      "actualBacking": "rgb(238, 246, 216)",
+      "backingBasis": "Last preceding painted rect containing entire actual current text bounds",
+      "required": 4.5,
+      "measuredContrast": 4.636544393463588,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "selector": "text[y=\"80\"]",
+      "text": "one path",
+      "markup": "<text x=\"162\" y=\"80\" text-anchor=\"middle\" fill=\"var(--ok)\" font-size=\"12\" font-family=\"var(--font-sans)\" font-weight=\"700\">one path</text>",
+      "style": {
+        "fill": "rgb(77, 122, 18)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "Inter, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+        "font-size": "12px",
+        "font-weight": "700",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "middle",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 135.2903594970703,
+        "y": 67.11170959472656,
+        "width": 53.419288635253906,
+        "height": 16.325170516967773
+      },
+      "screenFont": 13.966163793103448,
+      "backing": {
+        "markup": "<rect x=\"12\" y=\"34\" width=\"300\" height=\"120\" rx=\"8\" fill=\"#eef6d8\" stroke=\"var(--lime-deep)\"></rect>",
+        "box": {
+          "x": 12,
+          "y": 34,
+          "width": 300,
+          "height": 120
+        },
+        "fill": "rgb(238, 246, 216)",
+        "opacity": "1",
+        "fillOpacity": "1"
+      },
+      "actualBacking": "rgb(238, 246, 216)",
+      "backingBasis": "Last preceding painted rect containing entire actual current text bounds",
+      "required": 4.5,
+      "measuredContrast": 4.5785863222047025,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "selector": "text[x=\"162\"][y=\"172\"][fill=\"var(--muted)\"]",
+      "text": "never crosses the network",
+      "markup": "<text x=\"162\" y=\"172\" text-anchor=\"middle\" fill=\"var(--muted)\" font-size=\"11\">never crosses the network</text>",
+      "style": {
+        "fill": "rgb(95, 113, 106)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "ui-monospace, SFMono-Regular, Menlo, monospace",
+        "font-size": "11px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "middle",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 79.24642944335938,
+        "y": 161.68936157226562,
+        "width": 165.7477569580078,
+        "height": 12.88829231262207
+      },
+      "screenFont": 12.802316810344827,
+      "backing": null,
+      "actualBacking": "rgb(244, 247, 245)",
+      "backingBasis": "Actual diagram viewport background; no preceding filled rect contains actual text bounds",
+      "required": 4.5,
+      "measuredContrast": 4.7992682946934115,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "selector": "text[x=\"400\"][y=\"24\"][fill=\"var(--ink)\"]",
+      "text": "Page and engines",
+      "markup": "<text x=\"400\" y=\"24\" fill=\"var(--ink)\" font-size=\"13\" font-family=\"var(--font-sans)\" font-weight=\"700\">Page and engines</text>",
+      "style": {
+        "fill": "rgb(22, 59, 49)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "Inter, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+        "font-size": "13px",
+        "font-weight": "700",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "start",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 400,
+        "y": 10.252488136291504,
+        "width": 114.38362121582031,
+        "height": 17.184389114379883
+      },
+      "screenFont": 15.130010775862068,
+      "backing": null,
+      "actualBacking": "rgb(244, 247, 245)",
+      "backingBasis": "Actual diagram viewport background; no preceding filled rect contains actual text bounds",
+      "required": 4.5,
+      "measuredContrast": 11.425387533428022,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "selector": "text[x=\"482\"][y=\"98\"][fill=\"var(--ink)\"]",
+      "text": "FFmpeg core",
+      "markup": "<text x=\"482\" y=\"98\" text-anchor=\"middle\" fill=\"var(--ink)\" font-weight=\"700\" font-size=\"13\" font-family=\"var(--font-sans)\">FFmpeg core</text>",
+      "style": {
+        "fill": "rgb(22, 59, 49)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "Inter, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+        "font-size": "13px",
+        "font-weight": "700",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "middle",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 440.7037658691406,
+        "y": 84.25249481201172,
+        "width": 82.64025115966797,
+        "height": 17.184389114379883
+      },
+      "screenFont": 15.130010775862068,
+      "backing": {
+        "markup": "<rect x=\"420\" y=\"70\" width=\"124\" height=\"64\" rx=\"6\" fill=\"var(--surface)\" stroke=\"var(--line)\"></rect>",
+        "box": {
+          "x": 420,
+          "y": 70,
+          "width": 124,
+          "height": 64
+        },
+        "fill": "rgb(255, 255, 255)",
+        "opacity": "1",
+        "fillOpacity": "1"
+      },
+      "actualBacking": "rgb(255, 255, 255)",
+      "backingBasis": "Last preceding painted rect containing entire actual current text bounds",
+      "required": 4.5,
+      "measuredContrast": 12.323577080276936,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "selector": "text[x=\"482\"][y=\"116\"][fill=\"var(--muted)\"]",
+      "text": "on first use",
+      "markup": "<text x=\"482\" y=\"116\" text-anchor=\"middle\" fill=\"var(--muted)\" font-size=\"11\">on first use</text>",
+      "style": {
+        "fill": "rgb(95, 113, 106)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "ui-monospace, SFMono-Regular, Menlo, monospace",
+        "font-size": "11px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "middle",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 442.28125,
+        "y": 105.68936920166016,
+        "width": 79.43753051757812,
+        "height": 12.88829231262207
+      },
+      "screenFont": 12.802316810344827,
+      "backing": {
+        "markup": "<rect x=\"420\" y=\"70\" width=\"124\" height=\"64\" rx=\"6\" fill=\"var(--surface)\" stroke=\"var(--line)\"></rect>",
+        "box": {
+          "x": 420,
+          "y": 70,
+          "width": 124,
+          "height": 64
+        },
+        "fill": "rgb(255, 255, 255)",
+        "opacity": "1",
+        "fillOpacity": "1"
+      },
+      "actualBacking": "rgb(255, 255, 255)",
+      "backingBasis": "Last preceding painted rect containing entire actual current text bounds",
+      "required": 4.5,
+      "measuredContrast": 5.176555507245727,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "selector": "text[x=\"628\"][y=\"98\"][fill=\"var(--ink)\"]",
+      "text": "Page assets",
+      "markup": "<text x=\"628\" y=\"98\" text-anchor=\"middle\" fill=\"var(--ink)\" font-weight=\"700\" font-size=\"13\" font-family=\"var(--font-sans)\">Page assets</text>",
+      "style": {
+        "fill": "rgb(22, 59, 49)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "Inter, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+        "font-size": "13px",
+        "font-weight": "700",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "middle",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 590.073486328125,
+        "y": 84.25249481201172,
+        "width": 75.85297393798828,
+        "height": 17.184389114379883
+      },
+      "screenFont": 15.130010775862068,
+      "backing": {
+        "markup": "<rect x=\"568\" y=\"70\" width=\"120\" height=\"64\" rx=\"6\" fill=\"var(--surface)\" stroke=\"var(--line)\"></rect>",
+        "box": {
+          "x": 568,
+          "y": 70,
+          "width": 120,
+          "height": 64
+        },
+        "fill": "rgb(255, 255, 255)",
+        "opacity": "1",
+        "fillOpacity": "1"
+      },
+      "actualBacking": "rgb(255, 255, 255)",
+      "backingBasis": "Last preceding painted rect containing entire actual current text bounds",
+      "required": 4.5,
+      "measuredContrast": 12.323577080276936,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "selector": "text[x=\"628\"][y=\"116\"][fill=\"var(--muted)\"]",
+      "text": "Same origin",
+      "markup": "<text x=\"628\" y=\"116\" text-anchor=\"middle\" fill=\"var(--muted)\" font-size=\"11\">Same origin</text>",
+      "style": {
+        "fill": "rgb(95, 113, 106)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "ui-monospace, SFMono-Regular, Menlo, monospace",
+        "font-size": "11px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "middle",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 591.590576171875,
+        "y": 105.68936920166016,
+        "width": 72.81885528564453,
+        "height": 12.88829231262207
+      },
+      "screenFont": 12.802316810344827,
+      "backing": {
+        "markup": "<rect x=\"568\" y=\"70\" width=\"120\" height=\"64\" rx=\"6\" fill=\"var(--surface)\" stroke=\"var(--line)\"></rect>",
+        "box": {
+          "x": 568,
+          "y": 70,
+          "width": 120,
+          "height": 64
+        },
+        "fill": "rgb(255, 255, 255)",
+        "opacity": "1",
+        "fillOpacity": "1"
+      },
+      "actualBacking": "rgb(255, 255, 255)",
+      "backingBasis": "Last preceding painted rect containing entire actual current text bounds",
+      "required": 4.5,
+      "measuredContrast": 5.176555507245727,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "selector": "text[x=\"564\"]",
+      "text": "fetched over the network, carrying no file",
+      "markup": "<text x=\"564\" y=\"172\" text-anchor=\"middle\" fill=\"var(--muted)\" font-size=\"11\">fetched over the network, carrying no file</text>",
+      "style": {
+        "fill": "rgb(95, 113, 106)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "ui-monospace, SFMono-Regular, Menlo, monospace",
+        "font-size": "11px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "middle",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 424.98095703125,
+        "y": 161.68936157226562,
+        "width": 278.0380554199219,
+        "height": 12.88829231262207
+      },
+      "screenFont": 12.802316810344827,
+      "backing": null,
+      "actualBacking": "rgb(244, 247, 245)",
+      "backingBasis": "Actual diagram viewport background; no preceding filled rect contains actual text bounds",
+      "required": 4.5,
+      "measuredContrast": 4.7992682946934115,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "selector": "text[y=\"222\"]",
+      "text": "Page assets travel over the network.",
+      "markup": "<text x=\"360\" y=\"222\" text-anchor=\"middle\" fill=\"var(--lime)\" font-size=\"13\" font-family=\"var(--font-sans)\" font-weight=\"700\">Page assets travel over the network.</text>",
+      "style": {
+        "fill": "rgb(201, 237, 75)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "Inter, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+        "font-size": "13px",
+        "font-weight": "700",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "middle",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 241.5821075439453,
+        "y": 208.2524871826172,
+        "width": 236.83580017089844,
+        "height": 17.184389114379883
+      },
+      "screenFont": 15.130010775862068,
+      "backing": {
+        "markup": "<rect x=\"12\" y=\"196\" width=\"696\" height=\"72\" rx=\"8\" fill=\"var(--ink)\"></rect>",
+        "box": {
+          "x": 12,
+          "y": 196,
+          "width": 696,
+          "height": 72
+        },
+        "fill": "rgb(22, 59, 49)",
+        "opacity": "1",
+        "fillOpacity": "1"
+      },
+      "actualBacking": "rgb(22, 59, 49)",
+      "backingBasis": "Last preceding painted rect containing entire actual current text bounds",
+      "required": 4.5,
+      "measuredContrast": 9.212622738761395,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "selector": "text[y=\"248\"]",
+      "text": "Your selected files are processed on your device.",
+      "markup": "<text x=\"360\" y=\"248\" text-anchor=\"middle\" fill=\"#fff\" font-size=\"13\" font-family=\"var(--font-sans)\" font-weight=\"700\">Your selected files are processed on your device.</text>",
+      "style": {
+        "fill": "rgb(255, 255, 255)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "Inter, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+        "font-size": "13px",
+        "font-weight": "700",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "middle",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 203.74960327148438,
+        "y": 234.25247192382812,
+        "width": 312.5008239746094,
+        "height": 17.184389114379883
+      },
+      "screenFont": 15.130010775862068,
+      "backing": {
+        "markup": "<rect x=\"12\" y=\"196\" width=\"696\" height=\"72\" rx=\"8\" fill=\"var(--ink)\"></rect>",
+        "box": {
+          "x": 12,
+          "y": 196,
+          "width": 696,
+          "height": 72
+        },
+        "fill": "rgb(22, 59, 49)",
+        "opacity": "1",
+        "fillOpacity": "1"
+      },
+      "actualBacking": "rgb(22, 59, 49)",
+      "backingBasis": "Last preceding painted rect containing entire actual current text bounds",
+      "required": 4.5,
+      "measuredContrast": 12.323577080276936,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "selector": "text[y=\"32\"]",
+      "text": "Genuinely smaller",
+      "markup": "<text x=\"12\" y=\"32\" fill=\"var(--ink)\" font-size=\"13\" font-family=\"var(--font-sans)\" font-weight=\"700\">Genuinely smaller</text>",
+      "style": {
+        "fill": "rgb(22, 59, 49)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "Inter, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+        "font-size": "13px",
+        "font-weight": "700",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "start",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 12,
+        "y": 18.252626419067383,
+        "width": 117.7765884399414,
+        "height": 17.18421745300293
+      },
+      "screenFont": 15.13016304347826,
+      "backing": null,
+      "actualBacking": "rgb(244, 247, 245)",
+      "backingBasis": "Actual diagram viewport background; no preceding filled rect contains actual text bounds",
+      "required": 4.5,
+      "measuredContrast": 11.425387533428022,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "selector": "text[y=\"53\"]",
+      "text": "original",
+      "markup": "<text x=\"16\" y=\"53\" fill=\"var(--muted)\" font-size=\"11\">original</text>",
+      "style": {
+        "fill": "rgb(95, 113, 106)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "ui-monospace, SFMono-Regular, Menlo, monospace",
+        "font-size": "11px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "start",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 16,
+        "y": 42.68946838378906,
+        "width": 52.9622917175293,
+        "height": 12.888162612915039
+      },
+      "screenFont": 12.802445652173914,
+      "backing": null,
+      "actualBacking": "rgb(244, 247, 245)",
+      "backingBasis": "Actual diagram viewport background; no preceding filled rect contains actual text bounds",
+      "required": 4.5,
+      "measuredContrast": 4.7992682946934115,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "selector": "text[y=\"75\"]",
+      "text": "output",
+      "markup": "<text x=\"16\" y=\"75\" fill=\"var(--ink)\" font-size=\"11\">output</text>",
+      "style": {
+        "fill": "rgb(22, 59, 49)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "ui-monospace, SFMono-Regular, Menlo, monospace",
+        "font-size": "11px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "start",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 16,
+        "y": 64.68946838378906,
+        "width": 39.725074768066406,
+        "height": 12.888162612915039
+      },
+      "screenFont": 12.802445652173914,
+      "backing": {
+        "markup": "<rect x=\"12\" y=\"62\" width=\"160\" height=\"18\" rx=\"3\" fill=\"#eef6d8\" stroke=\"var(--lime-deep)\"></rect>",
+        "box": {
+          "x": 12,
+          "y": 62,
+          "width": 160,
+          "height": 18
+        },
+        "fill": "rgb(238, 246, 216)",
+        "opacity": "1",
+        "fillOpacity": "1"
+      },
+      "actualBacking": "rgb(238, 246, 216)",
+      "backingBasis": "Last preceding painted rect containing entire actual current text bounds",
+      "required": 4.5,
+      "measuredContrast": 11.037998556954731,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "selector": "text[y=\"62\"][x=\"430\"][font-size=\"12\"]",
+      "text": "60% smaller",
+      "markup": "<text x=\"430\" y=\"62\" fill=\"var(--ink)\" font-size=\"12\" font-family=\"var(--font-sans)\" font-weight=\"700\">60% smaller</text>",
+      "style": {
+        "fill": "rgb(22, 59, 49)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "Inter, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+        "font-size": "12px",
+        "font-weight": "700",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "start",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 430,
+        "y": 49.11183166503906,
+        "width": 73.01959991455078,
+        "height": 16.32500648498535
+      },
+      "screenFont": 13.966304347826087,
+      "backing": null,
+      "actualBacking": "rgb(244, 247, 245)",
+      "backingBasis": "Actual diagram viewport background; no preceding filled rect contains actual text bounds",
+      "required": 4.5,
+      "measuredContrast": 11.425387533428022,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "selector": "text[y=\"92\"]",
+      "text": "The same size",
+      "markup": "<text x=\"12\" y=\"92\" fill=\"var(--ink)\" font-size=\"13\" font-family=\"var(--font-sans)\" font-weight=\"700\">The same size</text>",
+      "style": {
+        "fill": "rgb(22, 59, 49)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "Inter, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+        "font-size": "13px",
+        "font-weight": "700",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "start",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 12,
+        "y": 78.25262451171875,
+        "width": 89.74810028076172,
+        "height": 17.18421745300293
+      },
+      "screenFont": 15.13016304347826,
+      "backing": null,
+      "actualBacking": "rgb(244, 247, 245)",
+      "backingBasis": "Actual diagram viewport background; no preceding filled rect contains actual text bounds",
+      "required": 4.5,
+      "measuredContrast": 11.425387533428022,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "selector": "text[y=\"113\"]",
+      "text": "original",
+      "markup": "<text x=\"16\" y=\"113\" fill=\"var(--muted)\" font-size=\"11\">original</text>",
+      "style": {
+        "fill": "rgb(95, 113, 106)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "ui-monospace, SFMono-Regular, Menlo, monospace",
+        "font-size": "11px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "start",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 16,
+        "y": 102.68946075439453,
+        "width": 52.9622917175293,
+        "height": 12.888162612915039
+      },
+      "screenFont": 12.802445652173914,
+      "backing": null,
+      "actualBacking": "rgb(244, 247, 245)",
+      "backingBasis": "Actual diagram viewport background; no preceding filled rect contains actual text bounds",
+      "required": 4.5,
+      "measuredContrast": 4.7992682946934115,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "selector": "text[y=\"135\"]",
+      "text": "output",
+      "markup": "<text x=\"16\" y=\"135\" fill=\"var(--ink)\" font-size=\"11\">output</text>",
+      "style": {
+        "fill": "rgb(22, 59, 49)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "ui-monospace, SFMono-Regular, Menlo, monospace",
+        "font-size": "11px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "start",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 16,
+        "y": 124.68946075439453,
+        "width": 39.725074768066406,
+        "height": 12.888162612915039
+      },
+      "screenFont": 12.802445652173914,
+      "backing": {
+        "markup": "<rect x=\"12\" y=\"122\" width=\"293.3333333333333\" height=\"18\" rx=\"3\" fill=\"var(--surface)\" stroke=\"var(--line)\"></rect>",
+        "box": {
+          "x": 12,
+          "y": 122,
+          "width": 293.3333435058594,
+          "height": 18
+        },
+        "fill": "rgb(255, 255, 255)",
+        "opacity": "1",
+        "fillOpacity": "1"
+      },
+      "actualBacking": "rgb(255, 255, 255)",
+      "backingBasis": "Last preceding painted rect containing entire actual current text bounds",
+      "required": 4.5,
+      "measuredContrast": 12.323577080276936,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "selector": "text[y=\"122\"][x=\"430\"][font-size=\"12\"]",
+      "text": "no size change",
+      "markup": "<text x=\"430\" y=\"122\" fill=\"var(--ink)\" font-size=\"12\" font-family=\"var(--font-sans)\" font-weight=\"700\">no size change</text>",
+      "style": {
+        "fill": "rgb(22, 59, 49)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "Inter, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+        "font-size": "12px",
+        "font-weight": "700",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "start",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 430,
+        "y": 109.11183166503906,
+        "width": 87.92143249511719,
+        "height": 16.32500648498535
+      },
+      "screenFont": 13.966304347826087,
+      "backing": null,
+      "actualBacking": "rgb(244, 247, 245)",
+      "backingBasis": "Actual diagram viewport background; no preceding filled rect contains actual text bounds",
+      "required": 4.5,
+      "measuredContrast": 11.425387533428022,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "selector": "text[y=\"152\"]",
+      "text": "Larger",
+      "markup": "<text x=\"12\" y=\"152\" fill=\"var(--ink)\" font-size=\"13\" font-family=\"var(--font-sans)\" font-weight=\"700\">Larger</text>",
+      "style": {
+        "fill": "rgb(22, 59, 49)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "Inter, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+        "font-size": "13px",
+        "font-weight": "700",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "start",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 12,
+        "y": 138.25262451171875,
+        "width": 42.88292694091797,
+        "height": 17.18421745300293
+      },
+      "screenFont": 15.13016304347826,
+      "backing": null,
+      "actualBacking": "rgb(244, 247, 245)",
+      "backingBasis": "Actual diagram viewport background; no preceding filled rect contains actual text bounds",
+      "required": 4.5,
+      "measuredContrast": 11.425387533428022,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "selector": "text[y=\"173\"]",
+      "text": "original",
+      "markup": "<text x=\"16\" y=\"173\" fill=\"var(--muted)\" font-size=\"11\">original</text>",
+      "style": {
+        "fill": "rgb(95, 113, 106)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "ui-monospace, SFMono-Regular, Menlo, monospace",
+        "font-size": "11px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "start",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 16,
+        "y": 162.68946838378906,
+        "width": 52.9622917175293,
+        "height": 12.888162612915039
+      },
+      "screenFont": 12.802445652173914,
+      "backing": null,
+      "actualBacking": "rgb(244, 247, 245)",
+      "backingBasis": "Actual diagram viewport background; no preceding filled rect contains actual text bounds",
+      "required": 4.5,
+      "measuredContrast": 4.7992682946934115,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "selector": "text[y=\"195\"]",
+      "text": "output",
+      "markup": "<text x=\"16\" y=\"195\" fill=\"var(--ink)\" font-size=\"11\">output</text>",
+      "style": {
+        "fill": "rgb(22, 59, 49)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "ui-monospace, SFMono-Regular, Menlo, monospace",
+        "font-size": "11px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "start",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 16,
+        "y": 184.68946838378906,
+        "width": 39.725074768066406,
+        "height": 12.888162612915039
+      },
+      "screenFont": 12.802445652173914,
+      "backing": {
+        "markup": "<rect x=\"12\" y=\"182\" width=\"253.33333333333331\" height=\"18\" rx=\"3\" fill=\"#fbeae7\" stroke=\"var(--danger)\"></rect>",
+        "box": {
+          "x": 12,
+          "y": 182,
+          "width": 253.3333282470703,
+          "height": 18
+        },
+        "fill": "rgb(251, 234, 231)",
+        "opacity": "1",
+        "fillOpacity": "1"
+      },
+      "actualBacking": "rgb(251, 234, 231)",
+      "backingBasis": "Last preceding painted rect containing entire actual current text bounds",
+      "required": 4.5,
+      "measuredContrast": 10.57766522997366,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "selector": "text[y=\"182\"][x=\"430\"][font-size=\"12\"]",
+      "text": "6% larger (rounded)",
+      "markup": "<text x=\"430\" y=\"182\" fill=\"var(--ink)\" font-size=\"12\" font-family=\"var(--font-sans)\" font-weight=\"700\">6% larger (rounded)</text>",
+      "style": {
+        "fill": "rgb(22, 59, 49)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "Inter, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+        "font-size": "12px",
+        "font-weight": "700",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "start",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 430,
+        "y": 169.11183166503906,
+        "width": 119.23202514648438,
+        "height": 16.32500648498535
+      },
+      "screenFont": 13.966304347826087,
+      "backing": null,
+      "actualBacking": "rgb(244, 247, 245)",
+      "backingBasis": "Actual diagram viewport background; no preceding filled rect contains actual text bounds",
+      "required": 4.5,
+      "measuredContrast": 11.425387533428022,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "selector": "text[y=\"218\"]",
+      "text": "Only the first row is a saving. The other two are reported, never dressed up.",
+      "markup": "<text x=\"12\" y=\"218\" fill=\"var(--muted)\" font-size=\"11\">Only the first row is a saving. The other two are reported, never dressed up.</text>",
+      "style": {
+        "fill": "rgb(95, 113, 106)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "ui-monospace, SFMono-Regular, Menlo, monospace",
+        "font-size": "11px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "start",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 12,
+        "y": 207.68946838378906,
+        "width": 509.7268371582031,
+        "height": 12.888162612915039
+      },
+      "screenFont": 12.802445652173914,
+      "backing": null,
+      "actualBacking": "rgb(244, 247, 245)",
+      "backingBasis": "Actual diagram viewport background; no preceding filled rect contains actual text bounds",
+      "required": 4.5,
+      "measuredContrast": 4.7992682946934115,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "selector": "text[x=\"73\"][y=\"95\"][font-weight=\"700\"]",
+      "text": "Select file",
+      "markup": "<text x=\"73\" y=\"95\" text-anchor=\"middle\" fill=\"var(--ink)\" font-weight=\"700\" font-size=\"13\" font-family=\"var(--font-sans)\">Select file</text>",
+      "style": {
+        "fill": "rgb(22, 59, 49)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "Inter, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+        "font-size": "13px",
+        "font-weight": "700",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "middle",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 41.6181526184082,
+        "y": 81.25239562988281,
+        "width": 62.81688690185547,
+        "height": 17.18450164794922
+      },
+      "screenFont": 15.129910714285714,
+      "backing": {
+        "markup": "<rect x=\"12\" y=\"60\" width=\"122\" height=\"78\" rx=\"6\" fill=\"var(--surface)\" stroke=\"var(--line)\"></rect>",
+        "box": {
+          "x": 12,
+          "y": 60,
+          "width": 122,
+          "height": 78
+        },
+        "fill": "rgb(255, 255, 255)",
+        "opacity": "1",
+        "fillOpacity": "1"
+      },
+      "actualBacking": "rgb(255, 255, 255)",
+      "backingBasis": "Last preceding painted rect containing entire actual current text bounds",
+      "required": 4.5,
+      "measuredContrast": 12.323577080276936,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "selector": "text[x=\"73\"][y=\"113\"][fill=\"var(--muted)\"]",
+      "text": "in this tab",
+      "markup": "<text x=\"73\" y=\"113\" text-anchor=\"middle\" fill=\"var(--muted)\" font-size=\"11\">in this tab</text>",
+      "style": {
+        "fill": "rgb(95, 113, 106)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "ui-monospace, SFMono-Regular, Menlo, monospace",
+        "font-size": "11px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "middle",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 36.5903434753418,
+        "y": 102.68929290771484,
+        "width": 72.81932830810547,
+        "height": 12.888376235961914
+      },
+      "screenFont": 12.802232142857141,
+      "backing": {
+        "markup": "<rect x=\"12\" y=\"60\" width=\"122\" height=\"78\" rx=\"6\" fill=\"var(--surface)\" stroke=\"var(--line)\"></rect>",
+        "box": {
+          "x": 12,
+          "y": 60,
+          "width": 122,
+          "height": 78
+        },
+        "fill": "rgb(255, 255, 255)",
+        "opacity": "1",
+        "fillOpacity": "1"
+      },
+      "actualBacking": "rgb(255, 255, 255)",
+      "backingBasis": "Last preceding painted rect containing entire actual current text bounds",
+      "required": 4.5,
+      "measuredContrast": 5.176555507245727,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "selector": "text[x=\"215\"][y=\"95\"][font-weight=\"700\"]",
+      "text": "Validate",
+      "markup": "<text x=\"215\" y=\"95\" text-anchor=\"middle\" fill=\"var(--ink)\" font-weight=\"700\" font-size=\"13\" font-family=\"var(--font-sans)\">Validate</text>",
+      "style": {
+        "fill": "rgb(22, 59, 49)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "Inter, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+        "font-size": "13px",
+        "font-weight": "700",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "middle",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 188.34388732910156,
+        "y": 81.25239562988281,
+        "width": 53.36561965942383,
+        "height": 17.18450164794922
+      },
+      "screenFont": 15.129910714285714,
+      "backing": {
+        "markup": "<rect x=\"154\" y=\"60\" width=\"122\" height=\"78\" rx=\"6\" fill=\"var(--surface)\" stroke=\"var(--line)\"></rect>",
+        "box": {
+          "x": 154,
+          "y": 60,
+          "width": 122,
+          "height": 78
+        },
+        "fill": "rgb(255, 255, 255)",
+        "opacity": "1",
+        "fillOpacity": "1"
+      },
+      "actualBacking": "rgb(255, 255, 255)",
+      "backingBasis": "Last preceding painted rect containing entire actual current text bounds",
+      "required": 4.5,
+      "measuredContrast": 12.323577080276936,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "selector": "text[x=\"215\"][y=\"113\"][fill=\"var(--muted)\"]",
+      "text": "check bytes",
+      "markup": "<text x=\"215\" y=\"113\" text-anchor=\"middle\" fill=\"var(--muted)\" font-size=\"11\">check bytes</text>",
+      "style": {
+        "fill": "rgb(95, 113, 106)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "ui-monospace, SFMono-Regular, Menlo, monospace",
+        "font-size": "11px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "middle",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 178.59033203125,
+        "y": 102.68929290771484,
+        "width": 72.81932830810547,
+        "height": 12.888376235961914
+      },
+      "screenFont": 12.802232142857141,
+      "backing": {
+        "markup": "<rect x=\"154\" y=\"60\" width=\"122\" height=\"78\" rx=\"6\" fill=\"var(--surface)\" stroke=\"var(--line)\"></rect>",
+        "box": {
+          "x": 154,
+          "y": 60,
+          "width": 122,
+          "height": 78
+        },
+        "fill": "rgb(255, 255, 255)",
+        "opacity": "1",
+        "fillOpacity": "1"
+      },
+      "actualBacking": "rgb(255, 255, 255)",
+      "backingBasis": "Last preceding painted rect containing entire actual current text bounds",
+      "required": 4.5,
+      "measuredContrast": 5.176555507245727,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "selector": "text[fill=\"#fff\"]",
+      "text": "Encode",
+      "markup": "<text x=\"357\" y=\"95\" text-anchor=\"middle\" fill=\"#fff\" font-weight=\"700\" font-size=\"13\" font-family=\"var(--font-sans)\">Encode</text>",
+      "style": {
+        "fill": "rgb(255, 255, 255)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "Inter, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+        "font-size": "13px",
+        "font-weight": "700",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "middle",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 333.794189453125,
+        "y": 81.25239562988281,
+        "width": 46.459197998046875,
+        "height": 17.18450164794922
+      },
+      "screenFont": 15.129910714285714,
+      "backing": {
+        "markup": "<rect x=\"296\" y=\"60\" width=\"122\" height=\"78\" rx=\"6\" fill=\"var(--ink)\" stroke=\"var(--ink)\"></rect>",
+        "box": {
+          "x": 296,
+          "y": 60,
+          "width": 122,
+          "height": 78
+        },
+        "fill": "rgb(22, 59, 49)",
+        "opacity": "1",
+        "fillOpacity": "1"
+      },
+      "actualBacking": "rgb(22, 59, 49)",
+      "backingBasis": "Last preceding painted rect containing entire actual current text bounds",
+      "required": 4.5,
+      "measuredContrast": 12.323577080276936,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "selector": "text[fill=\"var(--lime)\"]",
+      "text": "local engine",
+      "markup": "<text x=\"357\" y=\"113\" text-anchor=\"middle\" fill=\"var(--lime)\" font-size=\"11\">local engine</text>",
+      "style": {
+        "fill": "rgb(201, 237, 75)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "ui-monospace, SFMono-Regular, Menlo, monospace",
+        "font-size": "11px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "middle",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 317.28094482421875,
+        "y": 102.68929290771484,
+        "width": 79.43804168701172,
+        "height": 12.888376235961914
+      },
+      "screenFont": 12.802232142857141,
+      "backing": {
+        "markup": "<rect x=\"296\" y=\"60\" width=\"122\" height=\"78\" rx=\"6\" fill=\"var(--ink)\" stroke=\"var(--ink)\"></rect>",
+        "box": {
+          "x": 296,
+          "y": 60,
+          "width": 122,
+          "height": 78
+        },
+        "fill": "rgb(22, 59, 49)",
+        "opacity": "1",
+        "fillOpacity": "1"
+      },
+      "actualBacking": "rgb(22, 59, 49)",
+      "backingBasis": "Last preceding painted rect containing entire actual current text bounds",
+      "required": 4.5,
+      "measuredContrast": 9.212622738761395,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "selector": "text[x=\"499\"][y=\"95\"][font-weight=\"700\"]",
+      "text": "Measure",
+      "markup": "<text x=\"499\" y=\"95\" text-anchor=\"middle\" fill=\"var(--ink)\" font-weight=\"700\" font-size=\"13\" font-family=\"var(--font-sans)\">Measure</text>",
+      "style": {
+        "fill": "rgb(22, 59, 49)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "Inter, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+        "font-size": "13px",
+        "font-weight": "700",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "middle",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 470.9744873046875,
+        "y": 81.25239562988281,
+        "width": 56.1048698425293,
+        "height": 17.18450164794922
+      },
+      "screenFont": 15.129910714285714,
+      "backing": {
+        "markup": "<rect x=\"438\" y=\"60\" width=\"122\" height=\"78\" rx=\"6\" fill=\"var(--surface)\" stroke=\"var(--line)\"></rect>",
+        "box": {
+          "x": 438,
+          "y": 60,
+          "width": 122,
+          "height": 78
+        },
+        "fill": "rgb(255, 255, 255)",
+        "opacity": "1",
+        "fillOpacity": "1"
+      },
+      "actualBacking": "rgb(255, 255, 255)",
+      "backingBasis": "Last preceding painted rect containing entire actual current text bounds",
+      "required": 4.5,
+      "measuredContrast": 12.323577080276936,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "selector": "text[x=\"499\"][y=\"113\"][fill=\"var(--muted)\"]",
+      "text": "actual bytes",
+      "markup": "<text x=\"499\" y=\"113\" text-anchor=\"middle\" fill=\"var(--muted)\" font-size=\"11\">actual bytes</text>",
+      "style": {
+        "fill": "rgb(95, 113, 106)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "ui-monospace, SFMono-Regular, Menlo, monospace",
+        "font-size": "11px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "middle",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 459.2809753417969,
+        "y": 102.68929290771484,
+        "width": 79.43804168701172,
+        "height": 12.888376235961914
+      },
+      "screenFont": 12.802232142857141,
+      "backing": {
+        "markup": "<rect x=\"438\" y=\"60\" width=\"122\" height=\"78\" rx=\"6\" fill=\"var(--surface)\" stroke=\"var(--line)\"></rect>",
+        "box": {
+          "x": 438,
+          "y": 60,
+          "width": 122,
+          "height": 78
+        },
+        "fill": "rgb(255, 255, 255)",
+        "opacity": "1",
+        "fillOpacity": "1"
+      },
+      "actualBacking": "rgb(255, 255, 255)",
+      "backingBasis": "Last preceding painted rect containing entire actual current text bounds",
+      "required": 4.5,
+      "measuredContrast": 5.176555507245727,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "selector": "text[x=\"641\"][y=\"95\"][font-weight=\"700\"]",
+      "text": "Download",
+      "markup": "<text x=\"641\" y=\"95\" text-anchor=\"middle\" fill=\"var(--ink)\" font-weight=\"700\" font-size=\"13\" font-family=\"var(--font-sans)\">Download</text>",
+      "style": {
+        "fill": "rgb(22, 59, 49)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "Inter, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+        "font-size": "13px",
+        "font-weight": "700",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "middle",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 608.456787109375,
+        "y": 81.25239562988281,
+        "width": 65.0863037109375,
+        "height": 17.18450164794922
+      },
+      "screenFont": 15.129910714285714,
+      "backing": {
+        "markup": "<rect x=\"580\" y=\"60\" width=\"122\" height=\"78\" rx=\"6\" fill=\"var(--surface)\" stroke=\"var(--line)\"></rect>",
+        "box": {
+          "x": 580,
+          "y": 60,
+          "width": 122,
+          "height": 78
+        },
+        "fill": "rgb(255, 255, 255)",
+        "opacity": "1",
+        "fillOpacity": "1"
+      },
+      "actualBacking": "rgb(255, 255, 255)",
+      "backingBasis": "Last preceding painted rect containing entire actual current text bounds",
+      "required": 4.5,
+      "measuredContrast": 12.323577080276936,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "selector": "text[x=\"641\"][y=\"113\"][fill=\"var(--muted)\"]",
+      "text": "a real file",
+      "markup": "<text x=\"641\" y=\"113\" text-anchor=\"middle\" fill=\"var(--muted)\" font-size=\"11\">a real file</text>",
+      "style": {
+        "fill": "rgb(95, 113, 106)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "ui-monospace, SFMono-Regular, Menlo, monospace",
+        "font-size": "11px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "middle",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 604.5902709960938,
+        "y": 102.68929290771484,
+        "width": 72.81932830810547,
+        "height": 12.888376235961914
+      },
+      "screenFont": 12.802232142857141,
+      "backing": {
+        "markup": "<rect x=\"580\" y=\"60\" width=\"122\" height=\"78\" rx=\"6\" fill=\"var(--surface)\" stroke=\"var(--line)\"></rect>",
+        "box": {
+          "x": 580,
+          "y": 60,
+          "width": 122,
+          "height": 78
+        },
+        "fill": "rgb(255, 255, 255)",
+        "opacity": "1",
+        "fillOpacity": "1"
+      },
+      "actualBacking": "rgb(255, 255, 255)",
+      "backingBasis": "Last preceding painted rect containing entire actual current text bounds",
+      "required": 4.5,
+      "measuredContrast": 5.176555507245727,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "selector": "text[y=\"26\"]",
+      "text": "Everything below runs on your device",
+      "markup": "<text x=\"360\" y=\"26\" text-anchor=\"middle\" fill=\"var(--ink)\" font-size=\"13\" font-family=\"var(--font-sans)\" font-weight=\"700\">Everything below runs on your device</text>",
+      "style": {
+        "fill": "rgb(22, 59, 49)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "Inter, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+        "font-size": "13px",
+        "font-weight": "700",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "middle",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 238.37937927246094,
+        "y": 12.252397537231445,
+        "width": 243.29632568359375,
+        "height": 17.18450164794922
+      },
+      "screenFont": 15.129910714285714,
+      "backing": null,
+      "actualBacking": "rgb(244, 247, 245)",
+      "backingBasis": "Actual diagram viewport background; no preceding filled rect contains actual text bounds",
+      "required": 4.5,
+      "measuredContrast": 11.425387533428022,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "selector": "text[y=\"185\"]",
+      "text": "There is no upload step, and no endpoint to upload it to",
+      "markup": "<text x=\"360\" y=\"185\" text-anchor=\"middle\" fill=\"var(--ink)\" font-size=\"12\">There is no upload step, and no endpoint to upload it to</text>",
+      "style": {
+        "fill": "rgb(22, 59, 49)",
+        "fill-opacity": "1",
+        "stroke": "none",
+        "stroke-width": "1px",
+        "stroke-opacity": "1",
+        "opacity": "1",
+        "font-family": "ui-monospace, SFMono-Regular, Menlo, monospace",
+        "font-size": "12px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "word-spacing": "0px",
+        "text-anchor": "middle",
+        "dominant-baseline": "auto",
+        "visibility": "visible",
+        "display": "block",
+        "color": "rgb(22, 59, 49)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "mix-blend-mode": "normal",
+        "filter": "none",
+        "clip-path": "none",
+        "transform": "none"
+      },
+      "bbox": {
+        "x": 157.89414978027344,
+        "y": 173.83006286621094,
+        "width": 404.2117004394531,
+        "height": 13.747601509094238
+      },
+      "screenFont": 13.966071428571428,
+      "backing": {
+        "markup": "<rect x=\"12\" y=\"168\" width=\"690\" height=\"26\" rx=\"5\" fill=\"#eef6d8\" stroke=\"var(--lime-deep)\"></rect>",
+        "box": {
+          "x": 12,
+          "y": 168,
+          "width": 690,
+          "height": 26
+        },
+        "fill": "rgb(238, 246, 216)",
+        "opacity": "1",
+        "fillOpacity": "1"
+      },
+      "actualBacking": "rgb(238, 246, 216)",
+      "backingBasis": "Last preceding painted rect containing entire actual current text bounds",
+      "required": 4.5,
+      "measuredContrast": 11.037998556954731,
+      "pass": true,
+      "authoredMarkupAndComputedStyleIdentical": true
+    }
+  ],
+  "geometryDifferences": [
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "selector": "text[x=\"12\"]",
+      "baseline": {
+        "x": 12,
+        "y": 13.380328178405762,
+        "width": 370.36102294921875,
+        "height": 12.743605613708496
+      },
+      "current": {
+        "x": 12,
+        "y": 13.671675682067871,
+        "width": 370.4479675292969,
+        "height": 12.910406112670898
+      }
+    },
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "selector": "text[y=\"56\"]",
+      "baseline": {
+        "x": 104,
+        "y": 42.194427490234375,
+        "width": 117.36395263671875,
+        "height": 18.053442001342773
+      },
+      "current": {
+        "x": 104,
+        "y": 42.22889709472656,
+        "width": 117.4174575805664,
+        "height": 17.21387481689453
+      }
+    },
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "selector": "text[y=\"74\"]",
+      "baseline": {
+        "x": 104,
+        "y": 63.38032913208008,
+        "width": 209.17433166503906,
+        "height": 13.805572509765625
+      },
+      "current": {
+        "x": 104,
+        "y": 62.81098175048828,
+        "width": 209.44444274902344,
+        "height": 13.771100044250488
+      }
+    },
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "selector": "text[y=\"102\"]",
+      "baseline": {
+        "x": 104,
+        "y": 88.19442749023438,
+        "width": 146.8003692626953,
+        "height": 18.053442001342773
+      },
+      "current": {
+        "x": 104,
+        "y": 88.22889709472656,
+        "width": 146.77517700195312,
+        "height": 17.21387481689453
+      }
+    },
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "selector": "text[y=\"120\"]",
+      "baseline": {
+        "x": 104,
+        "y": 109.38033294677734,
+        "width": 100.9864273071289,
+        "height": 13.805572509765625
+      },
+      "current": {
+        "x": 104,
+        "y": 108.81097412109375,
+        "width": 101.11807250976562,
+        "height": 13.771100044250488
+      }
+    },
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "selector": "text[y=\"148\"]",
+      "baseline": {
+        "x": 104,
+        "y": 134.19442749023438,
+        "width": 146.31915283203125,
+        "height": 18.053442001342773
+      },
+      "current": {
+        "x": 104,
+        "y": 134.22891235351562,
+        "width": 146.3044891357422,
+        "height": 17.21387481689453
+      }
+    },
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "selector": "text[y=\"166\"]",
+      "baseline": {
+        "x": 104,
+        "y": 155.3803253173828,
+        "width": 158.9017333984375,
+        "height": 13.805572509765625
+      },
+      "current": {
+        "x": 104,
+        "y": 154.8109893798828,
+        "width": 158.8921356201172,
+        "height": 13.771100044250488
+      }
+    },
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "selector": "text[y=\"194\"]",
+      "baseline": {
+        "x": 104,
+        "y": 180.19442749023438,
+        "width": 114.60614013671875,
+        "height": 18.053442001342773
+      },
+      "current": {
+        "x": 104,
+        "y": 180.22889709472656,
+        "width": 114.3243408203125,
+        "height": 17.21387481689453
+      }
+    },
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "selector": "text[y=\"212\"]",
+      "baseline": {
+        "x": 104,
+        "y": 201.3803253173828,
+        "width": 86.77412414550781,
+        "height": 13.805572509765625
+      },
+      "current": {
+        "x": 104,
+        "y": 200.81097412109375,
+        "width": 86.674560546875,
+        "height": 13.771100044250488
+      }
+    },
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "selector": "text[y=\"240\"]",
+      "baseline": {
+        "x": 104,
+        "y": 226.19442749023438,
+        "width": 115.9833755493164,
+        "height": 18.053442001342773
+      },
+      "current": {
+        "x": 104,
+        "y": 226.22889709472656,
+        "width": 115.70951843261719,
+        "height": 17.21387481689453
+      }
+    },
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "selector": "text[y=\"258\"]",
+      "baseline": {
+        "x": 104,
+        "y": 247.3803253173828,
+        "width": 21.654172897338867,
+        "height": 13.805572509765625
+      },
+      "current": {
+        "x": 104,
+        "y": 246.81097412109375,
+        "width": 21.678730010986328,
+        "height": 13.771100044250488
+      }
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "selector": "text[y=\"24\"][x=\"12\"][fill=\"var(--ink)\"]",
+      "baseline": {
+        "x": 12,
+        "y": 10.194427490234375,
+        "width": 53.961204528808594,
+        "height": 18.053442001342773
+      },
+      "current": {
+        "x": 12,
+        "y": 10.252488136291504,
+        "width": 54.01052474975586,
+        "height": 17.184389114379883
+      }
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "selector": "text[x=\"90\"][y=\"98\"][fill=\"var(--ink)\"]",
+      "baseline": {
+        "x": 50.79847717285156,
+        "y": 84.19442749023438,
+        "width": 78.66844940185547,
+        "height": 18.053442001342773
+      },
+      "current": {
+        "x": 50.79140090942383,
+        "y": 84.25249481201172,
+        "width": 78.41720581054688,
+        "height": 17.184389114379883
+      }
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "selector": "text[x=\"90\"][y=\"116\"][fill=\"var(--muted)\"]",
+      "baseline": {
+        "x": 70.15448760986328,
+        "y": 105.38033294677734,
+        "width": 39.69102096557617,
+        "height": 12.743605613708496
+      },
+      "current": {
+        "x": 70.13726806640625,
+        "y": 105.68936920166016,
+        "width": 39.97250747680664,
+        "height": 12.88829231262207
+      }
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "selector": "text[x=\"234\"][y=\"98\"][fill=\"var(--ink)\"]",
+      "baseline": {
+        "x": 201.42747497558594,
+        "y": 84.19442749023438,
+        "width": 65.14505004882812,
+        "height": 18.053442001342773
+      },
+      "current": {
+        "x": 201.42349243164062,
+        "y": 84.25249481201172,
+        "width": 65.15299987792969,
+        "height": 17.184389114379883
+      }
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "selector": "text[x=\"234\"][y=\"116\"][fill=\"var(--muted)\"]",
+      "baseline": {
+        "x": 197.61932373046875,
+        "y": 105.38033294677734,
+        "width": 72.76134490966797,
+        "height": 12.743605613708496
+      },
+      "current": {
+        "x": 197.59056091308594,
+        "y": 105.68936920166016,
+        "width": 72.81885528564453,
+        "height": 12.88829231262207
+      }
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "selector": "text[y=\"80\"]",
+      "baseline": {
+        "x": 135.3097686767578,
+        "y": 67.25639343261719,
+        "width": 53.38044357299805,
+        "height": 15.9295072555542
+      },
+      "current": {
+        "x": 135.2903594970703,
+        "y": 67.11170959472656,
+        "width": 53.419288635253906,
+        "height": 16.325170516967773
+      }
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "selector": "text[x=\"162\"][y=\"172\"][fill=\"var(--muted)\"]",
+      "baseline": {
+        "x": 79.33248901367188,
+        "y": 161.3803253173828,
+        "width": 166.15443420410156,
+        "height": 12.743605613708496
+      },
+      "current": {
+        "x": 79.24642944335938,
+        "y": 161.68936157226562,
+        "width": 165.7477569580078,
+        "height": 12.88829231262207
+      }
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "selector": "text[x=\"400\"][y=\"24\"][fill=\"var(--ink)\"]",
+      "baseline": {
+        "x": 400,
+        "y": 10.194427490234375,
+        "width": 114.36058807373047,
+        "height": 18.053442001342773
+      },
+      "current": {
+        "x": 400,
+        "y": 10.252488136291504,
+        "width": 114.38362121582031,
+        "height": 17.184389114379883
+      }
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "selector": "text[x=\"482\"][y=\"98\"][fill=\"var(--ink)\"]",
+      "baseline": {
+        "x": 440.7160339355469,
+        "y": 84.19442749023438,
+        "width": 82.56794738769531,
+        "height": 18.053442001342773
+      },
+      "current": {
+        "x": 440.7037658691406,
+        "y": 84.25249481201172,
+        "width": 82.64025115966797,
+        "height": 17.184389114379883
+      }
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "selector": "text[x=\"482\"][y=\"116\"][fill=\"var(--muted)\"]",
+      "baseline": {
+        "x": 442.3172912597656,
+        "y": 105.38033294677734,
+        "width": 79.36544799804688,
+        "height": 12.743605613708496
+      },
+      "current": {
+        "x": 442.28125,
+        "y": 105.68936920166016,
+        "width": 79.43753051757812,
+        "height": 12.88829231262207
+      }
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "selector": "text[x=\"628\"][y=\"98\"][fill=\"var(--ink)\"]",
+      "baseline": {
+        "x": 590.08447265625,
+        "y": 84.19442749023438,
+        "width": 75.83109283447266,
+        "height": 18.053442001342773
+      },
+      "current": {
+        "x": 590.073486328125,
+        "y": 84.25249481201172,
+        "width": 75.85297393798828,
+        "height": 17.184389114379883
+      }
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "selector": "text[x=\"628\"][y=\"116\"][fill=\"var(--muted)\"]",
+      "baseline": {
+        "x": 591.6193237304688,
+        "y": 105.38033294677734,
+        "width": 72.76134490966797,
+        "height": 12.743605613708496
+      },
+      "current": {
+        "x": 591.590576171875,
+        "y": 105.68936920166016,
+        "width": 72.81885528564453,
+        "height": 12.88829231262207
+      }
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "selector": "text[x=\"564\"]",
+      "baseline": {
+        "x": 425.1146240234375,
+        "y": 161.3803253173828,
+        "width": 277.7707824707031,
+        "height": 12.743605613708496
+      },
+      "current": {
+        "x": 424.98095703125,
+        "y": 161.68936157226562,
+        "width": 278.0380554199219,
+        "height": 12.88829231262207
+      }
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "selector": "text[y=\"222\"]",
+      "baseline": {
+        "x": 241.60723876953125,
+        "y": 208.19442749023438,
+        "width": 236.78549194335938,
+        "height": 18.053442001342773
+      },
+      "current": {
+        "x": 241.5821075439453,
+        "y": 208.2524871826172,
+        "width": 236.83580017089844,
+        "height": 17.184389114379883
+      }
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "selector": "text[y=\"248\"]",
+      "baseline": {
+        "x": 203.782958984375,
+        "y": 234.19442749023438,
+        "width": 312.4340515136719,
+        "height": 18.053442001342773
+      },
+      "current": {
+        "x": 203.74960327148438,
+        "y": 234.25247192382812,
+        "width": 312.5008239746094,
+        "height": 17.184389114379883
+      }
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "selector": "text[y=\"32\"]",
+      "baseline": {
+        "x": 12.000000953674316,
+        "y": 18.194358825683594,
+        "width": 118.10862731933594,
+        "height": 18.053529739379883
+      },
+      "current": {
+        "x": 12,
+        "y": 18.252626419067383,
+        "width": 117.7765884399414,
+        "height": 17.18421745300293
+      }
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "selector": "text[y=\"53\"]",
+      "baseline": {
+        "x": 16,
+        "y": 42.38027572631836,
+        "width": 52.91610336303711,
+        "height": 12.743669509887695
+      },
+      "current": {
+        "x": 16,
+        "y": 42.68946838378906,
+        "width": 52.9622917175293,
+        "height": 12.888162612915039
+      }
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "selector": "text[y=\"75\"]",
+      "baseline": {
+        "x": 16,
+        "y": 64.38027954101562,
+        "width": 39.69122314453125,
+        "height": 12.743669509887695
+      },
+      "current": {
+        "x": 16,
+        "y": 64.68946838378906,
+        "width": 39.725074768066406,
+        "height": 12.888162612915039
+      }
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "selector": "text[y=\"62\"][x=\"430\"][font-size=\"12\"]",
+      "baseline": {
+        "x": 430,
+        "y": 49.25633239746094,
+        "width": 72.41324615478516,
+        "height": 15.929587364196777
+      },
+      "current": {
+        "x": 430,
+        "y": 49.11183166503906,
+        "width": 73.01959991455078,
+        "height": 16.32500648498535
+      }
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "selector": "text[y=\"92\"]",
+      "baseline": {
+        "x": 12.000000953674316,
+        "y": 78.1943588256836,
+        "width": 89.68689727783203,
+        "height": 18.053531646728516
+      },
+      "current": {
+        "x": 12,
+        "y": 78.25262451171875,
+        "width": 89.74810028076172,
+        "height": 17.18421745300293
+      }
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "selector": "text[y=\"113\"]",
+      "baseline": {
+        "x": 16,
+        "y": 102.38028717041016,
+        "width": 52.91610336303711,
+        "height": 12.743669509887695
+      },
+      "current": {
+        "x": 16,
+        "y": 102.68946075439453,
+        "width": 52.9622917175293,
+        "height": 12.888162612915039
+      }
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "selector": "text[y=\"135\"]",
+      "baseline": {
+        "x": 16,
+        "y": 124.38027954101562,
+        "width": 39.69122314453125,
+        "height": 12.743678092956543
+      },
+      "current": {
+        "x": 16,
+        "y": 124.68946075439453,
+        "width": 39.725074768066406,
+        "height": 12.888162612915039
+      }
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "selector": "text[y=\"122\"][x=\"430\"][font-size=\"12\"]",
+      "baseline": {
+        "x": 430,
+        "y": 109.25633239746094,
+        "width": 88.20555114746094,
+        "height": 15.929587364196777
+      },
+      "current": {
+        "x": 430,
+        "y": 109.11183166503906,
+        "width": 87.92143249511719,
+        "height": 16.32500648498535
+      }
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "selector": "text[y=\"152\"]",
+      "baseline": {
+        "x": 12.000000953674316,
+        "y": 138.19435119628906,
+        "width": 43.231903076171875,
+        "height": 18.053531646728516
+      },
+      "current": {
+        "x": 12,
+        "y": 138.25262451171875,
+        "width": 42.88292694091797,
+        "height": 17.18421745300293
+      }
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "selector": "text[y=\"173\"]",
+      "baseline": {
+        "x": 16,
+        "y": 162.3802947998047,
+        "width": 52.91610336303711,
+        "height": 12.743669509887695
+      },
+      "current": {
+        "x": 16,
+        "y": 162.68946838378906,
+        "width": 52.9622917175293,
+        "height": 12.888162612915039
+      }
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "selector": "text[y=\"195\"]",
+      "baseline": {
+        "x": 16,
+        "y": 184.38027954101562,
+        "width": 39.69122314453125,
+        "height": 12.743669509887695
+      },
+      "current": {
+        "x": 16,
+        "y": 184.68946838378906,
+        "width": 39.725074768066406,
+        "height": 12.888162612915039
+      }
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "selector": "text[y=\"182\"][x=\"430\"][font-size=\"12\"]",
+      "baseline": {
+        "x": 430,
+        "y": 169.25633239746094,
+        "width": 119.10354614257812,
+        "height": 15.929587364196777
+      },
+      "current": {
+        "x": 430,
+        "y": 169.11183166503906,
+        "width": 119.23202514648438,
+        "height": 16.32500648498535
+      }
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "selector": "text[y=\"218\"]",
+      "baseline": {
+        "x": 12.000000953674316,
+        "y": 207.38027954101562,
+        "width": 509.2323913574219,
+        "height": 12.743669509887695
+      },
+      "current": {
+        "x": 12,
+        "y": 207.68946838378906,
+        "width": 509.7268371582031,
+        "height": 12.888162612915039
+      }
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "selector": "text[x=\"73\"][y=\"95\"][font-weight=\"700\"]",
+      "baseline": {
+        "x": 41.589603424072266,
+        "y": 81.19468688964844,
+        "width": 62.82079315185547,
+        "height": 18.053096771240234
+      },
+      "current": {
+        "x": 41.6181526184082,
+        "y": 81.25239562988281,
+        "width": 62.81688690185547,
+        "height": 17.18450164794922
+      }
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "selector": "text[x=\"73\"][y=\"113\"][fill=\"var(--muted)\"]",
+      "baseline": {
+        "x": 36.62002182006836,
+        "y": 102.38052368164062,
+        "width": 72.75995635986328,
+        "height": 12.743362426757812
+      },
+      "current": {
+        "x": 36.5903434753418,
+        "y": 102.68929290771484,
+        "width": 72.81932830810547,
+        "height": 12.888376235961914
+      }
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "selector": "text[x=\"215\"][y=\"95\"][font-weight=\"700\"]",
+      "baseline": {
+        "x": 188.31857299804688,
+        "y": 81.19468688964844,
+        "width": 53.362831115722656,
+        "height": 18.053096771240234
+      },
+      "current": {
+        "x": 188.34388732910156,
+        "y": 81.25239562988281,
+        "width": 53.36561965942383,
+        "height": 17.18450164794922
+      }
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "selector": "text[x=\"215\"][y=\"113\"][fill=\"var(--muted)\"]",
+      "baseline": {
+        "x": 178.62002563476562,
+        "y": 102.38052368164062,
+        "width": 72.75995635986328,
+        "height": 12.743362426757812
+      },
+      "current": {
+        "x": 178.59033203125,
+        "y": 102.68929290771484,
+        "width": 72.81932830810547,
+        "height": 12.888376235961914
+      }
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "selector": "text[fill=\"#fff\"]",
+      "baseline": {
+        "x": 333.7781982421875,
+        "y": 81.19468688964844,
+        "width": 46.44358444213867,
+        "height": 18.053096771240234
+      },
+      "current": {
+        "x": 333.794189453125,
+        "y": 81.25239562988281,
+        "width": 46.459197998046875,
+        "height": 17.18450164794922
+      }
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "selector": "text[fill=\"var(--lime)\"]",
+      "baseline": {
+        "x": 317.3179931640625,
+        "y": 102.38052368164062,
+        "width": 79.36393737792969,
+        "height": 12.743362426757812
+      },
+      "current": {
+        "x": 317.28094482421875,
+        "y": 102.68929290771484,
+        "width": 79.43804168701172,
+        "height": 12.888376235961914
+      }
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "selector": "text[x=\"499\"][y=\"95\"][font-weight=\"700\"]",
+      "baseline": {
+        "x": 470.94964599609375,
+        "y": 81.19468688964844,
+        "width": 56.10066223144531,
+        "height": 18.053096771240234
+      },
+      "current": {
+        "x": 470.9744873046875,
+        "y": 81.25239562988281,
+        "width": 56.1048698425293,
+        "height": 17.18450164794922
+      }
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "selector": "text[x=\"499\"][y=\"113\"][fill=\"var(--muted)\"]",
+      "baseline": {
+        "x": 459.3180236816406,
+        "y": 102.38052368164062,
+        "width": 79.36393737792969,
+        "height": 12.743362426757812
+      },
+      "current": {
+        "x": 459.2809753417969,
+        "y": 102.68929290771484,
+        "width": 79.43804168701172,
+        "height": 12.888376235961914
+      }
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "selector": "text[x=\"641\"][y=\"95\"][font-weight=\"700\"]",
+      "baseline": {
+        "x": 608.4281005859375,
+        "y": 81.19468688964844,
+        "width": 65.14380645751953,
+        "height": 18.053096771240234
+      },
+      "current": {
+        "x": 608.456787109375,
+        "y": 81.25239562988281,
+        "width": 65.0863037109375,
+        "height": 17.18450164794922
+      }
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "selector": "text[x=\"641\"][y=\"113\"][fill=\"var(--muted)\"]",
+      "baseline": {
+        "x": 604.6199951171875,
+        "y": 102.38052368164062,
+        "width": 72.75995635986328,
+        "height": 12.743362426757812
+      },
+      "current": {
+        "x": 604.5902709960938,
+        "y": 102.68929290771484,
+        "width": 72.81932830810547,
+        "height": 12.888376235961914
+      }
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "selector": "text[y=\"26\"]",
+      "baseline": {
+        "x": 238.28262329101562,
+        "y": 12.194689750671387,
+        "width": 243.43472290039062,
+        "height": 18.053096771240234
+      },
+      "current": {
+        "x": 238.37937927246094,
+        "y": 12.252397537231445,
+        "width": 243.29632568359375,
+        "height": 17.18450164794922
+      }
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "selector": "text[y=\"185\"]",
+      "baseline": {
+        "x": 157.76548767089844,
+        "y": 174.38052368164062,
+        "width": 404.677734375,
+        "height": 13.805309295654297
+      },
+      "current": {
+        "x": 157.89414978027344,
+        "y": 173.83006286621094,
+        "width": 404.2117004394531,
+        "height": 13.747601509094238
+      }
+    }
+  ],
+  "status": "PASS_FRESH_MANUAL_BACKING_AND_ACTUAL_GEOMETRY_BOUNDS_WITH_UNCHANGED_AUTHORED_PAINT_TEXT_STYLES",
+  "homeBefore": "2619895be5f398566f4ff7c1acd0a37230a148a202b1f9d8f42997f15c78a295",
+  "historicalHomeBefore": "ca79c4abf7c695f89dc38034bb9db441d61c098caaa1720aadb34d4a4ec6edb3",
+  "browserVersion": "156.0.8078.47",
+  "minimumContrast": 4.5785863222047025,
+  "homeAfter": "2619895be5f398566f4ff7c1acd0a37230a148a202b1f9d8f42997f15c78a295",
+  "historicalHomeAfter": "ca79c4abf7c695f89dc38034bb9db441d61c098caaa1720aadb34d4a4ec6edb3",
+  "browserClosedNormally": true,
+  "finishedAt": "2026-11-28T12:53:55.447Z",
+  "humanVisualReview": {
+    "performedAt": "2026-11-28T12:54:28.072402+00:00",
+    "all4ActualKDiagramScreenshotsPersonallyViewed": true,
+    "notes": "At1280px all authored labels/containers and every backing region were personally reviewed. Text sits within the expected paper, white, green or dark fills; no label clipping or overlap was seen. Captions summarize the diagrams, and the format guide uses its intentionally narrower centered canvas. This is a manual-backed contrast disposition, not an automatic axe pass."
+  },
+  "priorFailedAttempts": [
+    {
+      "path": ".qa-results/phase3/ui/final-k-remaining/manual-svg.json",
+      "status": "FAIL",
+      "reason": "Exact old/new local getBBox equality does not hold; retained, not relabeled. All51 actual local bounds are now independently checked against current backing rectangles and canvas."
+    },
+    {
+      "path": ".qa-results/phase3/ui/k-fresh-svg-review/report.json",
+      "status": "FAIL_DIAGNOSTIC_SETUP",
+      "reason": "The first new reader assumed the historic export already had a diagramViewport wrapper; it does not. Corrected to read the actual SVG background when absent. No product change or assertion bypass."
+    }
+  ]
+}

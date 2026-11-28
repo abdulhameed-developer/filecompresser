@@ -39,7 +39,7 @@ const FAQ = [
   },
   {
     q: 'Is anything limited or paid?',
-    a: 'No account, no sign-up, no watermark. Queues are limited to 500 files and 300 MB to protect browser memory. The practical limits are your device’s memory, which is why each tool states its maximum file size up front.',
+    a: 'No account, no sign-up, no watermark. Queues are limited to 500 files and 300 MiB to protect browser memory. The practical limits are your device’s memory, which is why each tool states its maximum file size up front.',
   },
   {
     q: 'Why does the first video take so long?',
@@ -105,7 +105,7 @@ export default function HomePage() {
 
         <ProcessingStory steps={homeContent.steps} />
         <EditorialContent content={homeContent} />
-        <FeaturedGuides posts={postsByDate().slice(0, 3).map(({ slug, title, figure, readingTime, featuredImage }) => ({ slug, title, figure, readingTime, featuredImage }))} />
+        <FeaturedGuides posts={postsByDate().slice(0, 3).map(({ slug, title, figure, readingTime, featuredImage, date, updated }) => ({ slug, title, figure, readingTime, featuredImage, date, updated }))} />
 
         {faq.length > 0 && <section className="homeFaq" aria-labelledby="faq-heading">
           <div className="sectionLabel">FAQ</div>

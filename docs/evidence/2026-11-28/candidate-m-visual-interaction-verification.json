@@ -1,0 +1,163 @@
+{
+  "recordedAt": "2026-11-28T14:13:09.752118+00:00",
+  "candidate": "M",
+  "buildId": "i6cl7-oxYwV3b6uSHuw_0",
+  "homepageSha256": "f46f733452e0169f0c3f12f4bcb9faaa89da828ff6a074ad28d3ca5927aa5aab",
+  "status": "DEFAULT_AND_UNIT_GATES_PASS_ADDITIONAL_RESIZE_DEFECT_CONFIRMED",
+  "defaultGates": {
+    "responsiveMeasurements": 348,
+    "widths": [
+      320,
+      375,
+      390,
+      430,
+      760,
+      768,
+      900,
+      901,
+      1024,
+      1280,
+      1440,
+      1920
+    ],
+    "fullPageScreenshots": 87,
+    "axeViews": 29,
+    "automatedViolations": 0,
+    "svgContrastIncompleteViews": 4,
+    "svgContrastIncompleteNodes": 51,
+    "durableNodeExit": 0,
+    "childExits": [
+      {
+        "name": "responsive",
+        "code": 0,
+        "signal": null
+      },
+      {
+        "name": "axe",
+        "code": 0,
+        "signal": null
+      },
+      {
+        "name": "shared",
+        "code": 0,
+        "signal": null
+      }
+    ],
+    "sharedGroups": [
+      {
+        "name": "navigation",
+        "pass": true,
+        "exitCode": 0,
+        "signal": null,
+        "durationMs": 12418,
+        "stdout": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/final-m/shared/navigation.stdout.log",
+        "stderr": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/final-m/shared/navigation.stderr.log"
+      },
+      {
+        "name": "role",
+        "pass": true,
+        "exitCode": 0,
+        "signal": null,
+        "durationMs": 6953,
+        "stdout": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/final-m/shared/role.stdout.log",
+        "stderr": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/final-m/shared/role.stderr.log"
+      },
+      {
+        "name": "a11y-manual",
+        "pass": true,
+        "exitCode": 0,
+        "signal": null,
+        "durationMs": 12217,
+        "stdout": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/final-m/shared/a11y-manual.stdout.log",
+        "stderr": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/final-m/shared/a11y-manual.stderr.log"
+      },
+      {
+        "name": "design-system",
+        "pass": true,
+        "exitCode": 0,
+        "signal": null,
+        "durationMs": 29128,
+        "stdout": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/final-m/shared/design-system.stdout.log",
+        "stderr": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/final-m/shared/design-system.stderr.log"
+      },
+      {
+        "name": "premium-ui",
+        "pass": true,
+        "exitCode": 0,
+        "signal": null,
+        "durationMs": 49702,
+        "stdout": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/final-m/shared/premium-ui.stdout.log",
+        "stderr": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/final-m/shared/premium-ui.stderr.log"
+      }
+    ],
+    "sourceAndHomeStable": true
+  },
+  "humanDefaultReview": {
+    "mobileRoutes": 29,
+    "nativeWidthPanelsViewed": 69,
+    "desktopRoutes": 29,
+    "desktopSourceStripsViewed": 132,
+    "mobileEvidence": "docs/evidence/2026-11-28/candidate-m-mobile-visual-review.json",
+    "desktopEvidence": "docs/evidence/2026-11-28/candidate-m-desktop-visual-review.json"
+  },
+  "sizeAndCapacity": {
+    "status": "PASS_ACTUAL_CAPACITY_AND_DECIMAL_RESULT_UI",
+    "actualNormalNodeExit": 0,
+    "capacityViews": 60,
+    "toolRoutes": 14,
+    "additionalAliasRoutes": 1,
+    "widths": [
+      320,
+      390,
+      768,
+      1440
+    ],
+    "articleViews": 4,
+    "states": 16,
+    "sourceBytes": 111968,
+    "sourceLabel": "112.0 KB",
+    "defaultResultBytes": 83020,
+    "defaultResultLabel": "83.0 KB",
+    "targetPreset": "100 KB",
+    "targetExactBytes": 100000,
+    "targetResultBytes": 80966,
+    "targetResultLabel": "81.0 KB",
+    "downloadPixelEquality": [
+      true,
+      true
+    ],
+    "noPaddedTargetOutput": true,
+    "ordinaryFailedRequests": 0,
+    "pageErrors": 0,
+    "evidence": "docs/evidence/2026-11-28/units-m/report.json"
+  },
+  "additionalIssue": {
+    "status": "CONFIRMED_PENDING_N_FIX_AND_COMPILED_RETEST",
+    "description": "The active custom target number field can move below the dialog footer after changing viewport size while settings is open. Applied-result/Restore-applied content exposes more failing widths. Native focus re-entry reveals it; resize itself does not.",
+    "actualRedExit": 1,
+    "nativeRegressionStates": 24,
+    "failedResizeStates": 11,
+    "regressionEvidence": "docs/evidence/2026-11-28/units-m/resize-focus-red.json",
+    "sourceOwner": "release_readiness; no CSS or engine change requested"
+  },
+  "unchangedPaint": {
+    "svgTextNodes": 51,
+    "figures": 4,
+    "markupAndCssExact": true,
+    "automatedSvgContrastPassClaimed": false,
+    "evidence": "docs/evidence/2026-11-28/units-m/svg-binding.json"
+  },
+  "retainedFailedAttempt": {
+    "path": ".qa-results/phase3/ui/m-capacity-native/report.json",
+    "status": "FAIL_ORDINARY_IMAGE_GET_ABORT",
+    "cause": "Viewport resize selected an eager srcset candidate in the departing document immediately before the helper navigated. Passive loader IDs and matched native control prove the transition cause.",
+    "correction": "Await actual eager/visible image decoding before intentional departure; all ordinary failed GET assertions retained.",
+    "evidence": "docs/evidence/2026-11-28/units-m/transition-correction.json"
+  },
+  "limits": [
+    "Local immutable build only; no production, hosted CMS, search, Lighthouse or whole-product completion claim.",
+    "No physical mobile devices, real Safari/iOS or full assistive-technology certification.",
+    "The corrected size/capacity gate is separate from the additional confirmed modal-resize issue.",
+    "Earlier candidate evidence and failed attempts remain unchanged."
+  ]
+}

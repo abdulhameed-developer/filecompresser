@@ -1,8 +1,8 @@
 'use client'
 
-import { useId } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import type { CompressionLevel, SettingValue, ToolDefinition } from '@/lib/types'
-import { MAX_IMAGE_TARGET_BYTES } from '@/lib/image-settings'
+import { MAX_IMAGE_TARGET_BYTES, parseTargetKilobytes, targetKilobytesDisplay } from '@/lib/image-settings'
 
 
 interface CompressionSettingsProps {
@@ -23,13 +23,13 @@ const IMAGE_MODES = [
   { value: 'balanced', label: 'Balanced', description: 'A balance of file size and detail.' },
   { value: 'high-quality', label: 'High quality', description: 'More detail, usually a larger file.' },
   { value: 'maximum', label: 'Maximum', description: 'Smaller files with a stronger quality trade-off.' },
-  { value: 'target', label: 'Target size', description: 'Find a quality setting that fits your limit.' },
+  { value: 'target', label: 'Target size', description: 'Prioritize your byte limit, with lower quality when needed.' },
 ] as const
 const PNG_MODES = [
   { value: 'smart', label: 'Smart', description: 'May reduce colors. Keeps a lossless result when color changes are too large.' },
   { value: 'lossless', label: 'Lossless', description: 'Preserve every image pixel and transparency value.' },
   { value: 'maximum', label: 'Maximum', description: 'Try smaller color palettes. Color changes may be visible.' },
-  { value: 'target', label: 'Target size', description: 'Search real color palettes for your size limit. The target may not be achievable.' },
+  { value: 'target', label: 'Target size', description: 'Prioritize your byte limit. Strong color reduction may change appearance visibly.' },
 ] as const
 const TARGET_PRESETS = [20_000, 50_000, 100_000, 200_000, 500_000, 1_000_000]
 
@@ -87,13 +87,25 @@ export default function CompressionSettings({ tool, level, onLevel, settings, on
 
 function TargetSizeField({ prefix, value, enabled, pngOnly, onChange }: { prefix: string; value: SettingValue | undefined; enabled: boolean; pngOnly: boolean; onChange: (value: SettingValue) => void }) {
   const bytes = typeof value === 'number' && Number.isFinite(value) ? value : 0
-  const raw = value === undefined || value === '' ? '' : String(Number(value) / 1000)
+  // Keep the editing buffer separate from canonical bytes. Replacing50.0
+  // with50 on each key press would move the caret and turn50.05 into505.
+  const [raw, setRaw] = useState(() => targetKilobytesDisplay(value))
+  const lastOwnValue = useRef(value)
+  useEffect(() => {
+    if (!Object.is(value, lastOwnValue.current)) setRaw(targetKilobytesDisplay(value))
+    lastOwnValue.current = value
+  }, [value])
+  const change = (next: SettingValue, draft = targetKilobytesDisplay(next)) => {
+    lastOwnValue.current = next
+    setRaw(draft)
+    onChange(next)
+  }
   const invalid = value !== undefined && value !== '' && (!Number.isInteger(bytes) || bytes < 1 || bytes > MAX_IMAGE_TARGET_BYTES)
   return <fieldset className="targetSizeBlock" disabled={!enabled}>
     <legend>Maximum output size</legend>
-    <div className="targetPresets" role="group" aria-label="Target size presets">{TARGET_PRESETS.map(preset => <button key={preset} type="button" aria-pressed={bytes === preset} className={bytes === preset ? 'active' : ''} onClick={() => onChange(preset)}>{preset === 1_000_000 ? '1 MB' : `${preset / 1000} KB`}</button>)}</div>
-    <div className="targetCustomRow"><div className="settingField"><label htmlFor={`${prefix}-target`}>Custom maximum (KB)</label><div className="numberField"><input id={`${prefix}-target`} type="number" inputMode="decimal" min={0.001} max={MAX_IMAGE_TARGET_BYTES / 1000} step={0.001} value={raw} placeholder="e.g. 50" aria-invalid={invalid || undefined} aria-describedby={`${prefix}-target-hint`} onChange={event => { const next = event.target.value; if (next === '') onChange(''); else { const parsed = Number(next); if (Number.isFinite(parsed)) onChange(Math.round(parsed * 1000)) } }} /><span className="numberSuffix" aria-hidden="true">KB</span></div></div><p className="exactTarget" aria-live="polite">{invalid ? 'Enter 0.001 to 200,000 KB.' : bytes > 0 ? <><strong>{bytes.toLocaleString('en-US')} bytes</strong> maximum</> : 'Choose a preset or enter a maximum.'}</p></div>
-    <p className="settingHelp" id={`${prefix}-target-hint`}>1 KB = 1,000 bytes. {pngOnly ? 'PNG may reduce colors to fit.' : 'JPG / WEBP adjust quality; PNG may reduce colors.'} Results above your limit are marked “Target not met”.</p>
+    <div className="targetPresets" role="group" aria-label="Target size presets">{TARGET_PRESETS.map(preset => <button key={preset} type="button" aria-pressed={bytes === preset} className={bytes === preset ? 'active' : ''} onClick={() => change(preset)}>{preset === 1_000_000 ? '1 MB' : `${preset / 1000} KB`}</button>)}</div>
+    <div className="targetCustomRow"><div className="settingField"><label htmlFor={`${prefix}-target`}>Custom maximum (KB)</label><div className={`numberField${invalid ? ' invalid' : ''}`}><input id={`${prefix}-target`} type="number" inputMode="decimal" min={0.001} max={MAX_IMAGE_TARGET_BYTES / 1000} step={0.001} value={raw} placeholder="e.g. 50" aria-invalid={invalid || undefined} aria-describedby={`${prefix}-target-status ${prefix}-target-hint`} onChange={event => change(parseTargetKilobytes(event.target.value), event.target.value)} /><span className="numberSuffix" aria-hidden="true">KB</span></div></div><p className={`exactTarget${invalid ? ' invalid' : ''}`} id={`${prefix}-target-status`} aria-live="polite">{invalid ? 'Use 0.001 KB steps (whole bytes), up to 200,000 KB.' : bytes > 0 ? <><strong>{bytes.toLocaleString('en-US')} bytes</strong> maximum</> : 'Choose a preset or enter a maximum.'}</p></div>
+    <p className="settingHelp" id={`${prefix}-target-hint`}>1 KB = 1,000 bytes. Custom values must equal whole bytes. {pngOnly ? 'PNG may reduce colors to fit.' : 'JPG / WEBP adjust quality; PNG may reduce colors.'} Only files within the exact byte limit become results. If no tested setting fits, an error explains the limit; your original stays unchanged.</p>
     {!enabled && <p className="targetWarning" role="status">Target size is unavailable for this selection.</p>}
   </fieldset>
 }

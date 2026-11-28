@@ -1,0 +1,240 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-28T09:49:25.956604+00:00",
+  "scope": "Sanitized native owner-account observations; no account name,email,selector or private account URL included. Reports have their own underlying dates.",
+  "google": {
+    "sitemap": {
+      "observedDate": "2026-11-28",
+      "status": "Success",
+      "submitted": "2026-11-21",
+      "lastRead": "2026-11-26",
+      "discoveredPages": 26,
+      "discoveredVideos": 0,
+      "source": {
+        "privateFile": ".qa-results/phase3/search/google/sitemaps-before.txt",
+        "sha256": "de1ee2af1e8f2af8a6751f2aa0be5b926c2c0430415d0f428e42fd8559b58a93"
+      },
+      "scope": "Fresh panel observation; sitemap retrieval/discovery count is not the27individual URL index state."
+    },
+    "coreWebVitals": {
+      "observedDate": "2026-11-28",
+      "reportUpdated": "2026-11-27",
+      "mobile": "INSUFFICIENT_90_DAY_USAGE_DATA",
+      "desktop": "INSUFFICIENT_90_DAY_USAGE_DATA",
+      "source": {
+        "privateFile": ".qa-results/phase3/search/google/core-web-vitals.txt",
+        "sha256": "d352575e505eb3f65f411f1a624e8662c511596f58aa5c52446ac5c78ddcd4ce"
+      }
+    },
+    "https": {
+      "observedDate": "2026-11-28",
+      "reportUpdated": "2026-11-27",
+      "httpsUrls": 22,
+      "nonHttpsUrls": 0,
+      "issues": "No issues detected in the last90days",
+      "source": {
+        "privateFile": ".qa-results/phase3/search/google/https.txt",
+        "sha256": "fcbc95d8f1721858d4a7bb60f13c04003ae1c9ae7d71e8d1da231c275659a5cd"
+      },
+      "scope": "Reported HTTPS set; do not force-match its count to the indexing or sitemap set."
+    },
+    "breadcrumbs": {
+      "observedDate": "2026-11-28",
+      "reportUpdated": "2026-11-27",
+      "valid": 24,
+      "invalid": 0,
+      "issues": "No issues detected in the last90days",
+      "source": {
+        "privateFile": ".qa-results/phase3/search/google/breadcrumbs.txt",
+        "sha256": "c9cb2fdd478da0129aad3cbeda0a063890f68103be6e1939e468a8242205826b"
+      }
+    },
+    "manualActions": {
+      "observedDate": "2026-11-28",
+      "status": "No issues detected",
+      "source": {
+        "privateFile": ".qa-results/phase3/search/google/manual-actions.txt",
+        "sha256": "4d1035a3af5724812fee3a17c9ef8fd7f34d909352b27076d04b05e5b081ad67"
+      },
+      "scope": "Google-reported known issues; not an independent security certification."
+    },
+    "securityIssues": {
+      "observedDate": "2026-11-28",
+      "status": "No issues detected",
+      "source": {
+        "privateFile": ".qa-results/phase3/search/google/security-issues.txt",
+        "sha256": "47439ea66d8dc238a94430ce0a70bd7cf219f9055ac2409a9590df4d4fd8a863"
+      },
+      "scope": "Google-reported known issues; not an independent security certification."
+    },
+    "exclusionExamples": {
+      "redirects": {
+        "observedDate": "2026-11-28",
+        "aggregateReportUpdated": "2026-11-23",
+        "examples": [
+          {
+            "url": "http://www.filecompresser.com/",
+            "currentTreatment": "INTENTIONAL_HTTPS_CANONICAL_HOST_REDIRECT",
+            "resolution": "Preserve redirect; do not index as a distinct landing page."
+          },
+          {
+            "url": "https://www.filecompresser.com/",
+            "currentTreatment": "INTENTIONAL_HTTPS_CANONICAL_HOST_REDIRECT",
+            "resolution": "Preserve redirect; do not index as a distinct landing page."
+          },
+          {
+            "url": "http://filecompresser.com/",
+            "currentTreatment": "INTENTIONAL_HTTPS_CANONICAL_HOST_REDIRECT",
+            "resolution": "Preserve redirect; do not index as a distinct landing page."
+          }
+        ],
+        "source": {
+          "privateFile": ".qa-results/phase3/search/google/excluded-redirects.txt",
+          "sha256": "36a7be514ce0f33611896970c72cc592674113bf93d9b9b5fb996f52c255bb78"
+        },
+        "validateFixClicked": false
+      },
+      "noindex": {
+        "observedDate": "2026-11-28",
+        "aggregateReportUpdated": "2026-11-23",
+        "examples": [
+          {
+            "url": "https://filecompresser.com/THIRD-PARTY-NOTICES.txt",
+            "currentTreatment": "INTENTIONAL_LICENSE_UTILITY_EXCLUSION",
+            "resolution": "Preserve noindex and license artifact; not a public landing page."
+          }
+        ],
+        "source": {
+          "privateFile": ".qa-results/phase3/search/google/excluded-noindex.txt",
+          "sha256": "5cc7a7a7024baa5b4717d53c99bdf21cd8d8af5533545d3ef17810db598a5754"
+        },
+        "validateFixClicked": false
+      },
+      "discovered": {
+        "observedDate": "2026-11-28",
+        "aggregateReportUpdated": "2026-11-23",
+        "examples": [
+          {
+            "url": "https://filecompresser.com/contact",
+            "categoryLastCrawlObserved": "N/A",
+            "currentIndividualStatus": "INDEXED",
+            "currentIndividualCheckedAt": "2026-11-28T08:46:52.521Z",
+            "currentIndividualLastCrawl": "27 Nov 2026, 17:16:26",
+            "resolution": "Current individual inspection is indexed; retain canonical and wait for older aggregate refresh, no validation or repeated request."
+          },
+          {
+            "url": "https://filecompresser.com/jpg-compressor",
+            "categoryLastCrawlObserved": "N/A",
+            "currentIndividualStatus": "INDEXED",
+            "currentIndividualCheckedAt": "2026-11-28T09:03:48.295Z",
+            "currentIndividualLastCrawl": "27 Nov 2026, 17:20:26",
+            "resolution": "Current individual inspection is indexed; retain canonical and wait for older aggregate refresh, no validation or repeated request."
+          }
+        ],
+        "source": {
+          "privateFile": ".qa-results/phase3/search/google/excluded-discovered.txt",
+          "sha256": "1120ca1fc301918f86eff1c1cae483c3bf7accd9e372a4e461f1b17df7d29348"
+        },
+        "validateFixClicked": false
+      }
+    }
+  },
+  "bing": {
+    "sitemap": {
+      "observedDate": "2026-11-28",
+      "knownSitemaps": 1,
+      "errors": 0,
+      "warnings": 0,
+      "discoveredUrls": 26,
+      "status": "Success",
+      "lastSubmitted": "2026-11-21",
+      "lastCrawl": "2026-11-25",
+      "source": {
+        "privateFile": ".qa-results/phase3/search/bing/sitemaps-before.txt",
+        "sha256": "d4b78fe7cb2fc510d3b1b48c3e13a8b9423a546a5fbd75e96bb1cf39c14f8ec8"
+      },
+      "scope": "Fresh observation of older retrieval; publicXMLhas27canonicalURLs, engine discovery count is distinct."
+    },
+    "siteExplorer": {
+      "observedDate": "2026-11-28",
+      "selectedFilter": "Indexed URLs",
+      "result": "No data available",
+      "source": {
+        "privateFile": ".qa-results/phase3/search/bing/site-explorer-before.txt",
+        "sha256": "39209b29773d2a5e5e1cb8e41b1a86e2e49756cb6767ba8f2c555a8326353a03"
+      }
+    },
+    "siteScanHistory": {
+      "observedDate": "2026-11-28",
+      "newScanStarted": false,
+      "scans": [
+        {
+          "name": "Bing fixes verification - 23 Nov 2026",
+          "completionObserved": "5 days ago",
+          "pages": 28,
+          "errors": 0,
+          "warnings": 0
+        },
+        {
+          "name": "Az",
+          "completionObserved": "5 days ago",
+          "pages": 29,
+          "errors": 1,
+          "warnings": 28
+        }
+      ],
+      "source": {
+        "privateFile": ".qa-results/phase3/search/bing/site-scan-history.txt",
+        "sha256": "726f31a918a2ebb296817de25264b24b92217420df1575c2a2085467a8c18f92"
+      },
+      "scope": "Existing historical scan rows freshly viewed. No new scan, current vulnerability certification or detailed cause for the other historical scan is claimed."
+    },
+    "recommendations": {
+      "observedDate": "2026-11-28",
+      "result": "No data available",
+      "source": {
+        "privateFile": ".qa-results/phase3/search/bing/recommendations.txt",
+        "sha256": "1114050cc6b450040ed230b045933f0f65e07367c3a3fd53a8eda2d7fde2e7a9"
+      }
+    },
+    "backlinks": {
+      "observedDate": "2026-11-28",
+      "result": "No data available",
+      "source": {
+        "privateFile": ".qa-results/phase3/search/bing/backlinks.txt",
+        "sha256": "08bf0c0305367c59164cbfd5813954227de843092c82134726e308f772981bcf"
+      }
+    },
+    "indexNowActivity": {
+      "observedDate": "2026-11-28",
+      "displayedPeriod": "last9hours",
+      "displayedCount": "-",
+      "result": "No data available",
+      "source": {
+        "privateFile": ".qa-results/phase3/search/bing/indexnow-before.txt",
+        "sha256": "29eef0ada90edfdff40d54c6c0e8b442d5080cef4e386e17c834087a43fe964e"
+      },
+      "scope": "Empty displayed window; not proof that no historic IndexNow event ever existed."
+    },
+    "searchPerformance": {
+      "observedDate": "2026-11-28",
+      "selectedTrafficFilter": "All",
+      "period": "2026-08-28 through2026-11-27",
+      "clicks": 0,
+      "impressions": 0,
+      "ctrPercent": 0,
+      "keywordTable": "No data available",
+      "keywordRows": 0,
+      "source": {
+        "privateFile": ".qa-results/phase3/search/bing/performance-confirmed.txt",
+        "sha256": "51a48f76dade1f42e816e84b2285dcd1a3c951b2341ce917b0e40002afe2fdfc"
+      },
+      "scope": "First-party property report, not Keyword Research demand."
+    }
+  },
+  "limitations": [
+    "No new indexing/sitemap submission,scan,IndexNow key or integration performed by this audit.",
+    "Search engine reports, synthetic Lighthouse,publicHTML eligibility and actual indexing are distinct.",
+    "Google query/page performance is separately recorded in google-search-performance.json."
+  ]
+}

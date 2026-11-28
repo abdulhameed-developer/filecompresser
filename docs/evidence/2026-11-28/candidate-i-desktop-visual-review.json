@@ -1,0 +1,613 @@
+{
+  "candidate": "I",
+  "completedAt": "2026-11-28T11:45:08.752664+00:00",
+  "reviewedRouteCount": 29,
+  "servedViews": 28,
+  "generic404Views": 1,
+  "unpublishedDraftActualUrlScreenshot": false,
+  "candidateHomeSha256": "2ca99e2bea55fc605bf25e3bc16d70067f2624640d1d3fa945aaf5b73323992a",
+  "originalAndDerivativeHashesVerified": 58,
+  "sourceScreenshotsUnchanged": true,
+  "status": "REVIEWED_WITH_BOUNDED_FIXES_PENDING_J",
+  "limitations": [
+    "Default/empty desktop screenshots only; interaction and functional evidence belong to the separate tested cohorts.",
+    "No new browser requests or uploads were performed for this review.",
+    "Full-page images came from a 1440x900 viewport. They are not pixel-exact comparisons with the earlier 1440x1000 public baseline.",
+    "/404-missing is the generic404 view. Draft exclusion was independently checked in source/export, but the actual unpublished draft URL is not pictured in this final-I inventory.",
+    "The retained I screenshots show About managed-section styling and three wide article-figure desktop scrolling issues; J must independently verify the fixes."
+  ],
+  "reviews": [
+    {
+      "route": "/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewedAt": "2026-11-28T11:37:38.507569+00:00",
+      "method": "Every ordered full-width 1500px strip, top to bottom, downscaled to 0.7 in a two-column contact sheet. Original full-page PNG retained.",
+      "observations": "Hero/upload panel, 14 tool cards, process diagram, all 12 editorial sections, Updated guide cards, FAQ and footer were inspected. Updated dates now appear on guide cards. Long reading body remains, but introduction is concise and the column is readable. No clipping or overlap seen.",
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ],
+      "scope": "Actual screenshot review of default/empty state only; not new interaction, processing, focus or live-public proof.",
+      "screenshot": ".qa-results/phase3/ui/final-i/responsive/home-1440.png",
+      "screenshotSha256": "71a4a3741d5380c628320124a9bddf04816df144897169f40405d5e5d56614d0",
+      "dimensions": [
+        1440,
+        7320
+      ],
+      "reviewSheet": ".qa-results/phase3/ui/final-i/desktop-review-backlinks/home-1440.sheet.png"
+    },
+    {
+      "route": "/compress",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewedAt": "2026-11-28T11:37:38.507610+00:00",
+      "method": "Every ordered full-width 1500px strip, top to bottom, downscaled to 0.7 in a two-column contact sheet. Original full-page PNG retained.",
+      "observations": "Clear upload surface and short mixed-workflow introduction precede 13 authored sections. Lists and inline guide links render correctly. Six relevant custom FAQs now appear; output, related links and footer align.",
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ],
+      "scope": "Actual screenshot review of default/empty state only; not new interaction, processing, focus or live-public proof.",
+      "screenshot": ".qa-results/phase3/ui/final-i/responsive/compress-1440.png",
+      "screenshotSha256": "9bbdf5d3d07f0d0fca541a94d9f04ae58c6c31dfd3acaed9dfa2fc01034211a3",
+      "dimensions": [
+        1440,
+        5729
+      ],
+      "reviewSheet": ".qa-results/phase3/ui/final-i/desktop-review-backlinks/compress-1440.sheet.png"
+    },
+    {
+      "route": "/image-compressor",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewedAt": "2026-11-28T11:37:38.507617+00:00",
+      "method": "Every ordered full-width 1500px strip, top to bottom, downscaled to 0.7 in a two-column contact sheet. Original full-page PNG retained.",
+      "observations": "Uploader, 16-section body, numbered steps and custom image FAQs align. Body explicitly excludes resize; shared tool deck still uses a by-default dimension qualifier. No overlap or clipping seen.",
+      "flags": [
+        "RESIDUAL_DIMENSION_QUALIFIER",
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ],
+      "scope": "Actual screenshot review of default/empty state only; not new interaction, processing, focus or live-public proof.",
+      "screenshot": ".qa-results/phase3/ui/final-i/responsive/image-compressor-1440.png",
+      "screenshotSha256": "28a1c06448371f3fee543267efcae2ebcea4b7358c8fd4799a84af241cdfe8b4",
+      "dimensions": [
+        1440,
+        5978
+      ],
+      "reviewSheet": ".qa-results/phase3/ui/final-i/desktop-review-backlinks/image-compressor-1440.sheet.png"
+    },
+    {
+      "route": "/jpg-compressor",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewedAt": "2026-11-28T11:37:38.507632+00:00",
+      "method": "Every ordered full-width 1500px strip, top to bottom, downscaled to 0.7 in a two-column contact sheet. Original full-page PNG retained.",
+      "observations": "Restored 17-section JPG guide and six format-specific FAQs are readable in the common narrow column. Settings and target-byte explanations are clear. What you get still uses a by-default dimension qualifier; no structural layout defect seen.",
+      "flags": [
+        "RESIDUAL_DIMENSION_QUALIFIER",
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ],
+      "scope": "Actual screenshot review of default/empty state only; not new interaction, processing, focus or live-public proof.",
+      "screenshot": ".qa-results/phase3/ui/final-i/responsive/jpg-compressor-1440.png",
+      "screenshotSha256": "6dfbe7f5cf99456e3a9de8cd78671728d2a7929bd0ef047464a680ea670971ee",
+      "dimensions": [
+        1440,
+        5947
+      ],
+      "reviewSheet": ".qa-results/phase3/ui/final-i/desktop-review-backlinks/jpg-compressor-1440.sheet.png"
+    },
+    {
+      "route": "/jpeg-compressor",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewedAt": "2026-11-28T11:37:38.507637+00:00",
+      "method": "Every ordered full-width 1500px strip, top to bottom, downscaled to 0.7 in a two-column contact sheet. Original full-page PNG retained.",
+      "observations": "The 19-section camera-photo guide has proper paragraph and list spacing, a clear upload action and six JPEG-specific FAQs. Long page is structured with a contents bar and headings. No overlap or clipping seen.",
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ],
+      "scope": "Actual screenshot review of default/empty state only; not new interaction, processing, focus or live-public proof.",
+      "screenshot": ".qa-results/phase3/ui/final-i/responsive/jpeg-compressor-1440.png",
+      "screenshotSha256": "50f31f3907106627e39b258619949725f4eb81739dc55458f720e0293e62105d",
+      "dimensions": [
+        1440,
+        6228
+      ],
+      "reviewSheet": ".qa-results/phase3/ui/final-i/desktop-review-backlinks/jpeg-compressor-1440.sheet.png"
+    },
+    {
+      "route": "/png-compressor",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewedAt": "2026-11-28T11:37:38.507642+00:00",
+      "method": "Every ordered full-width 1500px strip, top to bottom, downscaled to 0.7 in a two-column contact sheet. Original full-page PNG retained.",
+      "observations": "Three-line deck and PNG upload panel retain clear hierarchy. Thirteen-section guide explains distinct modes and transparency, with bullets and six PNG-specific FAQs. Output, related links and footer rows align.",
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ],
+      "scope": "Actual screenshot review of default/empty state only; not new interaction, processing, focus or live-public proof.",
+      "screenshot": ".qa-results/phase3/ui/final-i/responsive/png-compressor-1440.png",
+      "screenshotSha256": "dadf6b2782b880fb26a3f9a0dd4560ba01533c779ce221439f3a5eac2e2b64c2",
+      "dimensions": [
+        1440,
+        5795
+      ],
+      "reviewSheet": ".qa-results/phase3/ui/final-i/desktop-review-backlinks/png-compressor-1440.sheet.png"
+    },
+    {
+      "route": "/webp-compressor",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewedAt": "2026-11-28T11:37:38.507645+00:00",
+      "method": "Every ordered full-width 1500px strip, top to bottom, downscaled to 0.7 in a two-column contact sheet. Original full-page PNG retained.",
+      "observations": "WebP-only upload cue, 14-section guide and six tailored FAQs render fully. Two authored line-list blocks appear without bullets as stored but remain readable; no grid collision or clipping seen.",
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ],
+      "scope": "Actual screenshot review of default/empty state only; not new interaction, processing, focus or live-public proof.",
+      "screenshot": ".qa-results/phase3/ui/final-i/responsive/webp-compressor-1440.png",
+      "screenshotSha256": "b46391448bc368faaec7b5703a266563e657373c68d6efd31f51414bf36d32e5",
+      "dimensions": [
+        1440,
+        5909
+      ],
+      "reviewSheet": ".qa-results/phase3/ui/final-i/desktop-review-backlinks/webp-compressor-1440.sheet.png"
+    },
+    {
+      "route": "/gif-compressor",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewedAt": "2026-11-28T11:37:38.507649+00:00",
+      "method": "Every ordered full-width 1500px strip, top to bottom, downscaled to 0.7 in a two-column contact sheet. Original full-page PNG retained.",
+      "observations": "GIF identity, palette/timing guide, ordered steps and six animation-specific FAQs are visible. Fifteen sections are relatively long but readable; output guidance and footer remain balanced.",
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ],
+      "scope": "Actual screenshot review of default/empty state only; not new interaction, processing, focus or live-public proof.",
+      "screenshot": ".qa-results/phase3/ui/final-i/responsive/gif-compressor-1440.png",
+      "screenshotSha256": "a40c152637c48f35c60c5f4c8fe26a14276aac6fd2ea1fa31cc76b3929d8f97e",
+      "dimensions": [
+        1440,
+        6290
+      ],
+      "reviewSheet": ".qa-results/phase3/ui/final-i/desktop-review-backlinks/gif-compressor-1440.sheet.png"
+    },
+    {
+      "route": "/video-compressor",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewedAt": "2026-11-28T11:38:52.125302+00:00",
+      "method": "Every ordered full-width 1500px strip, top to bottom, downscaled to 0.7 in a two-column contact sheet. Original full-page PNG retained.",
+      "observations": "MP4/MOV upload cue, 19-section resolution/encoding guide and six video-specific FAQs fit the reading column. Numbered steps and related tools align. Long content remains intentional; no clipping or overlap seen.",
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ],
+      "scope": "Actual screenshot review of default/empty state only; not new interaction, processing, focus or live-public proof.",
+      "screenshot": ".qa-results/phase3/ui/final-i/responsive/video-compressor-1440.png",
+      "screenshotSha256": "942a9f51bdac9c4d064cb950d9c04396b5d4bc235a391963a5ee473edda6a383",
+      "dimensions": [
+        1440,
+        6772
+      ],
+      "reviewSheet": ".qa-results/phase3/ui/final-i/desktop-review-backlinks/video-compressor-1440.sheet.png"
+    },
+    {
+      "route": "/webm-to-mp4",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewedAt": "2026-11-28T11:38:52.125358+00:00",
+      "method": "Every ordered full-width 1500px strip, top to bottom, downscaled to 0.7 in a two-column contact sheet. Original full-page PNG retained.",
+      "observations": "Converter identity and upload heading explicitly name MP4. Four concise sections and four converter-specific FAQs avoid the compression-mode confusion of the old view. Output/help rows and footer are proportionate.",
+      "flags": [],
+      "scope": "Actual screenshot review of default/empty state only; not new interaction, processing, focus or live-public proof.",
+      "screenshot": ".qa-results/phase3/ui/final-i/responsive/webm-to-mp4-1440.png",
+      "screenshotSha256": "f32c69a5c528de3781d4fc7e76aba8abccffcc0aba644c72991e02fe48f323e6",
+      "dimensions": [
+        1440,
+        3157
+      ],
+      "reviewSheet": ".qa-results/phase3/ui/final-i/desktop-review-backlinks/webm-to-mp4-1440.sheet.png"
+    },
+    {
+      "route": "/mp3-compressor",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewedAt": "2026-11-28T11:38:52.125367+00:00",
+      "method": "Every ordered full-width 1500px strip, top to bottom, downscaled to 0.7 in a two-column contact sheet. Original full-page PNG retained.",
+      "observations": "MP3-only uploader, bitrate guide and six audio-specific FAQs render fully. Subsections and numbered steps are readable; output rows and related links align without oversized empty content.",
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ],
+      "scope": "Actual screenshot review of default/empty state only; not new interaction, processing, focus or live-public proof.",
+      "screenshot": ".qa-results/phase3/ui/final-i/responsive/mp3-compressor-1440.png",
+      "screenshotSha256": "1a0be07a170f5b7f5c831d23a5524d8be5b065591ebe23a75a6d59ade8a3ca83",
+      "dimensions": [
+        1440,
+        5560
+      ],
+      "reviewSheet": ".qa-results/phase3/ui/final-i/desktop-review-backlinks/mp3-compressor-1440.sheet.png"
+    },
+    {
+      "route": "/wav-compressor",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewedAt": "2026-11-28T11:38:52.125373+00:00",
+      "method": "Every ordered full-width 1500px strip, top to bottom, downscaled to 0.7 in a two-column contact sheet. Original full-page PNG retained.",
+      "observations": "WAV-to-MP3 identity and upload action are explicit. The 12-section conversion guide, source-retention advice and five WAV-specific FAQs remain readable and aligned.",
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ],
+      "scope": "Actual screenshot review of default/empty state only; not new interaction, processing, focus or live-public proof.",
+      "screenshot": ".qa-results/phase3/ui/final-i/responsive/wav-compressor-1440.png",
+      "screenshotSha256": "f4c5dc4352149a46d4e166d74c6a3663d9329ef05737d94c06a302faa86e8f41",
+      "dimensions": [
+        1440,
+        5750
+      ],
+      "reviewSheet": ".qa-results/phase3/ui/final-i/desktop-review-backlinks/wav-compressor-1440.sheet.png"
+    },
+    {
+      "route": "/wav-to-mp3",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewedAt": "2026-11-28T11:38:52.125379+00:00",
+      "method": "Every ordered full-width 1500px strip, top to bottom, downscaled to 0.7 in a two-column contact sheet. Original full-page PNG retained.",
+      "observations": "Alternate WAV URL visually matches the canonical converter apart from its green technical alias notice. Notice stays in bounds; full body, five FAQs, related links and footer were inspected.",
+      "flags": [
+        "ALIAS_TECHNICAL_NOTICE_RETAINED",
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ],
+      "scope": "Actual screenshot review of default/empty state only; not new interaction, processing, focus or live-public proof.",
+      "screenshot": ".qa-results/phase3/ui/final-i/responsive/wav-to-mp3-1440.png",
+      "screenshotSha256": "1d5482e150c85247ef9f949a44a844953a68b25458babf54bed662f63cd79f06",
+      "dimensions": [
+        1440,
+        5813
+      ],
+      "reviewSheet": ".qa-results/phase3/ui/final-i/desktop-review-backlinks/wav-to-mp3-1440.sheet.png"
+    },
+    {
+      "route": "/pdf-compressor",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewedAt": "2026-11-28T11:38:52.125384+00:00",
+      "method": "Every ordered full-width 1500px strip, top to bottom, downscaled to 0.7 in a two-column contact sheet. Original full-page PNG retained.",
+      "observations": "Eleven-section structural PDF guide, scan/metadata limits, numbered steps and six PDF-specific FAQs are readable. Upload and lower output guidance remain clear. No collision or clipping seen.",
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ],
+      "scope": "Actual screenshot review of default/empty state only; not new interaction, processing, focus or live-public proof.",
+      "screenshot": ".qa-results/phase3/ui/final-i/responsive/pdf-compressor-1440.png",
+      "screenshotSha256": "66d090b1dd284a01f0276c2fe8e70a8cc1f9129469eeac0705d71f90f5b0501e",
+      "dimensions": [
+        1440,
+        5692
+      ],
+      "reviewSheet": ".qa-results/phase3/ui/final-i/desktop-review-backlinks/pdf-compressor-1440.sheet.png"
+    },
+    {
+      "route": "/zip-compressor",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewedAt": "2026-11-28T11:38:52.125394+00:00",
+      "method": "Every ordered full-width 1500px strip, top to bottom, downscaled to 0.7 in a two-column contact sheet. Original full-page PNG retained.",
+      "observations": "ZIP creation identity, unrestricted-format upload cue and bundling-specific guide are clear. Six creation FAQs replace the old extraction questions. Output rows, related links and footer align.",
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ],
+      "scope": "Actual screenshot review of default/empty state only; not new interaction, processing, focus or live-public proof.",
+      "screenshot": ".qa-results/phase3/ui/final-i/responsive/zip-compressor-1440.png",
+      "screenshotSha256": "2a0ff4d43671f670484c6765083e030dd38379558a3059b16d58e1e9de4e27ef",
+      "dimensions": [
+        1440,
+        5399
+      ],
+      "reviewSheet": ".qa-results/phase3/ui/final-i/desktop-review-backlinks/zip-compressor-1440.sheet.png"
+    },
+    {
+      "route": "/archive-compressor",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewedAt": "2026-11-28T11:38:52.125400+00:00",
+      "method": "Every ordered full-width 1500px strip, top to bottom, downscaled to 0.7 in a two-column contact sheet. Original full-page PNG retained.",
+      "observations": "ZIP extraction is clearly separated from creation. Fourteen-section guide states format and safety limits, with six extraction-specific FAQs. All lower sections, related tools and footer were inspected without overlap.",
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ],
+      "scope": "Actual screenshot review of default/empty state only; not new interaction, processing, focus or live-public proof.",
+      "screenshot": ".qa-results/phase3/ui/final-i/responsive/archive-compressor-1440.png",
+      "screenshotSha256": "c22d0f9797c23627e5f67b730f934a1d58efad10b50413dce863d436b73b2dbd",
+      "dimensions": [
+        1440,
+        6224
+      ],
+      "reviewSheet": ".qa-results/phase3/ui/final-i/desktop-review-backlinks/archive-compressor-1440.sheet.png"
+    },
+    {
+      "route": "/about",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewedAt": "2026-11-28T11:41:38.301824+00:00",
+      "method": "Every ordered full-width1500px strip, top to bottom, downscaled0.7 in a two-column contact sheet; native crop also inspected for the privacy diagram. Original full-page PNG retained.",
+      "observations": "Identity heading, three value columns, workflow diagram and toolkit/limit sections are balanced. Final managed Help us understand a problem block has tight default paragraph leading and a browser-blue link, visually unlike neighboring branded links. This is a real shared-renderer styling defect, sent to editorial for J.",
+      "flags": [
+        "MANAGED_SECTION_DEFAULT_STYLE_DEFECT"
+      ],
+      "scope": "Actual screenshot review of default page only; not new interaction, focus or live-public proof.",
+      "screenshot": ".qa-results/phase3/ui/final-i/responsive/about-1440.png",
+      "screenshotSha256": "3b6742ea482a24a8d56fd0c4668587705dbeabcb4a84ce992fc1c2d9141c2757",
+      "dimensions": [
+        1440,
+        2590
+      ],
+      "reviewSheet": ".qa-results/phase3/ui/final-i/desktop-review-backlinks/about-1440.sheet.png"
+    },
+    {
+      "route": "/contact",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewedAt": "2026-11-28T11:41:38.302279+00:00",
+      "method": "Every ordered full-width1500px strip, top to bottom, downscaled0.7 in a two-column contact sheet; native crop also inspected for the privacy diagram. Original full-page PNG retained.",
+      "observations": "Support address is clear above five troubleshooting cards, including target unmet. Cards, lower private-content note, guide strip and footer align. WebM and video-compression distinctions are visible. No clipping or overlap seen.",
+      "flags": [],
+      "scope": "Actual screenshot review of default page only; not new interaction, focus or live-public proof.",
+      "screenshot": ".qa-results/phase3/ui/final-i/responsive/contact-1440.png",
+      "screenshotSha256": "c4f125b682db670aba0abce100992dda5d4a762d1220043c0586262382bf3668",
+      "dimensions": [
+        1440,
+        2152
+      ],
+      "reviewSheet": ".qa-results/phase3/ui/final-i/desktop-review-backlinks/contact-1440.sheet.png"
+    },
+    {
+      "route": "/blog",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewedAt": "2026-11-28T11:41:38.302293+00:00",
+      "method": "Every ordered full-width1500px strip, top to bottom, downscaled0.7 in a two-column contact sheet; native crop also inspected for the privacy diagram. Original full-page PNG retained.",
+      "observations": "Featured split card and four two-column cards render with consistent crops, balanced text blocks and Updated November28 dates. Lower cards and footer were inspected. No truncation or collision seen.",
+      "flags": [],
+      "scope": "Actual screenshot review of default page only; not new interaction, focus or live-public proof.",
+      "screenshot": ".qa-results/phase3/ui/final-i/responsive/blog-1440.png",
+      "screenshotSha256": "0a51036956505a341b7f149f6a824e873d6188eeac6c15304fbce9401414c393",
+      "dimensions": [
+        1440,
+        2568
+      ],
+      "reviewSheet": ".qa-results/phase3/ui/final-i/desktop-review-backlinks/blog-1440.sheet.png"
+    },
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewedAt": "2026-11-28T11:41:38.302304+00:00",
+      "method": "Every ordered full-width1500px strip, top to bottom, downscaled0.7 in a two-column contact sheet; native crop also inspected for the privacy diagram. Original full-page PNG retained.",
+      "observations": "Single Updated header, hero, six-item contents, format decision diagram, source links, tool CTA and updated related cards are readable. The compact490px diagram fits the desktop column fully. No overlap or clipped text seen.",
+      "flags": [],
+      "scope": "Actual screenshot review of default page only; not new interaction, focus or live-public proof.",
+      "screenshot": ".qa-results/phase3/ui/final-i/responsive/blog--compressing-files-for-the-web-1440.png",
+      "screenshotSha256": "a417e261cc3a5944356de5bd89148ebbfdf94957686625f9a486c56250423a33",
+      "dimensions": [
+        1440,
+        4861
+      ],
+      "reviewSheet": ".qa-results/phase3/ui/final-i/desktop-review-backlinks/blog--compressing-files-for-the-web-1440.sheet.png"
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewedAt": "2026-11-28T11:41:38.302312+00:00",
+      "method": "Every ordered full-width1500px strip, top to bottom, downscaled0.7 in a two-column contact sheet; native crop also inspected for the privacy diagram. Original full-page PNG retained.",
+      "observations": "Five-section article, source links and callout are readable. The new840px privacy diagram exceeds its680px reading column even at1440, initially hiding the Page assets box and part of its sentence behind internal scrolling. Hint exposes scrolling but desktop has room to show it fully. Sent to editorial for bounded figure breakout.",
+      "flags": [
+        "DESKTOP_DIAGRAM_UNNECESSARY_SCROLL"
+      ],
+      "scope": "Actual screenshot review of default page only; not new interaction, focus or live-public proof.",
+      "screenshot": ".qa-results/phase3/ui/final-i/responsive/blog--what-privacy-claim-really-means-1440.png",
+      "screenshotSha256": "e4c10fc669ac3697149e4f3b1edf90951695f265d52807b2ca2d80ace4585d3d",
+      "dimensions": [
+        1440,
+        4993
+      ],
+      "reviewSheet": ".qa-results/phase3/ui/final-i/desktop-review-backlinks/blog--what-privacy-claim-really-means-1440.sheet.png"
+    },
+    {
+      "route": "/blog/choosing-a-compression-mode",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewedAt": "2026-11-28T11:41:38.302319+00:00",
+      "method": "Every ordered full-width1500px strip, top to bottom, downscaled0.7 in a two-column contact sheet; native crop also inspected for the privacy diagram. Original full-page PNG retained.",
+      "observations": "Nine-section guide uses readable four-mode HTML cards, proper heading spacing and highlighted result note. Updated header and all related-card dates are visible. Native cards fit without internal scrolling.",
+      "flags": [],
+      "scope": "Actual screenshot review of default page only; not new interaction, focus or live-public proof.",
+      "screenshot": ".qa-results/phase3/ui/final-i/responsive/blog--choosing-a-compression-mode-1440.png",
+      "screenshotSha256": "34af2a628665d81310b64fec629064620acb25feed9217c20545e336e282074a",
+      "dimensions": [
+        1440,
+        5772
+      ],
+      "reviewSheet": ".qa-results/phase3/ui/final-i/desktop-review-backlinks/blog--choosing-a-compression-mode-1440.sheet.png"
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewedAt": "2026-11-28T11:41:38.302325+00:00",
+      "method": "Every ordered full-width1500px strip, top to bottom, downscaled0.7 in a two-column contact sheet; native crop also inspected for the privacy diagram. Original full-page PNG retained.",
+      "observations": "Five-section size guide, callout and related links are readable.840px chart requires internal horizontal scrolling in the desktop prose column; its lower sentence is initially cropped. Main size labels remain visible. Same bounded desktop diagram issue sent to editorial.",
+      "flags": [
+        "DESKTOP_DIAGRAM_UNNECESSARY_SCROLL"
+      ],
+      "scope": "Actual screenshot review of default page only; not new interaction, focus or live-public proof.",
+      "screenshot": ".qa-results/phase3/ui/final-i/responsive/blog--honest-file-size-reporting-1440.png",
+      "screenshotSha256": "15d817d71485eb3a1a5ade3065d51dc200c6c2ffa7e0a86dc46b58f91df3330b",
+      "dimensions": [
+        1440,
+        4530
+      ],
+      "reviewSheet": ".qa-results/phase3/ui/final-i/desktop-review-backlinks/blog--honest-file-size-reporting-1440.sheet.png"
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewedAt": "2026-11-28T11:41:38.302332+00:00",
+      "method": "Every ordered full-width1500px strip, top to bottom, downscaled0.7 in a two-column contact sheet; native crop also inspected for the privacy diagram. Original full-page PNG retained.",
+      "observations": "Four-step article, code-flow explanation, source links and result note are readable.840px five-stage diagram is cropped in its680px frame, initially hiding Download stage and part of its lower sentence despite1440px viewport. Same desktop figure issue sent to editorial.",
+      "flags": [
+        "DESKTOP_DIAGRAM_UNNECESSARY_SCROLL"
+      ],
+      "scope": "Actual screenshot review of default page only; not new interaction, focus or live-public proof.",
+      "screenshot": ".qa-results/phase3/ui/final-i/responsive/blog--how-browser-compression-works-1440.png",
+      "screenshotSha256": "148fe53e1f0cf65c3bd187b388b5dfd7c5c941a1bd370acd2acf7732f8f6d1e4",
+      "dimensions": [
+        1440,
+        4624
+      ],
+      "reviewSheet": ".qa-results/phase3/ui/final-i/desktop-review-backlinks/blog--how-browser-compression-works-1440.sheet.png"
+    },
+    {
+      "route": "/privacy",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewedAt": "2026-11-28T11:45:08.348533+00:00",
+      "method": "Every ordered full-width 1500px strip, top to bottom, downscaled to 0.7 in a two-column contact sheet. Original full-page PNG retained.",
+      "observations": "All eleven legal sections, the collapsed contents control, branded underlined service-policy links and footer were inspected. The narrow reading column, paragraph leading and heading rhythm remain consistent across the complete page. No overlap, truncated text or stray default-blue link was seen.",
+      "flags": [],
+      "scope": "Actual screenshot review of default/empty state only; not new interaction, processing, focus or live-public proof.",
+      "screenshot": ".qa-results/phase3/ui/final-i/responsive/privacy-1440.png",
+      "screenshotSha256": "ce709b7c6a6b47a5c7d0231447f443a6ece5375d3c4b9094911aa5c50f8a6d23",
+      "dimensions": [
+        1440,
+        3899
+      ],
+      "reviewSheet": ".qa-results/phase3/ui/final-i/desktop-review-backlinks/privacy-1440.sheet.png"
+    },
+    {
+      "route": "/terms",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewedAt": "2026-11-28T11:45:08.349111+00:00",
+      "method": "Every ordered full-width 1500px strip, top to bottom, downscaled to 0.7 in a two-column contact sheet. Original full-page PNG retained.",
+      "observations": "All seven sections, introduction, collapsed contents control, contact link and footer were inspected. Processing limits and backup information are readable in a suitable narrow column, with clear heading separation. No clipping or collision was seen.",
+      "flags": [],
+      "scope": "Actual screenshot review of default/empty state only; not new interaction, processing, focus or live-public proof.",
+      "screenshot": ".qa-results/phase3/ui/final-i/responsive/terms-1440.png",
+      "screenshotSha256": "71b974fc685485982d34453bd94d6f0b346bd7d3f5cfda1d234f1078aafcbff5",
+      "dimensions": [
+        1440,
+        2533
+      ],
+      "reviewSheet": ".qa-results/phase3/ui/final-i/desktop-review-backlinks/terms-1440.sheet.png"
+    },
+    {
+      "route": "/disclaimer",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewedAt": "2026-11-28T11:45:08.349132+00:00",
+      "method": "Every ordered full-width 1500px strip, top to bottom, downscaled to 0.7 in a two-column contact sheet. Original full-page PNG retained.",
+      "observations": "All seven sections and footer were inspected. Limits, output checks and local-file scope are separated with readable headings and paragraph spacing. No overlap or truncated text was seen.",
+      "flags": [],
+      "scope": "Actual screenshot review of default/empty state only; not new interaction, processing, focus or live-public proof.",
+      "screenshot": ".qa-results/phase3/ui/final-i/responsive/disclaimer-1440.png",
+      "screenshotSha256": "51684638f6d6662483b691940c0ed093866ee881e1308540ff19d4da368e3b50",
+      "dimensions": [
+        1440,
+        2742
+      ],
+      "reviewSheet": ".qa-results/phase3/ui/final-i/desktop-review-backlinks/disclaimer-1440.sheet.png"
+    },
+    {
+      "route": "/sitemap",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewedAt": "2026-11-28T11:45:08.349137+00:00",
+      "method": "Every ordered full-width 1500px strip, top to bottom, downscaled to 0.7 in a two-column contact sheet. Original full-page PNG retained.",
+      "observations": "All five directory groups and footer were inspected. Three top tool columns, a product-information column and wider guide-links group use compact rows with aligned arrows and dividers. Long guide titles fit; no collision was seen.",
+      "flags": [],
+      "scope": "Actual screenshot review of default/empty state only; not new interaction, processing, focus or live-public proof.",
+      "screenshot": ".qa-results/phase3/ui/final-i/responsive/sitemap-1440.png",
+      "screenshotSha256": "8e291d47ca2406a2d7b525c51e0420253a357073571fae072d6e3636ccdbe6ab",
+      "dimensions": [
+        1440,
+        1620
+      ],
+      "reviewSheet": ".qa-results/phase3/ui/final-i/desktop-review-backlinks/sitemap-1440.sheet.png"
+    },
+    {
+      "route": "/404-missing",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewedAt": "2026-11-28T11:45:08.349141+00:00",
+      "method": "Every ordered full-width 1500px strip, top to bottom, downscaled to 0.7 in a two-column contact sheet. Original full-page PNG retained.",
+      "observations": "The generic missing-page heading, two recovery buttons, three popular-tool groups and footer were inspected. Recovery actions are distinct and the chips fit naturally within their rows. This is the generic /404-missing route, not a screenshot of the unpublished article URL.",
+      "flags": [],
+      "scope": "Actual screenshot review of default/empty state only; not new interaction, processing, focus or live-public proof.",
+      "screenshot": ".qa-results/phase3/ui/final-i/responsive/404-missing-1440.png",
+      "screenshotSha256": "9d8375a7e61d4730fb41b7b661ba775c1c15d53ac87a43c1ebae587e9b9c42bb",
+      "dimensions": [
+        1440,
+        1323
+      ],
+      "reviewSheet": ".qa-results/phase3/ui/final-i/desktop-review-backlinks/404-missing-1440.sheet.png"
+    }
+  ]
+}

@@ -24,17 +24,19 @@ describe('managed information pages', () => {
     expect(() => getManagedPage('another-page' as ManagedPageSlug)).toThrow('unknown page')
   })
 
-  it('keeps current factual content and layout groups after migration', () => {
+  it('keeps reviewed factual content, targeted size help and support boundaries', () => {
     expect(getManagedPage('about').sections.filter(section => section.placement === 'card')).toHaveLength(3)
     const contact = getManagedPage('contact')
-    expect(contact.sections.filter(section => section.placement === 'card')).toHaveLength(4)
+    expect(contact.sections.filter(section => section.placement === 'card')).toHaveLength(5)
+    expect(contact.sections.find(section => section.heading === 'An image target cannot be met')?.body.join(' ')).toContain('actual bytes')
     expect(contact.sections.at(-1)?.body.join(' ')).toContain('does not offer a file-submission form')
     expect(contact.sections.at(-1)?.body.join(' ')).not.toContain('or advertise a monitored support mailbox')
     const privacy = getManagedPage('privacy')
-    expect(privacy.sections.find(section => section.heading === 'Administrator accounts and editorial content')?.body.join(' ')).toContain('TinaCloud')
-    expect(privacy.sections.find(section => section.heading === 'Contacting support')?.body.join(' ')).toContain('Zoho Mail')
-    expect(privacy.updated).toBe('2026-11-21')
-    expect(managedDateLabel(privacy.updated!)).toBe('21 November 2026')
+    expect(privacy.sections.find(section => section.heading === 'Administrator editor and published content')?.body.join(' ')).toContain('TinaCloud')
+    expect(privacy.sections.find(section => section.heading === 'Support email')?.body.join(' ')).toContain('Zoho Mail')
+    expect(privacy.sections.find(section => section.heading === 'Analytics and cookies')?.body.join(' ')).toContain('disabled')
+    expect(privacy.updated).toBe('2026-11-28')
+    expect(managedDateLabel(privacy.updated!)).toBe('28 November 2026')
   })
 
   it('fails a build for missing required metadata or malformed review dates', () => {

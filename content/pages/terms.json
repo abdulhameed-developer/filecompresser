@@ -1,21 +1,28 @@
 {
   "title": "Terms of Service",
-  "introduction": "",
+  "introduction": "These terms cover the browser-based tools. Read the format and size limits for the tool you use, and check downloaded results before replacing an original.",
   "seoTitle": "Terms of Service",
-  "seoDescription": "Terms for using filecompresser browser-based file tools.",
-  "updated": "2026-11-04",
+  "seoDescription": "Terms for using FileCompresser’s browser-based compression, conversion and ZIP tools, including file responsibilities and processing limits.",
+  "updated": "2026-11-28",
   "sections": [
     {
       "heading": "What this site provides",
       "body": [
-        "filecompresser offers browser-based tools that compress and convert files on your own device. Use them only with files you own or have permission to process.",
+        "FileCompresser offers browser-based compression, conversion and ZIP tools. Public tool use does not require an account. Use them only with files you own or have permission to process.",
         "The service is provided as-is. We do not promise uninterrupted availability, and we do not guarantee any particular compression ratio or output quality — the honest limits are described in the Disclaimer."
       ]
     },
     {
       "heading": "Your files and your backups",
       "body": [
-        "Because processing happens on your device, nothing is stored and nothing is recoverable. You are responsible for keeping backups of original files. Keep a copy of anything you cannot re-download before you process it here."
+        "The application processes selected files locally and does not hold a server copy from which to restore them. Inputs and results can remain in the open tab until you remove them. Downloads that you save remain on your device. You are responsible for keeping backups of original files before processing."
+      ]
+    },
+    {
+      "heading": "Processing limits",
+      "body": [
+        "Accepted formats, per-file sizes and available settings differ by tool. The queue limit is 500 files and 300 MiB in total. Browser memory, codec support and file complexity can prevent processing below those limits. Media jobs have a five-minute processing limit.",
+        "Ordinary compression can retain the original with no reduction. Explicit conversions and ZIP creation can increase bytes. PDF optimization does not downsample embedded images, and image resizing is not offered. The interface reports actual outcomes; the Disclaimer explains further technical limits."
       ]
     },
     {

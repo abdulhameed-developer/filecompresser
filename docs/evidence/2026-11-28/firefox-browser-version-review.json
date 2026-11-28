@@ -1,0 +1,88 @@
+{
+  "checkedAt": "2026-11-28T12:18:50.325441+00:00",
+  "status": "VERIFIED_VENDOR_MATCH_CURRENT_STABLE_IS_161",
+  "officialCurrent": {
+    "LATEST_FIREFOX_VERSION": "161.0",
+    "LAST_RELEASE_DATE": "2026-11-24",
+    "FIREFOX_NIGHTLY": "163.0a1",
+    "FIREFOX_DEVEDITION": "162.0b3",
+    "FIREFOX_ESR": "153.8.0esr"
+  },
+  "officialReleaseNotes": {
+    "currentStable": "https://www.mozilla.org/en-US/firefox/161.0/releasenotes/",
+    "currentStableFirstRelease": "2026-11-24",
+    "vendorMajor": "https://www.mozilla.org/en-US/firefox/159.0/releasenotes/",
+    "vendorMajorFirstRelease": "2026-10-27"
+  },
+  "officialPlaywrightVendor": {
+    "name": "firefox",
+    "revision": "1572",
+    "installByDefault": true,
+    "browserVersion": "159.0",
+    "title": "Firefox"
+  },
+  "officialPlaywrightUpstream": "REMOTE_URL=\"https://github.com/mozilla-firefox/firefox\"\nBASE_BRANCH=\"release\"\nBASE_REVISION=\"9a2dc53c369c7ae5172018b35988e1d2ffeff402\"",
+  "localMetadata": [
+    {
+      "file": "/home/admin/.cache/ms-playwright/firefox-1572/firefox/application.ini",
+      "sha256": "2436182ae8cb69d58b5442f603ce9e5a12124d8a9635c40b5655d8646b7d58e8",
+      "text": "; This file is not used. If you modify it and want the application to use\n; your modifications, move it under the browser/ subdirectory and start with\n; the \"-app /path/to/browser/application.ini\" argument.\n[App]\nVendor=Mozilla\nName=Firefox\nRemotingName=firefox-default\nCodeName=Nightly\nVersion=159.0\nBuildID=20261030161113\nID={ec8030f7-c20a-464f-9b0e-13a3a9e97384}\n\n[Gecko]\nMinVersion=159.0\nMaxVersion=159.0\n\n[XRE]\nEnableProfileMigrator=1\n\n\n"
+    },
+    {
+      "file": "/home/admin/.cache/ms-playwright/firefox-1572/firefox/platform.ini",
+      "sha256": "e59dd48f94b060bdf4e2a565f018620dd465854764e496899d281bee860b1f5e",
+      "text": "[Build]\nBuildID=20261030161113\nMilestone=159.0\n"
+    },
+    {
+      "file": "/home/admin/.cache/ms-playwright/firefox-1572/firefox/defaults/pref/channel-prefs.js",
+      "sha256": "ef9fba57b2c3755b630b44ccfe703e2753d538fa50e3c52fc279c29e6db8200f",
+      "text": "/* This Source Code Form is subject to the terms of the Mozilla Public\n * License, v. 2.0. If a copy of the MPL was not distributed with this\n * file, You can obtain one at http://mozilla.org/MPL/2.0/. */\n//\n// This pref is in its own file for complex reasons. See the comment in\n// browser/app/Makefile.in, bug 756325, and bug 1431342 for details. Do not add\n// other prefs to this file.\n\npref(\"app.update.channel\", \"default\");\n"
+    }
+  ],
+  "localProduct": {
+    "vendor": "Mozilla",
+    "name": "Firefox",
+    "remotingname": "firefox-default",
+    "codename": "Nightly",
+    "version": "159.0",
+    "buildid": "20261030161113",
+    "id": "{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+  },
+  "sourceResponses": [
+    {
+      "url": "https://product-details.mozilla.org/1.0/firefox_versions.json",
+      "finalUrl": "https://product-details.mozilla.org/1.0/firefox_versions.json",
+      "httpStatus": 200,
+      "mime": "application/json",
+      "bytes": 625,
+      "sha256": "0ee3723b7299cf5e8bcfa0c11e5961298688e2862fb6f4f40bcf1f1f4ffc5bfa",
+      "path": ".qa-results/phase3/comparison/firefox-version-research/firefox_versions.json"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/microsoft/playwright/v1.65.1/packages/playwright-core/browsers.json",
+      "finalUrl": "https://raw.githubusercontent.com/microsoft/playwright/v1.65.1/packages/playwright-core/browsers.json",
+      "httpStatus": 200,
+      "mime": "text/plain; charset=utf-8",
+      "bytes": 1135,
+      "sha256": "38368519e09a8a988fdfdcc5b352d269bee040d4536c1cbd0ede48ffa8dde4a4",
+      "path": ".qa-results/phase3/comparison/firefox-version-research/playwright-v1.65.1-browsers.json"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/microsoft/playwright/v1.65.1/browser_patches/firefox/UPSTREAM_CONFIG.sh",
+      "finalUrl": "https://raw.githubusercontent.com/microsoft/playwright/v1.65.1/browser_patches/firefox/UPSTREAM_CONFIG.sh",
+      "httpStatus": 200,
+      "mime": "text/plain; charset=utf-8",
+      "bytes": 135,
+      "sha256": "2050d16f804fcfac468d2b5a86009cd5c94a5fc1166a7919c342bcb1efe28ca9",
+      "path": ".qa-results/phase3/comparison/firefox-version-research/playwright-v1.65.1-upstream-config.sh"
+    }
+  ],
+  "interpretation": [
+    "Firefox161.0 is the current official release as of28Nov2026;157 is not current stable.",
+    "Firefox159.0 had an official Release-channel version first offered27Oct2026.",
+    "Playwright1.65.1 intentionally vendors patched Firefox159.0 revision1572 from release base; local package and binary version/build metadata match.",
+    "Vendor CodeName=Nightly and update channel default are build branding/settings, not proof it is current Mozilla Nightly163.0a1.",
+    "The vendor binary is not stock Mozilla stable161; compare results must retain this distinction.",
+    "This research does not establish whether current stock161 succeeds or shares the native crash; no browser test or install was performed."
+  ]
+}

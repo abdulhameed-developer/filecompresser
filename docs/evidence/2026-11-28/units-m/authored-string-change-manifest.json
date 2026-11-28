@@ -1,0 +1,645 @@
+{
+  "createdAt": "2026-11-28T13:42:28.040795+00:00",
+  "scope": "Authored copy only: 16 explicitly assigned capacity records and one existing article paragraph; no code, byte caps, targets, dates, structure or destinations changed.",
+  "files": [
+    {
+      "file": "content/pages/about.json",
+      "beforeSha256": "eac8a698c0c1c11c0d4845d61ae96c4c1f772f9eddefd11ab505cc0fd06b1e63",
+      "afterSha256": "369f0994a2fa2852986739919ac80c37b28a19be7f38a6555b5e816cb47fd3cf",
+      "backup": ".qa-results/phase3/ui/capacity-copy-m/about.json.before",
+      "changes": [
+        {
+          "pointer": "sections.4.body.0",
+          "before": "Each tool lists its accepted formats and input limit. Queues allow up to 500 files and 300 MB in total. Browser memory, image dimensions, codec support and file complexity can prevent processing even below those limits. Media jobs have a five-minute processing limit.",
+          "after": "Each tool lists its accepted formats and input limit. Queues allow up to 500 files and 300 MiB in total. Browser memory, image dimensions, codec support and file complexity can prevent processing even below those limits. Media jobs have a five-minute processing limit.",
+          "unitCorrections": [
+            {
+              "oldLabel": "300 MB",
+              "newLabel": "300 MiB",
+              "actualBytesUnchanged": 314572800
+            }
+          ],
+          "basis": "Actual binary file/queue/archive safety caps from lib/tools.ts and lib/validation.ts; GIF 50*1024*1024 in gif-inspection.ts."
+        }
+      ],
+      "exactChangedPathsVerified": [
+        "sections.4.body.0"
+      ]
+    },
+    {
+      "file": "content/pages/terms.json",
+      "beforeSha256": "28ab94e1ae59ded58c4512dd4bfe909b1a56e277a4ba1b17c13acc4e7c21a908",
+      "afterSha256": "43db748b4d36d30ade5924ef1aae8ab0b4a074909d8baa0bcc5bf3ef86444d6d",
+      "backup": ".qa-results/phase3/ui/capacity-copy-m/terms.json.before",
+      "changes": [
+        {
+          "pointer": "sections.2.body.0",
+          "before": "Accepted formats, per-file sizes and available settings differ by tool. The queue limit is 500 files and 300 MB in total. Browser memory, codec support and file complexity can prevent processing below those limits. Media jobs have a five-minute processing limit.",
+          "after": "Accepted formats, per-file sizes and available settings differ by tool. The queue limit is 500 files and 300 MiB in total. Browser memory, codec support and file complexity can prevent processing below those limits. Media jobs have a five-minute processing limit.",
+          "unitCorrections": [
+            {
+              "oldLabel": "300 MB",
+              "newLabel": "300 MiB",
+              "actualBytesUnchanged": 314572800
+            }
+          ],
+          "basis": "Actual binary file/queue/archive safety caps from lib/tools.ts and lib/validation.ts; GIF 50*1024*1024 in gif-inspection.ts."
+        }
+      ],
+      "exactChangedPathsVerified": [
+        "sections.2.body.0"
+      ]
+    },
+    {
+      "file": "content/tools/archive-compressor.json",
+      "beforeSha256": "e6bab0f3190c683c87ef3f0d5ac1f37abe1ba0240d3ad78b8c277a576c346534",
+      "afterSha256": "ec1467b9ffdfc58629c4f4aac10aabd44766b1a514dd113dd25566f3e82c9215",
+      "backup": ".qa-results/phase3/ui/capacity-copy-m/archive-compressor.json.before",
+      "changes": [
+        {
+          "pointer": "sections.9.body",
+          "before": "FileCompresser's current extraction tool is designed for ZIP files. It does not support every archive format.\n\nThe current workflow does not support RAR or 7z files. Encrypted archives, split archives, and ZIP64 archives are also not supported.\n\nIf you receive an archive in one of these formats, you will need a compatible extraction application. Changing the file extension does not convert an unsupported archive into a standard ZIP file.\n\nThe maximum supported input size for the ZIP Extractor is 150 MB. Make sure your archive is within this limit before starting the process.\n\nExtraction allows up to 500 entries, 200 MB per file and 500 MB total extracted data. A per-entry or whole-archive expansion ratio above 100:1 is refused. These bounds are separate from the input queue limit.",
+          "after": "FileCompresser's current extraction tool is designed for ZIP files. It does not support every archive format.\n\nThe current workflow does not support RAR or 7z files. Encrypted archives, split archives, and ZIP64 archives are also not supported.\n\nIf you receive an archive in one of these formats, you will need a compatible extraction application. Changing the file extension does not convert an unsupported archive into a standard ZIP file.\n\nThe maximum supported input size for the ZIP Extractor is 150 MiB. Make sure your archive is within this limit before starting the process.\n\nExtraction allows up to 500 entries, 200 MiB per file and 500 MiB total extracted data. A per-entry or whole-archive expansion ratio above 100:1 is refused. These bounds are separate from the input queue limit.",
+          "unitCorrections": [
+            {
+              "oldLabel": "150 MB",
+              "newLabel": "150 MiB",
+              "actualBytesUnchanged": 157286400
+            },
+            {
+              "oldLabel": "200 MB",
+              "newLabel": "200 MiB",
+              "actualBytesUnchanged": 209715200
+            },
+            {
+              "oldLabel": "500 MB",
+              "newLabel": "500 MiB",
+              "actualBytesUnchanged": 524288000
+            }
+          ],
+          "basis": "Actual binary file/queue/archive safety caps from lib/tools.ts and lib/validation.ts; GIF 50*1024*1024 in gif-inspection.ts."
+        },
+        {
+          "pointer": "sections.11.body",
+          "before": "FileCompresser processes supported ZIP archives directly in your browser. Your selected archive does not need to be uploaded to an external server for extraction, and you do not need to create an account to use the tool.\n\nThe input file limit is 150 MB. The general processing queue supports up to 500 files and a combined queue size of up to 300 MB, subject to the tool's archive and extraction limits.\n\nProcessing capacity can also depend on your device and browser. Large archives with many files or a high amount of extracted data may require more memory and processing time.",
+          "after": "FileCompresser processes supported ZIP archives directly in your browser. Your selected archive does not need to be uploaded to an external server for extraction, and you do not need to create an account to use the tool.\n\nThe input file limit is 150 MiB. The general processing queue supports up to 500 files and a combined queue size of up to 300 MiB, subject to the tool's archive and extraction limits.\n\nProcessing capacity can also depend on your device and browser. Large archives with many files or a high amount of extracted data may require more memory and processing time.",
+          "unitCorrections": [
+            {
+              "oldLabel": "150 MB",
+              "newLabel": "150 MiB",
+              "actualBytesUnchanged": 157286400
+            },
+            {
+              "oldLabel": "300 MB",
+              "newLabel": "300 MiB",
+              "actualBytesUnchanged": 314572800
+            }
+          ],
+          "basis": "Actual binary file/queue/archive safety caps from lib/tools.ts and lib/validation.ts; GIF 50*1024*1024 in gif-inspection.ts."
+        },
+        {
+          "pointer": "sections.13.body",
+          "before": "The maximum supported ZIP input size is 150 MB. Archives must also meet the tool's other extraction and safety limits.",
+          "after": "The maximum supported ZIP input size is 150 MiB. Archives must also meet the tool's other extraction and safety limits.",
+          "unitCorrections": [
+            {
+              "oldLabel": "150 MB",
+              "newLabel": "150 MiB",
+              "actualBytesUnchanged": 157286400
+            }
+          ],
+          "basis": "Actual binary file/queue/archive safety caps from lib/tools.ts and lib/validation.ts; GIF 50*1024*1024 in gif-inspection.ts."
+        },
+        {
+          "pointer": "faq.0.a",
+          "before": "The tool is free without an account. The input limit is 150 MB per ZIP; queues allow up to 500 files and 300 MB total. Format, device-memory and processing limits also apply.",
+          "after": "The tool is free without an account. The input limit is 150 MiB per ZIP; queues allow up to 500 files and 300 MiB total. Format, device-memory and processing limits also apply.",
+          "unitCorrections": [
+            {
+              "oldLabel": "150 MB",
+              "newLabel": "150 MiB",
+              "actualBytesUnchanged": 157286400
+            },
+            {
+              "oldLabel": "300 MB",
+              "newLabel": "300 MiB",
+              "actualBytesUnchanged": 314572800
+            }
+          ],
+          "basis": "Actual binary file/queue/archive safety caps from lib/tools.ts and lib/validation.ts; GIF 50*1024*1024 in gif-inspection.ts."
+        }
+      ],
+      "exactChangedPathsVerified": [
+        "sections.9.body",
+        "sections.11.body",
+        "sections.13.body",
+        "faq.0.a"
+      ]
+    },
+    {
+      "file": "content/tools/compress.json",
+      "beforeSha256": "576b1423bf58d67625a4f1b68321f8811877b182966840782599aea4e1c15050",
+      "afterSha256": "2f35b6ace5aba9953344e8398a9736eeeeaef363b7436dca719a667de9e2d313",
+      "backup": ".qa-results/phase3/ui/capacity-copy-m/compress.json.before",
+      "changes": [
+        {
+          "pointer": "sections.9.body",
+          "before": "A browser-based file compressor provides a convenient way to manage files without installing additional software. You can open the website, select your files and complete the task using your existing browser.\n\nOther useful features include:\n\n- No account or registration required.\n- No software installation.\n- No added watermarks.\n- Support for multiple file formats.\n- Actual file size comparisons.\n- Individual and supported batch downloads.\n- Automatic selection of the appropriate processing workflow.\n\nThe queue supports up to 500 files and 300 MB in total. The maximum individual file size depends on the selected processing tool. Browser memory and device performance can also affect the processing time.",
+          "after": "A browser-based file compressor provides a convenient way to manage files without installing additional software. You can open the website, select your files and complete the task using your existing browser.\n\nOther useful features include:\n\n- No account or registration required.\n- No software installation.\n- No added watermarks.\n- Support for multiple file formats.\n- Actual file size comparisons.\n- Individual and supported batch downloads.\n- Automatic selection of the appropriate processing workflow.\n\nThe queue supports up to 500 files and 300 MiB in total. The maximum individual file size depends on the selected processing tool. Browser memory and device performance can also affect the processing time.",
+          "unitCorrections": [
+            {
+              "oldLabel": "300 MB",
+              "newLabel": "300 MiB",
+              "actualBytesUnchanged": 314572800
+            }
+          ],
+          "basis": "Actual binary file/queue/archive safety caps from lib/tools.ts and lib/validation.ts; GIF 50*1024*1024 in gif-inspection.ts."
+        }
+      ],
+      "exactChangedPathsVerified": [
+        "sections.9.body"
+      ]
+    },
+    {
+      "file": "content/tools/gif-compressor.json",
+      "beforeSha256": "36841b3a98a9a40f823a2f474fbc31f97908bcea686b295b56f906bd030a02b4",
+      "afterSha256": "6e72a736c7341fc7a92e1908cfe26ee31e20540f60695d1ab4106bc144660f1a",
+      "backup": ".qa-results/phase3/ui/capacity-copy-m/gif-compressor.json.before",
+      "changes": [
+        {
+          "pointer": "sections.13.body",
+          "before": "FileCompresser processes GIF files directly on your device. The website loads its media processing engine when needed, and your browser may cache the required code for later use.\n\nThe tool accepts GIF files up to 50 MB. It also applies preflight limits of 1,000 frames, a 32-megapixel canvas and 64 million pixels across full-canvas frames.\n\nLong or complex animations can still require significant memory. If processing fails, try a shorter animation or a smaller source file.",
+          "after": "FileCompresser processes GIF files directly on your device. The website loads its media processing engine when needed, and your browser may cache the required code for later use.\n\nThe tool accepts GIF files up to 50 MiB. It also applies preflight limits of 1,000 frames, a 32-megapixel canvas and 64 million pixels across full-canvas frames.\n\nLong or complex animations can still require significant memory. If processing fails, try a shorter animation or a smaller source file.",
+          "unitCorrections": [
+            {
+              "oldLabel": "50 MB",
+              "newLabel": "50 MiB",
+              "actualBytesUnchanged": 52428800
+            }
+          ],
+          "basis": "Actual binary file/queue/archive safety caps from lib/tools.ts and lib/validation.ts; GIF 50*1024*1024 in gif-inspection.ts."
+        }
+      ],
+      "exactChangedPathsVerified": [
+        "sections.13.body"
+      ]
+    },
+    {
+      "file": "content/tools/image-compressor.json",
+      "beforeSha256": "e64eb0556458faab9b498a0f9292a96af095657bd7f97376aefcd0357773aa9f",
+      "afterSha256": "9a9e55c7459711042d021340412532d60f4b80610d40673ece0b1bc282db5198",
+      "backup": ".qa-results/phase3/ui/capacity-copy-m/image-compressor.json.before",
+      "changes": [
+        {
+          "pointer": "sections.14.body",
+          "before": "Selected images are processed in your browser rather than uploaded to a compression server. Each image can be up to 50 MB and 32 megapixels. Queues allow up to 500 files and 300 MB in total. Browser memory can still limit processing below these bounds. Keep a source copy before trying a new encoding.",
+          "after": "Selected images are processed in your browser rather than uploaded to a compression server. Each image can be up to 50 MiB and 32 megapixels. Queues allow up to 500 files and 300 MiB in total. Browser memory can still limit processing below these bounds. Keep a source copy before trying a new encoding.",
+          "unitCorrections": [
+            {
+              "oldLabel": "50 MB",
+              "newLabel": "50 MiB",
+              "actualBytesUnchanged": 52428800
+            },
+            {
+              "oldLabel": "300 MB",
+              "newLabel": "300 MiB",
+              "actualBytesUnchanged": 314572800
+            }
+          ],
+          "basis": "Actual binary file/queue/archive safety caps from lib/tools.ts and lib/validation.ts; GIF 50*1024*1024 in gif-inspection.ts."
+        }
+      ],
+      "exactChangedPathsVerified": [
+        "sections.14.body"
+      ]
+    },
+    {
+      "file": "content/tools/jpeg-compressor.json",
+      "beforeSha256": "ebc95c2ea96f2e8f22967c58fc3ca31400beedb46d0804d3d9ba1c3c52d797f3",
+      "afterSha256": "6a65d7987a23d740cc2ae5d90ee1480f31112f31dd3fcaed8ffee83feb24bb46",
+      "backup": ".qa-results/phase3/ui/capacity-copy-m/jpeg-compressor.json.before",
+      "changes": [
+        {
+          "pointer": "sections.17.body",
+          "before": "Selected images are processed in your browser rather than uploaded to a compression server. Each image can be up to 50 MB and 32 megapixels. Queues allow up to 500 files and 300 MB in total. Browser memory can still limit processing below these bounds. Keep a source copy before trying a new encoding.",
+          "after": "Selected images are processed in your browser rather than uploaded to a compression server. Each image can be up to 50 MiB and 32 megapixels. Queues allow up to 500 files and 300 MiB in total. Browser memory can still limit processing below these bounds. Keep a source copy before trying a new encoding.",
+          "unitCorrections": [
+            {
+              "oldLabel": "50 MB",
+              "newLabel": "50 MiB",
+              "actualBytesUnchanged": 52428800
+            },
+            {
+              "oldLabel": "300 MB",
+              "newLabel": "300 MiB",
+              "actualBytesUnchanged": 314572800
+            }
+          ],
+          "basis": "Actual binary file/queue/archive safety caps from lib/tools.ts and lib/validation.ts; GIF 50*1024*1024 in gif-inspection.ts."
+        }
+      ],
+      "exactChangedPathsVerified": [
+        "sections.17.body"
+      ]
+    },
+    {
+      "file": "content/tools/jpg-compressor.json",
+      "beforeSha256": "fd257c5663ec5116f641e7a36156aa73f3a46fd5f78fa7ab4d61ebcfa6f784f2",
+      "afterSha256": "209884dcf270dbe6ea483308b037dd488931043250ee011d03169b01d8ccf06e",
+      "backup": ".qa-results/phase3/ui/capacity-copy-m/jpg-compressor.json.before",
+      "changes": [
+        {
+          "pointer": "sections.15.body",
+          "before": "Selected images are processed in your browser rather than uploaded to a compression server. Each image can be up to 50 MB and 32 megapixels. Queues allow up to 500 files and 300 MB in total. Browser memory can still limit processing below these bounds. Keep a source copy before trying a new encoding.",
+          "after": "Selected images are processed in your browser rather than uploaded to a compression server. Each image can be up to 50 MiB and 32 megapixels. Queues allow up to 500 files and 300 MiB in total. Browser memory can still limit processing below these bounds. Keep a source copy before trying a new encoding.",
+          "unitCorrections": [
+            {
+              "oldLabel": "50 MB",
+              "newLabel": "50 MiB",
+              "actualBytesUnchanged": 52428800
+            },
+            {
+              "oldLabel": "300 MB",
+              "newLabel": "300 MiB",
+              "actualBytesUnchanged": 314572800
+            }
+          ],
+          "basis": "Actual binary file/queue/archive safety caps from lib/tools.ts and lib/validation.ts; GIF 50*1024*1024 in gif-inspection.ts."
+        }
+      ],
+      "exactChangedPathsVerified": [
+        "sections.15.body"
+      ]
+    },
+    {
+      "file": "content/tools/mp3-compressor.json",
+      "beforeSha256": "63a55f14c6cc2f1f1ac71085d0baa5fc55947bd4cafb93bd9736801f4a266163",
+      "afterSha256": "e151e6cd270bcca81cd07f0f1c6290b64ffc0b385c770a89afc92da91dd7eead",
+      "backup": ".qa-results/phase3/ui/capacity-copy-m/mp3-compressor.json.before",
+      "changes": [
+        {
+          "pointer": "sections.9.body",
+          "before": "FileCompresser processes MP3 files on your device through your browser. Your selected audio is not uploaded to a remote server for compression, and you do not need to create an account to use the tool.\n\nThe audio engine may need to download the first time you use a media tool. This initial download is around 21 MB and can be cached by your browser for later use. MP3 processing also has a five-minute job limit, so very long recordings may not finish within the available processing time.\n\nThe tool supports MP3 files up to 100 MB. If your audio is larger than this limit, you will need to use a smaller source file.",
+          "after": "FileCompresser processes MP3 files on your device through your browser. Your selected audio is not uploaded to a remote server for compression, and you do not need to create an account to use the tool.\n\nThe audio engine may need to download the first time you use a media tool. This initial download is around 21 MB and can be cached by your browser for later use. MP3 processing also has a five-minute job limit, so very long recordings may not finish within the available processing time.\n\nThe tool supports MP3 files up to 100 MiB. If your audio is larger than this limit, you will need to use a smaller source file.",
+          "unitCorrections": [
+            {
+              "oldLabel": "100 MB",
+              "newLabel": "100 MiB",
+              "actualBytesUnchanged": 104857600
+            }
+          ],
+          "basis": "Actual binary file/queue/archive safety caps from lib/tools.ts and lib/validation.ts; GIF 50*1024*1024 in gif-inspection.ts."
+        },
+        {
+          "pointer": "faq.0.a",
+          "before": "The tool is free without an account. The input limit is 100 MB per file; queues allow up to 500 files and 300 MB total. Format, device-memory and processing limits also apply.",
+          "after": "The tool is free without an account. The input limit is 100 MiB per file; queues allow up to 500 files and 300 MiB total. Format, device-memory and processing limits also apply.",
+          "unitCorrections": [
+            {
+              "oldLabel": "100 MB",
+              "newLabel": "100 MiB",
+              "actualBytesUnchanged": 104857600
+            },
+            {
+              "oldLabel": "300 MB",
+              "newLabel": "300 MiB",
+              "actualBytesUnchanged": 314572800
+            }
+          ],
+          "basis": "Actual binary file/queue/archive safety caps from lib/tools.ts and lib/validation.ts; GIF 50*1024*1024 in gif-inspection.ts."
+        }
+      ],
+      "exactChangedPathsVerified": [
+        "sections.9.body",
+        "faq.0.a"
+      ]
+    },
+    {
+      "file": "content/tools/pdf-compressor.json",
+      "beforeSha256": "9199a0bfb5e16bb84e0b200ac422e75751b742e88852c95aa1926bb3160c8f0e",
+      "afterSha256": "b81b67d7020e0d7b9a7b7ac65881f5c4c6a5c3cee51b4956e553df021a89562b",
+      "backup": ".qa-results/phase3/ui/capacity-copy-m/pdf-compressor.json.before",
+      "changes": [
+        {
+          "pointer": "sections.9.body",
+          "before": "FileCompresser processes supported PDF files directly in your browser. Your selected document does not need to be uploaded to an external server for the optimization process, and you do not need to create an account to use the tool.\n\nThe maximum supported PDF file size is 50 MB. The workflow is designed for supported, unsigned, and unencrypted PDF documents. If a file is protected or digitally signed, the tool will not process it.\n\nFor important documents, keep a separate original copy. After processing, open the downloaded PDF and check its pages, links, forms, and layout before sharing or replacing the original.",
+          "after": "FileCompresser processes supported PDF files directly in your browser. Your selected document does not need to be uploaded to an external server for the optimization process, and you do not need to create an account to use the tool.\n\nThe maximum supported PDF file size is 50 MiB. The workflow is designed for supported, unsigned, and unencrypted PDF documents. If a file is protected or digitally signed, the tool will not process it.\n\nFor important documents, keep a separate original copy. After processing, open the downloaded PDF and check its pages, links, forms, and layout before sharing or replacing the original.",
+          "unitCorrections": [
+            {
+              "oldLabel": "50 MB",
+              "newLabel": "50 MiB",
+              "actualBytesUnchanged": 52428800
+            }
+          ],
+          "basis": "Actual binary file/queue/archive safety caps from lib/tools.ts and lib/validation.ts; GIF 50*1024*1024 in gif-inspection.ts."
+        },
+        {
+          "pointer": "faq.0.a",
+          "before": "The tool is free without an account. The input limit is 50 MB per file; queues allow up to 500 files and 300 MB total. Format, device-memory and processing limits also apply.",
+          "after": "The tool is free without an account. The input limit is 50 MiB per file; queues allow up to 500 files and 300 MiB total. Format, device-memory and processing limits also apply.",
+          "unitCorrections": [
+            {
+              "oldLabel": "50 MB",
+              "newLabel": "50 MiB",
+              "actualBytesUnchanged": 52428800
+            },
+            {
+              "oldLabel": "300 MB",
+              "newLabel": "300 MiB",
+              "actualBytesUnchanged": 314572800
+            }
+          ],
+          "basis": "Actual binary file/queue/archive safety caps from lib/tools.ts and lib/validation.ts; GIF 50*1024*1024 in gif-inspection.ts."
+        }
+      ],
+      "exactChangedPathsVerified": [
+        "sections.9.body",
+        "faq.0.a"
+      ]
+    },
+    {
+      "file": "content/tools/png-compressor.json",
+      "beforeSha256": "64229fa83dac0d3c0b34ff4c82739475339a31d0b9df3650fdd15fea5aec2a2c",
+      "afterSha256": "b5241e863d8625dc6261f2c0fda46916c64dd19b215f78ee49cc488b53a40761",
+      "backup": ".qa-results/phase3/ui/capacity-copy-m/png-compressor.json.before",
+      "changes": [
+        {
+          "pointer": "sections.11.body",
+          "before": "FileCompresser processes selected images on your device. Your PNG files are not uploaded to the website's servers.\n\nThe tool accepts PNG files up to 50 MB each. Queue limits are 500 files and 300 MB total, while image dimensions are subject to the 32-megapixel limit. Your device's available memory can also affect processing.",
+          "after": "FileCompresser processes selected images on your device. Your PNG files are not uploaded to the website's servers.\n\nThe tool accepts PNG files up to 50 MiB each. Queue limits are 500 files and 300 MiB total, while image dimensions are subject to the 32-megapixel limit. Your device's available memory can also affect processing.",
+          "unitCorrections": [
+            {
+              "oldLabel": "50 MB",
+              "newLabel": "50 MiB",
+              "actualBytesUnchanged": 52428800
+            },
+            {
+              "oldLabel": "300 MB",
+              "newLabel": "300 MiB",
+              "actualBytesUnchanged": 314572800
+            }
+          ],
+          "basis": "Actual binary file/queue/archive safety caps from lib/tools.ts and lib/validation.ts; GIF 50*1024*1024 in gif-inspection.ts."
+        }
+      ],
+      "exactChangedPathsVerified": [
+        "sections.11.body"
+      ]
+    },
+    {
+      "file": "content/tools/video-compressor.json",
+      "beforeSha256": "59a0dda59b76ffe4d4899568ae97d7cc425168c32a632f35d4007fef7b6505bf",
+      "afterSha256": "7516015b1b1be76b6e3df885f5ab1335ad46cf0644148680cd8a3b1dd855b425",
+      "backup": ".qa-results/phase3/ui/capacity-copy-m/video-compressor.json.before",
+      "changes": [
+        {
+          "pointer": "sections.15.body",
+          "before": "The first video, audio or GIF processing job loads the required WebAssembly version of FFmpeg. This processing engine is approximately 21 MB and may be cached by your browser for later use.\n\nVideo encoding also requires processing power and memory. Long recordings and high-resolution videos can take considerable time, even when the input is within the stated file limit.\n\nFileCompresser accepts video files up to 200 MB per file. Media jobs have a five-minute processing limit. If a job fails, try a shorter clip or select a lower resolution.",
+          "after": "The first video, audio or GIF processing job loads the required WebAssembly version of FFmpeg. This processing engine is approximately 21 MB and may be cached by your browser for later use.\n\nVideo encoding also requires processing power and memory. Long recordings and high-resolution videos can take considerable time, even when the input is within the stated file limit.\n\nFileCompresser accepts video files up to 200 MiB per file. Media jobs have a five-minute processing limit. If a job fails, try a shorter clip or select a lower resolution.",
+          "unitCorrections": [
+            {
+              "oldLabel": "200 MB",
+              "newLabel": "200 MiB",
+              "actualBytesUnchanged": 209715200
+            }
+          ],
+          "basis": "Actual binary file/queue/archive safety caps from lib/tools.ts and lib/validation.ts; GIF 50*1024*1024 in gif-inspection.ts."
+        }
+      ],
+      "exactChangedPathsVerified": [
+        "sections.15.body"
+      ]
+    },
+    {
+      "file": "content/tools/wav-compressor.json",
+      "beforeSha256": "bc636e90e761524132108c685be5b3f58da8fda2e0d386aff08cce75dd765c4f",
+      "afterSha256": "bcda5191029d3b01550d33e2987f25513d7093652406c068db8b596bf9efb17c",
+      "backup": ".qa-results/phase3/ui/capacity-copy-m/wav-compressor.json.before",
+      "changes": [
+        {
+          "pointer": "sections.10.body",
+          "before": "FileCompresser processes your selected WAV file directly in your browser. This means you do not need to send the recording to a remote server for conversion or create an account before using the tool.\n\nThe maximum supported WAV file size is 100 MB. Media processing uses a browser-based engine that may require an initial download of around 21 MB. Your browser can cache this engine for future use. Each processing job has a five-minute limit, and long recordings may need more processing resources.",
+          "after": "FileCompresser processes your selected WAV file directly in your browser. This means you do not need to send the recording to a remote server for conversion or create an account before using the tool.\n\nThe maximum supported WAV file size is 100 MiB. Media processing uses a browser-based engine that may require an initial download of around 21 MB. Your browser can cache this engine for future use. Each processing job has a five-minute limit, and long recordings may need more processing resources.",
+          "unitCorrections": [
+            {
+              "oldLabel": "100 MB",
+              "newLabel": "100 MiB",
+              "actualBytesUnchanged": 104857600
+            }
+          ],
+          "basis": "Actual binary file/queue/archive safety caps from lib/tools.ts and lib/validation.ts; GIF 50*1024*1024 in gif-inspection.ts."
+        },
+        {
+          "pointer": "faq.0.a",
+          "before": "The tool is free without an account. The input limit is 100 MB per file; queues allow up to 500 files and 300 MB total. Format, device-memory and processing limits also apply.",
+          "after": "The tool is free without an account. The input limit is 100 MiB per file; queues allow up to 500 files and 300 MiB total. Format, device-memory and processing limits also apply.",
+          "unitCorrections": [
+            {
+              "oldLabel": "100 MB",
+              "newLabel": "100 MiB",
+              "actualBytesUnchanged": 104857600
+            },
+            {
+              "oldLabel": "300 MB",
+              "newLabel": "300 MiB",
+              "actualBytesUnchanged": 314572800
+            }
+          ],
+          "basis": "Actual binary file/queue/archive safety caps from lib/tools.ts and lib/validation.ts; GIF 50*1024*1024 in gif-inspection.ts."
+        },
+        {
+          "pointer": "faq.2.a",
+          "before": "The tool supports WAV files up to 100 MB. Files above this limit are not supported by the current workflow.",
+          "after": "The tool supports WAV files up to 100 MiB. Files above this limit are not supported by the current workflow.",
+          "unitCorrections": [
+            {
+              "oldLabel": "100 MB",
+              "newLabel": "100 MiB",
+              "actualBytesUnchanged": 104857600
+            }
+          ],
+          "basis": "Actual binary file/queue/archive safety caps from lib/tools.ts and lib/validation.ts; GIF 50*1024*1024 in gif-inspection.ts."
+        }
+      ],
+      "exactChangedPathsVerified": [
+        "sections.10.body",
+        "faq.0.a",
+        "faq.2.a"
+      ]
+    },
+    {
+      "file": "content/tools/webm-to-mp4.json",
+      "beforeSha256": "46adb13559c08f9e6bba857179d6409b287ad0638a203d17b2a24cc5aade1e0d",
+      "afterSha256": "ff8421fe67c1b6bfbb2e4811ebad08b1fffe58e718e3de6e11c4434573e962dd",
+      "backup": ".qa-results/phase3/ui/capacity-copy-m/webm-to-mp4.json.before",
+      "changes": [
+        {
+          "pointer": "sections.3.body",
+          "before": "Inputs can be up to 200 MB each, within the 500-file and 300 MB queue limits. The first media job downloads the browser engine. Duration, resolution, codec and device speed affect processing, and each media job has a five-minute processing limit. Long or complex recordings can fail within the file-size limit.",
+          "after": "Inputs can be up to 200 MiB each, within the 500-file and 300 MiB queue limits. The first media job downloads the browser engine. Duration, resolution, codec and device speed affect processing, and each media job has a five-minute processing limit. Long or complex recordings can fail within the file-size limit.",
+          "unitCorrections": [
+            {
+              "oldLabel": "200 MB",
+              "newLabel": "200 MiB",
+              "actualBytesUnchanged": 209715200
+            },
+            {
+              "oldLabel": "300 MB",
+              "newLabel": "300 MiB",
+              "actualBytesUnchanged": 314572800
+            }
+          ],
+          "basis": "Actual binary file/queue/archive safety caps from lib/tools.ts and lib/validation.ts; GIF 50*1024*1024 in gif-inspection.ts."
+        }
+      ],
+      "exactChangedPathsVerified": [
+        "sections.3.body"
+      ]
+    },
+    {
+      "file": "content/tools/webp-compressor.json",
+      "beforeSha256": "13b4cb5d3284ce39752dbb90009cd125b795b8e645ff33f44839829bb449137b",
+      "afterSha256": "a9633bcb5978c9f84c678bae50f277ae1110d5c72962fe607f2837444c635d72",
+      "backup": ".qa-results/phase3/ui/capacity-copy-m/webp-compressor.json.before",
+      "changes": [
+        {
+          "pointer": "sections.12.body",
+          "before": "Selected images are processed in your browser rather than uploaded to a compression server. Each image can be up to 50 MB and 32 megapixels. Queues allow up to 500 files and 300 MB in total. Browser memory can still limit processing below these bounds. Keep a source copy before trying a new encoding.",
+          "after": "Selected images are processed in your browser rather than uploaded to a compression server. Each image can be up to 50 MiB and 32 megapixels. Queues allow up to 500 files and 300 MiB in total. Browser memory can still limit processing below these bounds. Keep a source copy before trying a new encoding.",
+          "unitCorrections": [
+            {
+              "oldLabel": "50 MB",
+              "newLabel": "50 MiB",
+              "actualBytesUnchanged": 52428800
+            },
+            {
+              "oldLabel": "300 MB",
+              "newLabel": "300 MiB",
+              "actualBytesUnchanged": 314572800
+            }
+          ],
+          "basis": "Actual binary file/queue/archive safety caps from lib/tools.ts and lib/validation.ts; GIF 50*1024*1024 in gif-inspection.ts."
+        }
+      ],
+      "exactChangedPathsVerified": [
+        "sections.12.body"
+      ]
+    },
+    {
+      "file": "content/tools/zip-compressor.json",
+      "beforeSha256": "106f91f787b059d3cdbf566dd335512fee0e516462f2aec9be61cf4e1fbf65ab",
+      "afterSha256": "75eb2df37ef4dd6926f653d43ff3b1f2875f52a5ca1308d7e977f35a82ad50d7",
+      "backup": ".qa-results/phase3/ui/capacity-copy-m/zip-compressor.json.before",
+      "changes": [
+        {
+          "pointer": "sections.10.body",
+          "before": "FileCompresser creates ZIP archives directly in your browser. Your selected files do not need to be uploaded to an external server for the archive to be created. You can use the tool without installing a separate ZIP application.\n\nThe general file queue supports up to 500 files, with a combined queue size of up to 300 MB. Individual files can be up to 200 MB, subject to the queue limit.\n\nThese limits help define which file collections can be processed in the browser. If your selection exceeds the supported limits, reduce the number or size of the files and try again.",
+          "after": "FileCompresser creates ZIP archives directly in your browser. Your selected files do not need to be uploaded to an external server for the archive to be created. You can use the tool without installing a separate ZIP application.\n\nThe general file queue supports up to 500 files, with a combined queue size of up to 300 MiB. Individual files can be up to 200 MiB, subject to the queue limit.\n\nThese limits help define which file collections can be processed in the browser. If your selection exceeds the supported limits, reduce the number or size of the files and try again.",
+          "unitCorrections": [
+            {
+              "oldLabel": "300 MB",
+              "newLabel": "300 MiB",
+              "actualBytesUnchanged": 314572800
+            },
+            {
+              "oldLabel": "200 MB",
+              "newLabel": "200 MiB",
+              "actualBytesUnchanged": 209715200
+            }
+          ],
+          "basis": "Actual binary file/queue/archive safety caps from lib/tools.ts and lib/validation.ts; GIF 50*1024*1024 in gif-inspection.ts."
+        },
+        {
+          "pointer": "faq.0.a",
+          "before": "The tool is free without an account. The input limit is 200 MB per file; queues allow up to 500 files and 300 MB total. Format, device-memory and processing limits also apply.",
+          "after": "The tool is free without an account. The input limit is 200 MiB per file; queues allow up to 500 files and 300 MiB total. Format, device-memory and processing limits also apply.",
+          "unitCorrections": [
+            {
+              "oldLabel": "200 MB",
+              "newLabel": "200 MiB",
+              "actualBytesUnchanged": 209715200
+            },
+            {
+              "oldLabel": "300 MB",
+              "newLabel": "300 MiB",
+              "actualBytesUnchanged": 314572800
+            }
+          ],
+          "basis": "Actual binary file/queue/archive safety caps from lib/tools.ts and lib/validation.ts; GIF 50*1024*1024 in gif-inspection.ts."
+        },
+        {
+          "pointer": "faq.5.a",
+          "before": "The general queue supports individual files up to 200 MB, with a combined queue limit of 300 MB and a maximum of 500 files.",
+          "after": "The general queue supports individual files up to 200 MiB, with a combined queue limit of 300 MiB and a maximum of 500 files.",
+          "unitCorrections": [
+            {
+              "oldLabel": "200 MB",
+              "newLabel": "200 MiB",
+              "actualBytesUnchanged": 209715200
+            },
+            {
+              "oldLabel": "300 MB",
+              "newLabel": "300 MiB",
+              "actualBytesUnchanged": 314572800
+            }
+          ],
+          "basis": "Actual binary file/queue/archive safety caps from lib/tools.ts and lib/validation.ts; GIF 50*1024*1024 in gif-inspection.ts."
+        }
+      ],
+      "exactChangedPathsVerified": [
+        "sections.10.body",
+        "faq.0.a",
+        "faq.5.a"
+      ]
+    },
+    {
+      "file": "content/posts/choosing-a-compression-mode.json",
+      "beforeSha256": "00cfde8aa3ef5ea047cad6a1a916d7af2b29f301dc3869a7bd94428609fc8885",
+      "afterSha256": "589940ee17e2bf2d1d773cb8a91ee98fe2ec6f5d758cbe1f6c412fb9798e8251",
+      "backup": ".qa-results/phase3/ui/capacity-copy-m/choosing-a-compression-mode.json.before",
+      "changes": [
+        {
+          "pointer": "body.23.text",
+          "before": "An upload form may use decimal KB or binary KiB. FileCompresser uses decimal units: 100 KB is 100,000 bytes and 1 MB is 1,000,000 bytes. Check the form’s written rule and inspect the downloaded file’s actual byte count. A target is a maximum, so a valid 92,000-byte output meets a 100,000-byte limit without being padded to match it.",
+          "after": "An upload form may use decimal KB or binary KiB. FileCompresser displays file sizes and targets in decimal units: 100 KB is 100,000 bytes and 1 MB is 1,000,000 bytes. Input, queue and extraction limits use MiB: 1 MiB is 1,048,576 bytes. Check the form’s written rule and inspect the downloaded file’s actual byte count. A target is a maximum, so a valid 92,000-byte output meets a 100,000-byte limit without being padded to match it.",
+          "basis": "Distinguish decimal file/target presentation from unchanged binary resource caps; original decimal examples retained."
+        }
+      ],
+      "exactChangedPathsVerified": [
+        "body.23.text"
+      ]
+    }
+  ],
+  "status": "SOURCE_COPY_FROZEN_CMS_AND_EDITORIAL_CHECKS_PASS_NOT_YET_BUILT",
+  "changedFiles": 17,
+  "changedLeafStrings": 26,
+  "binaryCapacityLabelsCorrected": 41,
+  "checks": [
+    {
+      "command": "node scripts/check-cms-inputs.mjs",
+      "chunk_id": "b08a5c",
+      "wall_time_seconds": 0.011176011,
+      "exit_code": 0,
+      "original_token_count": 21,
+      "output": "CMS JSON preflight passed: 29 files, 175888 bytes; file and graph limits verified.\n"
+    },
+    {
+      "command": "node scripts/check-editorial.mjs",
+      "chunk_id": "f320ff",
+      "wall_time_seconds": 0.063286758,
+      "exit_code": 0,
+      "original_token_count": 16,
+      "output": "Published editorial source: 27 records, zero prohibited terms.\n"
+    }
+  ],
+  "frozenAt": "2026-11-28T13:42:58.570855+00:00",
+  "preserved": [
+    "All JSON keys/sections/array structure",
+    "Original publication and updated dates",
+    "All links and destinations",
+    "Existing FAQ mode",
+    "Decimal target examples and exact-byte definitions",
+    "Approximate 21 MB codec download copy",
+    "All application byte caps and processing implementation outside owned content scope"
+  ]
+}

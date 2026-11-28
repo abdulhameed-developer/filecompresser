@@ -1,0 +1,149 @@
+{
+  "researchedAt": "2026-11-28T12:17:55.941288+00:00",
+  "status": "UNKNOWN_NO_STRONG_PRIMARY_SOURCE_MATCH",
+  "method": "20 public search queries with only primary Mozilla Bugzilla/Microsoft Playwright/Vercel Next.js issue evidence relied upon; close analogies compared against retained actual log/harness. Unrelated returned sources were not used. No browser tests, code or browser-setting changes performed.",
+  "localEvidence": {
+    "log": ".qa-results/phase3/comparison/firefox-i-crash-diagnostic.log",
+    "logSha256": "786c1aaa9671026ad9f3a5329639c3084cd1d80e5ab489a69cfeea56c8228fb4",
+    "harness": "scripts/comparison-scroll-audit.mjs",
+    "harnessSha256": "73c126353307cf98a185eb57421055db73ee6d530ca94ce26468daf2bfcaa6c1",
+    "browser": "Firefox159.0, Playwright firefox1572",
+    "observed": "Content process359695 exits on signal11 after completed real PNG processing/download, immediately after Compare open; no native stack retained. Gestures array empty. JS errors/request failures arrays empty before native exit."
+  },
+  "queries": [
+    "site:bugzilla.mozilla.org Firefox crash dialog backdrop-filter scroll snap",
+    "site:github.com/microsoft/playwright/issues Firefox \"signal 11\" \"dialog\"",
+    "site:github.com/vercel/next.js/issues Firefox crash \"React 18\"",
+    "site:bugzilla.mozilla.org Firefox crash \"Image.decode\"",
+    "site:github.com/microsoft/playwright/issues \"Firefox\" \"signal 11\" \"Ubuntu\"",
+    "site:bugzilla.mozilla.org \"dialog\" \"crash\" \"backdrop-filter\"",
+    "site:bugzilla.mozilla.org \"scroll-snap\" \"SIGSEGV\"",
+    "site:github.com/vercel/next.js/issues \"Firefox\" \"crash\" \"16\"",
+    "site:bugzilla.mozilla.org \"dialog\" \"crash\" \"Firefox 159\"",
+    "site:bugzilla.mozilla.org \"scroll-snap\" \"crash\" \"2026\"",
+    "site:bugzilla.mozilla.org \"decode()\" \"crash\" \"image\"",
+    "site:github.com/microsoft/playwright/issues \"Firefox\" \"modal\" \"crash\"",
+    "site:github.com/microsoft/playwright/issues \"windowGlobalChild\" \"crash\"",
+    "site:bugzilla.mozilla.org \"dialog\" \"SIGSEGV\"",
+    "site:bugzilla.mozilla.org \"scroll-snap\" \"crash\" -META -interop",
+    "site:github.com/vercel/next.js/issues \"Firefox\" \"segmentation\"",
+    "site:github.com/microsoft/playwright/issues \"Firefox\" \"26.04\" \"crash\"",
+    "site:github.com/microsoft/playwright/issues \"159\" \"crash\"",
+    "site:github.com/vercel/next.js/issues \"Firefox\" \"browser crashes\"",
+    "site:bugzilla.mozilla.org \"HTMLImageElement\" \"decode\" \"crash\" \"2026\""
+  ],
+  "references": [
+    {
+      "url": "https://github.com/microsoft/playwright/issues/42565",
+      "kind": "Playwright regression",
+      "summary": "Content-process SIGSEGV while page.reload tears down a large worker that is still compiling. Opened4Sep2026; current native GitHub page marked Closed/v1.64.",
+      "overlap": "Linux content SIGSEGV; worker use.",
+      "disqualifier": "Retained application workflow waits for completed processing/download and then opens Compare; it does not reload while worker compiles. Root reports isolated worker control passes.",
+      "match": "NOT_MATCHED"
+    },
+    {
+      "url": "https://github.com/microsoft/playwright/issues/43213",
+      "kind": "Playwright patched-Firefox regression",
+      "summary": "Content process signal11 requires bypassCSP true and javascript: navigation. Current page Closed via43457/v1.65.",
+      "overlap": "Recent Firefox/Playwright and native signal11.",
+      "disqualifier": "Actual harness context sets viewport/hasTouch/deviceScaleFactor only. No bypassCSP or javascript: navigation in the retained Compare click flow.",
+      "match": "NOT_MATCHED"
+    },
+    {
+      "url": "https://github.com/microsoft/playwright/issues/42183",
+      "kind": "Playwright Next16 navigation bookkeeping",
+      "summary": "Next16 localhost page loaded and evaluable but goto/locators wait on lifecycle bookkeeping. Current page Closed.",
+      "overlap": "Firefox and Next16 localhost.",
+      "disqualifier": "Our content process actually exits on signal11 after Compare opens; this report preserves a live evaluable document and no native crash.",
+      "match": "NOT_MATCHED"
+    },
+    {
+      "url": "https://bugzilla.mozilla.org/show_bug.cgi?id=2068836",
+      "kind": "Mozilla WebRender blur/filter regression",
+      "summary": "CSS blur can cause exponential recursion/freeze. VERIFIED FIXED, milestone157; Firefox157 verified.",
+      "overlap": "Blur/backdrop-related rendering path.",
+      "disqualifier": "Different symptom (freeze), version/fix and no matched native stack. Firefox159 SIG11 cannot be attributed to this issue.",
+      "match": "NOT_MATCHED"
+    },
+    {
+      "url": "https://bugzilla.mozilla.org/show_bug.cgi?id=2011747",
+      "kind": "Mozilla backdrop-filter rendering",
+      "summary": "Backdrop-filter content with filtered ancestor fails to render; fix initially caused2068836 freezes; main bug tracks Firefox157 fixed.",
+      "overlap": "Backdrop-filter may appear in application shared styling.",
+      "disqualifier": "No matching render-task/native stack or minimal combined-style reproduction; isolated actual component passes per root.",
+      "match": "NOT_MATCHED"
+    },
+    {
+      "url": "https://bugzilla.mozilla.org/show_bug.cgi?id=2022521",
+      "kind": "Mozilla modal backdrop rendering",
+      "summary": "Unconfirmed Firefox148/macOS modal/sidebar backdrop-filter text rendering corruption; no crash signature.",
+      "overlap": "Opening a modal with a backdrop.",
+      "disqualifier": "Visual corruption, not demonstrated renderer SIG11; browser/OS and native signature do not match.",
+      "match": "NOT_MATCHED"
+    },
+    {
+      "url": "https://bugzilla.mozilla.org/show_bug.cgi?id=1659042",
+      "kind": "Mozilla HTML dialog historical native crash",
+      "summary": "dialog-showModal WPT content crash in nsLineBreaker::AppendText; RESOLVED FIXED, milestone81.",
+      "overlap": "HTML dialog open and SIGSEGV.",
+      "disqualifier": "Fixed Firefox81-era issue and specific line-breaker stack; current159 log contains no stack to match.",
+      "match": "NOT_MATCHED"
+    },
+    {
+      "url": "https://bugzilla.mozilla.org/show_bug.cgi?id=1848917",
+      "kind": "Mozilla scroll-snap behavior",
+      "summary": "Repeated wheel/scroll-snap smooth-animation interactions cause slow or incomplete transitions; crash signature None.",
+      "overlap": "Scroll/animation class only.",
+      "disqualifier": "No native crash and our retained gestures array is empty: crash occurs before gesture tests.",
+      "match": "NOT_MATCHED"
+    },
+    {
+      "url": "https://bugzilla.mozilla.org/show_bug.cgi?id=2021952",
+      "kind": "Mozilla scroll-snap/reflow behavior",
+      "summary": "Android active-pan resnapping with scroll-driven animation/reflow, resolved in155.",
+      "overlap": "Nested scroll behavior only.",
+      "disqualifier": "Different platform/interaction, fixed behavior issue and no observed active-pan gesture before our crash.",
+      "match": "NOT_MATCHED"
+    },
+    {
+      "url": "https://bugzilla.mozilla.org/show_bug.cgi?id=2048558",
+      "kind": "Mozilla WebCodecs ImageDecoder native crash report",
+      "summary": "Unconfirmed ImageDecoder invalid pointer requires transferring WebAssembly.Memory.buffer to WebCodecs ImageDecoder.",
+      "overlap": "PNG decoding and native content process.",
+      "disqualifier": "Different API and explicit buffer-transfer trigger; Compare uses HTML img and HTMLImageElement.decode, not WebCodecs ImageDecoder. No matched native stack.",
+      "match": "NOT_MATCHED"
+    },
+    {
+      "url": "https://bugzilla.mozilla.org/show_bug.cgi?id=2077967",
+      "kind": "Mozilla Firefox158/159 startup crash",
+      "summary": "Privileged module-load ordering in PWAsForFirefox startup, fixed158/159.",
+      "overlap": "Version159 only.",
+      "disqualifier": "Our page already loaded, processed and downloaded before crash. No privileged PWA startup-module imports or incomplete-installation dialog.",
+      "match": "NOT_MATCHED"
+    },
+    {
+      "url": "https://github.com/microsoft/playwright/issues/44133",
+      "kind": "Chromium159 view-transition regression",
+      "summary": "Native Chromium159 crash during iframe view transition; report explicitly says Firefox159 passes.",
+      "overlap": "Version159 label only.",
+      "disqualifier": "Wrong engine, iframe/view-transition trigger absent; not Firefox evidence.",
+      "match": "NOT_MATCHED"
+    },
+    {
+      "url": "https://github.com/microsoft/playwright/issues/44094",
+      "kind": "Linux Chromium crash-report timing",
+      "summary": "Chrome intentional-crash notification delayed by large Linux core dump; Firefox adjacent controls pass.",
+      "overlap": "Ubuntu26.04 appears in issue history.",
+      "disqualifier": "Wrong engine and intentional-crash notification mechanism; does not establish Ubuntu26.04 caused this Firefox content crash.",
+      "match": "NOT_MATCHED"
+    }
+  ],
+  "conclusions": [
+    "Native content-process failure is observed; specific cause remains unknown.",
+    "Neither a bare SIG11 nor the subsequent disposed Juggler channel identifies the faulting subsystem.",
+    "Earlier windowGlobalChild/removeProgressListener warnings occur before processing completes; no demonstrated causal link to later native exit.",
+    "No OOM, general image decoder, Next16/React18, CSS dialog/backdrop, CPU or host-version cause is established.",
+    "Matched minimal reproducible trigger or native stack would be needed to associate this failure with a specific upstream issue.",
+    "No environment bypass or removal of sandbox/security settings is proposed."
+  ]
+}

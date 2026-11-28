@@ -198,6 +198,34 @@ describe('image recovery output policy', () => {
 })
 
 describe('verified maximum-byte target', () => {
+  it('reaches a feasible limit below the former25percent quality floor', async () => {
+    const codec = adapter({ size: quality => Math.round(300 + quality * 4000) })
+    const result = await runImagePipeline(jpeg(4000, 3000, 8000), { mode: 'target', targetSize: 700 }, codec)
+    expect(result.outcome).toBe('target-met')
+    expect(result.blob.size).toBeLessThanOrEqual(700)
+    expect('qualityUsed' in result.inspection ? result.inspection.qualityUsed : undefined).toBeLessThan(.25)
+  })
+
+  it('does not assume a failed lowest-quality trial proves every intermediate quality fails', async () => {
+    const codec = adapter({ size: quality => quality >= .39 && quality <= .56 ? 600 : 1200 })
+    const result = await runImagePipeline(jpeg(4000, 3000, 3000), { mode: 'target', targetSize: 700 }, codec)
+    expect(result.outcome).toBe('target-met')
+    expect(result.blob.size).toBeLessThanOrEqual(700)
+    expect(codec.encode.mock.calls.length).toBeLessThanOrEqual(TARGET_MAX_ENCODES)
+  })
+
+  it('rejects an unreachable limit instead of resolving an above-limit downloadable result', async () => {
+    const codec = adapter({ size: 1200 })
+    await expect(runImagePipeline(jpeg(4000, 3000, 3000), { mode: 'target', targetSize: 700 }, codec)).rejects.toMatchObject({ code: 'target-unreachable' })
+    expect(codec.close).toHaveBeenCalledOnce()
+  })
+
+  it.each([['jpeg', jpeg()], ['png', png()], ['webp', webp()]])('rejects a1byte %s limit before allocating a decoded raster', async (_format, source) => {
+    const codec = adapter()
+    await expect(runImagePipeline(source, { mode: 'target', targetSize: 1 }, codec)).rejects.toMatchObject({ code: 'target-unreachable' })
+    expect(codec.decode).not.toHaveBeenCalled()
+  })
+
   it('keeps an already-under-target original without encoding it again', async () => {
     const codec = adapter()
     const source = jpeg()
@@ -218,33 +246,19 @@ describe('verified maximum-byte target', () => {
     expect(result.inspection).toMatchObject({ outputWidth: 4000, outputHeight: 3000 })
   })
 
-  it('reports an unreachable target without claiming success or changing dimensions', async () => {
-    const result = await runImagePipeline(jpeg(4000, 3000, 3000), { mode: 'target', targetSize: 1000 }, adapter({ size: quality => Math.round(1500 + quality * 1000) }))
-    expect(result.outcome).toBe('target-unmet')
-    expect(result.blob.size).toBeGreaterThan(1000)
-    expect(result.targetNote).toContain('above the 1,000-byte limit')
-    expect(result.inspection).toMatchObject({ outputWidth: 4000, outputHeight: 3000 })
+  it('explains the tested minimum without a completed result or changed source', async () => {
+    const source = jpeg(4000, 3000, 3000)
+    const before = new Uint8Array(await source.arrayBuffer())
+    const codec = adapter({ size: quality => Math.round(1500 + quality * 1000) })
+    await expect(runImagePipeline(source, { mode: 'target', targetSize: 1000, resizeMaxWidth: 1000, resizeMaxHeight: 1000 }, codec)).rejects.toMatchObject({ code: 'target-unreachable', message: expect.stringContaining('preserving the original dimensions') })
+    expect(new Uint8Array(await source.arrayBuffer())).toEqual(before)
+    expect(codec.decode.mock.calls[0][2]).toEqual({ width: 4000, height: 3000 })
+    expect(codec.close).toHaveBeenCalledOnce()
   })
 
-  it('preserves original dimensions and offers only available alternatives when a target remains unmet', async () => {
-    const result = await runImagePipeline(jpeg(4000, 3000, 3000), {
-      mode: 'target', targetSize: 1000, resizeMaxWidth: 1000, resizeMaxHeight: 1000,
-    }, adapter({ size: quality => Math.round(1500 + quality * 1000) }))
-    expect(result.outcome).toBe('target-unmet')
-    expect(result.blob.size).toBeGreaterThan(1000)
-    expect(await inspectImageHeader(result.blob)).toMatchObject({ width: 4000, height: 3000 })
-    expect(result.inspection).toMatchObject({ inputWidth: 4000, inputHeight: 3000, outputWidth: 4000, outputHeight: 3000 })
-    expect(result.targetNote).toContain('preserving the original dimensions')
-    expect(result.targetNote).toContain('Choose another format or use a larger limit')
-    expect(result.targetNote).not.toMatch(/resiz/i)
-  })
-
-  it('does not replace the original with a larger failed-target candidate', async () => {
+  it('does not return even the original as a new successful result when it is above target', async () => {
     const source = jpeg()
-    const result = await runImagePipeline(source, { mode: 'target', targetSize: 100 }, adapter({ size: 2000 }))
-    expect(result.outcome).toBe('target-unmet')
-    expect(result.blob).toBe(source)
-    expect(result.targetNote).toContain('original is available unchanged')
+    await expect(runImagePipeline(source, { mode: 'target', targetSize: 100 }, adapter({ size: 2000 }))).rejects.toMatchObject({ code: 'target-unreachable', message: expect.stringContaining('1,000 bytes') })
   })
 
   it('requires a real target', async () => {
@@ -260,29 +274,20 @@ describe('verified maximum-byte target', () => {
     expect(codec.encode).not.toHaveBeenCalled()
   })
 
-  it.each([{ limit: 500, outcome: 'target-met' }, { limit: 499, outcome: 'target-unmet' }])('checks actual lossless PNG bytes against a $limit-byte ceiling exactly once', async ({ limit, outcome }) => {
+  it('checks the final lossless PNG byte ceiling with exact equality allowed', async () => {
     const codec = adapter({ size: 500, alpha: true })
-    const progress = vi.fn()
-    const result = await runImagePipeline(png(), { mode: 'target', targetSize: limit }, codec, { progress })
-    expect(result.outcome).toBe(outcome)
+    const result = await runImagePipeline(png(), { mode: 'target', targetSize: 500 }, codec)
+    expect(result.outcome).toBe('target-met')
     expect(result.blob.size).toBe(500)
     expect(codec.encode).toHaveBeenCalledExactlyOnceWith('png', undefined, 2)
     expect(result.inspection).toMatchObject({ outputWidth: 4000, outputHeight: 3000, inputHasAlpha: true, outputHasAlpha: true })
-    expect('qualityUsed' in result.inspection ? result.inspection.qualityUsed : undefined).toBeUndefined()
-    expect(result.targetNote).toContain('Lossless PNG optimization')
-    expect(result.targetNote).not.toContain('25%')
-    expect(progress.mock.calls.some(call => /quality|trial/i.test(call[1]))).toBe(false)
   })
 
-  it('retains exact original PNG bytes when the one failed-target optimization is larger', async () => {
-    const source = png()
-    const codec = adapter({ size: 1200, alpha: true })
-    const result = await runImagePipeline(source, { mode: 'target', targetSize: 400 }, codec)
-    expect(result.outcome).toBe('target-unmet')
-    expect(result.blob).toBe(source)
-    expect(codec.encode).toHaveBeenCalledTimes(1)
-    expect(result.inspection.encoder).toBe('Original file')
-    expect(result.targetNote).toContain('original is available unchanged')
+  it.each([{ limit: 499, candidate: 500 }, { limit: 400, candidate: 1200 }])('refuses an above-target PNG when color reduction is unavailable ($limitB)', async ({ limit, candidate }) => {
+    const codec = adapter({ size: candidate, alpha: true })
+    await expect(runImagePipeline(png(), { mode: 'target', targetSize: limit }, codec)).rejects.toMatchObject({ code: 'target-unreachable' })
+    expect(codec.encode).toHaveBeenCalledTimes(2)
+    expect(codec.close).toHaveBeenCalledOnce()
   })
 
   it.each([{ width: 2000, height: 1500, effort: 2 }, { width: 4000, height: 3000, effort: 2 }])('bounds PNG DEFLATE effort without changing $width×$height geometry', async ({ width, height, effort }) => {
@@ -290,6 +295,22 @@ describe('verified maximum-byte target', () => {
     const result = await runImagePipeline(png(width, height), { pngMode: 'maximum' }, codec)
     expect(codec.encode).toHaveBeenCalledExactlyOnceWith('png', undefined, effort)
     expect(result.inspection).toMatchObject({ inputWidth: width, inputHeight: height, outputWidth: width, outputHeight: height })
+  })
+
+  it('tries the stronger lossless pass before refusing a large16bit Target or reducing colors', async () => {
+    const codec = adapter({ size: 900 })
+    const encode = codec.encode.getMockImplementation()!
+    codec.encode.mockImplementation(async (format: Format, quality: number, effort?: number) => {
+      const candidate = await encode(format, quality, effort)
+      return effort === 4 ? { ...candidate, blob: png(4000, 3000, 700, false, 16) } : candidate
+    })
+    const result = await runImagePipeline(png(4000, 3000, 1000, false, 16), { pngMode: 'target', targetSize: 800 }, codec)
+    expect(result.outcome).toBe('target-met')
+    expect(result.blob.size).toBe(700)
+    expect(result.inspection).toMatchObject({ compressionKind: 'lossless', outputWidth: 4000, outputHeight: 3000 })
+    expect(codec.encode.mock.calls.map(call => call[2])).toEqual([2, 4])
+    expect(codec.decode).toHaveBeenCalledOnce()
+    expect(codec.close).toHaveBeenCalledOnce()
   })
 
   it('keeps the stronger lossless Target attempt when a faster pass would miss the byte ceiling', async () => {

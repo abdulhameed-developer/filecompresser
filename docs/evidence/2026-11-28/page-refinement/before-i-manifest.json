@@ -1,0 +1,28 @@
+{
+  "status": "HISTORICAL_I_BEFORE_FIX_CAPTURES",
+  "scope": "Real compiled local I, not production-before screenshots. After/final evidence pending.",
+  "captures": [
+    {
+      "page": "about",
+      "file": "docs/evidence/2026-11-28/page-refinement/about-before-i-mobile.png",
+      "originalSha256": "97942ba5ec436e88cd9574766e3397bc32eb3636a6e5b4fb00aa0daa7cabaa30",
+      "exactOriginalCopy": true,
+      "candidate": "I",
+      "viewport": {
+        "width": 390,
+        "height": 900
+      }
+    },
+    {
+      "page": "home",
+      "file": "docs/evidence/2026-11-28/page-refinement/home-before-i-mobile.png",
+      "originalSha256": "343d4ba99521380237b376e88c941adc6f7500ef06f18c9361413e94c37f394d",
+      "exactOriginalCopy": true,
+      "candidate": "I",
+      "viewport": {
+        "width": 390,
+        "height": 900
+      }
+    }
+  ]
+}

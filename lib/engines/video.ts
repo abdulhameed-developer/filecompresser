@@ -281,7 +281,7 @@ export async function compressVideo(
 ): Promise<ProcessedResult> {
   const started = performance.now()
   assertNotCancelled(signal)
-  if (file.size > 200 * 1024 * 1024) throw new ProcessingError('This video exceeds the 200 MB input limit.')
+  if (file.size > 200 * 1024 * 1024) throw new ProcessingError('This video exceeds the 200 MiB input limit.')
   const inputFormat = await detectFormat(file)
   const supported = inputFormat === 'mp4' || inputFormat === 'mov' || (options.allowWebm && inputFormat === 'webm')
   if (!supported) throw new ProcessingError(options.allowWebm ? 'Choose a verified WebM video file.' : 'Choose a verified MP4 or MOV video file.')

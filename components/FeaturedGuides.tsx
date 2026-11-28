@@ -3,9 +3,10 @@ import { useEffect, useId, useRef, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import type { BlogPost } from '@/lib/blog'
+import { postDateLabel, postUpdatedDate } from '@/lib/blog-dates'
 import BlogImage from './BlogImage'
 import Icon from './Icon'
-export default function FeaturedGuides({ posts }: { posts: Pick<BlogPost, 'slug' | 'title' | 'figure' | 'readingTime' | 'featuredImage'>[] }) {
+export default function FeaturedGuides({ posts }: { posts: Pick<BlogPost, 'slug' | 'title' | 'figure' | 'readingTime' | 'featuredImage' | 'date' | 'updated'>[] }) {
   const rail = useRef<HTMLDivElement>(null)
   const id = useId()
   const [index, setIndex] = useState(0)
@@ -40,7 +41,7 @@ export default function FeaturedGuides({ posts }: { posts: Pick<BlogPost, 'slug'
           const left = event.currentTarget.offsetLeft
           rail.current.scrollTo({ left, behavior: 'instant' })
         }
-      }}>{post.featuredImage ? <picture><Image src={post.featuredImage.src} alt={post.featuredImage.alt} width={1200} height={800} sizes="(max-width:760px) calc(100vw - 40px), 350px" /></picture> : <BlogImage figure={post.figure} sizes="(max-width:760px) calc(100vw - 40px), 350px" />}<div><span className="editorialMeta">{post.readingTime} read</span><h3>{post.title}</h3><Icon name="arrow" /></div></Link>)}
+      }}>{post.featuredImage ? <picture><Image src={post.featuredImage.src} alt={post.featuredImage.alt} width={1200} height={800} sizes="(max-width:760px) calc(100vw - 40px), 350px" /></picture> : <BlogImage figure={post.figure} sizes="(max-width:760px) calc(100vw - 40px), 350px" />}<div><span className="editorialMeta"><time dateTime={postUpdatedDate(post)}>Updated {postDateLabel(postUpdatedDate(post))}</time> · {post.readingTime} read</span><h3>{post.title}</h3><Icon name="arrow" /></div></Link>)}
     </div>
     {posts.length > 1 && <div className="railControls"><span role="status" aria-live="polite">{index + 1} of {posts.length} guides</span><button type="button" aria-label="Previous guide" aria-controls={id} disabled={index === 0} onClick={() => move(-1)}><Icon name="arrow-left" /></button><button type="button" aria-label="Next guide" aria-controls={id} disabled={index === posts.length - 1} onClick={() => move(1)}><Icon name="arrow" /></button></div>}
   </section>

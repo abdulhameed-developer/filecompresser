@@ -1,22 +1,22 @@
 {
   "heading": "WebP Compressor Online for Smaller Website Images",
-  "introduction": "Website images play an important role in how visitors experience a page. Product photographs, banners, illustrations and other graphics help people understand products and services. However, large image files can increase page weight and make websites slower to load.\n\nWebP is a modern image format developed for web use. It supports lossy and lossless compression, along with transparency and animation. Many website owners use WebP to prepare images that can be delivered efficiently to visitors.\n\nEven when an image is already saved in WebP format, there may be opportunities to reduce its size further. File Compresser provides a WebP Compressor that lets you re-encode supported still WebP images, compare file sizes and review image quality directly in your browser.\n\nYou do not need to install software or upload your photographs to an external server. Your device handles the image processing.\n",
+  "introduction": "Re-encode supported still WebP images with quality controls or a maximum-byte target. Keep original display dimensions and review transparency, detail and actual bytes before saving.",
   "sections": [
     {
       "heading": "What Is a WebP Compressor?",
-      "body": "A WebP compressor is an image optimization tool that changes how a WebP image is encoded to manage its file size.\n\nDepending on the selected settings, the tool can create a smaller image while keeping its original dimensions. It can also help prepare images for different website requirements.\n\nHowever, compression does not always make an existing WebP image smaller. Many WebP files are already optimized, and further encoding may produce little benefit.\nFile Compresser checks the actual result. If ordinary same-format compression does not create a smaller suitable file, the original is retained unchanged.\n"
+      "body": "A WebP compressor is an image optimization tool that changes how a WebP image is encoded to manage its file size.\n\nDepending on the selected settings, the tool can create a smaller image while keeping its original dimensions. It can also help prepare images for different website requirements.\n\nHowever, compression does not always make an existing WebP image smaller. Many WebP files are already optimized, and further encoding may produce little benefit.\nFileCompresser checks the actual result. If ordinary same-format compression does not create a smaller suitable file, the original is retained unchanged."
     },
     {
       "heading": "How to Compress WebP Images Online",
-      "body": "The WebP compression process is simple and does not require technical experience.\n\n1. Visit the WebP Compressor page.\n2. Select a supported WebP image from your device.\n3. Wait for the website to validate the image.\n4. Choose Balanced, High Quality, Maximum or Target Size.\n5. Enable resizing only when different dimensions are required.\n6. Start processing.\n7. Compare the original and processed file sizes.\n8. Check the visual details and transparency.\n9. Download the result that suits your needs.\n\nYou can process multiple supported images in a queue and review their results separately.\n"
+      "body": "1. Select a supported still WebP image and wait for validation.\n2. Open Settings and choose Balanced, High Quality, Maximum or Target Size.\n3. Choose Compress.\n4. Compare the original and result at the same scale.\n5. Check transparency and fine detail, then download a suitable result.\n\nDisplay dimensions are preserved. Animated WebP is not supported by this still-image workflow."
     },
     {
       "heading": "Choose the Right WebP Quality Mode",
-      "body": "Different images require different compression settings. A product photograph may need more detail than a small decorative graphic.\n"
+      "body": "Different images require different compression settings. A product photograph may need more detail than a small decorative graphic."
     },
     {
       "heading": "Balanced",
-      "body": "Balanced provides a moderate quality and file size trade-off. It can be a suitable starting point when you want to optimize an image without applying the strongest compression.\n"
+      "body": "Balanced provides a moderate quality and file size trade-off. It can be a suitable starting point when you want to optimize an image without applying the strongest compression."
     },
     {
       "heading": "High Quality",
@@ -24,39 +24,39 @@
     },
     {
       "heading": "Maximum",
-      "body": "Maximum uses a stronger compression trade-off to prioritize a smaller output. It is worth checking the final image carefully, particularly when it contains fine details or text.\n"
+      "body": "Maximum uses a stronger compression trade-off to prioritize a smaller output. It is worth checking the final image carefully, particularly when it contains fine details or text."
     },
     {
       "heading": "Target Size",
-      "body": "Target Size attempts to keep the final image within a selected maximum number of bytes. The tool checks actual output size rather than relying on an estimate. If a suitable result cannot meet the requested limit, it reports that the target was not met.\n"
+      "body": "Target Size attempts to keep the final image within a selected maximum number of bytes. The tool checks actual output size rather than relying on an estimate. If a suitable result cannot meet the requested limit, it reports that the target was not met."
     },
     {
       "heading": "Why Use WebP for Website Images?",
-      "body": "WebP supports different image types and can be useful for modern websites.\n\nSome common applications include:\n\nProduct images on ecommerce websites.\nBlog photographs and featured images.\nWebsite banners and promotional graphics.\nIllustrations and decorative graphics.\nImages with transparent backgrounds.\nGeneral website photographs.\n\nChoosing WebP is not the only part of image optimization. You should also consider display dimensions, responsive image sizes, image delivery and the actual quality needed on the page.\n\nA large WebP file may still be unnecessarily heavy if its dimensions are much larger than the area where it appears.\n"
+      "body": "WebP supports different image types and can be useful for modern websites.\n\nSome common applications include:\n\n- Product images on ecommerce websites.\n- Blog photographs and featured images.\n- Website banners and promotional graphics.\n- Illustrations and decorative graphics.\n- Images with transparent backgrounds.\n- General website photographs.\n\nChoosing WebP is not the only part of image optimization. You should also consider display dimensions, responsive image sizes, image delivery and the actual quality needed on the page.\n\nA large WebP file may still be unnecessarily heavy if its dimensions are much larger than the area where it appears."
     },
     {
       "heading": "Can WebP Preserve Transparency?",
-      "body": "Yes. WebP supports transparent areas, making it useful for certain graphics and product images.\n\nWhen working with a transparent WebP image, inspect the output against both light and dark backgrounds. This helps identify any unwanted edge changes.\n\nFile Compresser also prevents JPG output when a transparent source would otherwise need to be flattened. This avoids silently removing the original transparent background.\n"
+      "body": "Yes. WebP supports transparent areas, making it useful for certain graphics and product images.\n\nWhen working with a transparent WebP image, inspect the output against both light and dark backgrounds. This helps identify any unwanted edge changes.\n\nFileCompresser also prevents JPG output when a transparent source would otherwise need to be flattened. This avoids silently removing the original transparent background."
     },
     {
       "heading": "Does Compressing WebP Reduce Quality?",
-      "body": "It can. WebP lossy encoding changes image information to reduce file size. The amount of visible change depends on the selected quality mode and original image.\n\nStrong compression may affect:\n\nSmall text and lettering.\nFine textures in photographs.\nSmooth color gradients.\nSharp graphic edges.\nDetails around transparent areas.\n\nCompare the original and compressed images at the same scale. A smaller file is not automatically a better result if important visual details become difficult to see.\n"
+      "body": "It can. WebP lossy encoding changes image information to reduce file size. The amount of visible change depends on the selected quality mode and original image.\n\nStrong compression may affect:\n\n- Small text and lettering.\n- Fine textures in photographs.\n- Smooth color gradients.\n- Sharp graphic edges.\n- Details around transparent areas.\n\nCompare the original and compressed images at the same scale. A smaller file is not automatically a better result if important visual details become difficult to see."
     },
     {
       "heading": "Should You Recompress an Existing WebP Image?",
-      "body": "Not every WebP image needs further compression.\n\nIf the image was already exported with efficient settings, another encoding attempt may not reduce its size. In some cases, the new result could even be larger.\n\nFile Compresser retains the original when ordinary same-format compression does not produce a smaller suitable result. This prevents an unnecessary larger file from being presented as a successful compression result.\n\nIf your image is still too large, consider whether resizing or another supported format is suitable for your use. These are separate changes and may affect image quality or compatibility.\n"
+      "body": "Another lossy generation may change detail without producing a useful reduction. FileCompresser retains the original when ordinary same-format compression does not produce a smaller suitable result. If a file is still too large, consider a less restrictive target or a supported format conversion. Any dimension change must be prepared separately in an image editor."
     },
     {
-      "heading": "Can You Resize WebP Images?",
-      "body": "Yes. Original dimensions are preserved by default, but you can enable resizing when you need a smaller image.\n\nFor example, a large product photograph may not need its full original resolution when displayed in a small product listing.\n\nThe aspect ratio is maintained, and smaller images are not enlarged. Always check the resulting dimensions before adding the image to your website.\n"
+      "heading": "Are WebP dimensions preserved?",
+      "body": "The WebP compressor preserves original display dimensions. Image resizing is not available. If a website needs a smaller pixel width or height, prepare those dimensions in another image editor, then compress a copy. Keep the original for future edits."
     },
     {
       "heading": "Private WebP Processing",
-      "body": "File Compresser processes WebP images directly in your browser using your device's resources. The tool supports WebP files up to 50 MB per image, with a queue limit of 500 files and 300 MB total. Large batches may require additional memory, depending on your device.\n"
+      "body": "Selected images are processed in your browser rather than uploaded to a compression server. Each image can be up to 50 MiB and 32 megapixels. Queues allow up to 500 files and 300 MiB in total. Browser memory can still limit processing below these bounds. Keep a source copy before trying a new encoding."
     },
     {
       "heading": "Optimize WebP Images for Your Website",
-      "body": "WebP can be a useful choice for website photographs, product images and transparent graphics. However, image size and visual quality should always be considered together. File Compresser makes it easy to test different WebP settings, compare actual file sizes and review the output before downloading.\n"
+      "body": "WebP can be a useful choice for website photographs, product images and transparent graphics. However, image size and visual quality should always be considered together. FileCompresser makes it easy to test different WebP settings, compare actual file sizes and review the output before downloading."
     }
   ],
   "links": [
@@ -72,29 +72,30 @@
   "faq": [
     {
       "q": "Is WebP better than JPG?",
-      "a": "Neither format is automatically better for every purpose. WebP supports transparency and different compression methods, while JPG remains widely supported for photographs. Choose according to image requirements and website compatibility.\n"
+      "a": "Neither format is automatically better for every purpose. WebP supports transparency and different compression methods, while JPG remains widely supported for photographs. Choose according to image requirements and website compatibility."
     },
     {
       "q": "Can I compress an existing WebP image?",
-      "a": "Yes. You can try a new WebP encoding using the available quality settings.\n"
+      "a": "Yes. You can try a new WebP encoding using the available quality settings."
     },
     {
       "q": "Why did my WebP image not get smaller?",
-      "a": "It may already be efficiently compressed. The tool retains the original if no smaller suitable result is found.\n"
+      "a": "It may already be efficiently compressed. The tool retains the original if no smaller suitable result is found."
     },
     {
       "q": "Can WebP keep a transparent background?",
-      "a": "Yes. WebP supports transparency, and the tool is designed to preserve transparent areas in supported processing.\n"
+      "a": "Yes. WebP supports transparency, and the tool is designed to preserve transparent areas in supported processing."
     },
     {
       "q": "Does WebP compression change image dimensions?",
-      "a": "No. Dimensions remain unchanged unless you enable resizing.\n"
+      "a": "No. Original display dimensions are preserved. Image resizing is not offered."
     },
     {
       "q": "Are my images uploaded to the website?",
-      "a": "No. Processing takes place in your browser.\n"
+      "a": "No. Processing takes place in your browser."
     }
   ],
   "seoTitle": "WebP Compressor Online Free – Optimize WebP Images",
-  "seoDescription": "Compress WebP images online for free. Reduce image size, maintain dimensions and transparency, and process files privately in your browser.\n"
+  "seoDescription": "Compress WebP images online for free. Reduce image size, maintain dimensions and transparency, and process files privately in your browser.",
+  "faqMode": "custom"
 }

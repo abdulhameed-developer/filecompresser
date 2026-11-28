@@ -366,10 +366,19 @@ describe('filename helpers', () => {
   })
 
   it('formats byte sizes', () => {
+    expect(formatBytes(0)).toBe('0 B')
     expect(formatBytes(512)).toBe('512 B')
+    expect(formatBytes(999)).toBe('999 B')
+    expect(formatBytes(1000)).toBe('1.0 KB')
+    expect(formatBytes(1024)).toBe('1.0 KB')
     expect(formatBytes(2048)).toBe('2.0 KB')
-    expect(formatBytes(5 * MB)).toBe('5.00 MB')
+    expect(formatBytes(5000)).toBe('5.0 KB')
+    expect(formatBytes(1_000_000)).toBe('1.00 MB')
+    expect(formatBytes(5 * MB)).toBe('5.24 MB')
+    expect(formatBytes(200_000_000)).toBe('200.00 MB')
     expect(formatBytes(-1)).toBe('—')
+    expect(formatBytes(Number.NaN)).toBe('—')
+    expect(formatBytes(Number.POSITIVE_INFINITY)).toBe('—')
   })
 
   it('maps extensions onto detection format names', () => {

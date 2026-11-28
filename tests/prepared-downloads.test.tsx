@@ -103,12 +103,12 @@ describe('actual prepared ZIP bytes and preflight', () => {
     expect(read).not.toHaveBeenCalled()
   })
 
-  it('rejects a batch over300 MB before reading its first blob', async () => {
+  it('rejects a batch over300 MiB before reading its first blob', async () => {
     const first = blob(), oversized = blob()
     Object.defineProperty(oversized, 'size', { value: 301 * 1024 * 1024 })
     const readFirst = vi.spyOn(first, 'arrayBuffer'), readOversized = vi.spyOn(oversized, 'arrayBuffer')
     const items = [first, oversized].map((output, index) => ({ ...completed(`${index}.bin`), result: { blob: output, filename: `${index}.bin`, mimeType: 'application/octet-stream' } }))
-    await expect(actualDownloads.prepareDownloadZip(items)).rejects.toThrow(/300 MB/)
+    await expect(actualDownloads.prepareDownloadZip(items)).rejects.toThrow(/300 MiB/)
     expect(readFirst).not.toHaveBeenCalled()
     expect(readOversized).not.toHaveBeenCalled()
   })

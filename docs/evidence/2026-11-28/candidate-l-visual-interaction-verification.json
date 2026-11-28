@@ -1,0 +1,170 @@
+{
+  "createdAt": "2026-11-28T13:20:48.279317+00:00",
+  "candidate": "L",
+  "buildId": "tCAX7d0XrOoaW5384thyJ",
+  "homepageSha256": "e1381f682d91dce59d1ab6bb54e2cfffdd07cc0b74dbbdfc440eadb6adc817d0",
+  "status": "PASS_STATED_VISUAL_AND_INTERACTION_SCOPE_NOT_RELEASE_CERTIFICATE",
+  "freshL": {
+    "responsiveRouteMeasurements": 29,
+    "viewport": [
+      390,
+      900
+    ],
+    "responsiveFailures": 0,
+    "fullPageScreenshots": 29,
+    "axeViews": 29,
+    "automatedAxeViolations": 0,
+    "sharedInteractionGroups": [
+      {
+        "name": "navigation",
+        "pass": true,
+        "exitCode": 0,
+        "signal": null,
+        "durationMs": 12087
+      },
+      {
+        "name": "role",
+        "pass": true,
+        "exitCode": 0,
+        "signal": null,
+        "durationMs": 7175
+      },
+      {
+        "name": "a11y-manual",
+        "pass": true,
+        "exitCode": 0,
+        "signal": null,
+        "durationMs": 12608
+      },
+      {
+        "name": "design-system",
+        "pass": true,
+        "exitCode": 0,
+        "signal": null,
+        "durationMs": 29520
+      },
+      {
+        "name": "premium-ui",
+        "pass": true,
+        "exitCode": 0,
+        "signal": null,
+        "durationMs": 41572
+      }
+    ],
+    "durableNodeExit": 0,
+    "threeChildExits": [
+      {
+        "name": "responsive",
+        "code": 0,
+        "signal": null
+      },
+      {
+        "name": "axe",
+        "code": 0,
+        "signal": null
+      },
+      {
+        "name": "shared",
+        "code": 0,
+        "signal": null
+      }
+    ],
+    "sourceAndHomepageHashesStable": true
+  },
+  "boundKVisualEvidence": {
+    "basis": "All30public HTML non-transporttokens,actualattributes/text/inline styles,JSON-LD/metadata and actualstylesheetcontent are identical K\u2192L. Only explicit Next transport/build-script references excluded.",
+    "responsiveMeasurements": 348,
+    "widths": [
+      390,
+      1440,
+      320,
+      375,
+      430,
+      760,
+      768,
+      900,
+      901,
+      1024,
+      1280,
+      1920
+    ],
+    "fullPageScreenshots": 87,
+    "mobilePersonallyReviewedRoutes": 29,
+    "mobileNativeWidthPanelsPersonallyViewed": 69,
+    "tabletPersonallyReviewedUpperLayouts": 29,
+    "tabletArea": "First1100pixels; fulltabletreadingnotclaimed. Original and freshnativeheadersall29pixel-identical; initial concern withdrawn asreviewerfalsealarm.",
+    "landscapeNativeTouchKeyboardRoutes": 29,
+    "landscapeStateScreenshotsPersonallyReviewed": 87,
+    "manualSvgContrastNodes": 51,
+    "manualSvgFigures": 4,
+    "minimumManualBackedContrast": 4.5785863222047025,
+    "automaticSvgContrastPassClaimed": false
+  },
+  "newPrefetchFix": {
+    "changedRendererFiles": [
+      "components/EditorialText.tsx",
+      "components/BlogContent.tsx"
+    ],
+    "supportedPropsAdded": 3,
+    "actualWKBefore": "Ksame8casesFAILoverall:1old-documentautomaticprefetchaccess-controlerror,allrenderedcaseassertionspass.",
+    "actualWKAfter": "Lsame8casesPASSwith0pageerrors/failedrequests;actualWebKit27.2matchedPlaywright1.65.1.",
+    "nativePublishedLinkNavigation": {
+      "cases": 2,
+      "branches": [
+        "InlineMarkdown",
+        "ExplicitBloglinkblock"
+      ],
+      "browserBackAndExactSourceScrollRestoration": true,
+      "safeHtmlPublicAnchorAuthored": false,
+      "safeHtmlPrivateExactSourceFixture": {
+        "status": "PASS_SIX_NATIVE_CASES",
+        "browsers": [
+          "Chrome156.0.8078.47",
+          "LinuxWebKit27.2"
+        ],
+        "branches": [
+          "InlineMarkdown",
+          "SafeHTMLanchor",
+          "StructuredBloglinkblock"
+        ],
+        "sameDocumentClientSideNavigation": true,
+        "browserBack": true,
+        "noDestinationPrefetchOnHover": true,
+        "sourceHashesBeforeAfterIdentical": true,
+        "evidence": "docs/evidence/2026-11-28/link-renderer-fixture/report.json",
+        "scope": "Exact real renderer code in isolated genuine NextAppRouter export, not an authored publicHTMLanchor."
+      }
+    },
+    "nativeWebkitFinal16": {
+      "status": "PASS",
+      "cases": 16,
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "diagramsPerWidth": 4,
+      "pageErrors": 0,
+      "failedRequests": 0,
+      "browserVersion": "27.2",
+      "playwrightVersion": "1.65.1",
+      "evidence": "docs/evidence/2026-11-28/candidate-l-webkit-final16.json"
+    }
+  },
+  "retainedFailuresAndCorrections": [
+    "OriginalFirefox159articlewheelattemptusedoffviewporty957in900pxviewport;passiveeventsandplainnativepositivecontrolprovedbadQAinput. Native targetreveal+actualhitteststrengthenfinalhelper; movementassertionsunchanged.",
+    "Originalfixedpairarticleattemptstopsonnormalcached304;rawconditionalserverobserverprovedmatchedIf-None-Matchand200/304reuse. Correctedhelperrequiresordinaryfresh200exactrouteHTMLSHAandmatchingETagforeach304.",
+    "OldexactSVGgetBBoxidentitygatefailsandremainsfailed. Freshactual51textbound/backing/contrastandidenticalauthoredpaint/stylecheckpasses;geometryidentitynotclaimed.",
+    "Original900pxheightmobilemenu-no-scrollassertionfailsall29shortlandscapeviews(455pxcontent/314pxpanel). Separatenativeinputchecksproveallcontrolsreachablewithboundedscroll,focustrap,Escapeandbackgroundlock. No controlshidden/shrunk.",
+    "InitialnewSVGreadercontrolassumedhistoricdiagramwrapper;setupfailedbeforeverification. CorrectedreaderusesactualSVGbackgroundwhenwrapperabsent.",
+    "Initialcached-navigationobservercouldnotseeUA-addedvalidatorinPlaywrightheaderAPI;rawserverobserverconfirmedactualconditionalheader. Firstobserverimportpathsetupfailedandwasretained."
+  ],
+  "remainingLimits": [
+    "No physical Android/iPhone/iPad, real Safari/iOS or assistive-technologycertification.",
+    "Publicproduction,publishing,indexing,processingandLighthousegatesownedseparatelyandnotclaimedbythisUIreport.",
+    "Firefoxautomation159nativecrashandpairedbrowserlimitationsareseparatelydocumented;thisfreshpost-fixarticleobserverusesonlyWebKit.",
+    "Safe HTML anchor is not currently authored in public content. It is verified in six exact-source private AppRouter cases; the two actual published renderer paths are verified separately."
+  ],
+  "updatedAt": "2026-11-28T13:26:31.733261+00:00"
+}

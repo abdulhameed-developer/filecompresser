@@ -1,3 +1,5 @@
+import { SITE_TEXT_LIMITS, safeSiteProfileHref, safeSocialImagePath, siteIdentityText } from '../lib/editorial-constraints.mjs'
+
 function validateSupportEmail(value) {
   if (value === undefined || value === null || value === '') return
   const message = 'Use one plain email address without mailto:, message headers or a subject line.'
@@ -29,5 +31,21 @@ export const siteSettingsCollection = {
     { type: 'string', name: 'socialImage', label: 'Default sharing image', required: true, description: 'Use /opengraph-image or an existing local image path in /uploads/ or /blog/.' },
     { type: 'string', name: 'socialImageAlt', label: 'Sharing image description', required: true },
     { type: 'string', name: 'sameAs', label: 'Verified official profile URLs', list: true, description: 'Optional HTTPS profiles that actually represent FileCompresser. Leave empty when none are verified.' },
-  ],
+  ].map(field => {
+    const existing = field.ui?.validate
+    if (!(field.name in SITE_TEXT_LIMITS) && !['socialImage', 'sameAs'].includes(field.name)) return field
+    return { ...field, ui: { ...field.ui, ...(field.name === 'sameAs' ? { field: { component: 'text', validate(value) { try { safeSiteProfileHref(value) } catch (error) { return error.message } } } } : {}), validate(value, values, meta) {
+      const error = existing?.(value, values, meta)
+      if (error) return error
+      try {
+        if (field.name in SITE_TEXT_LIMITS) siteIdentityText(value, field.name)
+        else if (field.name === 'socialImage') safeSocialImagePath(value)
+        else {
+          if (value === undefined) return
+          if (!Array.isArray(value)) return 'Site profiles must be a list of HTTPS URLs.'
+          for (const entry of value) safeSiteProfileHref(entry)
+        }
+      } catch (error) { return error.message }
+    } } }
+  }),
 }

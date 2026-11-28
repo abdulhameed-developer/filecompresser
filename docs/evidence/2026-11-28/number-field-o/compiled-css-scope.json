@@ -1,0 +1,41 @@
+{
+  "createdAt": "2026-11-28T14:43:15.062Z",
+  "before": ".qa-results/phase3/candidate-n/export",
+  "after": ".qa-results/phase3/candidate-o/export",
+  "scope": "Every compiled CSS AST node/declaration/order must equal N after applying only the approved numeric-field border/padding and <=480px target-row patch. Raw byte identities are recorded separately; no general stylesheet identity is claimed.",
+  "status": "PASS",
+  "beforeStyles": [
+    {
+      "file": "7ca778c1aad99526.css",
+      "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1",
+      "bytes": 57776,
+      "product": true
+    },
+    {
+      "file": "c99e57961448dba8.css",
+      "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43",
+      "bytes": 43855,
+      "product": false
+    }
+  ],
+  "afterStyles": [
+    {
+      "file": "c99e57961448dba8.css",
+      "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43",
+      "bytes": 43855,
+      "product": false
+    },
+    {
+      "file": "f2b5c857e32f3162.css",
+      "sha256": "550052f4aff84e08a9e1b32e17e3279202fdb3a916a55910c04004152ce2a28a",
+      "bytes": 58168,
+      "product": true
+    }
+  ],
+  "allOtherCompiledStylesheetsByteIdentical": true,
+  "changedStylesheetExactlyMatchesApprovedAstPatch": true,
+  "productStyleMapping": {
+    "beforeSha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1",
+    "afterSha256": "550052f4aff84e08a9e1b32e17e3279202fdb3a916a55910c04004152ce2a28a"
+  }
+}

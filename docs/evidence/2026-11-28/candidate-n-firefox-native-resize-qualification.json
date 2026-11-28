@@ -1,0 +1,178 @@
+{
+  "verifiedAt": "2026-11-28T14:33:07.981982+00:00",
+  "candidate": "N",
+  "homeSha256": "99eb848f8c7677392ba8314c5937521b17c63fdf48dc70e94e46e02a6b82b959",
+  "scope": "Qualified local Firefox Nightly native focus/resize regression and separately generated causal controls. Original strict audit remains FAILED; no product or assertion workaround adopted. Not N Firefox79, current stable/physical device or virtual keyboard certification.",
+  "browser": {
+    "version": "163.0a1",
+    "buildId": "20261128083209",
+    "channel": "moz-firefox-nightly",
+    "qaCore": "1.66.0-alpha-2026-11-28",
+    "normalVendorLaunch": true
+  },
+  "retainedStrictAudit": {
+    "status": "FAIL",
+    "actualExitCode": 1,
+    "harnessSha256": "fec71f3820f01e077ff63a000ea2d643c16e1ea4f57676e0e35428134e38c9bf",
+    "harnessUnchanged": true,
+    "executedStates": 24,
+    "failedResizeStates": 18,
+    "soleFailedInvariant": "Exact numeric window.scrollY equality across a responsive viewport/layout change.",
+    "fullyExposedFocusedControlStates": 22,
+    "allApplicableActiveElementsRetained": true,
+    "all18ResizeDraftsExactly100Point05": true,
+    "all18ResizeWidthsWithoutOverflow": true,
+    "nativeTrailingDigitDrafts": [
+      "100.051",
+      "100.051"
+    ],
+    "escapeFocusAndExactOriginalScrollReturnPasses": 2,
+    "pageErrors": [],
+    "actualLosslessDownload": {
+      "file": ".qa-results/phase3/ui/candidate-n-firefox-settings-resize/audit/actual-default-lossless.png",
+      "bytes": 83020,
+      "sha256": "67181c1d03a5e42876abcf23d312ac169442bfb0c4af29261142a0d601143e7e",
+      "decoded": {
+        "format": "PNG",
+        "dimensions": [
+          1440,
+          900
+        ],
+        "pixelsEqual": true
+      }
+    },
+    "browserClosedNormally": true,
+    "nativeBrowserExit0": true,
+    "servedIdentitiesStable": true,
+    "servedIdentityCount": 24,
+    "all306SourceInputsStable": true,
+    "evidence": ".qa-results/phase3/ui/candidate-n-firefox-settings-resize/audit/report.json"
+  },
+  "actualNFixedViewportWheelControl": {
+    "diagnosticActualExitCode": 0,
+    "beforeOpenY": 131.25,
+    "openDesktopY": 131.25,
+    "afterNativeWidthResizeY": 123.53333282470703,
+    "afterBackdropWheelPlus500Y": 123.53333282470703,
+    "afterBackdropWheelMinus500Y": 123.53333282470703,
+    "afterEscapeY": 131.25,
+    "closedPageWheelPlus500Y": 631.25,
+    "backgroundWheelLockedAtFixedViewport": true,
+    "ordinaryWheelWorksAfterClose": true,
+    "Dpr": 1,
+    "visualViewportScale": 1,
+    "rootAndBodyOverflow": "hidden during modal",
+    "observation": "The 7.716667px adjustment occurs with native resize/reflow before any backdrop wheel. Neither fixed-viewport native wheel moves the page; Escape restores the exact original scroll position, and ordinary closed-page wheel then moves exactly500px.",
+    "evidence": ".qa-results/phase3/ui/candidate-n-firefox-background-causal/report.json"
+  },
+  "nativeFrozenMarkupControls": {
+    "privateFixtureOnly": true,
+    "observerVsLockOnlyDifferenceIsExactlyObserverActivation": true,
+    "anchorNoneVsObserverDifferenceIsExactlyOnePrivateStyleRule": true,
+    "privateDiagnosticStyleRule": "html,body{overflow-anchor:none!important}",
+    "variants": [
+      {
+        "name": "native-exact-observer",
+        "fixtureSha256": "60f73195a833f424b0dc8eb3ee0029cecfd1cb4a649d12cd0e98d8cff6eedaef",
+        "positions": [
+          {
+            "action": "fixture-before-open",
+            "pageY": 131.25
+          },
+          {
+            "action": "fixture-open-entered-desktop",
+            "pageY": 131.25
+          },
+          {
+            "action": "fixture-first-width-resize",
+            "pageY": 123.53333282470703
+          },
+          {
+            "action": "fixture-return-width",
+            "pageY": 131.25
+          }
+        ]
+      },
+      {
+        "name": "native-lock-only",
+        "fixtureSha256": "1ebb41cfa3873de8794cb6b0d050c7cb4363ba020e11d97f14696cd95a91ffc9",
+        "positions": [
+          {
+            "action": "fixture-before-open",
+            "pageY": 131.25
+          },
+          {
+            "action": "fixture-open-entered-desktop",
+            "pageY": 131.25
+          },
+          {
+            "action": "fixture-first-width-resize",
+            "pageY": 123.53333282470703
+          },
+          {
+            "action": "fixture-return-width",
+            "pageY": 131.25
+          }
+        ]
+      },
+      {
+        "name": "native-observer-anchor-none",
+        "fixtureSha256": "4cdf97beee481246d2b705e501a8e3f31863a18e9a9be776564133cf846f68ed",
+        "positions": [
+          {
+            "action": "fixture-before-open",
+            "pageY": 131.25
+          },
+          {
+            "action": "fixture-open-entered-desktop",
+            "pageY": 131.25
+          },
+          {
+            "action": "fixture-first-width-resize",
+            "pageY": 131.25
+          },
+          {
+            "action": "fixture-return-width",
+            "pageY": 131.25
+          }
+        ]
+      }
+    ],
+    "finding": "The exact resize drift reproduces without React and with the resize observer removed. The private single-rule overflow-anchor control alone eliminates it, establishing native responsive scroll anchoring rather than a new observer regression or background wheel leakage.",
+    "noProductStyleChange": true,
+    "noReactOrHydrationApplicationScripts": true,
+    "onlyExplicitNativeFixtureHandlersAndPinnedDialogHelper": true
+  },
+  "disposition": {
+    "originalStrictFailureRetained": true,
+    "focusedControlFixVerified": true,
+    "actualWheelLockVerified": true,
+    "exactEscapeReturnVerified": true,
+    "productFixAdoptedFromAnchoringDiagnostic": false,
+    "qaAssertionChanged": false,
+    "anotherFullFirefox79RunClaimed": false,
+    "remainingBoundary": "Exact scrollY invariance during native responsive anchoring is not satisfied; the failed strict audit is not relabeled PASS."
+  },
+  "primarySources": [
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/overflow-anchor",
+      "support": "Browser anchoring adjusts scroll position to reduce content shifts; overflow-anchor opts a region out."
+    },
+    {
+      "url": "https://www.w3.org/TR/css-scroll-anchoring-1/",
+      "support": "Working-draft description of anchor-based scroll offset adjustment across layout changes; not treated as a final normative implementation guarantee."
+    }
+  ],
+  "visualReview": {
+    "reviewedAt": "2026-11-28T14:35:00.267437+00:00",
+    "focusedControlRegionsInspected": 18,
+    "derivedSheets": 2,
+    "everyFullScreenshotIndividuallyViewed": false,
+    "findings": [
+      "Full numberField focus rings remain exposed above the footer in the inspected regions, confirming the resize visibility improvement.",
+      "At320px in the source/applied-result native Firefox screenshots, the numeric input is too narrow to show the complete100.05 draft; its exact100,050-byte summary remains readable. This is a separate small-screen UI weakness, not scroll anchoring."
+    ],
+    "limitationScreenshot": ".qa-results/phase3/ui/candidate-n-firefox-settings-resize/audit/source-only-320x568.png",
+    "productSourceChangedByThisAgent": false
+  }
+}

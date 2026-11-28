@@ -1,0 +1,363 @@
+{
+  "compiledAdminSha256": "77d108db2d225caae9ac0404ad8f036d8caabf1f5d340b170cdd3b4584725eb5",
+  "guardHashes": {
+    "tina/editorial-policy.mjs": "f29c3dd352ed869eef5600aed9501279def0a94f0f879e95ee806cf10c121a9d",
+    "tina/collections.mjs": "0081afe6b50189b896dd6d5807a069d3185f810e3dc2fbdd480d48549c61ae72",
+    "tina/site-settings.mjs": "873796225a054f143592c146b84652e210976ca31aae17a278221c86681b9db1",
+    "lib/editorial-constraints.mjs": "161105749062c4c63d566705aae5afca32a6b7987ddf7f2ab682dcdd9d74d2d1"
+  },
+  "startedAt": "2026-11-28T10:13:40.793Z",
+  "mode": "Final isolated compiled Tina editor. Test-only API override; schema, shared constraints and callbacks hash-match current source. Hosted release remains separate.",
+  "base": "http://localhost:4014",
+  "productionChanges": false,
+  "checks": [
+    {
+      "name": "Unopened empty section Save is rejected before a write and opens the exact row for repair",
+      "pass": true,
+      "index": 12
+    },
+    {
+      "name": "Actual mounted unsafe-link validation prevents Save",
+      "pass": true
+    },
+    {
+      "name": "Actual mounted vocabulary policy prevents Save",
+      "pass": true
+    },
+    {
+      "name": "New Section is editable and a repaired Save persists exact bullets, numbers, HTML and link text",
+      "pass": true,
+      "mutations": 1
+    },
+    {
+      "name": "Saved content survives reload and remains focusable at390px",
+      "pass": true
+    },
+    {
+      "name": "Pre-existing invalid closed Section opens for repair; next rejected Save opens partial FAQ without a backend write",
+      "pass": true
+    },
+    {
+      "name": "After rejection, valid Section and FAQ repairs save together without reset or data loss",
+      "pass": true
+    },
+    {
+      "name": "Native tags add, reject empty/prohibited text, repair, delete the sole item, re-add and persist",
+      "pass": true
+    },
+    {
+      "name": "draft: unfinished unopened body can still be saved without publication",
+      "pass": true
+    },
+    {
+      "name": "draft: publication transition is rejected before a write and opens the unfinished block",
+      "pass": true
+    },
+    {
+      "name": "draft: repair then Save succeeds with the intended publication flags",
+      "pass": true
+    },
+    {
+      "name": "archived: unfinished unopened body can still be saved without publication",
+      "pass": true
+    },
+    {
+      "name": "archived: publication transition is rejected before a write and opens the unfinished block",
+      "pass": true
+    },
+    {
+      "name": "archived: repair then Save succeeds with the intended publication flags",
+      "pass": true
+    },
+    {
+      "name": "Native body.0.items creates, validates, repairs, deletes its sole item, re-adds and saves without a parent/indexed error",
+      "pass": true
+    },
+    {
+      "name": "Native body.1.items creates, validates, repairs, deletes its sole item, re-adds and saves without a parent/indexed error",
+      "pass": true
+    },
+    {
+      "name": "Native body.2.columns creates, validates, repairs, deletes its sole item, re-adds and saves without a parent/indexed error",
+      "pass": true
+    },
+    {
+      "name": "Native body.2.rows.0.cells creates, validates, repairs, deletes its sole item, re-adds and saves without a parent/indexed error",
+      "pass": true
+    },
+    {
+      "name": "Native managed body keeps its textarea, validates, repairs, deletes and re-adds a scalar item",
+      "pass": true
+    },
+    {
+      "name": "Native managed items keeps its textarea, validates, repairs, deletes and re-adds a scalar item",
+      "pass": true
+    },
+    {
+      "name": "Mounted Site name rejects81characters before Save",
+      "pass": true
+    },
+    {
+      "name": "Mounted sharing-image input rejects an external path before Save",
+      "pass": true
+    },
+    {
+      "name": "Mounted official-profile list rejects executable URLs without writing",
+      "pass": true
+    },
+    {
+      "name": "Corrected profile can delete its sole item, re-add and save while retaining identity settings",
+      "pass": true
+    },
+    {
+      "name": "A closed invalid editorial image rejects Save, opens its group and remains invalid at the mounted image field",
+      "pass": true
+    },
+    {
+      "name": "Clearing the invalid optional image and its alt restores the fallback and allows Save without resetting other edits",
+      "pass": true
+    }
+  ],
+  "requests": [
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": false
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": false
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": true
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": false
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": false
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": false
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": false
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": true
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": false
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": false
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": true
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": true
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": false
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": false
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": true
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": true
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": false
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": false
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": true
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": false
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": false
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": true
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": false
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": false
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": true
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": false
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": false
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": true
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": false
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": false
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": true
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": false
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": false
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": true
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": false
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": false
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": true
+    }
+  ],
+  "pageErrors": [],
+  "screenshots": [
+    {
+      "path": "cms-editor/candidate-add-deadlock.png",
+      "sha256": "5594e1d6bf6104b5cce57ba2f38717a4cd99fd2cd88c81a4b9b57c6f7bc20986",
+      "source": "probe-dev-after-add-open.png"
+    },
+    {
+      "path": "cms-editor/candidate-required-list-delete-error.png",
+      "sha256": "8e86a3134dddc0489e147a2b66aa8bc66589420fb2e5b743974d25bf10235715",
+      "source": "remove-required-before-fix.png"
+    },
+    {
+      "path": "cms-editor/new-section-saved.png",
+      "sha256": "96651cd958564bcd0e5e1a67198aa6cf40582dc5ae639714ace69338955f3bcd",
+      "source": "compiled-final3-new-section-saved.png"
+    },
+    {
+      "path": "cms-editor/new-section-mobile.png",
+      "sha256": "8fa8767bb75b6d43099ea0079c0fd0148aeb0919c413960bf6ca7d18c45e6e63",
+      "source": "compiled-final3-new-section-mobile.png"
+    },
+    {
+      "path": "cms-editor/faq-repair.png",
+      "sha256": "6172f3d6e3f9a5edb0addd7f297dbe648b4bd528fc301db5e371cf20d781d0dd",
+      "source": "compiled-final3-legacy-faq-rejected.png"
+    },
+    {
+      "path": "cms-editor/settings-inline-validation.png",
+      "sha256": "f9e96a816249374a9e15f7ca3d757e1d2072cd1485ad23b607fd61d1b7771558",
+      "source": "compiled-final3-settings-rejected.png"
+    },
+    {
+      "path": "cms-editor/editorial-image-validation.png",
+      "sha256": "a96eefff7b279554986e4d83e568070cd448882fb1c900d699d9f011eaa887a0",
+      "source": "compiled-final3-image-rejected.png"
+    }
+  ],
+  "adminIdentityPinned": true,
+  "status": "PASS_WIDGET_LOGIC",
+  "browserClosedNormally": true,
+  "isolatedCopiesRestored": true,
+  "compiledAdminUnchanged": true,
+  "guardSourceUnchanged": true,
+  "sourceContentUnchanged": true,
+  "finishedAt": "2026-11-28T10:14:26.001Z",
+  "scope": "26 native workflows on the compiled isolated widget implementation. A later record-resource hook must receive its own final compiled refusal/normal-Save smoke; hosted Save is separate.",
+  "testOnlyConfigDifference": "contentApiUrlOverride: 'http://localhost:4014/graphql' added only to private copied config; no cloud credentials or production data used.",
+  "mutationsVerified": 13,
+  "sourceHead": "b32caea43c83b35dfb17cbafeaa8a2f1fed587dd",
+  "limits": [
+    "Native dev and compiled admin isolation setup failures and candidate widget failures remain in private QA archives.",
+    "The original editor data and complete compiled asset bytes were preserved; all tests saved only copied/generated records.",
+    "No physical-device or assistive-technology certification is implied."
+  ]
+}

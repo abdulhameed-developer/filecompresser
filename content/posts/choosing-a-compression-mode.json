@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-27",
+  "updated": "2026-11-28",
   "title": "Choosing image compression modes and target sizes",
   "description": "Compare JPEG/WebP quality and PNG Lossless, Smart, Maximum or Target size. Understand preserved dimensions and when an original stays unchanged.",
   "date": "2026-09-12",
@@ -54,7 +54,7 @@
     },
     {
       "_template": "p",
-      "text": "Some limits cannot be reached within the supported quality, dimensions and format. An output over the maximum is marked Target not met. The tool does not pad or truncate a file, quietly resize it, or call a near miss a success. Consider a different format or a less restrictive target."
+      "text": "Some limits cannot be reached within the supported settings, dimensions and format. An unmet target is an error rather than a successful above-limit result. The tool does not pad or truncate a file, quietly resize it, or call a near miss a success. Choose a larger maximum or review a different supported format."
     },
     {
       "_template": "h2",
@@ -66,7 +66,7 @@
     },
     {
       "_template": "p",
-      "text": "Smart uses more conservative color-error checks than Maximum or Target size. These checks are numerical heuristics, not a guarantee of invisible changes. Target size measures actual PNG candidates, including color-reduced ones, against your maximum. A lossless result or unchanged original may be retained, and an output above the maximum is marked Target not met."
+      "text": "Smart uses more conservative color-error checks than Maximum. These checks are numerical heuristics, not a guarantee of invisible changes. Target size separately permits stronger color reduction and measures actual PNG candidates against the maximum. Transparency and dimensions stay protected; the final output must fit or the target is reported as not met."
     },
     {
       "_template": "h2",
@@ -96,8 +96,27 @@
     {
       "_template": "p",
       "text": "Re-encoding may normalize color to sRGB and remove embedded metadata. That is different from a guarantee of perfect ICC-profile preservation or metadata sanitization. A retained original keeps its bytes and metadata. Compare dimensions, transparency, byte counts and visible detail, and keep your source for future editing."
+    },
+    {
+      "_template": "h2",
+      "text": "Check the limit in the receiving service"
+    },
+    {
+      "_template": "p",
+      "text": "An upload form may use decimal KB or binary KiB. FileCompresser displays file sizes and targets in decimal units: 100 KB is 100,000 bytes and 1 MB is 1,000,000 bytes. Input, queue and extraction limits use MiB: 1 MiB is 1,048,576 bytes. Check the form’s written rule and inspect the downloaded file’s actual byte count. A target is a maximum, so a valid 92,000-byte output meets a 100,000-byte limit without being padded to match it."
+    },
+    {
+      "_template": "link",
+      "text": "Set an image mode or target",
+      "href": "/image-compressor"
     }
   ],
   "published": true,
-  "seoTitle": "Image Compression Modes and Target Sizes"
+  "seoTitle": "Image Compression Modes and Target Sizes",
+  "references": [
+    {
+      "title": "MDN: image file formats and their uses",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats/Image_types"
+    }
+  ]
 }

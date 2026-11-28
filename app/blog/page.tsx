@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { postImage, postsByDate } from '@/lib/blog'
+import { postDateLabel, postUpdatedDate } from '@/lib/blog-dates'
 import { absoluteUrl, breadcrumbJsonLd, jsonLdScript, webPageJsonLd, SITE_NAME } from '@/lib/seo'
 import BlogImage from '@/components/BlogImage'
 import { BLOG_ART } from '@/lib/blog-art'
@@ -74,7 +75,7 @@ export default function BlogIndexPage() {
                 <h2>{post.title}</h2>
                 <p>{post.description}</p>
                 <div className="postMeta">
-                  <time dateTime={post.date}>{formatDate(post.date)}</time>
+                  <time dateTime={postUpdatedDate(post)}>Updated {postDateLabel(postUpdatedDate(post))}</time>
                   <span aria-hidden="true">·</span>
                   <span>{post.readingTime} read</span>
                 </div>
@@ -86,15 +87,4 @@ export default function BlogIndexPage() {
       <ManagedPageSections sections={page.sections} />
     </div>
   )
-}
-
-function formatDate(iso: string): string {
-  // Fixed locale and UTC so the rendered date never shifts with the server's
-  // timezone, which would make the same post show different days to users.
-  return new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-GB', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-    timeZone: 'UTC',
-  })
 }

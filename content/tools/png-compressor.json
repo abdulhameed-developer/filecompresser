@@ -1,26 +1,26 @@
 {
-  "heading": "  PNG Compressor Online to Reduce File Size and Keep Transparency",
-  "introduction": "PNG images are widely used for logos, screenshots, diagrams, icons and digital graphics. One of their main advantages is the ability to preserve transparent backgrounds. This makes PNG a useful format when an image needs to appear over different colors or backgrounds without showing a solid rectangle around it.\n\nHowever, PNG files can become large, especially when they contain detailed graphics, high-resolution screenshots or many colors. Large files may take longer to upload, use additional storage and increase the size of website resources.\n\nFile Compresser provides an online PNG Compressor that helps reduce PNG file size directly in your browser. You can choose different optimization modes, compare the original and processed image and keep control of the transparency and dimensions. The tool processes files on your device, so there is no need to upload your images to an external server or install additional software.\n",
+  "heading": "PNG Compressor Online to Reduce File Size and Keep Transparency",
+  "introduction": "Optimize PNG screenshots, diagrams and transparent artwork on your device. Start with Lossless for exact decoded pixels, or choose Smart, Maximum or Target Size when color changes are acceptable. Display dimensions stay unchanged.",
   "sections": [
     {
       "heading": "What Is a PNG Compressor?",
-      "body": "A PNG compressor is a tool that optimizes the way image data is stored in a PNG file. It can reduce unnecessary data and, depending on the selected method, reduce the number of colors used in the image.\n\nPNG uses lossless compression at the file-format level. However, a PNG optimization process can also use color reduction. These are two different approaches.\n\nLossless optimization preserves the decoded image pixels. Color reduction changes image colors to create a smaller file, although transparency can still be preserved. File Compresser provides separate options so you can choose the approach that suits your image.\n"
+      "body": "A PNG compressor is a tool that optimizes the way image data is stored in a PNG file. It can reduce unnecessary data and, depending on the selected method, reduce the number of colors used in the image.\n\nPNG uses lossless compression at the file-format level. However, a PNG optimization process can also use color reduction. These are two different approaches.\n\nLossless optimization preserves the decoded image pixels. Color reduction changes image colors to create a smaller file, although transparency can still be preserved. FileCompresser provides separate options so you can choose the approach that suits your image."
     },
     {
       "heading": "How to Compress PNG Images Online",
-      "body": "You can reduce PNG file size without using a desktop image editing program.\n\nFollow these steps:\n\n1. Open the PNG Compressor page.\n2. Select a PNG image from your device.\n3. Wait for the image validation process.\n4. Review the available compression modes.\n5. Choose Lossless, Smart, Maximum or Target Size.\n6. Enable resizing only if you need different dimensions.\nStart processing.\n7. Compare the original and processed file sizes.\n8. Check the image, edges and transparent areas before downloading.\n\nThe tool keeps the original image dimensions unless you specifically enable resizing."
+      "body": "1. Select a PNG from your device and wait for validation.\n2. Open Settings and review the PNG modes.\n3. Keep Lossless, or choose Smart, Maximum or Target Size.\n4. Choose Compress and wait for the result.\n5. Use Compare and inspect text, edges and transparency.\n6. Download a suitable result and keep your source.\n\nThe image tools preserve original display dimensions. There is no image resize control."
     },
     {
       "heading": "Understanding PNG Compression Modes",
-      "body": "Choosing a suitable mode is important because PNG images can contain different types of visual information.\n"
+      "body": "Choosing a suitable mode is important because PNG images can contain different types of visual information."
     },
     {
       "heading": "Maximum",
-      "body": "Maximum is the default mode on File Compresser's PNG tool. It may reduce the number of colors to create a smaller file while preserving transparency values.\n\nThis option can be useful when reducing file size is important. However, check the result carefully because color changes may affect gradients, lettering and fine details.\n"
+      "body": "Maximum is an optional color-reduction mode. Lossless is the default. Maximum can create a smaller PNG while preserving checked transparency values, but gradients, lettering and fine detail can change. Compare the result at its intended scale."
     },
     {
       "heading": "Lossless",
-      "body": "Lossless mode preserves decoded image pixels. It is useful for screenshots, logos, diagrams and graphics where exact pixel appearance matters.\n\nIt may provide a smaller file through optimization of the stored data, but the result depends on the original PNG. Some images may already be efficient and show little or no reduction.\n"
+      "body": "Lossless mode preserves decoded image pixels. It is useful for screenshots, logos, diagrams and graphics where exact pixel appearance matters.\n\nIt may provide a smaller file through optimization of the stored data, but the result depends on the original PNG. Some images may already be efficient and show little or no reduction."
     },
     {
       "heading": "Smart",
@@ -28,31 +28,31 @@
     },
     {
       "heading": "Target Size",
-      "body": "Target Size attempts to create a PNG within a specified maximum file size. It tests actual encoded results and checks the final number of bytes.\n\nThe tool can report Target not met if the selected maximum cannot be reached. It is better to use a realistic target than to force an image into a size that makes its colors or details unsuitable.\n"
+      "body": "Target Size attempts to create a PNG within a specified maximum file size. It tests actual encoded results and checks the final number of bytes.\n\nThe tool can report Target not met if the selected maximum cannot be reached. It is better to use a realistic target than to force an image into a size that makes its colors or details unsuitable."
     },
     {
       "heading": "Why Is PNG Useful for Transparent Images?",
-      "body": "Transparency is one of the main reasons people choose PNG.\n\nFor example, a company logo may need to appear on a website with a colored background. A transparent PNG allows the background to show through instead of displaying a white or solid rectangle.\n\nPNG transparency is also useful for:\n\nWebsite icons and interface graphics.\nProduct images with removed backgrounds.\nDigital illustrations.\nScreenshots and diagrams.\nLogos and brand graphics.\nEducational graphics and charts.\n\nFile Compresser is designed to preserve transparency during its supported PNG optimization methods. Always inspect the output against both light and dark backgrounds to check the edges.\n"
+      "body": "A transparent PNG can place a logo or graphic over different page colors without a solid background rectangle. PNG is useful for:\n\n- Logos and interface icons.\n- Product cutouts and illustrations.\n- Screenshots, diagrams and charts.\n\nThe supported PNG modes preserve checked transparency values. Color-reduction modes can still change RGB colors, so inspect the result on both light and dark backgrounds."
     },
     {
       "heading": "Does PNG Compression Reduce Image Quality?",
-      "body": "It depends on the selected mode.\n\nLossless mode preserves decoded pixels. Smart and Maximum may reduce the number of colors, which can change the appearance of gradients, text and detailed graphics.\n\nTarget Size may also use color reduction to reach the selected limit. Color-error checks act as safeguards, but they do not guarantee that every change will be invisible. For images containing small text, sharp lines or detailed illustrations, compare the processed version with the original before using it.\n"
+      "body": "It depends on the selected mode.\n\nLossless mode preserves decoded pixels. Smart and Maximum may reduce the number of colors, which can change the appearance of gradients, text and detailed graphics.\n\nTarget Size may also use color reduction to reach the selected limit. Color-error checks act as safeguards, but they do not guarantee that every change will be invisible. For images containing small text, sharp lines or detailed illustrations, compare the processed version with the original before using it."
     },
     {
       "heading": "PNG Compression for Websites",
-      "body": "PNG is commonly used for website graphics that need transparency or sharp edges. However, using large PNG files unnecessarily can increase the amount of data visitors need to download.\n\nWebsite owners can review their PNG images and determine whether the format is still the best option. \n\nFor example, a transparent logo may be suitable for PNG, while a photograph may work better in JPG or WebP. The right format depends on the image content and intended display.\n\nIf a PNG cannot reach the required file size, a supported WebP conversion may be another option. However, format conversion is a separate operation and may change image quality.\n"
+      "body": "PNG is commonly used for website graphics that need transparency or sharp edges. However, using large PNG files unnecessarily can increase the amount of data visitors need to download.\n\nWebsite owners can review their PNG images and determine whether the format is still the best option. \n\nFor example, a transparent logo may be suitable for PNG, while a photograph may work better in JPG or WebP. The right format depends on the image content and intended display.\n\nIf a PNG cannot reach the required file size, a supported WebP conversion may be another option. However, format conversion is a separate operation and may change image quality."
     },
     {
-      "heading": "Can You Resize a PNG?",
-      "body": "Yes. File Compresser provides optional image resizing.\n\nThe original dimensions are preserved by default. You can enable resizing when a smaller width or height is needed for a website, email or digital document. The aspect ratio is maintained, and smaller images are not enlarged.\n\nRemember that resizing changes the actual image pixels. If exact dimensions are important, check the output before using it in your design or website.\n"
+      "heading": "Are PNG dimensions preserved?",
+      "body": "The PNG compressor preserves the original display dimensions. It does not provide image resizing. If you need a different width or height, prepare a separate copy in an image editor before using this tool. Keep the full-size source for later work."
     },
     {
       "heading": "Private PNG Compression in Your Browser",
-      "body": "File Compresser processes selected images on your device. Your PNG files are not uploaded to the website's servers.\n\nThe tool accepts PNG files up to 50 MB each. Queue limits are 500 files and 300 MB total, while image dimensions are subject to the 32-megapixel limit. Your device's available memory can also affect processing."
+      "body": "FileCompresser processes selected images on your device. Your PNG files are not uploaded to the website's servers.\n\nThe tool accepts PNG files up to 50 MiB each. Queue limits are 500 files and 300 MiB total, while image dimensions are subject to the 32-megapixel limit. Your device's available memory can also affect processing."
     },
     {
       "heading": "Reduce PNG File Size with the Right Settings",
-      "body": "PNG images are valuable when transparency and clear graphics are important. However, large files can create unnecessary storage and upload problems.\n\nFile Compresser gives you different options for optimizing PNG images while keeping transparency. Choose Lossless when exact pixel appearance matters, or review the other modes when a smaller output is your priority.\n"
+      "body": "Choose Lossless when exact decoded pixels matter. Choose a color-reduction mode only when changes to colors are acceptable. Compare the actual bytes, transparency and visible detail before replacing an original."
     }
   ],
   "links": [
@@ -68,29 +68,30 @@
   "faq": [
     {
       "q": "Can I compress PNG without losing transparency?",
-      "a": "Yes. The supported PNG processing modes are designed to preserve transparency values.\n"
+      "a": "Yes. The supported PNG processing modes are designed to preserve transparency values."
     },
     {
       "q": "Does PNG Lossless reduce image quality?",
-      "a": "Lossless mode preserves decoded image pixels. It may not produce a smaller file for every image.\n"
+      "a": "Lossless mode preserves decoded image pixels. It may not produce a smaller file for every image."
     },
     {
       "q": "Why is my PNG still large?",
-      "a": "Some PNG files already use efficient compression. Images with complex details and many colors may also be difficult to reduce.\n"
+      "a": "Some PNG files already use efficient compression. Images with complex details and many colors may also be difficult to reduce."
     },
     {
       "q": "Can I reduce PNG to 100KB?",
-      "a": "You can use Target Size to attempt a maximum of 100 KB. Whether this is achievable depends on the image and selected processing options.\n"
+      "a": "You can use Target Size to attempt a maximum of 100 KB. Whether this is achievable depends on the image and selected processing options."
     },
     {
       "q": "Does the PNG compressor change image dimensions?",
-      "a": "No. Dimensions remain unchanged unless you enable resizing.\n"
+      "a": "No. The image tools preserve original display dimensions and do not offer resizing."
     },
     {
       "q": "Are my PNG files uploaded?",
-      "a": "No. Processing runs directly in your browser.\n"
+      "a": "No. Processing runs directly in your browser."
     }
   ],
   "seoTitle": "PNG Compressor Online Free – Reduce PNG File Size",
-  "seoDescription": "Compress PNG images online while keeping transparent backgrounds. Choose lossless or color reduction settings and compare actual file sizes.\n"
+  "seoDescription": "Compress PNG images online while keeping transparent backgrounds. Choose lossless or color reduction settings and compare actual file sizes.",
+  "faqMode": "custom"
 }

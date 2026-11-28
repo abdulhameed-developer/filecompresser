@@ -108,7 +108,7 @@ export async function prepareDownloadZip(items: QueueItem[]): Promise<Blob> {
     done.reduce((sum, item) => sum + item.result!.blob.size, 0) >
       ARCHIVE_LIMITS.maxBatchBytes
   )
-    throw new Error('Download fewer than 500 files and 300 MB as one ZIP.')
+    throw new Error('Download at most 500 files and 300 MiB as one ZIP.')
   const entries: Record<string, Uint8Array> = Object.create(null)
   const used = new Set<string>()
   for (const item of done) {

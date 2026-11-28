@@ -21,7 +21,14 @@ const DEEP = 'var(--lime-deep)'
 const LINE = 'var(--line)'
 const PAPER = 'var(--surface)'
 
-/** Shared frame: a viewBox, the accessible name, and hidden inner text. */
+const DIAGRAM_NAMES: Record<string, string> = {
+  'fig-pipeline': 'Compression pipeline diagram',
+  'fig-sizebars': 'File size comparison diagram',
+  'fig-dataflow': 'File privacy diagram',
+  'fig-formattree': 'File format guide diagram',
+}
+
+/** Keep the diagram readable without making the surrounding article overflow. */
 function Figure({
   id,
   label,
@@ -33,21 +40,32 @@ function Figure({
   height: number
   children: React.ReactNode
 }) {
+  const compact = id === 'fig-formattree'
+  const canvasWidth = compact ? 420 : 720
   return (
-    <div className="editorialDiagram"><svg
-      className="figureSvg"
-      viewBox={`0 0 720 ${height}`}
-      width="720"
-      height={height}
-      role="img"
-      aria-label={label}
-      id={id}
-      preserveAspectRatio="xMidYMid meet"
-    >
-      <g aria-hidden="true" fontFamily="var(--font-mono)" fontSize="12">
-        {children}
-      </g>
-    </svg><p className="diagramSummary" aria-hidden="true">{label}</p></div>
+    <div className={`editorialDiagram${compact ? ' editorialDiagram--compact' : ''}`}>
+      <div className="diagramViewport" role="region" aria-label={DIAGRAM_NAMES[id] || 'Article diagram'} tabIndex={0}>
+        <svg
+          className="figureSvg"
+          viewBox={`0 0 ${canvasWidth} ${height}`}
+          width={canvasWidth}
+          height={height}
+          role="img"
+          aria-label={label}
+          id={id}
+          preserveAspectRatio="xMidYMid meet"
+        >
+          <g aria-hidden="true" fontFamily="var(--font-mono)" fontSize="12">
+            {children}
+          </g>
+        </svg>
+      </div>
+      <p className="diagramScrollHint" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><path d="m7 7-5 5 5 5M2 12h20m-5-5 5 5-5 5" /></svg>
+        Scroll sideways to read the diagram
+      </p>
+      <p className="diagramSummary" aria-hidden="true">{label}</p>
+    </div>
   )
 }
 

@@ -1,0 +1,536 @@
+{
+  "verifiedAt": "2026-11-28T14:52:20.038194+00:00",
+  "status": "PASS_ACTUAL_NATIVE_N_RED_O_GREEN",
+  "scope": "Independent final O Firefox Nightly numeric readability/focus verification only. N original strict anchoring failure and N/M full-workflow scopes remain preserved. No O79 or physical device certification is claimed.",
+  "browser": {
+    "version": "163.0a1",
+    "buildId": "20261128083209",
+    "channel": "moz-firefox-nightly",
+    "qaCore": "1.66.0-alpha-2026-11-28",
+    "normalVendorLaunch": true,
+    "browserPreferenceOrSecurityChanges": false
+  },
+  "harness": {
+    "path": "docs/evidence/2026-11-28/target-number-readability-audit-v2.mjs",
+    "sha256": "f820c95a85536fd952c82659f9a47073b9b4a20e33866bbd94ab8a45fd624e5b",
+    "sameBytesForNAndO": true,
+    "method": "Native click/ControlOrMeta+A/Backspace/sequential keys, actual font canvas width versus clientWidth minus computed padding plus2px caret capacity, body/frame geometry, native panel wheel only when error-summary reveal is needed. No app DOM value/event/style injection.",
+    "preliminaryV1Retained": ".qa-results/phase3/ui/candidate-o-firefox-number-readability/completion.json"
+  },
+  "retainedNRed": {
+    "actualExitCode": 1,
+    "ordinaryDraftStates": 28,
+    "orientationStates": 2,
+    "invalidStates": 2,
+    "collectedTextCapacityFailures": 29,
+    "otherFailedInvariants": false,
+    "browserClosedNormally": true,
+    "evidence": ".qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/n-red/report.json"
+  },
+  "actualOGreen": {
+    "homeSha256": "4bba3c3c5b3dab637959431221a5491f02e6f199ad302bdb9a71852c81144ff6",
+    "actualExitCode": 0,
+    "ordinaryDraftStatesPassed": 28,
+    "orientationStatesPassed": 2,
+    "invalidStatesPassed": 2,
+    "fixedViewportBackdropWheelControlPairs": 2,
+    "exactEscapeFocusScrollReturns": 3,
+    "collectedFailures": 0,
+    "pageErrors": [],
+    "consoleErrorsWarnings": [],
+    "failedRequests": [],
+    "browserClosedNormally": true,
+    "nativeBrowserExit0": true,
+    "servedIdentitiesBeforeAfter": 24,
+    "identitiesStable": true,
+    "all306OInputsStillMatch": true,
+    "widths": [
+      320,
+      375,
+      390,
+      430,
+      480,
+      481,
+      768
+    ],
+    "short320Height": 568,
+    "sameActiveOrientation": [
+      844,
+      390
+    ],
+    "drafts": [
+      "100.05",
+      "199999.999"
+    ],
+    "invalidDraft": "100.0005",
+    "actualDownload": {
+      "bytes": 83020,
+      "sha256": "67181c1d03a5e42876abcf23d312ac169442bfb0c4af29261142a0d601143e7e",
+      "fullyDecoded": {
+        "format": "PNG",
+        "dimensions": [
+          1440,
+          900
+        ],
+        "pixelsEqual": true
+      }
+    },
+    "evidence": ".qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/report.json"
+  },
+  "rows": [
+    {
+      "phase": "source-only",
+      "viewport": [
+        320,
+        568
+      ],
+      "draft": "100.05",
+      "exactMaximumBytes": 100050,
+      "inputTextWidth": 46.93333435058594,
+      "availableInputTextWidth": 131,
+      "textMarginPixels": 84.06666564941406,
+      "allChecksPass": true,
+      "screenshot": ".qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/source-only-320-100_05.png",
+      "screenshotSha256": "af4465fba76e8515caee8880667621dc12a4b231ad92dcd5d32b3d9efe4e31a7"
+    },
+    {
+      "phase": "source-only",
+      "viewport": [
+        320,
+        568
+      ],
+      "draft": "199999.999",
+      "exactMaximumBytes": 199999999,
+      "inputTextWidth": 81.26667022705078,
+      "availableInputTextWidth": 131,
+      "textMarginPixels": 49.73332977294922,
+      "allChecksPass": true,
+      "screenshot": ".qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/source-only-320-199999_999.png",
+      "screenshotSha256": "7edd82d33cd92f4430ea68e9eee2aed0a1414d4c609afe913729732775cec45f"
+    },
+    {
+      "phase": "source-only",
+      "viewport": [
+        375,
+        900
+      ],
+      "draft": "100.05",
+      "exactMaximumBytes": 100050,
+      "inputTextWidth": 46.93333435058594,
+      "availableInputTextWidth": 186,
+      "textMarginPixels": 139.06666564941406,
+      "allChecksPass": true,
+      "screenshot": ".qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/source-only-375-100_05.png",
+      "screenshotSha256": "bc541cb73fdbf8273be3a0213aee25a5571e27af1e1d8f9b5dadbb46bfc22bc6"
+    },
+    {
+      "phase": "source-only",
+      "viewport": [
+        375,
+        900
+      ],
+      "draft": "199999.999",
+      "exactMaximumBytes": 199999999,
+      "inputTextWidth": 81.26667022705078,
+      "availableInputTextWidth": 186,
+      "textMarginPixels": 104.73332977294922,
+      "allChecksPass": true,
+      "screenshot": ".qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/source-only-375-199999_999.png",
+      "screenshotSha256": "50a64e560ff6d114a6f74d6aa6d9ca8fce064c20691623e76f70be6f761d0d89"
+    },
+    {
+      "phase": "source-only",
+      "viewport": [
+        390,
+        900
+      ],
+      "draft": "100.05",
+      "exactMaximumBytes": 100050,
+      "inputTextWidth": 46.93333435058594,
+      "availableInputTextWidth": 201,
+      "textMarginPixels": 154.06666564941406,
+      "allChecksPass": true,
+      "screenshot": ".qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/source-only-390-100_05.png",
+      "screenshotSha256": "e7810f03e319d9a5a0df27e93eecc23c21d97e2e26188db600d4fb42b66a8c91"
+    },
+    {
+      "phase": "source-only",
+      "viewport": [
+        390,
+        900
+      ],
+      "draft": "199999.999",
+      "exactMaximumBytes": 199999999,
+      "inputTextWidth": 81.26667022705078,
+      "availableInputTextWidth": 201,
+      "textMarginPixels": 119.73332977294922,
+      "allChecksPass": true,
+      "screenshot": ".qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/source-only-390-199999_999.png",
+      "screenshotSha256": "f429674db872dc898387a45002d5b2bc680265c69cafc7f9b3274df9b55c4c33"
+    },
+    {
+      "phase": "source-only",
+      "viewport": [
+        430,
+        900
+      ],
+      "draft": "100.05",
+      "exactMaximumBytes": 100050,
+      "inputTextWidth": 46.93333435058594,
+      "availableInputTextWidth": 241,
+      "textMarginPixels": 194.06666564941406,
+      "allChecksPass": true,
+      "screenshot": ".qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/source-only-430-100_05.png",
+      "screenshotSha256": "8ea731b70d8d675bfac1643474ddd1eff14ac3dc4292d19a917597f9afdb7bd1"
+    },
+    {
+      "phase": "source-only",
+      "viewport": [
+        430,
+        900
+      ],
+      "draft": "199999.999",
+      "exactMaximumBytes": 199999999,
+      "inputTextWidth": 81.26667022705078,
+      "availableInputTextWidth": 241,
+      "textMarginPixels": 159.73332977294922,
+      "allChecksPass": true,
+      "screenshot": ".qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/source-only-430-199999_999.png",
+      "screenshotSha256": "300332930802e4c4b6fb6942fd68f1cf565a9fd1937c7d85e682d63b09686b1f"
+    },
+    {
+      "phase": "source-only",
+      "viewport": [
+        480,
+        900
+      ],
+      "draft": "100.05",
+      "exactMaximumBytes": 100050,
+      "inputTextWidth": 46.93333435058594,
+      "availableInputTextWidth": 291,
+      "textMarginPixels": 244.06666564941406,
+      "allChecksPass": true,
+      "screenshot": ".qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/source-only-480-100_05.png",
+      "screenshotSha256": "869b3ffb036c834edd1d0b73ccfdf33b99a6a4eb81e41c88f36d22d1ea27363f"
+    },
+    {
+      "phase": "source-only",
+      "viewport": [
+        480,
+        900
+      ],
+      "draft": "199999.999",
+      "exactMaximumBytes": 199999999,
+      "inputTextWidth": 81.26667022705078,
+      "availableInputTextWidth": 291,
+      "textMarginPixels": 209.73332977294922,
+      "allChecksPass": true,
+      "screenshot": ".qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/source-only-480-199999_999.png",
+      "screenshotSha256": "3962641ba3554114db5d70e34aff9c4de873ef40badec440ece9e7f0230c7dd7"
+    },
+    {
+      "phase": "source-only",
+      "viewport": [
+        481,
+        900
+      ],
+      "draft": "100.05",
+      "exactMaximumBytes": 100050,
+      "inputTextWidth": 46.93333435058594,
+      "availableInputTextWidth": 108,
+      "textMarginPixels": 61.06666564941406,
+      "allChecksPass": true,
+      "screenshot": ".qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/source-only-481-100_05.png",
+      "screenshotSha256": "9537baf51b9e642e9b40e4192eb58b45811efba0cb00d28488db694643c215e4"
+    },
+    {
+      "phase": "source-only",
+      "viewport": [
+        481,
+        900
+      ],
+      "draft": "199999.999",
+      "exactMaximumBytes": 199999999,
+      "inputTextWidth": 81.26667022705078,
+      "availableInputTextWidth": 108,
+      "textMarginPixels": 26.73332977294922,
+      "allChecksPass": true,
+      "screenshot": ".qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/source-only-481-199999_999.png",
+      "screenshotSha256": "fa49d79a5995d20da4b689df0d323cec77290c5606ba6a7db5a09be84ab871cc"
+    },
+    {
+      "phase": "source-only",
+      "viewport": [
+        768,
+        900
+      ],
+      "draft": "100.05",
+      "exactMaximumBytes": 100050,
+      "inputTextWidth": 46.93333435058594,
+      "availableInputTextWidth": 148,
+      "textMarginPixels": 101.06666564941406,
+      "allChecksPass": true,
+      "screenshot": ".qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/source-only-768-100_05.png",
+      "screenshotSha256": "9be59f00e447d63210261073ac7c8321eeb57a6eb56e9d74a65ab4c489912eca"
+    },
+    {
+      "phase": "source-only",
+      "viewport": [
+        768,
+        900
+      ],
+      "draft": "199999.999",
+      "exactMaximumBytes": 199999999,
+      "inputTextWidth": 81.26667022705078,
+      "availableInputTextWidth": 148,
+      "textMarginPixels": 66.73332977294922,
+      "allChecksPass": true,
+      "screenshot": ".qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/source-only-768-199999_999.png",
+      "screenshotSha256": "162f8e3cc0d81f01c82cdc47c3855cf49a616c9346121f268a12836de99e10ba"
+    },
+    {
+      "phase": "applied-result",
+      "viewport": [
+        320,
+        568
+      ],
+      "draft": "100.05",
+      "exactMaximumBytes": 100050,
+      "inputTextWidth": 46.93333435058594,
+      "availableInputTextWidth": 131,
+      "textMarginPixels": 84.06666564941406,
+      "allChecksPass": true,
+      "screenshot": ".qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/applied-result-320-100_05.png",
+      "screenshotSha256": "bfb84a0c7de71148494bf9e0e997057b7dbaa14fdb5d37466150078492d8c9eb"
+    },
+    {
+      "phase": "applied-result",
+      "viewport": [
+        320,
+        568
+      ],
+      "draft": "199999.999",
+      "exactMaximumBytes": 199999999,
+      "inputTextWidth": 81.26667022705078,
+      "availableInputTextWidth": 131,
+      "textMarginPixels": 49.73332977294922,
+      "allChecksPass": true,
+      "screenshot": ".qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/applied-result-320-199999_999.png",
+      "screenshotSha256": "f6ff2264c548aef226910f6d7d9e73b424523550846856463d992454e0c77ed1"
+    },
+    {
+      "phase": "applied-result",
+      "viewport": [
+        375,
+        900
+      ],
+      "draft": "100.05",
+      "exactMaximumBytes": 100050,
+      "inputTextWidth": 46.93333435058594,
+      "availableInputTextWidth": 186,
+      "textMarginPixels": 139.06666564941406,
+      "allChecksPass": true,
+      "screenshot": ".qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/applied-result-375-100_05.png",
+      "screenshotSha256": "ae1a86a93925a01d5edf88292021399cffa5188b6d900fe0a1f4b57412988c5f"
+    },
+    {
+      "phase": "applied-result",
+      "viewport": [
+        375,
+        900
+      ],
+      "draft": "199999.999",
+      "exactMaximumBytes": 199999999,
+      "inputTextWidth": 81.26667022705078,
+      "availableInputTextWidth": 186,
+      "textMarginPixels": 104.73332977294922,
+      "allChecksPass": true,
+      "screenshot": ".qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/applied-result-375-199999_999.png",
+      "screenshotSha256": "5d7220255214257608a96026465d8ce15f8de4621f8c205558af6ad3c5f6e42a"
+    },
+    {
+      "phase": "applied-result",
+      "viewport": [
+        390,
+        900
+      ],
+      "draft": "100.05",
+      "exactMaximumBytes": 100050,
+      "inputTextWidth": 46.93333435058594,
+      "availableInputTextWidth": 201,
+      "textMarginPixels": 154.06666564941406,
+      "allChecksPass": true,
+      "screenshot": ".qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/applied-result-390-100_05.png",
+      "screenshotSha256": "161766a7043cfa52c8cd7bbea70669be49afb11509ff94edc136bc45043b72c9"
+    },
+    {
+      "phase": "applied-result",
+      "viewport": [
+        390,
+        900
+      ],
+      "draft": "199999.999",
+      "exactMaximumBytes": 199999999,
+      "inputTextWidth": 81.26667022705078,
+      "availableInputTextWidth": 201,
+      "textMarginPixels": 119.73332977294922,
+      "allChecksPass": true,
+      "screenshot": ".qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/applied-result-390-199999_999.png",
+      "screenshotSha256": "6f3611d2d3ff88d1bcb5224c69e0ad1ccc631f74839c7a55bb8ca3e5f0ab53dc"
+    },
+    {
+      "phase": "applied-result",
+      "viewport": [
+        430,
+        900
+      ],
+      "draft": "100.05",
+      "exactMaximumBytes": 100050,
+      "inputTextWidth": 46.93333435058594,
+      "availableInputTextWidth": 241,
+      "textMarginPixels": 194.06666564941406,
+      "allChecksPass": true,
+      "screenshot": ".qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/applied-result-430-100_05.png",
+      "screenshotSha256": "2a5a1c6c99f141cfeb362181da73575c602337a290f16affecf81ee6b8b7144d"
+    },
+    {
+      "phase": "applied-result",
+      "viewport": [
+        430,
+        900
+      ],
+      "draft": "199999.999",
+      "exactMaximumBytes": 199999999,
+      "inputTextWidth": 81.26667022705078,
+      "availableInputTextWidth": 241,
+      "textMarginPixels": 159.73332977294922,
+      "allChecksPass": true,
+      "screenshot": ".qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/applied-result-430-199999_999.png",
+      "screenshotSha256": "95557fc4feaafef2f111c908dce5b34d43a3781e3b581dfe4d438b53bffd4b58"
+    },
+    {
+      "phase": "applied-result",
+      "viewport": [
+        480,
+        900
+      ],
+      "draft": "100.05",
+      "exactMaximumBytes": 100050,
+      "inputTextWidth": 46.93333435058594,
+      "availableInputTextWidth": 291,
+      "textMarginPixels": 244.06666564941406,
+      "allChecksPass": true,
+      "screenshot": ".qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/applied-result-480-100_05.png",
+      "screenshotSha256": "732b25ebf644800d2336497f35962cee8fd51e44c688865e2f67364ae2e0af50"
+    },
+    {
+      "phase": "applied-result",
+      "viewport": [
+        480,
+        900
+      ],
+      "draft": "199999.999",
+      "exactMaximumBytes": 199999999,
+      "inputTextWidth": 81.26667022705078,
+      "availableInputTextWidth": 291,
+      "textMarginPixels": 209.73332977294922,
+      "allChecksPass": true,
+      "screenshot": ".qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/applied-result-480-199999_999.png",
+      "screenshotSha256": "44b6aa123e07f8102667e7524b66e9257fb5e474559385a147a5c3871c48b503"
+    },
+    {
+      "phase": "applied-result",
+      "viewport": [
+        481,
+        900
+      ],
+      "draft": "100.05",
+      "exactMaximumBytes": 100050,
+      "inputTextWidth": 46.93333435058594,
+      "availableInputTextWidth": 108,
+      "textMarginPixels": 61.06666564941406,
+      "allChecksPass": true,
+      "screenshot": ".qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/applied-result-481-100_05.png",
+      "screenshotSha256": "13118fba12489dcf058ecb60093e70d17c4d1c63bbb369f46c5c337f4bfd60c8"
+    },
+    {
+      "phase": "applied-result",
+      "viewport": [
+        481,
+        900
+      ],
+      "draft": "199999.999",
+      "exactMaximumBytes": 199999999,
+      "inputTextWidth": 81.26667022705078,
+      "availableInputTextWidth": 108,
+      "textMarginPixels": 26.73332977294922,
+      "allChecksPass": true,
+      "screenshot": ".qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/applied-result-481-199999_999.png",
+      "screenshotSha256": "a47c1570f183fac9867ff7896afafd6cac01a5f14a47abfe7ce6cd7c3bc512ec"
+    },
+    {
+      "phase": "applied-result",
+      "viewport": [
+        768,
+        900
+      ],
+      "draft": "100.05",
+      "exactMaximumBytes": 100050,
+      "inputTextWidth": 46.93333435058594,
+      "availableInputTextWidth": 148,
+      "textMarginPixels": 101.06666564941406,
+      "allChecksPass": true,
+      "screenshot": ".qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/applied-result-768-100_05.png",
+      "screenshotSha256": "8a437828e2877022d5059cca2e3c48292edc8ae494ccee704c8ad041c53aabc7"
+    },
+    {
+      "phase": "applied-result",
+      "viewport": [
+        768,
+        900
+      ],
+      "draft": "199999.999",
+      "exactMaximumBytes": 199999999,
+      "inputTextWidth": 81.26667022705078,
+      "availableInputTextWidth": 148,
+      "textMarginPixels": 66.73332977294922,
+      "allChecksPass": true,
+      "screenshot": ".qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/applied-result-768-199999_999.png",
+      "screenshotSha256": "03932b9ef96561089fc5f5d9e332d071eab66f9e177a5bd1315c957086aa9aa6"
+    }
+  ],
+  "visualReview": {
+    "reviewedAt": "2026-11-28T14:52:20.036403+00:00",
+    "scope": "All28 O numeric control regions visually inspected via four derived sheets. Four full viewport states additionally viewed:320long draft,320invalid/red error,481long draft,844x390applied same-active. All original screenshots retained; not all full viewport images individually viewed.",
+    "controlRegionsViewed": 28,
+    "derivedSheets": 4,
+    "fullViewportStatesViewed": 4,
+    "finding": "Every inspected editable draft is complete and readable, including the ten-character199999.999 value. Invalid100.0005 and its complete red error text remain visible above the footer at320x568; the481 breakpoint keeps a balanced two-column layout; short landscape retains full focus ring and value. The earlier N clipping is visibly resolved.",
+    "limitations": "Generated desktop/Linux emulation and native protocol keyboard/wheel actions do not certify a physical or virtual mobile keyboard, screen reader or stable Firefox release."
+  },
+  "sourceBinding": "docs/evidence/2026-11-28/candidate-n-to-o-processing-binding.json",
+  "originalNativeAnchoringDisposition": "Exact numeric pageY across responsive reflow is recorded, not asserted by this readability audit. The previous original N strict24-state overall FAIL remains unchanged, with its separate native anchoring/backdrop-wheel proof. No product overflow-anchor workaround adopted.",
+  "generatedFixtureIdentity": {
+    "id": "screenshot-optimized",
+    "file": "screenshot-optimized.png",
+    "category": "already losslessly optimized screenshot",
+    "bytes": 111968,
+    "sha256": "ae3fdac51e407800e85a0d5841d4dbdea519d4b1e18f1644b8a7c179d86ab10e",
+    "format": "PNG",
+    "storedDimensions": [
+      1440,
+      900
+    ],
+    "displayDimensions": [
+      1440,
+      900
+    ],
+    "mode": "RGB",
+    "license": "CC0-1.0",
+    "attribution": "Generated by FileCompresser benchmark script",
+    "source": null,
+    "generation": {
+      "optimize": true
+    }
+  }
+}

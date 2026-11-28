@@ -1,0 +1,1249 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-28T09:49:26.487722+00:00",
+  "date": "2026-11-28",
+  "timezone": "Asia/Karachi",
+  "sourceScope": "Fresh root-native owner-account inspection captures; no indexing status inferred from sitemap, status code or aggregate totals.",
+  "sourceMetadata": {
+    "technicalCheckedAt": "2026-11-28T08:42:01.196Z",
+    "technicalSource": ".qa-results/phase3/content-parity/live-before-b32caea-checked.json",
+    "sitemapBeforeSha256": "5568b4c5821bb1c7e6fe7f5be7457b5c7fda44f395ccfa77048de57d3265e069",
+    "googleCategorySnapshotSha256": "4f57d2535424c2391e7369add8387908eeb8c7a4065131354b775ff970009ee4",
+    "bingHomeSnapshotSha256": "b315b1cbc4c18119dd995ead440e01fd01194ff825ec287c8d32fa8831cdb9f0"
+  },
+  "googleAggregate": {
+    "observedDate": "2026-11-28",
+    "reportUpdated": "2026-11-23",
+    "indexed": 24,
+    "notIndexed": 6,
+    "categories": [
+      {
+        "reason": "Page with redirect",
+        "pages": 3
+      },
+      {
+        "reason": "Excluded by noindex tag",
+        "pages": 1
+      },
+      {
+        "reason": "Discovered \u2013 currently not indexed",
+        "pages": 2
+      }
+    ]
+  },
+  "bingPerformance": {
+    "observedDate": "2026-11-28",
+    "period": "2026-08-28 through 2026-11-27",
+    "clicks": 0,
+    "impressions": 0,
+    "source": "Bing Webmaster Tools property Home chart; not keyword research or third-party estimates"
+  },
+  "rows": {
+    "google": [
+      {
+        "url": "https://filecompresser.com/",
+        "route": "/",
+        "status": "INDEXED",
+        "checkedAt": "2026-11-28T08:33:38.263Z",
+        "lastCrawl": "28 Nov 2026, 12:06:44",
+        "crawlAllowed": "Yes",
+        "pageFetch": "Successful",
+        "indexingAllowed": "Yes",
+        "declaredCanonical": "https://filecompresser.com/",
+        "selectedCanonicalObserved": "Inspected URL",
+        "selectedCanonicalResolved": "https://filecompresser.com/",
+        "sitemapObserved": "visibility_off",
+        "referringPage": "None detected",
+        "snapshotTextSha256": "cc269f9b062e50ef5d601379ccfab1705e2634348f5dbf1b1274fc848ac9fcd9",
+        "evidenceFile": ".qa-results/phase3/search/google/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/about",
+        "route": "/about",
+        "status": "INDEXED",
+        "checkedAt": "2026-11-28T08:34:56.330Z",
+        "lastCrawl": "24 Nov 2026, 18:59:47",
+        "crawlAllowed": "Yes",
+        "pageFetch": "Successful",
+        "indexingAllowed": "Yes",
+        "declaredCanonical": "https://filecompresser.com/about",
+        "selectedCanonicalObserved": "Inspected URL",
+        "selectedCanonicalResolved": "https://filecompresser.com/about",
+        "sitemapObserved": "visibility_off",
+        "referringPage": "https://filecompresser.com/",
+        "snapshotTextSha256": "321f757e6f7e3ff6534551dd4f7129df3c0d046222dd7e2bb5ebaccb30f2d1a9",
+        "evidenceFile": ".qa-results/phase3/search/google/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/about",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/blog",
+        "route": "/blog",
+        "status": "INDEXED",
+        "checkedAt": "2026-11-28T08:37:21.585Z",
+        "lastCrawl": "22 Nov 2026, 02:37:11",
+        "crawlAllowed": "Yes",
+        "pageFetch": "Successful",
+        "indexingAllowed": "Yes",
+        "declaredCanonical": "https://filecompresser.com/blog",
+        "selectedCanonicalObserved": "Inspected URL",
+        "selectedCanonicalResolved": "https://filecompresser.com/blog",
+        "sitemapObserved": "visibility_off",
+        "referringPage": "https://filecompresser.com/sitemap",
+        "snapshotTextSha256": "2d9d2ff316f34391654471fafddb62edbd953dd7f3927ad46fc014347044f011",
+        "evidenceFile": ".qa-results/phase3/search/google/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/blog",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/privacy",
+        "route": "/privacy",
+        "status": "INDEXED",
+        "checkedAt": "2026-11-28T08:38:09.291Z",
+        "lastCrawl": "22 Nov 2026, 00:15:15",
+        "crawlAllowed": "Yes",
+        "pageFetch": "Successful",
+        "indexingAllowed": "Yes",
+        "declaredCanonical": "https://filecompresser.com/privacy",
+        "selectedCanonicalObserved": "Inspected URL",
+        "selectedCanonicalResolved": "https://filecompresser.com/privacy",
+        "sitemapObserved": "visibility_off",
+        "referringPage": "https://filecompresser.com/",
+        "snapshotTextSha256": "d12964fb0994419aef9f806787323d7ec3aa4b175b187c483ebb4f4e0927d739",
+        "evidenceFile": ".qa-results/phase3/search/google/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/privacy",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/terms",
+        "route": "/terms",
+        "status": "INDEXED",
+        "checkedAt": "2026-11-28T08:40:06.195Z",
+        "lastCrawl": "22 Nov 2026, 00:09:51",
+        "crawlAllowed": "Yes",
+        "pageFetch": "Successful",
+        "indexingAllowed": "Yes",
+        "declaredCanonical": "https://filecompresser.com/terms",
+        "selectedCanonicalObserved": "Inspected URL",
+        "selectedCanonicalResolved": "https://filecompresser.com/terms",
+        "sitemapObserved": "visibility_off",
+        "referringPage": "https://filecompresser.com/",
+        "snapshotTextSha256": "90fb892dba10de300987bf30db2e57a3c28cc4cdac1f5619c16364a4b48faf63",
+        "evidenceFile": ".qa-results/phase3/search/google/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/terms",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/disclaimer",
+        "route": "/disclaimer",
+        "status": "INDEXED",
+        "checkedAt": "2026-11-28T08:45:50.238Z",
+        "lastCrawl": "22 Nov 2026, 00:31:06",
+        "crawlAllowed": "Yes",
+        "pageFetch": "Successful",
+        "indexingAllowed": "Yes",
+        "declaredCanonical": "https://filecompresser.com/disclaimer",
+        "selectedCanonicalObserved": "Inspected URL",
+        "selectedCanonicalResolved": "https://filecompresser.com/disclaimer",
+        "sitemapObserved": "visibility_off",
+        "referringPage": "https://filecompresser.com/",
+        "snapshotTextSha256": "7208de5cc399591ddb05f012d1bca5fe1de8198c56ee0286e65da25599841858",
+        "evidenceFile": ".qa-results/phase3/search/google/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/disclaimer",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/contact",
+        "route": "/contact",
+        "status": "INDEXED",
+        "checkedAt": "2026-11-28T08:46:52.521Z",
+        "lastCrawl": "27 Nov 2026, 17:16:26",
+        "crawlAllowed": "Yes",
+        "pageFetch": "Successful",
+        "indexingAllowed": "Yes",
+        "declaredCanonical": "https://filecompresser.com/contact",
+        "selectedCanonicalObserved": "Inspected URL",
+        "selectedCanonicalResolved": "https://filecompresser.com/contact",
+        "sitemapObserved": "visibility_off",
+        "referringPage": "https://filecompresser.com/mp3-compressor",
+        "snapshotTextSha256": "bc29d44ac7d22d63813b12ca3fdb961831e42d45a9944cb41045e5df8f8ac3b8",
+        "evidenceFile": ".qa-results/phase3/search/google/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/contact",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/sitemap",
+        "route": "/sitemap",
+        "status": "INDEXED",
+        "checkedAt": "2026-11-28T08:49:49.293Z",
+        "lastCrawl": "24 Nov 2026, 11:29:51",
+        "crawlAllowed": "Yes",
+        "pageFetch": "Successful",
+        "indexingAllowed": "Yes",
+        "declaredCanonical": "https://filecompresser.com/sitemap",
+        "selectedCanonicalObserved": "Inspected URL",
+        "selectedCanonicalResolved": "https://filecompresser.com/sitemap",
+        "sitemapObserved": "visibility_off",
+        "referringPage": "https://filecompresser.com/zip-compressor",
+        "snapshotTextSha256": "09671eeaa28ac066f46c0ef9be10ec905547744355d24693ec9e75bbc72212b4",
+        "evidenceFile": ".qa-results/phase3/search/google/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/sitemap",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/blog/compressing-files-for-the-web",
+        "route": "/blog/compressing-files-for-the-web",
+        "status": "INDEXED",
+        "checkedAt": "2026-11-28T08:50:48.284Z",
+        "lastCrawl": "22 Nov 2026, 01:13:36",
+        "crawlAllowed": "Yes",
+        "pageFetch": "Successful",
+        "indexingAllowed": "Yes",
+        "declaredCanonical": "https://filecompresser.com/blog/compressing-files-for-the-web",
+        "selectedCanonicalObserved": "Inspected URL",
+        "selectedCanonicalResolved": "https://filecompresser.com/blog/compressing-files-for-the-web",
+        "sitemapObserved": "visibility_off",
+        "referringPage": "https://filecompresser.com/",
+        "snapshotTextSha256": "aee8087b3bf632c679462dfaa8555ae5d15e6906429417b3eda035e9d946f2b7",
+        "evidenceFile": ".qa-results/phase3/search/google/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/blog/compressing-files-for-the-web",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/blog/what-privacy-claim-really-means",
+        "route": "/blog/what-privacy-claim-really-means",
+        "status": "INDEXED",
+        "checkedAt": "2026-11-28T08:51:38.196Z",
+        "lastCrawl": "27 Nov 2026, 00:09:49",
+        "crawlAllowed": "Yes",
+        "pageFetch": "Successful",
+        "indexingAllowed": "Yes",
+        "declaredCanonical": "https://filecompresser.com/blog/what-privacy-claim-really-means",
+        "selectedCanonicalObserved": "Inspected URL",
+        "selectedCanonicalResolved": "https://filecompresser.com/blog/what-privacy-claim-really-means",
+        "sitemapObserved": "visibility_off",
+        "referringPage": "https://filecompresser.com/zip-compressor",
+        "snapshotTextSha256": "579f446a46f0b2d29494fdc72c6bfe8d29391d5ffb42a57840f0c157d99298be",
+        "evidenceFile": ".qa-results/phase3/search/google/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/blog/what-privacy-claim-really-means",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/blog/choosing-a-compression-mode",
+        "route": "/blog/choosing-a-compression-mode",
+        "status": "INDEXED",
+        "checkedAt": "2026-11-28T08:53:26.480Z",
+        "lastCrawl": "22 Nov 2026, 01:02:58",
+        "crawlAllowed": "Yes",
+        "pageFetch": "Successful",
+        "indexingAllowed": "Yes",
+        "declaredCanonical": "https://filecompresser.com/blog/choosing-a-compression-mode",
+        "selectedCanonicalObserved": "Inspected URL",
+        "selectedCanonicalResolved": "https://filecompresser.com/blog/choosing-a-compression-mode",
+        "sitemapObserved": "visibility_off",
+        "referringPage": "https://filecompresser.com/",
+        "snapshotTextSha256": "0febdaad75ad31d4649fdc8f9d277c17c68ff2dcdc6035ca328b81b85a04c8db",
+        "evidenceFile": ".qa-results/phase3/search/google/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/blog/choosing-a-compression-mode",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/blog/honest-file-size-reporting",
+        "route": "/blog/honest-file-size-reporting",
+        "status": "INDEXED",
+        "checkedAt": "2026-11-28T08:55:43.440Z",
+        "lastCrawl": "22 Nov 2026, 01:48:53",
+        "crawlAllowed": "Yes",
+        "pageFetch": "Successful",
+        "indexingAllowed": "Yes",
+        "declaredCanonical": "https://filecompresser.com/blog/honest-file-size-reporting",
+        "selectedCanonicalObserved": "Inspected URL",
+        "selectedCanonicalResolved": "https://filecompresser.com/blog/honest-file-size-reporting",
+        "sitemapObserved": "visibility_off",
+        "referringPage": "https://filecompresser.com/sitemap",
+        "snapshotTextSha256": "e0e9d2e4c53a429462b2714f8e01569348a768155093c5e7c5a9303d2724997e",
+        "evidenceFile": ".qa-results/phase3/search/google/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/blog/honest-file-size-reporting",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/blog/how-browser-compression-works",
+        "route": "/blog/how-browser-compression-works",
+        "status": "INDEXED",
+        "checkedAt": "2026-11-28T08:59:12.249Z",
+        "lastCrawl": "22 Nov 2026, 01:08:18",
+        "crawlAllowed": "Yes",
+        "pageFetch": "Successful",
+        "indexingAllowed": "Yes",
+        "declaredCanonical": "https://filecompresser.com/blog/how-browser-compression-works",
+        "selectedCanonicalObserved": "Inspected URL",
+        "selectedCanonicalResolved": "https://filecompresser.com/blog/how-browser-compression-works",
+        "sitemapObserved": "visibility_off",
+        "referringPage": "https://filecompresser.com/compress",
+        "snapshotTextSha256": "ac6eb7f4b2d9fbc288757e4ad5369d91512cef87d12b337e4f04bf8dabf18c51",
+        "evidenceFile": ".qa-results/phase3/search/google/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/blog/how-browser-compression-works",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/compress",
+        "route": "/compress",
+        "status": "INDEXED",
+        "checkedAt": "2026-11-28T09:00:47.624Z",
+        "lastCrawl": "28 Nov 2026, 12:08:45",
+        "crawlAllowed": "Yes",
+        "pageFetch": "Successful",
+        "indexingAllowed": "Yes",
+        "declaredCanonical": "https://filecompresser.com/compress",
+        "selectedCanonicalObserved": "Inspected URL",
+        "selectedCanonicalResolved": "https://filecompresser.com/compress",
+        "sitemapObserved": "visibility_off",
+        "referringPage": "https://filecompresser.com/",
+        "snapshotTextSha256": "dd9023a25a9f4e955a3238af30d1be0ba64f5f982c20a1776ad7c6c76bb4b0cb",
+        "evidenceFile": ".qa-results/phase3/search/google/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/compress",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/image-compressor",
+        "route": "/image-compressor",
+        "status": "INDEXED",
+        "checkedAt": "2026-11-28T09:01:19.589Z",
+        "lastCrawl": "28 Nov 2026, 12:08:45",
+        "crawlAllowed": "Yes",
+        "pageFetch": "Successful",
+        "indexingAllowed": "Yes",
+        "declaredCanonical": "https://filecompresser.com/image-compressor",
+        "selectedCanonicalObserved": "Inspected URL",
+        "selectedCanonicalResolved": "https://filecompresser.com/image-compressor",
+        "sitemapObserved": "visibility_off",
+        "referringPage": "https://filecompresser.com/about",
+        "snapshotTextSha256": "1668b21ab83ba9bbfc4d774c3a9aa4a79678dec181808f09a434df5b781b753e",
+        "evidenceFile": ".qa-results/phase3/search/google/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/image-compressor",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/jpg-compressor",
+        "route": "/jpg-compressor",
+        "status": "INDEXED",
+        "checkedAt": "2026-11-28T09:03:48.295Z",
+        "lastCrawl": "27 Nov 2026, 17:20:26",
+        "crawlAllowed": "Yes",
+        "pageFetch": "Successful",
+        "indexingAllowed": "Yes",
+        "declaredCanonical": "https://filecompresser.com/jpg-compressor",
+        "selectedCanonicalObserved": "Inspected URL",
+        "selectedCanonicalResolved": "https://filecompresser.com/jpg-compressor",
+        "sitemapObserved": "visibility_off",
+        "referringPage": "https://filecompresser.com/",
+        "snapshotTextSha256": "646f4f88fe2613ff35863ef136b13a1c9f9f0bb913b0cda1862d0d109a2b9b59",
+        "evidenceFile": ".qa-results/phase3/search/google/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/jpg-compressor",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/jpeg-compressor",
+        "route": "/jpeg-compressor",
+        "status": "INDEXED",
+        "checkedAt": "2026-11-28T09:06:43.577Z",
+        "lastCrawl": "22 Nov 2026, 04:22:23",
+        "crawlAllowed": "Yes",
+        "pageFetch": "Successful",
+        "indexingAllowed": "Yes",
+        "declaredCanonical": "https://filecompresser.com/jpeg-compressor",
+        "selectedCanonicalObserved": "Inspected URL",
+        "selectedCanonicalResolved": "https://filecompresser.com/jpeg-compressor",
+        "sitemapObserved": "visibility_off",
+        "referringPage": "https://filecompresser.com/sitemap",
+        "snapshotTextSha256": "83e2c899b2bd5b1d2e0c108a3ac16e1322d18d2d0b60fe030725cdcbc379128e",
+        "evidenceFile": ".qa-results/phase3/search/google/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/jpeg-compressor",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/png-compressor",
+        "route": "/png-compressor",
+        "status": "INDEXED",
+        "checkedAt": "2026-11-28T09:11:44.303Z",
+        "lastCrawl": "22 Nov 2026, 04:45:44",
+        "crawlAllowed": "Yes",
+        "pageFetch": "Successful",
+        "indexingAllowed": "Yes",
+        "declaredCanonical": "https://filecompresser.com/png-compressor",
+        "selectedCanonicalObserved": "Inspected URL",
+        "selectedCanonicalResolved": "https://filecompresser.com/png-compressor",
+        "sitemapObserved": "visibility_off",
+        "referringPage": "https://filecompresser.com/archive-compressor",
+        "snapshotTextSha256": "03425c122739c1107a513d7255b606a9244e1dad43b2501b437a6b99f533476d",
+        "evidenceFile": ".qa-results/phase3/search/google/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/png-compressor",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/webp-compressor",
+        "route": "/webp-compressor",
+        "status": "INDEXED",
+        "checkedAt": "2026-11-28T09:12:44.764Z",
+        "lastCrawl": "24 Nov 2026, 16:29:50",
+        "crawlAllowed": "Yes",
+        "pageFetch": "Successful",
+        "indexingAllowed": "Yes",
+        "declaredCanonical": "https://filecompresser.com/webp-compressor",
+        "selectedCanonicalObserved": "Inspected URL",
+        "selectedCanonicalResolved": "https://filecompresser.com/webp-compressor",
+        "sitemapObserved": "visibility_off",
+        "referringPage": "https://filecompresser.com/",
+        "snapshotTextSha256": "c5c3aa47351cbb281790d194112ea610cf70da020c5244aa1daf6b5661de95cc",
+        "evidenceFile": ".qa-results/phase3/search/google/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/webp-compressor",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/gif-compressor",
+        "route": "/gif-compressor",
+        "status": "INDEXED",
+        "checkedAt": "2026-11-28T09:14:54.439Z",
+        "lastCrawl": "22 Nov 2026, 01:45:53",
+        "crawlAllowed": "Yes",
+        "pageFetch": "Successful",
+        "indexingAllowed": "Yes",
+        "declaredCanonical": "https://filecompresser.com/gif-compressor",
+        "selectedCanonicalObserved": "Inspected URL",
+        "selectedCanonicalResolved": "https://filecompresser.com/gif-compressor",
+        "sitemapObserved": "visibility_off",
+        "referringPage": "https://filecompresser.com/sitemap",
+        "snapshotTextSha256": "ef4863192d0402f2b725d914063fe6f729e399a9dbbc5582751af757e2c1e9ef",
+        "evidenceFile": ".qa-results/phase3/search/google/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/gif-compressor",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/video-compressor",
+        "route": "/video-compressor",
+        "status": "INDEXED",
+        "checkedAt": "2026-11-28T09:16:56.656Z",
+        "lastCrawl": "24 Nov 2026, 07:44:47",
+        "crawlAllowed": "Yes",
+        "pageFetch": "Successful",
+        "indexingAllowed": "Yes",
+        "declaredCanonical": "https://filecompresser.com/video-compressor",
+        "selectedCanonicalObserved": "Inspected URL",
+        "selectedCanonicalResolved": "https://filecompresser.com/video-compressor",
+        "sitemapObserved": "visibility_off",
+        "referringPage": "https://filecompresser.com/",
+        "snapshotTextSha256": "44202dddb7a7e11b7515376c876311934ea73de1d410c627cc01488f4385f156",
+        "evidenceFile": ".qa-results/phase3/search/google/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/video-compressor",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/webm-to-mp4",
+        "route": "/webm-to-mp4",
+        "status": "INDEXED",
+        "checkedAt": "2026-11-28T09:21:40.396Z",
+        "lastCrawl": "27 Nov 2026, 17:14:26",
+        "crawlAllowed": "Yes",
+        "pageFetch": "Successful",
+        "indexingAllowed": "Yes",
+        "declaredCanonical": "https://filecompresser.com/webm-to-mp4",
+        "selectedCanonicalObserved": "Inspected URL",
+        "selectedCanonicalResolved": "https://filecompresser.com/webm-to-mp4",
+        "sitemapObserved": "visibility_off",
+        "referringPage": "https://filecompresser.com/blog/what-privacy-claim-really-means",
+        "snapshotTextSha256": "c8b5c9fea14b6aeeb2d170f8a29b1f8e8483b5af99dfd4b76b10a69ed1b247b8",
+        "evidenceFile": ".qa-results/phase3/search/google/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/webm-to-mp4",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/mp3-compressor",
+        "route": "/mp3-compressor",
+        "status": "INDEXED",
+        "checkedAt": "2026-11-28T09:25:12.219Z",
+        "lastCrawl": "22 Nov 2026, 06:52:21",
+        "crawlAllowed": "Yes",
+        "pageFetch": "Successful",
+        "indexingAllowed": "Yes",
+        "declaredCanonical": "https://filecompresser.com/mp3-compressor",
+        "selectedCanonicalObserved": "Inspected URL",
+        "selectedCanonicalResolved": "https://filecompresser.com/mp3-compressor",
+        "sitemapObserved": "visibility_off",
+        "referringPage": "https://filecompresser.com/jpeg-compressor",
+        "snapshotTextSha256": "3238feb5a7ae999c18519701d24344c9415daf620d269f61635ec4ab94f78e37",
+        "evidenceFile": ".qa-results/phase3/search/google/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/mp3-compressor",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/wav-compressor",
+        "route": "/wav-compressor",
+        "status": "INDEXED",
+        "checkedAt": "2026-11-28T09:34:06.313Z",
+        "lastCrawl": "22 Nov 2026, 01:51:32",
+        "crawlAllowed": "Yes",
+        "pageFetch": "Successful",
+        "indexingAllowed": "Yes",
+        "declaredCanonical": "https://filecompresser.com/wav-compressor",
+        "selectedCanonicalObserved": "Inspected URL",
+        "selectedCanonicalResolved": "https://filecompresser.com/wav-compressor",
+        "sitemapObserved": "visibility_off",
+        "referringPage": "https://filecompresser.com/compress",
+        "snapshotTextSha256": "88f39734d0783daf9677f3d6089fe44cb4208111d303f4abb8e298a71dcd1e5e",
+        "evidenceFile": ".qa-results/phase3/search/google/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/wav-compressor",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/pdf-compressor",
+        "route": "/pdf-compressor",
+        "status": "INDEXED",
+        "checkedAt": "2026-11-28T09:34:29.922Z",
+        "lastCrawl": "21 Nov 2026, 22:16:10",
+        "crawlAllowed": "Yes",
+        "pageFetch": "Successful",
+        "indexingAllowed": "Yes",
+        "declaredCanonical": "https://filecompresser.com/pdf-compressor",
+        "selectedCanonicalObserved": "Inspected URL",
+        "selectedCanonicalResolved": "https://filecompresser.com/pdf-compressor",
+        "sitemapObserved": "visibility_off",
+        "referringPage": "https://filecompresser.com/",
+        "snapshotTextSha256": "eca995483ee67bfaf1667ffe978a4cd5336932539f5ab07f3e83da91e445ebc7",
+        "evidenceFile": ".qa-results/phase3/search/google/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/pdf-compressor",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/zip-compressor",
+        "route": "/zip-compressor",
+        "status": "INDEXED",
+        "checkedAt": "2026-11-28T09:34:45.276Z",
+        "lastCrawl": "22 Nov 2026, 00:36:25",
+        "crawlAllowed": "Yes",
+        "pageFetch": "Successful",
+        "indexingAllowed": "Yes",
+        "declaredCanonical": "https://filecompresser.com/zip-compressor",
+        "selectedCanonicalObserved": "Inspected URL",
+        "selectedCanonicalResolved": "https://filecompresser.com/zip-compressor",
+        "sitemapObserved": "visibility_off",
+        "referringPage": "https://filecompresser.com/",
+        "snapshotTextSha256": "0459027958ad1c0b54c40c4511151a0f78b09b66a3cbee8d8dbe810ac4bbfb2c",
+        "evidenceFile": ".qa-results/phase3/search/google/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/zip-compressor",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/archive-compressor",
+        "route": "/archive-compressor",
+        "status": "INDEXED",
+        "checkedAt": "2026-11-28T09:34:59.592Z",
+        "lastCrawl": "22 Nov 2026, 00:57:44",
+        "crawlAllowed": "Yes",
+        "pageFetch": "Successful",
+        "indexingAllowed": "Yes",
+        "declaredCanonical": "https://filecompresser.com/archive-compressor",
+        "selectedCanonicalObserved": "Inspected URL",
+        "selectedCanonicalResolved": "https://filecompresser.com/archive-compressor",
+        "sitemapObserved": "visibility_off",
+        "referringPage": "https://filecompresser.com/",
+        "snapshotTextSha256": "115dca12b26ae365d737090d3386e16d71752f69f67ed32e7a4d051933fc597b",
+        "evidenceFile": ".qa-results/phase3/search/google/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/archive-compressor",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      }
+    ],
+    "bing": [
+      {
+        "url": "https://filecompresser.com/",
+        "route": "/",
+        "status": "DISCOVERED_NOT_CRAWLED",
+        "checkedAt": "2026-11-28T08:47:11.261Z",
+        "discoveredOn": "21 Nov 2026",
+        "lastCrawl": null,
+        "liveUrlTest": "NOT_TESTED_IN_THIS_CAPTURE",
+        "liveUrlHttpStatus": null,
+        "snapshotTextSha256": "4660b9c3734d95d3079ac2fa6c57dadb1bc34252c51aafdb05becb0a36508eba",
+        "evidenceFile": ".qa-results/phase3/search/bing/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/about",
+        "route": "/about",
+        "status": "DISCOVERED_NOT_CRAWLED",
+        "checkedAt": "2026-11-28T08:49:51.884Z",
+        "discoveredOn": "21 Nov 2026",
+        "lastCrawl": null,
+        "liveUrlTest": "NOT_TESTED_IN_THIS_CAPTURE",
+        "liveUrlHttpStatus": null,
+        "snapshotTextSha256": "4660b9c3734d95d3079ac2fa6c57dadb1bc34252c51aafdb05becb0a36508eba",
+        "evidenceFile": ".qa-results/phase3/search/bing/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/about",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/blog",
+        "route": "/blog",
+        "status": "DISCOVERED_NOT_CRAWLED",
+        "checkedAt": "2026-11-28T08:50:49.385Z",
+        "discoveredOn": "21 Nov 2026",
+        "lastCrawl": null,
+        "liveUrlTest": "NOT_TESTED_IN_THIS_CAPTURE",
+        "liveUrlHttpStatus": null,
+        "snapshotTextSha256": "4660b9c3734d95d3079ac2fa6c57dadb1bc34252c51aafdb05becb0a36508eba",
+        "evidenceFile": ".qa-results/phase3/search/bing/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/blog",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/privacy",
+        "route": "/privacy",
+        "status": "DISCOVERED_NOT_CRAWLED",
+        "checkedAt": "2026-11-28T08:51:39.238Z",
+        "discoveredOn": "21 Nov 2026",
+        "lastCrawl": null,
+        "liveUrlTest": "NOT_TESTED_IN_THIS_CAPTURE",
+        "liveUrlHttpStatus": null,
+        "snapshotTextSha256": "4660b9c3734d95d3079ac2fa6c57dadb1bc34252c51aafdb05becb0a36508eba",
+        "evidenceFile": ".qa-results/phase3/search/bing/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/privacy",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/terms",
+        "route": "/terms",
+        "status": "DISCOVERED_NOT_CRAWLED",
+        "checkedAt": "2026-11-28T08:53:28.008Z",
+        "discoveredOn": "21 Nov 2026",
+        "lastCrawl": null,
+        "liveUrlTest": "NOT_TESTED_IN_THIS_CAPTURE",
+        "liveUrlHttpStatus": null,
+        "snapshotTextSha256": "4660b9c3734d95d3079ac2fa6c57dadb1bc34252c51aafdb05becb0a36508eba",
+        "evidenceFile": ".qa-results/phase3/search/bing/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/terms",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/disclaimer",
+        "route": "/disclaimer",
+        "status": "NOT_DISCOVERED",
+        "checkedAt": "2026-11-28T08:55:44.562Z",
+        "discoveredOn": null,
+        "lastCrawl": null,
+        "liveUrlTest": "NOT_TESTED_IN_THIS_CAPTURE",
+        "liveUrlHttpStatus": null,
+        "snapshotTextSha256": "370f6005e5248503184c4e8f4b7a78b8b26b8dc46976a997c19761b79f4a0ccc",
+        "evidenceFile": ".qa-results/phase3/search/bing/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/disclaimer",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/contact",
+        "route": "/contact",
+        "status": "DISCOVERED_NOT_CRAWLED",
+        "checkedAt": "2026-11-28T08:59:13.572Z",
+        "discoveredOn": "21 Nov 2026",
+        "lastCrawl": null,
+        "liveUrlTest": "NOT_TESTED_IN_THIS_CAPTURE",
+        "liveUrlHttpStatus": null,
+        "snapshotTextSha256": "4660b9c3734d95d3079ac2fa6c57dadb1bc34252c51aafdb05becb0a36508eba",
+        "evidenceFile": ".qa-results/phase3/search/bing/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/contact",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/sitemap",
+        "route": "/sitemap",
+        "status": "DISCOVERED_NOT_CRAWLED",
+        "checkedAt": "2026-11-28T09:00:48.816Z",
+        "discoveredOn": "21 Nov 2026",
+        "lastCrawl": null,
+        "liveUrlTest": "NOT_TESTED_IN_THIS_CAPTURE",
+        "liveUrlHttpStatus": null,
+        "snapshotTextSha256": "4660b9c3734d95d3079ac2fa6c57dadb1bc34252c51aafdb05becb0a36508eba",
+        "evidenceFile": ".qa-results/phase3/search/bing/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/sitemap",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/blog/compressing-files-for-the-web",
+        "route": "/blog/compressing-files-for-the-web",
+        "status": "DISCOVERED_NOT_CRAWLED",
+        "checkedAt": "2026-11-28T09:01:20.543Z",
+        "discoveredOn": "21 Nov 2026",
+        "lastCrawl": null,
+        "liveUrlTest": "NOT_TESTED_IN_THIS_CAPTURE",
+        "liveUrlHttpStatus": null,
+        "snapshotTextSha256": "4660b9c3734d95d3079ac2fa6c57dadb1bc34252c51aafdb05becb0a36508eba",
+        "evidenceFile": ".qa-results/phase3/search/bing/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/blog/compressing-files-for-the-web",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/blog/what-privacy-claim-really-means",
+        "route": "/blog/what-privacy-claim-really-means",
+        "status": "DISCOVERED_NOT_CRAWLED",
+        "checkedAt": "2026-11-28T09:03:53.741Z",
+        "discoveredOn": "21 Nov 2026",
+        "lastCrawl": null,
+        "liveUrlTest": "NOT_TESTED_IN_THIS_CAPTURE",
+        "liveUrlHttpStatus": null,
+        "snapshotTextSha256": "4660b9c3734d95d3079ac2fa6c57dadb1bc34252c51aafdb05becb0a36508eba",
+        "evidenceFile": ".qa-results/phase3/search/bing/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/blog/what-privacy-claim-really-means",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/blog/choosing-a-compression-mode",
+        "route": "/blog/choosing-a-compression-mode",
+        "status": "DISCOVERED_NOT_CRAWLED",
+        "checkedAt": "2026-11-28T09:06:50.426Z",
+        "discoveredOn": "21 Nov 2026",
+        "lastCrawl": null,
+        "liveUrlTest": "NOT_TESTED_IN_THIS_CAPTURE",
+        "liveUrlHttpStatus": null,
+        "snapshotTextSha256": "4660b9c3734d95d3079ac2fa6c57dadb1bc34252c51aafdb05becb0a36508eba",
+        "evidenceFile": ".qa-results/phase3/search/bing/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/blog/choosing-a-compression-mode",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/blog/honest-file-size-reporting",
+        "route": "/blog/honest-file-size-reporting",
+        "status": "DISCOVERED_NOT_CRAWLED",
+        "checkedAt": "2026-11-28T09:36:53.769Z",
+        "discoveredOn": "21 Nov 2026",
+        "lastCrawl": null,
+        "liveUrlTest": "NOT_TESTED_IN_THIS_CAPTURE",
+        "liveUrlHttpStatus": null,
+        "snapshotTextSha256": "4660b9c3734d95d3079ac2fa6c57dadb1bc34252c51aafdb05becb0a36508eba",
+        "evidenceFile": ".qa-results/phase3/search/bing/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/blog/honest-file-size-reporting",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/blog/how-browser-compression-works",
+        "route": "/blog/how-browser-compression-works",
+        "status": "DISCOVERED_NOT_CRAWLED",
+        "checkedAt": "2026-11-28T09:14:57.039Z",
+        "discoveredOn": "21 Nov 2026",
+        "lastCrawl": null,
+        "liveUrlTest": "NOT_TESTED_IN_THIS_CAPTURE",
+        "liveUrlHttpStatus": null,
+        "snapshotTextSha256": "4660b9c3734d95d3079ac2fa6c57dadb1bc34252c51aafdb05becb0a36508eba",
+        "evidenceFile": ".qa-results/phase3/search/bing/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/blog/how-browser-compression-works",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/compress",
+        "route": "/compress",
+        "status": "DISCOVERED_NOT_CRAWLED",
+        "checkedAt": "2026-11-28T09:16:59.074Z",
+        "discoveredOn": "21 Nov 2026",
+        "lastCrawl": null,
+        "liveUrlTest": "NOT_TESTED_IN_THIS_CAPTURE",
+        "liveUrlHttpStatus": null,
+        "snapshotTextSha256": "4660b9c3734d95d3079ac2fa6c57dadb1bc34252c51aafdb05becb0a36508eba",
+        "evidenceFile": ".qa-results/phase3/search/bing/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/compress",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/image-compressor",
+        "route": "/image-compressor",
+        "status": "DISCOVERED_NOT_CRAWLED",
+        "checkedAt": "2026-11-28T09:21:42.051Z",
+        "discoveredOn": "21 Nov 2026",
+        "lastCrawl": null,
+        "liveUrlTest": "NOT_TESTED_IN_THIS_CAPTURE",
+        "liveUrlHttpStatus": null,
+        "snapshotTextSha256": "4660b9c3734d95d3079ac2fa6c57dadb1bc34252c51aafdb05becb0a36508eba",
+        "evidenceFile": ".qa-results/phase3/search/bing/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/image-compressor",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/jpg-compressor",
+        "route": "/jpg-compressor",
+        "status": "DISCOVERED_NOT_CRAWLED",
+        "checkedAt": "2026-11-28T09:25:13.335Z",
+        "discoveredOn": "21 Nov 2026",
+        "lastCrawl": null,
+        "liveUrlTest": "NOT_TESTED_IN_THIS_CAPTURE",
+        "liveUrlHttpStatus": null,
+        "snapshotTextSha256": "4660b9c3734d95d3079ac2fa6c57dadb1bc34252c51aafdb05becb0a36508eba",
+        "evidenceFile": ".qa-results/phase3/search/bing/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/jpg-compressor",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/jpeg-compressor",
+        "route": "/jpeg-compressor",
+        "status": "DISCOVERED_NOT_CRAWLED",
+        "checkedAt": "2026-11-28T09:34:10.303Z",
+        "discoveredOn": "21 Nov 2026",
+        "lastCrawl": null,
+        "liveUrlTest": "NOT_TESTED_IN_THIS_CAPTURE",
+        "liveUrlHttpStatus": null,
+        "snapshotTextSha256": "4660b9c3734d95d3079ac2fa6c57dadb1bc34252c51aafdb05becb0a36508eba",
+        "evidenceFile": ".qa-results/phase3/search/bing/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/jpeg-compressor",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/png-compressor",
+        "route": "/png-compressor",
+        "status": "DISCOVERED_NOT_CRAWLED",
+        "checkedAt": "2026-11-28T09:34:32.302Z",
+        "discoveredOn": "21 Nov 2026",
+        "lastCrawl": null,
+        "liveUrlTest": "NOT_TESTED_IN_THIS_CAPTURE",
+        "liveUrlHttpStatus": null,
+        "snapshotTextSha256": "4660b9c3734d95d3079ac2fa6c57dadb1bc34252c51aafdb05becb0a36508eba",
+        "evidenceFile": ".qa-results/phase3/search/bing/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/png-compressor",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/webp-compressor",
+        "route": "/webp-compressor",
+        "status": "DISCOVERED_NOT_CRAWLED",
+        "checkedAt": "2026-11-28T09:34:46.940Z",
+        "discoveredOn": "21 Nov 2026",
+        "lastCrawl": null,
+        "liveUrlTest": "NOT_TESTED_IN_THIS_CAPTURE",
+        "liveUrlHttpStatus": null,
+        "snapshotTextSha256": "4660b9c3734d95d3079ac2fa6c57dadb1bc34252c51aafdb05becb0a36508eba",
+        "evidenceFile": ".qa-results/phase3/search/bing/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/webp-compressor",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/gif-compressor",
+        "route": "/gif-compressor",
+        "status": "DISCOVERED_NOT_CRAWLED",
+        "checkedAt": "2026-11-28T09:35:00.878Z",
+        "discoveredOn": "21 Nov 2026",
+        "lastCrawl": null,
+        "liveUrlTest": "NOT_TESTED_IN_THIS_CAPTURE",
+        "liveUrlHttpStatus": null,
+        "snapshotTextSha256": "4660b9c3734d95d3079ac2fa6c57dadb1bc34252c51aafdb05becb0a36508eba",
+        "evidenceFile": ".qa-results/phase3/search/bing/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/gif-compressor",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/video-compressor",
+        "route": "/video-compressor",
+        "status": "DISCOVERED_NOT_CRAWLED",
+        "checkedAt": "2026-11-28T09:35:20.718Z",
+        "discoveredOn": "21 Nov 2026",
+        "lastCrawl": null,
+        "liveUrlTest": "NOT_TESTED_IN_THIS_CAPTURE",
+        "liveUrlHttpStatus": null,
+        "snapshotTextSha256": "4660b9c3734d95d3079ac2fa6c57dadb1bc34252c51aafdb05becb0a36508eba",
+        "evidenceFile": ".qa-results/phase3/search/bing/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/video-compressor",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/webm-to-mp4",
+        "route": "/webm-to-mp4",
+        "status": "DISCOVERED_NOT_CRAWLED",
+        "checkedAt": "2026-11-28T08:45:51.428Z",
+        "discoveredOn": "26 Nov 2026",
+        "lastCrawl": null,
+        "liveUrlTest": "NOT_TESTED_IN_THIS_CAPTURE",
+        "liveUrlHttpStatus": null,
+        "snapshotTextSha256": "b5f6766a3a87896b6456404ff254249e7361b0bf68dc7295bc793a18f558e046",
+        "evidenceFile": ".qa-results/phase3/search/bing/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/webm-to-mp4",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/mp3-compressor",
+        "route": "/mp3-compressor",
+        "status": "DISCOVERED_NOT_CRAWLED",
+        "checkedAt": "2026-11-28T09:35:35.152Z",
+        "discoveredOn": "21 Nov 2026",
+        "lastCrawl": null,
+        "liveUrlTest": "NOT_TESTED_IN_THIS_CAPTURE",
+        "liveUrlHttpStatus": null,
+        "snapshotTextSha256": "4660b9c3734d95d3079ac2fa6c57dadb1bc34252c51aafdb05becb0a36508eba",
+        "evidenceFile": ".qa-results/phase3/search/bing/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/mp3-compressor",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/wav-compressor",
+        "route": "/wav-compressor",
+        "status": "DISCOVERED_NOT_CRAWLED",
+        "checkedAt": "2026-11-28T09:35:44.682Z",
+        "discoveredOn": "21 Nov 2026",
+        "lastCrawl": null,
+        "liveUrlTest": "NOT_TESTED_IN_THIS_CAPTURE",
+        "liveUrlHttpStatus": null,
+        "snapshotTextSha256": "4660b9c3734d95d3079ac2fa6c57dadb1bc34252c51aafdb05becb0a36508eba",
+        "evidenceFile": ".qa-results/phase3/search/bing/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/wav-compressor",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/pdf-compressor",
+        "route": "/pdf-compressor",
+        "status": "DISCOVERED_NOT_CRAWLED",
+        "checkedAt": "2026-11-28T09:36:18.746Z",
+        "discoveredOn": "21 Nov 2026",
+        "lastCrawl": null,
+        "liveUrlTest": "NOT_TESTED_IN_THIS_CAPTURE",
+        "liveUrlHttpStatus": null,
+        "snapshotTextSha256": "4660b9c3734d95d3079ac2fa6c57dadb1bc34252c51aafdb05becb0a36508eba",
+        "evidenceFile": ".qa-results/phase3/search/bing/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/pdf-compressor",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/zip-compressor",
+        "route": "/zip-compressor",
+        "status": "DISCOVERED_NOT_CRAWLED",
+        "checkedAt": "2026-11-28T09:36:34.457Z",
+        "discoveredOn": "21 Nov 2026",
+        "lastCrawl": null,
+        "liveUrlTest": "NOT_TESTED_IN_THIS_CAPTURE",
+        "liveUrlHttpStatus": null,
+        "snapshotTextSha256": "4660b9c3734d95d3079ac2fa6c57dadb1bc34252c51aafdb05becb0a36508eba",
+        "evidenceFile": ".qa-results/phase3/search/bing/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/zip-compressor",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      },
+      {
+        "url": "https://filecompresser.com/archive-compressor",
+        "route": "/archive-compressor",
+        "status": "DISCOVERED_NOT_CRAWLED",
+        "checkedAt": "2026-11-28T09:36:43.008Z",
+        "discoveredOn": "21 Nov 2026",
+        "lastCrawl": null,
+        "liveUrlTest": "NOT_TESTED_IN_THIS_CAPTURE",
+        "liveUrlHttpStatus": null,
+        "snapshotTextSha256": "4660b9c3734d95d3079ac2fa6c57dadb1bc34252c51aafdb05becb0a36508eba",
+        "evidenceFile": ".qa-results/phase3/search/bing/individual-checks.json",
+        "technical": {
+          "httpStatus": 200,
+          "canonical": "https://filecompresser.com/archive-compressor",
+          "indexable": true,
+          "follow": true,
+          "inSitemap": true
+        }
+      }
+    ]
+  },
+  "indexNow": {
+    "evaluated": true,
+    "implemented": false,
+    "keyCreated": false,
+    "publicAssetAdded": false,
+    "submissionsByThisAgent": 0,
+    "references": [
+      "https://www.indexnow.org/documentation",
+      "https://www.indexnow.org/faq"
+    ]
+  },
+  "limitations": [
+    "Technical HTML observation predates the new Phase 3 release; final release identity/parity is recorded separately.",
+    "URL Inspection is engine-reported index/crawl state, not proof that the current substantive text has been recrawled.",
+    "Google aggregate update23Nov can lag later individual crawl/index results.",
+    "Search visibility and traffic cannot be inferred from sitemap acceptance, an index request or HTTP200.",
+    "Uninspected rows remain UNINSPECTED. No submissions made by this agent."
+  ],
+  "bingLiveUrlTests": [
+    {
+      "url": "https://filecompresser.com/blog/honest-file-size-reporting",
+      "checkedAt": "2026-11-28T09:11:47.375Z",
+      "status": "ELIGIBLE_NO_REPORTED_SEO_ISSUES",
+      "httpStatus": 200,
+      "markupTypesReported": 2,
+      "testedOnObserved": "Tested on Today at 14:10",
+      "evidenceFile": ".qa-results/phase3/search/bing/honest-file-size-live-test-before-phase3.json",
+      "snapshotTextSha256": "ae57ed9e0476736342bba866581a2625bbdde4db8c99bf589c41d9fae2aa2686",
+      "scope": "Pre-Phase 3 publication native Live URL test. Separate from Bing Index status; no crawl/index guarantee."
+    }
+  ],
+  "healthEvidence": {
+    "file": "docs/evidence/2026-11-28/search-console-health.json",
+    "sha256": "9a7bfb27fa713da0ddbf65a46aadf9ee2c9a08581b1c9b7405bed2ec7ec8c35b",
+    "scope": "Sanitized native observations; see report-specific dates and actual selected dimensions."
+  },
+  "performanceEvidence": {
+    "file": "docs/evidence/2026-11-28/google-search-performance.json",
+    "sha256": "258d1350432ab98f618689bebf9bd55e8c47a0dce937ff335239901bb61ca223",
+    "scope": "Sanitized native observations; see report-specific dates and actual selected dimensions."
+  }
+}

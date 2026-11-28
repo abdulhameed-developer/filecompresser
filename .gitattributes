@@ -1,0 +1,3 @@
+# Unified diff context lines require a leading space, including empty lines.
+docs/evidence/2026-11-28/firefox-nightly-native-input.patch whitespace=-blank-at-eol
+docs/evidence/2026-11-28/number-field-o/approved-css-source.patch whitespace=-blank-at-eol

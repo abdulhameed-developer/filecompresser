@@ -1,0 +1,315 @@
+{
+  "createdAt": "2026-11-28T14:53:48.822775+00:00",
+  "candidate": "O",
+  "status": "LOCAL_SCOPED_VISUAL_AND_INTERACTION_GATES_PASS",
+  "localPreview": "http://127.0.0.1:3370",
+  "buildId": "q-W8wx9X8xjVGEkhWRSyU",
+  "homepageSha256": "4bba3c3c5b3dab637959431221a5491f02e6f199ad302bdb9a71852c81144ff6",
+  "sourceChange": {
+    "file": "app/product-system.css",
+    "beforeN": "f7bc66095eda55164b9942449db01f80f8ec2b76c673c2eb06c2bf15c92a6fa3",
+    "afterO": "c52b299efa8814e2dbc03e29fb0508abd816aca45896ce3cc825ce9d60a7a875",
+    "scope": "Wrapper owns one border; input uses normal13px inline padding without duplicate suffix reservation. Only target custom row stacks at<=480px. Fonts/touch heights/JS/DOM/settings/engines/bytecaps/content unchanged."
+  },
+  "commandGates": {
+    "passed": 13,
+    "testFiles": 68,
+    "tests": 1296,
+    "stableInputs": 306
+  },
+  "freshDefaults": {
+    "routes": [
+      "/",
+      "/compress",
+      "/image-compressor",
+      "/jpg-compressor",
+      "/jpeg-compressor",
+      "/png-compressor",
+      "/webp-compressor",
+      "/gif-compressor",
+      "/video-compressor",
+      "/webm-to-mp4",
+      "/mp3-compressor",
+      "/wav-compressor",
+      "/wav-to-mp3",
+      "/pdf-compressor",
+      "/zip-compressor",
+      "/archive-compressor",
+      "/about",
+      "/blog",
+      "/blog/how-browser-compression-works",
+      "/blog/honest-file-size-reporting",
+      "/blog/choosing-a-compression-mode",
+      "/blog/what-privacy-claim-really-means",
+      "/blog/compressing-files-for-the-web",
+      "/contact",
+      "/privacy",
+      "/terms",
+      "/disclaimer",
+      "/sitemap",
+      "/404-missing"
+    ],
+    "measurements": 29,
+    "width": 390,
+    "fullPageScreenshots": 29,
+    "axeViews": 29,
+    "axeViolations": 0,
+    "retainedSvgContrastIncompletes": 4,
+    "sharedGroups": 5,
+    "normalNodeExit": 0,
+    "normalAllThreeChildExits": 0,
+    "homeUnchanged": true
+  },
+  "binding": {
+    "all30PublicNonTransportHtmlTokensIdenticalToN": true,
+    "compiledStylesheetScope": "Entire CSS AST equals N after only approved numeric-field patch; other stylesheet bytes identical. CSS bytes intentionally differ.",
+    "all29ActualMobileDefaultPixelsIdenticalToN": true,
+    "priorBroadMatrix": "M348/87 plus all29mobile69panels and29desktop132strips actual human reviews retained as M, not claimed freshly rerun O348. N/M strict HTML/CSS and O/N exact scoped CSS/default pixels bind unaffected views.",
+    "priorFunctionality": "Fresh N79 fullChrome passes and M316 four-context workflows/224 independently inspected downloads remain prior-artifact evidence. O305 other inputs and every processing asset are unchanged; O native checks include three genuine decoded PNG downloads. No fresh O79/full4context claim.",
+    "independentProcessingBinding": "candidate-n-to-o-processing-binding.json"
+  },
+  "nativeReadability": {
+    "harnessSha256": "f820c95a85536fd952c82659f9a47073b9b4a20e33866bbd94ab8a45fd624e5b",
+    "engines": {
+      "chromium-n-red": {
+        "file": "number-field-o/chromium-n-red-native-report.json",
+        "sha256": "47cae4cfb67ec9440ec1d47ed49a4873b75dd2e7abe1fcc59bb68304df0f7c59",
+        "browserVersion": "156.0.8078.47",
+        "playwrightVersion": "1.65.1",
+        "states": 28,
+        "orientationStates": 2,
+        "invalidRecoveryStates": 2,
+        "failedRows": 13,
+        "status": "FAIL",
+        "normalBrowserClose": true,
+        "homeBefore": "99eb848f8c7677392ba8314c5937521b17c63fdf48dc70e94e46e02a6b82b959",
+        "homeAfter": "99eb848f8c7677392ba8314c5937521b17c63fdf48dc70e94e46e02a6b82b959",
+        "downloads": [
+          {
+            "file": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/o-number-readability-v2/chromium-n-red/actual-default-lossless.png",
+            "bytes": 83020,
+            "sha256": "67181c1d03a5e42876abcf23d312ac169442bfb0c4af29261142a0d601143e7e",
+            "decoded": {
+              "format": "PNG",
+              "dimensions": [
+                1440,
+                900
+              ],
+              "pixelsEqual": true
+            }
+          }
+        ]
+      },
+      "chromium-o-green": {
+        "file": "number-field-o/chromium-o-green-native-report.json",
+        "sha256": "ac92fd86f16f70c08e5e5031d45aa92c5bcd5486ed5f27253e9125683e8c1673",
+        "browserVersion": "156.0.8078.47",
+        "playwrightVersion": "1.65.1",
+        "states": 28,
+        "orientationStates": 2,
+        "invalidRecoveryStates": 2,
+        "failedRows": 0,
+        "status": "PASS_NATIVE_NUMBER_READABILITY",
+        "normalBrowserClose": true,
+        "homeBefore": "4bba3c3c5b3dab637959431221a5491f02e6f199ad302bdb9a71852c81144ff6",
+        "homeAfter": "4bba3c3c5b3dab637959431221a5491f02e6f199ad302bdb9a71852c81144ff6",
+        "downloads": [
+          {
+            "file": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/actual-default-lossless.png",
+            "bytes": 83020,
+            "sha256": "67181c1d03a5e42876abcf23d312ac169442bfb0c4af29261142a0d601143e7e",
+            "decoded": {
+              "format": "PNG",
+              "dimensions": [
+                1440,
+                900
+              ],
+              "pixelsEqual": true
+            }
+          }
+        ]
+      },
+      "webkit-n-red": {
+        "file": "number-field-o/webkit-n-red-native-report.json",
+        "sha256": "63f278f2614081fabaa1e6cf90297cbeef6aa2ee7a1f15915f287707245130bb",
+        "browserVersion": "27.2",
+        "playwrightVersion": "1.65.1",
+        "states": 28,
+        "orientationStates": 2,
+        "invalidRecoveryStates": 2,
+        "failedRows": 13,
+        "status": "FAIL",
+        "normalBrowserClose": true,
+        "homeBefore": "99eb848f8c7677392ba8314c5937521b17c63fdf48dc70e94e46e02a6b82b959",
+        "homeAfter": "99eb848f8c7677392ba8314c5937521b17c63fdf48dc70e94e46e02a6b82b959",
+        "downloads": [
+          {
+            "file": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/o-number-readability-v2/webkit-n-red/actual-default-lossless.png",
+            "bytes": 83020,
+            "sha256": "67181c1d03a5e42876abcf23d312ac169442bfb0c4af29261142a0d601143e7e",
+            "decoded": {
+              "format": "PNG",
+              "dimensions": [
+                1440,
+                900
+              ],
+              "pixelsEqual": true
+            }
+          }
+        ]
+      },
+      "webkit-o-green": {
+        "file": "number-field-o/webkit-o-green-native-report.json",
+        "sha256": "a9f152b1c080e8365ffe078a28628a5b11b064df086afc4f7496923894c95e28",
+        "browserVersion": "27.2",
+        "playwrightVersion": "1.65.1",
+        "states": 28,
+        "orientationStates": 2,
+        "invalidRecoveryStates": 2,
+        "failedRows": 0,
+        "status": "PASS_NATIVE_NUMBER_READABILITY",
+        "normalBrowserClose": true,
+        "homeBefore": "4bba3c3c5b3dab637959431221a5491f02e6f199ad302bdb9a71852c81144ff6",
+        "homeAfter": "4bba3c3c5b3dab637959431221a5491f02e6f199ad302bdb9a71852c81144ff6",
+        "downloads": [
+          {
+            "file": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/actual-default-lossless.png",
+            "bytes": 83020,
+            "sha256": "67181c1d03a5e42876abcf23d312ac169442bfb0c4af29261142a0d601143e7e",
+            "decoded": {
+              "format": "PNG",
+              "dimensions": [
+                1440,
+                900
+              ],
+              "pixelsEqual": true
+            }
+          }
+        ]
+      },
+      "firefox-n-red": {
+        "file": "number-field-o/firefox-n-red-native-report.json",
+        "sha256": "b4019aba8dfe3e1e3fd97d05622ae1f9f6dfe9cbd64df3b98e65435e77e1ae52",
+        "browserVersion": "163.0a1",
+        "playwrightVersion": "1.66.0-alpha-2026-11-28",
+        "states": 28,
+        "orientationStates": 2,
+        "invalidRecoveryStates": 2,
+        "failedRows": 29,
+        "status": "FAIL",
+        "normalBrowserClose": true,
+        "homeBefore": "99eb848f8c7677392ba8314c5937521b17c63fdf48dc70e94e46e02a6b82b959",
+        "homeAfter": "99eb848f8c7677392ba8314c5937521b17c63fdf48dc70e94e46e02a6b82b959",
+        "downloads": [
+          {
+            "file": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/n-red/actual-default-lossless.png",
+            "bytes": 83020,
+            "sha256": "67181c1d03a5e42876abcf23d312ac169442bfb0c4af29261142a0d601143e7e",
+            "decoded": {
+              "format": "PNG",
+              "dimensions": [
+                1440,
+                900
+              ],
+              "pixelsEqual": true
+            }
+          }
+        ]
+      },
+      "firefox-o-green": {
+        "file": "number-field-o/firefox-o-green-native-report.json",
+        "sha256": "cc45853439447fc7ff9b2a9ab53eab19c90bc8869d461c3e5d93177b511ab43d",
+        "browserVersion": "163.0a1",
+        "playwrightVersion": "1.66.0-alpha-2026-11-28",
+        "states": 28,
+        "orientationStates": 2,
+        "invalidRecoveryStates": 2,
+        "failedRows": 0,
+        "status": "PASS_NATIVE_NUMBER_READABILITY",
+        "normalBrowserClose": true,
+        "homeBefore": "4bba3c3c5b3dab637959431221a5491f02e6f199ad302bdb9a71852c81144ff6",
+        "homeAfter": "4bba3c3c5b3dab637959431221a5491f02e6f199ad302bdb9a71852c81144ff6",
+        "downloads": [
+          {
+            "file": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/actual-default-lossless.png",
+            "bytes": 83020,
+            "sha256": "67181c1d03a5e42876abcf23d312ac169442bfb0c4af29261142a0d601143e7e",
+            "decoded": {
+              "format": "PNG",
+              "dimensions": [
+                1440,
+                900
+              ],
+              "pixelsEqual": true
+            }
+          }
+        ]
+      }
+    },
+    "totalOStates": 96,
+    "validDraftStates": 84,
+    "sameActiveOrientationStates": 6,
+    "invalidAndReopenStates": 6,
+    "widths": [
+      320,
+      375,
+      390,
+      430,
+      480,
+      481,
+      768
+    ],
+    "shortViewports": [
+      "320x568",
+      "844x390"
+    ],
+    "values": [
+      "100.05",
+      "199999.999"
+    ],
+    "invalidDraft": "100.0005",
+    "conditions": "Actual native keys, measured text/caret capacity, whole focus ring, exact100,050/199,999,999-byte summaries, complete precision error/red ring, disabled processing and preserved invalid draft on reopen, settled-viewport backdrop wheel lock, exact Escape/focus/entry-scroll return, three actual83020-byte pixel-equalPNG downloads.",
+    "originalResizeRegression": "Unchangedfec71f\u2026 harness passes all24states each inChrome/WebKit on O (48total), measuring before any retyping/click can reveal the active field.",
+    "firefoxQualification": "Original N strict across-responsive pageY equality audit remains FAIL. Native scroll-anchoring drift was independently reproduced without React. O new native test asserts lock only after viewport settles, records responsive offsets and preserves exact Escape return. This is a separately defined readability/wheel test, not a relabeled strict24 Firefox pass.",
+    "publicExactHarness": "target-number-readability-audit-v2.mjs"
+  },
+  "actualSixRouteNumericControls": {
+    "routes": [
+      "/compress",
+      "/image-compressor",
+      "/jpg-compressor",
+      "/jpeg-compressor",
+      "/png-compressor",
+      "/webp-compressor"
+    ],
+    "widths": [
+      320,
+      481
+    ],
+    "statesPassed": 12,
+    "allTwelveFullScreensActuallyViewed": true,
+    "genericNumberField": "Supported shared component, but no current public tool definition exposes type:number; no fictitious state introduced."
+  },
+  "humanReview": {
+    "all62ChromiumWebKitActiveFieldErrorRegionsActuallyViewed": true,
+    "scope": "All ordinary/long values in source/applied contexts at seven widths, two orientations and invalid error for each engine. Twelve separate six-route fullscreens and actual320x568 invalid/before-after original screenshots also viewed. Firefox own independent review separately recorded.",
+    "noNewBlockingIssueObserved": true,
+    "firefoxIndependentReview": {
+      "file": "candidate-o-firefox-number-readability.json",
+      "scope": "All28 actual control regions via4 sheets plus four fullstates320max,320invalid,481max and844x390applied were independently viewed. Complete values/error/ring above footer; minimum measured text surplus26.73px.",
+      "sha256": "4900ea84570f97fe48f6260fd3d0f4cf945dffc4a17a4f995bdfb8221d1ffd56"
+    }
+  },
+  "retainedFailures": [
+    "Original M resize11failures.",
+    "Original N strictFirefox responsivepageY failure and native anchoring qualification.",
+    "Unchanged finalv2 N text-capacity red:13Chrome,13WebKit,29Firefox rows, normal exit1 each.",
+    "Preliminary v1 is retained as narrower900px-invalid coverage, not substituted for v2."
+  ],
+  "notClaimed": [
+    "Production release/live parity or hosted Tina Save/all29 reconciliation.",
+    "Final Lighthouse/PSI/search/indexing/backlink outcomes.",
+    "Physical devices/virtual keyboards, realSafari, every screen reader, exhaustive security or overall WCAG/perfection certification."
+  ],
+  "evidenceDirectory": "number-field-o/"
+}

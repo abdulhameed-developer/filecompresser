@@ -1,0 +1,219 @@
+{
+  "startedAt": "2026-11-28T13:22:34.462Z",
+  "base": "http://127.0.0.1:3342",
+  "scope": "Private genuine NextAppRouter export with exact current source renderer copies. Generated Markdown,safeHTML and structuredblog-link examples. Tests real clicks/client-side navigation/browserBack/hover and source integrity. This doesnot claim an authored public HTMLanchor exists.",
+  "results": [
+    {
+      "name": "chromium",
+      "kind": "markdown",
+      "label": "Markdown destination",
+      "destination": "http://127.0.0.1:3342/destination?kind=markdown",
+      "sourceTimeOrigin": 1795872155081.2,
+      "destinationTimeOrigin": 1795872155081.2,
+      "clientSideSameDocument": true,
+      "browserBackPassed": true,
+      "noDestinationPrefetchOnHover": true,
+      "status": "PASS_REAL_COMPONENT_FIXTURE_NAVIGATION"
+    },
+    {
+      "name": "chromium",
+      "kind": "html",
+      "label": "HTML destination",
+      "destination": "http://127.0.0.1:3342/destination?kind=html",
+      "sourceTimeOrigin": 1795872155081.2,
+      "destinationTimeOrigin": 1795872155081.2,
+      "clientSideSameDocument": true,
+      "browserBackPassed": true,
+      "noDestinationPrefetchOnHover": true,
+      "status": "PASS_REAL_COMPONENT_FIXTURE_NAVIGATION"
+    },
+    {
+      "name": "chromium",
+      "kind": "blog",
+      "label": "Blog block destination",
+      "destination": "http://127.0.0.1:3342/destination?kind=blog",
+      "sourceTimeOrigin": 1795872155081.2,
+      "destinationTimeOrigin": 1795872155081.2,
+      "clientSideSameDocument": true,
+      "browserBackPassed": true,
+      "noDestinationPrefetchOnHover": true,
+      "status": "PASS_REAL_COMPONENT_FIXTURE_NAVIGATION"
+    },
+    {
+      "name": "webkit",
+      "kind": "markdown",
+      "label": "Markdown destination",
+      "destination": "http://127.0.0.1:3342/destination?kind=markdown",
+      "sourceTimeOrigin": 1795872159511,
+      "destinationTimeOrigin": 1795872159511,
+      "clientSideSameDocument": true,
+      "browserBackPassed": true,
+      "noDestinationPrefetchOnHover": true,
+      "status": "PASS_REAL_COMPONENT_FIXTURE_NAVIGATION"
+    },
+    {
+      "name": "webkit",
+      "kind": "html",
+      "label": "HTML destination",
+      "destination": "http://127.0.0.1:3342/destination?kind=html",
+      "sourceTimeOrigin": 1795872159511,
+      "destinationTimeOrigin": 1795872159511,
+      "clientSideSameDocument": true,
+      "browserBackPassed": true,
+      "noDestinationPrefetchOnHover": true,
+      "status": "PASS_REAL_COMPONENT_FIXTURE_NAVIGATION"
+    },
+    {
+      "name": "webkit",
+      "kind": "blog",
+      "label": "Blog block destination",
+      "destination": "http://127.0.0.1:3342/destination?kind=blog",
+      "sourceTimeOrigin": 1795872159511,
+      "destinationTimeOrigin": 1795872159511,
+      "clientSideSameDocument": true,
+      "browserBackPassed": true,
+      "noDestinationPrefetchOnHover": true,
+      "status": "PASS_REAL_COMPONENT_FIXTURE_NAVIGATION"
+    }
+  ],
+  "browsers": [
+    {
+      "name": "chromium",
+      "version": "156.0.8078.47",
+      "playwrightVersion": "1.65.1",
+      "screenshot": ".qa-results/phase3/ui/editorial-link-native-fixture/browser-results/chromium-three-real-renderers.png",
+      "screenshotSha256": "8ce309a44abff7814e014e50e3b598eaf071b7c0fbc7f56e76d7ce48a4870c12",
+      "closedNormally": true,
+      "publicScreenshot": "docs/evidence/2026-11-28/link-renderer-fixture/chromium-three-real-renderers.png"
+    },
+    {
+      "name": "webkit",
+      "version": "27.2",
+      "playwrightVersion": "1.65.1",
+      "screenshot": ".qa-results/phase3/ui/editorial-link-native-fixture/browser-results/webkit-three-real-renderers.png",
+      "screenshotSha256": "a1a4cbe4ac9cd4ad1021bc33380724eb987e8505114ecf751c1d67417dd25b79",
+      "closedNormally": true,
+      "publicScreenshot": "docs/evidence/2026-11-28/link-renderer-fixture/webkit-three-real-renderers.png"
+    }
+  ],
+  "errors": [],
+  "failedRequests": [],
+  "status": "PASS_SIX_NATIVE_EXACT_SOURCE_LINK_RENDERER_CASES",
+  "componentPinsBefore": {
+    "components/EditorialText.tsx": {
+      "current": "22301dd3f2b8d06d28c5318fe9413d9483cedd88749974b46a4f20144aee20d2",
+      "copy": "22301dd3f2b8d06d28c5318fe9413d9483cedd88749974b46a4f20144aee20d2"
+    },
+    "components/BlogContent.tsx": {
+      "current": "856412fc372107d5e3f227f02382cb88a365c4c03a45dcec288cb355c249cbfe",
+      "copy": "856412fc372107d5e3f227f02382cb88a365c4c03a45dcec288cb355c249cbfe"
+    },
+    "components/BlogFigure.tsx": {
+      "current": "5974b4d257ec1c7c41caa3ad1a68d0637933aed8ee8b4b853633628f2c903921",
+      "copy": "5974b4d257ec1c7c41caa3ad1a68d0637933aed8ee8b4b853633628f2c903921"
+    },
+    "components/Icon.tsx": {
+      "current": "be995c2c5181b4fc4c64050162f12fd8dbe48760f77cd02f6db6d923db68b539",
+      "copy": "be995c2c5181b4fc4c64050162f12fd8dbe48760f77cd02f6db6d923db68b539"
+    }
+  },
+  "homeBefore": "6bd655409f64e79f7c631d342e1121f5a93a8c8dc4bb1731a14b265b88c7767e",
+  "componentPinsAfter": {
+    "components/EditorialText.tsx": {
+      "current": "22301dd3f2b8d06d28c5318fe9413d9483cedd88749974b46a4f20144aee20d2",
+      "copy": "22301dd3f2b8d06d28c5318fe9413d9483cedd88749974b46a4f20144aee20d2"
+    },
+    "components/BlogContent.tsx": {
+      "current": "856412fc372107d5e3f227f02382cb88a365c4c03a45dcec288cb355c249cbfe",
+      "copy": "856412fc372107d5e3f227f02382cb88a365c4c03a45dcec288cb355c249cbfe"
+    },
+    "components/BlogFigure.tsx": {
+      "current": "5974b4d257ec1c7c41caa3ad1a68d0637933aed8ee8b4b853633628f2c903921",
+      "copy": "5974b4d257ec1c7c41caa3ad1a68d0637933aed8ee8b4b853633628f2c903921"
+    },
+    "components/Icon.tsx": {
+      "current": "be995c2c5181b4fc4c64050162f12fd8dbe48760f77cd02f6db6d923db68b539",
+      "copy": "be995c2c5181b4fc4c64050162f12fd8dbe48760f77cd02f6db6d923db68b539"
+    }
+  },
+  "homeAfter": "6bd655409f64e79f7c631d342e1121f5a93a8c8dc4bb1731a14b265b88c7767e",
+  "finishedAt": "2026-11-28T13:22:43.481Z",
+  "build": {
+    "accepted": {
+      "startedAt": "2026-11-28T13:21:15.182373+00:00",
+      "status": "PASS_PRIVATE_FIXTURE_BUILD",
+      "scope": "Private exact-source link-renderer fixture. Not a public site build or deployment.",
+      "arguments": [
+        "node",
+        "node_modules/next/dist/bin/next",
+        "build",
+        "--webpack"
+      ],
+      "pid": 108324,
+      "returnCode": 0,
+      "homepageSha256": "6bd655409f64e79f7c631d342e1121f5a93a8c8dc4bb1731a14b265b88c7767e",
+      "finishedAt": "2026-11-28T13:21:28.831222+00:00"
+    },
+    "originalFailedSetup": {
+      "startedAt": "2026-11-28T13:19:46.800425+00:00",
+      "status": "FAIL",
+      "scope": "Private exact-source link-renderer fixture. Not a public site build or deployment.",
+      "arguments": [
+        "node",
+        "node_modules/next/dist/bin/next",
+        "build",
+        "--webpack"
+      ],
+      "pid": 106653,
+      "returnCode": 1,
+      "failure": "AssertionError()",
+      "finishedAt": "2026-11-28T13:20:06.655415+00:00"
+    },
+    "correction": "Private copiedlib/type dependency needed exact Icon.tsx. Added that actual source file, kept strict TypeScript checks and the original failed build. No production implementation change."
+  },
+  "sourceManifest": {
+    "createdAt": "2026-11-28T13:17:44.654665+00:00",
+    "status": "PREPARED_SECOND_BUILD",
+    "scope": "Isolated genuine NextAppRouter static-export fixture using exact current source renderer copies. Generates three harmless link examples without adding test content to production records. Not production rendering or a substitute for actual public Markdown/blog-link checks.",
+    "componentFiles": [
+      {
+        "file": "components/EditorialText.tsx",
+        "sourceSha256": "22301dd3f2b8d06d28c5318fe9413d9483cedd88749974b46a4f20144aee20d2",
+        "copiedByteIdentically": true
+      },
+      {
+        "file": "components/BlogContent.tsx",
+        "sourceSha256": "856412fc372107d5e3f227f02382cb88a365c4c03a45dcec288cb355c249cbfe",
+        "copiedByteIdentically": true
+      },
+      {
+        "file": "components/BlogFigure.tsx",
+        "sourceSha256": "5974b4d257ec1c7c41caa3ad1a68d0637933aed8ee8b4b853633628f2c903921",
+        "copiedByteIdentically": true
+      },
+      {
+        "file": "components/Icon.tsx",
+        "sourceSha256": "be995c2c5181b4fc4c64050162f12fd8dbe48760f77cd02f6db6d923db68b539",
+        "copiedByteIdentically": true,
+        "purpose": "Transitive type dependency required by exact copied lib/managed-pages and tool-presentation; no substitute type or ignoreBuildErrors flag."
+      }
+    ],
+    "additionalSourceTreesCopiedExactly": [
+      "lib",
+      "workers",
+      "content",
+      "scripts/cms-security"
+    ],
+    "packageInstallPerformed": false,
+    "nodeModulesSymlink": "node_modules",
+    "installedDocsRead": [
+      "node_modules/next/dist/docs/01-app/03-api-reference/02-components/link.md:294-304",
+      "node_modules/next/dist/docs/01-app/02-guides/static-exports.md:15-41"
+    ],
+    "firstFailedBuild": "build-completion.json"
+  },
+  "visualReview": {
+    "personallyViewedBothNativeBrowserCaptures": true,
+    "scope": "Confirms allthree generated content-link forms are visible and readable in this private fixture. The fixture has minimal test styling; this is not the FileCompresser product design or a public page."
+  }
+}

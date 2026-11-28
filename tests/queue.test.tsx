@@ -318,7 +318,7 @@ it('keeps KB display stable after entering a target and clearing it', async () =
   })
   expect(input.value).toBe('-1')
   expect(input.getAttribute('aria-invalid')).toBe('true')
-  expect(container.textContent).toContain('Enter 0.001 to 200,000 KB.')
+  expect(container.textContent).toContain('Use 0.001 KB steps (whole bytes), up to 200,000 KB.')
 })
 
 it('offers a PNG target strategy without a fake JPEG quality slider', async () => {

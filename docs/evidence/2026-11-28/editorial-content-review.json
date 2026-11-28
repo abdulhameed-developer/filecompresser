@@ -1,0 +1,448 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-11-28",
+  "timezone": "Asia/Karachi",
+  "baselineCommit": "b32caea43c83b35dfb17cbafeaa8a2f1fed587dd",
+  "scope": "Local candidate editorial implementation including actual-rendered follow-up corrections. Final public-candidate build/browser/hosted/live gates remain separate; not claimed by this record.",
+  "sourceGate": {
+    "records": 27,
+    "violations": 0
+  },
+  "records": [
+    {
+      "file": "content/home/home.json",
+      "route": "/",
+      "status": "IMPLEMENTED_LOCAL_CANDIDATE",
+      "baselineSha256": "5aad6233c7fe65395a282214f556a776900e9b12d3dc13b2a2bf57bfdcbb0f79",
+      "candidateSha256": "a16ae77b0775057e25385ca5658fb44061304e692b2a912169618c9f570f67ab",
+      "changedFields": [
+        "heading",
+        "introduction"
+      ]
+    },
+    {
+      "file": "content/tools/archive-compressor.json",
+      "route": "/archive-compressor",
+      "status": "IMPLEMENTED_LOCAL_CANDIDATE",
+      "baselineSha256": "95ff0441c3218a83bba0007773aa2bc079e530f8b232361c4850f50f65f906e5",
+      "candidateSha256": "e6bab0f3190c683c87ef3f0d5ac1f37abe1ba0240d3ad78b8c277a576c346534",
+      "changedFields": [
+        "introduction",
+        "sections",
+        "faq",
+        "seoDescription",
+        "faqMode"
+      ],
+      "faqMode": "custom",
+      "faqCount": 6
+    },
+    {
+      "file": "content/tools/compress.json",
+      "route": "/compress",
+      "status": "IMPLEMENTED_LOCAL_CANDIDATE",
+      "baselineSha256": "2ecfbfd606b932f7963e9e942fc71f6183d21ab53f794c413509da644832aff7",
+      "candidateSha256": "576b1423bf58d67625a4f1b68321f8811877b182966840782599aea4e1c15050",
+      "changedFields": [
+        "introduction",
+        "sections",
+        "faq",
+        "faqMode"
+      ],
+      "faqMode": "custom",
+      "faqCount": 6
+    },
+    {
+      "file": "content/tools/gif-compressor.json",
+      "route": "/gif-compressor",
+      "status": "IMPLEMENTED_LOCAL_CANDIDATE",
+      "baselineSha256": "7db315686c682635e3a11afbd8c58f8d39c2956b1e950e85e680a5d758291c6c",
+      "candidateSha256": "36841b3a98a9a40f823a2f474fbc31f97908bcea686b295b56f906bd030a02b4",
+      "changedFields": [
+        "heading",
+        "introduction",
+        "sections",
+        "faq",
+        "seoDescription",
+        "faqMode"
+      ],
+      "faqMode": "custom",
+      "faqCount": 6
+    },
+    {
+      "file": "content/tools/image-compressor.json",
+      "route": "/image-compressor",
+      "status": "IMPLEMENTED_LOCAL_CANDIDATE",
+      "baselineSha256": "8eadb988264f863b4f99e5da904913f30454345f1e77120205ea2d22d902f679",
+      "candidateSha256": "e64eb0556458faab9b498a0f9292a96af095657bd7f97376aefcd0357773aa9f",
+      "changedFields": [
+        "heading",
+        "introduction",
+        "sections",
+        "faq",
+        "faqMode"
+      ],
+      "faqMode": "custom",
+      "faqCount": 6
+    },
+    {
+      "file": "content/tools/jpeg-compressor.json",
+      "route": "/jpeg-compressor",
+      "status": "IMPLEMENTED_LOCAL_CANDIDATE",
+      "baselineSha256": "0e3c5054dbb491ad0e781b3809df0ad249da6e290155632b3268dda2c02fa7d1",
+      "candidateSha256": "ebc95c2ea96f2e8f22967c58fc3ca31400beedb46d0804d3d9ba1c3c52d797f3",
+      "changedFields": [
+        "introduction",
+        "sections",
+        "faq",
+        "faqMode"
+      ],
+      "faqMode": "custom",
+      "faqCount": 6
+    },
+    {
+      "file": "content/tools/jpg-compressor.json",
+      "route": "/jpg-compressor",
+      "status": "IMPLEMENTED_LOCAL_CANDIDATE",
+      "baselineSha256": "7b3ea031d668e75257ac265d77377fb066893bb088bc6d275ac87e562f9444f6",
+      "candidateSha256": "fd257c5663ec5116f641e7a36156aa73f3a46fd5f78fa7ab4d61ebcfa6f784f2",
+      "changedFields": [
+        "heading",
+        "introduction",
+        "sections",
+        "faq",
+        "seoDescription",
+        "faqMode"
+      ],
+      "faqMode": "custom",
+      "faqCount": 6
+    },
+    {
+      "file": "content/tools/mp3-compressor.json",
+      "route": "/mp3-compressor",
+      "status": "IMPLEMENTED_LOCAL_CANDIDATE",
+      "baselineSha256": "f68529dc73f257a4022edce4f45ee1cda8e156371460b0581a1005629694b22d",
+      "candidateSha256": "63a55f14c6cc2f1f1ac71085d0baa5fc55947bd4cafb93bd9736801f4a266163",
+      "changedFields": [
+        "introduction",
+        "sections",
+        "faq",
+        "seoDescription",
+        "faqMode"
+      ],
+      "faqMode": "custom",
+      "faqCount": 5
+    },
+    {
+      "file": "content/tools/pdf-compressor.json",
+      "route": "/pdf-compressor",
+      "status": "IMPLEMENTED_LOCAL_CANDIDATE",
+      "baselineSha256": "511e5980b9fc6508bbe712de4bc657b725a88c12f3f2d9f226bacfade0e7ff10",
+      "candidateSha256": "9199a0bfb5e16bb84e0b200ac422e75751b742e88852c95aa1926bb3160c8f0e",
+      "changedFields": [
+        "introduction",
+        "sections",
+        "faq",
+        "faqMode"
+      ],
+      "faqMode": "custom",
+      "faqCount": 6
+    },
+    {
+      "file": "content/tools/png-compressor.json",
+      "route": "/png-compressor",
+      "status": "IMPLEMENTED_LOCAL_CANDIDATE",
+      "baselineSha256": "afe7e6f6f7cec3b3cd9d3384dfdfeda249d3848ba6f6f6a8e45eb4597521bb39",
+      "candidateSha256": "64229fa83dac0d3c0b34ff4c82739475339a31d0b9df3650fdd15fea5aec2a2c",
+      "changedFields": [
+        "heading",
+        "introduction",
+        "sections",
+        "faq",
+        "seoDescription",
+        "faqMode"
+      ],
+      "faqMode": "custom",
+      "faqCount": 6
+    },
+    {
+      "file": "content/tools/video-compressor.json",
+      "route": "/video-compressor",
+      "status": "IMPLEMENTED_LOCAL_CANDIDATE",
+      "baselineSha256": "204e80087dcc4d6e557650c145895d52f499c740ca8ccd32fe1c36e4c84faba4",
+      "candidateSha256": "59a0dda59b76ffe4d4899568ae97d7cc425168c32a632f35d4007fef7b6505bf",
+      "changedFields": [
+        "heading",
+        "introduction",
+        "sections",
+        "faq",
+        "seoTitle",
+        "seoDescription",
+        "faqMode"
+      ],
+      "faqMode": "custom",
+      "faqCount": 6
+    },
+    {
+      "file": "content/tools/wav-compressor.json",
+      "route": "/wav-compressor",
+      "status": "IMPLEMENTED_LOCAL_CANDIDATE",
+      "baselineSha256": "ec58115a5d8e43f5a674c4be4648d3d72280115fabd382991101f61e422297bf",
+      "candidateSha256": "bc636e90e761524132108c685be5b3f58da8fda2e0d386aff08cce75dd765c4f",
+      "changedFields": [
+        "introduction",
+        "sections",
+        "faq",
+        "seoDescription",
+        "faqMode"
+      ],
+      "faqMode": "custom",
+      "faqCount": 5
+    },
+    {
+      "file": "content/tools/webm-to-mp4.json",
+      "route": "/webm-to-mp4",
+      "status": "IMPLEMENTED_LOCAL_CANDIDATE",
+      "baselineSha256": "bf9890ced344d00a314e1b2b6d7e90ff5197dc1b6c7f259107ef7920b9873296",
+      "candidateSha256": "46adb13559c08f9e6bba857179d6409b287ad0638a203d17b2a24cc5aade1e0d",
+      "changedFields": [
+        "heading",
+        "introduction",
+        "sections",
+        "faq",
+        "links",
+        "faqMode"
+      ],
+      "faqMode": "custom",
+      "faqCount": 4
+    },
+    {
+      "file": "content/tools/webp-compressor.json",
+      "route": "/webp-compressor",
+      "status": "IMPLEMENTED_LOCAL_CANDIDATE",
+      "baselineSha256": "f8dd01e1ab779e1a800b31b39695a41b3bc1a36f7ef5a7c94516f80187cada41",
+      "candidateSha256": "13b4cb5d3284ce39752dbb90009cd125b795b8e645ff33f44839829bb449137b",
+      "changedFields": [
+        "introduction",
+        "sections",
+        "faq",
+        "seoDescription",
+        "faqMode"
+      ],
+      "faqMode": "custom",
+      "faqCount": 6
+    },
+    {
+      "file": "content/tools/zip-compressor.json",
+      "route": "/zip-compressor",
+      "status": "IMPLEMENTED_LOCAL_CANDIDATE",
+      "baselineSha256": "3937700a89444d2f4427ab865f6772c5546a837955e7ea6413575d584ee1727a",
+      "candidateSha256": "106f91f787b059d3cdbf566dd335512fee0e516462f2aec9be61cf4e1fbf65ab",
+      "changedFields": [
+        "introduction",
+        "sections",
+        "faq",
+        "faqMode"
+      ],
+      "faqMode": "custom",
+      "faqCount": 6
+    },
+    {
+      "file": "content/pages/about.json",
+      "route": "/about",
+      "status": "IMPLEMENTED_LOCAL_CANDIDATE",
+      "baselineSha256": "2d979f9358f9d6886bc298c175447506a80f25e0b230f41b83cb762b71e124d0",
+      "candidateSha256": "eac8a698c0c1c11c0d4845d61ae96c4c1f772f9eddefd11ab505cc0fd06b1e63",
+      "changedFields": [
+        "title",
+        "introduction",
+        "seoTitle",
+        "seoDescription",
+        "updated",
+        "sections"
+      ]
+    },
+    {
+      "file": "content/pages/blog.json",
+      "route": "/blog",
+      "status": "IMPLEMENTED_LOCAL_CANDIDATE",
+      "baselineSha256": "f2f4d3af8fbdbcce5a6425e571e9c3cb61d1d0430e27d4d1054a59436f816305",
+      "candidateSha256": "d2516604af5c3fed4e539d1e6b7ed4bad4eed7024e20fafccdf429dc8556e4bf",
+      "changedFields": [
+        "introduction",
+        "updated"
+      ]
+    },
+    {
+      "file": "content/pages/contact.json",
+      "route": "/contact",
+      "status": "IMPLEMENTED_LOCAL_CANDIDATE",
+      "baselineSha256": "03f5745db4c3ec3649e4b25d191bb3c16504b29adb1581e6238fcdc411ebe060",
+      "candidateSha256": "30f534de974b6c289c7b91cabc2596c6e0970d9c3bd2d0f4a503bd341e58a989",
+      "changedFields": [
+        "sections",
+        "updated"
+      ]
+    },
+    {
+      "file": "content/pages/disclaimer.json",
+      "route": "/disclaimer",
+      "status": "IMPLEMENTED_LOCAL_CANDIDATE",
+      "baselineSha256": "f329431f8c639f1eab9abe0ac50cb56a388151c35fd330910cd0ce9b38cf869a",
+      "candidateSha256": "84a875312be6b85b6936a05dc0c9a2e946ba4f792a7f4017f56a6c71cac81278",
+      "changedFields": [
+        "introduction",
+        "updated",
+        "sections"
+      ]
+    },
+    {
+      "file": "content/pages/privacy.json",
+      "route": "/privacy",
+      "status": "IMPLEMENTED_LOCAL_CANDIDATE",
+      "baselineSha256": "656cc44585944ed96e039d36ea5551c8151ac04bf36ac0959933b77d76724f19",
+      "candidateSha256": "08adb923cecd99b2384cbaa0a6c12db6d3f397c12018f2764d4f8ffa5eddfeb4",
+      "changedFields": [
+        "introduction",
+        "seoDescription",
+        "updated",
+        "sections"
+      ]
+    },
+    {
+      "file": "content/pages/terms.json",
+      "route": "/terms",
+      "status": "IMPLEMENTED_LOCAL_CANDIDATE",
+      "baselineSha256": "d3ade38dab67645364bcdf0b133dcb1eb4dcf55dcbed3a8b688c798042d73ca2",
+      "candidateSha256": "28ab94e1ae59ded58c4512dd4bfe909b1a56e277a4ba1b17c13acc4e7c21a908",
+      "changedFields": [
+        "introduction",
+        "seoDescription",
+        "updated",
+        "sections"
+      ]
+    },
+    {
+      "file": "content/posts/choosing-a-compression-mode.json",
+      "route": "/blog/choosing-a-compression-mode",
+      "status": "IMPLEMENTED_LOCAL_CANDIDATE",
+      "baselineSha256": "d52b3ce17867176277a14893e7dc9cb5325c675c09648aea72b540cc6f5e472f",
+      "candidateSha256": "00cfde8aa3ef5ea047cad6a1a916d7af2b29f301dc3869a7bd94428609fc8885",
+      "changedFields": [
+        "updated",
+        "body",
+        "references"
+      ],
+      "published": true,
+      "originalPublication": "2026-09-12",
+      "candidatePublication": "2026-09-12",
+      "previousModified": "2026-11-27",
+      "candidateModified": "2026-11-28"
+    },
+    {
+      "file": "content/posts/compressing-files-for-the-web.json",
+      "route": "/blog/compressing-files-for-the-web",
+      "status": "IMPLEMENTED_LOCAL_CANDIDATE",
+      "baselineSha256": "37794b823357e909670d178db192218ad80bb5c923db65a636b7da2473fd1ab9",
+      "candidateSha256": "c57e2d0af484e0fdc431d06134f945d74f9ab6ecf7a467f1d1493a0e4c284b43",
+      "changedFields": [
+        "updated",
+        "body"
+      ],
+      "published": true,
+      "originalPublication": "2026-09-20",
+      "candidatePublication": "2026-09-20",
+      "previousModified": "2026-11-27",
+      "candidateModified": "2026-11-28"
+    },
+    {
+      "file": "content/posts/honest-file-size-reporting.json",
+      "route": "/blog/honest-file-size-reporting",
+      "status": "IMPLEMENTED_LOCAL_CANDIDATE",
+      "baselineSha256": "620716fdbd51c8dcc791a5c3ce2d6ca8b1ecd9650fe26df9a22606befea8a747",
+      "candidateSha256": "b3b71333d0ae48f4025d574e8a2d0568587fd23d2b553f67aa872d62e1ac2582",
+      "changedFields": [
+        "updated",
+        "body"
+      ],
+      "published": true,
+      "originalPublication": "2026-09-08",
+      "candidatePublication": "2026-09-08",
+      "previousModified": "2026-11-26",
+      "candidateModified": "2026-11-28"
+    },
+    {
+      "file": "content/posts/how-browser-compression-works.json",
+      "route": "/blog/how-browser-compression-works",
+      "status": "IMPLEMENTED_LOCAL_CANDIDATE",
+      "baselineSha256": "03f7bdf689784d9501b941ee6fd060b53926e2bf7b78426dd442ce4baf4dfd1a",
+      "candidateSha256": "30b15d4c15f343eb3cdcab2e534e749468cd7fb7693e0290e3623cc4992df391",
+      "changedFields": [
+        "updated",
+        "body",
+        "references"
+      ],
+      "published": true,
+      "originalPublication": "2026-09-04",
+      "candidatePublication": "2026-09-04",
+      "previousModified": "2026-11-26",
+      "candidateModified": "2026-11-28"
+    },
+    {
+      "file": "content/posts/png-lossless-smart-maximum-measured.json",
+      "route": "/blog/png-lossless-smart-maximum-measured",
+      "status": "DRAFT_UNCHANGED",
+      "baselineSha256": "8a82485f6bcea844c62f28a3ea05a9da41ec1184ef614f2e73c37401b691584b",
+      "candidateSha256": "8a82485f6bcea844c62f28a3ea05a9da41ec1184ef614f2e73c37401b691584b",
+      "changedFields": [],
+      "published": false,
+      "originalPublication": "2026-11-27",
+      "candidatePublication": "2026-11-27",
+      "previousModified": "2026-11-27",
+      "candidateModified": "2026-11-27"
+    },
+    {
+      "file": "content/posts/what-privacy-claim-really-means.json",
+      "route": "/blog/what-privacy-claim-really-means",
+      "status": "IMPLEMENTED_LOCAL_CANDIDATE",
+      "baselineSha256": "f167050f05f37e8009905c348a948e207ba9ea7fce2d3b282db6e4aabd902f61",
+      "candidateSha256": "3afef029f90930bc5bb08ff95514bfd72a4089881dda2b6c233d95cc5f5b984e",
+      "changedFields": [
+        "updated",
+        "body",
+        "references"
+      ],
+      "published": true,
+      "originalPublication": "2026-09-16",
+      "candidatePublication": "2026-09-16",
+      "previousModified": "2026-11-04",
+      "candidateModified": "2026-11-28"
+    },
+    {
+      "file": "content/settings/site.json",
+      "route": null,
+      "status": "REVIEWED_UNCHANGED",
+      "baselineSha256": "969892d130eebe2644018df5d8cf71ec6d4cfbc57afd8c659f554cf465a7df42",
+      "candidateSha256": "969892d130eebe2644018df5d8cf71ec6d4cfbc57afd8c659f554cf465a7df42",
+      "changedFields": []
+    }
+  ],
+  "legalChanges": {
+    "newObligations": false,
+    "newLiabilityClauses": false,
+    "newJurisdiction": false,
+    "existingTermsAndLiabilityPreserved": true,
+    "operatorLegalReviewRequired": true
+  },
+  "sourcesChecked": [
+    "https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats/Image_types",
+    "https://developers.google.com/speed/webp/docs/compression",
+    "https://developer.mozilla.org/en-US/docs/Web/API/File_API/Using_files_from_web_applications",
+    "https://developer.mozilla.org/en-US/docs/Web/API/URL/revokeObjectURL_static",
+    "https://www.cloudflare.com/privacypolicy/",
+    "https://tina.io/privacy-notice",
+    "https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement",
+    "https://www.zoho.com/privacy.html",
+    "https://www.zoho.com/mail/help/data-deletion-policy.html"
+  ],
+  "sourceInventoryRefreshedAt": "2026-11-28T11:55:49.837185+00:00"
+}

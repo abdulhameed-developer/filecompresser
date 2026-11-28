@@ -1,0 +1,175 @@
+{
+  "reviewDate": "2026-11-28",
+  "status": "PASS_BEFORE_SUBMIT_CONTROLS",
+  "scope": "Actual collection.beforeSubmit callbacks with closed-row values and no mounted child fields. Existing nested validators run before backend submission; malformed rows remain openable for repair. Native local editor behavior is separately recorded, hosted feedback remains a release gate.",
+  "sourceHashes": {
+    "tina/editorial-policy.mjs": "f29c3dd352ed869eef5600aed9501279def0a94f0f879e95ee806cf10c121a9d",
+    "tina/editorial.mjs": "1c2cf346f02edb9d8dc3c0a5f4f562d27f21124b901bd50baf05bab569321a5d",
+    "tina/collections.mjs": "0081afe6b50189b896dd6d5807a069d3185f810e3dc2fbdd480d48549c61ae72"
+  },
+  "results": [
+    {
+      "name": "Historical sections[13].heading gap",
+      "callback": "toolPage.ui.beforeSubmit",
+      "childFieldsMounted": false,
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "error": "sections[13].heading: enter Section heading.",
+      "pass": true
+    },
+    {
+      "name": "Historical sections[7].heading gap",
+      "callback": "toolPage.ui.beforeSubmit",
+      "childFieldsMounted": false,
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "error": "sections[7].heading: enter Section heading.",
+      "pass": true
+    },
+    {
+      "name": "Historical faq[1].q gap",
+      "callback": "toolPage.ui.beforeSubmit",
+      "childFieldsMounted": false,
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "error": "faq: Question 2: complete both the question and answer, or clear both.",
+      "pass": true
+    },
+    {
+      "name": "Partially cleared FAQ",
+      "callback": "toolPage.ui.beforeSubmit",
+      "childFieldsMounted": false,
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "error": "faq: Question 1: complete both the question and answer, or clear both.",
+      "pass": true
+    },
+    {
+      "name": "Cleared optional FAQ rows",
+      "callback": "toolPage.ui.beforeSubmit",
+      "childFieldsMounted": false,
+      "expected": "ACCEPT",
+      "actual": "ACCEPT",
+      "error": null,
+      "pass": true
+    },
+    {
+      "name": "Collapsed unsafe helpful link",
+      "callback": "toolPage.ui.beforeSubmit",
+      "childFieldsMounted": false,
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "error": "links[0].href: Use a site path, section anchor or HTTPS address without credentials.",
+      "pass": true
+    },
+    {
+      "name": "Collapsed missing step description",
+      "callback": "homepage.ui.beforeSubmit",
+      "childFieldsMounted": false,
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "error": "steps[1].description: enter Step description.",
+      "pass": true
+    },
+    {
+      "name": "Collapsed missing article heading",
+      "callback": "post.ui.beforeSubmit",
+      "childFieldsMounted": false,
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "error": "body[0].text: enter Heading text.",
+      "pass": true
+    },
+    {
+      "name": "Collapsed missing image alt",
+      "callback": "post.ui.beforeSubmit",
+      "childFieldsMounted": false,
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "error": "body[0].alt: enter Alternative text.",
+      "pass": true
+    },
+    {
+      "name": "Collapsed unsupported HTML",
+      "callback": "post.ui.beforeSubmit",
+      "childFieldsMounted": false,
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "error": "body[0].html: Supported HTML: p, br, strong, em, b, i, code, a, ul, ol, li and blockquote.",
+      "pass": true
+    },
+    {
+      "name": "Collapsed table column mismatch",
+      "callback": "post.ui.beforeSubmit",
+      "childFieldsMounted": false,
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "error": "body[0].rows: each row must match the column count.",
+      "pass": true
+    },
+    {
+      "name": "Incoming Publish validates dormant body",
+      "callback": "post.ui.beforeSubmit",
+      "childFieldsMounted": false,
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "error": "body[0].text: enter Heading text.",
+      "pass": true
+    },
+    {
+      "name": "Incoming Unarchive validates dormant body",
+      "callback": "post.ui.beforeSubmit",
+      "childFieldsMounted": false,
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "error": "body[0].text: enter Heading text.",
+      "pass": true
+    },
+    {
+      "name": "Unfinished draft heading remains editable",
+      "callback": "post.ui.beforeSubmit",
+      "childFieldsMounted": false,
+      "expected": "ACCEPT",
+      "actual": "ACCEPT",
+      "error": null,
+      "pass": true
+    },
+    {
+      "name": "Cleared optional hero",
+      "callback": "homepage.ui.beforeSubmit",
+      "childFieldsMounted": false,
+      "expected": "ACCEPT",
+      "actual": "ACCEPT",
+      "error": null,
+      "pass": true
+    },
+    {
+      "name": "Cleared optional image",
+      "callback": "post.ui.beforeSubmit",
+      "childFieldsMounted": false,
+      "expected": "ACCEPT",
+      "actual": "ACCEPT",
+      "error": null,
+      "pass": true
+    },
+    {
+      "name": "Cleared optional author",
+      "callback": "post.ui.beforeSubmit",
+      "childFieldsMounted": false,
+      "expected": "ACCEPT",
+      "actual": "ACCEPT",
+      "error": null,
+      "pass": true
+    }
+  ],
+  "currentSourceRecords": {
+    "checks": 29,
+    "failures": 0,
+    "valuesUnchanged": true
+  },
+  "limits": [
+    "Draft/archived unfinished body text and fully cleared optional groups retain their defined behavior.",
+    "This does not fetch an editorial link target or prove a referenced upload exists. Build/export guards still do that work.",
+    "Hosted Save feedback must be verified after the matching editor bundle is deployed."
+  ]
+}

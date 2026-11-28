@@ -1,0 +1,1225 @@
+{
+  "recordedAt": "2026-11-28T13:57:20.055887+00:00",
+  "candidate": "M",
+  "status": "REVIEWED_WITH_SCOPE_LIMITS",
+  "buildId": "i6cl7-oxYwV3b6uSHuw_0",
+  "homepageSha256": "f46f733452e0169f0c3f12f4bcb9faaa89da828ff6a074ad28d3ca5927aa5aab",
+  "base": "http://127.0.0.1:3350",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "routesReviewed": 29,
+  "sourceSegmentsReviewed": 132,
+  "originalAndDerivedHashesVerifiedAfterReview": true,
+  "sourceIndexSha256": "817e1836acce8e4f17ae9b5bfa092d92ce48e6f19e745d392dbe980322dde437",
+  "reviews": [
+    {
+      "route": "/404-missing",
+      "original": ".qa-results/phase3/ui/final-m/responsive/404-missing-1440.png",
+      "sha256": "9d8375a7e61d4730fb41b7b661ba775c1c15d53ac87a43c1ebae587e9b9c42bb",
+      "dimensions": [
+        1440,
+        1323
+      ],
+      "sheet": ".qa-results/phase3/ui/final-m/desktop-review-release-readiness/404-missing-1440.sheet.png",
+      "sheetSha256": "ec93b973676f16a57b64c3bee62f703af505cd201c4680cd0e33229a1a2692b8",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          1323
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T13:57:20.055887+00:00",
+      "actualVisualReview": true,
+      "method": "Actual viewing of every ordered screenshot strip, top to bottom, with original full-resolution delivery requested. The initial generator makes no review claim. Unscaled unit-detail follow-ups are separately pinned.",
+      "observations": "The generic missing-route page was inspected separately. Error title, explanation, two recovery actions, grouped popular-tool links and full footer fit. This capture is generic404 evidence, not the separate exact unpublished-draft URL proof.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": []
+    },
+    {
+      "route": "/about",
+      "original": ".qa-results/phase3/ui/final-m/responsive/about-1440.png",
+      "sha256": "db716cbdd27447f7b548ab62376511e2342dfa45a5290137831d242867265ec7",
+      "dimensions": [
+        1440,
+        2640
+      ],
+      "sheet": ".qa-results/phase3/ui/final-m/desktop-review-release-readiness/about-1440.sheet.png",
+      "sheetSha256": "b82108a861a2840751512394e0f09b424af25c3ef6a7905ac4795d1fdbd6af1a",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          2640
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T13:57:20.055887+00:00",
+      "actualVisualReview": true,
+      "method": "Actual viewing of every ordered screenshot strip, top to bottom, with original full-resolution delivery requested. The initial generator makes no review claim. Unscaled unit-detail follow-ups are separately pinned.",
+      "observations": "Hero, three product-principle columns, process illustration, two detail rows and final help section were inspected. The formerly weak managed-text section now matches the page typography and link treatment. The support strip and footer align; no undersized black default body text or unrelated blue link remains in that section. The revised 300 MiB capacity sentence wraps within its reading column without overlap.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": []
+    },
+    {
+      "route": "/archive-compressor",
+      "original": ".qa-results/phase3/ui/final-m/responsive/archive-compressor-1440.png",
+      "sha256": "ceb519498285dbeb68e4b0efb3511a4e34dc544e819e702c9673b409cf275095",
+      "dimensions": [
+        1440,
+        6301
+      ],
+      "sheet": ".qa-results/phase3/ui/final-m/desktop-review-release-readiness/archive-compressor-1440.sheet.png",
+      "sheetSha256": "6ed604552435c13e3438311ada80b0114df4106b8f4c8bb1b08936506a1fe96a",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          6000
+        ],
+        [
+          6000,
+          6301
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T13:57:20.055887+00:00",
+      "actualVisualReview": true,
+      "method": "Actual viewing of every ordered screenshot strip, top to bottom, with original full-resolution delivery requested. The initial generator makes no review claim. Unscaled unit-detail follow-ups are separately pinned.",
+      "observations": "ZIP extraction is clearly named in hero and workspace; the introduction correctly discusses refusal before downloads. The14-section guide, supported-format/limit text, contextual extraction information, six FAQ rows and footer were inspected. No clipping or confusing compression-result decoration seen in the empty state. In this fresh M capture, Max 150 MiB / file and 500 files / 300 MiB per queue are visible and fit their original workspace positions.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ]
+    },
+    {
+      "route": "/blog/choosing-a-compression-mode",
+      "original": ".qa-results/phase3/ui/final-m/responsive/blog--choosing-a-compression-mode-1440.png",
+      "sha256": "de902e4d04c474a6eaa8dc3a6defd266fd5d4bf9480aa45aed6de1adf63629a9",
+      "dimensions": [
+        1440,
+        5802
+      ],
+      "sheet": ".qa-results/phase3/ui/final-m/desktop-review-release-readiness/blog--choosing-a-compression-mode-1440.sheet.png",
+      "sheetSha256": "14fcb9f5d5aa28ca3d47f45740f1814957db87784ecbd67d9e7f1b1e1419320e",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          5802
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T13:57:20.055887+00:00",
+      "actualVisualReview": true,
+      "method": "Actual viewing of every ordered screenshot strip, top to bottom, with original full-resolution delivery requested. The initial generator makes no review claim. Unscaled unit-detail follow-ups are separately pinned.",
+      "observations": "Header/cover/TOC, mode comparison panel, all quality/target/PNG/dimension sections, sources and related cards were reviewed. Reading width and heading hierarchy are consistent. The diagram panel and callout remain readable and visually connected to the article. The revised paragraph explicitly distinguishes decimal file/target KB/MB from input/queue/extraction MiB, including both exact byte definitions; its text, link and surrounding reading layout were also inspected unscaled.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": []
+    },
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "original": ".qa-results/phase3/ui/final-m/responsive/blog--compressing-files-for-the-web-1440.png",
+      "sha256": "a417e261cc3a5944356de5bd89148ebbfdf94957686625f9a486c56250423a33",
+      "dimensions": [
+        1440,
+        4861
+      ],
+      "sheet": ".qa-results/phase3/ui/final-m/desktop-review-release-readiness/blog--compressing-files-for-the-web-1440.sheet.png",
+      "sheetSha256": "e296b0bd7e69f4903b74bebd27ad8c4a12323b813eabb18ded7ac4eea7e5fe64",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          4861
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T13:57:20.055887+00:00",
+      "actualVisualReview": true,
+      "method": "Actual viewing of every ordered screenshot strip, top to bottom, with original full-resolution delivery requested. The initial generator makes no review claim. Unscaled unit-detail follow-ups are separately pinned.",
+      "observations": "Header/cover/TOC, centered compact format tree, image/audio/video/PDF sections, internal tool links and sources were reviewed. The compact diagram has no large unused right-hand area. Article paragraphs, tool CTA, related cards and footer fit.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": []
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "original": ".qa-results/phase3/ui/final-m/responsive/blog--honest-file-size-reporting-1440.png",
+      "sha256": "a906c1ee61212de585eb5fa441bef952bdf930ffc55864e9808c2378736aa71b",
+      "dimensions": [
+        1440,
+        4501
+      ],
+      "sheet": ".qa-results/phase3/ui/final-m/desktop-review-release-readiness/blog--honest-file-size-reporting-1440.sheet.png",
+      "sheetSha256": "ac8ff1d8f851c69289d1ad522c51473086d59e3910f39b32bfcef858de7ba1cb",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4501
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T13:57:20.055887+00:00",
+      "actualVisualReview": true,
+      "method": "Actual viewing of every ordered screenshot strip, top to bottom, with original full-resolution delivery requested. The initial generator makes no review claim. Unscaled unit-detail follow-ups are separately pinned.",
+      "observations": "Header/cover/TOC, size comparison diagram, new three-outcome bullet list, hard-limit explanation, actual-download guidance and footer were reviewed. The wider diagram shows all labels and bars within its frame; the list preserves distinct hanging bullet lines.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": []
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "original": ".qa-results/phase3/ui/final-m/responsive/blog--how-browser-compression-works-1440.png",
+      "sha256": "97975261b88ccb2329f6fcf511a336c530f27cffe8d6589e3c17de8ed5c5dace",
+      "dimensions": [
+        1440,
+        4595
+      ],
+      "sheet": ".qa-results/phase3/ui/final-m/desktop-review-release-readiness/blog--how-browser-compression-works-1440.sheet.png",
+      "sheetSha256": "20f155ccd5f5fb56540de135032ad0022914771336a271da05a8655332dd8684",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4595
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T13:57:20.055887+00:00",
+      "actualVisualReview": true,
+      "method": "Actual viewing of every ordered screenshot strip, top to bottom, with original full-resolution delivery requested. The initial generator makes no review claim. Unscaled unit-detail follow-ups are separately pinned.",
+      "observations": "Article header with one Updated label, full cover, TOC, all four processing steps, sources, tool CTA, related cards and footer were reviewed. The pipeline SVG now extends to its readable wide frame without clipping, while paragraph width stays comfortable.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": []
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "original": ".qa-results/phase3/ui/final-m/responsive/blog--what-privacy-claim-really-means-1440.png",
+      "sha256": "26234dc089deb73e21627a2113e055f0085a5979315821ea825108157b7759a1",
+      "dimensions": [
+        1440,
+        4964
+      ],
+      "sheet": ".qa-results/phase3/ui/final-m/desktop-review-release-readiness/blog--what-privacy-claim-really-means-1440.sheet.png",
+      "sheetSha256": "7058c92f2da155828a9a889d01185dd0ae15f022a56c7f13e3fde4819ba904a2",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          4964
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T13:57:20.055887+00:00",
+      "actualVisualReview": true,
+      "method": "Actual viewing of every ordered screenshot strip, top to bottom, with original full-resolution delivery requested. The initial generator makes no review claim. Unscaled unit-detail follow-ups are separately pinned.",
+      "observations": "Header/cover/TOC, data-flow diagram, local-versus-network sections, storage/backup callout, sources and related cards were reviewed. The widened SVG shows its right-hand page/engine side without clipping; prose, caption and CTA reflow within the article composition.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": []
+    },
+    {
+      "route": "/blog",
+      "original": ".qa-results/phase3/ui/final-m/responsive/blog-1440.png",
+      "sha256": "0a51036956505a341b7f149f6a824e873d6188eeac6c15304fbce9401414c393",
+      "dimensions": [
+        1440,
+        2568
+      ],
+      "sheet": ".qa-results/phase3/ui/final-m/desktop-review-release-readiness/blog-1440.sheet.png",
+      "sheetSha256": "277eaa589358cbb8ddcb5d603f5ede08eccf2719b493019041c449fd1c3114ca",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          2568
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T13:57:20.055887+00:00",
+      "actualVisualReview": true,
+      "method": "Actual viewing of every ordered screenshot strip, top to bottom, with original full-resolution delivery requested. The initial generator makes no review claim. Unscaled unit-detail follow-ups are separately pinned.",
+      "observations": "Featured first article and four remaining article cards were reviewed. Cover crops, card headings/descriptions and single Updated date labels fit. The two-column card grid has balanced heights and clear spacing; footer begins after the final row.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": []
+    },
+    {
+      "route": "/compress",
+      "original": ".qa-results/phase3/ui/final-m/responsive/compress-1440.png",
+      "sha256": "fcd87411110d8f10e4d590a2999c1614410eaa4dae984a967e0b2219e251fe18",
+      "dimensions": [
+        1440,
+        5896
+      ],
+      "sheet": ".qa-results/phase3/ui/final-m/desktop-review-release-readiness/compress-1440.sheet.png",
+      "sheetSha256": "10e8780185c568e9df1aa86f88b003e6faaefa32baf418061cce3ecceaf05b2e",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          5896
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T13:57:20.055887+00:00",
+      "actualVisualReview": true,
+      "method": "Actual viewing of every ordered screenshot strip, top to bottom, with original full-resolution delivery requested. The initial generator makes no review claim. Unscaled unit-detail follow-ups are separately pinned.",
+      "observations": "Mixed-file upload panel and accepted formats precede the13-section guide. Numbered steps and bullets have readable separation; six custom FAQ headers, contextual output information, related-tool grid and footer align. Long authored guidance remains below the action. In this fresh M capture, Max 200 MiB / file and 500 files / 300 MiB per queue are visible and fit their original workspace positions.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ]
+    },
+    {
+      "route": "/contact",
+      "original": ".qa-results/phase3/ui/final-m/responsive/contact-1440.png",
+      "sha256": "c4f125b682db670aba0abce100992dda5d4a762d1220043c0586262382bf3668",
+      "dimensions": [
+        1440,
+        2152
+      ],
+      "sheet": ".qa-results/phase3/ui/final-m/desktop-review-release-readiness/contact-1440.sheet.png",
+      "sheetSha256": "0af38ca3380a12b57af1760830cd469a43343fa8955ee51c8067e30cdaf89e74",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2152
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T13:57:20.055887+00:00",
+      "actualVisualReview": true,
+      "method": "Actual viewing of every ordered screenshot strip, top to bottom, with original full-resolution delivery requested. The initial generator makes no review claim. Unscaled unit-detail follow-ups are separately pinned.",
+      "observations": "Contact destination and troubleshooting introduction are easy to find. Five issue cards, private-content guidance and the guide strip were reviewed through the footer. The fifth card naturally occupies the final left grid cell; no overlap, clipped text or oversized empty card was seen.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": []
+    },
+    {
+      "route": "/disclaimer",
+      "original": ".qa-results/phase3/ui/final-m/responsive/disclaimer-1440.png",
+      "sha256": "51684638f6d6662483b691940c0ed093866ee881e1308540ff19d4da368e3b50",
+      "dimensions": [
+        1440,
+        2742
+      ],
+      "sheet": ".qa-results/phase3/ui/final-m/desktop-review-release-readiness/disclaimer-1440.sheet.png",
+      "sheetSha256": "4cda5b02ad17e7dc99325a5c68af20f58d2a7762ad07b1414caf2c4ccfd44f25",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          2742
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T13:57:20.055887+00:00",
+      "actualVisualReview": true,
+      "method": "Actual viewing of every ordered screenshot strip, top to bottom, with original full-resolution delivery requested. The initial generator makes no review claim. Unscaled unit-detail follow-ups are separately pinned.",
+      "observations": "Header, factual introduction, seven-section contents control, all limitations/warranty/liability paragraphs and footer were reviewed. Paragraph width, heading contrast and section gaps remain consistent with the other legal pages.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": []
+    },
+    {
+      "route": "/gif-compressor",
+      "original": ".qa-results/phase3/ui/final-m/responsive/gif-compressor-1440.png",
+      "sha256": "742e04aed7d2f6170120410f371658660a4288b8651db11a910278545db06eac",
+      "dimensions": [
+        1440,
+        6420
+      ],
+      "sheet": ".qa-results/phase3/ui/final-m/desktop-review-release-readiness/gif-compressor-1440.sheet.png",
+      "sheetSha256": "933d3ca482f35b962d39e7633600ab4effcae7bd714ec55410a9ff6157a96f26",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          6000
+        ],
+        [
+          6000,
+          6420
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T13:57:20.055887+00:00",
+      "actualVisualReview": true,
+      "method": "Actual viewing of every ordered screenshot strip, top to bottom, with original full-resolution delivery requested. The initial generator makes no review claim. Unscaled unit-detail follow-ups are separately pinned.",
+      "observations": "GIF uploader and15-section animated-image guide were reviewed through the footer. The multi-line reasons-for-size list now uses actual bullets with hanging alignment. Recommended/Maximum sections, limits, FAQs and related tools remain visually distinct. In this fresh M capture, Max 50 MiB / file and 500 files / 300 MiB per queue are visible and fit their original workspace positions.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ]
+    },
+    {
+      "route": "/",
+      "original": ".qa-results/phase3/ui/final-m/responsive/home-1440.png",
+      "sha256": "35456a8a92541eb5d2218c221ecd59d8477389929628a8a776835f790a799851",
+      "dimensions": [
+        1440,
+        7504
+      ],
+      "sheet": ".qa-results/phase3/ui/final-m/desktop-review-release-readiness/home-1440.sheet.png",
+      "sheetSha256": "eda6ee115dafb1d1abc2177b7ed695c865c8b992c5b206537a65c3d7c8bae67c",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          6000
+        ],
+        [
+          6000,
+          7200
+        ],
+        [
+          7200,
+          7504
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T13:57:20.055887+00:00",
+      "actualVisualReview": true,
+      "method": "Actual viewing of every ordered screenshot strip, top to bottom, with original full-resolution delivery requested. The initial generator makes no review claim. Unscaled unit-detail follow-ups are separately pinned.",
+      "observations": "Hero, first upload action,14 tool cards, filters/search, process illustration,12-section authored reading body, Updated guide cards, FAQs and footer were reviewed in order. The task action comes before the long guide. Lists and links retain a clear reading column; no clipped/overlapping section was seen. In this fresh M capture, Max 200 MiB / file and 500 files / 300 MiB per queue are visible and fit their original workspace positions.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ]
+    },
+    {
+      "route": "/image-compressor",
+      "original": ".qa-results/phase3/ui/final-m/responsive/image-compressor-1440.png",
+      "sha256": "0ccd2b21ee2228233c8244d556652a7bc80ca553181fa8b023080cfe77ea3c45",
+      "dimensions": [
+        1440,
+        6120
+      ],
+      "sheet": ".qa-results/phase3/ui/final-m/desktop-review-release-readiness/image-compressor-1440.sheet.png",
+      "sheetSha256": "007ccd585701af73f445f1a3967fcc5a44f1321191149d1fce9cac6c90908db8",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          6000
+        ],
+        [
+          6000,
+          6120
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T13:57:20.055887+00:00",
+      "actualVisualReview": true,
+      "method": "Actual viewing of every ordered screenshot strip, top to bottom, with original full-resolution delivery requested. The initial generator makes no review claim. Unscaled unit-detail follow-ups are separately pinned.",
+      "observations": "General image upload,16-section guide, format-specific subheadings, workflow steps and original-dimension statements were inspected. Expanded first output explanation and collapsed remaining disclosures align. Related links and footer fit. In this fresh M capture, Max 50 MiB / file and 500 files / 300 MiB per queue are visible and fit their original workspace positions.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ]
+    },
+    {
+      "route": "/jpeg-compressor",
+      "original": ".qa-results/phase3/ui/final-m/responsive/jpeg-compressor-1440.png",
+      "sha256": "94adff07250229b61ff7dd43cf3be3cd22312e9238c1a67c3acc6dee2c8cf4e5",
+      "dimensions": [
+        1440,
+        6298
+      ],
+      "sheet": ".qa-results/phase3/ui/final-m/desktop-review-release-readiness/jpeg-compressor-1440.sheet.png",
+      "sheetSha256": "47d6389bc9a1ed816f7b7dfb5cdd81da49ce9b1b0d7ca523891f1a8682faaf51",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          6000
+        ],
+        [
+          6000,
+          6298
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T13:57:20.055887+00:00",
+      "actualVisualReview": true,
+      "method": "Actual viewing of every ordered screenshot strip, top to bottom, with original full-resolution delivery requested. The initial generator makes no review claim. Unscaled unit-detail follow-ups are separately pinned.",
+      "observations": "JPEG hero/upload,19-section reading guide and JPG-versus-JPEG explanation were inspected separately. Subheading hierarchy, ordered workflow and later metadata/privacy sections remain readable. Custom FAQs, output disclosures and footer fit. In this fresh M capture, Max 50 MiB / file and 500 files / 300 MiB per queue are visible and fit their original workspace positions.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ]
+    },
+    {
+      "route": "/jpg-compressor",
+      "original": ".qa-results/phase3/ui/final-m/responsive/jpg-compressor-1440.png",
+      "sha256": "87dcc617c12bc94eef356172a0ad3cff72909feb0a224c0cc0b9e654bf60eda8",
+      "dimensions": [
+        1440,
+        6005
+      ],
+      "sheet": ".qa-results/phase3/ui/final-m/desktop-review-release-readiness/jpg-compressor-1440.sheet.png",
+      "sheetSha256": "e89aa38f2ca78f8ee102021a9e10fa3ece3ed3bc2707f8dc06acffde908804ef",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          6000
+        ],
+        [
+          6000,
+          6005
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T13:57:20.055887+00:00",
+      "actualVisualReview": true,
+      "method": "Actual viewing of every ordered screenshot strip, top to bottom, with original full-resolution delivery requested. The initial generator makes no review claim. Unscaled unit-detail follow-ups are separately pinned.",
+      "observations": "JPG upload and concise hero remain prominent. The17-section guide separates quality modes,50KB target guidance and practical uses. Custom FAQ rows and two-row related links align, with no overflow or text/icon collision seen. In this fresh M capture, Max 50 MiB / file and 500 files / 300 MiB per queue are visible and fit their original workspace positions.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ]
+    },
+    {
+      "route": "/mp3-compressor",
+      "original": ".qa-results/phase3/ui/final-m/responsive/mp3-compressor-1440.png",
+      "sha256": "a8ae646ddc413396d36f1a86979debae811cae2e27d9c929be80c0f300c57c9a",
+      "dimensions": [
+        1440,
+        5659
+      ],
+      "sheet": ".qa-results/phase3/ui/final-m/desktop-review-release-readiness/mp3-compressor-1440.sheet.png",
+      "sheetSha256": "71de1aa5bcdf5cdae969f020ba1089fd540a39908956658f4801d51508f08db0",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          5659
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T13:57:20.055887+00:00",
+      "actualVisualReview": true,
+      "method": "Actual viewing of every ordered screenshot strip, top to bottom, with original full-resolution delivery requested. The initial generator makes no review claim. Unscaled unit-detail follow-ups are separately pinned.",
+      "observations": "MP3 hero/uploader,11-section guide, bitrate subheadings and newly semantic five-item reasons list were inspected. Wrapped bullet lines align properly; output information, five FAQ rows and related tools are proportionate. In this fresh M capture, Max 100 MiB / file and 500 files / 300 MiB per queue are visible and fit their original workspace positions.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ]
+    },
+    {
+      "route": "/pdf-compressor",
+      "original": ".qa-results/phase3/ui/final-m/responsive/pdf-compressor-1440.png",
+      "sha256": "6ff2cb0a5ddd564ae1fb66739ab7e7da3096ab22a123eccb79613d3ad04abcb9",
+      "dimensions": [
+        1440,
+        5827
+      ],
+      "sheet": ".qa-results/phase3/ui/final-m/desktop-review-release-readiness/pdf-compressor-1440.sheet.png",
+      "sheetSha256": "2003ccd908f018211af5cd40bc5ac95356a890f38f5758b7895dc940f2cfcd12",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          5827
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T13:57:20.055887+00:00",
+      "actualVisualReview": true,
+      "method": "Actual viewing of every ordered screenshot strip, top to bottom, with original full-resolution delivery requested. The initial generator makes no review claim. Unscaled unit-detail follow-ups are separately pinned.",
+      "observations": "PDF upload and structural-optimization introduction precede the11-section guide. The six-item processing-limit list now uses real bullets with readable wrapped lines. No-downsampling caveat, six FAQ rows, related tools and footer remain clear. In this fresh M capture, Max 50 MiB / file and 500 files / 300 MiB per queue are visible and fit their original workspace positions.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ]
+    },
+    {
+      "route": "/png-compressor",
+      "original": ".qa-results/phase3/ui/final-m/responsive/png-compressor-1440.png",
+      "sha256": "67a9b60e4ab9755fab94dff86016520f9d105517997d35c34d13e4176107070c",
+      "dimensions": [
+        1440,
+        5898
+      ],
+      "sheet": ".qa-results/phase3/ui/final-m/desktop-review-release-readiness/png-compressor-1440.sheet.png",
+      "sheetSha256": "799759ef88255d10041b33c94bb3ee6d38a463cbaaf07d6067fc1c2f76e0ddd3",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          5898
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T13:57:20.055887+00:00",
+      "actualVisualReview": true,
+      "method": "Actual viewing of every ordered screenshot strip, top to bottom, with original full-resolution delivery requested. The initial generator makes no review claim. Unscaled unit-detail follow-ups are separately pinned.",
+      "observations": "Lossless-default introduction, PNG-only drop area and13-section guide fit. Ordered workflow and real bullet lists have consistent leading. Target/transparency explanations, six FAQ rows and related tools are clearly separated. No visual clipping seen. In this fresh M capture, Max 50 MiB / file and 500 files / 300 MiB per queue are visible and fit their original workspace positions.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ]
+    },
+    {
+      "route": "/privacy",
+      "original": ".qa-results/phase3/ui/final-m/responsive/privacy-1440.png",
+      "sha256": "ce709b7c6a6b47a5c7d0231447f443a6ece5375d3c4b9094911aa5c50f8a6d23",
+      "dimensions": [
+        1440,
+        3899
+      ],
+      "sheet": ".qa-results/phase3/ui/final-m/desktop-review-release-readiness/privacy-1440.sheet.png",
+      "sheetSha256": "453e274a316b8060762fc19a667e73af897a6322b366cd13096d8f136ac2167a",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          3899
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T13:57:20.055887+00:00",
+      "actualVisualReview": true,
+      "method": "Actual viewing of every ordered screenshot strip, top to bottom, with original full-resolution delivery requested. The initial generator makes no review claim. Unscaled unit-detail follow-ups are separately pinned.",
+      "observations": "One Last updated line, concise introduction, collapsed11-section contents control, every policy section, provider links and final contact link were inspected. The legal reading column and section spacing support scanning; no card-heavy layout or overflow seen.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": []
+    },
+    {
+      "route": "/sitemap",
+      "original": ".qa-results/phase3/ui/final-m/responsive/sitemap-1440.png",
+      "sha256": "8e291d47ca2406a2d7b525c51e0420253a357073571fae072d6e3636ccdbe6ab",
+      "dimensions": [
+        1440,
+        1620
+      ],
+      "sheet": ".qa-results/phase3/ui/final-m/desktop-review-release-readiness/sitemap-1440.sheet.png",
+      "sheetSha256": "9c80839de1e3379d2446d312f69a3dbd884cc2ed45e77909b97e9dc797483d91",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          1620
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T13:57:20.055887+00:00",
+      "actualVisualReview": true,
+      "method": "Actual viewing of every ordered screenshot strip, top to bottom, with original full-resolution delivery requested. The initial generator makes no review claim. Unscaled unit-detail follow-ups are separately pinned.",
+      "observations": "Every grouped section was inspected: image tools, media, PDF/archives, product pages and all five guides. Compact link rows, aligned SVG arrows and the two-column span for guide links make the page efficient to scan. No truncated article titles or row overlap seen.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": []
+    },
+    {
+      "route": "/terms",
+      "original": ".qa-results/phase3/ui/final-m/responsive/terms-1440.png",
+      "sha256": "c46a30b4c7d049960cd152d72eb852431b06fbf792a13287231f767ffadff666",
+      "dimensions": [
+        1440,
+        2533
+      ],
+      "sheet": ".qa-results/phase3/ui/final-m/desktop-review-release-readiness/terms-1440.sheet.png",
+      "sheetSha256": "94a46832d3872c426caa7e499484ff66d21fc03ffad138e611cedc77232c3168",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          2533
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T13:57:20.055887+00:00",
+      "actualVisualReview": true,
+      "method": "Actual viewing of every ordered screenshot strip, top to bottom, with original full-resolution delivery requested. The initial generator makes no review claim. Unscaled unit-detail follow-ups are separately pinned.",
+      "observations": "One Last updated line, seven-section contents control, usage/backup/processing/acceptable-use/IP sections and footer were reviewed. The page uses a restrained legal reading layout, clear headings and ordinary underlined contact link, with no clipping seen. The revised 300 MiB capacity sentence wraps within its reading column without overlap.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": []
+    },
+    {
+      "route": "/video-compressor",
+      "original": ".qa-results/phase3/ui/final-m/responsive/video-compressor-1440.png",
+      "sha256": "cedca34ee065e632199682753efcb9f70e1b41c9b9c27b98774a62b41bb7e074",
+      "dimensions": [
+        1440,
+        6868
+      ],
+      "sheet": ".qa-results/phase3/ui/final-m/desktop-review-release-readiness/video-compressor-1440.sheet.png",
+      "sheetSha256": "d5b834a08e1868338b6b83da53c9ea2cbd16242628fe347cd22a599d8a2b34dc",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          6000
+        ],
+        [
+          6000,
+          6868
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T13:57:20.055887+00:00",
+      "actualVisualReview": true,
+      "method": "Actual viewing of every ordered screenshot strip, top to bottom, with original full-resolution delivery requested. The initial generator makes no review claim. Unscaled unit-detail follow-ups are separately pinned.",
+      "observations": "MP4/MOV hero and upload surface precede the19-section video guide. Numbered instructions, original/1080/720/480 settings descriptions, codec/quality/retained-stream sections and FAQs remain legible and ordered. No clipped controls or section overlap seen. In this fresh M capture, Max 200 MiB / file and 500 files / 300 MiB per queue are visible and fit their original workspace positions.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ]
+    },
+    {
+      "route": "/wav-compressor",
+      "original": ".qa-results/phase3/ui/final-m/responsive/wav-compressor-1440.png",
+      "sha256": "1686900d4e0b7ccddf2383ca55a256f3e0ad79a8c701a61dd948f646704d14f4",
+      "dimensions": [
+        1440,
+        5855
+      ],
+      "sheet": ".qa-results/phase3/ui/final-m/desktop-review-release-readiness/wav-compressor-1440.sheet.png",
+      "sheetSha256": "eef84a762e4a28cadad37ad6dd7a229b9e18dd926fba89940e897bce2cbd2cb8",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          5855
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T13:57:20.055887+00:00",
+      "actualVisualReview": true,
+      "method": "Actual viewing of every ordered screenshot strip, top to bottom, with original full-resolution delivery requested. The initial generator makes no review claim. Unscaled unit-detail follow-ups are separately pinned.",
+      "observations": "WAV-to-MP3 conversion is named in the page title and workspace. The12-section guide uses a true bitrate list with consistent multi-line spacing. Conversion caveats, five FAQ rows and related-tool links fit; no internal alias banner is present. In this fresh M capture, Max 100 MiB / file and 500 files / 300 MiB per queue are visible and fit their original workspace positions.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ]
+    },
+    {
+      "route": "/wav-to-mp3",
+      "original": ".qa-results/phase3/ui/final-m/responsive/wav-to-mp3-1440.png",
+      "sha256": "1686900d4e0b7ccddf2383ca55a256f3e0ad79a8c701a61dd948f646704d14f4",
+      "dimensions": [
+        1440,
+        5855
+      ],
+      "sheet": ".qa-results/phase3/ui/final-m/desktop-review-release-readiness/wav-to-mp3-1440.sheet.png",
+      "sheetSha256": "52b85af69a46b9d0771a589733a4cd6b8e2ee96fdc37d90f7b0c5f71c7767377",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          5855
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T13:57:20.055887+00:00",
+      "actualVisualReview": true,
+      "method": "Actual viewing of every ordered screenshot strip, top to bottom, with original full-resolution delivery requested. The initial generator makes no review claim. Unscaled unit-detail follow-ups are separately pinned.",
+      "observations": "The alias was inspected independently, top to bottom. It presents the same WAV-to-MP3 title/workspace and complete guide as the canonical route, without an implementation notice. Lists, FAQ rows, related tools and footer show no layout defect. In this fresh M capture, Max 100 MiB / file and 500 files / 300 MiB per queue are visible and fit their original workspace positions.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ]
+    },
+    {
+      "route": "/webm-to-mp4",
+      "original": ".qa-results/phase3/ui/final-m/responsive/webm-to-mp4-1440.png",
+      "sha256": "85d79c2b5d0686bb67355c6463796daa4701b3486d99661bffa48f841d243f82",
+      "dimensions": [
+        1440,
+        3190
+      ],
+      "sheet": ".qa-results/phase3/ui/final-m/desktop-review-release-readiness/webm-to-mp4-1440.sheet.png",
+      "sheetSha256": "9ba0c4716c69d20310090fd523d64dc5559f05baeb406d445a95285ed1a24953",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3190
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T13:57:20.055887+00:00",
+      "actualVisualReview": true,
+      "method": "Actual viewing of every ordered screenshot strip, top to bottom, with original full-resolution delivery requested. The initial generator makes no review claim. Unscaled unit-detail follow-ups are separately pinned.",
+      "observations": "Dedicated conversion wording is visible in both hero and upload workspace. The shorter guide presents fixed MP4 output and three steps; source-dimension and timing limits follow. Four FAQ rows, output disclosures, related tools and footer fit without compression-only visual controls in this empty state. In this fresh M capture, Max 200 MiB / file and 500 files / 300 MiB per queue are visible and fit their original workspace positions.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": []
+    },
+    {
+      "route": "/webp-compressor",
+      "original": ".qa-results/phase3/ui/final-m/responsive/webp-compressor-1440.png",
+      "sha256": "09e5ed9a4128bd7b8670b7ac22ccc1936196baacc6f3894a18e3678db9fec2e2",
+      "dimensions": [
+        1440,
+        6040
+      ],
+      "sheet": ".qa-results/phase3/ui/final-m/desktop-review-release-readiness/webp-compressor-1440.sheet.png",
+      "sheetSha256": "4dec00c4ef1d33c184b44396a9d83387ffabb47d688e096f2008b9a702ebf579",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          6000
+        ],
+        [
+          6000,
+          6040
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T13:57:20.055887+00:00",
+      "actualVisualReview": true,
+      "method": "Actual viewing of every ordered screenshot strip, top to bottom, with original full-resolution delivery requested. The initial generator makes no review claim. Unscaled unit-detail follow-ups are separately pinned.",
+      "observations": "WebP-specific uploader,14-section guide, five-item quality-impact bullet list, dimensions/transparency paragraphs, contextual output section and six FAQ rows were reviewed. The converted bullet content now scans as a list, with even line and item spacing. In this fresh M capture, Max 50 MiB / file and 500 files / 300 MiB per queue are visible and fit their original workspace positions.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ]
+    },
+    {
+      "route": "/zip-compressor",
+      "original": ".qa-results/phase3/ui/final-m/responsive/zip-compressor-1440.png",
+      "sha256": "3f98c16b1e7441bd422a3bb10840a34e84c5db6e709c1c869b3b52ffbe053b3b",
+      "dimensions": [
+        1440,
+        5470
+      ],
+      "sheet": ".qa-results/phase3/ui/final-m/desktop-review-release-readiness/zip-compressor-1440.sheet.png",
+      "sheetSha256": "ce564c06d6d3141caeba4903de75bab0213609e5784f6e8c5d4cf8fa05a1836e",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          5470
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T13:57:20.055887+00:00",
+      "actualVisualReview": true,
+      "method": "Actual viewing of every ordered screenshot strip, top to bottom, with original full-resolution delivery requested. The initial generator makes no review claim. Unscaled unit-detail follow-ups are separately pinned.",
+      "observations": "ZIP creation is named consistently in hero, workspace and guide. The12-section body separates creation steps from size/security caveats. About-this-archive disclosures, six FAQ rows and related links are compact and aligned. In this fresh M capture, Max 200 MiB / file and 500 files / 300 MiB per queue are visible and fit their original workspace positions.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ]
+    }
+  ],
+  "actualUnscaledUnitDetails": [
+    {
+      "label": "size-unit-m-workspace-detail",
+      "source": ".qa-results/phase3/ui/final-m/responsive/png-compressor-1440.png",
+      "sourceSha256": "67a9b60e4ab9755fab94dff86016520f9d105517997d35c34d13e4176107070c",
+      "box": [
+        240,
+        366,
+        1200,
+        746
+      ],
+      "output": "docs/evidence/2026-11-28/visual-comparisons/size-unit-m-workspace-detail.png",
+      "sha256": "9567eb1bf32c8ac02928e994b1d8e6b77738cdadb37e6663cceba771c97da403",
+      "resized": false,
+      "actualOriginalDetailVisuallyReviewed": true
+    },
+    {
+      "label": "size-unit-m-article-detail",
+      "source": ".qa-results/phase3/ui/final-m/responsive/blog--choosing-a-compression-mode-1440.png",
+      "sourceSha256": "de902e4d04c474a6eaa8dc3a6defd266fd5d4bf9480aa45aed6de1adf63629a9",
+      "box": [
+        360,
+        4250,
+        1110,
+        4585
+      ],
+      "output": "docs/evidence/2026-11-28/visual-comparisons/size-unit-m-article-detail.png",
+      "sha256": "482c442a8c987a1a8c9d51eea4cc0ca2cba0c33cfe0ce8f1fd151ecc99115adf",
+      "resized": false,
+      "actualOriginalDetailVisuallyReviewed": true
+    }
+  ],
+  "noNewBlockingDefaultDesktopVisualDefectObserved": true,
+  "remainingBoundaries": [
+    "Only the29 actual1440px default/empty full-page screenshots are covered by this independent review. Mobile/tablet/shared-state/processing/browser audits have separate owners and evidence.",
+    "No hover, focus, keyboard, loading, populated workspace, Compare, successful encode, physical-device, screen-reader or production claim follows from this default screenshot review.",
+    "The long authored SEO reading bodies are retained and their structure/layout reviewed; this is not a claim that every sentence has been proofread or that all subjective design alternatives were exhausted.",
+    "The generic404 capture is separate from exact unpublished-draft route verification.",
+    "Hosted all-record Tina reconciliation and live release identity/content are separate remaining gates."
+  ]
+}

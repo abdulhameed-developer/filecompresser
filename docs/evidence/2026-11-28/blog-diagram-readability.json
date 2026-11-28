@@ -1,0 +1,606 @@
+{
+  "status": "PASS_COMPONENT_PREFLIGHT_FINAL_APPLICATION_PENDING",
+  "scope": "Real-source server-rendered component fixture over immutable candidate-H styles. This is not candidate-I or production evidence.",
+  "completedAt": "2026-11-28T11:01:59.714Z",
+  "source": {
+    "createdAt": "2026-11-28T10:55:45.200Z",
+    "scope": "Actual current BlogFigure SSR component with exact new scoped CSS over immutable H app CSS/fonts. Component preflight only; final application route verification remains separate.",
+    "baseHHomeSha256": "b53f2d52bf61f05e2746674b22117fe7e2b4b2b82f347dbf3a09eb76971dc087",
+    "componentSourceSha256": "5974b4d257ec1c7c41caa3ad1a68d0637933aed8ee8b4b853633628f2c903921",
+    "scopedCssSha256": "ecce0a0d1839498b9903cc72b815187942f584fee836033bd06205e417846b9f",
+    "baseCss": [
+      {
+        "href": "/_next/static/css/769988446751fec8.css",
+        "sha256": "eda5a7ed8a9be9a5893047cd2abdafffeafa53d566e375b40428694b6e641318"
+      },
+      {
+        "href": "/_next/static/css/4c601210c8fc6a1d.css",
+        "sha256": "deb00570d517c7af5c2c1f64084b165bf1252031f470d19137bd204b6bfdd27f"
+      }
+    ],
+    "records": [
+      {
+        "figure": "pipeline",
+        "componentSha256": "fb694c602aeea67872ddeef98d1b6c8f09e802d9d0141606ae37cef7a11a48d5"
+      },
+      {
+        "figure": "sizebars",
+        "componentSha256": "a06c27455dc6fc2243d02dfd819cd23ae74c48fe2c2f87519eee2e2b86aa2e57"
+      },
+      {
+        "figure": "dataflow",
+        "componentSha256": "2f1ca559ab27eef52da4597c7832bd01fc50962e9ac21650d1c50b1fb837ddfc"
+      },
+      {
+        "figure": "formattree",
+        "componentSha256": "860c244489fd05c0202c16fef446b75a473162ba5409fb21cd1d73d13da26a85"
+      }
+    ]
+  },
+  "before": [
+    {
+      "figure": "pipeline",
+      "minRenderedFontPx": 5.316666666666666,
+      "width": 390
+    },
+    {
+      "figure": "sizebars",
+      "minRenderedFontPx": 5.316168478260869,
+      "width": 390
+    },
+    {
+      "figure": "dataflow",
+      "minRenderedFontPx": 5.316271551724138,
+      "width": 390
+    },
+    {
+      "figure": "formattree",
+      "minRenderedFontPx": 5.316271551724138,
+      "width": 390
+    }
+  ],
+  "after": [
+    {
+      "figure": "pipeline",
+      "minRenderedFontPx": 12.802232142857141,
+      "svgCssWidth": 840,
+      "viewport": {
+        "left": 20,
+        "right": 300,
+        "clientWidth": 280,
+        "scrollWidth": 840,
+        "scrollLeft": 0,
+        "scrollHeight": 246,
+        "clientHeight": 246,
+        "role": "region",
+        "name": "Compression pipeline diagram",
+        "tabIndex": 0,
+        "overscrollX": "contain",
+        "overscrollY": "auto"
+      },
+      "hintVisible": true,
+      "keyboardPan": 240,
+      "viewportWidth": 320
+    },
+    {
+      "figure": "sizebars",
+      "minRenderedFontPx": 12.802445652173914,
+      "svgCssWidth": 840,
+      "viewport": {
+        "left": 20,
+        "right": 300,
+        "clientWidth": 280,
+        "scrollWidth": 840,
+        "scrollLeft": 0,
+        "scrollHeight": 270,
+        "clientHeight": 270,
+        "role": "region",
+        "name": "File size comparison diagram",
+        "tabIndex": 0,
+        "overscrollX": "contain",
+        "overscrollY": "auto"
+      },
+      "hintVisible": true,
+      "keyboardPan": 240,
+      "viewportWidth": 320
+    },
+    {
+      "figure": "dataflow",
+      "minRenderedFontPx": 12.802316810344827,
+      "svgCssWidth": 840,
+      "viewport": {
+        "left": 20,
+        "right": 300,
+        "clientWidth": 280,
+        "scrollWidth": 840,
+        "scrollLeft": 0,
+        "scrollHeight": 340,
+        "clientHeight": 340,
+        "role": "region",
+        "name": "File privacy diagram",
+        "tabIndex": 0,
+        "overscrollX": "contain",
+        "overscrollY": "auto"
+      },
+      "hintVisible": true,
+      "keyboardPan": 240,
+      "viewportWidth": 320
+    },
+    {
+      "figure": "formattree",
+      "minRenderedFontPx": 12.780387931034483,
+      "svgCssWidth": 490,
+      "viewport": {
+        "left": 20,
+        "right": 300,
+        "clientWidth": 280,
+        "scrollWidth": 490,
+        "scrollLeft": 0,
+        "scrollHeight": 339,
+        "clientHeight": 339,
+        "role": "region",
+        "name": "File format guide diagram",
+        "tabIndex": 0,
+        "overscrollX": "contain",
+        "overscrollY": "auto"
+      },
+      "hintVisible": true,
+      "keyboardPan": 210,
+      "viewportWidth": 320
+    },
+    {
+      "figure": "pipeline",
+      "minRenderedFontPx": 12.802232142857141,
+      "svgCssWidth": 840,
+      "viewport": {
+        "left": 20,
+        "right": 370,
+        "clientWidth": 350,
+        "scrollWidth": 840,
+        "scrollLeft": 0,
+        "scrollHeight": 246,
+        "clientHeight": 246,
+        "role": "region",
+        "name": "Compression pipeline diagram",
+        "tabIndex": 0,
+        "overscrollX": "contain",
+        "overscrollY": "auto"
+      },
+      "hintVisible": true,
+      "keyboardPan": 240,
+      "viewportWidth": 390
+    },
+    {
+      "figure": "sizebars",
+      "minRenderedFontPx": 12.802445652173914,
+      "svgCssWidth": 840,
+      "viewport": {
+        "left": 20,
+        "right": 370,
+        "clientWidth": 350,
+        "scrollWidth": 840,
+        "scrollLeft": 0,
+        "scrollHeight": 270,
+        "clientHeight": 270,
+        "role": "region",
+        "name": "File size comparison diagram",
+        "tabIndex": 0,
+        "overscrollX": "contain",
+        "overscrollY": "auto"
+      },
+      "hintVisible": true,
+      "keyboardPan": 240,
+      "viewportWidth": 390
+    },
+    {
+      "figure": "dataflow",
+      "minRenderedFontPx": 12.802316810344827,
+      "svgCssWidth": 840,
+      "viewport": {
+        "left": 20,
+        "right": 370,
+        "clientWidth": 350,
+        "scrollWidth": 840,
+        "scrollLeft": 0,
+        "scrollHeight": 340,
+        "clientHeight": 340,
+        "role": "region",
+        "name": "File privacy diagram",
+        "tabIndex": 0,
+        "overscrollX": "contain",
+        "overscrollY": "auto"
+      },
+      "hintVisible": true,
+      "keyboardPan": 240,
+      "viewportWidth": 390
+    },
+    {
+      "figure": "formattree",
+      "minRenderedFontPx": 12.780387931034483,
+      "svgCssWidth": 490,
+      "viewport": {
+        "left": 20,
+        "right": 370,
+        "clientWidth": 350,
+        "scrollWidth": 490,
+        "scrollLeft": 0,
+        "scrollHeight": 339,
+        "clientHeight": 339,
+        "role": "region",
+        "name": "File format guide diagram",
+        "tabIndex": 0,
+        "overscrollX": "contain",
+        "overscrollY": "auto"
+      },
+      "hintVisible": true,
+      "keyboardPan": 140,
+      "viewportWidth": 390
+    },
+    {
+      "figure": "pipeline",
+      "minRenderedFontPx": 12.802232142857141,
+      "svgCssWidth": 840,
+      "viewport": {
+        "left": 20,
+        "right": 620,
+        "clientWidth": 600,
+        "scrollWidth": 840,
+        "scrollLeft": 0,
+        "scrollHeight": 246,
+        "clientHeight": 246,
+        "role": "region",
+        "name": "Compression pipeline diagram",
+        "tabIndex": 0,
+        "overscrollX": "contain",
+        "overscrollY": "auto"
+      },
+      "hintVisible": true,
+      "keyboardPan": 240,
+      "viewportWidth": 640
+    },
+    {
+      "figure": "sizebars",
+      "minRenderedFontPx": 12.802445652173914,
+      "svgCssWidth": 840,
+      "viewport": {
+        "left": 20,
+        "right": 620,
+        "clientWidth": 600,
+        "scrollWidth": 840,
+        "scrollLeft": 0,
+        "scrollHeight": 270,
+        "clientHeight": 270,
+        "role": "region",
+        "name": "File size comparison diagram",
+        "tabIndex": 0,
+        "overscrollX": "contain",
+        "overscrollY": "auto"
+      },
+      "hintVisible": true,
+      "keyboardPan": 240,
+      "viewportWidth": 640
+    },
+    {
+      "figure": "dataflow",
+      "minRenderedFontPx": 12.802316810344827,
+      "svgCssWidth": 840,
+      "viewport": {
+        "left": 20,
+        "right": 620,
+        "clientWidth": 600,
+        "scrollWidth": 840,
+        "scrollLeft": 0,
+        "scrollHeight": 340,
+        "clientHeight": 340,
+        "role": "region",
+        "name": "File privacy diagram",
+        "tabIndex": 0,
+        "overscrollX": "contain",
+        "overscrollY": "auto"
+      },
+      "hintVisible": true,
+      "keyboardPan": 240,
+      "viewportWidth": 640
+    },
+    {
+      "figure": "formattree",
+      "minRenderedFontPx": 12.780387931034483,
+      "svgCssWidth": 490,
+      "viewport": {
+        "left": 75,
+        "right": 565,
+        "clientWidth": 490,
+        "scrollWidth": 490,
+        "scrollLeft": 0,
+        "scrollHeight": 339,
+        "clientHeight": 339,
+        "role": "region",
+        "name": "File format guide diagram",
+        "tabIndex": 0,
+        "overscrollX": "contain",
+        "overscrollY": "auto"
+      },
+      "hintVisible": false,
+      "keyboardPan": 0,
+      "viewportWidth": 640
+    },
+    {
+      "figure": "pipeline",
+      "minRenderedFontPx": 12.802232142857141,
+      "svgCssWidth": 840,
+      "viewport": {
+        "left": 44,
+        "right": 724,
+        "clientWidth": 680,
+        "scrollWidth": 840,
+        "scrollLeft": 0,
+        "scrollHeight": 246,
+        "clientHeight": 246,
+        "role": "region",
+        "name": "Compression pipeline diagram",
+        "tabIndex": 0,
+        "overscrollX": "contain",
+        "overscrollY": "auto"
+      },
+      "hintVisible": true,
+      "keyboardPan": 160,
+      "viewportWidth": 768
+    },
+    {
+      "figure": "sizebars",
+      "minRenderedFontPx": 12.802445652173914,
+      "svgCssWidth": 840,
+      "viewport": {
+        "left": 44,
+        "right": 724,
+        "clientWidth": 680,
+        "scrollWidth": 840,
+        "scrollLeft": 0,
+        "scrollHeight": 270,
+        "clientHeight": 270,
+        "role": "region",
+        "name": "File size comparison diagram",
+        "tabIndex": 0,
+        "overscrollX": "contain",
+        "overscrollY": "auto"
+      },
+      "hintVisible": true,
+      "keyboardPan": 160,
+      "viewportWidth": 768
+    },
+    {
+      "figure": "dataflow",
+      "minRenderedFontPx": 12.802316810344827,
+      "svgCssWidth": 840,
+      "viewport": {
+        "left": 44,
+        "right": 724,
+        "clientWidth": 680,
+        "scrollWidth": 840,
+        "scrollLeft": 0,
+        "scrollHeight": 340,
+        "clientHeight": 340,
+        "role": "region",
+        "name": "File privacy diagram",
+        "tabIndex": 0,
+        "overscrollX": "contain",
+        "overscrollY": "auto"
+      },
+      "hintVisible": true,
+      "keyboardPan": 160,
+      "viewportWidth": 768
+    },
+    {
+      "figure": "formattree",
+      "minRenderedFontPx": 12.780387931034483,
+      "svgCssWidth": 490,
+      "viewport": {
+        "left": 139,
+        "right": 629,
+        "clientWidth": 490,
+        "scrollWidth": 490,
+        "scrollLeft": 0,
+        "scrollHeight": 339,
+        "clientHeight": 339,
+        "role": "region",
+        "name": "File format guide diagram",
+        "tabIndex": 0,
+        "overscrollX": "contain",
+        "overscrollY": "auto"
+      },
+      "hintVisible": false,
+      "keyboardPan": 0,
+      "viewportWidth": 768
+    },
+    {
+      "figure": "pipeline",
+      "minRenderedFontPx": 12.802232142857141,
+      "svgCssWidth": 840,
+      "viewport": {
+        "left": 380,
+        "right": 1060,
+        "clientWidth": 680,
+        "scrollWidth": 840,
+        "scrollLeft": 0,
+        "scrollHeight": 246,
+        "clientHeight": 246,
+        "role": "region",
+        "name": "Compression pipeline diagram",
+        "tabIndex": 0,
+        "overscrollX": "contain",
+        "overscrollY": "auto"
+      },
+      "hintVisible": true,
+      "keyboardPan": 160,
+      "viewportWidth": 1440
+    },
+    {
+      "figure": "sizebars",
+      "minRenderedFontPx": 12.802445652173914,
+      "svgCssWidth": 840,
+      "viewport": {
+        "left": 380,
+        "right": 1060,
+        "clientWidth": 680,
+        "scrollWidth": 840,
+        "scrollLeft": 0,
+        "scrollHeight": 270,
+        "clientHeight": 270,
+        "role": "region",
+        "name": "File size comparison diagram",
+        "tabIndex": 0,
+        "overscrollX": "contain",
+        "overscrollY": "auto"
+      },
+      "hintVisible": true,
+      "keyboardPan": 160,
+      "viewportWidth": 1440
+    },
+    {
+      "figure": "dataflow",
+      "minRenderedFontPx": 12.802316810344827,
+      "svgCssWidth": 840,
+      "viewport": {
+        "left": 380,
+        "right": 1060,
+        "clientWidth": 680,
+        "scrollWidth": 840,
+        "scrollLeft": 0,
+        "scrollHeight": 340,
+        "clientHeight": 340,
+        "role": "region",
+        "name": "File privacy diagram",
+        "tabIndex": 0,
+        "overscrollX": "contain",
+        "overscrollY": "auto"
+      },
+      "hintVisible": true,
+      "keyboardPan": 160,
+      "viewportWidth": 1440
+    },
+    {
+      "figure": "formattree",
+      "minRenderedFontPx": 12.780387931034483,
+      "svgCssWidth": 490,
+      "viewport": {
+        "left": 475,
+        "right": 965,
+        "clientWidth": 490,
+        "scrollWidth": 490,
+        "scrollLeft": 0,
+        "scrollHeight": 339,
+        "clientHeight": 339,
+        "role": "region",
+        "name": "File format guide diagram",
+        "tabIndex": 0,
+        "overscrollX": "contain",
+        "overscrollY": "auto"
+      },
+      "hintVisible": false,
+      "keyboardPan": 0,
+      "viewportWidth": 1440
+    }
+  ],
+  "nativeTouch": [
+    {
+      "figure": "pipeline",
+      "horizontal": 150,
+      "backgroundDuringHorizontal": 0,
+      "articleVertical": 159,
+      "input": "Native CDP touchStart/move/end; no DOM event/state simulation"
+    },
+    {
+      "figure": "sizebars",
+      "horizontal": 158,
+      "backgroundDuringHorizontal": 0,
+      "articleVertical": 160,
+      "input": "Native CDP touchStart/move/end; no DOM event/state simulation"
+    },
+    {
+      "figure": "dataflow",
+      "horizontal": 176,
+      "backgroundDuringHorizontal": 0,
+      "articleVertical": 153,
+      "input": "Native CDP touchStart/move/end; no DOM event/state simulation"
+    },
+    {
+      "figure": "formattree",
+      "horizontal": 140,
+      "backgroundDuringHorizontal": 0,
+      "articleVertical": 147,
+      "input": "Native CDP touchStart/move/end; no DOM event/state simulation"
+    }
+  ],
+  "visualZoomEmulation": [
+    {
+      "figure": "pipeline",
+      "factor": 2,
+      "scale": 2,
+      "width": 195,
+      "method": "Browser visual zoom emulation; reflow-equivalent320/640CSS widths checked separately. Not a physical-device pinch or desktop-browser zoom control."
+    },
+    {
+      "figure": "pipeline",
+      "factor": 4,
+      "scale": 4,
+      "width": 97.5,
+      "method": "Browser visual zoom emulation; reflow-equivalent320/640CSS widths checked separately. Not a physical-device pinch or desktop-browser zoom control."
+    },
+    {
+      "figure": "sizebars",
+      "factor": 2,
+      "scale": 2,
+      "width": 195,
+      "method": "Browser visual zoom emulation; reflow-equivalent320/640CSS widths checked separately. Not a physical-device pinch or desktop-browser zoom control."
+    },
+    {
+      "figure": "sizebars",
+      "factor": 4,
+      "scale": 4,
+      "width": 97.5,
+      "method": "Browser visual zoom emulation; reflow-equivalent320/640CSS widths checked separately. Not a physical-device pinch or desktop-browser zoom control."
+    },
+    {
+      "figure": "dataflow",
+      "factor": 2,
+      "scale": 2,
+      "width": 195,
+      "method": "Browser visual zoom emulation; reflow-equivalent320/640CSS widths checked separately. Not a physical-device pinch or desktop-browser zoom control."
+    },
+    {
+      "figure": "dataflow",
+      "factor": 4,
+      "scale": 4,
+      "width": 97.5,
+      "method": "Browser visual zoom emulation; reflow-equivalent320/640CSS widths checked separately. Not a physical-device pinch or desktop-browser zoom control."
+    },
+    {
+      "figure": "formattree",
+      "factor": 2,
+      "scale": 2,
+      "width": 195,
+      "method": "Browser visual zoom emulation; reflow-equivalent320/640CSS widths checked separately. Not a physical-device pinch or desktop-browser zoom control."
+    },
+    {
+      "figure": "formattree",
+      "factor": 4,
+      "scale": 4,
+      "width": 97.5,
+      "method": "Browser visual zoom emulation; reflow-equivalent320/640CSS widths checked separately. Not a physical-device pinch or desktop-browser zoom control."
+    }
+  ],
+  "pageErrors": [],
+  "sourceUnchanged": true,
+  "browserClosedNormally": true,
+  "manualReview": "All four mobile start views and all four end/middle views personally inspected. Labels are readable; compact format-guide end pan remains meaningful. Existing SVG content and captions are preserved; no blank terminal canvas.",
+  "limitations": [
+    "Final application and production verification pending.",
+    "Visual zoom is browser emulation, not a physical-device pinch or native desktop zoom control.",
+    "Lighthouse and automated accessibility scores are not inferred from this component test."
+  ],
+  "research": [
+    "https://www.w3.org/WAI/WCAG22/Understanding/reflow",
+    "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/overflow",
+    "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/region_role"
+  ]
+}

@@ -1,56 +1,64 @@
 {
   "title": "Privacy Policy",
-  "introduction": "",
+  "introduction": "This page describes file processing, ordinary website requests and the separate services used for support and editing. Local processing does not mean that visiting a website creates no network data.",
   "seoTitle": "Privacy Policy",
-  "seoDescription": "How filecompresser handles your files: browser-side processing, no uploads, what the third-party engines do and do not receive, and what we do not collect.",
-  "updated": "2026-11-21",
+  "seoDescription": "How FileCompresser handles selected files, browser memory, Cloudflare requests, support email and TinaCMS editor sessions. Automatic analytics is disabled.",
+  "updated": "2026-11-28",
   "sections": [
     {
-      "heading": "Where your files are processed",
+      "heading": "Selected files stay in the browser workflow",
       "body": [
-        "Every tool on this site runs in your browser. When you add a file, it is read into the memory of that browser tab and processed by code executing on your own device. The result is produced there too, and handed straight back to you as a download.",
-        "filecompresser does not operate an upload endpoint for these tools. Your files are not transmitted to us, and we have no copy of them. We also do not claim to delete your files after a period of time, because they never arrive anywhere for us to delete."
+        "The public tools read selected files into the browser tab and process them on your device. Results are created there and made available as downloads. FileCompresser has no file-upload endpoint for these tool operations and does not receive a copy of the selected file, its name or its processed output.",
+        "The browser still downloads the page, images, scripts and processing engines from the site. Those requests deliver program and website resources; they do not carry your selected file. This description concerns the reviewed application, not unrelated browser extensions, device software or external services you choose to use."
       ]
     },
     {
-      "heading": "What we can and cannot see",
+      "heading": "Temporary files, memory and downloads",
       "body": [
-        "Like any website, our hosting provider records standard web server logs — IP address, timestamp, requested URL, user agent — so the site can be delivered and protected from abuse. Those logs describe the request for a web page, not the contents of your file, because your file never travels with the request.",
-        "We do not collect file contents, filenames used in the tools, or the results of processing. We do not build a profile of what you compress."
+        "Inputs and results remain referenced in the tab while they are in the queue. Media engines also use an in-memory working filesystem during a job. The application removes its temporary working files and releases references when a job ends or you remove results, clear the queue or close the tab. The browser controls when memory is reclaimed. This is not a secure-erasure promise.",
+        "The application does not save selected tool files to localStorage, IndexedDB, cookies or the Cache API. A file that you choose to download is saved by your browser to your chosen device location; that copy remains until you delete it. A crash, reload or closed tab can make an unsaved result unavailable."
       ]
     },
     {
-      "heading": "Third-party code, not your data",
+      "heading": "Hosting and ordinary request data",
       "body": [
-        "Some tools download an open-source processing engine the first time you use them: a WebAssembly build of FFmpeg for video, audio and GIF work, and a Web Worker build of the image encoder. These are program files, served by this site, and they execute inside your browser tab.",
-        "The engines receive the selected file only inside your browser. This application contains no file-upload workflow.",
-        "The interface uses fonts available on your device. It does not request fonts from Google Fonts or another font service. Processing engines are served from this application when needed."
+        "Cloudflare delivers and protects this website. Ordinary website requests expose connection and request information, such as an IP address, requested URL, time and browser information, to the hosting service. Cloudflare may process network and security logs for delivery and abuse protection. These are separate from selected file contents.",
+        "This site does not promise a particular retention period for hosting logs. Provider handling depends on the relevant service and configuration. Read [Cloudflare’s Privacy Policy](https://www.cloudflare.com/privacypolicy/) for its own practices. Avoid including private information in a page URL."
       ]
     },
     {
-      "heading": "Browser storage",
+      "heading": "Engines, fonts and external links",
       "body": [
-        "While a tool is running, your file and its output exist as memory buffers in the browser tab, and as temporary Object URLs that make downloads possible. Results remain in the queue after downloading. Remove or clear them, or close the tab, to release their memory.",
-        "We do not write your files to localStorage, IndexedDB, the Cache API or cookies. Clearing your browser data is not necessary for your files, because none of them were persisted anywhere."
+        "Image workers and codecs, the FFmpeg media engine, PDF and ZIP code are served with the application. They run inside the browser. System fonts are used; the public interface does not fetch fonts from an external font service. Ordinary browser caching may retain website and engine code, rather than your selected tool files.",
+        "Guides can link to external documentation. Following a link visits another service under that service’s privacy practices. It does not authorize FileCompresser to upload your selected file."
       ]
     },
     {
       "heading": "Analytics and cookies",
       "body": [
-        "The public tool pages set no analytics cookies, no advertising cookies, and no tracking cookies. There is no third-party analytics script running on these pages.",
-        "The public tools use ordinary HTTP caching of the processing-engine files, which the browser may keep to avoid downloading the code again. That cache holds program code, not your selected files."
+        "Automatic Cloudflare analytics/RUM is disabled for this site. No custom tool-event collector, advertising tracker or third-party analytics script is configured for the public tools. The application does not use analytics or advertising cookies.",
+        "Browser and hosting security features can have their own storage or cookie behavior. Local file processing is separate from those features and from the administrator editor described below."
       ]
     },
     {
-      "heading": "Contacting support",
+      "heading": "Support email",
       "body": [
-        "The site has no file-upload contact form. If you email support, your message, email address and any attachments you choose to send are handled by our email provider, Zoho Mail, and the email services involved in delivery. This is separate from local tool processing. Please do not email private files."
+        "The contact page opens your email application; there is no contact form or support-file upload. If you email the configured support address, the message, sender details and any attachments you choose to send pass through the email services involved, including the configured Zoho Mail service. This is separate from tool processing. Please send a problem description rather than private files.",
+        "Support-email retention depends on mailbox administration and provider settings. This page does not promise an unverified deletion schedule. Contact support to ask about a message you have sent. See [Zoho’s Privacy Policy](https://www.zoho.com/privacy.html) for its service practices."
       ]
     },
     {
-      "heading": "Administrator accounts and editorial content",
+      "heading": "Administrator editor and published content",
       "body": [
-        "The separate /admin editor uses TinaCloud to authenticate authorized editors and save website content to our GitHub repository. Administrator account details, sign-in sessions and editorial content are handled by those services. Administrator sessions may use browser storage or cookies, and the editor provider may collect product-analytics data under its own privacy policy. Tool users do not need an account, and files selected in the public tools are not sent to the editor or repository."
+        "Authorized editors use the separate /admin area with TinaCloud and GitHub to manage website content. Those services handle editor account details, sign-in sessions and authored website records. Their sessions may use storage, cookies and provider analytics under their own policies. Public tool users do not need an editor account.",
+        "Editorial records saved to the website repository can become public after a successful production build. Editors should not put private information in content fields. Selected files in the public tools are not sent to TinaCloud or the repository. See [Tina’s Privacy Notice](https://tina.io/privacy-notice) and [GitHub’s Privacy Statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement)."
+      ]
+    },
+    {
+      "heading": "Your choices",
+      "body": [
+        "Remove results or clear the queue when you have finished. Close the tab when you no longer need unsaved work. Manage downloaded copies using your device’s file controls. Browser settings can restrict storage or network requests, although blocking required website resources may stop a tool from working.",
+        "For privacy questions, use the contact page. Do not include confidential file contents in an email or screenshot."
       ]
     },
     {
@@ -60,15 +68,15 @@
       ]
     },
     {
-      "heading": "Changes to this policy",
+      "heading": "Changes to this page",
       "body": [
-        "If this policy changes — for example if a tool ever needed server-side processing — the tool page would say so explicitly, and this page would be updated. A tool that stops running client-side would stop claiming that your files never leave your device."
+        "The date above records the last factual review. A change to file handling, hosting features or support practices should be reflected here and in the affected interface before it is described as current."
       ]
     },
     {
       "heading": "About this document",
       "body": [
-        "This policy describes the software on this site as it is actually built, rather than being copied from a template. It has not been reviewed by a qualified lawyer or a privacy professional. If you need advice about how a service like this complies with the law where you live, speak to a lawyer — the technical facts below are accurate, but the legal conclusions drawn from them depend on your situation."
+        "This page describes the product’s technical behavior and named service roles. It is not a legal compliance certification and has not been reviewed by a qualified lawyer. Contact details, business identity and jurisdiction-specific requirements need the operator’s legal review."
       ]
     }
   ],

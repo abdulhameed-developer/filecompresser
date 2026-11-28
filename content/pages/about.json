@@ -1,10 +1,10 @@
 {
-  "title": "Useful file tools.\nBuilt around your device.",
+  "title": "File tools that keep\nyou in control.",
   "label": "ABOUT FILECOMPRESSER",
-  "introduction": "Compress, convert and organize files in your browser. No account, upload queue or watermark between you and your result.",
-  "seoTitle": "About",
-  "seoDescription": "What filecompresser is, how browser-based processing works, what the tools genuinely do, and where their honest limits are.",
-  "updated": "2026-11-26",
+  "introduction": "FileCompresser brings everyday compression, conversion and ZIP tasks into your browser. Choose a tool, review its settings, and save a copy you have checked. No tool account or file upload is required.",
+  "seoTitle": "About FileCompresser — Browser-Based File Tools",
+  "seoDescription": "Meet FileCompresser: browser-based image, video, audio, PDF and ZIP tools, with local file processing, clear output sizes and practical limits.",
+  "updated": "2026-11-28",
   "introCta": {
     "label": "Choose your files",
     "href": "/#compress"
@@ -12,46 +12,78 @@
   "sections": [
     {
       "icon": "shield",
-      "heading": "Processing stays here",
+      "heading": "Your device processes the file",
       "body": [
-        "Your selected files are processed in this browser tab. The page and engine code are downloaded from the application."
+        "The website downloads its interface and processing code. Your selected file is read and processed inside the browser tab, rather than sent to a compression server. Public tools do not require an account."
       ],
       "placement": "card"
     },
     {
       "icon": "file",
-      "heading": "See the actual result",
+      "heading": "Actual bytes, clear outcomes",
       "body": [
-        "Original and output sizes are shown together. Already efficient files may not shrink; format changes can increase size."
+        "See input and output sizes together. Ordinary compression keeps an efficient original when no smaller result is found. A format conversion or new ZIP archive can be larger, and is labelled as a separate operation."
       ],
       "placement": "card"
     },
     {
       "icon": "check",
-      "heading": "Keep control of your files",
+      "heading": "Review before replacing",
       "body": [
-        "Review settings, cancel work and save the results you need. Keep originals until you have checked the download."
+        "Choose settings, cancel a run, compare supported image results and download the copies you need. Keep originals until you have opened and checked the output."
       ],
       "placement": "card"
     },
     {
-      "label": "PRACTICAL LIMITS",
-      "heading": "Your device does the work.",
+      "label": "THE TOOLKIT",
+      "heading": "Different files need different workflows.",
       "body": [
-        "Browser memory and processing speed vary. Each tool lists its input limits; very large or complex files may fail even within those limits. Media jobs have a five-minute processing limit.",
-        "Tools cover supported images, GIF, video, audio, PDF and ZIP workflows. Some formats are lossy; PDF optimization is structural and ZIP extraction supports a defined subset of archives."
+        "The tools cover JPG/JPEG, PNG and still WebP images; GIF palette optimization; supported MP4/MOV compression; WebM-to-MP4 conversion; MP3 re-encoding; WAV-to-MP3 conversion; PDF structural optimization; and ZIP creation or extraction. A mixed-file tool selects the matching workflow for supported inputs.",
+        "The browser uses image workers and encoders, FFmpeg WebAssembly for media, pdf-lib for PDFs and fflate for ZIP tasks. Code is loaded when needed. PDF image downsampling and image resizing are not offered."
       ],
       "links": [
         {
-          "label": "Explore formats and tools",
-          "href": "/sitemap"
+          "label": "Choose a tool",
+          "href": "/#tools"
         },
         {
-          "label": "Read the limitations",
-          "href": "/disclaimer"
+          "label": "Read the file guides",
+          "href": "/blog"
         }
       ],
       "placement": "detail"
+    },
+    {
+      "label": "PRACTICAL LIMITS",
+      "heading": "Useful results depend on the source.",
+      "body": [
+        "Each tool lists its accepted formats and input limit. Queues allow up to 500 files and 300 MiB in total. Browser memory, image dimensions, codec support and file complexity can prevent processing even below those limits. Media jobs have a five-minute processing limit.",
+        "Lossy encoding changes image or sound information. No fixed reduction, processing time or quality score is promised. The aim is a valid output with honest feedback, rather than a smaller number at any cost."
+      ],
+      "links": [
+        {
+          "label": "Understand processing limits",
+          "href": "/disclaimer"
+        },
+        {
+          "label": "Read the privacy details",
+          "href": "/privacy"
+        }
+      ],
+      "placement": "detail"
+    },
+    {
+      "heading": "Help us understand a problem",
+      "body": [
+        "Use the contact page for troubleshooting and the configured support email. Include the tool, browser, approximate input size and exact error. Keep private file contents out of messages and screenshots; the public tools have no support-file submission form."
+      ],
+      "links": [
+        {
+          "label": "Help and contact",
+          "href": "/contact"
+        }
+      ],
+      "placement": "text"
     }
   ],
   "support": {

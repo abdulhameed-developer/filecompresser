@@ -1,6 +1,7 @@
 import { suffixFilename, replaceExtension } from '../format'
 import type { CancelSignal, CompressionLevel, ImageInspection, ImageMode, ImageOutcome, OutputFormatOption, PngMode, ProcessedResult, ProgressCallback } from '../types'
 import { assertNotCancelled, listenForCancellation, ProcessingError } from '../types'
+import { parseImageTargetBytes } from '../image-settings'
 import { inspectImageHeader } from '../../workers/image-metadata.mjs'
 
 export type ImageFormat = 'jpeg' | 'png' | 'webp'
@@ -246,6 +247,16 @@ export async function compressImage(file: File, options: ImageCompressOptions = 
     }, onProgress, signal)
     assertNotCancelled(signal)
     if (!('blob' in result)) throw new ProcessingError('The image worker produced no encoded file.')
+    const targetActive = result.inspection.outputFormat === 'png'
+      ? options.pngMode === 'target' || !options.pngMode && mode === 'target'
+      : mode === 'target'
+    if (targetActive) {
+      const limit = parseImageTargetBytes(options.targetSize)
+      if (!limit || result.blob.size > limit) throw new ProcessingError('Target not met. The final file exceeds your maximum-byte limit. No result was saved. Choose another format or use a larger limit.', 'target-unreachable')
+      result.targetBytes = limit
+      result.outcome = 'target-met'
+    }
+
     const elapsedMs = Math.max(0, Math.round(performance.now() - started))
     const format = result.inspection.outputFormat as ImageFormat
     const ext = format === 'jpeg' ? 'jpg' : format

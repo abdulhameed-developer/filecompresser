@@ -1,0 +1,26 @@
+{
+  "recordedAt": "2026-11-28T14:02:55.850830+00:00",
+  "originalFailedGate": ".qa-results/phase3/ui/m-capacity-native/report.json",
+  "causalTrace": ".qa-results/phase3/ui/m-article-image-abort-trace/report.json",
+  "matchedControl": ".qa-results/phase3/ui/m-article-image-abort-trace-v2/report.json",
+  "cause": "Changing viewport selected a new eager hero srcset candidate in the departing document immediately before the helper navigated. All three reproduced canceled image requests use the old loader ID, distinct from the new document. Prior-width heroes were complete and valid.",
+  "correction": "Native two-frame layout settlement and decoding of actual eager/visible images after resize, followed by network readiness before intentional navigation; additional network readiness after article capture. No failed GET condition is ignored.",
+  "originalHelperSha256": "0118312565f8e3ed6a8c9571d346f0237353043aa395cf029c6a0cb4ec489d97",
+  "correctedHelperSha256": "9ad1a089c6dc47917b739744e37495b2b14a221430f2dad152fb7b2356f6d1dd",
+  "sameAssertions": "All capacity text, exact-byte, real-download decoding/pixels, target bounds/no-padding, layout, page-error, ordinary GET failure, source/home identity and expected case-count assertions remain unchanged.",
+  "sourceChanges": "NONE: private QA helper only",
+  "status": "MATCHED12CASE_CONTROL_AND_FULL_FOCUSED_RERUN_PASS",
+  "freshRerunDriver": {
+    "startedAt": "2026-11-28T14:02:56.244613+00:00",
+    "driverPid": 166517,
+    "base": "http://127.0.0.1:3350",
+    "output": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/m-capacity-native-v2",
+    "expectedHome": "f46f733452e0169f0c3f12f4bcb9faaa89da828ff6a074ad28d3ca5927aa5aab",
+    "scriptSha256Before": "9ad1a089c6dc47917b739744e37495b2b14a221430f2dad152fb7b2356f6d1dd",
+    "status": "PASS",
+    "nodePid": 166519,
+    "nodeReturnCode": 0,
+    "scriptSha256After": "9ad1a089c6dc47917b739744e37495b2b14a221430f2dad152fb7b2356f6d1dd",
+    "finishedAt": "2026-11-28T14:04:20.594436+00:00"
+  }
+}

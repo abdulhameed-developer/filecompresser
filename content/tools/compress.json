@@ -1,26 +1,26 @@
 {
   "heading": "Compress Any File Online Without Uploading",
-  "introduction": "Working with different file formats can become time-consuming when you need to use separate applications for every task. You may have photographs to optimize, videos to reduce, audio recordings to convert or PDF documents to prepare for sharing. Managing these files individually can take extra time, especially when you have several files to process.\n\nFile Compresser makes this process easier with its Compress Any File tool. It allows you to select multiple supported file types in one place and automatically choose the appropriate processing method for each file. You do not need to identify the correct compression engine or move between different applications for every format.\n\nThe tool supports common image, video, audio, GIF, PDF and ZIP formats. All selected files are processed directly in your browser, so you do not need to upload your personal documents or media to an external server.",
+  "introduction": "Process a mixed batch of supported images, GIFs, videos, audio, PDFs and ZIP files on your device. Each file uses its matching workflow: WAV becomes MP3, ZIP inputs are extracted, and the other formats use their supported compression settings.",
   "sections": [
     {
       "heading": "What Is the Compress Any File Tool?",
-      "body": "Compress Any File is a browser-based file processing tool that recognizes supported file formats and applies the relevant workflow. Instead of asking you to select an individual compressor for every file, it identifies the file type and prepares the appropriate operation.\n\nFor example, a JPG image follows an image compression process, while an MP4 video uses the video processing engine. A WAV recording can be converted into MP3, and a PDF can go through structural optimization.\n\nZIP files follow a different process. When you add a ZIP archive to this tool, its contents are extracted rather than compressed again. This distinction is important because extraction and compression are two separate file operations.\n\nThe tool is useful when you have a mixed collection of supported files and want to manage them from one interface.\n"
+      "body": "Compress Any File is a browser-based file processing tool that recognizes supported file formats and applies the relevant workflow. Instead of asking you to select an individual compressor for every file, it identifies the file type and prepares the appropriate operation.\n\nFor example, a JPG image follows an image compression process, while an MP4 video uses the video processing engine. A WAV recording can be converted into MP3, and a PDF can go through structural optimization.\n\nZIP files follow a different process. When you add a ZIP archive to this tool, its contents are extracted rather than compressed again. This distinction is important because extraction and compression are two separate file operations.\n\nThe tool is useful when you have a mixed collection of supported files and want to manage them from one interface."
     },
     {
       "heading": "Which File Formats Can You Process?",
-      "body": "File Compresser supports several commonly used formats. Each format has its own processing method and limitations.\n"
+      "body": "FileCompresser supports several commonly used formats. Each format has its own processing method and limitations."
     },
     {
       "heading": "Image Files",
-      "body": "You can add JPG, JPEG, PNG and WebP images. These formats are commonly used for website photographs, product pictures, graphics, screenshots and digital designs. The image processing workflow offers quality and format options where supported. Original image dimensions are maintained.\n"
+      "body": "You can add JPG, JPEG, PNG and WebP images. These formats are commonly used for website photographs, product pictures, graphics, screenshots and digital designs. The image processing workflow offers quality and format options where supported. Original image dimensions are maintained."
     },
     {
       "heading": "GIF Files",
-      "body": "Animated GIFs can contain many frames and colors, which may increase their file size. The GIF workflow attempts to reduce the color palette while checking animation properties such as frame timing, dimensions and looping.\n"
+      "body": "Animated GIFs can contain many frames and colors, which may increase their file size. The GIF workflow attempts to reduce the color palette while checking animation properties such as frame timing, dimensions and looping."
     },
     {
       "heading": "Video Files",
-      "body": "Supported video inputs include MP4 and MOV. The video workflow converts compatible files into MP4 using H.264 video encoding and AAC audio when the source contains audio.\n"
+      "body": "Supported video inputs include MP4 and MOV. The video workflow converts compatible files into MP4 using H.264 video encoding and AAC audio when the source contains audio."
     },
     {
       "heading": "Audio Files",
@@ -36,23 +36,23 @@
     },
     {
       "heading": "How to Compress Multiple Files Online",
-      "body": "Using the Compress Any File tool does not require advanced technical knowledge. Follow these steps:\n\n1. Open the Compress Any File page on File Compresser.\n2. Select files from your computer or drag them into the upload area.\n3. Wait while the website checks the supported formats and file limits.\n4. Review the available settings for your selected files.\n5. Start processing and allow the browser to complete the task.\n6. Compare the original and processed file sizes.\n7. Download the individual results or a supported batch.\n\nYou can use the same queue for different supported file types. However, each file still follows its own processing method, and the available controls depend on its format.\n"
+      "body": "Using the Compress Any File tool does not require advanced technical knowledge. Follow these steps:\n\n1. Open the Compress Any File page on FileCompresser.\n2. Select files from your computer or drag them into the upload area.\n3. Wait while the website checks the supported formats and file limits.\n4. Review the available settings for your selected files.\n5. Start processing and allow the browser to complete the task.\n6. Compare the original and processed file sizes.\n7. Download the individual results or a supported batch.\n\nYou can use the same queue for different supported file types. However, each file still follows its own processing method, and the available controls depend on its format."
     },
     {
       "heading": "Why Use a Browser-Based File Compressor?",
-      "body": "A browser-based file compressor provides a convenient way to manage files without installing additional software. You can open the website, select your files and complete the task using your existing browser.\n\nOther useful features include:\n\n- No account or registration required.\n- No software installation.\n- No added watermarks.\n- Support for multiple file formats.\n- Actual file size comparisons.\n- Individual and supported batch downloads.\n- Automatic selection of the appropriate processing workflow.\n\nThe queue supports up to 500 files and 300 MB in total. The maximum individual file size depends on the selected processing tool. Browser memory and device performance can also affect the processing time.\n"
+      "body": "A browser-based file compressor provides a convenient way to manage files without installing additional software. You can open the website, select your files and complete the task using your existing browser.\n\nOther useful features include:\n\n- No account or registration required.\n- No software installation.\n- No added watermarks.\n- Support for multiple file formats.\n- Actual file size comparisons.\n- Individual and supported batch downloads.\n- Automatic selection of the appropriate processing workflow.\n\nThe queue supports up to 500 files and 300 MiB in total. The maximum individual file size depends on the selected processing tool. Browser memory and device performance can also affect the processing time."
     },
     {
       "heading": "How Much Can You Reduce File Size?",
-      "body": "There is no fixed percentage that applies to every file. The result depends on the original format, existing compression, file contents and selected settings. For example, an image that has already been optimized may not become smaller after another compression attempt. Similarly, a PDF containing compressed images may have very little removable data.\n\nThe website checks the actual output rather than displaying an estimated saving. If ordinary same-format compression does not create a smaller file, the original is retained unchanged. Format conversion and ZIP creation are different operations. They can sometimes produce a larger output, so always compare the actual file sizes.\n"
+      "body": "There is no fixed percentage that applies to every file. The result depends on the original format, existing compression, file contents and selected settings. For example, an image that has already been optimized may not become smaller after another compression attempt. Similarly, a PDF containing compressed images may have very little removable data.\n\nThe website checks the actual output rather than displaying an estimated saving. If ordinary same-format compression does not create a smaller file, the original is retained unchanged. Format conversion and ZIP creation are different operations. They can sometimes produce a larger output, so always compare the actual file sizes."
     },
     {
       "heading": "Keep Your Files Private During Processing",
-      "body": "File Compresser handles selected files inside the browser. Your device performs the processing, and the files are not sent to the website's servers."
+      "body": "FileCompresser handles selected files inside the browser. Your device performs the processing, and the files are not sent to the website's servers."
     },
     {
       "heading": "Process Your Files with One Tool",
-      "body": "You do not need to open a separate application for every supported file format. File Compresser's Compress Any File tool brings common file processing tasks together in one place."
+      "body": "You do not need to open a separate application for every supported file format. FileCompresser's Compress Any File tool brings common file processing tasks together in one place."
     }
   ],
   "links": [
@@ -68,29 +68,30 @@
   "faq": [
     {
       "q": "Can I compress multiple files at once?",
-      "a": "Yes. You can add supported files to the same queue. The website identifies each format and applies its corresponding workflow.\n"
+      "a": "Yes. You can add supported files to the same queue. The website identifies each format and applies its corresponding workflow."
     },
     {
       "q": "Is Compress Any File free?",
-      "a": "Yes. You can use the available tool without creating an account or paying a subscription.\n"
+      "a": "Yes. You can use the available tool without creating an account or paying a subscription."
     },
     {
       "q": "Does the tool support every file format?",
-      "a": "No. It supports the formats listed on the upload area, including JPG, JPEG, PNG, WebP, GIF, MP4, MOV, MP3, WAV, PDF and ZIP.\n"
+      "a": "No. It supports the formats listed on the upload area, including JPG, JPEG, PNG, WebP, GIF, MP4, MOV, MP3, WAV, PDF and ZIP."
     },
     {
       "q": "Are my files uploaded to a server?",
-      "a": "No. File processing takes place in your browser on your device.\n"
+      "a": "No. File processing takes place in your browser on your device."
     },
     {
       "q": "Why did my file remain the same size?",
-      "a": "Some files are already optimized, so another compression attempt may not produce a smaller result. In such cases, the original is retained.\n"
+      "a": "Some files are already optimized, so another compression attempt may not produce a smaller result. In such cases, the original is retained."
     },
     {
       "q": "Can I download files separately?",
-      "a": "Yes. The tool provides individual results and supported batch downloads.\n"
+      "a": "Yes. The tool provides individual results and supported batch downloads."
     }
   ],
   "seoTitle": "Compress Any File Online Free Without Uploading",
-  "seoDescription": "Compress files online for free, including images, videos, audio, PDFs and ZIP files. Process multiple file types privately in your browser."
+  "seoDescription": "Compress files online for free, including images, videos, audio, PDFs and ZIP files. Process multiple file types privately in your browser.",
+  "faqMode": "custom"
 }

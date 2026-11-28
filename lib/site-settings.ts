@@ -1,6 +1,8 @@
 /** Build-time settings only. Keep this module out of Client Components. */
 import { existsSync, readFileSync } from 'node:fs'
 import path from 'node:path'
+import { assertEditorialVocabulary } from './editorial-vocabulary.mjs'
+import { safeSiteProfileHref, safeSocialImagePath, siteIdentityText } from './editorial-constraints.mjs'
 
 export interface SiteSettings {
   siteName: string
@@ -31,35 +33,15 @@ export function parseSupportEmail(value: unknown): string | undefined {
   return `${local}@${domain.toLowerCase()}`
 }
 
-function text(value: unknown, key: string, maximum = 250): string {
-  if (typeof value !== 'string' || !value.trim() || value.length > maximum || /[\u0000-\u001f]/.test(value)) {
-    throw new Error(`Invalid site setting ${key}: enter plain text up to ${maximum} characters.`)
-  }
-  return value.trim()
-}
-
-export function parseSocialImage(value: unknown): string {
-  if (typeof value !== 'string' || !value.startsWith('/') || value.startsWith('//') || /[\\?#%\s]/.test(value) || value.split('/').some(part => part === '.' || part === '..')) {
-    throw new Error('Invalid site setting socialImage: use an image path on this site.')
-  }
-  if (value !== '/opengraph-image' && !/^\/(?:uploads|blog)\/[a-zA-Z0-9_./-]+\.(?:png|jpe?g|webp|avif|gif)$/i.test(value)) {
-    throw new Error('Invalid site setting socialImage: use /opengraph-image or an image in /uploads/ or /blog/.')
-  }
-  return value
-}
+const text = siteIdentityText
+export const parseSocialImage = safeSocialImagePath
 
 export function parseSiteSettings(value: unknown): SiteSettings {
   if (!value || typeof value !== 'object' || Array.isArray(value)) throw new Error('Site settings must be a JSON object.')
   const input = value as Record<string, unknown>
-  if (typeof input.titleSuffix === 'string' && input.titleSuffix.includes('%')) throw new Error('Site titleSuffix is plain brand text, not a template.')
+  assertEditorialVocabulary(input, 'settings/site')
   if (input.sameAs !== undefined && !Array.isArray(input.sameAs)) throw new Error('Site sameAs must be a list of verified profile URLs.')
-  const sameAs = ((input.sameAs ?? []) as unknown[]).map(value => {
-    if (typeof value !== 'string') throw new Error('Site profiles must be HTTPS URLs.')
-    let url: URL
-    try { url = new URL(value) } catch { throw new Error('Site profiles must be HTTPS URLs.') }
-    if (url.protocol !== 'https:' || url.username || url.password) throw new Error('Site profiles must be HTTPS URLs without credentials.')
-    return url.href
-  })
+  const sameAs = ((input.sameAs ?? []) as unknown[]).map(safeSiteProfileHref)
   // Deliberately select editorial fields. Canonical origins, indexing, provider
   // credentials and verification values are never read from CMS content.
   return {

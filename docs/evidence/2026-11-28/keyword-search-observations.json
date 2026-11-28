@@ -1,0 +1,217 @@
+{
+  "checkedDate": "2026-11-28",
+  "source": "web search tool, public web results; not a logged-in Google rank export",
+  "positionScope": "Result order is discovery order only. No Google country/device rank, difficulty or demand inferred.",
+  "queries": [
+    {
+      "query": "online image compressor",
+      "pages": [
+        {
+          "title": "Lean Image — Free Online Image Compressor | WebP, AVIF, PNG, JPEG",
+          "url": "https://www.leanimage.com/"
+        },
+        {
+          "title": "MiniPx — Free Image Compressor | Compress & Convert",
+          "url": "https://minipx.com/"
+        },
+        {
+          "title": "Free Image Compressor - Reduce Photo File Size | Compress & Resize",
+          "url": "https://www.compressandresize.com/"
+        },
+        {
+          "title": "Compress Image – Free Online Image Compressor | TinyPNG",
+          "url": "https://tinypng.com/compress"
+        }
+      ]
+    },
+    {
+      "query": "JPG compressor JPEG compressor",
+      "pages": [
+        {
+          "title": "JPEG Compressor: Compress JPEG Images Online Free",
+          "url": "https://compressorjpeg.com/"
+        },
+        {
+          "title": "JPEG Compressor: Compress .jpeg Images Online and Keep Them Sharp",
+          "url": "https://www.ioduke.com/tools/image/compressor/jpeg"
+        },
+        {
+          "title": "JPG Compressor – Compress JPEG Photos Online, No Upload",
+          "url": "https://helpmejpg.com/tools/jpg-compressor"
+        },
+        {
+          "title": "Free JPG Compressor & PDF Optimizer | SqueezeJPG",
+          "url": "https://www.squeezejpg.com/"
+        }
+      ]
+    },
+    {
+      "query": "WebP compressor",
+      "pages": [
+        {
+          "title": "WebP Compressor — Compress WebP Online | PicTransit",
+          "url": "https://pictransit.com/compress-webp"
+        },
+        {
+          "title": "Compress WebP – Free Online Image Compressor | TinyPNG",
+          "url": "https://tinypng.com/compress/webp"
+        },
+        {
+          "title": "WebP Compressor | Pixel Adapt",
+          "url": "https://nobeware.com/pixel-adapt/webp-compressor/"
+        },
+        {
+          "title": "GitHub - shufflethis/webp-crusher: Browser-based batch image compressor — crush JPG, PNG, GIF & more into sub-100 KB WebP files. Client-side, no upload, ZIP download. · GitHub",
+          "url": "https://github.com/shufflethis/webp-crusher"
+        }
+      ]
+    },
+    {
+      "query": "online video compressor compress MP4",
+      "pages": [
+        {
+          "title": "Free Online Video Compressor — No Uploads, No Sign-Up | ScreencastKit",
+          "url": "https://screencastkit.com/tools/video-compressor/"
+        },
+        {
+          "title": "Free Online Video Compressor — No Upload, No Watermark",
+          "url": "https://videocompress.free/"
+        },
+        {
+          "title": "Free Video Compressor for MP4 or Any Format | SquishyFile",
+          "url": "https://squishyfile.com/"
+        },
+        {
+          "title": "Video Compressor – Shrink MP4 Files Online Free | ToolBox",
+          "url": "https://toolbox-online.app/tools/video-audio/video-compressor"
+        }
+      ]
+    },
+    {
+      "query": "WebM to MP4",
+      "pages": [
+        {
+          "title": "WebM to MP4 Converter, Free & No Upload | nod",
+          "url": "https://jusnod.com/tools/webm-to-mp4"
+        },
+        {
+          "title": "WebM to MP4 Converter Free, No Upload or Signup | ConvertWarp",
+          "url": "https://convertwarp.com/tools/webm-to-mp4"
+        },
+        {
+          "title": "WebM to MP4 converter: free, in your browser · Clyper",
+          "url": "https://www.clyper.io/tools/webm-to-mp4"
+        },
+        {
+          "title": "WebM to MP4 converter: free, online, no upload | Formatomat",
+          "url": "https://formatomat.com/en/webm-to-mp4/"
+        }
+      ]
+    },
+    {
+      "query": "compress PDF",
+      "pages": [
+        {
+          "title": "Acrobat DC",
+          "url": "https://helpx.adobe.com/content/dam/help/en/pdf/acrobat_reference.pdf?as_campaign=prodesigntools&as_camptype=&as_channel=affiliate&as_source=partnerize&clickref=&mv=affiliate&mv2=pz"
+        },
+        {
+          "title": "# Compress PDFs",
+          "url": "https://help.nchsoftware.com/help/en/pixillion/windowsstore/help.pdf"
+        },
+        {
+          "title": "Compress PDF: Reduce PDF File Size with Free Compressor",
+          "url": "https://smallpdf.com/compress-pdf"
+        },
+        {
+          "title": "ADOBE® ACROBAT®  %$ HELP",
+          "url": "https://helpx.adobe.com/en/pdf/acrobat_reference.pdf"
+        }
+      ]
+    },
+    {
+      "query": "MP3 compressor audio compression",
+      "pages": [
+        {
+          "title": "Compressor User Guide",
+          "url": "https://help.apple.com/pdf/compressor/en_US/compressor-user-guide.pdf"
+        },
+        {
+          "title": "Audio Compressor | Reduce MP3 and Audio File Size | RAON Tools",
+          "url": "https://raontools.com/audio-compressor"
+        },
+        {
+          "title": "MP3 Compressor — Compress MP3 & Shrink Size | AudioUtils",
+          "url": "https://audioutils.com/compress-mp3"
+        },
+        {
+          "title": "Audio Compressor | SoundSlicr",
+          "url": "https://www.soundslicr.com/audio-compressor"
+        }
+      ]
+    },
+    {
+      "query": "WAV to MP3",
+      "pages": [
+        {
+          "title": "WAV to MP3 converter, free and private | Open Media Toolkit",
+          "url": "https://openmediatoolkit.com/wav-to-mp3"
+        },
+        {
+          "title": "Audio Converter | WAV to MP3 & MP3 to WAV | mp3tools.io",
+          "url": "https://mp3tools.io/audio-converter"
+        },
+        {
+          "title": "WAV to MP3 Converter: Free, Online, No Upload | AudioRinse",
+          "url": "https://audiorinse.com/wav-to-mp3"
+        },
+        {
+          "title": "Audio Converter: M4A, WAV, FLAC to MP3 Online, No Upload | VoiceSmiths",
+          "url": "https://voicesmiths.com/en/audio-converter"
+        }
+      ]
+    },
+    {
+      "query": "create ZIP online extract ZIP online",
+      "pages": [
+        {
+          "title": "Unzip Files Online: Open ZIP & Create ZIP Free | GustKit",
+          "url": "https://www.gustkit.com/unzip-files/"
+        },
+        {
+          "title": "Zip & Unzip Files Online — Free, Private, In Your Browser",
+          "url": "https://tools.katlab.dev/zip/"
+        },
+        {
+          "title": "Create and Extract ZIP Files Online — Free | UsefulVerse",
+          "url": "https://usefulverse.com/tools/zip-archive-tool/"
+        },
+        {
+          "title": "ZIP Extractor & Creator — Open and Make ZIP Files Online",
+          "url": "https://www.openworkstand.com/zip-extractor"
+        }
+      ]
+    },
+    {
+      "query": "GIF compressor",
+      "pages": [
+        {
+          "title": "GIF Compressor – Reduce GIF Size Online Free | GIFCompact",
+          "url": "https://gifcompact.com/"
+        },
+        {
+          "title": "GIF Compressor — Free, No Watermark | DropGIF",
+          "url": "https://www.dropgif.com/gif-compressor"
+        },
+        {
+          "title": "GIF Compressor — Free, Private, No Upload | ToolQuiet",
+          "url": "https://toolquiet.com/gif-compressor/"
+        },
+        {
+          "title": "GIF Compressor & Resizer – Free, In Your Browser | GifWrench",
+          "url": "https://gifwrench.com/"
+        }
+      ]
+    }
+  ]
+}

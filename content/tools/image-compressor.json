@@ -1,34 +1,34 @@
 {
-  "heading": "  Image Compressor Online for Smaller Image Files",
-  "introduction": "Use this tool to make JPG, JPEG, PNG and WebP images smaller. Choose a quality mode, compare the original and new sizes, and download the result.\n\nAn image compressor helps reduce the amount of data stored in an image file. This makes photographs and graphics easier to manage while allowing you to maintain suitable visual quality for their intended use.\n\nFile Compresser provides a free online image compressor for JPG, JPEG, PNG and WebP images. You can select images from your device, choose a suitable quality mode and compare the original file with the processed version. The tool works directly in your browser, so your selected images are not uploaded to the website's servers.\n",
+  "heading": "Image Compressor Online for Smaller Image Files",
+  "introduction": "Compress JPG, JPEG, PNG and still WebP images in your browser. Keep the original display dimensions, choose a quality mode or maximum-byte target, and compare the actual output before downloading.",
   "sections": [
     {
       "heading": "What Is an Image Compressor?",
-      "body": "An image compressor is a tool that reduces an image's file size by changing how its data is stored. Depending on the image format and selected method, it may remove unnecessary information, adjust image quality or reduce the number of colors.\n\nThe purpose is to create a file that is easier to upload, download, store or display online. File Compresser supports several common image formats, each with different characteristics.\n"
+      "body": "An image compressor is a tool that reduces an image's file size by changing how its data is stored. Depending on the image format and selected method, it may remove unnecessary information, adjust image quality or reduce the number of colors.\n\nThe purpose is to create a file that is easier to upload, download, store or display online. FileCompresser supports several common image formats, each with different characteristics."
     },
     {
       "heading": "JPG and JPEG Images",
-      "body": "JPG and JPEG are widely used for photographs. They are suitable for product pictures, personal photographs, travel images and many website graphics. The compression process uses quality settings to balance file size and visible detail. Lower quality settings can produce smaller files, but they may also create visible artifacts around edges, textures and small text.\n"
+      "body": "JPG and JPEG are widely used for photographs. They are suitable for product pictures, personal photographs, travel images and many website graphics. The compression process uses quality settings to balance file size and visible detail. Lower quality settings can produce smaller files, but they may also create visible artifacts around edges, textures and small text."
     },
     {
       "heading": "PNG Images",
-      "body": "PNG is commonly used for logos, screenshots, diagrams and graphics that need transparent backgrounds. Unlike JPG, PNG can preserve transparency. File Compresser provides separate PNG modes, including Lossless, Smart, Maximum and Target size. The selected mode determines whether decoded pixels are preserved or colors may be reduced to create a smaller file.\n"
+      "body": "PNG is commonly used for logos, screenshots, diagrams and graphics that need transparent backgrounds. Unlike JPG, PNG can preserve transparency. FileCompresser provides separate PNG modes, including Lossless, Smart, Maximum and Target size. The selected mode determines whether decoded pixels are preserved or colors may be reduced to create a smaller file."
     },
     {
       "heading": "WebP Images",
-      "body": "WebP is an image format designed for web use. It supports lossy and lossless compression, as well as transparency. It can be useful for website photographs and graphics where smaller downloads are important. However, an existing WebP image may already be optimized, so further compression does not always create a smaller result.\n"
+      "body": "WebP is an image format designed for web use. It supports lossy and lossless compression, as well as transparency. It can be useful for website photographs and graphics where smaller downloads are important. However, an existing WebP image may already be optimized, so further compression does not always create a smaller result."
     },
     {
       "heading": "How to Compress Images Online",
-      "body": "You can use File Compresser without installing an image editing application.\n\n1. Select JPG, JPEG, PNG or WebP images from your device.\n2. Wait for the website to validate the selected files.\n3. Open Settings to choose a compression mode or output format.\n4. Start processing.\n5. Compare the original and final image sizes.\n6. Inspect the image quality and download the result.\n\nOriginal image dimensions are preserved."
+      "body": "You can use FileCompresser without installing an image editing application.\n\n1. Select JPG, JPEG, PNG or WebP images from your device.\n2. Wait for the website to validate the selected files.\n3. Open Settings to choose a compression mode or output format.\n4. Start processing.\n5. Compare the original and final image sizes.\n6. Inspect the image quality and download the result.\n\nOriginal image dimensions are preserved."
     },
     {
       "heading": "Choose the Right Compression Mode",
-      "body": "Selecting the right quality mode is important because different images have different requirements.\n"
+      "body": "Selecting the right quality mode is important because different images have different requirements."
     },
     {
       "heading": "Maximum",
-      "body": "Maximum is an optional stronger compression mode. It applies a greater quality trade-off to reduce file size. For JPEG and WebP, this can affect visible image detail.\n"
+      "body": "Maximum is an optional stronger compression mode. It applies a greater quality trade-off to reduce file size. For JPEG and WebP, this can affect visible image detail."
     },
     {
       "heading": "Balanced",
@@ -36,15 +36,15 @@
     },
     {
       "heading": "High Quality",
-      "body": "High Quality prioritizes more visual detail. The output may be larger than a result created with a stronger compression setting.\n"
+      "body": "High Quality prioritizes more visual detail. The output may be larger than a result created with a stronger compression setting."
     },
     {
       "heading": "PNG Lossless",
-      "body": "PNG starts in Lossless mode, which preserves decoded image pixels and transparency. Choose Smart, Maximum or Target size explicitly when color reduction is acceptable.\n"
+      "body": "PNG starts in Lossless mode, which preserves decoded image pixels and transparency. Choose Smart, Maximum or Target size explicitly when color reduction is acceptable."
     },
     {
       "heading": "Target Size",
-      "body": "Target Size attempts to create an image within a specified maximum file size. It checks the actual output bytes rather than simply estimating the result. If the requested size cannot be achieved, the tool reports that the target was not met.\n"
+      "body": "Target Size attempts to create an image within a specified maximum file size. It checks the actual output bytes rather than simply estimating the result. If the requested size cannot be achieved, the tool reports that the target was not met."
     },
     {
       "heading": "Why Should You Compress Images for Websites?",
@@ -52,19 +52,19 @@
     },
     {
       "heading": "Are Image Dimensions Preserved?",
-      "body": "Image compression changes how image information is encoded while preserving the displayed pixel dimensions. File Compresser does not offer image resizing.\n\nIf your website needs a different image width or height, prepare those dimensions in an image editor before compression. Keep the full-size original for printing and future editing."
+      "body": "Image compression changes how image information is encoded while preserving the displayed pixel dimensions. FileCompresser does not offer image resizing.\n\nIf your website needs a different image width or height, prepare those dimensions in an image editor before compression. Keep the full-size original for printing and future editing."
     },
     {
       "heading": "Do Compressed Images Lose Quality?",
-      "body": "The answer depends on the selected format and compression method. JPEG and WebP lossy encoding can change image pixels. The difference may be difficult to notice at moderate settings, but stronger compression can affect fine details, gradients and text.\n\nPNG Lossless preserves decoded pixels, while other PNG modes may reduce colors. Transparency can be preserved even when color information changes. Before replacing an original, compare both versions at the same display scale. Pay attention to small lettering, sharp edges, product details and transparent areas.\n"
+      "body": "The answer depends on the selected format and compression method. JPEG and WebP lossy encoding can change image pixels. The difference may be difficult to notice at moderate settings, but stronger compression can affect fine details, gradients and text.\n\nPNG Lossless preserves decoded pixels, while other PNG modes may reduce colors. Transparency can be preserved even when color information changes. Before replacing an original, compare both versions at the same display scale. Pay attention to small lettering, sharp edges, product details and transparent areas."
     },
     {
       "heading": "Private Image Processing in Your Browser",
-      "body": "File Compresser processes selected images directly on your device. The website does not upload them to its servers for compression.\n"
+      "body": "Selected images are processed in your browser rather than uploaded to a compression server. Each image can be up to 50 MiB and 32 megapixels. Queues allow up to 500 files and 300 MiB in total. Browser memory can still limit processing below these bounds. Keep a source copy before trying a new encoding."
     },
     {
       "heading": "Compress Images for Everyday Use",
-      "body": "Whether you manage an online store, publish blog articles or simply need smaller photographs for sharing, image compression can make file management easier. File Compresser gives you format-specific options for JPG, JPEG, PNG and WebP images. Select your files, choose a suitable mode and compare the output before downloading.\n"
+      "body": "Whether you manage an online store, publish blog articles or simply need smaller photographs for sharing, image compression can make file management easier. FileCompresser gives you format-specific options for JPG, JPEG, PNG and WebP images. Select your files, choose a suitable mode and compare the output before downloading."
     }
   ],
   "links": [
@@ -80,29 +80,30 @@
   "faq": [
     {
       "q": "Is this image compressor free?",
-      "a": "Yes. You can use the online image compression tool without registration or a paid subscription.\n"
+      "a": "Yes. You can use the online image compression tool without registration or a paid subscription."
     },
     {
       "q": "Which image formats are supported?",
-      "a": "The tool supports JPG, JPEG, PNG and WebP still images.\n"
+      "a": "The tool supports JPG, JPEG, PNG and WebP still images."
     },
     {
       "q": "Will image dimensions change?",
-      "a": "No. Original display dimensions are preserved. Image resizing is not offered.\n"
+      "a": "No. Original display dimensions are preserved. Image resizing is not offered."
     },
     {
       "q": "Can I compress PNG images without losing transparency?",
-      "a": "Yes. The PNG workflow is designed to preserve transparency. Lossless mode also preserves decoded pixels.\n"
+      "a": "Yes. The PNG workflow is designed to preserve transparency. Lossless mode also preserves decoded pixels."
     },
     {
       "q": "Why is my image not getting smaller?",
-      "a": "Your image may already be optimized. The tool retains the original when an ordinary same-format compression attempt does not produce a smaller suitable file.\n"
+      "a": "Your image may already be optimized. The tool retains the original when an ordinary same-format compression attempt does not produce a smaller suitable file."
     },
     {
       "q": "Are my images uploaded?",
-      "a": "No. Image processing runs directly in your browser using your device.\n"
+      "a": "No. Image processing runs directly in your browser using your device."
     }
   ],
   "seoTitle": "Free Image Compressor Online for JPG, PNG & WebP",
-  "seoDescription": "Compress JPG, PNG and WebP images online for free. Reduce image file size, adjust quality and keep your files private in your browser."
+  "seoDescription": "Compress JPG, PNG and WebP images online for free. Reduce image file size, adjust quality and keep your files private in your browser.",
+  "faqMode": "custom"
 }

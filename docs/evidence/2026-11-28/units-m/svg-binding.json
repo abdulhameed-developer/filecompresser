@@ -1,0 +1,42 @@
+{
+  "recordedAt": "2026-11-28T14:07:38.049Z",
+  "scope": "Actual K/M exported authored SVG markup and public stylesheet byte identity. This binds the existing manual51paint/backing contrast review to unchanged M illustrations; it does not relabel automated axe incompletes or claim old/new geometry identity.",
+  "figures": [
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "sha256": "e40a81b28f6a92dcc251083ce604c3647619d9d4c33e03a47fb67c3416d00db0",
+      "textNodes": 11,
+      "actualSvgMarkupIdentical": true
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "sha256": "eab5aa7d3569faced70740bfea0e915dc3663e21b34b83c7ab411ea041ac7ece",
+      "textNodes": 15,
+      "actualSvgMarkupIdentical": true
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "sha256": "af45c3ebfa3bb877e84ef90c1862bf6f90ba199c19a29eae51123fcd5bb73ba0",
+      "textNodes": 13,
+      "actualSvgMarkupIdentical": true
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "sha256": "c68acb03c97bb2e124ffcb14a73e0d0688e6a011f50a86a6c7ff974e33f85258",
+      "textNodes": 12,
+      "actualSvgMarkupIdentical": true
+    }
+  ],
+  "status": "PASS_IDENTICAL_AUTHORED_SVG_AND_CSS",
+  "cssContentHashes": [
+    {
+      "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43",
+      "bytes": 43855
+    },
+    {
+      "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1",
+      "bytes": 57776
+    }
+  ],
+  "originalManual": "docs/evidence/2026-11-28/svg-review-k/report.json"
+}

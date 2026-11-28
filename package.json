@@ -21,6 +21,7 @@
     "deploy:check": "node scripts/check-codec-release.mjs && node scripts/check-source-secrets.mjs && npm run audit:dependencies && npm run lint && npm run typecheck && npm test && npm run build:cms && npm run typecheck && npm run check:public && npm run check:export && node scripts/package-site.mjs",
     "check:cms-security": "node scripts/cms-security.mjs --verify",
     "check:cms-inputs": "node scripts/check-cms-inputs.mjs",
+    "check:editorial": "node scripts/check-editorial.mjs",
     "audit:dependencies": "node scripts/audit-dependencies.mjs",
     "check:export": "node scripts/check-export.mjs"
   },

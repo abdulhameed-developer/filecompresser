@@ -1,0 +1,204 @@
+{
+  "recordedAt": "2026-11-28T14:14:34.865511+00:00",
+  "status": "IMPLEMENTED_AND_FOCUSED_TESTS_PASS_NATIVE_N_VERIFICATION_PENDING",
+  "problem": "After an already focused custom target survived an open-settings resize, only the input caret could be scrolled into view while the complete control/focus ring remained clipped behind the settings footer. Existing focus-entry behavior already revealed the full control.",
+  "nativeBaseline": {
+    "candidate": "M",
+    "status": "FAILED_RETAINED",
+    "states": 24,
+    "focusVisibilityFailures": 11,
+    "evidence": ".qa-results/phase3/ui/m-settings-resize-regression/report.json",
+    "sha256": "1b741bf094ceb3edc2db5740386f336f94d7c9f6947e8f87bfa56b31f685dc30",
+    "homepageSha256": "f46f733452e0169f0c3f12f4bcb9faaa89da828ff6a074ad28d3ca5927aa5aab",
+    "sameHomepageBeforeAfter": true,
+    "actualLosslessDownload": {
+      "bytes": 83020,
+      "sha256": "67181c1d03a5e42876abcf23d312ac169442bfb0c4af29261142a0d601143e7e",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "pixelsEqual": true
+    }
+  },
+  "changes": [
+    "Observe actual open-modal body and viewport dimension changes, then reuse the existing focused-control visibility calculation.",
+    "Use window and visualViewport resize events as bounded fallbacks; ignore repeated unchanged-size notifications.",
+    "Do not focus another element, change draft values/settings, reset configuration, override dialog height or alter document scroll locking.",
+    "Cancel queued resize reveals and disconnect/remove observer/listeners on close or unmount. Existing focus-entry reveal remains active."
+  ],
+  "files": [
+    {
+      "file": "components/ToolWorkspace.tsx",
+      "beforeSha256": "249c6a00d6f4447908712fd1bbbcf457ada549847a8444c8bccbeb6a87125765",
+      "afterSha256": "094f25a254388212b443d2ac7b39d6eff97f7675d3e028fd7f1c6709531f6373"
+    },
+    {
+      "file": "lib/dialog-scroll.ts",
+      "beforeSha256": "d04349b6d93b56459a39f07579873a1211f37939db0f1e10feab1b9ff8f1c1da",
+      "afterSha256": "5aa41cc4a64941a0eb8e840e6d425cacbee9053e5f9ca8a5a97dc4bdc65cab8c"
+    },
+    {
+      "file": "tests/workflow-ui.test.tsx",
+      "beforeSha256": "558844eba28f136464eee3b661d103014a674bb3801f3c17d569f290a313cfa4",
+      "afterSha256": "327e01dfaf907219eee52e0f4b6d2ae06834156cbd8ffc30d81ee532bedee19a"
+    },
+    {
+      "file": "tests/dialog-scroll-resize.test.ts",
+      "beforeSha256": null,
+      "afterSha256": "3b7d741429a79548c6ef3c4cd8d07c78d254f5d910946608a100dfe65f954bb1"
+    }
+  ],
+  "processingCapacityTargetAndFormatFilesByteIdenticalToM": [
+    {
+      "file": "lib/downloads.ts",
+      "sha256": "ca88273fd6f38ab0cbc324238838469844291dd30bd10b3035d1b658c97a575c"
+    },
+    {
+      "file": "lib/engines/audio.ts",
+      "sha256": "a62161bd38b1c8326c8980995b9ce022399e0c5b05d92a4de8079616036fc875"
+    },
+    {
+      "file": "lib/engines/gif-inspection.ts",
+      "sha256": "79008a8d333743c5151a49267a3feeddc2a73a27a03e61f5686b301208f93e79"
+    },
+    {
+      "file": "lib/engines/gif.ts",
+      "sha256": "659339561444fdfd38600a9bd4644d9d011c9a621dd617c4df2ba1ed8aeb07ea"
+    },
+    {
+      "file": "lib/engines/image.ts",
+      "sha256": "de4f9b440c62489863be26be6557cf21dedd4ad6a5e07671606f47adf72628f1"
+    },
+    {
+      "file": "lib/engines/media-inspection.ts",
+      "sha256": "746a4c4e6f870de4be0b9679b6f9a6fcf67563924aac80f5a511818e91742123"
+    },
+    {
+      "file": "lib/engines/pdf.ts",
+      "sha256": "7e12b9f8bd4faea2ea2e43e74da4bdc2c34bf3297fc39c8338b9615c13375f46"
+    },
+    {
+      "file": "lib/engines/video.ts",
+      "sha256": "8ea9a4a76aaffd54e85c43d28bf09cfec6eb716bff90ba7c887decf3cc4b376b"
+    },
+    {
+      "file": "lib/engines/zip.ts",
+      "sha256": "ab768118f0260fd148d008411366ab362dc9534d182dfd94ca9cde91bb183b63"
+    },
+    {
+      "file": "lib/ffmpeg/loader.ts",
+      "sha256": "b65d417f386cd635a3c12c3f5d7e7fd7b6601bbb7d785c10071ed4cba09f4c1b"
+    },
+    {
+      "file": "lib/ffmpeg/wasm.ts",
+      "sha256": "e6ec010a4ba8b73084c6e40e92a6fa9ae969d4c63a7f204c453706e9c39e0387"
+    },
+    {
+      "file": "lib/format.ts",
+      "sha256": "aa4dd3e91238a20e0beb418dc018fd97333ff1c5d24ce119b1ecf7cb7316dc52"
+    },
+    {
+      "file": "lib/image-settings.ts",
+      "sha256": "0969ecd99046955c78afdecb93d3959c47d1529c484b5bac4e01eb44cee7ba48"
+    },
+    {
+      "file": "lib/process.ts",
+      "sha256": "b95b62b87f0a0f80156b1626ef74a8bbf73c03d7b9605302b450cc1f863c5f0b"
+    },
+    {
+      "file": "lib/tools.ts",
+      "sha256": "c65770abbc8a5cc51b216cef7d6f1cd4d5cc6ffcfa9a648d9117fde4f20e1d0e"
+    },
+    {
+      "file": "lib/useFileQueue.ts",
+      "sha256": "79d9b6dc1bddf7e0d16de609aace34de0c9a00392fe37f8660bd8e333b09f1d2"
+    },
+    {
+      "file": "lib/validation.ts",
+      "sha256": "97bfe63a4206724c6dc9969b270ec7b9e3c834a2ce0f781c04cef44389386b99"
+    },
+    {
+      "file": "workers/image-canvas.mjs",
+      "sha256": "96e366066cc5720a4a9267c878d05af80b591cc5e69bde773f71b8f5adbc4173"
+    },
+    {
+      "file": "workers/image-engine.mjs",
+      "sha256": "5179b8034f0272e92d54b8b9e2bb6aea6844658d66f1eab372fefb9ea6361f5a"
+    },
+    {
+      "file": "workers/image-metadata.mjs",
+      "sha256": "a584b568d2735f3fb1f345157c2c118a3ab63e9e1cb3377684c03caff09b3ec9"
+    },
+    {
+      "file": "workers/image-pipeline.mjs",
+      "sha256": "770e69f8d76d5f682fda6183d5e2405d1c0c0e197205471c6220c98ea4522b8a"
+    },
+    {
+      "file": "workers/image-png.mjs",
+      "sha256": "d4beabe725a453099f39a337cf63f54fc0d2d5983753e820f9c810e057680a1f"
+    }
+  ],
+  "regression": {
+    "firstWorkspaceTest": {
+      "status": "FAILED_AS_EXPECTED_ON_M_SOURCE",
+      "observedExitCode": 1,
+      "failure": "Focused frame601 exceeds scrollport304 after viewport shrink",
+      "evidence": ".qa-results/phase3/functionality/candidate-n/settings-resize-focus/red-workspace-test.log",
+      "sha256": "1b23ba377533c324d47b031f24ef569ebcbbd1d00f998c486d4d5e8bbfd86a3d"
+    },
+    "firstFocusedAttempt": {
+      "status": "FAILED_TEST_FIXTURE_RETAINED",
+      "observedExitCode": 1,
+      "failures": 4,
+      "explanation": "jsdom leaves computed outlineWidth empty for the outline shorthand. Explicit3px width/solid style longhands corrected that fixture; the same12px full-ring clearance assertions are retained. No product algorithm changed to satisfy the fixture.",
+      "evidence": ".qa-results/phase3/functionality/candidate-n/settings-resize-focus/green-focused-tests.log",
+      "sha256": "59854e756ccc38b15d2f832c47b837a3073e1c6f554afe2b3dac329e7a2a54b2"
+    },
+    "finalFocused": {
+      "status": "PASS",
+      "files": 4,
+      "tests": 81,
+      "observedExitCode": 0,
+      "coverage": [
+        "Actual ToolWorkspace wiring after processing, target editing and viewport shrink",
+        "Modal body width/height changes, viewport fallback without ResizeObserver and visualViewport resize",
+        "Preserved actual focus/draft and stationary document",
+        "No scroll for header/no body focus, disabled input, closed/unopened dialog, unchanged sizes or already visible frame",
+        "Pending cancellation, listener/observer cleanup and detached input"
+      ],
+      "evidence": ".qa-results/phase3/functionality/candidate-n/settings-resize-focus/final-focused-tests.log",
+      "sha256": "eb65293bf5900e423e4e81b20013027938a9ccb075a15403d3c3aaeb5eb7b2e4"
+    }
+  },
+  "checks": [
+    {
+      "check": "Repository lint",
+      "status": "PASS",
+      "observedExitCode": 0,
+      "logSha256": "55da4ae1ac4a63d94aeed794e4304fde703670f2411805c6e4f7283324bd5de5"
+    },
+    {
+      "check": "TypeScript noEmit",
+      "status": "PASS",
+      "observedExitCode": 0,
+      "logSha256": "5ef856e5e8fa3b74918977b955aac415f414b9526fdbb950b9e3cc0773067f06"
+    },
+    {
+      "check": "Scoped git diff --check",
+      "status": "PASS",
+      "observedExitCode": 0
+    }
+  ],
+  "reviewedDiffSha256": "e97547369a00530f0cc10cac1e2c89b0afeddba26cb074d8c0bf4aaa329131c1",
+  "remainingLimitations": [
+    "Focused tests simulate layout geometry; actual compiled N native resize/typing behavior has not yet been verified by this report.",
+    "N production build/full regression/cross-browser/live verification remain parent release gates.",
+    "Physical devices and actual virtual keyboard occlusion are not certified.",
+    "M captures/workflows and their failures remain attributed to M; a focused fix does not retroactively change them."
+  ],
+  "mGuardedFileCount": 305,
+  "changedExistingMGuardedFiles": 3,
+  "unchangedMGuardedFiles": 302,
+  "allUnrelatedMGuardedFilesUnchanged": true
+}

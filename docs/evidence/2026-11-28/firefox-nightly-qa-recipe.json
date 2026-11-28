@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "recordedDate": "2026-11-28",
+  "scope": "Reproducible private QA adaptation only. Not an application change, current stable Firefox certification, production deployment or permission to modify production.",
+  "canonicalHarness": {
+    "path": "scripts/functionality-audit.mjs",
+    "sha256": "6b24b2133fa384ccca9e2a5a56be0b392ea3645fcf42d5d3d3eeb590c3d43268"
+  },
+  "adaptedHarnessSha256": "534e0bf822ac9eb1825b8ef7ab5c6da04d589fb9edae9d60849951d52d201b7a",
+  "patch": {
+    "path": "firefox-nightly-native-input.patch",
+    "sha256": "8fbdaa57c67a49a590640bdc09baec973d87474bc8930d727c839c3907866913",
+    "changes": [
+      "Normal public Firefox launch channel moz-firefox-nightly.",
+      "Eight custom-maximum numeric fill call sites use trusted native keyboard input with the same original literal strings and an additional exact-draft assertion."
+    ],
+    "preserved": "Every original application assertion, output requirement, fixture, timeout and expected case count is retained."
+  },
+  "qaCore": {
+    "package": "playwright-core",
+    "version": "1.66.0-alpha-2026-11-28",
+    "gitHead": "a804c193562095b0da20e5d4679fa87e4c8e5563",
+    "url": "https://registry.npmjs.org/playwright-core/-/playwright-core-1.66.0-alpha-2026-11-28.tgz",
+    "bytes": 3256900,
+    "sha256": "a50a7718c17edb12903e7ca8ed0d176e5ad8e22e2fa719572a4a6085d239c776",
+    "integrity": "sha512-SkPGd0uwJHUW1Fi109PKdi95brokuMwLvN0xtHWNJ5RshFwLOMsU+/AZtJlS3vVYL+i8DZnT92o7FxJHCvMIpw=="
+  },
+  "browser": {
+    "version": "163.0a1",
+    "buildId": "20261128083209",
+    "sourceStamp": "7f0936a952f5c887105c53411adb6c8e3fe14428",
+    "channel": "moz-firefox-nightly",
+    "archive": "https://archive.mozilla.org/pub/firefox/nightly/2026/11/2026-11-28-08-32-09-mozilla-central/firefox-163.0a1.en-US.linux-x86_64.tar.xz",
+    "bytes": 100199632,
+    "sha256": "e579b63c0f9a7ac0de729e1123bd40e876ca3feb8969222388abf43bae8cecc4",
+    "sha512": "69b3f7a09a1a6e192992b55515c40f5531d9f92d69671eaca291f05183570e87c69e158f51ba62b6f8cce92e8daaac16f416acd6d9adb3bbc2b4cf33b7242f9f",
+    "executableSha256": "917ac17b2f1d9fca158b8c2f763bb25818bd6765adac4683d5e0b7e618b0865a",
+    "protections": "Normal vendor executable; no modified binary, browser preferences, OS installation or security-setting change."
+  },
+  "externalDecoders": [
+    {
+      "package": "ffmpeg-static",
+      "version": "5.3.0",
+      "binarySha256": "e7e7fb30477f717e6f55f9180a70386c62677ef8a4d4d1a5d948f4098aa3eb99"
+    },
+    {
+      "package": "ffprobe-static",
+      "version": "3.1.0",
+      "binarySha256": "e3624d8ff953c7e2f1f3e3ee24bfa64399bcb3bd5c302b2216d3f794b31bbbf6"
+    }
+  ],
+  "evidence": {
+    "finalL79": "79/79 passed with 56 real downloads, 50 state captures and 24 served artifact identities pinned before and after. Local L only.",
+    "originalNightlyRun": "73/79; six failures caused by synthetic numeric fill/React state tracking. Failed run retained.",
+    "pairedFirefox160": "Comparison passed; full workflow failed due missing native download protocol events despite actual saved file. This recipe uses independently verified official Nightly BiDi instead.",
+    "futureCandidates": "No future candidate or production pass is implied; rerun the complete suite against its own immutable export and served identities.",
+    "finalM79": "79/79 passed freshly on immutable M; 56 real downloads, 50 state captures, 24 served identities before and after and normal browser closure. Local M only.",
+    "finalMComparison": "Four actual M viewport profiles passed all application assertions; four actual PNG downloads decoded, 12 selected states visually reviewed from 40 retained captures."
+  },
+  "primarySources": [
+    "https://bugzilla.mozilla.org/show_bug.cgi?id=2090055",
+    "https://github.com/microsoft/playwright/pull/43982",
+    "https://github.com/microsoft/playwright/blob/a804c193562095b0da20e5d4679fa87e4c8e5563/packages/playwright-core/src/server/bidi/bidiInput.ts",
+    "https://github.com/microsoft/playwright/blob/a804c193562095b0da20e5d4679fa87e4c8e5563/packages/injected/src/bidiInsertText.ts"
+  ],
+  "preparationVerification": {
+    "freshCopy": "Passed: generated output exactly matches the reviewed adapted SHA-256.",
+    "unknownSource": "Passed: a privately altered source was rejected before creating an output directory.",
+    "canonicalPreserved": true,
+    "browserExecutedByPreparation": false,
+    "helperSha256": "10cfe07913cd7f2d6bb4a20c710e1b79da1559008c68cd8a91bf548abd62bb4a"
+  }
+}

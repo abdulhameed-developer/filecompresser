@@ -1,22 +1,22 @@
 {
   "heading": "ZIP Archive Extractor Online",
-  "introduction": "ZIP files are commonly used to share multiple documents, images, videos, and other files in one archive. They help keep related files together and make it easier to transfer a collection as a single package. However, you need to extract the archive before you can access and use its individual contents.\n\nA ZIP extractor allows you to open a ZIP archive and retrieve the files stored inside it. File Compresser provides an online ZIP Extractor that lets you select a supported archive, extract its contents, and download the files directly through your browser.\n\nYou do not need to install a separate extraction program or create an account to use the tool. The extraction process runs on your device, so your selected archive does not need to be uploaded to an external server.",
+  "introduction": "Open a supported ZIP archive in your browser and download its files individually or together. Extraction restores the stored contents; it does not compress them or scan them for viruses.",
   "sections": [
     {
       "heading": "What Is a ZIP Extractor?",
-      "body": "A ZIP extractor is a tool that opens a ZIP archive and makes its stored files available for use. When someone combines several files into a ZIP archive, the items are packaged together. Extraction reverses this process and returns the individual files.\n\nFor example, if you receive a ZIP file containing a collection of reports, images, and documents, you can extract the archive to access those items separately.\n\nFile Compresser's ZIP Extractor supports ZIP archives. After extraction, you can download individual files or download the extracted contents together as a combined ZIP file."
+      "body": "A ZIP extractor is a tool that opens a ZIP archive and makes its stored files available for use. When someone combines several files into a ZIP archive, the items are packaged together. Extraction reverses this process and returns the individual files.\n\nFor example, if you receive a ZIP file containing a collection of reports, images, and documents, you can extract the archive to access those items separately.\n\nFileCompresser's ZIP Extractor supports ZIP archives. After extraction, you can download individual files or download the extracted contents together as a combined ZIP file."
     },
     {
       "heading": "How to Extract a ZIP File Online",
-      "body": "You can open a supported ZIP archive using File Compresser without installing desktop software. Follow these steps:\n\n1. Open the ZIP Extractor page on File Compresser.\n2. Select the ZIP archive from your device.\n3. Start the extraction process.\n4. Wait while the browser checks and extracts the archive.\n5. Review the available files.\n6. Download individual files or choose the combined ZIP download when several files are available.\n\nBefore downloading, review the extracted file names and make sure the archive contains the items you expected. This is particularly useful when working with project folders or documents received from another person.\n"
+      "body": "You can open a supported ZIP archive using FileCompresser without installing desktop software. Follow these steps:\n\n1. Open the ZIP Extractor page on FileCompresser.\n2. Select the ZIP archive from your device.\n3. Start the extraction process.\n4. Wait while the browser checks and extracts the archive.\n5. Review the available files.\n6. Download individual files or choose the combined ZIP download when several files are available.\n\nBefore downloading, review the extracted file names and make sure the archive contains the items you expected. This is particularly useful when working with project folders or documents received from another person."
     },
     {
       "heading": "Why Use an Online ZIP Extractor?",
-      "body": "An online ZIP extractor can be useful when you receive compressed files and need quick access to their contents.\n"
+      "body": "An online ZIP extractor can be useful when you receive compressed files and need quick access to their contents."
     },
     {
       "heading": "Open ZIP Files Without Installing Software",
-      "body": "You may not want to install a separate application just to open one archive. A browser-based ZIP extractor provides another way to access supported ZIP files.\n"
+      "body": "You may not want to install a separate application just to open one archive. A browser-based ZIP extractor provides another way to access supported ZIP files."
     },
     {
       "heading": "Access Individual Files",
@@ -24,39 +24,39 @@
     },
     {
       "heading": "Download Only the Files You Need",
-      "body": "Sometimes you do not need every item inside an archive. File Compresser lets you download individual extracted files, which can help when you only need a specific document or image.\n"
+      "body": "Sometimes you do not need every item inside an archive. FileCompresser lets you download individual extracted files, which can help when you only need a specific document or image."
     },
     {
       "heading": "Manage Project Resources",
-      "body": "Developers, designers, students, and office teams often receive project files in ZIP format. Extracting the archive makes it easier to access the resources needed for a task.\n"
+      "body": "Developers, designers, students, and office teams often receive project files in ZIP format. Extracting the archive makes it easier to access the resources needed for a task."
     },
     {
       "heading": "Review Shared Documents",
-      "body": "If someone sends you a ZIP archive containing reports, presentations, or other documents, you can extract the contents and review the individual files.\n"
+      "body": "If someone sends you a ZIP archive containing reports, presentations, or other documents, you can extract the contents and review the individual files."
     },
     {
       "heading": "Download Individual Files or a Combined ZIP",
-      "body": "After extraction, you can choose how to download the available contents.\n\nIf you only need one item, downloading an individual file can save time and avoid storing unnecessary files. This may be useful when an archive contains several documents but you only need one report.\n\nIf you want to keep the extracted collection together, you can download the contents as a combined ZIP file. This option is useful when you plan to move the files to another device or share the collection again.\n\nRemember that extracting a ZIP archive does not reduce the size of its contents. Extraction simply opens the archive and makes its stored files available. The total extracted size may be larger than the original ZIP file because the archive contains compressed data.\n"
+      "body": "After extraction, you can choose how to download the available contents.\n\nIf you only need one item, downloading an individual file can save time and avoid storing unnecessary files. This may be useful when an archive contains several documents but you only need one report.\n\nIf you want to keep the extracted collection together, you can download the contents as a combined ZIP file. This option is useful when you plan to move the files to another device or share the collection again.\n\nRemember that extracting a ZIP archive does not reduce the size of its contents. Extraction simply opens the archive and makes its stored files available. The total extracted size may be larger than the original ZIP file because the archive contains compressed data."
     },
     {
       "heading": "Which Archive Formats Are Supported?",
-      "body": "File Compresser's current extraction tool is designed for ZIP files. It does not support every archive format.\n\nThe current workflow does not support RAR or 7z files. Encrypted archives, split archives, and ZIP64 archives are also not supported.\n\nIf you receive an archive in one of these formats, you will need a compatible extraction application. Changing the file extension does not convert an unsupported archive into a standard ZIP file.\n\nThe maximum supported input size for the ZIP Extractor is 150 MB. Make sure your archive is within this limit before starting the process."
+      "body": "FileCompresser's current extraction tool is designed for ZIP files. It does not support every archive format.\n\nThe current workflow does not support RAR or 7z files. Encrypted archives, split archives, and ZIP64 archives are also not supported.\n\nIf you receive an archive in one of these formats, you will need a compatible extraction application. Changing the file extension does not convert an unsupported archive into a standard ZIP file.\n\nThe maximum supported input size for the ZIP Extractor is 150 MiB. Make sure your archive is within this limit before starting the process.\n\nExtraction allows up to 500 entries, 200 MiB per file and 500 MiB total extracted data. A per-entry or whole-archive expansion ratio above 100:1 is refused. These bounds are separate from the input queue limit."
     },
     {
-      "heading": "How File Compresser Handles ZIP Archive Safety",
-      "body": "ZIP archives can contain many files and folder paths. Some archives may also be created in ways that cause problems when their contents are extracted.\n\nFile Compresser checks archive entries and rejects unsafe paths, duplicate names, invalid integrity data, and excessive file expansion. These checks help prevent common archive extraction problems.\n\nFor example, the tool checks for path patterns that could attempt to place extracted files outside the intended destination. It also checks for absolute paths, drive letters, control characters, and Windows reserved file names.\n\nThe extractor includes protection against archives that expand to an unusually large amount of data compared with their compressed size. This helps reduce the risk of processing archive bombs, including cases with a compression ratio above 100 times.\n\nThese checks improve extraction safety, but they do not guarantee that every file inside an archive is harmless. Extracted files may still contain unsafe or unwanted content. Only open files from sources you trust, and use appropriate security software when checking unfamiliar downloads."
+      "heading": "How FileCompresser Handles ZIP Archive Safety",
+      "body": "ZIP archives can contain many files and folder paths. Some archives may also be created in ways that cause problems when their contents are extracted.\n\nFileCompresser checks archive entries and rejects unsafe paths, duplicate names, invalid integrity data, and excessive file expansion. These checks help prevent common archive extraction problems.\n\nFor example, the tool checks for path patterns that could attempt to place extracted files outside the intended destination. It also checks for absolute paths, drive letters, control characters, and Windows reserved file names.\n\nThe extractor includes protection against archives that expand to an unusually large amount of data compared with their compressed size. This helps reduce the risk of processing archive bombs, including cases with a compression ratio above 100 times.\n\nThese checks improve extraction safety, but they do not guarantee that every file inside an archive is harmless. Extracted files may still contain unsafe or unwanted content. Only open files from sources you trust, and use appropriate security software when checking unfamiliar downloads."
     },
     {
       "heading": "Extract ZIP Files Privately in Your Browser",
-      "body": "File Compresser processes supported ZIP archives directly in your browser. Your selected archive does not need to be uploaded to an external server for extraction, and you do not need to create an account to use the tool.\n\nThe input file limit is 150 MB. The general processing queue supports up to 500 files and a combined queue size of up to 300 MB, subject to the tool's archive and extraction limits.\n\nProcessing capacity can also depend on your device and browser. Large archives with many files or a high amount of extracted data may require more memory and processing time."
+      "body": "FileCompresser processes supported ZIP archives directly in your browser. Your selected archive does not need to be uploaded to an external server for extraction, and you do not need to create an account to use the tool.\n\nThe input file limit is 150 MiB. The general processing queue supports up to 500 files and a combined queue size of up to 300 MiB, subject to the tool's archive and extraction limits.\n\nProcessing capacity can also depend on your device and browser. Large archives with many files or a high amount of extracted data may require more memory and processing time."
     },
     {
-      "heading": "Extract ZIP Files Online with File Compresser",
-      "body": "If you need to open a ZIP archive without installing additional software, File Compresser provides a simple browser-based option. Select your supported ZIP file, extract its contents, and download the individual files or combined archive. Review unfamiliar files carefully before opening them, especially when the ZIP archive comes from an unknown source.\n"
+      "heading": "Extract ZIP Files Online with FileCompresser",
+      "body": "If you need to open a ZIP archive without installing additional software, FileCompresser provides a simple browser-based option. Select your supported ZIP file, extract its contents, and download the individual files or combined archive. Review unfamiliar files carefully before opening them, especially when the ZIP archive comes from an unknown source."
     },
     {
       "heading": "Is there a file-size limit?",
-      "body": "The maximum supported ZIP input size is 150 MB. Archives must also meet the tool's other extraction and safety limits.\n"
+      "body": "The maximum supported ZIP input size is 150 MiB. Archives must also meet the tool's other extraction and safety limits."
     }
   ],
   "links": [
@@ -72,19 +72,19 @@
   "faq": [
     {
       "q": "Is the ZIP Extractor free to use?",
-      "a": "You can use the online extraction tool without installing a desktop application or creating an account. The only limits are the 150 MB ZIP size and a queue of up to 500 files and 300 MB."
+      "a": "The tool is free without an account. The input limit is 150 MiB per ZIP; queues allow up to 500 files and 300 MiB total. Format, device-memory and processing limits also apply."
     },
     {
       "q": "Can I extract ZIP files online without installing software?",
-      "a": "Yes. File Compresser lets you select a supported ZIP archive and extract its contents through your browser.\n"
+      "a": "Yes. FileCompresser lets you select a supported ZIP archive and extract its contents through your browser."
     },
     {
       "q": "Can I open RAR or 7z files?",
-      "a": "No. The current tool supports ZIP archives, not RAR or 7z files. It also does not support encrypted, split, or ZIP64 archives.\n"
+      "a": "No. The current tool supports ZIP archives, not RAR or 7z files. It also does not support encrypted, split, or ZIP64 archives."
     },
     {
       "q": "Can I download only one file from an archive?",
-      "a": "Yes. After extraction, you can download individual files instead of downloading the complete collection.\n"
+      "a": "Yes. After extraction, you can download individual files instead of downloading the complete collection."
     },
     {
       "q": "Does extracting a ZIP file reduce its size?",
@@ -92,9 +92,10 @@
     },
     {
       "q": "Are extracted files automatically checked for viruses?",
-      "a": "The ZIP Extractor performs archive safety checks, but it is not a virus scanner. These checks do not guarantee that every extracted file is safe. Only open files from sources you trust.\n"
+      "a": "The ZIP Extractor performs archive safety checks, but it is not a virus scanner. These checks do not guarantee that every extracted file is safe. Only open files from sources you trust."
     }
   ],
   "seoTitle": "ZIP Extractor — Open Archives in Your Browser",
-  "seoDescription": "Open ZIP archives online and extract files directly in your browser. Download individual files or a combined ZIP without uploading your archive.\n"
+  "seoDescription": "Open ZIP archives online and extract files directly in your browser. Download individual files or a combined ZIP without uploading your archive.",
+  "faqMode": "custom"
 }

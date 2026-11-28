@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { collections } from '../tina/collections.mjs'
+import { editorialFieldPublicationError } from '../tina/editorial-policy.mjs'
 import { editorialCollections } from '../tina/editorial.mjs'
 import { parseEditorialContent, parsePublishedPost } from '@/lib/content'
 import { parseEditorialHtml } from '@/lib/editorial-markup'
@@ -165,10 +166,10 @@ describe('dedicated editor URL controls match public readers', () => {
       expect(typeof helpfulLink(value)).toBe('string')
     }
     const support = field(managedFields, 'support')
-    expect(typeof support.ui!.validate!({ text: 'Read', emphasis: 'A guide', link: { label: 'Guide', href: '/%2foutside.example' } })).toBe('string')
+    expect(typeof editorialFieldPublicationError(support, { text: 'Read', emphasis: 'A guide', link: { label: 'Guide', href: '/%2foutside.example' } })).toBe('string')
     const clearable = field(managedFields, 'introCta')
-    expect(clearable.ui!.validate!({ label: '', href: '' })).toBeUndefined()
-    expect(typeof clearable.ui!.validate!({ label: 'Read more', href: '' })).toBe('string')
+    expect(editorialFieldPublicationError(clearable, { label: '', href: '' })).toBeUndefined()
+    expect(typeof editorialFieldPublicationError(clearable, { label: 'Read more', href: '' })).toBe('string')
   })
 
   it.each(['https://example.org/reference', 'http://example.org/reference', 'https://example.org/My%20Reference', 'http://example.org/Test_(format)'])('keeps the existing HTTP(S)-only reference policy consistent: %s', url => {

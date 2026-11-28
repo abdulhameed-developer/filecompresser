@@ -23,6 +23,7 @@ export default function ImageComparison({ original, output, outputName, resultLa
   const dialogRef = useRef<HTMLDialogElement>(null)
   const originalPane = useRef<HTMLDivElement>(null)
   const outputPane = useRef<HTMLDivElement>(null)
+  const mirroredPositions = useRef(new WeakMap<HTMLDivElement, { x: number; y: number }>())
   const titleId = useId()
   const zoomId = useId()
   const [urls, setUrls] = useState<{ original: string; output: string } | null>(null)
@@ -74,8 +75,21 @@ export default function ImageComparison({ original, output, outputName, resultLa
   const synchronize = (event: UIEvent<HTMLDivElement>, other: HTMLDivElement | null) => {
     if (!other) return
     const source = event.currentTarget
-    if (Math.abs(other.scrollTop - source.scrollTop) > 1) other.scrollTop = source.scrollTop
-    if (Math.abs(other.scrollLeft - source.scrollLeft) > 1) other.scrollLeft = source.scrollLeft
+    const reflected = mirroredPositions.current.get(source)
+    if (reflected) {
+      mirroredPositions.current.delete(source)
+      // A delayed reflected event must not write an earlier position back
+      // over the user's ongoing native scroll. Changed input still leads.
+      if (Math.abs(source.scrollLeft - reflected.x) <= 1 && Math.abs(source.scrollTop - reflected.y) <= 1) return
+    }
+    const moveY = Math.abs(other.scrollTop - source.scrollTop) > 1
+    const moveX = Math.abs(other.scrollLeft - source.scrollLeft) > 1
+    if (moveY || moveX) {
+      if (moveY) other.scrollTop = source.scrollTop
+      if (moveX) other.scrollLeft = source.scrollLeft
+      // Read back the actual position because a pane can clamp its offsets.
+      mirroredPositions.current.set(other, { x: other.scrollLeft, y: other.scrollTop })
+    }
   }
 
   const containKeyboardFocus = (event: KeyboardEvent<HTMLDialogElement>) => {

@@ -392,7 +392,7 @@ export async function validateFileAgainstTool(
     const mb = Math.round(options.maxSize / MB)
     return {
       ok: false,
-      error: `This file is larger than ${mb} MB, which this tool allows.`,
+      error: `This file is larger than ${mb} MiB, which this tool allows.`,
     }
   }
 

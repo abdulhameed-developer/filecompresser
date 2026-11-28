@@ -1,8 +1,9 @@
+/** File and result sizes use decimal units, matching the exact KB target controls. */
 export function formatBytes(bytes: number): string {
   if (!Number.isFinite(bytes) || bytes < 0) return '—'
-  if (bytes < 1024) return `${bytes} B`
-  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`
-  return `${(bytes / (1024 * 1024)).toFixed(2)} MB`
+  if (bytes < 1000) return `${bytes} B`
+  if (bytes < 1_000_000) return `${(bytes / 1000).toFixed(1)} KB`
+  return `${(bytes / 1_000_000).toFixed(2)} MB`
 }
 
 export function savingsPercent(original: number, output: number): number | null {

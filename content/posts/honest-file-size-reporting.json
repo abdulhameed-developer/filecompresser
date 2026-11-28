@@ -2,7 +2,7 @@
   "title": "Why compressed files sometimes get bigger",
   "description": "An efficient file may have little room to shrink. Learn why compression can retain the original, and why format conversion can produce a larger file.",
   "date": "2026-09-08",
-  "updated": "2026-11-26",
+  "updated": "2026-11-28",
   "readingTime": "5 min",
   "figure": "sizebars",
   "seoDescription": "Understand real file-size savings, original-retained 0% results, and why an explicit format conversion may produce a larger output.",
@@ -42,7 +42,7 @@
     },
     {
       "_template": "p",
-      "text": "Ordinary same-format compression tries to reduce file size while keeping the format and default dimensions. FileCompresser keeps the original if the candidate is not smaller. Explicitly choosing another format is a conversion, and a different encoding can require more bytes."
+      "text": "For still images, ordinary same-format compression tries to reduce file size while keeping the format and original display dimensions. FileCompresser keeps the original if the candidate is not smaller. Explicitly choosing another format is a conversion, and a different encoding can require more bytes."
     },
     {
       "_template": "p",
@@ -54,7 +54,7 @@
     },
     {
       "_template": "p",
-      "text": "Target size verifies the actual byte count against your maximum. A result over the limit is marked Target not met. A target does not authorize silent resizing, and a valid output alone does not mean the requested size was achieved."
+      "text": "Target size verifies the actual byte count against your maximum. If no supported encoding fits, the run reports Target not met instead of saving a new above-limit result. A previous successful download may remain available and is still labelled with its own settings. A target does not authorize silent resizing, and valid file bytes alone do not mean the limit was achieved."
     },
     {
       "_template": "callout",
@@ -68,6 +68,14 @@
     {
       "_template": "p",
       "text": "Review the downloaded file, not just a thumbnail or a percentage. Check dimensions, format, transparency, text readability, playback and byte counts. A retained original is unchanged, including its metadata; an encoded result can remove metadata or normalize color. Keep your source until you have verified the result."
+    },
+    {
+      "_template": "h2",
+      "text": "Read bytes as well as rounded labels"
+    },
+    {
+      "_template": "p",
+      "text": "A rounded display can hide a few bytes near an upload limit. For example, a 100,001-byte file exceeds a decimal 100 KB maximum even if a compact label rounds it to 100 KB. The comparison must use the actual integer byte count. Try a maximum-byte target in the [image compressor](/image-compressor), then check the saved file before submitting it elsewhere."
     }
   ],
   "published": true

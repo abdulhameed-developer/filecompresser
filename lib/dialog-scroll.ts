@@ -20,11 +20,11 @@ export function lockDialogScroll(): () => void {
 }
 
 /** Keep the full focused control/ring inside the modal's own scrollport. */
-export function revealFocusedDialogControl(body: HTMLElement, target: EventTarget | null): void {
+export function revealFocusedDialogControl(body: HTMLElement, target: EventTarget | null): (() => void) | undefined {
   if (!(target instanceof HTMLElement) || !body.contains(target)) return
   // Native focus may reveal only an input caret, and WebKit may not scroll a
   // newly expanded panel. Measure after that focus and the React layout update.
-  requestAnimationFrame(() => {
+  const request = requestAnimationFrame(() => {
     const document = body.ownerDocument
     if (!body.isConnected || !target.isConnected || !body.closest<HTMLDialogElement>('dialog')?.open || target.matches(':disabled') || !body.contains(target) || !(target === document.activeElement || target.contains(document.activeElement))) return
     const frame = target.closest<HTMLElement>('.numberField') || target
@@ -38,4 +38,35 @@ export function revealFocusedDialogControl(body: HTMLElement, target: EventTarge
       : box.top < port.top + clearance ? box.top - port.top - clearance : 0
     if (delta) body.scrollTop += delta
   })
+  return () => cancelAnimationFrame(request)
+}
+
+/** Keep an existing focus frame exposed when an open dialog's scrollport changes. */
+export function observeDialogFocusResize(body: HTMLElement): () => void {
+  const view = body.ownerDocument.defaultView
+  if (!view || !body.closest<HTMLDialogElement>('dialog')?.open) return () => {}
+  const viewport = view.visualViewport
+  const dimensions = () => [body.clientWidth, body.clientHeight, view.innerWidth, view.innerHeight, viewport?.width ?? 0, viewport?.height ?? 0]
+  let previous = dimensions()
+  let active = true
+  let cancelPending: (() => void) | undefined
+  const resize = () => {
+    if (!active) return
+    const next = dimensions()
+    if (next.every((size, index) => size === previous[index])) return
+    previous = next
+    cancelPending?.()
+    cancelPending = revealFocusedDialogControl(body, body.ownerDocument.activeElement)
+  }
+  const observer = typeof ResizeObserver === 'function' ? new ResizeObserver(resize) : undefined
+  observer?.observe(body)
+  view.addEventListener('resize', resize)
+  viewport?.addEventListener('resize', resize)
+  return () => {
+    active = false
+    cancelPending?.()
+    observer?.disconnect()
+    view.removeEventListener('resize', resize)
+    viewport?.removeEventListener('resize', resize)
+  }
 }

@@ -1,0 +1,275 @@
+{
+  "candidate": "I",
+  "homepageSha256": "2ca99e2bea55fc605bf25e3bc16d70067f2624640d1d3fa945aaf5b73323992a",
+  "method": "Personal top-to-bottom review of native-width sequential screenshots; originals retained. Screenshots are390x900 CSS viewport full-page captures, not physical-device tests.",
+  "views": [
+    {
+      "route": "/404-missing",
+      "status": "REVIEWED_NO_NEW_DEFECT",
+      "notes": "Recovery heading, two clear actions and grouped tool pills remain balanced. Full footer reviewed."
+    },
+    {
+      "route": "/about",
+      "status": "DEFECT_FOUND_FIX_PENDING",
+      "notes": "Purpose-specific identity/principles/process/limits composition reads well; final managed text section lacks editorial paragraph/link styling (default-blue link and tight body). Shared renderer fix approved; finalJ recheck needed. Full footer reviewed."
+    },
+    {
+      "route": "/contact",
+      "status": "REVIEWED_NO_NEW_DEFECT",
+      "notes": "Support contact is visible before five task-specific cards; target troubleshooting and private-report guidance have readable hierarchy, consistent spacing and clear guide action. Full footer reviewed."
+    },
+    {
+      "route": "/privacy",
+      "status": "REVIEWED_NO_NEW_DEFECT",
+      "notes": "Readable legal column, restrained disclosure contents, provider links and clear factual sections; footer fully checked. No clipping or default-blue body links."
+    },
+    {
+      "route": "/terms",
+      "status": "REVIEWED_NO_NEW_DEFECT",
+      "notes": "Purpose-specific legal column, concise seven-section structure and contents disclosure; support link and full footer are consistent and readable."
+    },
+    {
+      "route": "/disclaimer",
+      "status": "REVIEWED_NO_NEW_DEFECT",
+      "notes": "Seven factual sections, clear limits/warranty hierarchy, readable provider-independent body and green contact link; full footer reviewed."
+    },
+    {
+      "route": "/sitemap",
+      "status": "REVIEWED_NO_NEW_DEFECT",
+      "notes": "Efficient grouped link lists with clear headings, restrained arrows and comfortable mobile targets; long guide labels wrap cleanly and footer is balanced."
+    },
+    {
+      "route": "/blog",
+      "status": "REVIEWED_NO_NEW_DEFECT",
+      "notes": "Five cards have coherent images, balanced descriptions and one readable Updated date each; no duplicated dates or clipped images; full footer checked."
+    },
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "status": "REVIEWED_NO_NEW_DEFECT",
+      "notes": "Comfortable reading hierarchy, responsive contents links and fully contained readable format-guide viewport with useful summary/caption; relevant tool CTA and related Updated dates are balanced; footer checked."
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "status": "REVIEWED_NO_NEW_DEFECT",
+      "notes": "Four-step reading structure, readable contained pipeline diagram/hint/summary, callout and references; no clipping, consistent related dates and full footer checked."
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "status": "COPY_CLARIFICATION_PENDING",
+      "notes": "Readable contained size-bar diagram, honest-outcome sections/callout and clear actual-byte example; footer and related dates checked. Residual default dimensions wording identified for still-image clarification."
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "status": "REVIEWED_NO_NEW_DEFECT",
+      "notes": "Readable privacy two-path diagram/hint/summary, comfortable lists/callout/reference hierarchy and useful tool links; footer checked."
+    },
+    {
+      "route": "/blog/choosing-a-compression-mode",
+      "status": "REVIEWED_NO_NEW_DEFECT",
+      "notes": "Purposeful native stacked mode cards, readable long-form heading/list rhythm, clear PNG/target guidance, restrained callouts/references and consistent related Updated dates; all footer segments checked."
+    },
+    {
+      "route": "/",
+      "status": "SHARED_STYLE_OR_COPY_RECHECK_PENDING",
+      "notes": "Full hero/upload, directory filters/cards, processing story, authored12-section editorial body, guide rail, FAQ and footer checked. Wrapped authored list items need shared paragraph-like leading/spacing."
+    },
+    {
+      "route": "/compress",
+      "status": "SHARED_STYLE_OR_COPY_RECHECK_PENDING",
+      "notes": "Full mixed-file upload,13-section body, actual workflow disclosure, custom FAQ and related tools/footer checked. Shared list-leading fix needed."
+    },
+    {
+      "route": "/image-compressor",
+      "status": "SHARED_STYLE_OR_COPY_RECHECK_PENDING",
+      "notes": "Full50MB/32MP workspace,16-section image guide, custom FAQ/related/footer checked. Remove residual dimensions-by-default qualifier and apply shared list leading."
+    },
+    {
+      "route": "/jpg-compressor",
+      "status": "SHARED_STYLE_OR_COPY_RECHECK_PENDING",
+      "notes": "Full17-section guide, actual numbered steps, target explanation, no-resize copy, custom FAQ and footer checked. Shared list leading plus residual tool-guide qualifier fix needed."
+    },
+    {
+      "route": "/jpeg-compressor",
+      "status": "SHARED_STYLE_OR_COPY_RECHECK_PENDING",
+      "notes": "Full19-section guide, differentiated JPEG/JPG explanation, no-resize details and custom FAQ checked. Shared list leading needed; no additional layout defect."
+    },
+    {
+      "route": "/png-compressor",
+      "status": "SHARED_STYLE_OR_COPY_RECHECK_PENDING",
+      "notes": "Full13-section guide, correct Lossless default, target/alpha explanation and custom FAQ checked. Shared list leading needed; no additional layout defect."
+    },
+    {
+      "route": "/webp-compressor",
+      "status": "SHARED_STYLE_OR_COPY_RECHECK_PENDING",
+      "notes": "Full14-section guide and custom FAQ checked. Two line-break enumerations should be real bullets; shared list leading needed; otherwise consistent."
+    },
+    {
+      "route": "/gif-compressor",
+      "status": "SHARED_STYLE_OR_COPY_RECHECK_PENDING",
+      "notes": "Full15-section guide, palette/timing/loop limits and custom FAQ checked. Size-factor enumeration should be real bullets; shared list leading needed."
+    },
+    {
+      "route": "/video-compressor",
+      "status": "SHARED_STYLE_OR_COPY_RECHECK_PENDING",
+      "notes": "Full19-section guide, codec/height-cap/time-limit explanations, custom FAQ and footer checked. Shared numbered-list leading needed; no additional layout defect."
+    },
+    {
+      "route": "/webm-to-mp4",
+      "status": "SHARED_STYLE_OR_COPY_RECHECK_PENDING",
+      "notes": "Focused four-section conversion body, fixed-output/dimensions/limits and conversion-specific FAQs clearly organized; full footer checked. Shared step-list leading needed."
+    },
+    {
+      "route": "/mp3-compressor",
+      "status": "SHARED_STYLE_OR_COPY_RECHECK_PENDING",
+      "notes": "Full11-section bitrate/quality/limit guide, audio-specific FAQ and footer checked. Use-case enumeration should be real bullets; shared list leading needed."
+    },
+    {
+      "route": "/wav-compressor",
+      "status": "SHARED_STYLE_OR_COPY_RECHECK_PENDING",
+      "notes": "Full12-section conversion-specific guide, bitrate choices and lossy-source guidance, custom FAQ/footer checked. Bitrate enumeration should be real bullets; shared list leading needed."
+    },
+    {
+      "route": "/wav-to-mp3",
+      "status": "SHARED_STYLE_OR_COPY_RECHECK_PENDING",
+      "notes": "Independently reviewed full alias view including extra banner, all12 body sections, FAQ/related/footer. Remove technical alias banner without changing route/canonical; same bitrate/list fixes apply."
+    },
+    {
+      "route": "/pdf-compressor",
+      "status": "SHARED_STYLE_OR_COPY_RECHECK_PENDING",
+      "notes": "Full11-section structural-only PDF guide, signature/encryption/forms limits, custom FAQ and footer checked. Six-caveat enumeration should be real bullets; shared list leading needed."
+    },
+    {
+      "route": "/zip-compressor",
+      "status": "SHARED_STYLE_OR_COPY_RECHECK_PENDING",
+      "notes": "Full12-section packaging-specific guide, honest size explanation, creator-specific FAQ and footer checked. Shared step-list leading needed; no additional layout defect."
+    },
+    {
+      "route": "/archive-compressor",
+      "status": "SHARED_STYLE_OR_COPY_RECHECK_PENDING",
+      "notes": "Full14-section extraction guide, integrity/path/expansion bounds, extraction-specific FAQ and footer checked. Shared step-list leading needed. Registry intro should describe refusal before downloads, not imply automatic disk writes."
+    }
+  ],
+  "reviewedRoutes": 29,
+  "nativeWidthPanelsPersonallyViewed": 69,
+  "allRouteTopToBottomReviewComplete": true,
+  "originals": [
+    {
+      "file": ".qa-results/phase3/ui/final-i/responsive/404-missing-390.png",
+      "sha256": "f2f79462b5c3d9c8babdbd30a1b6c831be77a0f48c0c34668abcb0ff6b4d0dba"
+    },
+    {
+      "file": ".qa-results/phase3/ui/final-i/responsive/about-390.png",
+      "sha256": "97942ba5ec436e88cd9574766e3397bc32eb3636a6e5b4fb00aa0daa7cabaa30"
+    },
+    {
+      "file": ".qa-results/phase3/ui/final-i/responsive/archive-compressor-390.png",
+      "sha256": "85110c50784d2210fac0eded6bbc5c4192d538675900b0aaf4a3560517aea357"
+    },
+    {
+      "file": ".qa-results/phase3/ui/final-i/responsive/blog--choosing-a-compression-mode-390.png",
+      "sha256": "e58626f1fc0e4dd1336485194bcf85919dfe9d7b97112a42f80efe5b0854d270"
+    },
+    {
+      "file": ".qa-results/phase3/ui/final-i/responsive/blog--compressing-files-for-the-web-390.png",
+      "sha256": "8b9c03d41607fc0622c204fc130875f7415c8d55c9826813574db000ef7ee309"
+    },
+    {
+      "file": ".qa-results/phase3/ui/final-i/responsive/blog--honest-file-size-reporting-390.png",
+      "sha256": "19bc62cd87ab81cff37c0fe78b88fc595abd9a9409662b6e7fad14df167126a2"
+    },
+    {
+      "file": ".qa-results/phase3/ui/final-i/responsive/blog--how-browser-compression-works-390.png",
+      "sha256": "d8685b9a8ea4a9d1957f12edde54f9711305c7e7779370ee10014c28f24ea8fa"
+    },
+    {
+      "file": ".qa-results/phase3/ui/final-i/responsive/blog--what-privacy-claim-really-means-390.png",
+      "sha256": "2bf665b6b1bf07e2949993e6ccef7be310c4a31db6cca03a2e36c985f8a2f06f"
+    },
+    {
+      "file": ".qa-results/phase3/ui/final-i/responsive/blog-390.png",
+      "sha256": "f7fe69138d9d31b40615733f8d07ca4aeb5b89f26e362d21b4a4543fcadb546d"
+    },
+    {
+      "file": ".qa-results/phase3/ui/final-i/responsive/compress-390.png",
+      "sha256": "d51b80d9b74cf4e80aa28e2469bd9541bacba662524835f7a4dcc1c9ff4e343f"
+    },
+    {
+      "file": ".qa-results/phase3/ui/final-i/responsive/contact-390.png",
+      "sha256": "8b9dd3430b7c0a52a8f980e2b2b06b280b3ae4acf04c60d5dc211d3ed9049810"
+    },
+    {
+      "file": ".qa-results/phase3/ui/final-i/responsive/disclaimer-390.png",
+      "sha256": "efae959208ffaddb7f62f03f06f8564eb4a52dd55f47ab6f522cb94fe1485b21"
+    },
+    {
+      "file": ".qa-results/phase3/ui/final-i/responsive/gif-compressor-390.png",
+      "sha256": "289783196deb810d22fe0531038a2e66197a168c523368021714b5427c353550"
+    },
+    {
+      "file": ".qa-results/phase3/ui/final-i/responsive/home-390.png",
+      "sha256": "343d4ba99521380237b376e88c941adc6f7500ef06f18c9361413e94c37f394d"
+    },
+    {
+      "file": ".qa-results/phase3/ui/final-i/responsive/image-compressor-390.png",
+      "sha256": "22332e726dc03adb928292a2d265ba3fcb969aff2e9059c7d0df258909db897a"
+    },
+    {
+      "file": ".qa-results/phase3/ui/final-i/responsive/jpeg-compressor-390.png",
+      "sha256": "0509454795dbc18770795d5ecf4ae2db3dcb5fc0371fe83c0810beba0a1b4747"
+    },
+    {
+      "file": ".qa-results/phase3/ui/final-i/responsive/jpg-compressor-390.png",
+      "sha256": "92aadbc63c268e28e8e13cc546fbca8277af90eadd169b3c8b4d250e458c76a1"
+    },
+    {
+      "file": ".qa-results/phase3/ui/final-i/responsive/mp3-compressor-390.png",
+      "sha256": "6e7159b564080a14d8d93abe6d40438536514855b170494ee1954a585fae7291"
+    },
+    {
+      "file": ".qa-results/phase3/ui/final-i/responsive/pdf-compressor-390.png",
+      "sha256": "a4953e7ff1497715e1bb07e85422ff32d41af8d6bf20a058c6dfcd46e67136df"
+    },
+    {
+      "file": ".qa-results/phase3/ui/final-i/responsive/png-compressor-390.png",
+      "sha256": "b1fa3e0659461557b20422d0fa4e48876899afe12cdda68ed423a9085971bb9e"
+    },
+    {
+      "file": ".qa-results/phase3/ui/final-i/responsive/privacy-390.png",
+      "sha256": "34f0787adfda2c2ba2a0e18d1f054875eb264557885b9bd9ef3362bf54ab9164"
+    },
+    {
+      "file": ".qa-results/phase3/ui/final-i/responsive/sitemap-390.png",
+      "sha256": "ffaf34d47a41dd81fef9fcab5d0302a0b86c6ab327c559de00ec5d27ca2f2919"
+    },
+    {
+      "file": ".qa-results/phase3/ui/final-i/responsive/terms-390.png",
+      "sha256": "12266c2fa2ccecab063e57c962f53535a77f371395b4afe26dd346f28e9c8e33"
+    },
+    {
+      "file": ".qa-results/phase3/ui/final-i/responsive/video-compressor-390.png",
+      "sha256": "af439b3d2e4c92e32c492d5ffbb228b5142f3272685663462acf82212ae2c22e"
+    },
+    {
+      "file": ".qa-results/phase3/ui/final-i/responsive/wav-compressor-390.png",
+      "sha256": "be6da691c6230ac485e85cdf16a498cdd945574e936ff3784a2d321088deb0e2"
+    },
+    {
+      "file": ".qa-results/phase3/ui/final-i/responsive/wav-to-mp3-390.png",
+      "sha256": "1a880cc02316311be65df50afe607a5a9f0dbce45b1fe60ab65cf6e1b66170c7"
+    },
+    {
+      "file": ".qa-results/phase3/ui/final-i/responsive/webm-to-mp4-390.png",
+      "sha256": "6d692e42d58b1a47abc47509a14cf6db73840805812552a9224a4604f66e4ea1"
+    },
+    {
+      "file": ".qa-results/phase3/ui/final-i/responsive/webp-compressor-390.png",
+      "sha256": "633d8e115d6eb4cb8f9c081d2600abb95504cf19f84d6b8de81d847d94673d99"
+    },
+    {
+      "file": ".qa-results/phase3/ui/final-i/responsive/zip-compressor-390.png",
+      "sha256": "8aed1d20cc90da262c8ea8a86eff65935fdf239560de73948da6f178caae51ae"
+    }
+  ],
+  "status": "HISTORICAL_I_VISUAL_REVIEW_WITH_IDENTIFIED_FINDINGS",
+  "scope": "All29mobile default views personally reviewed before bounded shared refinements. This is not final-public-candidate or live acceptance."
+}

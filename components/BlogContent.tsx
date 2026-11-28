@@ -14,7 +14,7 @@ export default function BlogContent({ blocks }: { blocks: Block[] }) {
       case 'p': return <p key={index}><InlineEditorialText value={block.text} /></p>
       case 'ul': return <ul key={index}>{block.items.map((item, i) => <li key={i}><InlineEditorialText value={item} /></li>)}</ul>
       case 'ol': return <ol key={index}>{block.items.map((item, i) => <li key={i}><InlineEditorialText value={item} /></li>)}</ol>
-      case 'link': return <p className="postLink" key={index}><Link href={block.href}>{block.text}</Link></p>
+      case 'link': return <p className="postLink" key={index}><Link prefetch={false} href={block.href}>{block.text}</Link></p>
       case 'image': return <figure className="postFigure postUploadedImage" key={index}>
         <Image src={block.src} alt={block.alt} width={1200} height={800} sizes="(max-width: 860px) 100vw, 860px" style={{ width: '100%', height: 'auto' }} />
         {block.caption && <figcaption>{block.caption}</figcaption>}

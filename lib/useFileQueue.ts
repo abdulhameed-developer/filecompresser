@@ -7,7 +7,7 @@ import { uid } from './format'
 import { detectFormat, validateFileAgainstTool } from './validation'
 import { concurrencyFor, engineForFormat, processFile } from './process'
 import { revokeItemUrl } from './downloads'
-import { imageSettingsError } from './image-settings'
+import { imageSettingsError, parseImageTargetBytes } from './image-settings'
 import { sameWorkflowSources, scopeWorkflowOptions, workflowConfig, workflowDefaults } from './workflow-config'
 import { canProcessQueueItem, isArchiveInputFailureCode } from './queue-eligibility'
 
@@ -126,7 +126,7 @@ export function useFileQueue(tool: ToolDefinition) {
     assertNotCancelled(signal)
     if (!item.file.size && currentTool.engine !== 'zip-create') throw new ProcessingError('This file is empty.')
     if (item.file.size > currentTool.maxFileSize)
-      throw new ProcessingError(`This file is larger than ${currentTool.maxFileSize / 1024 / 1024} MB, which this tool allows.`)
+      throw new ProcessingError(`This file is larger than ${currentTool.maxFileSize / 1024 / 1024} MiB, which this tool allows.`)
     let format: string | undefined
     if (currentTool.engine !== 'zip-create') {
       const result = await validateFileAgainstTool(item.file, { allowedFormats: allowedFormats(currentTool), maxSize: currentTool.maxFileSize }, signal)
@@ -180,7 +180,7 @@ export function useFileQueue(tool: ToolDefinition) {
     if (!incoming.length) return
     const total = [...itemsRef.current.map(item => item.file), ...incoming]
     if (total.length > QUEUE_FILES || total.reduce((sum, file) => sum + file.size, 0) > QUEUE_BYTES) {
-      setStatus({ kind: 'error', text: 'Add at most 500 files and 300 MB in one queue. Remove files before adding more.' })
+      setStatus({ kind: 'error', text: 'Add at most 500 files and 300 MiB in one queue. Remove files before adding more.' })
       return
     }
     setStatus({ kind: 'idle', text: '' })
@@ -309,6 +309,14 @@ export function useFileQueue(tool: ToolDefinition) {
         const durationMs = Math.max(0, performance.now() - started)
         const outputs = (Array.isArray(result) ? result : [result]).map(output => ({ ...output, durationMs: output.durationMs ?? durationMs }))
         if (!outputs.length || outputs.some(output => output.blob.size === 0 && engine !== 'zip-extract')) throw new ProcessingError('No valid output was produced.')
+        // Artifact creation is the final download boundary. Recheck actual
+        // Blob bytes against the requested limit even if an engine says met.
+        if (engine === 'image-compress' && (config.options.pngMode ? config.options.pngMode === 'target' : config.options.imageMode === 'target')) {
+          const limit = parseImageTargetBytes(config.options.targetSize)
+          if (!limit || outputs.some(output => output.blob.size > limit)) throw new ProcessingError('Target not met. No output fits your maximum-byte limit. Choose another format or use a larger limit. No above-limit result was saved.', 'target-unreachable')
+          outputs.forEach(output => { output.targetBytes = limit; output.outcome = 'target-met' })
+        }
+
         const artifact: WorkflowArtifact = { id: uid(), runId, config, outputs, sourceIds: inputs.map(input => input.id), sourceBytes: inputs.reduce((sum, input) => sum + input.file.size, 0), createdAt: Date.now() }
         update(previous => previous.map(row => {
           if (!inputs.some(input => input.id === row.id) || row.activeRunId !== runId) return row

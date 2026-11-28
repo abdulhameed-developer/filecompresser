@@ -2,6 +2,7 @@ import { ImagePipelineError } from './image-metadata.mjs'
 
 export const PNG_MODES = ['lossless', 'smart', 'maximum', 'target']
 export const PNG_COLOR_LIMITS = [256, 128, 64, 32, 16]
+export const PNG_TARGET_COLOR_LIMITS = [256, 128, 64, 32, 16, 8, 4, 2]
 export const PNG_HIGH_PRECISION_NOTE = 'Color reduction was skipped to preserve the PNG’s original 16-bit samples and alpha. Only original-byte lossless optimization was allowed.'
 export const PNG_QUALITY_GUARDS = {
   smart: { minimumPsnr: 40, maximumError: 36 },
@@ -68,7 +69,7 @@ export function pngDecodedSamplesEqual(originalBytes, encodedBytes, codec, cance
  * PNG: color reduction never grants permission to round opacity or flatten it.
  */
 export function quantizePngPixels(original, colorLimit, codec, cancelled = () => false) {
-  if (!PNG_COLOR_LIMITS.includes(colorLimit)) throw new ImagePipelineError('Invalid PNG color limit.', 'invalid-image-options')
+  if (!Number.isInteger(colorLimit) || colorLimit < 2 || colorLimit > 256) throw new ImagePipelineError('Invalid PNG color limit.', 'invalid-image-options')
   const premultiplied = new Uint8Array(original.length)
   for (let i = 0; i < original.length; i += 4) {
     if ((i & 131071) === 0 && cancelled()) throw new ImagePipelineError('Processing was cancelled.', 'cancelled')
@@ -121,6 +122,9 @@ export function createPngComparison(cancelled = () => false) {
 }
 
 export function pngQualityAccepted(metrics, mode) {
+  // Explicit Target mode prioritizes bytes over color fidelity. Alpha remains
+  // exact; ordinary Smart/Maximum retain their stricter appearance thresholds.
+  if (mode === 'target') return metrics.alphaEqual === true && typeof metrics.compositePsnr === 'number' && !Number.isNaN(metrics.compositePsnr) && Number.isFinite(metrics.compositeMaximumError) && metrics.compositeMaximumError >= 0 && metrics.compositeMaximumError <= 255
   const guard = PNG_QUALITY_GUARDS[mode]
   return Boolean(guard && metrics.alphaEqual === true &&
     typeof metrics.compositePsnr === 'number' && metrics.compositePsnr >= guard.minimumPsnr &&
@@ -147,7 +151,7 @@ export async function choosePngCandidate(lossless, options, { quantize, verify, 
   // Target keeps the greatest-color-first search for its maximum-byte limit.
   // Compare actual tested sizes. This bounded heuristic is not an exhaustive
   // proof of the smallest possible PNG or of invisible color changes.
-  const colorLimits = mode === 'smart' ? [256] : mode === 'maximum' ? [64, 32, 16] : [...PNG_COLOR_LIMITS]
+  const colorLimits = mode === 'smart' ? [256] : mode === 'maximum' ? [64, 32, 16] : [...PNG_TARGET_COLOR_LIMITS]
   for (let index = 0; index < colorLimits.length; index++) {
     const colorLimit = colorLimits[index]
     assertActive()
@@ -161,6 +165,7 @@ export async function choosePngCandidate(lossless, options, { quantize, verify, 
     }
     assertActive()
     if (!trial) return { ...best, note: 'Color reduction requires a browser worker; a verified lossless PNG was used.' }
+    if (!(trial.blob instanceof Blob) || trial.blob.size <= 0) throw new ImagePipelineError('The PNG quantizer produced no valid output.', 'invalid-output')
     tested++
     trial = { ...trial, colorLimit, compressionKind: 'lossy' }
     trial.verified = await verify(trial)
@@ -178,12 +183,39 @@ export async function choosePngCandidate(lossless, options, { quantize, verify, 
       trial.metadataNote = `${trial.metadataNote ?? ''} Decoded pixels were verified unchanged.`.trim()
     }
     accepted++
-    // Target keeps the first tested fitting palette, starting at the greatest
-    // color count. An unreachable target keeps the smallest accepted result.
-    if (mode === 'target' && trial.blob.size <= targetBytes) return { ...trial, pngTrials: tested }
+    // Refine up to three times between the first fitting coarse palette and the preceding
+    // larger palette. Selection uses measured decoded error and actual bytes,
+    // never an assumption that palettes produce monotonic sizes or fidelity.
+    if (mode === 'target' && trial.blob.size <= targetBytes) {
+      let fit = trial
+      let lower = colorLimit, upper = colorLimits[index - 1] ?? colorLimit
+      for (let refinement = 0; refinement < 3 && upper - lower > 1; refinement++) {
+        const refinedLimit = Math.floor((upper + lower) / 2)
+        progress(`Refining PNG color reduction with up to ${refinedLimit} colors…`)
+        let refined
+        try { refined = await quantize(refinedLimit) }
+        catch (error) {
+          assertActive()
+          if (error instanceof ImagePipelineError && error.code !== 'png-quantizer-unavailable') throw error
+          break // Optional refinement never discards an already verified fit.
+        }
+        assertActive()
+        if (!refined?.blob?.size) break
+        tested++
+        const option = { ...refined, colorLimit: refinedLimit, compressionKind: 'lossy' }
+        option.verified = await verify(option)
+        assertActive()
+        if (!pngQualityAccepted(option.verified, mode)) break
+        if (option.blob.size <= targetBytes) {
+          lower = refinedLimit
+          if (option.verified.compositePsnr > fit.verified.compositePsnr) fit = option
+        } else upper = refinedLimit
+      }
+      return { ...fit, pngTrials: tested }
+    }
     if (trial.blob.size < best.blob.size) best = trial
   }
   return { ...best, pngTrials: tested, note: best.compressionKind === 'lossy'
-    ? `Color-reduced PNG passed the ${PNG_QUALITY_GUARDS[mode].minimumPsnr} dB composite-error guard. This numerical check is a heuristic, not a guarantee of invisible changes.`
+    ? mode === 'target' ? 'Target mode allowed strong color reduction; transparency and dimensions were preserved.' : `Color-reduced PNG passed the ${PNG_QUALITY_GUARDS[mode].minimumPsnr} dB composite-error guard. This numerical check is a heuristic, not a guarantee of invisible changes.`
     : `${tested} color-reduction trials ${accepted ? 'did not improve the lossless file size' : 'did not pass the color-error guard'}. The lossless candidate was kept.` }
 }

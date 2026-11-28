@@ -1,0 +1,69 @@
+{
+  "createdAt": "2026-11-28T14:46:18.445451+00:00",
+  "candidate": "N",
+  "status": "FOCUS_RESIZE_FIX_QUALIFIED_NEW_NUMBER_TEXT_CLIPPING_FOUND",
+  "localPreview": "http://127.0.0.1:3360",
+  "buildId": "_OLXuFVNj0ZFzjWSPX7jU",
+  "homepageSha256": "99eb848f8c7677392ba8314c5937521b17c63fdf48dc70e94e46e02a6b82b959",
+  "commandGates": {
+    "passed": 13,
+    "testFiles": 68,
+    "tests": 1296,
+    "stableInputs": 306
+  },
+  "freshDefaults": {
+    "routes": 29,
+    "width": 390,
+    "axeViews": 29,
+    "sharedGroups": 5,
+    "normalExit": 0,
+    "all29MobilePixelsIdenticalToM": true,
+    "all30ActualPublicHtmlAndStylesIdenticalToM": true
+  },
+  "focusedResize": {
+    "chromium": "24/24 PASS normal exit0",
+    "webkit": "24/24 PASS normal exit0",
+    "firefoxOriginalStrictOverall": "FAIL retained: first responsive resize native scroll anchoring changes pageY by7.716667px. All measured focus/value/ring/no-overflow and trailing/Escape conditions pass.",
+    "firefoxNativeQualification": "Actual trusted backdrop wheel at settled viewport does not move background; Escape restores exact entry scroll/focus. Frozen native no-React markup repeats reflow drift; private overflow-anchor:none control prevents it. No application anchoring or assertion change adopted."
+  },
+  "newActualIssue": "All three engines at320 show numeric draft100.05 clipped horizontally despite intact value/whole focus ring. Duplicate suffix-reservation padding and narrow two-column target row confirmed. N is not final visual acceptance; O shared CSS-only correction and unchanged native readability/error retests required.",
+  "boundaries": [
+    "No production deployment or hosted Tina Save/all29 reconciliation claim.",
+    "No physical-device, virtual keyboard, real Safari, screen-reader or overall WCAG certification.",
+    "Historical M11 failures and Firefox strict pageY failure remain retained."
+  ],
+  "sourceEvidence": {
+    "freshUi": {
+      "file": ".qa-results/phase3/ui/final-n/completion.json",
+      "sha256": "7677ee0159bb629bd88b841d8b01a35600c209ec9bda4360aca17e1564a9db66"
+    },
+    "durableUiExit": {
+      "file": ".qa-results/phase3/ui/final-n-driver.json",
+      "sha256": "69e20b16db92707767f35e08d27f027b58d02263b19c1324b67d94d34803fb59"
+    },
+    "all30HtmlCssIdentity": {
+      "file": ".qa-results/phase3/ui/m-to-n-rendered-export-identity.json",
+      "sha256": "db9162909ae04f87685a3656eae42a0859fb469a1e24b4d7e03e839918fe024a"
+    },
+    "all29MobilePixels": {
+      "file": ".qa-results/phase3/ui/m-to-n-mobile-pixel-comparison.json",
+      "sha256": "276e263cf04ba58b71f605ffba5444d5c4d48f2605dd20ec48594259a5990535"
+    },
+    "chromium24": {
+      "file": ".qa-results/phase3/ui/n-settings-resize/chromium/report.json",
+      "sha256": "74dd2dbd62d1b3925cc95446856deadc995e8d86a8363f334064beab4a5b6d27"
+    },
+    "webkit24": {
+      "file": ".qa-results/phase3/ui/n-settings-resize/webkit/report.json",
+      "sha256": "0239de6a24f894b8848040dbb73614c4df635c35f9d6b3ae6e58a46fef7828f6"
+    },
+    "firefoxOriginalStrict24": {
+      "file": ".qa-results/phase3/ui/candidate-n-firefox-settings-resize/audit/report.json",
+      "sha256": "f67f8c8af951cc07dbd77b7fea0e72700a37ef8988e05d6ee402ac2c7268b4d3"
+    },
+    "firefoxNativeQualification": {
+      "file": "docs/evidence/2026-11-28/candidate-n-firefox-native-resize-qualification.json",
+      "sha256": "2ebba7a31f09870707a49caa7403b055add62f6225a3433d0c2699c5df012287"
+    }
+  }
+}

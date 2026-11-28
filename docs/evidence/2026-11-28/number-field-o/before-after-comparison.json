@@ -1,0 +1,28 @@
+{
+  "createdAt": "2026-11-28T14:49:33.632548+00:00",
+  "scope": "Exact same unchanged v2 harness/native input100.05/source context/320x568 viewport on immutable N and O; originals pasted at native resolution, no crop/resize/retouching, labels outside. Invalid and long-valid O captures included separately.",
+  "harnessSha256": "f820c95a85536fd952c82659f9a47073b9b4a20e33866bbd94ab8a45fd624e5b",
+  "comparisonSha256": "68c58056f36c94d0584481964080e54d4cb34b221dc75eb278738ab1cc0e50cb",
+  "files": [
+    {
+      "public": "n-before-native100_05-320x568.png",
+      "source": ".qa-results/phase3/ui/o-number-readability-v2/chromium-n-red/source-only-320-100_05.png",
+      "sha256": "a6b71ba289a0fa7e44630daf2582c7a680ab5db47b941b37c5791bedb1e9301f"
+    },
+    {
+      "public": "o-after-native100_05-320x568.png",
+      "source": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/source-only-320-100_05.png",
+      "sha256": "55883fa4fac1208832a9f8cadbd0fbd9f824704069e65cad581592711f373daa"
+    },
+    {
+      "public": "o-invalid100_0005-320x568.png",
+      "source": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/invalid-320-100_0005.png",
+      "sha256": "fc58b6b1669380260ef186f7d23606758652172cabe8a38833acd4d8e71f2bff"
+    },
+    {
+      "public": "o-long-valid199999_999-320x568.png",
+      "source": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/source-only-320-199999_999.png",
+      "sha256": "75b4541d09d55af43e0076b5bbdfc4a77a944d27b6dbddee025d51484bfdf02d"
+    }
+  ]
+}

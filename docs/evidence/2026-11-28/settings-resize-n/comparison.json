@@ -1,0 +1,138 @@
+{
+  "recordedAt": "2026-11-28T14:26:03.572207+00:00",
+  "scope": "Exact same native Chromium applied-result settings scenario, viewport844x390, value100.05 (100,050 bytes), actual same active number input after the same sequence. Both prior outputs are real independently decoded83,020-byte lossless PNGs. No source screenshot pixels resized, retouched or removed; only labeled vertical stacking. This illustrates one confirmed resize correction, not general perfection.",
+  "before": {
+    "candidate": "M",
+    "buildId": "i6cl7-oxYwV3b6uSHuw_0",
+    "homeSha256": "f46f733452e0169f0c3f12f4bcb9faaa89da828ff6a074ad28d3ca5927aa5aab",
+    "state": {
+      "phase": "applied-result",
+      "name": "viewport-resize",
+      "viewport": [
+        844,
+        390
+      ],
+      "value": "100.05",
+      "inputType": "number",
+      "selectionStart": null,
+      "selectionEnd": null,
+      "selectionApi": "NOT EXPOSED by number input; native trailing-digit insertion checked separately",
+      "isActualActiveElement": true,
+      "input": {
+        "top": 603.46875,
+        "bottom": 647.46875,
+        "left": 177,
+        "right": 376.140625
+      },
+      "frame": {
+        "top": 602.46875,
+        "bottom": 648.46875,
+        "left": 176,
+        "right": 415
+      },
+      "body": {
+        "top": 125,
+        "bottom": 304,
+        "scrollTop": 0,
+        "scrollHeight": 658,
+        "clientHeight": 179
+      },
+      "footer": {
+        "top": 304,
+        "bottom": 377
+      },
+      "clearance": 12,
+      "outlineWidth": "3px",
+      "outlineOffset": "1px",
+      "wholeFocusFrameExposed": false,
+      "pageY": 407,
+      "pageX": 0,
+      "documentWidth": 844,
+      "viewportWidth": 844,
+      "screenshot": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/m-settings-resize-regression/applied-result-844x390.png",
+      "screenshotSha256": "7417e8052fd75bb5f26198d705f82d61fa0128b2a02a079a73ada08f95cdd51d",
+      "passed": false
+    },
+    "nativeRegressionStatus": "FAIL",
+    "totalVisibilityFailures": 11
+  },
+  "after": {
+    "candidate": "N",
+    "buildId": "_OLXuFVNj0ZFzjWSPX7jU",
+    "homeSha256": "99eb848f8c7677392ba8314c5937521b17c63fdf48dc70e94e46e02a6b82b959",
+    "state": {
+      "phase": "applied-result",
+      "name": "viewport-resize",
+      "viewport": [
+        844,
+        390
+      ],
+      "value": "100.05",
+      "inputType": "number",
+      "selectionStart": null,
+      "selectionEnd": null,
+      "selectionApi": "NOT EXPOSED by number input; native trailing-digit insertion checked separately",
+      "isActualActiveElement": true,
+      "input": {
+        "top": 247.46875,
+        "bottom": 291.46875,
+        "left": 177,
+        "right": 376.140625
+      },
+      "frame": {
+        "top": 246.46875,
+        "bottom": 292.46875,
+        "left": 176,
+        "right": 415
+      },
+      "body": {
+        "top": 125,
+        "bottom": 304,
+        "scrollTop": 356,
+        "scrollHeight": 658,
+        "clientHeight": 179
+      },
+      "footer": {
+        "top": 304,
+        "bottom": 377
+      },
+      "clearance": 12,
+      "outlineWidth": "3px",
+      "outlineOffset": "1px",
+      "wholeFocusFrameExposed": true,
+      "pageY": 407,
+      "pageX": 0,
+      "documentWidth": 844,
+      "viewportWidth": 844,
+      "screenshot": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/n-settings-resize/chromium/applied-result-844x390.png",
+      "screenshotSha256": "07880a39658c206c5751b9efdbca91828d4b0fa2526fb561a3ed0cab61476e6e",
+      "passed": true
+    },
+    "nativeRegressionStatus": "PASS_NATIVE_OPEN_DIALOG_RESIZE_VISIBILITY",
+    "totalVisibilityFailures": 0
+  },
+  "sharedUnchangedHarnessSha256": "fec71f3820f01e077ff63a000ea2d643c16e1ea4f57676e0e35428134e38c9bf",
+  "originals": [
+    {
+      "label": "m-before",
+      "original": ".qa-results/phase3/ui/m-settings-resize-regression/applied-result-844x390.png",
+      "file": "docs/evidence/2026-11-28/settings-resize-n/m-before-applied-target-844x390.png",
+      "sha256": "7417e8052fd75bb5f26198d705f82d61fa0128b2a02a079a73ada08f95cdd51d"
+    },
+    {
+      "label": "n-after",
+      "original": ".qa-results/phase3/ui/n-settings-resize/chromium/applied-result-844x390.png",
+      "file": "docs/evidence/2026-11-28/settings-resize-n/n-after-applied-target-844x390.png",
+      "sha256": "07880a39658c206c5751b9efdbca91828d4b0fa2526fb561a3ed0cab61476e6e"
+    }
+  ],
+  "combined": {
+    "file": "docs/evidence/2026-11-28/settings-resize-n/m-before-n-after-active-target-844x390.png",
+    "sha256": "efda42256e52eee6151c88d6aba8833edc110d923598bb18c4a69452cc0ce65b",
+    "dimensions": [
+      844,
+      876
+    ]
+  },
+  "status": "PASS_SAME_STATE_BEFORE_AFTER_CORRECTION"
+}

@@ -108,7 +108,7 @@ export const TOOLS: ToolDefinition[] = [
     slug: 'image-compressor',
     title: 'Image Compressor',
     description:
-      'Compress JPG, PNG and WEBP images while keeping original dimensions by default.',
+      'Compress JPG, PNG and WebP images while preserving original display dimensions.',
     category: 'image',
     engine: 'image-compress',
     accept: 'image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp',
@@ -457,7 +457,7 @@ export const TOOLS: ToolDefinition[] = [
     slug: 'archive-compressor',
     title: 'ZIP Extractor',
     description:
-      'Extract a ZIP archive. Unsafe paths and archive bombs are rejected before anything is written to disk.',
+      'Extract a ZIP archive on your device. Unsafe paths and excessive expansion are rejected before downloads are offered.',
     category: 'archive',
     engine: 'zip-extract',
     accept: 'application/zip,application/x-zip-compressed,.zip',

@@ -1,0 +1,754 @@
+{
+  "createdAt": "2026-11-28T14:51:12.879787+00:00",
+  "scope": "Every C/W O valid value/context/width, orientation and invalid active-field/error region, cropped from original screenshots at native scale with labels outside. Full screenshots remain unchanged.",
+  "rows": [
+    {
+      "engine": "chromium",
+      "label": "chromium source-only 320x568 100.05",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/source-only-320-100_05.png",
+      "sha256": "55883fa4fac1208832a9f8cadbd0fbd9f824704069e65cad581592711f373daa",
+      "cropBounds": [
+        41,
+        247,
+        279,
+        363
+      ]
+    },
+    {
+      "engine": "chromium",
+      "label": "chromium source-only 320x568 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/source-only-320-199999_999.png",
+      "sha256": "75b4541d09d55af43e0076b5bbdfc4a77a944d27b6dbddee025d51484bfdf02d",
+      "cropBounds": [
+        41,
+        247,
+        279,
+        363
+      ]
+    },
+    {
+      "engine": "chromium",
+      "label": "chromium source-only 375x900 100.05",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/source-only-375-100_05.png",
+      "sha256": "723419f1f5d6b5b913b9c9316968783bc7dff81d04b8b9accbb62a83ff416079",
+      "cropBounds": [
+        41,
+        516,
+        334,
+        632
+      ]
+    },
+    {
+      "engine": "chromium",
+      "label": "chromium source-only 375x900 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/source-only-375-199999_999.png",
+      "sha256": "cfdd21421395696d8045c81e39db3e4a754537641939bb14bd9463a7522c76f9",
+      "cropBounds": [
+        41,
+        516,
+        334,
+        632
+      ]
+    },
+    {
+      "engine": "chromium",
+      "label": "chromium source-only 390x900 100.05",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/source-only-390-100_05.png",
+      "sha256": "03a6d149531b69df643e0776f25861f749bb6f611486f12e6884ef6d2d6ee75c",
+      "cropBounds": [
+        41,
+        516,
+        349,
+        632
+      ]
+    },
+    {
+      "engine": "chromium",
+      "label": "chromium source-only 390x900 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/source-only-390-199999_999.png",
+      "sha256": "5b35c4cafa0a9a6f2e8f3735aafd7f3d25177c4f430f74afd1db87ff3f3cdbf5",
+      "cropBounds": [
+        41,
+        516,
+        349,
+        632
+      ]
+    },
+    {
+      "engine": "chromium",
+      "label": "chromium source-only 430x900 100.05",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/source-only-430-100_05.png",
+      "sha256": "771ed34849c4b8932f8e701981168a42cb9a339f1c12c307b6524f40ef47a30c",
+      "cropBounds": [
+        41,
+        516,
+        389,
+        632
+      ]
+    },
+    {
+      "engine": "chromium",
+      "label": "chromium source-only 430x900 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/source-only-430-199999_999.png",
+      "sha256": "7b3d771977d3d4742a9438d5b28a0b6ada7f1e5187487eb208e65035a0b04a38",
+      "cropBounds": [
+        41,
+        516,
+        389,
+        632
+      ]
+    },
+    {
+      "engine": "chromium",
+      "label": "chromium source-only 480x900 100.05",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/source-only-480-100_05.png",
+      "sha256": "1a84519fff2ed6ad614358a90657f8c510fc8704e88f8f13c3ef9fc6a8e3eff7",
+      "cropBounds": [
+        41,
+        516,
+        439,
+        632
+      ]
+    },
+    {
+      "engine": "chromium",
+      "label": "chromium source-only 480x900 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/source-only-480-199999_999.png",
+      "sha256": "c2a82f984b183c31d87550ace4e77826fd49451380babb86a8633fd87dbaa1aa",
+      "cropBounds": [
+        41,
+        516,
+        439,
+        632
+      ]
+    },
+    {
+      "engine": "chromium",
+      "label": "chromium source-only 481x900 100.05",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/source-only-481-100_05.png",
+      "sha256": "bd662f7a10a1579310d9ede5a63808d1a08d110551bfa8517abb75f7733ad7b5",
+      "cropBounds": [
+        45,
+        545,
+        436,
+        632
+      ]
+    },
+    {
+      "engine": "chromium",
+      "label": "chromium source-only 481x900 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/source-only-481-199999_999.png",
+      "sha256": "45d97db8b7415c513c8126b98560e0eb7775ae02dfba4f9da26f67175eb6b68f",
+      "cropBounds": [
+        45,
+        545,
+        436,
+        632
+      ]
+    },
+    {
+      "engine": "chromium",
+      "label": "chromium source-only 768x900 100.05",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/source-only-768-100_05.png",
+      "sha256": "a02f6f6ac7908a3a03639d12f2cc855d155eb6ff8cc05f58af72daed6e2c9c28",
+      "cropBounds": [
+        130,
+        545,
+        638,
+        632
+      ]
+    },
+    {
+      "engine": "chromium",
+      "label": "chromium source-only 768x900 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/source-only-768-199999_999.png",
+      "sha256": "5415ff275c26122b3da7b4fc3263a78f4f9f991619031f567fe29ccd70aa1f95",
+      "cropBounds": [
+        130,
+        545,
+        638,
+        632
+      ]
+    },
+    {
+      "engine": "chromium",
+      "label": "chromium applied-result 320x568 100.05",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/applied-result-320-100_05.png",
+      "sha256": "7c16441e198d49dea79508d79797370ebd17cc81ebddb36811568636bed51a4f",
+      "cropBounds": [
+        41,
+        247,
+        279,
+        363
+      ]
+    },
+    {
+      "engine": "chromium",
+      "label": "chromium applied-result 320x568 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/applied-result-320-199999_999.png",
+      "sha256": "709465871a0e29aadf4450866b6e3f95d82c0803d1d06f24d47d80594137f58e",
+      "cropBounds": [
+        41,
+        247,
+        279,
+        363
+      ]
+    },
+    {
+      "engine": "chromium",
+      "label": "chromium applied-result 375x900 100.05",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/applied-result-375-100_05.png",
+      "sha256": "c5bb62a1165f172504e5e14829ddb9dc4807eb65b2f24caccf4c243038390667",
+      "cropBounds": [
+        41,
+        516,
+        334,
+        632
+      ]
+    },
+    {
+      "engine": "chromium",
+      "label": "chromium applied-result 375x900 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/applied-result-375-199999_999.png",
+      "sha256": "126ad51932b22fd9d72179f6b2d9024e23cc4f3d0e410c6e12bd319dade6f124",
+      "cropBounds": [
+        41,
+        516,
+        334,
+        632
+      ]
+    },
+    {
+      "engine": "chromium",
+      "label": "chromium applied-result 390x900 100.05",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/applied-result-390-100_05.png",
+      "sha256": "6da0fd9691aee4cc15d7a07b144c0554aeabc780e1685930f194ddeddcae75eb",
+      "cropBounds": [
+        41,
+        516,
+        349,
+        632
+      ]
+    },
+    {
+      "engine": "chromium",
+      "label": "chromium applied-result 390x900 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/applied-result-390-199999_999.png",
+      "sha256": "f42bb29325e1b5ba7c64688278d5a89dfb4ae7913b6cd3a0c9f79a45e031e767",
+      "cropBounds": [
+        41,
+        516,
+        349,
+        632
+      ]
+    },
+    {
+      "engine": "chromium",
+      "label": "chromium applied-result 430x900 100.05",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/applied-result-430-100_05.png",
+      "sha256": "22d53205c1af562231762524f3808a99db9e07d7e4eb3b727e2f6d64658ce92e",
+      "cropBounds": [
+        41,
+        516,
+        389,
+        632
+      ]
+    },
+    {
+      "engine": "chromium",
+      "label": "chromium applied-result 430x900 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/applied-result-430-199999_999.png",
+      "sha256": "327c77d32b0934e9dbf0cc20a707c676c8e103da52713501d2705dc7c0698424",
+      "cropBounds": [
+        41,
+        516,
+        389,
+        632
+      ]
+    },
+    {
+      "engine": "chromium",
+      "label": "chromium applied-result 480x900 100.05",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/applied-result-480-100_05.png",
+      "sha256": "8965530c910903657b4b0b754e9beffa2df0465d7463393bf08bd1140f9d420a",
+      "cropBounds": [
+        41,
+        516,
+        439,
+        632
+      ]
+    },
+    {
+      "engine": "chromium",
+      "label": "chromium applied-result 480x900 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/applied-result-480-199999_999.png",
+      "sha256": "0acbd3824e089bb1b6bcdfb552ea6bdb6a658449c07e516114271ef28c2a0b98",
+      "cropBounds": [
+        41,
+        516,
+        439,
+        632
+      ]
+    },
+    {
+      "engine": "chromium",
+      "label": "chromium applied-result 481x900 100.05",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/applied-result-481-100_05.png",
+      "sha256": "37d3b14a9802e9d608fc15d35408280454d1e01af40d3a82a9b4b2b70832837e",
+      "cropBounds": [
+        45,
+        545,
+        436,
+        632
+      ]
+    },
+    {
+      "engine": "chromium",
+      "label": "chromium applied-result 481x900 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/applied-result-481-199999_999.png",
+      "sha256": "7b7b7c2c814c5e9552c120642a8ede9a6cf68d2bdba0662c275357d9c0f8570e",
+      "cropBounds": [
+        45,
+        545,
+        436,
+        632
+      ]
+    },
+    {
+      "engine": "chromium",
+      "label": "chromium applied-result 768x900 100.05",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/applied-result-768-100_05.png",
+      "sha256": "bcb4504bd7601abb4b6532d148a57c9c62d7dadf0c7b25c45d771d4cafcf23d1",
+      "cropBounds": [
+        130,
+        545,
+        638,
+        632
+      ]
+    },
+    {
+      "engine": "chromium",
+      "label": "chromium applied-result 768x900 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/applied-result-768-199999_999.png",
+      "sha256": "fcd64cec1bb17c18baf20c15475bd75c91e5cfef50107d573994b681e8f6a041",
+      "cropBounds": [
+        130,
+        545,
+        638,
+        632
+      ]
+    },
+    {
+      "engine": "chromium",
+      "label": "chromium source-only 844x390 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/source-only-same-active-844x390.png",
+      "sha256": "b7c000551444f028c7942e2f3c9014515efd600ba8fb4c24badc88a5a52ddc79",
+      "cropBounds": [
+        168,
+        216,
+        676,
+        303
+      ]
+    },
+    {
+      "engine": "chromium",
+      "label": "chromium applied-result 844x390 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/applied-result-same-active-844x390.png",
+      "sha256": "ba1c5fa5951471098b407dba18f660a90f07657f79646b836051a61cffab5fed",
+      "cropBounds": [
+        168,
+        216,
+        676,
+        303
+      ]
+    },
+    {
+      "engine": "chromium",
+      "label": "chromium invalid 320x568 100.0005",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/chromium-o-green/invalid-320-100_0005.png",
+      "sha256": "fc58b6b1669380260ef186f7d23606758652172cabe8a38833acd4d8e71f2bff",
+      "cropBounds": [
+        41,
+        247,
+        279,
+        377
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit source-only 320x568 100.05",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/source-only-320-100_05.png",
+      "sha256": "0ca9fca814bafa66e94fdad34367d9fb527046dd8027951fd2fe46273d2102a2",
+      "cropBounds": [
+        41,
+        247,
+        279,
+        363
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit source-only 320x568 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/source-only-320-199999_999.png",
+      "sha256": "62ef7e153633cbf5c617cd33d9d6191d73d094a6f14a9de3a9044fea22d60c3f",
+      "cropBounds": [
+        41,
+        247,
+        279,
+        363
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit source-only 375x900 100.05",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/source-only-375-100_05.png",
+      "sha256": "9bcce98dc44fa7540288e32410e5fe84360077b126f905619504f0504421c4f9",
+      "cropBounds": [
+        41,
+        519,
+        334,
+        635
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit source-only 375x900 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/source-only-375-199999_999.png",
+      "sha256": "a8e260676675524ec5f13426b9fa0601f078a65f2bc5cbbf95eb140c70d345f5",
+      "cropBounds": [
+        41,
+        519,
+        334,
+        635
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit source-only 390x900 100.05",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/source-only-390-100_05.png",
+      "sha256": "02560d0a91452314b1c6a634370fe6d9d1ee6b5b2b2ac98e84e8a7bd7292624c",
+      "cropBounds": [
+        41,
+        519,
+        349,
+        635
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit source-only 390x900 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/source-only-390-199999_999.png",
+      "sha256": "7827257788c79273b9c9148b455eb9493f4bbb414ed8474c7cb62916f1cf3eba",
+      "cropBounds": [
+        41,
+        519,
+        349,
+        635
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit source-only 430x900 100.05",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/source-only-430-100_05.png",
+      "sha256": "a9f0356e0b0357acf5f5f5db2d0a4c510bf9080af695214e405e6f105889f2ad",
+      "cropBounds": [
+        41,
+        519,
+        389,
+        635
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit source-only 430x900 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/source-only-430-199999_999.png",
+      "sha256": "a434c382653d9e364ee1bb2754af4e473408037e8103e5a8ffd633de689adf71",
+      "cropBounds": [
+        41,
+        519,
+        389,
+        635
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit source-only 480x900 100.05",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/source-only-480-100_05.png",
+      "sha256": "7bbeb5a08a6634643e6f16193351c029caefe2f31c39d120a8dd0985343617f8",
+      "cropBounds": [
+        41,
+        519,
+        439,
+        635
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit source-only 480x900 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/source-only-480-199999_999.png",
+      "sha256": "2a3ca955cb1ba6d096e9f18809ab42e36102d7d4b8a930d0ef2f08b569f1cc41",
+      "cropBounds": [
+        41,
+        519,
+        439,
+        635
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit source-only 481x900 100.05",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/source-only-481-100_05.png",
+      "sha256": "27da1554586901db215919df9ed1c4b42e6934c4162164b57d57d7528f543d8b",
+      "cropBounds": [
+        45,
+        545,
+        436,
+        632
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit source-only 481x900 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/source-only-481-199999_999.png",
+      "sha256": "c6332e5538f29b3446489d6c3e109eb9d929120daec1a28ef35c4080ee0df92e",
+      "cropBounds": [
+        45,
+        545,
+        436,
+        632
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit source-only 768x900 100.05",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/source-only-768-100_05.png",
+      "sha256": "40589c6a7ed914106d614a6147e85921a5142dd5524c5469ed3f809e0a29ee32",
+      "cropBounds": [
+        130,
+        545,
+        638,
+        632
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit source-only 768x900 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/source-only-768-199999_999.png",
+      "sha256": "60b22fce3bc25d26337a13a663dd9924a621ba305d56bd560404ab1dae2ca9c4",
+      "cropBounds": [
+        130,
+        545,
+        638,
+        632
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit applied-result 320x568 100.05",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/applied-result-320-100_05.png",
+      "sha256": "230dc4791a87cab8931254f0039b0d64affbca61f665e61c7d4196d913ce2455",
+      "cropBounds": [
+        41,
+        247,
+        279,
+        363
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit applied-result 320x568 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/applied-result-320-199999_999.png",
+      "sha256": "e1fa83b8f78ed68ebcbebbbc52ba9ad3e2765c0348d9f7b5fd14c9765c5e34d7",
+      "cropBounds": [
+        41,
+        247,
+        279,
+        363
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit applied-result 375x900 100.05",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/applied-result-375-100_05.png",
+      "sha256": "418c4665373f17a8694735bcd25cf6c8aa106b33ee6c46c4ed2f00454804f6bc",
+      "cropBounds": [
+        41,
+        519,
+        334,
+        635
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit applied-result 375x900 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/applied-result-375-199999_999.png",
+      "sha256": "dd5cd1403e40cc2b9e3416a03adf9f1421192c6ecd684dfb28804c0f2db1619a",
+      "cropBounds": [
+        41,
+        519,
+        334,
+        635
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit applied-result 390x900 100.05",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/applied-result-390-100_05.png",
+      "sha256": "ec14525007f604431a9ffe3753d78400dfd8d87349bc284dc4395823ab4d6059",
+      "cropBounds": [
+        41,
+        519,
+        349,
+        635
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit applied-result 390x900 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/applied-result-390-199999_999.png",
+      "sha256": "85df2378f1f0022e1925e25724961c96e044a37c07655df0ab1ee11ccb503821",
+      "cropBounds": [
+        41,
+        519,
+        349,
+        635
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit applied-result 430x900 100.05",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/applied-result-430-100_05.png",
+      "sha256": "f8912a361d2c5eb2355e598f0c52cc18c19a7750c7b656003fc7c7cd53104328",
+      "cropBounds": [
+        41,
+        519,
+        389,
+        635
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit applied-result 430x900 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/applied-result-430-199999_999.png",
+      "sha256": "6f429d4ddfe4274f0214cf8e350fe3d9b2f36b186adbf6ac4c5afac57c00ace5",
+      "cropBounds": [
+        41,
+        519,
+        389,
+        635
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit applied-result 480x900 100.05",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/applied-result-480-100_05.png",
+      "sha256": "be088196a11649a9b3db3343f5af8fd367f07e1b6b620bf069127342057569e7",
+      "cropBounds": [
+        41,
+        519,
+        439,
+        635
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit applied-result 480x900 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/applied-result-480-199999_999.png",
+      "sha256": "5600c93cd21f3e10e7b1f2d2d348d71b61ee1391bffa2dc190fbc0d00c1e3aca",
+      "cropBounds": [
+        41,
+        519,
+        439,
+        635
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit applied-result 481x900 100.05",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/applied-result-481-100_05.png",
+      "sha256": "687adae2085cb5926f3ebace302eb8638de1d5732d906f4831fd06d04a506f5e",
+      "cropBounds": [
+        45,
+        545,
+        436,
+        632
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit applied-result 481x900 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/applied-result-481-199999_999.png",
+      "sha256": "bf728ecaa195cefffe3a835f9143d2a845c027521151b4d93dad96d99d3bdbdb",
+      "cropBounds": [
+        45,
+        545,
+        436,
+        632
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit applied-result 768x900 100.05",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/applied-result-768-100_05.png",
+      "sha256": "3788e6477d544662e632caad3be3ef3f2c90d792d80287af522a5bb63dac46bf",
+      "cropBounds": [
+        130,
+        545,
+        638,
+        632
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit applied-result 768x900 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/applied-result-768-199999_999.png",
+      "sha256": "05c898871dfb1fbbf5ca943c64404919eabc49041827455c1cb012ab2bae1614",
+      "cropBounds": [
+        130,
+        545,
+        638,
+        632
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit source-only 844x390 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/source-only-same-active-844x390.png",
+      "sha256": "62d7c192ab64f0ead5b19c1656ee333b6f1396a66937ffb4f17714c8ed96d590",
+      "cropBounds": [
+        168,
+        216,
+        676,
+        303
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit applied-result 844x390 199999.999",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/applied-result-same-active-844x390.png",
+      "sha256": "706f012c924ddb6d4a1795dd190d21274a6d9a4202ae3856771fda36f554cd9b",
+      "cropBounds": [
+        168,
+        216,
+        676,
+        303
+      ]
+    },
+    {
+      "engine": "webkit",
+      "label": "webkit invalid 320x568 100.0005",
+      "sourceScreenshot": ".qa-results/phase3/ui/o-number-readability-v2/webkit-o-green/invalid-320-100_0005.png",
+      "sha256": "1f3d22c3b6997c1ee63a9435fd9a4e73866f3d32ad94da6c6e28437d34e8f8f8",
+      "cropBounds": [
+        41,
+        247,
+        279,
+        377
+      ]
+    }
+  ],
+  "reviewStatus": "ALL_SIXTY_TWO_ACTIVE_FIELD_REGIONS_ACTUALLY_VIEWED",
+  "reviewedAt": "2026-11-28T14:51:27.676344+00:00",
+  "reviewer": "visual_final",
+  "observations": "All C/W source/applied100.05 and199999.999 at seven widths, both landscape active fields, and genuine invalid100.0005 show complete text, clear unit separation and exact-byte/error summary. Entire field and visible focus ring are balanced. This crop review assesses those specific regions; full-screen320 invalid and twelve six-route states were separately viewed."
+}

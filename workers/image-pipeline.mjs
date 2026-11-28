@@ -2,9 +2,9 @@ import { ImagePipelineError, inspectImageHeader } from './image-metadata.mjs'
 import { choosePngCandidate, PNG_HIGH_PRECISION_NOTE, pngModeFor, pngQualityAccepted } from './image-png.mjs'
 
 export const IMAGE_MODES = ['balanced', 'high-quality', 'maximum', 'target']
-export const TARGET_QUALITY_FLOOR = 0.25
-export const TARGET_QUALITY_CEILING = 0.95
-export const TARGET_MAX_ENCODES = 10
+export const TARGET_QUALITY_FLOOR = 0
+export const TARGET_QUALITY_CEILING = 1
+export const TARGET_MAX_ENCODES = 16
 export const IMAGE_MIME = { jpeg: 'image/jpeg', png: 'image/png', webp: 'image/webp' }
 
 const MODES = {
@@ -43,10 +43,14 @@ export async function runImagePipeline(file, options, adapter, hooks = {}) {
     throw new ImagePipelineError('JPEG conversion cannot safely verify this 16-bit PNG’s opacity from an 8-bit preview. Keep PNG, or use a 16-bit image editor to confirm and remove transparency before converting.', 'image-precision')
   const pngMode = outputFormat === 'png' ? pngModeFor(options) : undefined
   const mode = outputFormat === 'png' ? pngMode === 'target' ? 'target' : 'balanced' : imageMode
-  const targetBytes = mode === 'target' && Number.isFinite(options.targetSize) && options.targetSize > 0
-    ? Math.floor(options.targetSize) : undefined
+  const targetBytes = mode === 'target' && Number.isSafeInteger(options.targetSize) && options.targetSize > 0 && options.targetSize <= 200_000_000
+    ? options.targetSize : undefined
   if (mode === 'target' && !targetBytes)
-    throw new ImagePipelineError('Enter a positive maximum file size before using Target Size.', 'target-required')
+    throw new ImagePipelineError('Enter a positive maximum file size from 1 to 200,000,000 whole bytes before using Target Size.', 'target-required')
+  // A format cannot fit below even its fixed container framing. Reject this
+  // provably impossible case before allocating/encoding a full raster.
+  const framingBytes = { jpeg: 4, png: 57, webp: 20 }[outputFormat]
+  if (targetBytes && targetBytes < framingBytes) throw new ImagePipelineError(`Target not met. A valid ${outputFormat === 'jpeg' ? 'JPG' : outputFormat.toUpperCase()} container needs at least ${framingBytes} bytes before its image data, above your ${targetBytes.toLocaleString('en-US')}-byte limit. Choose a larger limit. Your original file is unchanged; no above-limit result was saved.`, 'target-unreachable')
   // Compression and format conversion never change display dimensions, even
   // when an old caller supplies former resize options.
   const geometry = { width: header.width, height: header.height }
@@ -89,12 +93,12 @@ export async function runImagePipeline(file, options, adapter, hooks = {}) {
       return unchanged('target-met', 'The original already meets the maximum-byte limit. Its quality, dimensions and bytes were kept unchanged.')
     }
 
-    const encode = async quality => {
+    const encode = async (quality, pngEncodingEffort = pngEffort) => {
       attempts++
-      stage(outputFormat === 'png' ? 'Optimizing PNG once without changing pixels…' : mode === 'target'
+      stage(outputFormat === 'png' ? `Optimizing PNG without changing pixels (effort ${pngEncodingEffort})…` : mode === 'target'
         ? `Encoding trial ${attempts} of at most ${TARGET_MAX_ENCODES} at ${Math.round(quality * 100)}% quality…`
         : `Encoding at ${Math.round(quality * 100)}% quality…`)
-      const candidate = await decoded.encode(outputFormat, quality, outputFormat === 'png' ? pngEffort : MODES[mode].effort)
+      const candidate = await decoded.encode(outputFormat, quality, outputFormat === 'png' ? pngEncodingEffort : MODES[mode].effort)
       assertActive()
       if (!candidate?.blob || candidate.blob.size <= 0)
         throw new ImagePipelineError('The image encoder produced no valid output.', 'invalid-output')
@@ -102,7 +106,6 @@ export async function runImagePipeline(file, options, adapter, hooks = {}) {
     }
 
     let candidate
-    let targetMet = false
     if (outputFormat === 'png') {
       const verifyPng = async trial => {
         if (!trial?.blob || trial.blob.size <= 0) throw new ImagePipelineError('The PNG encoder produced no valid output.', 'invalid-output')
@@ -124,7 +127,16 @@ export async function runImagePipeline(file, options, adapter, hooks = {}) {
       }
       // Compare every color-reduction mode with an independently verified
       // lossless candidate; a lossy file must not replace a smaller lossless one.
-      candidate = await choosePngCandidate(await encode(undefined), { mode: pngMode, targetBytes, allowLosslessColorTrial: !header.hasProfile && !decoded.hasAlpha && header.orientation === 1 }, {
+      let lossless = await encode(undefined)
+      // Target has a byte-first contract. Large images start with the quicker
+      // lossless pass, but must try the stronger available pass before color
+      // reduction/refusal. The source remains decoded once and no dimensions,
+      // alpha or16-bit samples are traded away to satisfy the limit.
+      if (pngMode === 'target' && lossless.blob.size > targetBytes && pngEffort < 4) {
+        const stronger = await encode(undefined, 4)
+        if (stronger.blob.size < lossless.blob.size) lossless = stronger
+      }
+      candidate = await choosePngCandidate(lossless, { mode: pngMode, targetBytes, allowLosslessColorTrial: !header.hasProfile && !decoded.hasAlpha && header.orientation === 1 }, {
         // Cheap trial optimization happens before selection. The expensive
         // refinement below is performed only once for the chosen lossy file.
         quantize: header.bitDepth !== 16 && !decoded.pngQuantizationUnavailableNote && typeof decoded.quantizePng === 'function' ? colorLimit => decoded.quantizePng(colorLimit, 1) : undefined,
@@ -135,7 +147,7 @@ export async function runImagePipeline(file, options, adapter, hooks = {}) {
       })
       if (candidate.compressionKind === 'lossy' && typeof decoded.refinePng === 'function') {
         stage('Refining the selected PNG candidate once…')
-        const refined = await decoded.refinePng(candidate.blob, pngEffort)
+        const refined = await decoded.refinePng(candidate.blob, pngMode === 'target' ? 4 : pngEffort)
         assertActive()
         if (refined?.size > 0 && refined.size < candidate.blob.size) {
           const verified = await verifyPng({ blob: refined })
@@ -143,32 +155,34 @@ export async function runImagePipeline(file, options, adapter, hooks = {}) {
         }
       }
       if (candidate.note) candidate.metadataNote = `${candidate.metadataNote ?? ''} ${candidate.note}`.trim()
-      targetMet = Boolean(targetBytes && candidate.blob.size <= targetBytes)
     } else if (mode === 'target') {
       if (!converted && decoded.losslessCandidate) {
         const lossless = await decoded.losslessCandidate()
         assertActive()
-        if (lossless?.blob?.size > 0 && lossless.blob.size <= targetBytes) { candidate = lossless; targetMet = true }
+        if (lossless?.blob?.size > 0 && lossless.blob.size <= targetBytes) { candidate = lossless }
       }
       if (!candidate) {
-        const high = await encode(TARGET_QUALITY_CEILING)
-        candidate = high
-        if (high.blob.size <= targetBytes) targetMet = true
-      }
-      if (!targetMet) {
-        const low = await encode(TARGET_QUALITY_FLOOR)
-        if (low.blob.size < candidate.blob.size) candidate = low
-        if (low.blob.size <= targetBytes) {
-          let best = low
-          let lower = TARGET_QUALITY_FLOOR, upper = TARGET_QUALITY_CEILING
-          while (attempts < TARGET_MAX_ENCODES && upper - lower > 0.005) {
-            const quality = (lower + upper) / 2
-            const trial = await encode(quality)
-            if (trial.blob.size <= targetBytes) { best = trial; lower = quality }
-            else upper = quality
+        // Probe a real coarse curve, including intermediate qualities even when
+        // the lowest setting misses. Codec sizes need not be monotonic. Keep
+        // every measured fit; refinement never replaces it with an overshoot.
+        const trials = []
+        for (const percent of [100, 85, 70, 55, 40, 25, 10, 0]) {
+          const trial = await encode(percent / 100)
+          trials.push(trial)
+          if (!candidate || trial.blob.size < candidate.blob.size) candidate = trial
+          if (trial.blob.size <= targetBytes) break
+        }
+        let best = trials.filter(trial => trial.blob.size <= targetBytes).sort((a, b) => b.quality - a.quality)[0]
+        if (best) {
+          let lower = Math.round(best.quality * 100)
+          let upper = Math.min(...trials.filter(trial => trial.quality > best.quality).map(trial => Math.round(trial.quality * 100)), 101)
+          while (attempts < TARGET_MAX_ENCODES && upper - lower > 1) {
+            const percent = Math.floor((lower + upper) / 2)
+            const trial = await encode(percent / 100)
+            if (trial.blob.size <= targetBytes) { best = trial; lower = percent }
+            else upper = percent
           }
           candidate = best
-          targetMet = true
         }
       }
     } else {
@@ -182,13 +196,13 @@ export async function runImagePipeline(file, options, adapter, hooks = {}) {
       }
     }
     assertActive()
+    if (mode === 'target' && candidate.blob.size > targetBytes) {
+      const smallest = !converted ? Math.min(file.size, candidate.blob.size) : candidate.blob.size
+      throw new ImagePipelineError(`Target not met. No tested ${outputFormat === 'jpeg' ? 'JPG' : outputFormat.toUpperCase()} output fits the ${targetBytes.toLocaleString('en-US')}-byte limit while preserving the original dimensions${outputFormat === 'png' ? ', alpha and sample precision' : ''}. The smallest available candidate is ${smallest.toLocaleString('en-US')} bytes. ${candidate.note ? `${candidate.note} ` : ''}Choose another format or use a larger limit. Your original file is unchanged; no above-limit result was saved.`, 'target-unreachable')
+    }
     if (!converted && candidate.blob.size >= file.size) {
       hooks.progress?.(100, 'Original retained')
-      return mode === 'target'
-        ? unchanged('target-unmet', outputFormat === 'png'
-          ? `${candidate.note ? `${candidate.note} ` : ''}The tested PNG settings did not meet the ${targetBytes.toLocaleString()}-byte limit under the color and transparency guards or produce a smaller file. The original is available unchanged. Choose another format or use a larger limit.`
-          : `No tested encoding met the ${targetBytes.toLocaleString()}-byte limit while preserving dimensions and format. The original is available unchanged. Choose another format or use a larger limit.`)
-        : unchanged('unchanged', `${candidate.note ? `${candidate.note} ` : ''}No smaller valid output was found at this setting. The original file is unchanged.`)
+      return unchanged('unchanged', `${candidate.note ? `${candidate.note} ` : ''}No smaller valid output was found at this setting. The original file is unchanged.`)
     }
     stage('Verifying the encoded bytes, dimensions and transparency…')
     const actual = await inspectImageHeader(candidate.blob, cancelled)
@@ -207,21 +221,17 @@ export async function runImagePipeline(file, options, adapter, hooks = {}) {
       throw new ImagePipelineError('The PNG encoder changed pixel values. No output was labeled as lossless.', 'pixel-mismatch')
     if (outputFormat === 'png' && verified.alphaEqual === false)
       throw new ImagePipelineError('The PNG encoder changed transparency. No output with altered alpha was returned.', 'transparency')
-    if (mode === 'target') targetMet = candidate.blob.size <= targetBytes
-    hooks.progress?.(100, mode === 'target' && !targetMet ? 'Target not met' : 'Verified')
+    if (mode === 'target' && candidate.blob.size > targetBytes) throw new ImagePipelineError('Target not met. The final encoded file exceeds the maximum-byte limit. No result was saved.', 'target-unreachable')
+    hooks.progress?.(100, 'Verified')
     return {
       blob: candidate.blob,
-      outcome: mode === 'target' ? targetMet ? 'target-met' : 'target-unmet' : converted ? 'converted' : 'reduced',
+      outcome: mode === 'target' ? 'target-met' : converted ? 'converted' : 'reduced',
       targetBytes,
-      targetNote: mode === 'target' && !targetMet
-        ? outputFormat === 'png'
-          ? `The smallest accepted PNG candidate is ${candidate.blob.size.toLocaleString()} bytes, above the ${targetBytes.toLocaleString()}-byte limit. Lossless PNG optimization and available color-reduction trials preserved alpha and the original dimensions. Choose another format or use a larger limit.`
-          : `The smallest tested candidate is ${candidate.blob.size.toLocaleString()} bytes, above the ${targetBytes.toLocaleString()}-byte limit. The search stopped at ${Math.round(TARGET_QUALITY_FLOOR * 100)}% quality while preserving the original dimensions. Choose another format or use a larger limit.`
-        : mode === 'target' && outputFormat === 'png'
-          ? candidate.compressionKind === 'lossy'
-            ? `Color-reduced PNG met the ${targetBytes.toLocaleString()}-byte limit. Colors may differ; alpha and requested dimensions were preserved and the numerical color-error guard passed.`
-            : `Lossless PNG optimization met the ${targetBytes.toLocaleString()}-byte limit without changing decoded pixels.`
-          : candidate.note,
+      targetNote: mode === 'target' && outputFormat === 'png'
+        ? candidate.compressionKind === 'lossy'
+          ? `Color-reduced PNG met the ${targetBytes.toLocaleString('en-US')}-byte limit. Colors may change visibly to fit your limit; every alpha value and the original dimensions were preserved.`
+          : `Lossless PNG optimization met the ${targetBytes.toLocaleString('en-US')}-byte limit without changing decoded pixels.`
+        : candidate.note,
       inspection: {
         inputWidth: header.width, inputHeight: header.height,
         outputWidth: verified.width, outputHeight: verified.height,

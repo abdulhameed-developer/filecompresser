@@ -1,0 +1,75 @@
+{
+  "startedAt": "2026-11-28T10:37:02.098Z",
+  "base": "http://localhost:4014",
+  "compiledAdminSha256": "d860e8e4a296f88ada7390490458e17a5e6e21e3c1fcbe74aeb5c5ee523edacd",
+  "scope": "Final compiled helper normal Save passed. Source tests verify byte/graph refusals; extreme native paste refusal was not verified.",
+  "testOnlyConfigDifference": {
+    "path": "tina/config.js",
+    "sourceSha256": "ecad42efc918f0fdea5652b0927a250b6ae2fa9f4ba1520c947349dc7b1e2144",
+    "isolatedSha256": "beb7cf4e483aab3b8d1f372d073ad69ac402cd9503743659e2e75d62262e3c63",
+    "difference": "Only contentApiUrlOverride: 'http://localhost:4014/graphql' added in isolated test copy; all schema and callback code stays exact. Root hosted config unchanged."
+  },
+  "checks": [
+    {
+      "name": "Normal native edit and Save persist exact content, with unchanged body and dates",
+      "pass": true,
+      "mutations": 1
+    }
+  ],
+  "requests": [
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": false
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": false
+    },
+    {
+      "url": "http://localhost:4014/graphql",
+      "localOnly": true,
+      "mutation": true
+    }
+  ],
+  "pageErrors": [],
+  "console": [
+    {
+      "type": "debug",
+      "message": "[tina:branch-guard] safeHandleSubmit: checking branch: main"
+    },
+    {
+      "type": "debug",
+      "message": "[tina:branch-guard] safeHandleSubmit: branchExists returned: true"
+    },
+    {
+      "type": "debug",
+      "message": "[tina:branch-guard] safeSubmit: calling handleSubmit"
+    }
+  ],
+  "status": "PASS",
+  "browserClosedNormally": true,
+  "isolatedRecordRestored": true,
+  "sourceContentUnchanged": true,
+  "runtimeSourceUnchanged": true,
+  "compiledAdminUnchanged": true,
+  "finishedAt": "2026-11-28T10:37:06.508Z",
+  "extremeNativeInputAttempts": [
+    {
+      "artifact": "resource-smoke-unbroken-fill-timeout.json",
+      "status": "NOT_REACHED_SAVE",
+      "inputCharacters": 2097153,
+      "sourceUnchanged": true,
+      "mutationsObserved": 0
+    },
+    {
+      "artifact": "resource-smoke-spaced-error-observation-timeout.json",
+      "status": "REFUSAL_NOT_VERIFIED",
+      "inputCharacters": 2097153,
+      "sourceUnchanged": true,
+      "mutationsObserved": 0
+    }
+  ],
+  "normalOnlyInfrastructureAttempt": "A foreground QA proxy later exited with SIGTERM; the failed connection was retained. A tracked detached loopback proxy was used for the passed normal control."
+}

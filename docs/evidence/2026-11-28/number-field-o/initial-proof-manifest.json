@@ -1,0 +1,67 @@
+{
+  "createdAt": "2026-11-28T14:48:27.402307+00:00",
+  "status": "DEFAULT_AND_SIX_ROUTE_PASS_NATIVE_LONG_INVALID_RETEST_PENDING",
+  "files": [
+    {
+      "public": "approved-css-source.patch",
+      "source": ".qa-results/phase3/ui/target-field-o/source-diff.patch",
+      "bytes": 1939,
+      "sha256": "444fa156dbf15e986355c8dfc15ab1969aae213071df70e4468a912ee2706074"
+    },
+    {
+      "public": "compiled-css-scope.json",
+      "source": ".qa-results/phase3/ui/target-field-o/compiled-css-scope.json",
+      "bytes": 1506,
+      "sha256": "401e2983060ddf8e7cdbd3fbd031c07c8cf153ba6caacbcda3e66a510eeb8776"
+    },
+    {
+      "public": "all30-rendered-html-identity.json",
+      "source": ".qa-results/phase3/ui/n-to-o-rendered-export-identity.json",
+      "bytes": 36036,
+      "sha256": "08c860d0c7a8e1738588a4e1103d377a8f41d44071436edb2d44bd49ce69f6d0"
+    },
+    {
+      "public": "all29-default-mobile-pixel-identity.json",
+      "source": ".qa-results/phase3/ui/n-to-o-mobile-pixel-comparison.json",
+      "bytes": 13664,
+      "sha256": "2a82697db254a6259727d201489b2e95b332e69d4f1693f5ef575024700f3dc0"
+    },
+    {
+      "public": "six-actual-tool-controls.json",
+      "source": ".qa-results/phase3/ui/o-actual-number-routes/report.json",
+      "bytes": 11581,
+      "sha256": "ce82ea514319120a4872ad73965a1ab6d1ea362b9f7173ae33386d18ed4c1427"
+    },
+    {
+      "public": "six-route-manual-review.json",
+      "source": ".qa-results/phase3/ui/o-actual-number-routes/manual-native-panels/index.json",
+      "bytes": 4630,
+      "sha256": "990a94df7abf1866901c0ef3238c78b515382f657385c7ab8d9514d9e0d7099d"
+    },
+    {
+      "public": "fresh29-ui-completion.json",
+      "source": ".qa-results/phase3/ui/final-o/completion.json",
+      "bytes": 1861,
+      "sha256": "74c66d50a174a90c64ef481ae9cfec5a0c776cb0b07fe3a31ffd340cc47ec9d2"
+    },
+    {
+      "public": "fresh29-ui-normal-exit.json",
+      "source": ".qa-results/phase3/ui/final-o-driver.json",
+      "bytes": 772,
+      "sha256": "8628858bdde14b39b8e9ddcd0fc74da71e57e9d5ccd1d9f762f2d26c1c315012"
+    },
+    {
+      "public": "png-target-320.png",
+      "source": ".qa-results/phase3/ui/o-actual-number-routes/png-compressor-320.png",
+      "bytes": 52045,
+      "sha256": "e41779ee333fea7386a28ea271c73dc88f4ea72876c1bcdcce577fb1ed3be5f9"
+    },
+    {
+      "public": "png-target-481.png",
+      "source": ".qa-results/phase3/ui/o-actual-number-routes/png-compressor-481.png",
+      "bytes": 56766,
+      "sha256": "e6d22e9425409089d6f47cdf42718fb494d6ded7fc2bb1ce0f07c78d194f75a7"
+    }
+  ],
+  "scope": "Exact approved CSS scope, all30 public HTML semantics, all29 mobile default pixel identity, fresh29 geometry/axe/five sharedgroups and actual six-route numeric-style proof. This preliminary manifest does not claim final three-engine long/invalid/short-height acceptance."
+}

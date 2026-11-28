@@ -1,15 +1,53 @@
 {
-  "heading": "How do I convert WebM to MP4?",
-  "introduction": "Convert a WebM recording to H.264 video in an MP4 container with AAC audio when present. Processing stays in your browser and the original file is never changed.",
+  "heading": "Convert WebM recordings to MP4",
+  "introduction": "Convert a supported WebM recording into H.264 MP4 with AAC audio when present. Original display dimensions are preserved, and your selected recording stays on your device.",
   "sections": [
-    { "heading": "Choose a compatible output", "body": "MP4 is widely supported by phones, browsers, editors and sharing platforms. Conversion creates a real MP4 container. Compatible H.264 video can be kept without re-encoding; other supported video codecs are encoded as H.264. It is not a filename-only rename." },
-    { "heading": "Keep the tab open", "body": "The first media job loads the browser engine. Encoding time depends on duration, resolution, codec and device speed. The converter preserves the source dimensions; long recordings need more time and memory." },
-    { "heading": "Check the result", "body": "Play the downloaded MP4 with sound before replacing the WebM original. Subtitles and cover art are not retained by the browser encoder." }
+    {
+      "heading": "Convert in three steps",
+      "body": "1. Select a WebM file and wait for validation.\n2. Review the fixed MP4 output and choose Convert to MP4.\n3. Download the result, then play the picture and sound before replacing your source."
+    },
+    {
+      "heading": "What the converter changes",
+      "body": "The output is an MP4 container with H.264 video and AAC audio when an audio track is present. Compatible H.264 video may be kept without re-encoding; other supported video codecs are encoded as H.264. This is an actual conversion, not an extension rename. Subtitles and cover art are not retained."
+    },
+    {
+      "heading": "Dimensions and file size",
+      "body": "The converter preserves source display dimensions. It has no image-size target or resolution selector. A compatible MP4 may be larger than its WebM source; that is reported as a conversion, not a compression saving. Use the video compressor for supported MP4/MOV compression settings."
+    },
+    {
+      "heading": "Time and input limits",
+      "body": "Inputs can be up to 200 MiB each, within the 500-file and 300 MiB queue limits. The first media job downloads the browser engine. Duration, resolution, codec and device speed affect processing, and each media job has a five-minute processing limit. Long or complex recordings can fail within the file-size limit."
+    }
   ],
-  "faq": [],
+  "faq": [
+    {
+      "q": "Can I choose another output format?",
+      "a": "This converter has fixed MP4 output with H.264 video and AAC audio when present. It does not offer a format menu."
+    },
+    {
+      "q": "Why is my MP4 larger than the WebM?",
+      "a": "A new container and codec can require more bytes. The tool reports the actual result and does not present growth as a saving."
+    },
+    {
+      "q": "Can I rename WebM to MP4 instead?",
+      "a": "No. Changing a filename does not change the container or encoded video. Use a real converter and check playback."
+    },
+    {
+      "q": "Are recordings uploaded?",
+      "a": "No. The selected recording is processed in your browser. The site downloads program code, rather than uploading your recording."
+    }
+  ],
   "seoTitle": "WebM to MP4 Converter — Free Browser Tool",
   "seoDescription": "Convert WebM videos to compatible H.264 MP4 files locally in your browser without uploading them.",
   "links": [
-    { "label": "How browser media processing works", "href": "/blog/how-browser-compression-works" }
-  ]
+    {
+      "label": "How browser media processing works",
+      "href": "/blog/how-browser-compression-works"
+    },
+    {
+      "label": "Compress a supported MP4 or MOV clip",
+      "href": "/video-compressor"
+    }
+  ],
+  "faqMode": "custom"
 }

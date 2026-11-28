@@ -1,0 +1,3262 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-28T10:32:40.401836+00:00",
+  "scope": "Pre-Phase3 public default/empty views only. Actual visual review covers every retained screenshot region in ordered full-width strips. No interaction or processing proof is implied.",
+  "captureWindow": {
+    "startedAt": "2026-11-28T10:11:01.935Z",
+    "finishedAt": "2026-11-28T10:21:18.856Z"
+  },
+  "releaseSha": "4c0d1d6be06d264a944bb302167caa7e1beec7e3",
+  "homepageSha256": "c45d94bb8ded2332d1321a3a5fda4c6a467a6c49c47c7d7d6e9bfeddd1224340",
+  "releaseJsonSha256": "6dabfeceefa40f499f189f3112685bed309d35cb6e9c7a5dfdc2c11e3d8afc43",
+  "browserVersion": "156.0.8078.47",
+  "browserLaunch": {
+    "systemChrome": true,
+    "headless": true,
+    "chromiumSandbox": true,
+    "customUserAgent": false,
+    "ignoreHttpsErrors": false,
+    "protocolOverrides": false,
+    "requestRouting": false
+  },
+  "viewportQualification": "Viewport-only anonymous system desktop Chrome; mobile is 390\u00d7844 layout evidence, not physical-device or touch proof.",
+  "counts": {
+    "routesIncludingDraft": 29,
+    "servedViews": 28,
+    "successfulCaptures": 58,
+    "actualVisualReviews": 58,
+    "retainedArtifactHashesRechecked": 174,
+    "navigation200": 56,
+    "expectedDraft404": 2,
+    "pageErrors": 0,
+    "mutatingRequests": 0,
+    "horizontalOverflow": 0,
+    "brokenFinalImages": 0,
+    "retainedBackgroundAborts": 27,
+    "viewsWithBackgroundAborts": 13,
+    "expectedDraftResourceConsoleErrors": 2,
+    "priorQuicNavigationFailures": 2
+  },
+  "sourcePinsStable": true,
+  "releaseStable": true,
+  "identityBefore": [
+    {
+      "route": "/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "startedAt": "2026-11-28T10:11:01.936Z",
+      "finishedAt": "2026-11-28T10:11:02.845Z",
+      "bytes": 110378,
+      "sha256": "c45d94bb8ded2332d1321a3a5fda4c6a467a6c49c47c7d7d6e9bfeddd1224340",
+      "file": "before--home.html"
+    },
+    {
+      "route": "/release.json",
+      "status": 200,
+      "contentType": "application/json",
+      "startedAt": "2026-11-28T10:11:02.004Z",
+      "finishedAt": "2026-11-28T10:11:02.781Z",
+      "bytes": 4007,
+      "sha256": "6dabfeceefa40f499f189f3112685bed309d35cb6e9c7a5dfdc2c11e3d8afc43",
+      "file": "before--release.json",
+      "releaseSha": "4c0d1d6be06d264a944bb302167caa7e1beec7e3"
+    },
+    {
+      "route": "/image-worker/codec-manifest.json",
+      "status": 200,
+      "contentType": "application/json",
+      "startedAt": "2026-11-28T10:11:02.008Z",
+      "finishedAt": "2026-11-28T10:11:02.990Z",
+      "bytes": 3843,
+      "sha256": "80ebb95351d0582b1877cc80f554fc8dabcd63ff7293a2fd69be9e5192d1a80b",
+      "file": "before--image-worker--codec-manifest.json"
+    },
+    {
+      "route": "/image-worker/image-engine.mjs",
+      "status": 200,
+      "contentType": "application/javascript",
+      "startedAt": "2026-11-28T10:11:02.011Z",
+      "finishedAt": "2026-11-28T10:11:02.775Z",
+      "bytes": 1174,
+      "sha256": "5179b8034f0272e92d54b8b9e2bb6aea6844658d66f1eab372fefb9ea6361f5a",
+      "file": "before--image-worker--image-engine.mjs"
+    },
+    {
+      "route": "/image-worker/image-metadata.mjs",
+      "status": 200,
+      "contentType": "application/javascript",
+      "startedAt": "2026-11-28T10:11:02.015Z",
+      "finishedAt": "2026-11-28T10:11:02.782Z",
+      "bytes": 10124,
+      "sha256": "a584b568d2735f3fb1f345157c2c118a3ab63e9e1cb3377684c03caff09b3ec9",
+      "file": "before--image-worker--image-metadata.mjs"
+    },
+    {
+      "route": "/image-worker/image-canvas.mjs",
+      "status": 200,
+      "contentType": "application/javascript",
+      "startedAt": "2026-11-28T10:11:02.018Z",
+      "finishedAt": "2026-11-28T10:11:02.837Z",
+      "bytes": 15269,
+      "sha256": "96e366066cc5720a4a9267c878d05af80b591cc5e69bde773f71b8f5adbc4173",
+      "file": "before--image-worker--image-canvas.mjs"
+    },
+    {
+      "route": "/image-worker/image-pipeline.mjs",
+      "status": 200,
+      "contentType": "application/javascript",
+      "startedAt": "2026-11-28T10:11:02.020Z",
+      "finishedAt": "2026-11-28T10:11:02.838Z",
+      "bytes": 15533,
+      "sha256": "8e9ce49d7e90115d20ecc30cc130a06746d9b03b5b164e4e56f1e81f1d7987c6",
+      "file": "before--image-worker--image-pipeline.mjs"
+    },
+    {
+      "route": "/image-worker/image-png.mjs",
+      "status": 200,
+      "contentType": "application/javascript",
+      "startedAt": "2026-11-28T10:11:02.024Z",
+      "finishedAt": "2026-11-28T10:11:02.839Z",
+      "bytes": 11710,
+      "sha256": "2c15e4efe4e413f37655028c8d95dd2092476f473e126a4dc9b0cda72923053f",
+      "file": "before--image-worker--image-png.mjs"
+    },
+    {
+      "route": "/ffmpeg-core/worker.js",
+      "status": 200,
+      "contentType": "application/javascript",
+      "startedAt": "2026-11-28T10:11:02.030Z",
+      "finishedAt": "2026-11-28T10:11:02.781Z",
+      "bytes": 5085,
+      "sha256": "feff0ac937ea225e997e1fae997a74f8b8d572423a526da59eb56624b1f3cde7",
+      "file": "before--ffmpeg-core--worker.js"
+    },
+    {
+      "route": "/ffmpeg-core/wasm-manifest.json",
+      "status": 200,
+      "contentType": "application/json",
+      "startedAt": "2026-11-28T10:11:02.040Z",
+      "finishedAt": "2026-11-28T10:11:02.786Z",
+      "bytes": 5657,
+      "sha256": "9612006d08b9c847e994dd392bdae855db2ecb3f353b33e9c6e95c0d4ee520e4",
+      "file": "before--ffmpeg-core--wasm-manifest.json"
+    }
+  ],
+  "identityAfter": [
+    {
+      "route": "/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 110378,
+      "sha256": "c45d94bb8ded2332d1321a3a5fda4c6a467a6c49c47c7d7d6e9bfeddd1224340",
+      "file": "after--home.html",
+      "startedAt": "2026-11-28T10:21:18.224Z",
+      "finishedAt": "2026-11-28T10:21:18.856Z"
+    },
+    {
+      "route": "/release.json",
+      "status": 200,
+      "contentType": "application/json",
+      "bytes": 4007,
+      "sha256": "6dabfeceefa40f499f189f3112685bed309d35cb6e9c7a5dfdc2c11e3d8afc43",
+      "file": "after--release.json",
+      "startedAt": "2026-11-28T10:21:18.235Z",
+      "finishedAt": "2026-11-28T10:21:18.749Z",
+      "releaseSha": "4c0d1d6be06d264a944bb302167caa7e1beec7e3"
+    },
+    {
+      "route": "/image-worker/codec-manifest.json",
+      "status": 200,
+      "contentType": "application/json",
+      "bytes": 3843,
+      "sha256": "80ebb95351d0582b1877cc80f554fc8dabcd63ff7293a2fd69be9e5192d1a80b",
+      "file": "after--image-worker--codec-manifest.json",
+      "startedAt": "2026-11-28T10:21:18.236Z",
+      "finishedAt": "2026-11-28T10:21:18.798Z"
+    },
+    {
+      "route": "/image-worker/image-engine.mjs",
+      "status": 200,
+      "contentType": "application/javascript",
+      "bytes": 1174,
+      "sha256": "5179b8034f0272e92d54b8b9e2bb6aea6844658d66f1eab372fefb9ea6361f5a",
+      "file": "after--image-worker--image-engine.mjs",
+      "startedAt": "2026-11-28T10:21:18.237Z",
+      "finishedAt": "2026-11-28T10:21:18.749Z"
+    },
+    {
+      "route": "/image-worker/image-metadata.mjs",
+      "status": 200,
+      "contentType": "application/javascript",
+      "bytes": 10124,
+      "sha256": "a584b568d2735f3fb1f345157c2c118a3ab63e9e1cb3377684c03caff09b3ec9",
+      "file": "after--image-worker--image-metadata.mjs",
+      "startedAt": "2026-11-28T10:21:18.238Z",
+      "finishedAt": "2026-11-28T10:21:18.770Z"
+    },
+    {
+      "route": "/image-worker/image-canvas.mjs",
+      "status": 200,
+      "contentType": "application/javascript",
+      "bytes": 15269,
+      "sha256": "96e366066cc5720a4a9267c878d05af80b591cc5e69bde773f71b8f5adbc4173",
+      "file": "after--image-worker--image-canvas.mjs",
+      "startedAt": "2026-11-28T10:21:18.238Z",
+      "finishedAt": "2026-11-28T10:21:18.737Z"
+    },
+    {
+      "route": "/image-worker/image-pipeline.mjs",
+      "status": 200,
+      "contentType": "application/javascript",
+      "bytes": 15533,
+      "sha256": "8e9ce49d7e90115d20ecc30cc130a06746d9b03b5b164e4e56f1e81f1d7987c6",
+      "file": "after--image-worker--image-pipeline.mjs",
+      "startedAt": "2026-11-28T10:21:18.239Z",
+      "finishedAt": "2026-11-28T10:21:18.765Z"
+    },
+    {
+      "route": "/image-worker/image-png.mjs",
+      "status": 200,
+      "contentType": "application/javascript",
+      "bytes": 11710,
+      "sha256": "2c15e4efe4e413f37655028c8d95dd2092476f473e126a4dc9b0cda72923053f",
+      "file": "after--image-worker--image-png.mjs",
+      "startedAt": "2026-11-28T10:21:18.240Z",
+      "finishedAt": "2026-11-28T10:21:18.762Z"
+    },
+    {
+      "route": "/ffmpeg-core/worker.js",
+      "status": 200,
+      "contentType": "application/javascript",
+      "bytes": 5085,
+      "sha256": "feff0ac937ea225e997e1fae997a74f8b8d572423a526da59eb56624b1f3cde7",
+      "file": "after--ffmpeg-core--worker.js",
+      "startedAt": "2026-11-28T10:21:18.241Z",
+      "finishedAt": "2026-11-28T10:21:18.833Z"
+    },
+    {
+      "route": "/ffmpeg-core/wasm-manifest.json",
+      "status": 200,
+      "contentType": "application/json",
+      "bytes": 5657,
+      "sha256": "9612006d08b9c847e994dd392bdae855db2ecb3f353b33e9c6e95c0d4ee520e4",
+      "file": "after--ffmpeg-core--wasm-manifest.json",
+      "startedAt": "2026-11-28T10:21:18.241Z",
+      "finishedAt": "2026-11-28T10:21:18.785Z"
+    }
+  ],
+  "captureBatches": [
+    ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/capture-report.json",
+    ".qa-results/phase3/visual-before-live/2026-11-28T10-16-04.921Z/capture-report.json",
+    ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/capture-report.json"
+  ],
+  "preservedEarlierAttempts": [
+    ".qa-results/phase3/visual-before-live/setup-attempts.json",
+    ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/capture-report.json",
+    ".qa-results/phase3/visual-before-live/2026-11-28T10-14-09.029Z/capture-report.json",
+    ".qa-results/phase3/visual-before-live/2026-11-28T10-16-04.921Z/capture-report.json"
+  ],
+  "backgroundAbortInterpretation": "26 HEAD fetches plus one GET image request ended ERR_ABORTED. Rendered views have no missing final image or page JS error. Cause and user impact were not established; events remain present rather than counted as clean network success.",
+  "issueViewOccurrences": {
+    "BASELINE_LONG_EDITORIAL_BODY": 6,
+    "BASELINE_FEATURED_DATES_ABSENT": 2,
+    "BASELINE_DIMENSION_WORDING": 4,
+    "BASELINE_GENERIC_IMAGE_FAQS": 9,
+    "BASELINE_GENERIC_MEDIA_FAQS": 11,
+    "BASELINE_CREATOR_FAQ_CONTEXT": 2,
+    "BASELINE_ALIAS_TECHNICAL_NOTE": 2,
+    "BASELINE_CARD_UPDATED_DATES_ABSENT": 12,
+    "BASELINE_ARTICLE_DATE_SPLIT": 10,
+    "BASELINE_MOBILE_DIAGRAM_LABELS": 4
+  },
+  "limitations": [
+    "Default/empty public pages only; no menu hover/focus, modal, uploaded-file, settings, progress, output or download interaction exercised.",
+    "No physical-device, alternate-engine, screen-reader or touch-device testing in this baseline capture.",
+    "Visual judgment is recorded per route; capture success and no-overflow do not prove every UI state or perfection.",
+    "Final candidate screenshots use different initial viewport heights; no pixel-exact before/after claim.",
+    "Long editorial bodies are a visual density concern, not authorization to delete valid SEO-team content."
+  ],
+  "records": [
+    {
+      "route": "/",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "startedAt": "2026-11-28T10:11:11.627Z",
+      "finishedAt": "2026-11-28T10:11:17.163Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/",
+        "viewport": "desktop",
+        "reviewedAt": "2026-11-28T10:21:25.507194+00:00",
+        "method": "All ordered full-width contact-sheet strips, top to bottom; original fullpage PNG retained.",
+        "observations": "Hero, upload card, tool-grid rows, process diagram, all long editorial sections, guide images, FAQs and footer were inspected in ordered strips. Major blocks align and gallery images are rendered. The long 12-section prose body pushes guides/FAQs far below the tool directory; current featured cards show reading time without the reviewed Updated date.",
+        "issues": [
+          "BASELINE_LONG_EDITORIAL_BODY",
+          "BASELINE_FEATURED_DATES_ABSENT"
+        ],
+        "scopeLimitation": "No upload,processing,settings,hover/focus or expanded-state test in this baseline view."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/01--home--desktop.png",
+          "sha256": "0a47a04efb94f41f5a5e506cd82beaf4c67cb957e8389ffe240a9deb089b2692",
+          "bytes": 1463216
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/01--home--desktop.wire.html",
+          "sha256": "c45d94bb8ded2332d1321a3a5fda4c6a467a6c49c47c7d7d6e9bfeddd1224340",
+          "bytes": 110378
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/01--home--desktop.dom.html",
+          "sha256": "c1d2dcef6279a7a3d2635a8c54cb8ad10a67a566d9f79dc5b9c2badb91e06423",
+          "bytes": 110083
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://filecompresser.com/privacy",
+          "method": "HEAD",
+          "type": "fetch",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 7666,
+      "imagesLoaded": 5
+    },
+    {
+      "route": "/compress",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "startedAt": "2026-11-28T10:11:17.366Z",
+      "finishedAt": "2026-11-28T10:11:20.786Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/compress",
+        "viewport": "desktop",
+        "reviewedAt": "2026-11-28T10:21:25.507606+00:00",
+        "method": "All ordered full-width contact-sheet strips, top to bottom; original fullpage PNG retained.",
+        "observations": "Upload action is prominent above the reading column; visible numbered steps and bullets render correctly. The 13-section text block is long relative to the small working interface and delays output guidance/related tools. No clipping or oversized empty card was seen in the default desktop state.",
+        "issues": [
+          "BASELINE_LONG_EDITORIAL_BODY"
+        ],
+        "scopeLimitation": "No upload,processing,settings,hover/focus or expanded-state test in this baseline view."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/02--compress--desktop.png",
+          "sha256": "d2f94b88d7616c7ebd7adfa2bf0df82d9f30710beb84d265d1d6dca0a9d93226",
+          "bytes": 748789
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/02--compress--desktop.wire.html",
+          "sha256": "15a16467b001147c1f0d1e8732710c530522af915036ee9311540adf5b024132",
+          "bytes": 75940
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/02--compress--desktop.dom.html",
+          "sha256": "47f6bdd0032c37950f69d1c4877234698b2f1b96f3df2b26ea3af5a002ff8454",
+          "bytes": 75813
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 5382,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/image-compressor",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "startedAt": "2026-11-28T10:11:20.918Z",
+      "finishedAt": "2026-11-28T10:11:23.853Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/image-compressor",
+        "viewport": "desktop",
+        "reviewedAt": "2026-11-28T10:21:25.507615+00:00",
+        "method": "All ordered full-width contact-sheet strips, top to bottom; original fullpage PNG retained.",
+        "observations": "Upload surface, 50MB/32MP cues, 16-section prose, lists, output disclosures, FAQ rows and related links are aligned. Long editorial density repeats task explanations before lower help. Intro says dimensions are kept by default, which can imply an optional resize path.",
+        "issues": [
+          "BASELINE_LONG_EDITORIAL_BODY",
+          "BASELINE_DIMENSION_WORDING"
+        ],
+        "scopeLimitation": "No upload,processing,settings,hover/focus or expanded-state test in this baseline view."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/03--image-compressor--desktop.png",
+          "sha256": "c8503fe0e8327ef9fbdd945c63d0e6ce6a6d95c9cd91abec702e89d852ff4561",
+          "bytes": 795116
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/03--image-compressor--desktop.wire.html",
+          "sha256": "22c5e640599e9582453ffa1873ad0c10684d7b9918fab7644adfc553bf1ee71b",
+          "bytes": 87049
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/03--image-compressor--desktop.dom.html",
+          "sha256": "fe2ec9f3c02125a87f635b77066c91c56a08402d7f2769d03b16e9e522c7a13a",
+          "bytes": 86937
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 5946,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/jpg-compressor",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "startedAt": "2026-11-28T10:11:23.994Z",
+      "finishedAt": "2026-11-28T10:11:25.913Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/jpg-compressor",
+        "viewport": "desktop",
+        "reviewedAt": "2026-11-28T10:21:25.507621+00:00",
+        "method": "All ordered full-width contact-sheet strips, top to bottom; original fullpage PNG retained.",
+        "observations": "Compact tool introduction and three useful subsections fit a clean reading column. The upload card, output rows, related links and footer remain proportionate. The same four generic image FAQs appear instead of the saved format-specific list.",
+        "issues": [
+          "BASELINE_GENERIC_IMAGE_FAQS"
+        ],
+        "scopeLimitation": "No upload,processing,settings,hover/focus or expanded-state test in this baseline view."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/04--jpg-compressor--desktop.png",
+          "sha256": "35ff8dc3d8feca11233edc29a3f7981c7895f470589f0e85e26e6b95e683fdba",
+          "bytes": 304499
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/04--jpg-compressor--desktop.wire.html",
+          "sha256": "e17e50c35abba15cdacd201f0d894c7630a9f4f7d14d7e5bd4c2a8ea10bcb341",
+          "bytes": 60966
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/04--jpg-compressor--desktop.dom.html",
+          "sha256": "b1a73799750ae3ddd3582532ef6f19cb3d4cf7f9260d4304050d839b65989abf",
+          "bytes": 60692
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 3117,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/jpeg-compressor",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "startedAt": "2026-11-28T10:11:26.108Z",
+      "finishedAt": "2026-11-28T10:11:28.141Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/jpeg-compressor",
+        "viewport": "desktop",
+        "reviewedAt": "2026-11-28T10:21:25.507634+00:00",
+        "method": "All ordered full-width contact-sheet strips, top to bottom; original fullpage PNG retained.",
+        "observations": "The camera-export H2 wraps cleanly to two lines; uploader and information rows align. The body gives useful output checks, but by-default dimension wording remains and FAQs repeat the generic four-image set.",
+        "issues": [
+          "BASELINE_GENERIC_IMAGE_FAQS",
+          "BASELINE_DIMENSION_WORDING"
+        ],
+        "scopeLimitation": "No upload,processing,settings,hover/focus or expanded-state test in this baseline view."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/05--jpeg-compressor--desktop.png",
+          "sha256": "2e1005b23e04a8966853f9c150f732604040a0324c39911f49c77cf6b1769a14",
+          "bytes": 303257
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/05--jpeg-compressor--desktop.wire.html",
+          "sha256": "6c557344e25f66aa6728d7b56d43a6bf7769d004d1032a43a0d54162d1058efe",
+          "bytes": 60903
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/05--jpeg-compressor--desktop.dom.html",
+          "sha256": "1ddc4236ac9134979d8d4e96a6b7b123aa8a7381f7609924d3766a7e2da9f31a",
+          "bytes": 60806
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 3112,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/png-compressor",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "startedAt": "2026-11-28T10:11:28.269Z",
+      "finishedAt": "2026-11-28T10:11:30.460Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/png-compressor",
+        "viewport": "desktop",
+        "reviewedAt": "2026-11-28T10:21:25.507640+00:00",
+        "method": "All ordered full-width contact-sheet strips, top to bottom; original fullpage PNG retained.",
+        "observations": "The longer three-line deck moves the upload card slightly down but retains clear hierarchy. Lossless/color-change paragraphs, two inline guide links, output disclosure and footer are readable without clipping. FAQs remain the generic image set.",
+        "issues": [
+          "BASELINE_GENERIC_IMAGE_FAQS"
+        ],
+        "scopeLimitation": "No upload,processing,settings,hover/focus or expanded-state test in this baseline view."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/06--png-compressor--desktop.png",
+          "sha256": "44684a822fac857b47dc6189c8e27474bf9b00f870d1e281663fdb7e93fa2c28",
+          "bytes": 344528
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/06--png-compressor--desktop.wire.html",
+          "sha256": "621f102a6460e3dbf6bb40cd38090981d8e7e096829d5b421b44229e35bc37fb",
+          "bytes": 62381
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/06--png-compressor--desktop.dom.html",
+          "sha256": "1de39325ef4add01e370fa7dacb550d6bd89cb0554986c98fd61276323aa0008",
+          "bytes": 62361
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 3273,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/webp-compressor",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "startedAt": "2026-11-28T10:11:30.691Z",
+      "finishedAt": "2026-11-28T10:11:33.100Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/webp-compressor",
+        "viewport": "desktop",
+        "reviewedAt": "2026-11-28T10:21:25.507645+00:00",
+        "method": "All ordered full-width contact-sheet strips, top to bottom; original fullpage PNG retained.",
+        "observations": "The single-format upload surface and short conversion/retention guidance are visually balanced. Transparent-source note and guide links are distinguishable. The shared generic image FAQ list repeats here; title uses existing uppercase WEBP naming.",
+        "issues": [
+          "BASELINE_GENERIC_IMAGE_FAQS"
+        ],
+        "scopeLimitation": "No upload,processing,settings,hover/focus or expanded-state test in this baseline view."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/07--webp-compressor--desktop.png",
+          "sha256": "2aac719d9deef687e09f9cd12a1cdd386f2fe9135d3fdbb820e94724c111d186",
+          "bytes": 296894
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/07--webp-compressor--desktop.wire.html",
+          "sha256": "7e17c97da92211d34398ea3f36c18018fc50e7ea29fcbba026f4bd8dc19d2da1",
+          "bytes": 60481
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/07--webp-compressor--desktop.dom.html",
+          "sha256": "752a28a63ecd8c8f88da22bd4f68c30c570dfc87b6440cde59b30f147e6ea602",
+          "bytes": 60461
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 3059,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/gif-compressor",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "startedAt": "2026-11-28T10:11:33.248Z",
+      "finishedAt": "2026-11-28T10:11:35.275Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/gif-compressor",
+        "viewport": "desktop",
+        "reviewedAt": "2026-11-28T10:22:45.452068+00:00",
+        "method": "All ordered full-width contact-sheet strips, top to bottom; original fullpage PNG retained.",
+        "observations": "The animation-specific heading, GIF-only format cue, palette/timing guidance and three output rows are balanced. FAQ content is the same generic first-job/phone/progress set used on media tools rather than the saved animation questions.",
+        "issues": [
+          "BASELINE_GENERIC_MEDIA_FAQS"
+        ],
+        "scopeLimitation": "Default/empty view only; no processing,settings,download or interactive-state proof."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/08--gif-compressor--desktop.png",
+          "sha256": "49f5ae03ac7f1d1bd8ba070010f1401bdf39e4cb23ed5a65202358ae4fc0bc21",
+          "bytes": 299203
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/08--gif-compressor--desktop.wire.html",
+          "sha256": "4897bdc58b7af440d99b24b36fb82a739dce1ab6ef43d58f632fa60b5bd235ae",
+          "bytes": 59599
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/08--gif-compressor--desktop.dom.html",
+          "sha256": "daea7832262ca8bee572b7739cba232b623d6b46ab9f61e4a948176785f0d859",
+          "bytes": 59579
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 2984,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/video-compressor",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "startedAt": "2026-11-28T10:11:35.439Z",
+      "finishedAt": "2026-11-28T10:11:37.324Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/video-compressor",
+        "viewport": "desktop",
+        "reviewedAt": "2026-11-28T10:22:45.459469+00:00",
+        "method": "All ordered full-width contact-sheet strips, top to bottom; original fullpage PNG retained.",
+        "observations": "Readable two-line task H2, MP4/MOV/M4V cue, resolution/memory guidance and related-tool rows remain aligned. The broad media FAQ set repeats; no selected-file, progress or settings state was exercised.",
+        "issues": [
+          "BASELINE_GENERIC_MEDIA_FAQS"
+        ],
+        "scopeLimitation": "Default/empty view only; no processing,settings,download or interactive-state proof."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/09--video-compressor--desktop.png",
+          "sha256": "333ebc474b3278c47136845342bbeaaf47dc4da3ce4323fea6d605da4618b1af",
+          "bytes": 316740
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/09--video-compressor--desktop.wire.html",
+          "sha256": "119616ed322b3ceae0b8a74158d731e2b6efd81d83e4b7a875c96f33a622acf3",
+          "bytes": 60468
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/09--video-compressor--desktop.dom.html",
+          "sha256": "a10b1ff399861db0e6214ac29813039966f1ca51837326101983de26b5e082c9",
+          "bytes": 60448
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 3053,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/webm-to-mp4",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "startedAt": "2026-11-28T10:11:37.624Z",
+      "finishedAt": "2026-11-28T10:11:39.691Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/webm-to-mp4",
+        "viewport": "desktop",
+        "reviewedAt": "2026-11-28T10:22:45.459498+00:00",
+        "method": "All ordered full-width contact-sheet strips, top to bottom; original fullpage PNG retained.",
+        "observations": "Uploader already says Convert your WebM to MP4, and the page clearly names MP4 output. The short three-subsection body is proportionate. Default FAQs repeat media-engine questions rather than converter-specific options. No conversion-progress wording was tested in this empty state.",
+        "issues": [
+          "BASELINE_GENERIC_MEDIA_FAQS"
+        ],
+        "scopeLimitation": "Default/empty view only; no processing,settings,download or interactive-state proof."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/10--webm-to-mp4--desktop.png",
+          "sha256": "f123491f4dd625f06d204df3ebaf6eff1f4aedcfd66ad27a0f3ac799b8bf8f23",
+          "bytes": 270525
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/10--webm-to-mp4--desktop.wire.html",
+          "sha256": "18f236093344c471e5376fa34ee9209229d0507db4995ec853fd2e791c888114",
+          "bytes": 54520
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/10--webm-to-mp4--desktop.dom.html",
+          "sha256": "77cb531734e63487aea2a2c7bb2ce9a6bd42b00e34cb3245fe881556c2c906fe",
+          "bytes": 54423
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 2774,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/mp3-compressor",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "startedAt": "2026-11-28T10:11:40.024Z",
+      "finishedAt": "2026-11-28T10:11:42.338Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/mp3-compressor",
+        "viewport": "desktop",
+        "reviewedAt": "2026-11-28T10:22:45.459505+00:00",
+        "method": "All ordered full-width contact-sheet strips, top to bottom; original fullpage PNG retained.",
+        "observations": "MP3-only upload cue, 100MB limit, bitrate guidance and audio-quality distinction are readable and well spaced. Same generic media FAQ set appears; no layout collision or disproportionately empty container was visible.",
+        "issues": [
+          "BASELINE_GENERIC_MEDIA_FAQS"
+        ],
+        "scopeLimitation": "Default/empty view only; no processing,settings,download or interactive-state proof."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/11--mp3-compressor--desktop.png",
+          "sha256": "f6d5d94259985b032d1bd9db569c9a2816ff81b8dcd70fc5f612577350e934dc",
+          "bytes": 293458
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/11--mp3-compressor--desktop.wire.html",
+          "sha256": "6204da6d3fcaedb93ac48ea0c72b4fa6a5a8a886d1716835b20357eacccfb753",
+          "bytes": 59425
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/11--mp3-compressor--desktop.dom.html",
+          "sha256": "69ad27ae89fa1a2ecfaea21f55baf154a28e65a39a3d1b477d4337f20319f9be",
+          "bytes": 59405
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 2931,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/wav-compressor",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "startedAt": "2026-11-28T10:11:42.592Z",
+      "finishedAt": "2026-11-28T10:11:44.934Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/wav-compressor",
+        "viewport": "desktop",
+        "reviewedAt": "2026-11-28T10:22:45.459511+00:00",
+        "method": "All ordered full-width contact-sheet strips, top to bottom; original fullpage PNG retained.",
+        "observations": "H1 and uploader identify WAV-to-MP3 conversion correctly. Three explanatory subsections, output disclosure and related links fit the common column. Generic media FAQs plus one WAV clarification still precede the same footer.",
+        "issues": [
+          "BASELINE_GENERIC_MEDIA_FAQS"
+        ],
+        "scopeLimitation": "Default/empty view only; no processing,settings,download or interactive-state proof."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/12--wav-compressor--desktop.png",
+          "sha256": "513cd0ce67e436420559da7c8606d29a8aea1c9c57f91e9ee0ff12fcc2be9ae4",
+          "bytes": 312636
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/12--wav-compressor--desktop.wire.html",
+          "sha256": "7ca0b1afe5caee3d435edab1b7d66723bc7c299b94295c432a9465c3e6b49d32",
+          "bytes": 61199
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/12--wav-compressor--desktop.dom.html",
+          "sha256": "54ee3be069b7425e3519ef98f03a54be32846fb7791419e0a819f4a0296f862b",
+          "bytes": 61169
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 3072,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/pdf-compressor",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "startedAt": "2026-11-28T10:11:45.286Z",
+      "finishedAt": "2026-11-28T10:11:47.592Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/pdf-compressor",
+        "viewport": "desktop",
+        "reviewedAt": "2026-11-28T10:22:45.459517+00:00",
+        "method": "All ordered full-width contact-sheet strips, top to bottom; original fullpage PNG retained.",
+        "observations": "PDF-specific structural optimization, scan limits and manual output-review sections are legible; the H2 wraps cleanly. The three visible FAQ headings are relevant to PDFs. Upload panel and related links align with no visible clipping. ",
+        "issues": [],
+        "scopeLimitation": "Default/empty view only; no processing,settings,download or interactive-state proof."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/13--pdf-compressor--desktop.png",
+          "sha256": "1b51a027894ae373c6b2938403ed82340e5956c03b434fadf82d139447a5c6f7",
+          "bytes": 313435
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/13--pdf-compressor--desktop.wire.html",
+          "sha256": "0a3c7db1b018f5d5ba72bfea536a533dafad3cb087f47028e7239a5dc2925c99",
+          "bytes": 58799
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/13--pdf-compressor--desktop.dom.html",
+          "sha256": "fc057ec282ba0590e583737cfc2879777ea9860c6af3b6891284cbec3c0dba63",
+          "bytes": 58779
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 3078,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/zip-compressor",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "startedAt": "2026-11-28T10:11:47.756Z",
+      "finishedAt": "2026-11-28T10:11:49.805Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/zip-compressor",
+        "viewport": "desktop",
+        "reviewedAt": "2026-11-28T10:22:45.459523+00:00",
+        "method": "All ordered full-width contact-sheet strips, top to bottom; original fullpage PNG retained.",
+        "observations": "Create-a-ZIP task and upload heading are clear; no restrictive input-format row is shown, appropriate for bundling arbitrary files. FAQ headings concern archive overwriting/bombs, which belong primarily to extraction rather than creation.",
+        "issues": [
+          "BASELINE_CREATOR_FAQ_CONTEXT"
+        ],
+        "scopeLimitation": "Default/empty view only; no processing,settings,download or interactive-state proof."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/14--zip-compressor--desktop.png",
+          "sha256": "3dcc4295349f57f4034195c6d4d1a1023ad02c3779fa43a1d843faebfb24297e",
+          "bytes": 278891
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/14--zip-compressor--desktop.wire.html",
+          "sha256": "8aedb6fd7dcf65fa86ece27f41aba0cdb9c0e116104a9ff1c1ac62ee9cad776d",
+          "bytes": 55515
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/14--zip-compressor--desktop.dom.html",
+          "sha256": "842c4b23a7941695707c3ff55cffd9c40b600bec0fee8a7eedade2e62acd4190",
+          "bytes": 55495
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 2832,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/archive-compressor",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "startedAt": "2026-11-28T10:11:49.984Z",
+      "finishedAt": "2026-11-28T10:11:52.920Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/archive-compressor",
+        "viewport": "desktop",
+        "reviewedAt": "2026-11-28T10:22:45.459529+00:00",
+        "method": "All ordered full-width contact-sheet strips, top to bottom; original fullpage PNG retained.",
+        "observations": "Extractor identity, ZIP-only cue, 150MB input limit and format/unsafe-path explanations are distinct from creation. Output rows and two archive FAQ headings fit the task. No obvious desktop alignment or reading-width defect seen. ",
+        "issues": [],
+        "scopeLimitation": "Default/empty view only; no processing,settings,download or interactive-state proof."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/15--archive-compressor--desktop.png",
+          "sha256": "80939c43b7b5c4e2ccb6d68bce3b1e396e41530d5a6757e87e8df64d0d9acfc9",
+          "bytes": 292729
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/15--archive-compressor--desktop.wire.html",
+          "sha256": "7eebffc4a7ac54e25e67042727fa2864b7a29cba9bd604896b05071b1cd7f585",
+          "bytes": 56047
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/15--archive-compressor--desktop.dom.html",
+          "sha256": "4a108b067f576a738bd27e70778435e78fb017f3b7075ccbc88986361873d236",
+          "bytes": 55780
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 2925,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/wav-to-mp3",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "startedAt": "2026-11-28T10:11:53.401Z",
+      "finishedAt": "2026-11-28T10:11:56.288Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/wav-to-mp3",
+        "viewport": "desktop",
+        "reviewedAt": "2026-11-28T10:22:45.459535+00:00",
+        "method": "All ordered full-width contact-sheet strips, top to bottom; original fullpage PNG retained.",
+        "observations": "Alias page renders the WAV converter with the same upload/content flow. Its extra green notice explains the alternate URL and links to the canonical tool; this technical note is visually noticeable but stays in bounds. The remainder is aligned and matches the WAV page composition.",
+        "issues": [
+          "BASELINE_ALIAS_TECHNICAL_NOTE"
+        ],
+        "scopeLimitation": "Default/empty view only; no processing,settings,download or interactive-state proof."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/16--wav-to-mp3--desktop.png",
+          "sha256": "45a6b7c6617b06e3437d636bcc9767fc35840e5814b3577e82c3d1c9ff3ae14b",
+          "bytes": 319470
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/16--wav-to-mp3--desktop.wire.html",
+          "sha256": "fe10810d434b0b164af1c0c10784a4d23d833ee84daaf78372f2c0d2363c0e85",
+          "bytes": 61568
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/16--wav-to-mp3--desktop.dom.html",
+          "sha256": "abe9cf09d9fedf81c9d1e9c82e37889eedfba53ffba7cfca3396c4f961e63a76",
+          "bytes": 61538
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 3135,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/about",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "startedAt": "2026-11-28T10:11:56.548Z",
+      "finishedAt": "2026-11-28T10:11:59.079Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/about",
+        "viewport": "desktop",
+        "reviewedAt": "2026-11-28T10:27:52.865166+00:00",
+        "method": "All ordered full-width contact-sheet strips, top to bottom; original fullpage PNG retained.",
+        "observations": "The two-line identity heading, three value columns, numbered workflow and process illustration are balanced. Device limits and guide strip have distinct hierarchy; footer columns align. No obvious overlap or clipping in the full page.",
+        "issues": [],
+        "scopeLimitation": "Default/empty view only; no hover/focus, dropdown, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/17--about--desktop.png",
+          "sha256": "864d5bec3103f4cbb88237d9e942682b5a808ca9ea7ea52caf7c7d5a59611775",
+          "bytes": 253137
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/17--about--desktop.wire.html",
+          "sha256": "3a703c1304922b6616c8c618e634386c09745d90112c8c7022f15038d13e63c7",
+          "bytes": 47705
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/17--about--desktop.dom.html",
+          "sha256": "518cee73390766226c4c24b6d31942e8ee33e64878e0028d1ee2bb56d36d8b6a",
+          "bytes": 47596
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://filecompresser.com/privacy",
+          "method": "HEAD",
+          "type": "fetch",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://filecompresser.com/",
+          "method": "HEAD",
+          "type": "fetch",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://filecompresser.com/disclaimer",
+          "method": "HEAD",
+          "type": "fetch",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://filecompresser.com/sitemap",
+          "method": "HEAD",
+          "type": "fetch",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://filecompresser.com/blog",
+          "method": "HEAD",
+          "type": "fetch",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 2072,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/contact",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "startedAt": "2026-11-28T10:11:59.240Z",
+      "finishedAt": "2026-11-28T10:12:01.576Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/contact",
+        "viewport": "desktop",
+        "reviewedAt": "2026-11-28T10:27:52.865203+00:00",
+        "method": "All ordered full-width contact-sheet strips, top to bottom; original fullpage PNG retained.",
+        "observations": "Support address and four troubleshooting cards are easy to scan; two-by-two cards have useful text density. The lower private-content note and guide link form a clear sequence before the footer. No form is implied.",
+        "issues": [],
+        "scopeLimitation": "Default/empty view only; no hover/focus, dropdown, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/18--contact--desktop.png",
+          "sha256": "cb5e3a487415fa041f549c2cfd484f0e8b56b16426d82bcab480cc79b791e232",
+          "bytes": 222647
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/18--contact--desktop.wire.html",
+          "sha256": "82de8505b425bd0f5974044cdba47adad2287d5eb29d1f272d5b6431cddff0f3",
+          "bytes": 41640
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/18--contact--desktop.dom.html",
+          "sha256": "44740a9d15a5f526c39118412440b676563b662064936178c3a74f26209c2866",
+          "bytes": 41530
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://filecompresser.com/sitemap",
+          "method": "HEAD",
+          "type": "fetch",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://filecompresser.com/",
+          "method": "HEAD",
+          "type": "fetch",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://filecompresser.com/privacy",
+          "method": "HEAD",
+          "type": "fetch",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://filecompresser.com/blog",
+          "method": "HEAD",
+          "type": "fetch",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 1847,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/privacy",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "startedAt": "2026-11-28T10:12:01.808Z",
+      "finishedAt": "2026-11-28T10:12:04.652Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/privacy",
+        "viewport": "desktop",
+        "reviewedAt": "2026-11-28T10:27:52.865211+00:00",
+        "method": "All ordered full-width contact-sheet strips, top to bottom; original fullpage PNG retained.",
+        "observations": "The narrow legal reading column, distinct H2 spacing, collapsed contents bar and underlined support link remain legible. The displayed last-updated date is 21 November 2026. All ten policy sections and the footer were inspected.",
+        "issues": [],
+        "scopeLimitation": "Default/empty view only; no hover/focus, dropdown, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/19--privacy--desktop.png",
+          "sha256": "49c18f0d8e6a8eddaf03400333e09756d0f6e089de4242cfc619fbc4bb2a30b9",
+          "bytes": 432567
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/19--privacy--desktop.wire.html",
+          "sha256": "9f6635af7d605b7534cb6864c58cb7e21fd3ad0e2eccede5882143c322d1ccbe",
+          "bytes": 44574
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/19--privacy--desktop.dom.html",
+          "sha256": "edfeda6280fb91a894ce6e3c8887cd42272147d600f6cce6df6d1d15d7696f4f",
+          "bytes": 44555
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://filecompresser.com/",
+          "method": "HEAD",
+          "type": "fetch",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 3311,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/terms",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "startedAt": "2026-11-28T10:12:04.995Z",
+      "finishedAt": "2026-11-28T10:12:07.586Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/terms",
+        "viewport": "desktop",
+        "reviewedAt": "2026-11-28T10:27:52.865217+00:00",
+        "method": "All ordered full-width contact-sheet strips, top to bottom; original fullpage PNG retained.",
+        "observations": "Six main legal sections plus document/contact notes use a restrained reading layout. The collapsed contents bar is proportionate; the visible date is 4 November 2026. No desktop truncation or collision was seen.",
+        "issues": [],
+        "scopeLimitation": "Default/empty view only; no hover/focus, dropdown, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/20--terms--desktop.png",
+          "sha256": "f7f45e2e251a6d3b27728860bfc5c8162eb298ae0cf94f5ba36d6dd99edbd40a",
+          "bytes": 228455
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/20--terms--desktop.wire.html",
+          "sha256": "578293c14bf86d269944a32158aacf2d2d0e1e520b5f1893e8af68dcf787876f",
+          "bytes": 36195
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/20--terms--desktop.dom.html",
+          "sha256": "8b07d29e53f2b1b7d1f93504456bd06c0b55f32d991a53c86974429008795bcb",
+          "bytes": 36088
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://filecompresser.com/",
+          "method": "HEAD",
+          "type": "fetch",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 2182,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/disclaimer",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "startedAt": "2026-11-28T10:12:07.753Z",
+      "finishedAt": "2026-11-28T10:12:10.334Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/disclaimer",
+        "viewport": "desktop",
+        "reviewedAt": "2026-11-28T10:27:52.865224+00:00",
+        "method": "All ordered full-width contact-sheet strips, top to bottom; original fullpage PNG retained.",
+        "observations": "Longer technical-limit paragraphs remain in a readable legal column with distinct headings. The 26 November date and collapsed contents bar are visible. Liability and support sections do not overlap the footer.",
+        "issues": [],
+        "scopeLimitation": "Default/empty view only; no hover/focus, dropdown, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/21--disclaimer--desktop.png",
+          "sha256": "51c1d086766cdbaff71ce82ac9ab18789dbee892cb11275b4ad11692b3485572",
+          "bytes": 304622
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/21--disclaimer--desktop.wire.html",
+          "sha256": "4f2b0f9b1c310c04f03f29ebce3603388b10a03d892e0f9fb3776e93d149c47d",
+          "bytes": 39476
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/21--disclaimer--desktop.dom.html",
+          "sha256": "b8d144ecedbd3f9aca2c079c88f5453b81475b6ee4d4c887dc27c461b32418ee",
+          "bytes": 39364
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://filecompresser.com/",
+          "method": "HEAD",
+          "type": "fetch",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 2568,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/blog",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "startedAt": "2026-11-28T10:12:10.473Z",
+      "finishedAt": "2026-11-28T10:12:13.113Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/blog",
+        "viewport": "desktop",
+        "reviewedAt": "2026-11-28T10:27:52.865230+00:00",
+        "method": "All ordered full-width contact-sheet strips, top to bottom; original fullpage PNG retained.",
+        "observations": "Featured split image/text card and four two-column article cards render with consistent image crops and generous readable text blocks. Cards show September publication dates rather than the newer Updated date used inside articles.",
+        "issues": [
+          "BASELINE_CARD_UPDATED_DATES_ABSENT"
+        ],
+        "scopeLimitation": "Default/empty view only; no hover/focus, dropdown, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/22--blog--desktop.png",
+          "sha256": "6c7b0e03941bb7bdd72bc23d6beae47ac5ec0c5ddd84a2b5057e1b9081e4af39",
+          "bytes": 1553456
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/22--blog--desktop.wire.html",
+          "sha256": "cc1a6582f12c2edafb01a0bbed19f7157297544b6f32a012695dc5e35357036e",
+          "bytes": 45216
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/22--blog--desktop.dom.html",
+          "sha256": "e3fd5f3ba6fc7d1e5cc0d88669d8d6ad75535d90b8aa3acaedcebbc97dd273ff",
+          "bytes": 45091
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 2542,
+      "imagesLoaded": 7
+    },
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "startedAt": "2026-11-28T10:12:13.446Z",
+      "finishedAt": "2026-11-28T10:12:15.944Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/blog/compressing-files-for-the-web",
+        "viewport": "desktop",
+        "reviewedAt": "2026-11-28T10:27:52.865236+00:00",
+        "method": "All ordered full-width contact-sheet strips, top to bottom; original fullpage PNG retained.",
+        "observations": "Hero illustration, numbered contents, format decision diagram, five reading sections, sources, tool CTA and related cards were inspected. Content width and heading rhythm are coherent; publication date and Updated date are displayed in two separate locations, while related cards have no Updated date.",
+        "issues": [
+          "BASELINE_ARTICLE_DATE_SPLIT",
+          "BASELINE_CARD_UPDATED_DATES_ABSENT"
+        ],
+        "scopeLimitation": "Default/empty view only; no hover/focus, dropdown, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/23--blog--compressing-files-for-the-web--desktop.png",
+          "sha256": "2cae5ab05e0fb22725282d78da66eefee9cc9b9756fc1467bb329038721464ad",
+          "bytes": 1151579
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/23--blog--compressing-files-for-the-web--desktop.wire.html",
+          "sha256": "8c83ceba44ebacfb8ffdd14f48024e2cd7066c72f83854a03854cc4f161c7b44",
+          "bytes": 55208
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/23--blog--compressing-files-for-the-web--desktop.dom.html",
+          "sha256": "75f5e916acff7aaf9d01842d2bf5074009b7aba92de2b6a3a518efe4af6cb509",
+          "bytes": 55081
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 4444,
+      "imagesLoaded": 3
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "startedAt": "2026-11-28T10:12:16.173Z",
+      "finishedAt": "2026-11-28T10:12:19.256Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/blog/what-privacy-claim-really-means",
+        "viewport": "desktop",
+        "reviewedAt": "2026-11-28T10:27:52.865242+00:00",
+        "method": "All ordered full-width contact-sheet strips, top to bottom; original fullpage PNG retained.",
+        "observations": "Two-path privacy diagram, callout and four main reading sections are visually distinct and fit their column. Hero image and related links render fully. Publication and Updated dates are split, and related cards omit Updated dates.",
+        "issues": [
+          "BASELINE_ARTICLE_DATE_SPLIT",
+          "BASELINE_CARD_UPDATED_DATES_ABSENT"
+        ],
+        "scopeLimitation": "Default/empty view only; no hover/focus, dropdown, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/24--blog--what-privacy-claim-really-means--desktop.png",
+          "sha256": "30ec7cdbd188e0a7744a88f69473f9102437750eb32c3dc1f1e65481fc3a0ddf",
+          "bytes": 1192488
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/24--blog--what-privacy-claim-really-means--desktop.wire.html",
+          "sha256": "7a894eea82d68db5808c76d2f4a0d929013dce9ebd02aa9f03adac677b068d29",
+          "bytes": 56375
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/24--blog--what-privacy-claim-really-means--desktop.dom.html",
+          "sha256": "5cc26c2095fbba1ab71af28a9bca65550678dc581275c5d34912111ec74aed1b",
+          "bytes": 56316
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 4427,
+      "imagesLoaded": 3
+    },
+    {
+      "route": "/blog/choosing-a-compression-mode",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "startedAt": "2026-11-28T10:12:19.463Z",
+      "finishedAt": "2026-11-28T10:12:23.031Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/blog/choosing-a-compression-mode",
+        "viewport": "desktop",
+        "reviewedAt": "2026-11-28T10:27:52.865248+00:00",
+        "method": "All ordered full-width contact-sheet strips, top to bottom; original fullpage PNG retained.",
+        "observations": "Eight-section article is long but the contents card and four-mode comparison break it up. Target-size, PNG and unchanged-original callout are readable. Two separate date positions and undated related cards remain.",
+        "issues": [
+          "BASELINE_ARTICLE_DATE_SPLIT",
+          "BASELINE_CARD_UPDATED_DATES_ABSENT"
+        ],
+        "scopeLimitation": "Default/empty view only; no hover/focus, dropdown, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/25--blog--choosing-a-compression-mode--desktop.png",
+          "sha256": "ba81103ecb7c7d05f9b81cd565c2d62944606e49e6d089a3b14de33d5c562cb1",
+          "bytes": 1346853
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/25--blog--choosing-a-compression-mode--desktop.wire.html",
+          "sha256": "b6d599af67641ce26a277e262c92de67054d82c6665e20e08b8ab872ac1f450f",
+          "bytes": 54947
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/25--blog--choosing-a-compression-mode--desktop.dom.html",
+          "sha256": "8cb21091d0753bbc725ca7f6f6abb7b2029290170eba5ab20e7b1ad24493e7e5",
+          "bytes": 54918
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 5367,
+      "imagesLoaded": 3
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "startedAt": "2026-11-28T10:12:23.276Z",
+      "finishedAt": "2026-11-28T10:12:26.736Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/blog/honest-file-size-reporting",
+        "viewport": "desktop",
+        "reviewedAt": "2026-11-28T10:27:52.865254+00:00",
+        "method": "All ordered full-width contact-sheet strips, top to bottom; original fullpage PNG retained.",
+        "observations": "The three-outcome size diagram, bullets and highlighted rule support the prose. Main content and bottom CTA fit the reading column. Split date treatment and missing Updated dates on related cards match the other articles.",
+        "issues": [
+          "BASELINE_ARTICLE_DATE_SPLIT",
+          "BASELINE_CARD_UPDATED_DATES_ABSENT"
+        ],
+        "scopeLimitation": "Default/empty view only; no hover/focus, dropdown, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/26--blog--honest-file-size-reporting--desktop.png",
+          "sha256": "9c4aaa1e6483984ff0de15d1d3fad123695b85a2bd14426d6cd56f3540d59aec",
+          "bytes": 1092149
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/26--blog--honest-file-size-reporting--desktop.wire.html",
+          "sha256": "66d52b302d15f83d86e6fe59d49d4038e554bac6ebf69bd9546954c1245d615b",
+          "bytes": 53431
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/26--blog--honest-file-size-reporting--desktop.dom.html",
+          "sha256": "a38ae89c081ea795c3d824b1756b7ad9c123beada54c9a5deb138a1e7dbf3b09",
+          "bytes": 53402
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 4172,
+      "imagesLoaded": 3
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "startedAt": "2026-11-28T10:12:27.055Z",
+      "finishedAt": "2026-11-28T10:12:30.565Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/blog/how-browser-compression-works",
+        "viewport": "desktop",
+        "reviewedAt": "2026-11-28T10:27:52.865261+00:00",
+        "method": "All ordered full-width contact-sheet strips, top to bottom; original fullpage PNG retained.",
+        "observations": "Five-stage engine diagram, three H2 sections and result callout provide clear hierarchy. The hero, tool CTA and related links are fully rendered. Separate publication/Updated dates and missing related-card Updated dates remain.",
+        "issues": [
+          "BASELINE_ARTICLE_DATE_SPLIT",
+          "BASELINE_CARD_UPDATED_DATES_ABSENT"
+        ],
+        "scopeLimitation": "Default/empty view only; no hover/focus, dropdown, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/27--blog--how-browser-compression-works--desktop.png",
+          "sha256": "c76481dfdfce6690e45045d4983029684777677da81e70e326ee62f5d79ba2d1",
+          "bytes": 985261
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/27--blog--how-browser-compression-works--desktop.wire.html",
+          "sha256": "3870ceeb87d82a40a58590c1c953d43f2ce37355162122a09c13c8dd3985f50f",
+          "bytes": 55040
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/27--blog--how-browser-compression-works--desktop.dom.html",
+          "sha256": "003c4f6851408140d0e4ad32d75f11ae386251f0e7d4b8cbe06d1c1ed43d15ab",
+          "bytes": 55003
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://filecompresser.com/blog/pipeline-640.webp",
+          "method": "GET",
+          "type": "image",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 4060,
+      "imagesLoaded": 3
+    },
+    {
+      "route": "/sitemap",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "startedAt": "2026-11-28T10:12:30.695Z",
+      "finishedAt": "2026-11-28T10:12:32.571Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/sitemap",
+        "viewport": "desktop",
+        "reviewedAt": "2026-11-28T10:27:52.865267+00:00",
+        "method": "All ordered full-width contact-sheet strips, top to bottom; original fullpage PNG retained.",
+        "observations": "Three tool categories and a second row of product/guides links provide a compact directory rather than oversized cards. Row arrows align, long guide titles fit and the footer is distinct.",
+        "issues": [],
+        "scopeLimitation": "Default/empty view only; no hover/focus, dropdown, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/28--sitemap--desktop.png",
+          "sha256": "8e291d47ca2406a2d7b525c51e0420253a357073571fae072d6e3636ccdbe6ab",
+          "bytes": 150619
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/28--sitemap--desktop.wire.html",
+          "sha256": "2cdd08b85fd1c2c670302bd74004f6535c707cb9b2923fef9ff87d5d2c967aab",
+          "bytes": 58771
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-11-01.887Z/28--sitemap--desktop.dom.html",
+          "sha256": "a7b256fdb6453af91cda52911f6e791d1105247b931e4dd18a5d01c96cf18bde",
+          "bytes": 58653
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 1620,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/blog/png-lossless-smart-maximum-measured",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "startedAt": "2026-11-28T10:16:07.552Z",
+      "finishedAt": "2026-11-28T10:16:09.594Z",
+      "status": 404,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/blog/png-lossless-smart-maximum-measured",
+        "viewport": "desktop",
+        "reviewedAt": "2026-11-28T10:27:52.865274+00:00",
+        "method": "All ordered full-width contact-sheet strips, top to bottom; original fullpage PNG retained.",
+        "observations": "The draft route correctly presents the branded missing-page screen: clear 404 title, home/tool recovery buttons and popular-tool groups. No draft article content appears; layout and footer remain intact.",
+        "issues": [],
+        "scopeLimitation": "Default/empty view only; no hover/focus, dropdown, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-16-04.921Z/29--blog--png-lossless-smart-maximum-measured--desktop.png",
+          "sha256": "9d8375a7e61d4730fb41b7b661ba775c1c15d53ac87a43c1ebae587e9b9c42bb",
+          "bytes": 116486
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-16-04.921Z/29--blog--png-lossless-smart-maximum-measured--desktop.wire.html",
+          "sha256": "50730bd698df6ad9c2079632f5190633ee579ad91e281de0ada90562a57b972b",
+          "bytes": 32239
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-16-04.921Z/29--blog--png-lossless-smart-maximum-measured--desktop.dom.html",
+          "sha256": "c0084d033daa57c5b6a26823307088a7c1b8fbe993ced0eb4b242d353d11f077",
+          "bytes": 31741
+        }
+      },
+      "console": [
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()",
+          "location": {
+            "url": "https://filecompresser.com/blog/png-lossless-smart-maximum-measured",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        }
+      ],
+      "httpErrors": [
+        {
+          "url": "https://filecompresser.com/blog/png-lossless-smart-maximum-measured",
+          "status": 404,
+          "type": "document"
+        }
+      ],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 1323,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "startedAt": "2026-11-28T10:20:13.127Z",
+      "finishedAt": "2026-11-28T10:20:18.591Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/",
+        "viewport": "mobile",
+        "reviewedAt": "2026-11-28T10:29:01.818798+00:00",
+        "method": "All ordered full-width 390px contact-sheet strips, top to bottom, at original strip resolution; original fullpage PNG retained.",
+        "observations": "Header collapses to a compact menu button; hero copy wraps cleanly and uploader stays prominent. Tool filters wrap to two rows, all 14 stacked cards align, and the process diagram fits. The long 12-section text body requires extensive scrolling before the single guide card and FAQs; footer uses two readable columns.",
+        "issues": [
+          "BASELINE_LONG_EDITORIAL_BODY",
+          "BASELINE_FEATURED_DATES_ABSENT"
+        ],
+        "scopeLimitation": "390\u00d7844 anonymous desktop-Chrome viewport only, not physical touch-device proof. Default/empty state; no menu, focus, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/01--home--mobile.png",
+          "sha256": "582a108e0634e6dc2fef77d9b6b7222301c8a21fb995ce925c0f359a3d522c59",
+          "bytes": 1222185
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/01--home--mobile.wire.html",
+          "sha256": "c45d94bb8ded2332d1321a3a5fda4c6a467a6c49c47c7d7d6e9bfeddd1224340",
+          "bytes": 110378
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/01--home--mobile.dom.html",
+          "sha256": "1cdb989fff9cace2b33f7393126745efe5483aced86958b12435ffb85ba0ff75",
+          "bytes": 110326
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://filecompresser.com/privacy",
+          "method": "HEAD",
+          "type": "fetch",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 11899,
+      "imagesLoaded": 5
+    },
+    {
+      "route": "/compress",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "startedAt": "2026-11-28T10:20:18.595Z",
+      "finishedAt": "2026-11-28T10:20:21.396Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/compress",
+        "viewport": "mobile",
+        "reviewedAt": "2026-11-28T10:29:01.818834+00:00",
+        "method": "All ordered full-width 390px contact-sheet strips, top to bottom, at original strip resolution; original fullpage PNG retained.",
+        "observations": "Uploader, supported formats and limits fit the narrow screen. Thirteen editorial sections make a long reading path before output guidance; lists and inline links wrap without collisions. Related tools use two columns and the footer is readable.",
+        "issues": [
+          "BASELINE_LONG_EDITORIAL_BODY"
+        ],
+        "scopeLimitation": "390\u00d7844 anonymous desktop-Chrome viewport only, not physical touch-device proof. Default/empty state; no menu, focus, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/02--compress--mobile.png",
+          "sha256": "207e8b525cb9c9cdb748a45c5495d64d9e3f682789bafcb9847977c08079a197",
+          "bytes": 758862
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/02--compress--mobile.wire.html",
+          "sha256": "15a16467b001147c1f0d1e8732710c530522af915036ee9311540adf5b024132",
+          "bytes": 75940
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/02--compress--mobile.dom.html",
+          "sha256": "47f6bdd0032c37950f69d1c4877234698b2f1b96f3df2b26ea3af5a002ff8454",
+          "bytes": 75813
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 7725,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/image-compressor",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "startedAt": "2026-11-28T10:20:21.397Z",
+      "finishedAt": "2026-11-28T10:20:23.965Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/image-compressor",
+        "viewport": "mobile",
+        "reviewedAt": "2026-11-28T10:29:01.818846+00:00",
+        "method": "All ordered full-width 390px contact-sheet strips, top to bottom, at original strip resolution; original fullpage PNG retained.",
+        "observations": "Sixteen sections retain readable 17px body text and proper list indents but create an 8471px default page. Upload box fits; generic image FAQ rows are visibly repeated and by-default dimension wording remains in the deck.",
+        "issues": [
+          "BASELINE_LONG_EDITORIAL_BODY",
+          "BASELINE_GENERIC_IMAGE_FAQS",
+          "BASELINE_DIMENSION_WORDING"
+        ],
+        "scopeLimitation": "390\u00d7844 anonymous desktop-Chrome viewport only, not physical touch-device proof. Default/empty state; no menu, focus, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/03--image-compressor--mobile.png",
+          "sha256": "90fdc62c8005ea99eba2b35bed57ff6d3c0cf4dc77e2e119e15f530d4a0a122f",
+          "bytes": 811422
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/03--image-compressor--mobile.wire.html",
+          "sha256": "22c5e640599e9582453ffa1873ad0c10684d7b9918fab7644adfc553bf1ee71b",
+          "bytes": 87049
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/03--image-compressor--mobile.dom.html",
+          "sha256": "77d5fae0e0ef7994dded3c9fb0a387724ff3c13f5efb28fc725e25c8c378bef9",
+          "bytes": 87014
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 8471,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/jpg-compressor",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "startedAt": "2026-11-28T10:20:23.966Z",
+      "finishedAt": "2026-11-28T10:20:25.660Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/jpg-compressor",
+        "viewport": "mobile",
+        "reviewedAt": "2026-11-28T10:29:01.818855+00:00",
+        "method": "All ordered full-width 390px contact-sheet strips, top to bottom, at original strip resolution; original fullpage PNG retained.",
+        "observations": "JPG title, uploader and three short guide sections have clear hierarchy. The output and FAQ rows are full width, related links and footer use two columns. Generic four-image FAQ questions repeat here.",
+        "issues": [
+          "BASELINE_GENERIC_IMAGE_FAQS"
+        ],
+        "scopeLimitation": "390\u00d7844 anonymous desktop-Chrome viewport only, not physical touch-device proof. Default/empty state; no menu, focus, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/04--jpg-compressor--mobile.png",
+          "sha256": "68e02f96f739bf1af0bf2d6f98f49fc180699c1554cc21091fb6549f35016bf5",
+          "bytes": 290469
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/04--jpg-compressor--mobile.wire.html",
+          "sha256": "e17e50c35abba15cdacd201f0d894c7630a9f4f7d14d7e5bd4c2a8ea10bcb341",
+          "bytes": 60966
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/04--jpg-compressor--mobile.dom.html",
+          "sha256": "7fe57de4cc9c790bfd52076edf53ca5cc397a9379be8962206c2e4680f436582",
+          "bytes": 60946
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 3962,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/jpeg-compressor",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "startedAt": "2026-11-28T10:20:25.661Z",
+      "finishedAt": "2026-11-28T10:20:27.396Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/jpeg-compressor",
+        "viewport": "mobile",
+        "reviewedAt": "2026-11-28T10:29:01.818862+00:00",
+        "method": "All ordered full-width 390px contact-sheet strips, top to bottom, at original strip resolution; original fullpage PNG retained.",
+        "observations": "Camera-export H2 and long subsection headings wrap naturally. The upload card stays in bounds and body links remain distinguishable. Same generic image FAQs and by-default dimension phrase remain.",
+        "issues": [
+          "BASELINE_GENERIC_IMAGE_FAQS",
+          "BASELINE_DIMENSION_WORDING"
+        ],
+        "scopeLimitation": "390\u00d7844 anonymous desktop-Chrome viewport only, not physical touch-device proof. Default/empty state; no menu, focus, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/05--jpeg-compressor--mobile.png",
+          "sha256": "fd4d6d46984e60af289ddbf2561023e15308ebe0bedd4f11c455548920a774a9",
+          "bytes": 285306
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/05--jpeg-compressor--mobile.wire.html",
+          "sha256": "6c557344e25f66aa6728d7b56d43a6bf7769d004d1032a43a0d54162d1058efe",
+          "bytes": 60903
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/05--jpeg-compressor--mobile.dom.html",
+          "sha256": "1b9e75be65228ce627443a9402b7e5380fd49f7d28c2bce321e3c45215007656",
+          "bytes": 60883
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 3934,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/png-compressor",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "startedAt": "2026-11-28T10:20:27.398Z",
+      "finishedAt": "2026-11-28T10:20:29.202Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/png-compressor",
+        "viewport": "mobile",
+        "reviewedAt": "2026-11-28T10:29:01.818870+00:00",
+        "method": "All ordered full-width 390px contact-sheet strips, top to bottom, at original strip resolution; original fullpage PNG retained.",
+        "observations": "The longer deck uses five readable lines; the upload action remains within the first viewport. Transparency guidance and long question headings wrap cleanly. FAQ rows still use the shared image questions rather than PNG-specific content.",
+        "issues": [
+          "BASELINE_GENERIC_IMAGE_FAQS"
+        ],
+        "scopeLimitation": "390\u00d7844 anonymous desktop-Chrome viewport only, not physical touch-device proof. Default/empty state; no menu, focus, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/06--png-compressor--mobile.png",
+          "sha256": "68a2c0e2c38d3aee9fb842ab38e216bc5b1ad4610a82d098f38ca48328acd2e7",
+          "bytes": 324954
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/06--png-compressor--mobile.wire.html",
+          "sha256": "621f102a6460e3dbf6bb40cd38090981d8e7e096829d5b421b44229e35bc37fb",
+          "bytes": 62381
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/06--png-compressor--mobile.dom.html",
+          "sha256": "1de39325ef4add01e370fa7dacb550d6bd89cb0554986c98fd61276323aa0008",
+          "bytes": 62361
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 4250,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/webp-compressor",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "startedAt": "2026-11-28T10:20:29.203Z",
+      "finishedAt": "2026-11-28T10:20:30.916Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/webp-compressor",
+        "viewport": "mobile",
+        "reviewedAt": "2026-11-28T10:29:01.818877+00:00",
+        "method": "All ordered full-width 390px contact-sheet strips, top to bottom, at original strip resolution; original fullpage PNG retained.",
+        "observations": "Title and upload panel fit with clear WEBP-only cue. Body paragraphs, output rows, related links and footer remain aligned. The generic image FAQ set repeats despite WebP-specific prose.",
+        "issues": [
+          "BASELINE_GENERIC_IMAGE_FAQS"
+        ],
+        "scopeLimitation": "390\u00d7844 anonymous desktop-Chrome viewport only, not physical touch-device proof. Default/empty state; no menu, focus, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/07--webp-compressor--mobile.png",
+          "sha256": "d51d5684d372b73606fcb9e5f265ce681b4749f434fc15b0e393a34c535732b3",
+          "bytes": 278323
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/07--webp-compressor--mobile.wire.html",
+          "sha256": "7e17c97da92211d34398ea3f36c18018fc50e7ea29fcbba026f4bd8dc19d2da1",
+          "bytes": 60481
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/07--webp-compressor--mobile.dom.html",
+          "sha256": "752a28a63ecd8c8f88da22bd4f68c30c570dfc87b6440cde59b30f147e6ea602",
+          "bytes": 60461
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 3897,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/gif-compressor",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "startedAt": "2026-11-28T10:20:30.918Z",
+      "finishedAt": "2026-11-28T10:20:32.656Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/gif-compressor",
+        "viewport": "mobile",
+        "reviewedAt": "2026-11-28T10:29:01.818885+00:00",
+        "method": "All ordered full-width 390px contact-sheet strips, top to bottom, at original strip resolution; original fullpage PNG retained.",
+        "observations": "GIF-only cue and animation-focused headings read clearly; output explanation wraps without crowding the disclosure icons. The three generic media FAQ headings are visible instead of animation-specific questions.",
+        "issues": [
+          "BASELINE_GENERIC_MEDIA_FAQS"
+        ],
+        "scopeLimitation": "390\u00d7844 anonymous desktop-Chrome viewport only, not physical touch-device proof. Default/empty state; no menu, focus, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/08--gif-compressor--mobile.png",
+          "sha256": "f896b07470d748954612121226a047a3e1fba3b8a8d221b3721b95dcbc8a607c",
+          "bytes": 282674
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/08--gif-compressor--mobile.wire.html",
+          "sha256": "4897bdc58b7af440d99b24b36fb82a739dce1ab6ef43d58f632fa60b5bd235ae",
+          "bytes": 59599
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/08--gif-compressor--mobile.dom.html",
+          "sha256": "daea7832262ca8bee572b7739cba232b623d6b46ab9f61e4a948176785f0d859",
+          "bytes": 59579
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 3944,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/video-compressor",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "startedAt": "2026-11-28T10:20:32.657Z",
+      "finishedAt": "2026-11-28T10:20:34.404Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/video-compressor",
+        "viewport": "mobile",
+        "reviewedAt": "2026-11-28T10:29:01.818893+00:00",
+        "method": "All ordered full-width 390px contact-sheet strips, top to bottom, at original strip resolution; original fullpage PNG retained.",
+        "observations": "Two-line guide heading and resolution/memory paragraphs remain readable. The upload card, output disclosure and related links fit the mobile column. Generic media FAQ content repeats; no selected-file controls are present in this empty view.",
+        "issues": [
+          "BASELINE_GENERIC_MEDIA_FAQS"
+        ],
+        "scopeLimitation": "390\u00d7844 anonymous desktop-Chrome viewport only, not physical touch-device proof. Default/empty state; no menu, focus, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/09--video-compressor--mobile.png",
+          "sha256": "f40d158bd5668e9b4c1db6e7a8268f5f930cc571624760c0e8a2917d68d1eb67",
+          "bytes": 297607
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/09--video-compressor--mobile.wire.html",
+          "sha256": "119616ed322b3ceae0b8a74158d731e2b6efd81d83e4b7a875c96f33a622acf3",
+          "bytes": 60468
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/09--video-compressor--mobile.dom.html",
+          "sha256": "a10b1ff399861db0e6214ac29813039966f1ca51837326101983de26b5e082c9",
+          "bytes": 60448
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 4017,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/webm-to-mp4",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "startedAt": "2026-11-28T10:20:34.405Z",
+      "finishedAt": "2026-11-28T10:20:36.097Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/webm-to-mp4",
+        "viewport": "mobile",
+        "reviewedAt": "2026-11-28T10:29:01.818901+00:00",
+        "method": "All ordered full-width 390px contact-sheet strips, top to bottom, at original strip resolution; original fullpage PNG retained.",
+        "observations": "Converter H1 wraps to two balanced lines and uploader explicitly names MP4 output. Specific conversion paragraphs and output disclosure are readable. Generic first-job/phone/progress FAQ set remains; processing wording is not exercised.",
+        "issues": [
+          "BASELINE_GENERIC_MEDIA_FAQS"
+        ],
+        "scopeLimitation": "390\u00d7844 anonymous desktop-Chrome viewport only, not physical touch-device proof. Default/empty state; no menu, focus, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/10--webm-to-mp4--mobile.png",
+          "sha256": "2909501c2971b3f3a4753d843d3a3d6ea8dc4494ec5874a482f51196140c9cdb",
+          "bytes": 252726
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/10--webm-to-mp4--mobile.wire.html",
+          "sha256": "18f236093344c471e5376fa34ee9209229d0507db4995ec853fd2e791c888114",
+          "bytes": 54520
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/10--webm-to-mp4--mobile.dom.html",
+          "sha256": "dd90e117d81d0302b6932c07b047e1d8ab68f855fd754a9f723686d8607334f4",
+          "bytes": 54500
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 3611,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/mp3-compressor",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "startedAt": "2026-11-28T10:20:36.099Z",
+      "finishedAt": "2026-11-28T10:20:38.052Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/mp3-compressor",
+        "viewport": "mobile",
+        "reviewedAt": "2026-11-28T10:29:01.818908+00:00",
+        "method": "All ordered full-width 390px contact-sheet strips, top to bottom, at original strip resolution; original fullpage PNG retained.",
+        "observations": "MP3-only cue, bitrate guidance and output explanation fit the mobile column. Long subsection titles wrap cleanly. Same three generic media FAQs remain beneath the tool-specific body.",
+        "issues": [
+          "BASELINE_GENERIC_MEDIA_FAQS"
+        ],
+        "scopeLimitation": "390\u00d7844 anonymous desktop-Chrome viewport only, not physical touch-device proof. Default/empty state; no menu, focus, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/11--mp3-compressor--mobile.png",
+          "sha256": "37204324f512d88a37a0d34f8bed64c94c0213e6de0ea29e62927220b0c0d7a1",
+          "bytes": 275389
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/11--mp3-compressor--mobile.wire.html",
+          "sha256": "6204da6d3fcaedb93ac48ea0c72b4fa6a5a8a886d1716835b20357eacccfb753",
+          "bytes": 59425
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/11--mp3-compressor--mobile.dom.html",
+          "sha256": "69ad27ae89fa1a2ecfaea21f55baf154a28e65a39a3d1b477d4337f20319f9be",
+          "bytes": 59405
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 3829,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/wav-compressor",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "startedAt": "2026-11-28T10:20:38.055Z",
+      "finishedAt": "2026-11-28T10:20:40.396Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/wav-compressor",
+        "viewport": "mobile",
+        "reviewedAt": "2026-11-28T10:29:01.818916+00:00",
+        "method": "All ordered full-width 390px contact-sheet strips, top to bottom, at original strip resolution; original fullpage PNG retained.",
+        "observations": "WAV-to-MP3 identity and upload heading are explicit. The five-line deck is readable, numbered-free short sections remain easy to scan, and output/help rows align. Generic media FAQs plus one WAV question remain.",
+        "issues": [
+          "BASELINE_GENERIC_MEDIA_FAQS"
+        ],
+        "scopeLimitation": "390\u00d7844 anonymous desktop-Chrome viewport only, not physical touch-device proof. Default/empty state; no menu, focus, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/12--wav-compressor--mobile.png",
+          "sha256": "baad5167793c1db09f3a2be096a9660833cc06ac9344d721a92069fc0538553a",
+          "bytes": 290660
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/12--wav-compressor--mobile.wire.html",
+          "sha256": "7ca0b1afe5caee3d435edab1b7d66723bc7c299b94295c432a9465c3e6b49d32",
+          "bytes": 61199
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/12--wav-compressor--mobile.dom.html",
+          "sha256": "54ee3be069b7425e3519ef98f03a54be32846fb7791419e0a819f4a0296f862b",
+          "bytes": 61169
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 3901,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/pdf-compressor",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "startedAt": "2026-11-28T10:20:40.399Z",
+      "finishedAt": "2026-11-28T10:20:42.319Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/pdf-compressor",
+        "viewport": "mobile",
+        "reviewedAt": "2026-11-28T10:29:01.818924+00:00",
+        "method": "All ordered full-width 390px contact-sheet strips, top to bottom, at original strip resolution; original fullpage PNG retained.",
+        "observations": "PDF-specific structural rewrite and limitations are readable. Longer FAQ question about password protection wraps to two lines without colliding with the chevron. Related-tool rows and footer fit.",
+        "issues": [],
+        "scopeLimitation": "390\u00d7844 anonymous desktop-Chrome viewport only, not physical touch-device proof. Default/empty state; no menu, focus, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/13--pdf-compressor--mobile.png",
+          "sha256": "d4dc75b178133f097dc7b97c58e47deabce9b574440275840ae75c2997a0cfcd",
+          "bytes": 295775
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/13--pdf-compressor--mobile.wire.html",
+          "sha256": "0a3c7db1b018f5d5ba72bfea536a533dafad3cb087f47028e7239a5dc2925c99",
+          "bytes": 58799
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/13--pdf-compressor--mobile.dom.html",
+          "sha256": "fc057ec282ba0590e583737cfc2879777ea9860c6af3b6891284cbec3c0dba63",
+          "bytes": 58779
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 4067,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/zip-compressor",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "startedAt": "2026-11-28T10:20:42.324Z",
+      "finishedAt": "2026-11-28T10:20:44.432Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/zip-compressor",
+        "viewport": "mobile",
+        "reviewedAt": "2026-11-28T10:29:01.818932+00:00",
+        "method": "All ordered full-width 390px contact-sheet strips, top to bottom, at original strip resolution; original fullpage PNG retained.",
+        "observations": "Create-a-ZIP upload heading and no format restriction match bundling. Guide paragraphs and output rows fit the mobile column. FAQ headings about archive overwrites and bombs concern extraction rather than creation.",
+        "issues": [
+          "BASELINE_CREATOR_FAQ_CONTEXT"
+        ],
+        "scopeLimitation": "390\u00d7844 anonymous desktop-Chrome viewport only, not physical touch-device proof. Default/empty state; no menu, focus, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/14--zip-compressor--mobile.png",
+          "sha256": "7a894763b50e4b8ee430583cbab8b822f8caa439b13816bea62722d47369e81b",
+          "bytes": 264750
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/14--zip-compressor--mobile.wire.html",
+          "sha256": "8aedb6fd7dcf65fa86ece27f41aba0cdb9c0e116104a9ff1c1ac62ee9cad776d",
+          "bytes": 55515
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/14--zip-compressor--mobile.dom.html",
+          "sha256": "842c4b23a7941695707c3ff55cffd9c40b600bec0fee8a7eedade2e62acd4190",
+          "bytes": 55495
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 3734,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/archive-compressor",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "startedAt": "2026-11-28T10:20:44.435Z",
+      "finishedAt": "2026-11-28T10:20:46.192Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/archive-compressor",
+        "viewport": "mobile",
+        "reviewedAt": "2026-11-28T10:29:01.818940+00:00",
+        "method": "All ordered full-width 390px contact-sheet strips, top to bottom, at original strip resolution; original fullpage PNG retained.",
+        "observations": "ZIP-only input cue and extraction H1 are distinct. About this extraction wraps to two lines alongside the help link without overlap; archive refusal and output explanations remain readable.",
+        "issues": [],
+        "scopeLimitation": "390\u00d7844 anonymous desktop-Chrome viewport only, not physical touch-device proof. Default/empty state; no menu, focus, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/15--archive-compressor--mobile.png",
+          "sha256": "254ef925dc6a499da9d86484076ee0d58e961abcf63d905dacb21cf121003ec3",
+          "bytes": 276695
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/15--archive-compressor--mobile.wire.html",
+          "sha256": "7eebffc4a7ac54e25e67042727fa2864b7a29cba9bd604896b05071b1cd7f585",
+          "bytes": 56047
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/15--archive-compressor--mobile.dom.html",
+          "sha256": "18c1a37f1cabd09608be30666d54ce032909b2108aa91aa58f123f96689cc2e0",
+          "bytes": 56027
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 3808,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/wav-to-mp3",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "startedAt": "2026-11-28T10:20:46.194Z",
+      "finishedAt": "2026-11-28T10:20:48.079Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/wav-to-mp3",
+        "viewport": "mobile",
+        "reviewedAt": "2026-11-28T10:29:01.818947+00:00",
+        "method": "All ordered full-width 390px contact-sheet strips, top to bottom, at original strip resolution; original fullpage PNG retained.",
+        "observations": "The added alias notice wraps cleanly but exposes URL implementation detail above the uploader and moves its bottom just beyond the first 844px viewport. Remainder matches the canonical converter, including repeated generic media FAQs.",
+        "issues": [
+          "BASELINE_ALIAS_TECHNICAL_NOTE",
+          "BASELINE_GENERIC_MEDIA_FAQS"
+        ],
+        "scopeLimitation": "390\u00d7844 anonymous desktop-Chrome viewport only, not physical touch-device proof. Default/empty state; no menu, focus, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/16--wav-to-mp3--mobile.png",
+          "sha256": "d54ef5f9a157aae6b41ff0c9b3eda6a754fd3088a2f6a4732f31df0549ebe71a",
+          "bytes": 298013
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/16--wav-to-mp3--mobile.wire.html",
+          "sha256": "fe10810d434b0b164af1c0c10784a4d23d833ee84daaf78372f2c0d2363c0e85",
+          "bytes": 61568
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/16--wav-to-mp3--mobile.dom.html",
+          "sha256": "abe9cf09d9fedf81c9d1e9c82e37889eedfba53ffba7cfca3396c4f961e63a76",
+          "bytes": 61538
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 3981,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/about",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "startedAt": "2026-11-28T10:20:48.081Z",
+      "finishedAt": "2026-11-28T10:20:51.067Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/about",
+        "viewport": "mobile",
+        "reviewedAt": "2026-11-28T10:30:36.590839+00:00",
+        "method": "All ordered full-width 390px contact-sheet strips, top to bottom, at original strip resolution; original fullpage PNG retained.",
+        "observations": "Three stacked value statements, workflow numbers and the three-stage illustration fit cleanly. The practical-limits block and guide callout preserve hierarchy, and footer categories form two readable columns.",
+        "issues": [],
+        "scopeLimitation": "390\u00d7844 anonymous desktop-Chrome viewport only, not physical touch-device proof. Default/empty state; no menu, focus, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/17--about--mobile.png",
+          "sha256": "3c82950bfbaf530dcb15b42d8043d3cbf37d2d2ef6545f87cba3d6c4cdd6b64e",
+          "bytes": 233022
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/17--about--mobile.wire.html",
+          "sha256": "3a703c1304922b6616c8c618e634386c09745d90112c8c7022f15038d13e63c7",
+          "bytes": 47705
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/17--about--mobile.dom.html",
+          "sha256": "518cee73390766226c4c24b6d31942e8ee33e64878e0028d1ee2bb56d36d8b6a",
+          "bytes": 47596
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://filecompresser.com/",
+          "method": "HEAD",
+          "type": "fetch",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://filecompresser.com/privacy",
+          "method": "HEAD",
+          "type": "fetch",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://filecompresser.com/disclaimer",
+          "method": "HEAD",
+          "type": "fetch",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://filecompresser.com/sitemap",
+          "method": "HEAD",
+          "type": "fetch",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://filecompresser.com/blog",
+          "method": "HEAD",
+          "type": "fetch",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 3488,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/contact",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "startedAt": "2026-11-28T10:20:51.069Z",
+      "finishedAt": "2026-11-28T10:20:53.586Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/contact",
+        "viewport": "mobile",
+        "reviewedAt": "2026-11-28T10:30:36.590885+00:00",
+        "method": "All ordered full-width 390px contact-sheet strips, top to bottom, at original strip resolution; original fullpage PNG retained.",
+        "observations": "Support email appears before four stacked troubleshooting cards. Card padding and icon spacing are proportionate; long headings and privacy note wrap without collisions. Footer remains readable.",
+        "issues": [],
+        "scopeLimitation": "390\u00d7844 anonymous desktop-Chrome viewport only, not physical touch-device proof. Default/empty state; no menu, focus, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/18--contact--mobile.png",
+          "sha256": "f1220220ccb7fc9a7709fd1eb82d4e59499ea91701f2c3c679901a3e9f29be50",
+          "bytes": 215006
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/18--contact--mobile.wire.html",
+          "sha256": "82de8505b425bd0f5974044cdba47adad2287d5eb29d1f272d5b6431cddff0f3",
+          "bytes": 41640
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/18--contact--mobile.dom.html",
+          "sha256": "44740a9d15a5f526c39118412440b676563b662064936178c3a74f26209c2866",
+          "bytes": 41530
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://filecompresser.com/",
+          "method": "HEAD",
+          "type": "fetch",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://filecompresser.com/sitemap",
+          "method": "HEAD",
+          "type": "fetch",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://filecompresser.com/privacy",
+          "method": "HEAD",
+          "type": "fetch",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://filecompresser.com/blog",
+          "method": "HEAD",
+          "type": "fetch",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 3143,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/privacy",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "startedAt": "2026-11-28T10:20:53.592Z",
+      "finishedAt": "2026-11-28T10:20:56.535Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/privacy",
+        "viewport": "mobile",
+        "reviewedAt": "2026-11-28T10:30:36.590896+00:00",
+        "method": "All ordered full-width 390px contact-sheet strips, top to bottom, at original strip resolution; original fullpage PNG retained.",
+        "observations": "Long headings wrap naturally and the legal body remains readable at the mobile width. Contents bar fits; all ten policy sections, final support link and two-column footer were inspected.",
+        "issues": [],
+        "scopeLimitation": "390\u00d7844 anonymous desktop-Chrome viewport only, not physical touch-device proof. Default/empty state; no menu, focus, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/19--privacy--mobile.png",
+          "sha256": "cad5a9d056df205cdba723a6b246749286e5ad2e601aa8fc30a8118aad7f5394",
+          "bytes": 432905
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/19--privacy--mobile.wire.html",
+          "sha256": "9f6635af7d605b7534cb6864c58cb7e21fd3ad0e2eccede5882143c322d1ccbe",
+          "bytes": 44574
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/19--privacy--mobile.dom.html",
+          "sha256": "edfeda6280fb91a894ce6e3c8887cd42272147d600f6cce6df6d1d15d7696f4f",
+          "bytes": 44555
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://filecompresser.com/",
+          "method": "HEAD",
+          "type": "fetch",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 5136,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/terms",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "startedAt": "2026-11-28T10:20:56.542Z",
+      "finishedAt": "2026-11-28T10:20:58.959Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/terms",
+        "viewport": "mobile",
+        "reviewedAt": "2026-11-28T10:30:36.590905+00:00",
+        "method": "All ordered full-width 390px contact-sheet strips, top to bottom, at original strip resolution; original fullpage PNG retained.",
+        "observations": "Restrained legal column and H2 spacing remain readable. Contents bar, date, final document note, contact link and footer fit without clipping.",
+        "issues": [],
+        "scopeLimitation": "390\u00d7844 anonymous desktop-Chrome viewport only, not physical touch-device proof. Default/empty state; no menu, focus, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/20--terms--mobile.png",
+          "sha256": "7a720e02c9715a48ac715d03f52fe30b30d6045b46426424f91a7d20c482fcbe",
+          "bytes": 221541
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/20--terms--mobile.wire.html",
+          "sha256": "578293c14bf86d269944a32158aacf2d2d0e1e520b5f1893e8af68dcf787876f",
+          "bytes": 36195
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/20--terms--mobile.dom.html",
+          "sha256": "8b07d29e53f2b1b7d1f93504456bd06c0b55f32d991a53c86974429008795bcb",
+          "bytes": 36088
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://filecompresser.com/",
+          "method": "HEAD",
+          "type": "fetch",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 3076,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/disclaimer",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "startedAt": "2026-11-28T10:20:58.962Z",
+      "finishedAt": "2026-11-28T10:21:01.245Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/disclaimer",
+        "viewport": "mobile",
+        "reviewedAt": "2026-11-28T10:30:36.590917+00:00",
+        "method": "All ordered full-width 390px contact-sheet strips, top to bottom, at original strip resolution; original fullpage PNG retained.",
+        "observations": "Two-line section headings and longer limit/liability paragraphs fit the screen. Date, contents bar, final support link and footer remain distinct.",
+        "issues": [],
+        "scopeLimitation": "390\u00d7844 anonymous desktop-Chrome viewport only, not physical touch-device proof. Default/empty state; no menu, focus, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/21--disclaimer--mobile.png",
+          "sha256": "71f3732caf6d53e7f5bff4b01926d18909a7b21b32822ab1d79c642a96e031c9",
+          "bytes": 297080
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/21--disclaimer--mobile.wire.html",
+          "sha256": "4f2b0f9b1c310c04f03f29ebce3603388b10a03d892e0f9fb3776e93d149c47d",
+          "bytes": 39476
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/21--disclaimer--mobile.dom.html",
+          "sha256": "b8d144ecedbd3f9aca2c079c88f5453b81475b6ee4d4c887dc27c461b32418ee",
+          "bytes": 39364
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://filecompresser.com/",
+          "method": "HEAD",
+          "type": "fetch",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 3754,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/blog",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "startedAt": "2026-11-28T10:21:01.247Z",
+      "finishedAt": "2026-11-28T10:21:03.169Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/blog",
+        "viewport": "mobile",
+        "reviewedAt": "2026-11-28T10:30:36.590926+00:00",
+        "method": "All ordered full-width 390px contact-sheet strips, top to bottom, at original strip resolution; original fullpage PNG retained.",
+        "observations": "Five stacked image cards retain readable titles, descriptions and date rows. Image crops and card spacing are consistent. Dates show original September publication values rather than the newer Updated dates.",
+        "issues": [
+          "BASELINE_CARD_UPDATED_DATES_ABSENT"
+        ],
+        "scopeLimitation": "390\u00d7844 anonymous desktop-Chrome viewport only, not physical touch-device proof. Default/empty state; no menu, focus, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/22--blog--mobile.png",
+          "sha256": "b335223803237b20fb3ff77fc541859dc23e36855ee47170db0032c4de1c6b02",
+          "bytes": 855300
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/22--blog--mobile.wire.html",
+          "sha256": "cc1a6582f12c2edafb01a0bbed19f7157297544b6f32a012695dc5e35357036e",
+          "bytes": 45216
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/22--blog--mobile.dom.html",
+          "sha256": "0a6776971982d1c457fc185da9ee41e1c9be79bf2cad6ccb05fa83b4004f8ff6",
+          "bytes": 45178
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 3967,
+      "imagesLoaded": 7
+    },
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "startedAt": "2026-11-28T10:21:03.171Z",
+      "finishedAt": "2026-11-28T10:21:05.377Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/blog/compressing-files-for-the-web",
+        "viewport": "mobile",
+        "reviewedAt": "2026-11-28T10:30:36.590935+00:00",
+        "method": "All ordered full-width 390px contact-sheet strips, top to bottom, at original strip resolution; original fullpage PNG retained.",
+        "observations": "Five-section article, contents links and stacked tool CTA remain readable. The format decision SVG fits its frame but embedded labels are very small at 390px; its visible prose description supplies the content. Split publication/Updated dates and undated related cards remain.",
+        "issues": [
+          "BASELINE_MOBILE_DIAGRAM_LABELS",
+          "BASELINE_ARTICLE_DATE_SPLIT",
+          "BASELINE_CARD_UPDATED_DATES_ABSENT"
+        ],
+        "scopeLimitation": "390\u00d7844 anonymous desktop-Chrome viewport only, not physical touch-device proof. Default/empty state; no menu, focus, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/23--blog--compressing-files-for-the-web--mobile.png",
+          "sha256": "4df800a76887b14fee74486822c69b19ea80c74e41937905f6eb929d94bc113a",
+          "bytes": 616049
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/23--blog--compressing-files-for-the-web--mobile.wire.html",
+          "sha256": "8c83ceba44ebacfb8ffdd14f48024e2cd7066c72f83854a03854cc4f161c7b44",
+          "bytes": 55208
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/23--blog--compressing-files-for-the-web--mobile.dom.html",
+          "sha256": "75f5e916acff7aaf9d01842d2bf5074009b7aba92de2b6a3a518efe4af6cb509",
+          "bytes": 55081
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 5821,
+      "imagesLoaded": 3
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "startedAt": "2026-11-28T10:21:05.383Z",
+      "finishedAt": "2026-11-28T10:21:07.614Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/blog/what-privacy-claim-really-means",
+        "viewport": "mobile",
+        "reviewedAt": "2026-11-28T10:30:36.590943+00:00",
+        "method": "All ordered full-width 390px contact-sheet strips, top to bottom, at original strip resolution; original fullpage PNG retained.",
+        "observations": "Privacy article body, contents, callout and two-button CTA fit. The two-path diagram is scaled down with tiny embedded labels, while its visible prose description is readable. Date treatment is split and related cards lack Updated dates.",
+        "issues": [
+          "BASELINE_MOBILE_DIAGRAM_LABELS",
+          "BASELINE_ARTICLE_DATE_SPLIT",
+          "BASELINE_CARD_UPDATED_DATES_ABSENT"
+        ],
+        "scopeLimitation": "390\u00d7844 anonymous desktop-Chrome viewport only, not physical touch-device proof. Default/empty state; no menu, focus, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/24--blog--what-privacy-claim-really-means--mobile.png",
+          "sha256": "4b824ea77d897dd8c2ce69a624e2c50442d819e4bef33afd4f1b9a56f594847e",
+          "bytes": 624721
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/24--blog--what-privacy-claim-really-means--mobile.wire.html",
+          "sha256": "7a894eea82d68db5808c76d2f4a0d929013dce9ebd02aa9f03adac677b068d29",
+          "bytes": 56375
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/24--blog--what-privacy-claim-really-means--mobile.dom.html",
+          "sha256": "5cc26c2095fbba1ab71af28a9bca65550678dc581275c5d34912111ec74aed1b",
+          "bytes": 56316
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 5617,
+      "imagesLoaded": 3
+    },
+    {
+      "route": "/blog/choosing-a-compression-mode",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "startedAt": "2026-11-28T10:21:07.624Z",
+      "finishedAt": "2026-11-28T10:21:10.314Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/blog/choosing-a-compression-mode",
+        "viewport": "mobile",
+        "reviewedAt": "2026-11-28T10:30:36.590952+00:00",
+        "method": "All ordered full-width 390px contact-sheet strips, top to bottom, at original strip resolution; original fullpage PNG retained.",
+        "observations": "Four mode comparison cards stack with readable native text, a stronger mobile treatment than scaled diagrams. Eight sections and the long contents list remain readable; the 7781px page is long but structured. Split date display and undated related cards remain.",
+        "issues": [
+          "BASELINE_ARTICLE_DATE_SPLIT",
+          "BASELINE_CARD_UPDATED_DATES_ABSENT"
+        ],
+        "scopeLimitation": "390\u00d7844 anonymous desktop-Chrome viewport only, not physical touch-device proof. Default/empty state; no menu, focus, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/25--blog--choosing-a-compression-mode--mobile.png",
+          "sha256": "e96b4e87fce08e17bda4bb5ba68ce859a500bbcf28e90c3994630a10679be450",
+          "bytes": 853130
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/25--blog--choosing-a-compression-mode--mobile.wire.html",
+          "sha256": "b6d599af67641ce26a277e262c92de67054d82c6665e20e08b8ab872ac1f450f",
+          "bytes": 54947
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/25--blog--choosing-a-compression-mode--mobile.dom.html",
+          "sha256": "8cb21091d0753bbc725ca7f6f6abb7b2029290170eba5ab20e7b1ad24493e7e5",
+          "bytes": 54918
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 7781,
+      "imagesLoaded": 3
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "startedAt": "2026-11-28T10:21:10.317Z",
+      "finishedAt": "2026-11-28T10:21:12.436Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/blog/honest-file-size-reporting",
+        "viewport": "mobile",
+        "reviewedAt": "2026-11-28T10:30:36.590961+00:00",
+        "method": "All ordered full-width 390px contact-sheet strips, top to bottom, at original strip resolution; original fullpage PNG retained.",
+        "observations": "Four sections, rule callout and stacked tool CTA fit. The size-outcome chart retains its bars but embedded labels are tiny at mobile width; its visible prose describes all three outcomes. Dates remain split and related cards lack Updated dates.",
+        "issues": [
+          "BASELINE_MOBILE_DIAGRAM_LABELS",
+          "BASELINE_ARTICLE_DATE_SPLIT",
+          "BASELINE_CARD_UPDATED_DATES_ABSENT"
+        ],
+        "scopeLimitation": "390\u00d7844 anonymous desktop-Chrome viewport only, not physical touch-device proof. Default/empty state; no menu, focus, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/26--blog--honest-file-size-reporting--mobile.png",
+          "sha256": "e21b6733602beda6edd2d0bcaf54c54381ab03e3eb603f985f81470c0a7397ed",
+          "bytes": 574709
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/26--blog--honest-file-size-reporting--mobile.wire.html",
+          "sha256": "66d52b302d15f83d86e6fe59d49d4038e554bac6ebf69bd9546954c1245d615b",
+          "bytes": 53431
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/26--blog--honest-file-size-reporting--mobile.dom.html",
+          "sha256": "a38ae89c081ea795c3d824b1756b7ad9c123beada54c9a5deb138a1e7dbf3b09",
+          "bytes": 53402
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 5357,
+      "imagesLoaded": 3
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "startedAt": "2026-11-28T10:21:12.440Z",
+      "finishedAt": "2026-11-28T10:21:14.870Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/blog/how-browser-compression-works",
+        "viewport": "mobile",
+        "reviewedAt": "2026-11-28T10:30:36.590970+00:00",
+        "method": "All ordered full-width 390px contact-sheet strips, top to bottom, at original strip resolution; original fullpage PNG retained.",
+        "observations": "Three long H2 headings wrap cleanly and the body/callout/CTA remain readable. The five-stage pipeline diagram is small enough that labels are hard to read without zoom, although its adjacent prose states each stage. Split date and related-card date issues remain.",
+        "issues": [
+          "BASELINE_MOBILE_DIAGRAM_LABELS",
+          "BASELINE_ARTICLE_DATE_SPLIT",
+          "BASELINE_CARD_UPDATED_DATES_ABSENT"
+        ],
+        "scopeLimitation": "390\u00d7844 anonymous desktop-Chrome viewport only, not physical touch-device proof. Default/empty state; no menu, focus, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/27--blog--how-browser-compression-works--mobile.png",
+          "sha256": "ae4da3113b948b24a33b451068a661f4e85dd3859f09fec1799ea9c7bb0b8a58",
+          "bytes": 558000
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/27--blog--how-browser-compression-works--mobile.wire.html",
+          "sha256": "3870ceeb87d82a40a58590c1c953d43f2ce37355162122a09c13c8dd3985f50f",
+          "bytes": 55040
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/27--blog--how-browser-compression-works--mobile.dom.html",
+          "sha256": "003c4f6851408140d0e4ad32d75f11ae386251f0e7d4b8cbe06d1c1ed43d15ab",
+          "bytes": 55003
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 5251,
+      "imagesLoaded": 3
+    },
+    {
+      "route": "/sitemap",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "startedAt": "2026-11-28T10:21:14.884Z",
+      "finishedAt": "2026-11-28T10:21:16.595Z",
+      "status": 200,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/sitemap",
+        "viewport": "mobile",
+        "reviewedAt": "2026-11-28T10:30:36.590978+00:00",
+        "method": "All ordered full-width 390px contact-sheet strips, top to bottom, at original strip resolution; original fullpage PNG retained.",
+        "observations": "Tool categories, product links and all five guide titles stack in compact rows with aligned arrows. Longer titles wrap to two lines without crowding; footer fits.",
+        "issues": [],
+        "scopeLimitation": "390\u00d7844 anonymous desktop-Chrome viewport only, not physical touch-device proof. Default/empty state; no menu, focus, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/28--sitemap--mobile.png",
+          "sha256": "ffaf34d47a41dd81fef9fcab5d0302a0b86c6ab327c559de00ec5d27ca2f2919",
+          "bytes": 145924
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/28--sitemap--mobile.wire.html",
+          "sha256": "2cdd08b85fd1c2c670302bd74004f6535c707cb9b2923fef9ff87d5d2c967aab",
+          "bytes": 58771
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/28--sitemap--mobile.dom.html",
+          "sha256": "a7b256fdb6453af91cda52911f6e791d1105247b931e4dd18a5d01c96cf18bde",
+          "bytes": 58653
+        }
+      },
+      "console": [],
+      "httpErrors": [],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 2941,
+      "imagesLoaded": 2
+    },
+    {
+      "route": "/blog/png-lossless-smart-maximum-measured",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "startedAt": "2026-11-28T10:21:16.600Z",
+      "finishedAt": "2026-11-28T10:21:17.929Z",
+      "status": 404,
+      "capturePassed": true,
+      "actualVisualReview": {
+        "route": "/blog/png-lossless-smart-maximum-measured",
+        "viewport": "mobile",
+        "reviewedAt": "2026-11-28T10:30:36.590987+00:00",
+        "method": "All ordered full-width 390px contact-sheet strips, top to bottom, at original strip resolution; original fullpage PNG retained.",
+        "observations": "Branded 404 recovery screen is clear. Home/tool buttons fit side by side; popular-tool pills wrap naturally, and no draft article body is exposed. Footer categories remain readable.",
+        "issues": [],
+        "scopeLimitation": "390\u00d7844 anonymous desktop-Chrome viewport only, not physical touch-device proof. Default/empty state; no menu, focus, modal, upload, processing or download interaction tested."
+      },
+      "artifacts": {
+        "screenshot": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/29--blog--png-lossless-smart-maximum-measured--mobile.png",
+          "sha256": "f2f79462b5c3d9c8babdbd30a1b6c831be77a0f48c0c34668abcb0ff6b4d0dba",
+          "bytes": 110924
+        },
+        "wireHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/29--blog--png-lossless-smart-maximum-measured--mobile.wire.html",
+          "sha256": "50730bd698df6ad9c2079632f5190633ee579ad91e281de0ada90562a57b972b",
+          "bytes": 32239
+        },
+        "domHtml": {
+          "file": ".qa-results/phase3/visual-before-live/2026-11-28T10-20-11.101Z/29--blog--png-lossless-smart-maximum-measured--mobile.dom.html",
+          "sha256": "ece758d962c5678286e3acee5600e8d6b5c6723487d76b3690145453cd70eefd",
+          "bytes": 32221
+        }
+      },
+      "console": [
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()",
+          "location": {
+            "url": "https://filecompresser.com/blog/png-lossless-smart-maximum-measured",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        }
+      ],
+      "httpErrors": [
+        {
+          "url": "https://filecompresser.com/blog/png-lossless-smart-maximum-measured",
+          "status": 404,
+          "type": "document"
+        }
+      ],
+      "failedRequests": [],
+      "pageErrors": [],
+      "mutatingRequests": [],
+      "horizontalOverflow": false,
+      "documentHeight": 1893,
+      "imagesLoaded": 2
+    }
+  ]
+}

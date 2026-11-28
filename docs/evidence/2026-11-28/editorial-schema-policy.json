@@ -1,0 +1,906 @@
+{
+  "reviewDate": "2026-11-28",
+  "status": "PASS_SOURCE_CALLBACK_MATRIX",
+  "scope": "Installed source scalar/item callbacks and beforeSubmit list controls; native widget behavior is separately proved on the compiled isolated editor.",
+  "totalStringFields": 98,
+  "humanTextFields": 73,
+  "excludedFields": 25,
+  "notes": [
+    "Every free human-facing string including readingTime is checked. String lists receive an actual two-item negative-control array.",
+    "ISO dates and bounded options retain existing validation. Link/path/mailbox/redirect values are identifiers; their labels and nested image captions remain checked.",
+    "Generated HTML remains an independent strict gate over rendered text, metadata, alt, accessible labels and human-facing JSON-LD.",
+    "Application-owned source strings in app, components, lib, workers and Tina were searched; no prohibited public prose was found outside the policy definition. Generated HTML is checked separately.",
+    "All eight free string-list families use supported scalar item validators; parent UI callbacks return no scalar error, and whole-list requirements remain beforeSubmit. Native creation, correction, deletion/re-addition and Save were verified separately."
+  ],
+  "fields": [
+    {
+      "path": "post.title",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "post.description",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "post.date",
+      "list": false,
+      "classification": "VALIDATED_ISO_DATE",
+      "hasCallback": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "post.updated",
+      "list": false,
+      "classification": "VALIDATED_ISO_DATE",
+      "hasCallback": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "post.readingTime",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "post.figure",
+      "list": false,
+      "classification": "BOUNDED_IDENTIFIER_OPTIONS",
+      "hasCallback": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "post.featuredImage.alt",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "post.featuredImage.caption",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "post.author.name",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "post.author.kind",
+      "list": false,
+      "classification": "BOUNDED_IDENTIFIER_OPTIONS",
+      "hasCallback": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "post.author.url",
+      "list": false,
+      "classification": "ADDRESS_OR_IDENTIFIER",
+      "hasCallback": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "post.category",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "post.tags",
+      "list": true,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.field.validate",
+      "wholeListBeforeSubmitRejected": true,
+      "nativeParentEmitsScalarError": false
+    },
+    {
+      "path": "post.seoTitle",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "post.seoDescription",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "post.body<p>.text",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "post.body<html>.html",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "post.body<h2>.text",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "post.body<h3>.text",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "post.body<ul>.items",
+      "list": true,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.field.validate",
+      "wholeListBeforeSubmitRejected": true,
+      "nativeParentEmitsScalarError": false
+    },
+    {
+      "path": "post.body<ol>.items",
+      "list": true,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.field.validate",
+      "wholeListBeforeSubmitRejected": true,
+      "nativeParentEmitsScalarError": false
+    },
+    {
+      "path": "post.body<link>.text",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "post.body<link>.href",
+      "list": false,
+      "classification": "ADDRESS_OR_IDENTIFIER",
+      "hasCallback": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "post.body<image>.alt",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "post.body<image>.caption",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "post.body<table>.caption",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "post.body<table>.columns",
+      "list": true,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.field.validate",
+      "wholeListBeforeSubmitRejected": true,
+      "nativeParentEmitsScalarError": false
+    },
+    {
+      "path": "post.body<table>.rows.cells",
+      "list": true,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.field.validate",
+      "wholeListBeforeSubmitRejected": true,
+      "nativeParentEmitsScalarError": false
+    },
+    {
+      "path": "post.body<callout>.title",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "post.body<callout>.text",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "post.body<figure>.figure",
+      "list": false,
+      "classification": "BOUNDED_IDENTIFIER_OPTIONS",
+      "hasCallback": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "post.body<figure>.caption",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "post.references.title",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "post.references.url",
+      "list": false,
+      "classification": "ADDRESS_OR_IDENTIFIER",
+      "hasCallback": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "toolPage.heading",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "toolPage.introduction",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "toolPage.sections.heading",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "toolPage.sections.body",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "toolPage.links.label",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "toolPage.links.href",
+      "list": false,
+      "classification": "ADDRESS_OR_IDENTIFIER",
+      "hasCallback": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "toolPage.faqMode",
+      "list": false,
+      "classification": "BOUNDED_IDENTIFIER_OPTIONS",
+      "hasCallback": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "toolPage.faq.q",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "toolPage.faq.a",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "toolPage.seoTitle",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "toolPage.seoDescription",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "toolPage.relatedTools",
+      "list": true,
+      "classification": "BOUNDED_IDENTIFIER_OPTIONS",
+      "hasCallback": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "homepage.hero.lead",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "homepage.hero.emphasis",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "homepage.hero.description",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "homepage.steps.title",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "homepage.steps.description",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "homepage.heading",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "homepage.introduction",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "homepage.sections.heading",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "homepage.sections.body",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "homepage.links.label",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "homepage.links.href",
+      "list": false,
+      "classification": "ADDRESS_OR_IDENTIFIER",
+      "hasCallback": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "homepage.faqMode",
+      "list": false,
+      "classification": "BOUNDED_IDENTIFIER_OPTIONS",
+      "hasCallback": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "homepage.faq.q",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "homepage.faq.a",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "homepage.seoTitle",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "homepage.seoDescription",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "managedPage.title",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "managedPage.label",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "managedPage.introduction",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "managedPage.seoTitle",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "managedPage.seoDescription",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "managedPage.updated",
+      "list": false,
+      "classification": "VALIDATED_ISO_DATE",
+      "hasCallback": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "managedPage.sections.heading",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "managedPage.sections.placement",
+      "list": false,
+      "classification": "BOUNDED_IDENTIFIER_OPTIONS",
+      "hasCallback": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "managedPage.sections.label",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "managedPage.sections.icon",
+      "list": false,
+      "classification": "BOUNDED_IDENTIFIER_OPTIONS",
+      "hasCallback": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "managedPage.sections.body",
+      "list": true,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.field.validate",
+      "wholeListBeforeSubmitRejected": true,
+      "nativeParentEmitsScalarError": false
+    },
+    {
+      "path": "managedPage.sections.items",
+      "list": true,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.field.validate",
+      "wholeListBeforeSubmitRejected": true,
+      "nativeParentEmitsScalarError": false
+    },
+    {
+      "path": "managedPage.sections.links.label",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "managedPage.sections.links.href",
+      "list": false,
+      "classification": "ADDRESS_OR_IDENTIFIER",
+      "hasCallback": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "managedPage.introCta.label",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "managedPage.introCta.href",
+      "list": false,
+      "classification": "ADDRESS_OR_IDENTIFIER",
+      "hasCallback": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "managedPage.support.text",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "managedPage.support.emphasis",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "managedPage.support.link.label",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "managedPage.support.link.href",
+      "list": false,
+      "classification": "ADDRESS_OR_IDENTIFIER",
+      "hasCallback": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "managedPage.footer.heading",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "managedPage.footer.introduction",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "managedPage.footer.link.label",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": false,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "managedPage.footer.link.href",
+      "list": false,
+      "classification": "ADDRESS_OR_IDENTIFIER",
+      "hasCallback": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "siteSettings.siteName",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "siteSettings.wordmark",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "siteSettings.tagline",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "siteSettings.titleSuffix",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "siteSettings.defaultDescription",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "siteSettings.organizationName",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "siteSettings.supportEmail",
+      "list": false,
+      "classification": "ADDRESS_OR_IDENTIFIER",
+      "hasCallback": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "siteSettings.socialImage",
+      "list": false,
+      "classification": "ADDRESS_OR_IDENTIFIER",
+      "hasCallback": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "siteSettings.socialImageAlt",
+      "list": false,
+      "classification": "HUMAN_FACING_TEXT",
+      "hasCallback": true,
+      "prohibitedTermRejected": true,
+      "required": true,
+      "blankInputsRejected": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "siteSettings.sameAs",
+      "list": true,
+      "classification": "ADDRESS_OR_IDENTIFIER",
+      "hasCallback": true,
+      "callbackLocation": "ui.field.validate"
+    },
+    {
+      "path": "redirects.rules.from",
+      "list": false,
+      "classification": "ADDRESS_OR_IDENTIFIER",
+      "hasCallback": true,
+      "callbackLocation": "ui.validate"
+    },
+    {
+      "path": "redirects.rules.to",
+      "list": false,
+      "classification": "ADDRESS_OR_IDENTIFIER",
+      "hasCallback": true,
+      "callbackLocation": "ui.validate"
+    }
+  ],
+  "requiredHumanFields": 40,
+  "requiredFieldsBlankControlsPassed": 40,
+  "nativePluginSelectionEvidence": "Installed Tina getProp selects a custom field validator instead of combining it with the plugin default. Source-required checks are explicitly retained before vocabulary validation."
+}

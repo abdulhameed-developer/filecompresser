@@ -1,4 +1,5 @@
 import { editorialFieldValidator, editorialUrlFieldValidator } from '../lib/editorial-markup.mjs'
+import { withEditorialPolicy } from './editorial-policy.mjs'
 
 const inlineValidation = editorialFieldValidator()
 const sectionValidation = editorialFieldValidator({ allowHtml: true })
@@ -16,8 +17,23 @@ const toolOptions = [
 const text = (name, label, multiline = false, required = true) => ({ type: 'string', name, label, required, ...(multiline ? { ui: { component: 'textarea' } } : {}) })
 const formattedText = (name, label, validate = inlineValidation) => ({ ...text(name, label, true), ui: { component: 'textarea', validate } })
 const faqFields = () => [
-  { type: 'string', name: 'faqMode', label: 'FAQ display', options: [{ value: 'default', label: 'Use existing FAQs' }, { value: 'custom', label: 'Use the questions below' }, { value: 'hidden', label: 'Hide FAQs' }], description: 'Visible questions and their structured data always match.' },
-  { type: 'object', name: 'faq', label: 'Questions and answers', list: true, fields: [text('q', 'Question'), formattedText('a', 'Answer')], ui: { itemProps: item => ({ label: item.q || 'Question' }) } },
+  { type: 'string', name: 'faqMode', label: 'FAQ display', options: [{ value: 'default', label: 'Use existing FAQs' }, { value: 'custom', label: 'Use the questions below' }, { value: 'hidden', label: 'Hide FAQs' }], description: 'Choose Use the questions below to publish your edited list. Use existing FAQs shows the built-in fallback, even if custom rows are saved. Visible questions and their structured data always match.' },
+  { type: 'object', name: 'faq', label: 'Questions and answers', list: true,
+    fields: [text('q', 'Question', false, false), { ...text('a', 'Answer', true, false), ui: { component: 'textarea', validate(value) {
+      if (value === undefined || value === null || typeof value === 'string' && !value.trim()) return
+      return inlineValidation(value)
+    } } }],
+    ui: { itemProps: item => ({ label: item?.q || 'Question' }), validate(value) {
+      if (value === undefined || value === null) return
+      if (!Array.isArray(value)) return 'Questions and answers must be a list.'
+      for (let index = 0; index < value.length; index++) {
+        const row = value[index]
+        if (!row || typeof row !== 'object' || Array.isArray(row)) return `Question ${index + 1}: use a question and answer.`
+        if (Object.values(row).every(entry => entry === undefined || entry === null || typeof entry === 'string' && !entry.trim())) continue
+        if (typeof row.q !== 'string' || !row.q.trim() || typeof row.a !== 'string' || !row.a.trim()) return `Question ${index + 1}: complete both the question and answer, or clear both.`
+      }
+    } },
+  },
 ]
 const editorialFields = () => [
   { ...text('heading', 'Content heading'), isTitle: true },
@@ -55,4 +71,4 @@ export const editorialCollections = [
       ...editorialFields(),
     ],
   },
-]
+].map(withEditorialPolicy)

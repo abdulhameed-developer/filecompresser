@@ -1,0 +1,1820 @@
+{
+  "startedAt": "2026-11-28T14:47:56.807755+00:00",
+  "status": "complete",
+  "passed": true,
+  "scope": "Final V2 native Nightly readability N RED then accepted CSS-only O GREEN, including320x568,844x390 same-active orientation and full invalid error summary. Original N strict resize-pageY FAIL retained separately. This is not another full79 or physical/virtual keyboard certification.",
+  "contexts": [
+    {
+      "candidate": "N",
+      "name": "n-red",
+      "startedAt": "2026-11-28T14:47:57.120815+00:00",
+      "homeSha256": "99eb848f8c7677392ba8314c5937521b17c63fdf48dc70e94e46e02a6b82b959",
+      "harnessBeforeSha256": "f820c95a85536fd952c82659f9a47073b9b4a20e33866bbd94ab8a45fd624e5b",
+      "identityBefore": [
+        {
+          "file": "index.html",
+          "sha256": "99eb848f8c7677392ba8314c5937521b17c63fdf48dc70e94e46e02a6b82b959",
+          "bytes": 108628,
+          "status": 200
+        },
+        {
+          "file": "png-compressor.html",
+          "sha256": "9f06337060d7fe4e6d359f2dd44c23a64ffbab199efed361cf8a50b39b3b6bfe",
+          "bytes": 85145,
+          "status": 200
+        },
+        {
+          "file": "release.json",
+          "sha256": "864b28b6792c1b935b3ad71a015a35865f01b2a358a9846814f8f19f979fd1b1",
+          "bytes": 3984,
+          "status": 200
+        },
+        {
+          "file": "image-worker/codec-manifest.json",
+          "sha256": "13c838e502c80a6fa3b466ceb846939662d5a9a95f16414449653cfce33f9275",
+          "bytes": 3843,
+          "status": 200
+        },
+        {
+          "file": "ffmpeg-core/wasm-manifest.json",
+          "sha256": "9612006d08b9c847e994dd392bdae855db2ecb3f353b33e9c6e95c0d4ee520e4",
+          "bytes": 5657,
+          "status": 200
+        },
+        {
+          "file": "ffmpeg-core/ffmpeg-core.js",
+          "sha256": "cea5a18a8ef99258fa2299b8feb57ca641c0222e88de077fd0562b4eeef7bfed",
+          "bytes": 86526,
+          "status": 200
+        },
+        {
+          "file": "image-worker/image-pipeline.mjs",
+          "sha256": "770e69f8d76d5f682fda6183d5e2405d1c0c0e197205471c6220c98ea4522b8a",
+          "bytes": 16690,
+          "status": 200
+        },
+        {
+          "file": "image-worker/image-png.mjs",
+          "sha256": "d4beabe725a453099f39a337cf63f54fc0d2d5983753e820f9c810e057680a1f",
+          "bytes": 13782,
+          "status": 200
+        },
+        {
+          "file": "image-worker/image-canvas.mjs",
+          "sha256": "96e366066cc5720a4a9267c878d05af80b591cc5e69bde773f71b8f5adbc4173",
+          "bytes": 15269,
+          "status": 200
+        },
+        {
+          "file": "image-worker/image-metadata.mjs",
+          "sha256": "a584b568d2735f3fb1f345157c2c118a3ab63e9e1cb3377684c03caff09b3ec9",
+          "bytes": 10124,
+          "status": 200
+        },
+        {
+          "file": "image-worker/image-engine.mjs",
+          "sha256": "5179b8034f0272e92d54b8b9e2bb6aea6844658d66f1eab372fefb9ea6361f5a",
+          "bytes": 1174,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/157-412aa33814b01223.js",
+          "sha256": "13e21ab74cb6b556be1f9785c4b562955fa397b9c458f365bd31c1dce8e35ae8",
+          "bytes": 65985,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/437-637def3bf7b62bbb.js",
+          "sha256": "e461fe4783f53e96082952c0d8338590bc788b597eca75fa17f5686f06855081",
+          "bytes": 14383,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+          "sha256": "bc650dd5e12e5d105ffd07b23f99e65c5d379de8d82fb6ef2859e59bd440b06f",
+          "bytes": 203721,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+          "sha256": "905bc34977bb55dd8fda0041a3dbe144347dc46e9cd747d71e6b326deb234d7d",
+          "bytes": 7642,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/794-a07363c91e88b990.js",
+          "sha256": "bd197af46e3a5b24285044246c865dc724c5980c87099552160d9a49ccae393d",
+          "bytes": 241844,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/app/%5Btool%5D/page-9f694886b485f224.js",
+          "sha256": "e8e20ac8222cf23191635d0c59893848c0715a30ac66a84daebf134185201cce",
+          "bytes": 226,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+          "sha256": "6a36f58ceb83c23ad8ed32c846188e5cf48a0e16f1269de4b4821f14fde1e08a",
+          "bytes": 1084,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/app/layout-4a3517a7236432ee.js",
+          "sha256": "65d4eb31f22d49f5d7f1ad9996a2fa7db987209bdc65a7a0881d9b912ced2f98",
+          "bytes": 11621,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/main-app-e0c5585404eeb003.js",
+          "sha256": "8641a2b06fc0703fdc23d73d01aa7beaac3fe70e87613142a9d8e75df6caef0d",
+          "bytes": 513,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/polyfills-42372ed130431b0a.js",
+          "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
+          "bytes": 112594,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/webpack-eec174693629e385.js",
+          "sha256": "8ebf6b894f20050e047f445deb03e5041b30f2fb7fb17b8d1503de4cd1f2bc40",
+          "bytes": 3619,
+          "status": 200
+        },
+        {
+          "file": "_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1",
+          "bytes": 57776,
+          "status": 200
+        },
+        {
+          "file": "_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43",
+          "bytes": 43855,
+          "status": 200
+        }
+      ],
+      "actualExitCode": 1,
+      "identityAfter": [
+        {
+          "file": "index.html",
+          "sha256": "99eb848f8c7677392ba8314c5937521b17c63fdf48dc70e94e46e02a6b82b959",
+          "bytes": 108628,
+          "status": 200
+        },
+        {
+          "file": "png-compressor.html",
+          "sha256": "9f06337060d7fe4e6d359f2dd44c23a64ffbab199efed361cf8a50b39b3b6bfe",
+          "bytes": 85145,
+          "status": 200
+        },
+        {
+          "file": "release.json",
+          "sha256": "864b28b6792c1b935b3ad71a015a35865f01b2a358a9846814f8f19f979fd1b1",
+          "bytes": 3984,
+          "status": 200
+        },
+        {
+          "file": "image-worker/codec-manifest.json",
+          "sha256": "13c838e502c80a6fa3b466ceb846939662d5a9a95f16414449653cfce33f9275",
+          "bytes": 3843,
+          "status": 200
+        },
+        {
+          "file": "ffmpeg-core/wasm-manifest.json",
+          "sha256": "9612006d08b9c847e994dd392bdae855db2ecb3f353b33e9c6e95c0d4ee520e4",
+          "bytes": 5657,
+          "status": 200
+        },
+        {
+          "file": "ffmpeg-core/ffmpeg-core.js",
+          "sha256": "cea5a18a8ef99258fa2299b8feb57ca641c0222e88de077fd0562b4eeef7bfed",
+          "bytes": 86526,
+          "status": 200
+        },
+        {
+          "file": "image-worker/image-pipeline.mjs",
+          "sha256": "770e69f8d76d5f682fda6183d5e2405d1c0c0e197205471c6220c98ea4522b8a",
+          "bytes": 16690,
+          "status": 200
+        },
+        {
+          "file": "image-worker/image-png.mjs",
+          "sha256": "d4beabe725a453099f39a337cf63f54fc0d2d5983753e820f9c810e057680a1f",
+          "bytes": 13782,
+          "status": 200
+        },
+        {
+          "file": "image-worker/image-canvas.mjs",
+          "sha256": "96e366066cc5720a4a9267c878d05af80b591cc5e69bde773f71b8f5adbc4173",
+          "bytes": 15269,
+          "status": 200
+        },
+        {
+          "file": "image-worker/image-metadata.mjs",
+          "sha256": "a584b568d2735f3fb1f345157c2c118a3ab63e9e1cb3377684c03caff09b3ec9",
+          "bytes": 10124,
+          "status": 200
+        },
+        {
+          "file": "image-worker/image-engine.mjs",
+          "sha256": "5179b8034f0272e92d54b8b9e2bb6aea6844658d66f1eab372fefb9ea6361f5a",
+          "bytes": 1174,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/157-412aa33814b01223.js",
+          "sha256": "13e21ab74cb6b556be1f9785c4b562955fa397b9c458f365bd31c1dce8e35ae8",
+          "bytes": 65985,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/437-637def3bf7b62bbb.js",
+          "sha256": "e461fe4783f53e96082952c0d8338590bc788b597eca75fa17f5686f06855081",
+          "bytes": 14383,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+          "sha256": "bc650dd5e12e5d105ffd07b23f99e65c5d379de8d82fb6ef2859e59bd440b06f",
+          "bytes": 203721,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+          "sha256": "905bc34977bb55dd8fda0041a3dbe144347dc46e9cd747d71e6b326deb234d7d",
+          "bytes": 7642,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/794-a07363c91e88b990.js",
+          "sha256": "bd197af46e3a5b24285044246c865dc724c5980c87099552160d9a49ccae393d",
+          "bytes": 241844,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/app/%5Btool%5D/page-9f694886b485f224.js",
+          "sha256": "e8e20ac8222cf23191635d0c59893848c0715a30ac66a84daebf134185201cce",
+          "bytes": 226,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+          "sha256": "6a36f58ceb83c23ad8ed32c846188e5cf48a0e16f1269de4b4821f14fde1e08a",
+          "bytes": 1084,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/app/layout-4a3517a7236432ee.js",
+          "sha256": "65d4eb31f22d49f5d7f1ad9996a2fa7db987209bdc65a7a0881d9b912ced2f98",
+          "bytes": 11621,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/main-app-e0c5585404eeb003.js",
+          "sha256": "8641a2b06fc0703fdc23d73d01aa7beaac3fe70e87613142a9d8e75df6caef0d",
+          "bytes": 513,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/polyfills-42372ed130431b0a.js",
+          "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
+          "bytes": 112594,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/webpack-eec174693629e385.js",
+          "sha256": "8ebf6b894f20050e047f445deb03e5041b30f2fb7fb17b8d1503de4cd1f2bc40",
+          "bytes": 3619,
+          "status": 200
+        },
+        {
+          "file": "_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1",
+          "bytes": 57776,
+          "status": 200
+        },
+        {
+          "file": "_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43",
+          "bytes": 43855,
+          "status": 200
+        }
+      ],
+      "harnessAfterSha256": "f820c95a85536fd952c82659f9a47073b9b4a20e33866bbd94ab8a45fd624e5b",
+      "auditStatus": "FAIL",
+      "browserVersion": "163.0a1",
+      "states": 28,
+      "orientationStates": [
+        {
+          "phase": "source-only",
+          "statusRect": {
+            "top": 249.3000030517578,
+            "bottom": 271.6999969482422,
+            "left": 429,
+            "right": 668,
+            "width": 239,
+            "height": 22.399993896484375
+          },
+          "statusText": "199,999,999 bytes maximum",
+          "fullErrorSummaryExposed": true,
+          "value": "199999.999",
+          "actualFocus": true,
+          "viewport": [
+            844,
+            390
+          ],
+          "page": [
+            0,
+            334.8166809082031
+          ],
+          "frame": {
+            "top": 246,
+            "bottom": 292,
+            "left": 176,
+            "right": 415,
+            "width": 239,
+            "height": 46
+          },
+          "input": {
+            "top": 247,
+            "bottom": 291,
+            "left": 177,
+            "right": 376.6333312988281,
+            "width": 199.63333129882812,
+            "height": 44
+          },
+          "body": {
+            "top": 127,
+            "bottom": 304,
+            "left": 143,
+            "right": 701,
+            "width": 558,
+            "height": 177,
+            "scrollTop": 304.5
+          },
+          "footer": {
+            "top": 304,
+            "bottom": 377,
+            "left": 143,
+            "right": 701,
+            "width": 558,
+            "height": 73
+          },
+          "clearance": 12,
+          "wholeFocusFrameExposed": true,
+          "documentWidth": 844,
+          "clientWidth": 137,
+          "padding": 61,
+          "textWidth": 81.26667022705078,
+          "availableTextWidth": 76,
+          "textFits": false,
+          "font": "15px Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif",
+          "appearance": "textfield",
+          "innerBorder": [
+            "1px",
+            "1px"
+          ],
+          "outlineColor": "rgb(98, 127, 24)",
+          "statusColor": "rgb(82, 101, 90)",
+          "ariaInvalid": null,
+          "described": [
+            {
+              "id": "_r_1_-target-status",
+              "text": "199,999,999 bytes maximum",
+              "exists": true
+            },
+            {
+              "id": "_r_1_-target-hint",
+              "text": "1 KB = 1,000 bytes. Custom values must equal whole bytes. PNG may reduce colors to fit. Only files within the exact byte limit become results. If no tested setting fits, an error explains the limit; your original stays unchanged.",
+              "exists": true
+            }
+          ],
+          "checks": {
+            "focus": true,
+            "fullFrame": true,
+            "value": true,
+            "textCapacity": false,
+            "noHorizontalOverflow": true
+          },
+          "passed": false,
+          "screenshot": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/n-red/source-only-same-active-844x390.png",
+          "screenshotSha256": "d305b35af75ed598abb576888d02c2d79dc28499e53cacda492f651270825996"
+        },
+        {
+          "phase": "applied-result",
+          "statusRect": {
+            "top": 249.3000030517578,
+            "bottom": 271.6999969482422,
+            "left": 429,
+            "right": 668,
+            "width": 239,
+            "height": 22.399993896484375
+          },
+          "statusText": "199,999,999 bytes maximum",
+          "fullErrorSummaryExposed": true,
+          "value": "199999.999",
+          "actualFocus": true,
+          "viewport": [
+            844,
+            390
+          ],
+          "page": [
+            0,
+            152
+          ],
+          "frame": {
+            "top": 246,
+            "bottom": 292,
+            "left": 176,
+            "right": 415,
+            "width": 239,
+            "height": 46
+          },
+          "input": {
+            "top": 247,
+            "bottom": 291,
+            "left": 177,
+            "right": 376.6333312988281,
+            "width": 199.63333129882812,
+            "height": 44
+          },
+          "body": {
+            "top": 127,
+            "bottom": 304,
+            "left": 143,
+            "right": 701,
+            "width": 558,
+            "height": 177,
+            "scrollTop": 358.5
+          },
+          "footer": {
+            "top": 304,
+            "bottom": 377,
+            "left": 143,
+            "right": 701,
+            "width": 558,
+            "height": 73
+          },
+          "clearance": 12,
+          "wholeFocusFrameExposed": true,
+          "documentWidth": 844,
+          "clientWidth": 137,
+          "padding": 61,
+          "textWidth": 81.26667022705078,
+          "availableTextWidth": 76,
+          "textFits": false,
+          "font": "15px Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif",
+          "appearance": "textfield",
+          "innerBorder": [
+            "1px",
+            "1px"
+          ],
+          "outlineColor": "rgb(98, 127, 24)",
+          "statusColor": "rgb(82, 101, 90)",
+          "ariaInvalid": null,
+          "described": [
+            {
+              "id": "_r_1_-target-status",
+              "text": "199,999,999 bytes maximum",
+              "exists": true
+            },
+            {
+              "id": "_r_1_-target-hint",
+              "text": "1 KB = 1,000 bytes. Custom values must equal whole bytes. PNG may reduce colors to fit. Only files within the exact byte limit become results. If no tested setting fits, an error explains the limit; your original stays unchanged.",
+              "exists": true
+            }
+          ],
+          "checks": {
+            "focus": true,
+            "fullFrame": true,
+            "value": true,
+            "textCapacity": false,
+            "noHorizontalOverflow": true
+          },
+          "passed": false,
+          "screenshot": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/n-red/applied-result-same-active-844x390.png",
+          "screenshotSha256": "6bec9d4bf11228613c4cccc9f46b26c0efa0ae543809a0ab327ad3eb9c1237d2"
+        }
+      ],
+      "failures": [
+        {
+          "phase": "source-only",
+          "width": 320,
+          "value": "100.05",
+          "failedChecks": [
+            "textCapacity"
+          ]
+        },
+        {
+          "phase": "source-only",
+          "width": 320,
+          "value": "199999.999",
+          "failedChecks": [
+            "textCapacity"
+          ]
+        },
+        {
+          "phase": "source-only",
+          "width": 320,
+          "value": "100.0005",
+          "failedChecks": [
+            "textCapacity"
+          ]
+        },
+        {
+          "phase": "source-only",
+          "width": 375,
+          "value": "100.05",
+          "failedChecks": [
+            "textCapacity"
+          ]
+        },
+        {
+          "phase": "source-only",
+          "width": 375,
+          "value": "199999.999",
+          "failedChecks": [
+            "textCapacity"
+          ]
+        },
+        {
+          "phase": "source-only",
+          "width": 390,
+          "value": "100.05",
+          "failedChecks": [
+            "textCapacity"
+          ]
+        },
+        {
+          "phase": "source-only",
+          "width": 390,
+          "value": "199999.999",
+          "failedChecks": [
+            "textCapacity"
+          ]
+        },
+        {
+          "phase": "source-only",
+          "width": 430,
+          "value": "100.05",
+          "failedChecks": [
+            "textCapacity"
+          ]
+        },
+        {
+          "phase": "source-only",
+          "width": 430,
+          "value": "199999.999",
+          "failedChecks": [
+            "textCapacity"
+          ]
+        },
+        {
+          "phase": "source-only",
+          "width": 480,
+          "value": "100.05",
+          "failedChecks": [
+            "textCapacity"
+          ]
+        },
+        {
+          "phase": "source-only",
+          "width": 480,
+          "value": "199999.999",
+          "failedChecks": [
+            "textCapacity"
+          ]
+        },
+        {
+          "phase": "source-only",
+          "width": 481,
+          "value": "100.05",
+          "failedChecks": [
+            "textCapacity"
+          ]
+        },
+        {
+          "phase": "source-only",
+          "width": 481,
+          "value": "199999.999",
+          "failedChecks": [
+            "textCapacity"
+          ]
+        },
+        {
+          "phase": "source-only",
+          "width": 768,
+          "value": "199999.999",
+          "failedChecks": [
+            "textCapacity"
+          ]
+        },
+        {
+          "phase": "source-only",
+          "width": 844,
+          "value": "199999.999",
+          "name": "same-active-orientation",
+          "failedChecks": [
+            "textCapacity"
+          ]
+        },
+        {
+          "phase": "applied-result",
+          "width": 320,
+          "value": "100.05",
+          "failedChecks": [
+            "textCapacity"
+          ]
+        },
+        {
+          "phase": "applied-result",
+          "width": 320,
+          "value": "199999.999",
+          "failedChecks": [
+            "textCapacity"
+          ]
+        },
+        {
+          "phase": "applied-result",
+          "width": 375,
+          "value": "100.05",
+          "failedChecks": [
+            "textCapacity"
+          ]
+        },
+        {
+          "phase": "applied-result",
+          "width": 375,
+          "value": "199999.999",
+          "failedChecks": [
+            "textCapacity"
+          ]
+        },
+        {
+          "phase": "applied-result",
+          "width": 390,
+          "value": "100.05",
+          "failedChecks": [
+            "textCapacity"
+          ]
+        },
+        {
+          "phase": "applied-result",
+          "width": 390,
+          "value": "199999.999",
+          "failedChecks": [
+            "textCapacity"
+          ]
+        },
+        {
+          "phase": "applied-result",
+          "width": 430,
+          "value": "100.05",
+          "failedChecks": [
+            "textCapacity"
+          ]
+        },
+        {
+          "phase": "applied-result",
+          "width": 430,
+          "value": "199999.999",
+          "failedChecks": [
+            "textCapacity"
+          ]
+        },
+        {
+          "phase": "applied-result",
+          "width": 480,
+          "value": "100.05",
+          "failedChecks": [
+            "textCapacity"
+          ]
+        },
+        {
+          "phase": "applied-result",
+          "width": 480,
+          "value": "199999.999",
+          "failedChecks": [
+            "textCapacity"
+          ]
+        },
+        {
+          "phase": "applied-result",
+          "width": 481,
+          "value": "100.05",
+          "failedChecks": [
+            "textCapacity"
+          ]
+        },
+        {
+          "phase": "applied-result",
+          "width": 481,
+          "value": "199999.999",
+          "failedChecks": [
+            "textCapacity"
+          ]
+        },
+        {
+          "phase": "applied-result",
+          "width": 768,
+          "value": "199999.999",
+          "failedChecks": [
+            "textCapacity"
+          ]
+        },
+        {
+          "phase": "applied-result",
+          "width": 844,
+          "value": "199999.999",
+          "name": "same-active-orientation",
+          "failedChecks": [
+            "textCapacity"
+          ]
+        }
+      ],
+      "invalidStates": [
+        {
+          "name": "native-invalid-draft",
+          "statusRect": {
+            "top": 254.60000610351562,
+            "bottom": 325,
+            "left": 174.63333129882812,
+            "right": 271,
+            "width": 96.36666870117188,
+            "height": 70.39999389648438
+          },
+          "statusText": "Use 0.001 KB steps (whole bytes), up to 200,000 KB.",
+          "fullErrorSummaryExposed": true,
+          "value": "100.0005",
+          "actualFocus": true,
+          "viewport": [
+            320,
+            568
+          ],
+          "page": [
+            0,
+            131.25
+          ],
+          "frame": {
+            "top": 282.79998779296875,
+            "bottom": 328.79998779296875,
+            "left": 49,
+            "right": 164.63333129882812,
+            "width": 115.63333129882812,
+            "height": 46
+          },
+          "input": {
+            "top": 283.79998779296875,
+            "bottom": 327.79998779296875,
+            "left": 50,
+            "right": 126.26666259765625,
+            "width": 76.26666259765625,
+            "height": 44
+          },
+          "body": {
+            "top": 121,
+            "bottom": 482,
+            "left": 20,
+            "right": 300,
+            "width": 280,
+            "height": 361,
+            "scrollTop": 372.70001220703125
+          },
+          "footer": {
+            "top": 482,
+            "bottom": 555,
+            "left": 20,
+            "right": 300,
+            "width": 280,
+            "height": 73
+          },
+          "clearance": 12,
+          "wholeFocusFrameExposed": true,
+          "documentWidth": 320,
+          "clientWidth": 13,
+          "padding": 61,
+          "textWidth": 64.0999984741211,
+          "availableTextWidth": -48,
+          "textFits": false,
+          "font": "15px Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif",
+          "appearance": "textfield",
+          "innerBorder": [
+            "1px",
+            "1px"
+          ],
+          "outlineColor": "rgb(163, 51, 34)",
+          "statusColor": "rgb(163, 51, 34)",
+          "ariaInvalid": "true",
+          "described": [
+            {
+              "id": "_r_1_-target-status",
+              "text": "Use 0.001 KB steps (whole bytes), up to 200,000 KB.",
+              "exists": true
+            },
+            {
+              "id": "_r_1_-target-hint",
+              "text": "1 KB = 1,000 bytes. Custom values must equal whole bytes. PNG may reduce colors to fit. Only files within the exact byte limit become results. If no tested setting fits, an error explains the limit; your original stays unchanged.",
+              "exists": true
+            }
+          ],
+          "nativeErrorReveal": [],
+          "checks": {
+            "focus": true,
+            "fullFrame": true,
+            "textCapacity": false,
+            "errorSummaryVisible": true
+          },
+          "screenshot": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/n-red/invalid-320-100_0005.png",
+          "screenshotSha256": "c5724a90866d6a1020f114d8ffa3f41d8f41efe00eddd974f7b94c7392050ea9",
+          "passed": false
+        },
+        {
+          "name": "invalid-reopen-preserved",
+          "value": "100.0005",
+          "processingDisabled": true,
+          "passed": true
+        }
+      ],
+      "wheelControls": [
+        {
+          "phase": "source-only",
+          "width": 320,
+          "point": [
+            1,
+            284
+          ],
+          "before": [
+            0,
+            384.3166809082031
+          ],
+          "actions": [
+            {
+              "delta": 500,
+              "after": [
+                0,
+                384.3166809082031
+              ]
+            },
+            {
+              "delta": -500,
+              "after": [
+                0,
+                384.3166809082031
+              ]
+            }
+          ],
+          "passed": true
+        },
+        {
+          "phase": "applied-result",
+          "width": 320,
+          "point": [
+            1,
+            284
+          ],
+          "before": [
+            0,
+            143.0500030517578
+          ],
+          "actions": [
+            {
+              "delta": 500,
+              "after": [
+                0,
+                143.0500030517578
+              ]
+            },
+            {
+              "delta": -500,
+              "after": [
+                0,
+                143.0500030517578
+              ]
+            }
+          ],
+          "passed": true
+        }
+      ],
+      "closeReturns": [
+        {
+          "label": "invalid-close",
+          "bookmark": [
+            0,
+            131.25
+          ],
+          "focus": true,
+          "page": [
+            0,
+            131.25
+          ],
+          "passed": true
+        },
+        {
+          "label": "source-only-close",
+          "bookmark": [
+            0,
+            384.3166809082031
+          ],
+          "focus": true,
+          "page": [
+            0,
+            384.3166809082031
+          ],
+          "passed": true
+        },
+        {
+          "label": "applied-result-close",
+          "bookmark": [
+            0,
+            143.0500030517578
+          ],
+          "focus": true,
+          "page": [
+            0,
+            143.0500030517578
+          ],
+          "passed": true
+        }
+      ],
+      "downloads": [
+        {
+          "file": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/n-red/actual-default-lossless.png",
+          "bytes": 83020,
+          "sha256": "67181c1d03a5e42876abcf23d312ac169442bfb0c4af29261142a0d601143e7e",
+          "decoded": {
+            "format": "PNG",
+            "dimensions": [
+              1440,
+              900
+            ],
+            "pixelsEqual": true
+          }
+        }
+      ],
+      "pageErrors": [],
+      "consoleMessages": [],
+      "failedRequests": [],
+      "closedNormally": true,
+      "nativeBrowserExit0": true,
+      "expectedRedObserved": true,
+      "greenPassed": false,
+      "finishedAt": "2026-11-28T14:48:39.673932+00:00"
+    },
+    {
+      "candidate": "O",
+      "name": "o-green",
+      "startedAt": "2026-11-28T14:48:39.675532+00:00",
+      "homeSha256": "4bba3c3c5b3dab637959431221a5491f02e6f199ad302bdb9a71852c81144ff6",
+      "harnessBeforeSha256": "f820c95a85536fd952c82659f9a47073b9b4a20e33866bbd94ab8a45fd624e5b",
+      "identityBefore": [
+        {
+          "file": "index.html",
+          "sha256": "4bba3c3c5b3dab637959431221a5491f02e6f199ad302bdb9a71852c81144ff6",
+          "bytes": 108628,
+          "status": 200
+        },
+        {
+          "file": "png-compressor.html",
+          "sha256": "8e4a2b9a2cf46357f7fb58d643d4675fb983b945d1d44fe45fb30b87ff889c78",
+          "bytes": 85145,
+          "status": 200
+        },
+        {
+          "file": "release.json",
+          "sha256": "864b28b6792c1b935b3ad71a015a35865f01b2a358a9846814f8f19f979fd1b1",
+          "bytes": 3984,
+          "status": 200
+        },
+        {
+          "file": "image-worker/codec-manifest.json",
+          "sha256": "13c838e502c80a6fa3b466ceb846939662d5a9a95f16414449653cfce33f9275",
+          "bytes": 3843,
+          "status": 200
+        },
+        {
+          "file": "ffmpeg-core/wasm-manifest.json",
+          "sha256": "9612006d08b9c847e994dd392bdae855db2ecb3f353b33e9c6e95c0d4ee520e4",
+          "bytes": 5657,
+          "status": 200
+        },
+        {
+          "file": "ffmpeg-core/ffmpeg-core.js",
+          "sha256": "cea5a18a8ef99258fa2299b8feb57ca641c0222e88de077fd0562b4eeef7bfed",
+          "bytes": 86526,
+          "status": 200
+        },
+        {
+          "file": "image-worker/image-pipeline.mjs",
+          "sha256": "770e69f8d76d5f682fda6183d5e2405d1c0c0e197205471c6220c98ea4522b8a",
+          "bytes": 16690,
+          "status": 200
+        },
+        {
+          "file": "image-worker/image-png.mjs",
+          "sha256": "d4beabe725a453099f39a337cf63f54fc0d2d5983753e820f9c810e057680a1f",
+          "bytes": 13782,
+          "status": 200
+        },
+        {
+          "file": "image-worker/image-canvas.mjs",
+          "sha256": "96e366066cc5720a4a9267c878d05af80b591cc5e69bde773f71b8f5adbc4173",
+          "bytes": 15269,
+          "status": 200
+        },
+        {
+          "file": "image-worker/image-metadata.mjs",
+          "sha256": "a584b568d2735f3fb1f345157c2c118a3ab63e9e1cb3377684c03caff09b3ec9",
+          "bytes": 10124,
+          "status": 200
+        },
+        {
+          "file": "image-worker/image-engine.mjs",
+          "sha256": "5179b8034f0272e92d54b8b9e2bb6aea6844658d66f1eab372fefb9ea6361f5a",
+          "bytes": 1174,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/157-412aa33814b01223.js",
+          "sha256": "13e21ab74cb6b556be1f9785c4b562955fa397b9c458f365bd31c1dce8e35ae8",
+          "bytes": 65985,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/437-637def3bf7b62bbb.js",
+          "sha256": "e461fe4783f53e96082952c0d8338590bc788b597eca75fa17f5686f06855081",
+          "bytes": 14383,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+          "sha256": "bc650dd5e12e5d105ffd07b23f99e65c5d379de8d82fb6ef2859e59bd440b06f",
+          "bytes": 203721,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+          "sha256": "905bc34977bb55dd8fda0041a3dbe144347dc46e9cd747d71e6b326deb234d7d",
+          "bytes": 7642,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/794-a07363c91e88b990.js",
+          "sha256": "bd197af46e3a5b24285044246c865dc724c5980c87099552160d9a49ccae393d",
+          "bytes": 241844,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/app/%5Btool%5D/page-9f694886b485f224.js",
+          "sha256": "e8e20ac8222cf23191635d0c59893848c0715a30ac66a84daebf134185201cce",
+          "bytes": 226,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+          "sha256": "6a36f58ceb83c23ad8ed32c846188e5cf48a0e16f1269de4b4821f14fde1e08a",
+          "bytes": 1084,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/app/layout-4a3517a7236432ee.js",
+          "sha256": "65d4eb31f22d49f5d7f1ad9996a2fa7db987209bdc65a7a0881d9b912ced2f98",
+          "bytes": 11621,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/main-app-e0c5585404eeb003.js",
+          "sha256": "8641a2b06fc0703fdc23d73d01aa7beaac3fe70e87613142a9d8e75df6caef0d",
+          "bytes": 513,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/polyfills-42372ed130431b0a.js",
+          "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
+          "bytes": 112594,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/webpack-eec174693629e385.js",
+          "sha256": "8ebf6b894f20050e047f445deb03e5041b30f2fb7fb17b8d1503de4cd1f2bc40",
+          "bytes": 3619,
+          "status": 200
+        },
+        {
+          "file": "_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43",
+          "bytes": 43855,
+          "status": 200
+        },
+        {
+          "file": "_next/static/css/f2b5c857e32f3162.css",
+          "sha256": "550052f4aff84e08a9e1b32e17e3279202fdb3a916a55910c04004152ce2a28a",
+          "bytes": 58168,
+          "status": 200
+        }
+      ],
+      "actualExitCode": 0,
+      "identityAfter": [
+        {
+          "file": "index.html",
+          "sha256": "4bba3c3c5b3dab637959431221a5491f02e6f199ad302bdb9a71852c81144ff6",
+          "bytes": 108628,
+          "status": 200
+        },
+        {
+          "file": "png-compressor.html",
+          "sha256": "8e4a2b9a2cf46357f7fb58d643d4675fb983b945d1d44fe45fb30b87ff889c78",
+          "bytes": 85145,
+          "status": 200
+        },
+        {
+          "file": "release.json",
+          "sha256": "864b28b6792c1b935b3ad71a015a35865f01b2a358a9846814f8f19f979fd1b1",
+          "bytes": 3984,
+          "status": 200
+        },
+        {
+          "file": "image-worker/codec-manifest.json",
+          "sha256": "13c838e502c80a6fa3b466ceb846939662d5a9a95f16414449653cfce33f9275",
+          "bytes": 3843,
+          "status": 200
+        },
+        {
+          "file": "ffmpeg-core/wasm-manifest.json",
+          "sha256": "9612006d08b9c847e994dd392bdae855db2ecb3f353b33e9c6e95c0d4ee520e4",
+          "bytes": 5657,
+          "status": 200
+        },
+        {
+          "file": "ffmpeg-core/ffmpeg-core.js",
+          "sha256": "cea5a18a8ef99258fa2299b8feb57ca641c0222e88de077fd0562b4eeef7bfed",
+          "bytes": 86526,
+          "status": 200
+        },
+        {
+          "file": "image-worker/image-pipeline.mjs",
+          "sha256": "770e69f8d76d5f682fda6183d5e2405d1c0c0e197205471c6220c98ea4522b8a",
+          "bytes": 16690,
+          "status": 200
+        },
+        {
+          "file": "image-worker/image-png.mjs",
+          "sha256": "d4beabe725a453099f39a337cf63f54fc0d2d5983753e820f9c810e057680a1f",
+          "bytes": 13782,
+          "status": 200
+        },
+        {
+          "file": "image-worker/image-canvas.mjs",
+          "sha256": "96e366066cc5720a4a9267c878d05af80b591cc5e69bde773f71b8f5adbc4173",
+          "bytes": 15269,
+          "status": 200
+        },
+        {
+          "file": "image-worker/image-metadata.mjs",
+          "sha256": "a584b568d2735f3fb1f345157c2c118a3ab63e9e1cb3377684c03caff09b3ec9",
+          "bytes": 10124,
+          "status": 200
+        },
+        {
+          "file": "image-worker/image-engine.mjs",
+          "sha256": "5179b8034f0272e92d54b8b9e2bb6aea6844658d66f1eab372fefb9ea6361f5a",
+          "bytes": 1174,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/157-412aa33814b01223.js",
+          "sha256": "13e21ab74cb6b556be1f9785c4b562955fa397b9c458f365bd31c1dce8e35ae8",
+          "bytes": 65985,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/437-637def3bf7b62bbb.js",
+          "sha256": "e461fe4783f53e96082952c0d8338590bc788b597eca75fa17f5686f06855081",
+          "bytes": 14383,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+          "sha256": "bc650dd5e12e5d105ffd07b23f99e65c5d379de8d82fb6ef2859e59bd440b06f",
+          "bytes": 203721,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+          "sha256": "905bc34977bb55dd8fda0041a3dbe144347dc46e9cd747d71e6b326deb234d7d",
+          "bytes": 7642,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/794-a07363c91e88b990.js",
+          "sha256": "bd197af46e3a5b24285044246c865dc724c5980c87099552160d9a49ccae393d",
+          "bytes": 241844,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/app/%5Btool%5D/page-9f694886b485f224.js",
+          "sha256": "e8e20ac8222cf23191635d0c59893848c0715a30ac66a84daebf134185201cce",
+          "bytes": 226,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+          "sha256": "6a36f58ceb83c23ad8ed32c846188e5cf48a0e16f1269de4b4821f14fde1e08a",
+          "bytes": 1084,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/app/layout-4a3517a7236432ee.js",
+          "sha256": "65d4eb31f22d49f5d7f1ad9996a2fa7db987209bdc65a7a0881d9b912ced2f98",
+          "bytes": 11621,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/main-app-e0c5585404eeb003.js",
+          "sha256": "8641a2b06fc0703fdc23d73d01aa7beaac3fe70e87613142a9d8e75df6caef0d",
+          "bytes": 513,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/polyfills-42372ed130431b0a.js",
+          "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
+          "bytes": 112594,
+          "status": 200
+        },
+        {
+          "file": "_next/static/chunks/webpack-eec174693629e385.js",
+          "sha256": "8ebf6b894f20050e047f445deb03e5041b30f2fb7fb17b8d1503de4cd1f2bc40",
+          "bytes": 3619,
+          "status": 200
+        },
+        {
+          "file": "_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43",
+          "bytes": 43855,
+          "status": 200
+        },
+        {
+          "file": "_next/static/css/f2b5c857e32f3162.css",
+          "sha256": "550052f4aff84e08a9e1b32e17e3279202fdb3a916a55910c04004152ce2a28a",
+          "bytes": 58168,
+          "status": 200
+        }
+      ],
+      "harnessAfterSha256": "f820c95a85536fd952c82659f9a47073b9b4a20e33866bbd94ab8a45fd624e5b",
+      "auditStatus": "PASS_NATIVE_NUMBER_READABILITY",
+      "browserVersion": "163.0a1",
+      "states": 28,
+      "orientationStates": [
+        {
+          "phase": "source-only",
+          "statusRect": {
+            "top": 249.3000030517578,
+            "bottom": 271.6999969482422,
+            "left": 429,
+            "right": 668,
+            "width": 239,
+            "height": 22.399993896484375
+          },
+          "statusText": "199,999,999 bytes maximum",
+          "fullErrorSummaryExposed": true,
+          "value": "199999.999",
+          "actualFocus": true,
+          "viewport": [
+            844,
+            390
+          ],
+          "page": [
+            0,
+            334.8166809082031
+          ],
+          "frame": {
+            "top": 246,
+            "bottom": 292,
+            "left": 176,
+            "right": 415,
+            "width": 239,
+            "height": 46
+          },
+          "input": {
+            "top": 247,
+            "bottom": 291,
+            "left": 177,
+            "right": 376.6333312988281,
+            "width": 199.63333129882812,
+            "height": 44
+          },
+          "body": {
+            "top": 127,
+            "bottom": 304,
+            "left": 143,
+            "right": 701,
+            "width": 558,
+            "height": 177,
+            "scrollTop": 304.5
+          },
+          "footer": {
+            "top": 304,
+            "bottom": 377,
+            "left": 143,
+            "right": 701,
+            "width": 558,
+            "height": 73
+          },
+          "clearance": 12,
+          "wholeFocusFrameExposed": true,
+          "documentWidth": 844,
+          "clientWidth": 174,
+          "padding": 26,
+          "textWidth": 81.26667022705078,
+          "availableTextWidth": 148,
+          "textFits": true,
+          "font": "15px Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif",
+          "appearance": "textfield",
+          "innerBorder": [
+            "0px",
+            "0px"
+          ],
+          "outlineColor": "rgb(98, 127, 24)",
+          "statusColor": "rgb(82, 101, 90)",
+          "ariaInvalid": null,
+          "described": [
+            {
+              "id": "_r_1_-target-status",
+              "text": "199,999,999 bytes maximum",
+              "exists": true
+            },
+            {
+              "id": "_r_1_-target-hint",
+              "text": "1 KB = 1,000 bytes. Custom values must equal whole bytes. PNG may reduce colors to fit. Only files within the exact byte limit become results. If no tested setting fits, an error explains the limit; your original stays unchanged.",
+              "exists": true
+            }
+          ],
+          "checks": {
+            "focus": true,
+            "fullFrame": true,
+            "value": true,
+            "textCapacity": true,
+            "noHorizontalOverflow": true
+          },
+          "passed": true,
+          "screenshot": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/source-only-same-active-844x390.png",
+          "screenshotSha256": "801ca3c8fb5bb79079865c0d12e0b152eb3d95606ecbe425557330f3ea410004"
+        },
+        {
+          "phase": "applied-result",
+          "statusRect": {
+            "top": 249.3000030517578,
+            "bottom": 271.6999969482422,
+            "left": 429,
+            "right": 668,
+            "width": 239,
+            "height": 22.399993896484375
+          },
+          "statusText": "199,999,999 bytes maximum",
+          "fullErrorSummaryExposed": true,
+          "value": "199999.999",
+          "actualFocus": true,
+          "viewport": [
+            844,
+            390
+          ],
+          "page": [
+            0,
+            152
+          ],
+          "frame": {
+            "top": 246,
+            "bottom": 292,
+            "left": 176,
+            "right": 415,
+            "width": 239,
+            "height": 46
+          },
+          "input": {
+            "top": 247,
+            "bottom": 291,
+            "left": 177,
+            "right": 376.6333312988281,
+            "width": 199.63333129882812,
+            "height": 44
+          },
+          "body": {
+            "top": 127,
+            "bottom": 304,
+            "left": 143,
+            "right": 701,
+            "width": 558,
+            "height": 177,
+            "scrollTop": 358.5
+          },
+          "footer": {
+            "top": 304,
+            "bottom": 377,
+            "left": 143,
+            "right": 701,
+            "width": 558,
+            "height": 73
+          },
+          "clearance": 12,
+          "wholeFocusFrameExposed": true,
+          "documentWidth": 844,
+          "clientWidth": 174,
+          "padding": 26,
+          "textWidth": 81.26667022705078,
+          "availableTextWidth": 148,
+          "textFits": true,
+          "font": "15px Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif",
+          "appearance": "textfield",
+          "innerBorder": [
+            "0px",
+            "0px"
+          ],
+          "outlineColor": "rgb(98, 127, 24)",
+          "statusColor": "rgb(82, 101, 90)",
+          "ariaInvalid": null,
+          "described": [
+            {
+              "id": "_r_1_-target-status",
+              "text": "199,999,999 bytes maximum",
+              "exists": true
+            },
+            {
+              "id": "_r_1_-target-hint",
+              "text": "1 KB = 1,000 bytes. Custom values must equal whole bytes. PNG may reduce colors to fit. Only files within the exact byte limit become results. If no tested setting fits, an error explains the limit; your original stays unchanged.",
+              "exists": true
+            }
+          ],
+          "checks": {
+            "focus": true,
+            "fullFrame": true,
+            "value": true,
+            "textCapacity": true,
+            "noHorizontalOverflow": true
+          },
+          "passed": true,
+          "screenshot": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/applied-result-same-active-844x390.png",
+          "screenshotSha256": "96272e467ef6b1b86f68668a89afdb53088ce185ca4176c4007a69b4c03129a5"
+        }
+      ],
+      "failures": [],
+      "invalidStates": [
+        {
+          "name": "native-invalid-draft",
+          "statusRect": {
+            "top": 332.5,
+            "bottom": 367.6999969482422,
+            "left": 49,
+            "right": 271,
+            "width": 222,
+            "height": 35.19999694824219
+          },
+          "statusText": "Use 0.001 KB steps (whole bytes), up to 200,000 KB.",
+          "fullErrorSummaryExposed": true,
+          "value": "100.0005",
+          "actualFocus": true,
+          "viewport": [
+            320,
+            568
+          ],
+          "page": [
+            0,
+            131.25
+          ],
+          "frame": {
+            "top": 278.5,
+            "bottom": 324.5,
+            "left": 49,
+            "right": 271,
+            "width": 222,
+            "height": 46
+          },
+          "input": {
+            "top": 279.5,
+            "bottom": 323.5,
+            "left": 50,
+            "right": 232.63333129882812,
+            "width": 182.63333129882812,
+            "height": 44
+          },
+          "body": {
+            "top": 121,
+            "bottom": 482,
+            "left": 20,
+            "right": 300,
+            "width": 280,
+            "height": 361,
+            "scrollTop": 361
+          },
+          "footer": {
+            "top": 482,
+            "bottom": 555,
+            "left": 20,
+            "right": 300,
+            "width": 280,
+            "height": 73
+          },
+          "clearance": 12,
+          "wholeFocusFrameExposed": true,
+          "documentWidth": 320,
+          "clientWidth": 157,
+          "padding": 26,
+          "textWidth": 64.0999984741211,
+          "availableTextWidth": 131,
+          "textFits": true,
+          "font": "15px Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif",
+          "appearance": "textfield",
+          "innerBorder": [
+            "0px",
+            "0px"
+          ],
+          "outlineColor": "rgb(163, 51, 34)",
+          "statusColor": "rgb(163, 51, 34)",
+          "ariaInvalid": "true",
+          "described": [
+            {
+              "id": "_r_1_-target-status",
+              "text": "Use 0.001 KB steps (whole bytes), up to 200,000 KB.",
+              "exists": true
+            },
+            {
+              "id": "_r_1_-target-hint",
+              "text": "1 KB = 1,000 bytes. Custom values must equal whole bytes. PNG may reduce colors to fit. Only files within the exact byte limit become results. If no tested setting fits, an error explains the limit; your original stays unchanged.",
+              "exists": true
+            }
+          ],
+          "nativeErrorReveal": [],
+          "checks": {
+            "focus": true,
+            "fullFrame": true,
+            "textCapacity": true,
+            "errorSummaryVisible": true
+          },
+          "screenshot": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/invalid-320-100_0005.png",
+          "screenshotSha256": "c0fb94baf8b48d2497eac29f318a1f59eeaa5d965079748dc2bff9a40a35dced",
+          "passed": true
+        },
+        {
+          "name": "invalid-reopen-preserved",
+          "value": "100.0005",
+          "processingDisabled": true,
+          "passed": true
+        }
+      ],
+      "wheelControls": [
+        {
+          "phase": "source-only",
+          "width": 320,
+          "point": [
+            1,
+            284
+          ],
+          "before": [
+            0,
+            384.3166809082031
+          ],
+          "actions": [
+            {
+              "delta": 500,
+              "after": [
+                0,
+                384.3166809082031
+              ]
+            },
+            {
+              "delta": -500,
+              "after": [
+                0,
+                384.3166809082031
+              ]
+            }
+          ],
+          "passed": true
+        },
+        {
+          "phase": "applied-result",
+          "width": 320,
+          "point": [
+            1,
+            284
+          ],
+          "before": [
+            0,
+            143.0500030517578
+          ],
+          "actions": [
+            {
+              "delta": 500,
+              "after": [
+                0,
+                143.0500030517578
+              ]
+            },
+            {
+              "delta": -500,
+              "after": [
+                0,
+                143.0500030517578
+              ]
+            }
+          ],
+          "passed": true
+        }
+      ],
+      "closeReturns": [
+        {
+          "label": "invalid-close",
+          "bookmark": [
+            0,
+            131.25
+          ],
+          "focus": true,
+          "page": [
+            0,
+            131.25
+          ],
+          "passed": true
+        },
+        {
+          "label": "source-only-close",
+          "bookmark": [
+            0,
+            384.3166809082031
+          ],
+          "focus": true,
+          "page": [
+            0,
+            384.3166809082031
+          ],
+          "passed": true
+        },
+        {
+          "label": "applied-result-close",
+          "bookmark": [
+            0,
+            143.0500030517578
+          ],
+          "focus": true,
+          "page": [
+            0,
+            143.0500030517578
+          ],
+          "passed": true
+        }
+      ],
+      "downloads": [
+        {
+          "file": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/candidate-o-firefox-number-readability-v2/o-green/actual-default-lossless.png",
+          "bytes": 83020,
+          "sha256": "67181c1d03a5e42876abcf23d312ac169442bfb0c4af29261142a0d601143e7e",
+          "decoded": {
+            "format": "PNG",
+            "dimensions": [
+              1440,
+              900
+            ],
+            "pixelsEqual": true
+          }
+        }
+      ],
+      "pageErrors": [],
+      "consoleMessages": [],
+      "failedRequests": [],
+      "closedNormally": true,
+      "nativeBrowserExit0": true,
+      "expectedRedObserved": false,
+      "greenPassed": true,
+      "finishedAt": "2026-11-28T14:49:24.546456+00:00"
+    }
+  ],
+  "unchangedSharedSourceInputsFromN": 305,
+  "unchangedProcessingAssets": [
+    {
+      "file": "image-worker/codec-manifest.json",
+      "sha256": "13c838e502c80a6fa3b466ceb846939662d5a9a95f16414449653cfce33f9275"
+    },
+    {
+      "file": "image-worker/codecs/jpeg/LICENSE",
+      "sha256": "8c3690b09c168f196446cf5904332023bbc15eb92b6a7cee470ac829e6a65d20"
+    },
+    {
+      "file": "image-worker/codecs/jpeg/codec/LICENSE.codec.md",
+      "sha256": "8213556ea36ce3a0f2883db06238463e2452fdad68e3d2e2e4ace2189477a37e"
+    },
+    {
+      "file": "image-worker/codecs/jpeg/codec/enc/mozjpeg_enc.js",
+      "sha256": "93d3b28a4c9d3278acbbe0e23ff244ec3a6bfb13e51647b87eea311a8d747694"
+    },
+    {
+      "file": "image-worker/codecs/jpeg/codec/enc/mozjpeg_enc.wasm",
+      "sha256": "24d4177f1c4963e2058b107189249651c61fdef125570e79b1dfb63c8bb49326"
+    },
+    {
+      "file": "image-worker/codecs/jpeg/encode.js",
+      "sha256": "14dd2fd61c1ce1f1552d217b3bb353faa1c593ff9ad73f4a8ff3830c03ebc4fa"
+    },
+    {
+      "file": "image-worker/codecs/jpeg/meta.js",
+      "sha256": "f1c1f3cd95d3a03de8e87b59e12aaf4f2d9a16a0b20531373d9164c26ca84fce"
+    },
+    {
+      "file": "image-worker/codecs/jpeg/utils.js",
+      "sha256": "e71535eeee820d68b68ece7c8af761c39f3ddec93d3d957d2f83b19191339e0d"
+    },
+    {
+      "file": "image-worker/codecs/oxipng/LICENSE",
+      "sha256": "8c3690b09c168f196446cf5904332023bbc15eb92b6a7cee470ac829e6a65d20"
+    },
+    {
+      "file": "image-worker/codecs/oxipng/codec/LICENSE.codec.md",
+      "sha256": "fbd251bd50b001db93e2cb942e71a85a3befe6ddef659709e09d762d4e2c2a5a"
+    },
+    {
+      "file": "image-worker/codecs/oxipng/codec/pkg/squoosh_oxipng.js",
+      "sha256": "ac29a688c0311c09a809e33d06c9702e84c9242169f81a04589d69a8ad6a782b"
+    },
+    {
+      "file": "image-worker/codecs/oxipng/codec/pkg/squoosh_oxipng_bg.wasm",
+      "sha256": "5ea3e53c0b4fc1b4e8d1511d35b89329d9376bec75a9c4d3c054774487e5f9a3"
+    },
+    {
+      "file": "image-worker/codecs/upng/LICENSE",
+      "sha256": "c1fb8861eca211bf5aea574358aba7039396c0c1824c2a1477cc126d398efd89"
+    },
+    {
+      "file": "image-worker/codecs/upng/UPNG.js",
+      "sha256": "911872ae298adadf47d9ae29f21441e6a5c823f6e550445da5bb2a03840239c2"
+    },
+    {
+      "file": "image-worker/codecs/upng/pako.LICENSE",
+      "sha256": "a04665b3b2de56c66730c1f720f528175739e4104f79073614aa611da1e85539"
+    },
+    {
+      "file": "image-worker/codecs/upng/pako.ZLIB.LICENSE",
+      "sha256": "d8b499598e43d755ea8918448128259ff01820c50d94d5a48c8883d0a594ddb1"
+    },
+    {
+      "file": "image-worker/image-canvas.mjs",
+      "sha256": "96e366066cc5720a4a9267c878d05af80b591cc5e69bde773f71b8f5adbc4173"
+    },
+    {
+      "file": "image-worker/image-engine.mjs",
+      "sha256": "5179b8034f0272e92d54b8b9e2bb6aea6844658d66f1eab372fefb9ea6361f5a"
+    },
+    {
+      "file": "image-worker/image-metadata.mjs",
+      "sha256": "a584b568d2735f3fb1f345157c2c118a3ab63e9e1cb3377684c03caff09b3ec9"
+    },
+    {
+      "file": "image-worker/image-pipeline.mjs",
+      "sha256": "770e69f8d76d5f682fda6183d5e2405d1c0c0e197205471c6220c98ea4522b8a"
+    },
+    {
+      "file": "image-worker/image-png.mjs",
+      "sha256": "d4beabe725a453099f39a337cf63f54fc0d2d5983753e820f9c810e057680a1f"
+    },
+    {
+      "file": "ffmpeg-core/NOTICE.txt",
+      "sha256": "f6b39bab516f520c2c2f34f1465858ff01e52b9ae27396c4c4078e611ffe678e"
+    },
+    {
+      "file": "ffmpeg-core/const.js",
+      "sha256": "9e3bc9dd84781c81daf459e2c46eeec815edac35089832681d9a9a0f383060d0"
+    },
+    {
+      "file": "ffmpeg-core/errors.js",
+      "sha256": "619310d7ef5fe5fefa0a31927db862b7c291713cfef4d71753fa8aafd18f4db6"
+    },
+    {
+      "file": "ffmpeg-core/ffmpeg-core-c08cca1c5f4ac9ea87d150c8919d38605820e3e2782ccb0a1ec43b7f6c52c6f4.part.wasm",
+      "sha256": "c08cca1c5f4ac9ea87d150c8919d38605820e3e2782ccb0a1ec43b7f6c52c6f4"
+    },
+    {
+      "file": "ffmpeg-core/ffmpeg-core-d241b00c61e2dd8308d2da1f006b375a2cfb139c5d17fb7d1cef576a87d5ce47.part.wasm",
+      "sha256": "d241b00c61e2dd8308d2da1f006b375a2cfb139c5d17fb7d1cef576a87d5ce47"
+    },
+    {
+      "file": "ffmpeg-core/ffmpeg-core.js",
+      "sha256": "cea5a18a8ef99258fa2299b8feb57ca641c0222e88de077fd0562b4eeef7bfed"
+    },
+    {
+      "file": "ffmpeg-core/types.js",
+      "sha256": "72f80e6fd44fcd18b55c9a0deb3bc70b9bb37480cf969045ca4521f5a11300f5"
+    },
+    {
+      "file": "ffmpeg-core/utils.js",
+      "sha256": "8c2e0e16445f8d3a0acbb812f2c60541a92c88ed0bf9ffe96c52e7fb6c8b1d72"
+    },
+    {
+      "file": "ffmpeg-core/wasm-manifest.json",
+      "sha256": "9612006d08b9c847e994dd392bdae855db2ecb3f353b33e9c6e95c0d4ee520e4"
+    },
+    {
+      "file": "ffmpeg-core/worker.js",
+      "sha256": "feff0ac937ea225e997e1fae997a74f8b8d572423a526da59eb56624b1f3cde7"
+    }
+  ],
+  "all306OInputsStillMatch": true,
+  "finishedAt": "2026-11-28T14:49:24.575973+00:00"
+}

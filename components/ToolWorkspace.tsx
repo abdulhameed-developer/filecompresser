@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic'
 import type { ToolDefinition } from '@/lib/types'
 import { useFileQueue } from '@/lib/useFileQueue'
 import { savingsSummary } from '@/lib/format'
-import { lockDialogScroll, revealFocusedDialogControl } from '@/lib/dialog-scroll'
+import { lockDialogScroll, observeDialogFocusResize, revealFocusedDialogControl } from '@/lib/dialog-scroll'
 import { ARCHIVE_REPLACE_GUIDANCE, canProcessQueueItem, hasTerminalArchiveFailure } from '@/lib/queue-eligibility'
 import type { ImageSourceProbe } from '@/lib/engines/image'
 import Icon from './Icon'
@@ -28,6 +28,7 @@ export default function ToolWorkspace({ tool, formatsLabel }: ToolWorkspaceProps
   const galleryId = useId()
   const settingsId = useId()
   const settingsPanel = useRef<HTMLDialogElement>(null)
+  const settingsBody = useRef<HTMLDivElement>(null)
   const settingsTrigger = useRef<HTMLButtonElement>(null)
   const actionBar = useRef<HTMLDivElement>(null)
   const previouslyHadFiles = useRef(false)
@@ -35,6 +36,10 @@ export default function ToolWorkspace({ tool, formatsLabel }: ToolWorkspaceProps
   useEffect(() => {
     if (!settingsOpen) return
     return lockDialogScroll()
+  }, [settingsOpen])
+  useEffect(() => {
+    if (!settingsOpen || !settingsBody.current) return
+    return observeDialogFocusResize(settingsBody.current)
   }, [settingsOpen])
   const [page, setPage] = useState(0)
   const [expandedId, setExpandedId] = useState<string | null>(null)
@@ -166,7 +171,7 @@ export default function ToolWorkspace({ tool, formatsLabel }: ToolWorkspaceProps
   return <section className={`compressCard toolCard workflowWorkspace${hasItems ? ' hasFiles' : ' emptyWorkspace'}`} aria-label={`${tool.title} workspace`}>
     <div className="workspaceIntro"><p>{hasItems ? 'Your files' : emptyIntro}</p><span>Max {formatLimit(tool.maxFileSize)} / file</span></div>
     <FileDropzone accept={tool.accept} multiple={tool.engine !== 'zip-extract'} disabled={busy} label={hasItems ? 'Add more files' : 'Drop files here to get started'} hint={hasItems ? 'or choose from your device' : 'or browse files from your device'} formats={hasItems ? undefined : formatsLabel || tool.extensions.map(extension => extension.toUpperCase()).join(' · ')} onFiles={queue.addFiles} />
-    <p className="workspacePrivacy"><Icon name="shield" />Files stay on your device.<span>500 files / 300 MB per queue{tool.category === 'image' ? ' · 32 MP per image' : ''}</span></p>
+    <p className="workspacePrivacy"><Icon name="shield" />Files stay on your device.<span>500 files / 300 MiB per queue{tool.category === 'image' ? ' · 32 MP per image' : ''}</span></p>
 
     {hasItems && <>
       <div className="workspaceScope">
@@ -198,7 +203,7 @@ export default function ToolWorkspace({ tool, formatsLabel }: ToolWorkspaceProps
           </section>
           <div className="workspaceConfiguration">
         {hasSettings && <dialog id={settingsId} ref={settingsPanel} className="settingsDialog" aria-labelledby={`${settingsId}-title`} onKeyDown={onSettingsKeyDown} onClose={() => setSettingsOpen(false)} onCancel={event => { event.preventDefault(); closeSettings() }} onClick={event => { if (event.target === event.currentTarget) closeSettings() }}>
-          <div className="settingsDialogShell"><header className="settingsDialogHeader"><div><span className="settingsDialogEyebrow">WORKSPACE SETTINGS</span><h2 id={`${settingsId}-title`}>Settings</h2><p>For {scope.length} selected file{scope.length === 1 ? '' : 's'}.</p></div><button type="button" className="iconBtn" aria-label="Close settings" onClick={closeSettings}><Icon name="close" /></button></header><div className="settingsDialogBody" onFocusCapture={event => revealFocusedDialogControl(event.currentTarget, event.target)}><fieldset className="workspaceSettings" disabled={busy} aria-describedby={queue.settingsError ? errorId : undefined}>
+          <div className="settingsDialogShell"><header className="settingsDialogHeader"><div><span className="settingsDialogEyebrow">WORKSPACE SETTINGS</span><h2 id={`${settingsId}-title`}>Settings</h2><p>For {scope.length} selected file{scope.length === 1 ? '' : 's'}.</p></div><button type="button" className="iconBtn" aria-label="Close settings" onClick={closeSettings}><Icon name="close" /></button></header><div ref={settingsBody} className="settingsDialogBody" onFocusCapture={event => revealFocusedDialogControl(event.currentTarget, event.target)}><fieldset className="workspaceSettings" disabled={busy} aria-describedby={queue.settingsError ? errorId : undefined}>
             <legend className="srInline">Draft settings for selected files</legend>
             {singleApplied && <div className="settingsHeading"><button type="button" className="linkBtn" onClick={() => queue.restoreApplied(singleApplied.id)}>Restore applied</button></div>}
             {imageSettings && scopeImages.length > 0 && <OutputFormatPicker file={scopeImages[0]} files={scopeImages} value={outputFormat} onChange={next => queue.setSetting('outputFormat', next)} onCheckingChange={setFormatChecking} onProbesChange={rememberProbes} />}
@@ -223,7 +228,7 @@ function SelectAll({ checked, mixed, disabled, onChange }: { checked: boolean; m
   useEffect(() => { if (input.current) input.current.indeterminate = mixed }, [mixed])
   return <label className="selectAllFiles"><input ref={input} type="checkbox" checked={checked} aria-checked={mixed ? 'mixed' : checked} disabled={disabled} onChange={event => onChange(event.target.checked)} />Select all</label>
 }
-function formatLimit(bytes: number) { return bytes >= 1024 * 1024 ? `${Math.round(bytes / 1024 / 1024)} MB` : `${Math.round(bytes / 1024)} KB` }
+function formatLimit(bytes: number) { return bytes >= 1024 * 1024 ? `${Math.round(bytes / 1024 / 1024)} MiB` : `${Math.round(bytes / 1024)} KiB` }
 function actionLabel(tool: ToolDefinition, saved: boolean, count: number, conversionFormat: string, imageOnly: boolean) {
   const suffix = count > 1 ? ` ${count} files` : ''
   if (tool.slug === 'compress' && !imageOnly) return count === 1 ? 'Process file' : `Process ${count} files`

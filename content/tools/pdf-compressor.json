@@ -1,50 +1,50 @@
 {
   "heading": "Free PDF Compressor Online",
-  "introduction": "PDF files are commonly used for business documents, reports, forms, manuals, presentations, and study materials. They are easy to open on different devices and help keep document layouts consistent. However, some PDF files contain extra document information that may not be necessary for everyday use.\n\nA large PDF can be inconvenient to email, upload to a website, or share through an online form. A PDF compressor can help optimize a document and check whether its file size can be reduced.\n\nFile Compresser provides an online PDF Compressor that processes supported PDF files in your browser. The tool performs a structural rewrite and removes selected metadata when it is safe to do so. You can then compare the resulting file size and download the processed document.\n",
+  "introduction": "Try structural PDF optimization with selected metadata removal, directly in your browser. Embedded scans are not downsampled. Review the actual size, pages, forms and links before keeping a result.",
   "sections": [
     {
       "heading": "What Is a PDF Compressor?",
-      "body": "A PDF compressor is a tool that attempts to reduce or optimize the size of a PDF document. PDF files can contain text, images, fonts, links, forms, and document information. Some of this information may be unnecessary for a particular use.\n\nFile Compresser uses a structural rewrite to optimize supported PDF files. It can remove selected document information, including current document information and catalog XMP metadata when it is safe to do so.\n\nHowever, the tool does not downsample embedded photographs or scanned page images. This is important because images can make up a large part of a PDF's total file size. If a document contains high-resolution scans or photographs, a structural rewrite may not produce a significant reduction.\n"
+      "body": "A PDF compressor is a tool that attempts to reduce or optimize the size of a PDF document. PDF files can contain text, images, fonts, links, forms, and document information. Some of this information may be unnecessary for a particular use.\n\nFileCompresser uses a structural rewrite to optimize supported PDF files. It can remove selected document information, including current document information and catalog XMP metadata when it is safe to do so.\n\nHowever, the tool does not downsample embedded photographs or scanned page images. This is important because images can make up a large part of a PDF's total file size. If a document contains high-resolution scans or photographs, a structural rewrite may not produce a significant reduction."
     },
     {
       "heading": "How to Compress a PDF Online",
-      "body": "You can use the online PDF Compressor without installing a separate desktop application. Follow these steps:\n\n1. Open the PDF Compressor page on File Compresser.\n2. Select a PDF file from your device.\n3. Start the optimization process.\n4. Wait while the browser processes the document.\n5. Check the resulting file size.\n6. Download the processed PDF if it is suitable for your needs.\n\nThe tool checks the processed document again and verifies its page count. If the new version is not smaller, the original file is retained instead of being replaced with a larger result.\n"
+      "body": "You can use the online PDF Compressor without installing a separate desktop application. Follow these steps:\n\n1. Open the PDF Compressor page on FileCompresser.\n2. Select a PDF file from your device.\n3. Start the optimization process.\n4. Wait while the browser processes the document.\n5. Check the resulting file size.\n6. Download the processed PDF if it is suitable for your needs.\n\nThe tool checks the processed document again and verifies its page count. If the new version is not smaller, the original file is retained instead of being replaced with a larger result."
     },
     {
       "heading": "Why Optimize a PDF File?",
-      "body": "PDF optimization can be useful when you need to manage documents for online sharing, storage, or everyday work.\n"
+      "body": "PDF optimization can be useful when you need to manage documents for online sharing, storage, or everyday work."
     },
     {
       "heading": "Make Documents Easier to Share",
-      "body": "Some email services, websites, and online forms limit the size of uploaded files. A smaller PDF may be easier to attach or submit when it meets the required file-size limit.\n"
+      "body": "Some email services, websites, and online forms limit the size of uploaded files. A smaller PDF may be easier to attach or submit when it meets the required file-size limit."
     },
     {
       "heading": "Manage Document Storage",
-      "body": "Businesses, students, and professionals often keep large collections of PDF documents. Optimizing supported files may help reduce storage requirements, depending on the content of each document.\n"
+      "body": "Businesses, students, and professionals often keep large collections of PDF documents. Optimizing supported files may help reduce storage requirements, depending on the content of each document."
     },
     {
       "heading": "Prepare Files for Websites",
-      "body": "PDF manuals, brochures, reports, and downloadable resources are often published on websites. Checking and optimizing a PDF before publishing it can help keep the file easier to manage for website visitors.\n"
+      "body": "PDF manuals, brochures, reports, and downloadable resources are often published on websites. Checking and optimizing a PDF before publishing it can help keep the file easier to manage for website visitors."
     },
     {
       "heading": "Organize Business Documents",
-      "body": "Invoices, reports, proposals, and other office documents may be stored and shared regularly. A PDF optimizer can be part of a document preparation process when you want to check whether a file can be made smaller.\n"
+      "body": "Invoices, reports, proposals, and other office documents may be stored and shared regularly. A PDF optimizer can be part of a document preparation process when you want to check whether a file can be made smaller."
     },
     {
       "heading": "Why Does a PDF File Remain the Same Size?",
-      "body": "Not every PDF contains information that can be removed to produce a smaller file. A document made mostly of scanned pages or embedded photographs may remain almost the same size because the File Compresser PDF tool does not downsample those images.\n\nThe tool also does not promise a fixed percentage reduction. The result depends on the document structure and the information that can safely be removed.\n\nIf the processed version is not smaller, File Compresser keeps the original file. This helps avoid replacing a document with a version that takes up more space without providing a useful reduction.\n"
+      "body": "Not every PDF contains information that can be removed to produce a smaller file. A document made mostly of scanned pages or embedded photographs may remain almost the same size because the FileCompresser PDF tool does not downsample those images.\n\nThe tool also does not promise a fixed percentage reduction. The result depends on the document structure and the information that can safely be removed.\n\nIf the processed version is not smaller, FileCompresser keeps the original file. This helps avoid replacing a document with a version that takes up more space without providing a useful reduction."
     },
     {
       "heading": "Important Things to Know Before Processing a PDF",
-      "body": "It is useful to understand what the tool does and does not change before selecting a document.\n\nScanned documents: A PDF made from scanned pages may contain large images. Since the tool does not reduce the resolution of embedded images, these documents may not become noticeably smaller.\nText and page content: The tool performs a structural rewrite rather than using OCR to recognize text in scanned pages. It does not turn scanned pages into searchable text.\nPasswords and encryption: The tool does not remove PDF passwords. Encrypted PDFs are not supported by the current workflow.\nDigital signatures: Signed PDFs are also refused by the tool. Processing a signed document can affect the validity of its signature, so do not use this workflow for signed files.\nForms and links: After processing, review interactive forms, links, and the appearance of important pages to make sure the document still works as expected.\nMetadata: Selected metadata may be removed when it is safe to do so, but this is not a complete privacy or metadata-cleaning service. Do not treat the tool as a way to remove every trace of information from a PDF.\n"
+      "body": "It is useful to understand what the tool does and does not change before selecting a document.\n\n- Scanned documents: A PDF made from scanned pages may contain large images. Since the tool does not reduce the resolution of embedded images, these documents may not become noticeably smaller.\n- Text and page content: The tool performs a structural rewrite rather than using OCR to recognize text in scanned pages. It does not turn scanned pages into searchable text.\n- Passwords and encryption: The tool does not remove PDF passwords. Encrypted PDFs are not supported by the current workflow.\n- Digital signatures: Signed PDFs are also refused by the tool. Processing a signed document can affect the validity of its signature, so do not use this workflow for signed files.\n- Forms and links: After processing, review interactive forms, links, and the appearance of important pages to make sure the document still works as expected.\n- Metadata: Selected metadata may be removed when it is safe to do so, but this is not a complete privacy or metadata-cleaning service. Do not treat the tool as a way to remove every trace of information from a PDF."
     },
     {
       "heading": "Process PDF Files Privately in Your Browser",
-      "body": "File Compresser processes supported PDF files directly in your browser. Your selected document does not need to be uploaded to an external server for the optimization process, and you do not need to create an account to use the tool.\n\nThe maximum supported PDF file size is 50 MB. The workflow is designed for supported, unsigned, and unencrypted PDF documents. If a file is protected or digitally signed, the tool will not process it.\n\nFor important documents, keep a separate original copy. After processing, open the downloaded PDF and check its pages, links, forms, and layout before sharing or replacing the original.\n"
+      "body": "FileCompresser processes supported PDF files directly in your browser. Your selected document does not need to be uploaded to an external server for the optimization process, and you do not need to create an account to use the tool.\n\nThe maximum supported PDF file size is 50 MiB. The workflow is designed for supported, unsigned, and unencrypted PDF documents. If a file is protected or digitally signed, the tool will not process it.\n\nFor important documents, keep a separate original copy. After processing, open the downloaded PDF and check its pages, links, forms, and layout before sharing or replacing the original."
     },
     {
       "heading": "Optimize Your PDF Files Online",
-      "body": "Use File Compresser to check whether a supported PDF document can be optimized through a structural rewrite. Select your file, run the process, and review the actual result before downloading it. For important documents, always keep the original and check the processed PDF before sharing it.\n"
+      "body": "Use FileCompresser to check whether a supported PDF document can be optimized through a structural rewrite. Select your file, run the process, and review the actual result before downloading it. For important documents, always keep the original and check the processed PDF before sharing it."
     }
   ],
   "links": [
@@ -60,29 +60,30 @@
   "faq": [
     {
       "q": "Is the PDF Compressor free to use?",
-      "a": "You can access the online tool without installing desktop software or creating an account. The only limits are the 50 MB file size and a queue of up to 500 files and 300 MB.\n"
+      "a": "The tool is free without an account. The input limit is 50 MiB per file; queues allow up to 500 files and 300 MiB total. Format, device-memory and processing limits also apply."
     },
     {
       "q": "Will the tool reduce every PDF file?",
-      "a": "No. The amount of reduction depends on the document. Some files may remain the same size because they contain little removable structural information.\n"
+      "a": "No. The amount of reduction depends on the document. Some files may remain the same size because they contain little removable structural information."
     },
     {
       "q": "Does it reduce the size of scanned PDFs?",
-      "a": "It may not produce a significant reduction in scanned PDFs because it does not downsample embedded page images. Image-based PDFs often need image optimization to achieve larger size reductions.\n"
+      "a": "It may not produce a significant reduction in scanned PDFs because it does not downsample embedded page images. Image-based PDFs often need image optimization to achieve larger size reductions."
     },
     {
       "q": "Can I compress a password-protected PDF?",
-      "a": "No. Encrypted PDFs are not supported by the current tool. It also does not remove PDF passwords.\n"
+      "a": "No. Encrypted PDFs are not supported by the current tool. It also does not remove PDF passwords."
     },
     {
       "q": "Does it remove all PDF metadata?",
-      "a": "No. It removes selected metadata when safe, but it is not a complete metadata or privacy-cleaning tool.\n"
+      "a": "No. It removes selected metadata when safe, but it is not a complete metadata or privacy-cleaning tool."
     },
     {
       "q": "Is my PDF uploaded to a server?",
-      "a": "The tool processes supported documents in your browser. Your PDF does not need to be uploaded to an external server for optimization.\n"
+      "a": "The tool processes supported documents in your browser. Your PDF does not need to be uploaded to an external server for optimization."
     }
   ],
   "seoTitle": "PDF Compressor Online Free – Optimize PDF Files",
-  "seoDescription": "Optimize PDF files online with a structural rewrite and selected metadata removal. Check actual file size and process privately in your browser."
+  "seoDescription": "Optimize PDF files online with a structural rewrite and selected metadata removal. Check actual file size and process privately in your browser.",
+  "faqMode": "custom"
 }

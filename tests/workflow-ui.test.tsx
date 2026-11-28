@@ -45,6 +45,35 @@ async function click(element: HTMLElement) { await act(async () => { element.cli
 async function change(input: HTMLInputElement | HTMLSelectElement, value: string) { await act(async () => { input.value = value; Simulate.change(input); await flush() }) }
 const primary = () => container.querySelector<HTMLButtonElement>('.workflowPrimaryActions > .compressBtn')
 
+it('keeps a focused edited target visible after an open settings viewport shrinks', async () => {
+  const callbacks = new Map<number, FrameRequestCallback>()
+  let frameId = 0
+  vi.stubGlobal('requestAnimationFrame', (callback: FrameRequestCallback) => { callbacks.set(++frameId, callback); return frameId })
+  vi.stubGlobal('cancelAnimationFrame', (id: number) => callbacks.delete(id))
+  const paint = () => { const pending = [...callbacks.values()]; callbacks.clear(); pending.forEach(callback => callback(0)) }
+  await mount(); await upload([image()]); await click(primary()!)
+  await click(button('Settings')!); await click(button('Target size')!)
+  const dialog = container.querySelector<HTMLDialogElement>('dialog')!
+  const body = container.querySelector<HTMLDivElement>('.settingsDialogBody')!
+  const input = container.querySelector<HTMLInputElement>('input[type=number]')!
+  const frame = input.closest<HTMLElement>('.numberField')!
+  let portTop = 183, portHeight = 573, controlTop = 607
+  Object.defineProperty(body, 'clientWidth', { configurable: true, value: 740 })
+  Object.defineProperty(body, 'clientHeight', { configurable: true, get: () => portHeight })
+  vi.spyOn(body, 'getBoundingClientRect').mockImplementation(() => new DOMRect(0, portTop, 740, portHeight))
+  vi.spyOn(frame, 'getBoundingClientRect').mockImplementation(() => new DOMRect(0, controlTop - body.scrollTop, 199, 44))
+  await change(input, '100'); input.focus(); paint()
+  expect(body.scrollTop).toBe(0)
+  portTop = 125; portHeight = 179; controlTop = 549
+  vi.stubGlobal('innerHeight', 390)
+  window.dispatchEvent(new Event('resize')); paint()
+  expect(frame.getBoundingClientRect().bottom + 8).toBeLessThanOrEqual(body.getBoundingClientRect().bottom)
+  expect(document.activeElement).toBe(input)
+  expect(input.value).toBe('100')
+  expect(dialog.open).toBe(true)
+  expect(mocks.process).toHaveBeenCalledTimes(1)
+})
+
 it.each(TOOLS.map(tool => [tool.slug]))('starts %s with upload and no premature settings', async slug => {
   await mount(slug)
   expect(container.querySelector('.dropzone')).not.toBeNull()
@@ -272,20 +301,67 @@ describe('original → draft → applied result journeys', () => {
     expect(container.querySelectorAll('.resultFile')[1].textContent).toContain('Quality 82%')
   })
 
-  it('announces an actual missed target at the top while preserving the available download', async () => {
+  it('retains valid decimal editing buffers instead of canonicalizing away their zeros', async () => {
+    await mount(); await upload([image()]); await click(button('Settings')!)
+    await click(button('Target size')!)
+    const input = container.querySelector<HTMLInputElement>('input[type=number]')!
+    for (const value of ['50', '50.0', '50.05']) {
+      await change(input, value)
+      expect(input.value).toBe(value)
+    }
+    expect(container.querySelector('.exactTarget')?.textContent).toContain('50,050 bytes')
+    await click(button('50 KB')!)
+    expect(input.value).toBe('50')
+    expect(container.querySelector('.exactTarget')?.textContent).toContain('50,000 bytes')
+  })
+
+  it('keeps a fractional-byte KB draft invalid across settings reopen, accepting0.029KB exactly', async () => {
+    await mount(); await upload([image()]); await click(button('Settings')!)
+    await click(button('Target size')!)
+    let input = container.querySelector<HTMLInputElement>('input[type=number]')!
+    await change(input, '100.0005')
+    expect(input.value).toBe('100.0005')
+    expect(input.getAttribute('aria-invalid')).toBe('true')
+    await click(button('Done')!)
+    expect(primary()?.disabled).toBe(true)
+    expect(mocks.process).not.toHaveBeenCalled()
+    await click(button('Settings')!)
+    input = container.querySelector<HTMLInputElement>('input[type=number]')!
+    expect(input.value).toBe('100.0005')
+    await change(input, '0.029')
+    expect(input.value).toBe('0.029')
+    expect(input.getAttribute('aria-invalid')).not.toBe('true')
+    expect(container.querySelector('.exactTarget')?.textContent).toContain('29 bytes')
+    await click(button('Done')!)
+    expect(primary()?.disabled).toBe(false)
+  })
+
+  it('rejects above-target bytes even when the engine falsely labels them target-met', async () => {
     await mount()
     await upload([image()])
     await click(button('Target size')!)
     await click(button('50 KB')!)
     mocks.process.mockImplementationOnce(async ({ file, options }) => ({ ...result(file, options), targetBytes: 50_000, outcome: 'target-met' }))
     await click(primary()!)
-    expect(container.querySelector('.workflowPhase')?.textContent).toBe('Target not met')
-    expect(container.querySelector('.workflowActionContext')?.textContent).toContain('Available to download; adjust settings to try again.')
-    expect(container.querySelector('.resultBadge')?.textContent).toBe('Target not met')
-    expect(button('Download file')).toBeDefined()
+    expect(container.querySelector('.workflowPhase')?.textContent).toBe('Needs attention')
+    expect(container.querySelector('.fileError')?.textContent).toContain('No above-limit result was saved')
+    expect(container.querySelector('.resultBadge')).toBeNull()
+    expect(button('Download file')).toBeUndefined()
     expect(button('Download previous')).toBeUndefined()
   })
 
+
+  it('preserves a previous valid download when a tighter new target fails', async () => {
+    await mount(); await upload([image()]); await click(primary()!)
+    expect(button('Download file')).toBeDefined()
+    await click(button('Target size')!); await click(button('50 KB')!)
+    mocks.process.mockImplementationOnce(async ({ file, options }) => ({ ...result(file, options), outcome: 'target-met' }))
+    await click(primary()!)
+    expect(container.querySelector('.fileError')?.textContent).toContain('No above-limit result was saved')
+    expect(container.querySelector('.previousResultNotice')?.textContent).toContain('Previous result')
+    expect(button('Download previous')).toBeDefined()
+    expect(container.querySelector('.fileMetrics')?.textContent).toContain('100,000 bytes')
+  })
 
   it('reports each original image geometry without offering resize controls', async () => {
     await mount()
@@ -495,7 +571,7 @@ describe('archive recovery controls', () => {
     const oversized = new File(['x'], 'oversized.bin') as unknown as globalThis.File
     Object.defineProperty(oversized, 'size', { value: 201 * 1024 * 1024 })
     await upload([oversized])
-    await vi.waitFor(() => expect(container.textContent).toContain('larger than 200 MB'))
+    await vi.waitFor(() => expect(container.textContent).toContain('larger than 200 MiB'))
     expect(primary()).toBeNull()
     expect(button('Retry')).toBeUndefined()
     expect(mocks.process).toHaveBeenCalledTimes(1)
@@ -517,7 +593,7 @@ describe('archive recovery controls', () => {
     Object.defineProperty(oversized, 'size', { value: 201 * 1024 * 1024 })
     const valid = new File(['keep'], 'valid.txt') as unknown as globalThis.File
     await upload([oversized, valid])
-    await vi.waitFor(() => expect(container.querySelector('.fileError')?.textContent).toContain('larger than 200 MB'))
+    await vi.waitFor(() => expect(container.querySelector('.fileError')?.textContent).toContain('larger than 200 MiB'))
     expect(primary()).toBeNull()
     expect(button('Retry')).toBeUndefined()
     expect(container.querySelector('.workflowActionContext')?.textContent).toContain('Remove files over the limit')

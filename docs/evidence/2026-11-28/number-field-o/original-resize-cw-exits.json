@@ -1,0 +1,36 @@
+{
+  "startedAt": "2026-11-28T14:50:40.764814+00:00",
+  "driverPid": 226569,
+  "base": "http://127.0.0.1:3370",
+  "expectedHome": "4bba3c3c5b3dab637959431221a5491f02e6f199ad302bdb9a71852c81144ff6",
+  "harnessSha256Before": "fec71f3820f01e077ff63a000ea2d643c16e1ea4f57676e0e35428134e38c9bf",
+  "jobs": [
+    {
+      "engine": "chromium",
+      "startedAt": "2026-11-28T14:50:40.765168+00:00",
+      "status": "PASS",
+      "pid": 226570,
+      "actualExitCode": 0,
+      "reportStatus": "PASS_NATIVE_OPEN_DIALOG_RESIZE_VISIBILITY",
+      "closedNormally": true,
+      "states": 24,
+      "visibilityFailures": 0,
+      "finishedAt": "2026-11-28T14:50:56.531030+00:00"
+    },
+    {
+      "engine": "webkit",
+      "startedAt": "2026-11-28T14:50:56.531919+00:00",
+      "status": "PASS",
+      "pid": 226893,
+      "actualExitCode": 0,
+      "reportStatus": "PASS_NATIVE_OPEN_DIALOG_RESIZE_VISIBILITY",
+      "closedNormally": true,
+      "states": 24,
+      "visibilityFailures": 0,
+      "finishedAt": "2026-11-28T14:51:22.428541+00:00"
+    }
+  ],
+  "status": "PASS",
+  "harnessSha256After": "fec71f3820f01e077ff63a000ea2d643c16e1ea4f57676e0e35428134e38c9bf",
+  "finishedAt": "2026-11-28T14:51:22.429461+00:00"
+}

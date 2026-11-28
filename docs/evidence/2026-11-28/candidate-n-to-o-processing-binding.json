@@ -1,0 +1,176 @@
+{
+  "verifiedAt": "2026-11-28T14:48:26.015980+00:00",
+  "status": "PASS_SOURCE_AND_STATIC_BINDING",
+  "scope": "Accepted O is CSS-only relative to actual N. All other305 source inputs, including every UI/processing JavaScript source, caps, validation and target math, are byte-identical. This binding does not relabel previous N/M actual full-workflow executions as O. Fresh O native readability/geometry results have separate evidence.",
+  "NHomeSha256": "99eb848f8c7677392ba8314c5937521b17c63fdf48dc70e94e46e02a6b82b959",
+  "OHomeSha256": "4bba3c3c5b3dab637959431221a5491f02e6f199ad302bdb9a71852c81144ff6",
+  "OBuildId": "q-W8wx9X8xjVGEkhWRSyU",
+  "all306OInputsStableAndCurrent": true,
+  "onlyChangedSource": {
+    "file": "app/product-system.css",
+    "N": "f7bc66095eda55164b9942449db01f80f8ec2b76c673c2eb06c2bf15c92a6fa3",
+    "O": "c52b299efa8814e2dbc03e29fb0508abd816aca45896ce3cc825ce9d60a7a875"
+  },
+  "unchangedSharedInputs": 305,
+  "all31ProcessingStaticAssetsByteIdentical": true,
+  "unchangedStaticAssets": [
+    {
+      "file": "image-worker/codec-manifest.json",
+      "bytes": 3843,
+      "sha256": "13c838e502c80a6fa3b466ceb846939662d5a9a95f16414449653cfce33f9275"
+    },
+    {
+      "file": "image-worker/codecs/jpeg/LICENSE",
+      "bytes": 11343,
+      "sha256": "8c3690b09c168f196446cf5904332023bbc15eb92b6a7cee470ac829e6a65d20"
+    },
+    {
+      "file": "image-worker/codecs/jpeg/codec/LICENSE.codec.md",
+      "bytes": 5208,
+      "sha256": "8213556ea36ce3a0f2883db06238463e2452fdad68e3d2e2e4ace2189477a37e"
+    },
+    {
+      "file": "image-worker/codecs/jpeg/codec/enc/mozjpeg_enc.js",
+      "bytes": 38422,
+      "sha256": "93d3b28a4c9d3278acbbe0e23ff244ec3a6bfb13e51647b87eea311a8d747694"
+    },
+    {
+      "file": "image-worker/codecs/jpeg/codec/enc/mozjpeg_enc.wasm",
+      "bytes": 251524,
+      "sha256": "24d4177f1c4963e2058b107189249651c61fdef125570e79b1dfb63c8bb49326"
+    },
+    {
+      "file": "image-worker/codecs/jpeg/encode.js",
+      "bytes": 1623,
+      "sha256": "14dd2fd61c1ce1f1552d217b3bb353faa1c593ff9ad73f4a8ff3830c03ebc4fa"
+    },
+    {
+      "file": "image-worker/codecs/jpeg/meta.js",
+      "bytes": 683,
+      "sha256": "f1c1f3cd95d3a03de8e87b59e12aaf4f2d9a16a0b20531373d9164c26ca84fce"
+    },
+    {
+      "file": "image-worker/codecs/jpeg/utils.js",
+      "bytes": 1272,
+      "sha256": "e71535eeee820d68b68ece7c8af761c39f3ddec93d3d957d2f83b19191339e0d"
+    },
+    {
+      "file": "image-worker/codecs/oxipng/LICENSE",
+      "bytes": 11343,
+      "sha256": "8c3690b09c168f196446cf5904332023bbc15eb92b6a7cee470ac829e6a65d20"
+    },
+    {
+      "file": "image-worker/codecs/oxipng/codec/LICENSE.codec.md",
+      "bytes": 1078,
+      "sha256": "fbd251bd50b001db93e2cb942e71a85a3befe6ddef659709e09d762d4e2c2a5a"
+    },
+    {
+      "file": "image-worker/codecs/oxipng/codec/pkg/squoosh_oxipng.js",
+      "bytes": 6307,
+      "sha256": "ac29a688c0311c09a809e33d06c9702e84c9242169f81a04589d69a8ad6a782b"
+    },
+    {
+      "file": "image-worker/codecs/oxipng/codec/pkg/squoosh_oxipng_bg.wasm",
+      "bytes": 164172,
+      "sha256": "5ea3e53c0b4fc1b4e8d1511d35b89329d9376bec75a9c4d3c054774487e5f9a3"
+    },
+    {
+      "file": "image-worker/codecs/upng/LICENSE",
+      "bytes": 1065,
+      "sha256": "c1fb8861eca211bf5aea574358aba7039396c0c1824c2a1477cc126d398efd89"
+    },
+    {
+      "file": "image-worker/codecs/upng/UPNG.js",
+      "bytes": 269521,
+      "sha256": "911872ae298adadf47d9ae29f21441e6a5c823f6e550445da5bb2a03840239c2"
+    },
+    {
+      "file": "image-worker/codecs/upng/pako.LICENSE",
+      "bytes": 1104,
+      "sha256": "a04665b3b2de56c66730c1f720f528175739e4104f79073614aa611da1e85539"
+    },
+    {
+      "file": "image-worker/codecs/upng/pako.ZLIB.LICENSE",
+      "bytes": 2180,
+      "sha256": "d8b499598e43d755ea8918448128259ff01820c50d94d5a48c8883d0a594ddb1"
+    },
+    {
+      "file": "image-worker/image-canvas.mjs",
+      "bytes": 15269,
+      "sha256": "96e366066cc5720a4a9267c878d05af80b591cc5e69bde773f71b8f5adbc4173"
+    },
+    {
+      "file": "image-worker/image-engine.mjs",
+      "bytes": 1174,
+      "sha256": "5179b8034f0272e92d54b8b9e2bb6aea6844658d66f1eab372fefb9ea6361f5a"
+    },
+    {
+      "file": "image-worker/image-metadata.mjs",
+      "bytes": 10124,
+      "sha256": "a584b568d2735f3fb1f345157c2c118a3ab63e9e1cb3377684c03caff09b3ec9"
+    },
+    {
+      "file": "image-worker/image-pipeline.mjs",
+      "bytes": 16690,
+      "sha256": "770e69f8d76d5f682fda6183d5e2405d1c0c0e197205471c6220c98ea4522b8a"
+    },
+    {
+      "file": "image-worker/image-png.mjs",
+      "bytes": 13782,
+      "sha256": "d4beabe725a453099f39a337cf63f54fc0d2d5983753e820f9c810e057680a1f"
+    },
+    {
+      "file": "ffmpeg-core/NOTICE.txt",
+      "bytes": 317741,
+      "sha256": "f6b39bab516f520c2c2f34f1465858ff01e52b9ae27396c4c4078e611ffe678e"
+    },
+    {
+      "file": "ffmpeg-core/const.js",
+      "bytes": 1016,
+      "sha256": "9e3bc9dd84781c81daf459e2c46eeec815edac35089832681d9a9a0f383060d0"
+    },
+    {
+      "file": "ffmpeg-core/errors.js",
+      "bytes": 332,
+      "sha256": "619310d7ef5fe5fefa0a31927db862b7c291713cfef4d71753fa8aafd18f4db6"
+    },
+    {
+      "file": "ffmpeg-core/ffmpeg-core-c08cca1c5f4ac9ea87d150c8919d38605820e3e2782ccb0a1ec43b7f6c52c6f4.part.wasm",
+      "bytes": 16777216,
+      "sha256": "c08cca1c5f4ac9ea87d150c8919d38605820e3e2782ccb0a1ec43b7f6c52c6f4"
+    },
+    {
+      "file": "ffmpeg-core/ffmpeg-core-d241b00c61e2dd8308d2da1f006b375a2cfb139c5d17fb7d1cef576a87d5ce47.part.wasm",
+      "bytes": 3975516,
+      "sha256": "d241b00c61e2dd8308d2da1f006b375a2cfb139c5d17fb7d1cef576a87d5ce47"
+    },
+    {
+      "file": "ffmpeg-core/ffmpeg-core.js",
+      "bytes": 86526,
+      "sha256": "cea5a18a8ef99258fa2299b8feb57ca641c0222e88de077fd0562b4eeef7bfed"
+    },
+    {
+      "file": "ffmpeg-core/types.js",
+      "bytes": 295,
+      "sha256": "72f80e6fd44fcd18b55c9a0deb3bc70b9bb37480cf969045ca4521f5a11300f5"
+    },
+    {
+      "file": "ffmpeg-core/utils.js",
+      "bytes": 138,
+      "sha256": "8c2e0e16445f8d3a0acbb812f2c60541a92c88ed0bf9ffe96c52e7fb6c8b1d72"
+    },
+    {
+      "file": "ffmpeg-core/wasm-manifest.json",
+      "bytes": 5657,
+      "sha256": "9612006d08b9c847e994dd392bdae855db2ecb3f353b33e9c6e95c0d4ee520e4"
+    },
+    {
+      "file": "ffmpeg-core/worker.js",
+      "bytes": 5085,
+      "sha256": "feff0ac937ea225e997e1fae997a74f8b8d572423a526da59eb56624b1f3cde7"
+    }
+  ],
+  "OFull79Claimed": false,
+  "nativeReadabilityQualification": "Final identical V2 actual Nightly N RED/O GREEN passed: all28 O draft states,2same-active orientation,2invalid/reopen controls, fixed-size backdrop wheel locks, exact Escape/focus returns and real lossless PNG. Original N RED and strict native anchoring failure retained separately.",
+  "nativeReadabilityEvidence": "docs/evidence/2026-11-28/candidate-o-firefox-number-readability.json"
+}

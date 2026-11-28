@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-28T09:31:37.699Z",
+  "status": "BLOCKED_TOKEN_UNAVAILABLE",
+  "scope": "Read-only API feasibility review and offline GraphQL validation; no cloud API request or authentication change.",
+  "project": {
+    "name": "FileCompresser",
+    "repository": "https://github.com/abdulhameed-developer/filecompresser",
+    "branch": "main",
+    "configuredPublicClientIdSource": ".env.example:NEXT_PUBLIC_TINA_CLIENT_ID",
+    "installedGraphqlVersion": "4.1.0",
+    "endpointShape": "https://content.tinajs.io/4.1/content/<configured-public-client-id>/github/main"
+  },
+  "tokenPresence": {
+    "processEnvironment": false,
+    "localDotEnv": false,
+    "localDotEnvLocal": false,
+    "exampleTokenNonempty": false,
+    "generatedSdkPointsToLocalhost": true,
+    "generatedTokenIsKnownNoncredentialSentinel": true,
+    "credentialValuePrinted": false,
+    "credentialPersistedInEvidence": false,
+    "browserCredentialOrSessionRead": false,
+    "newTokenCreated": false,
+    "anonymousCloudRequestAttempted": false,
+    "cloudApiRequests": 0
+  },
+  "officialReadShape": {
+    "authentication": "Existing Content read-only token in X-API-KEY header or server-only SDK config; never URL, browser session extraction or committed value.",
+    "sdk": "createClient from tinacms/dist/client; generated queries or client.request({query,variables}, {fetchOptions}).",
+    "collectionQuery": "toolPage(relativePath: \"jpg-compressor.json\") { heading introduction sections { heading body } faqMode faq { q a } seoTitle seoDescription relatedTools }",
+    "typedProjectionRecords": 29,
+    "typedProjectionCollections": [
+      "homepage",
+      "managedPage",
+      "post",
+      "redirects",
+      "siteSettings",
+      "toolPage"
+    ],
+    "typedProjectionValidatedAgainstGeneratedSchema": true,
+    "graphQlValidationErrors": 0,
+    "internalValuesField": "Present in generated schema, but official single-document docs identify _values as edit-mode internal data not intended for external use; no _values external audit contract claimed."
+  },
+  "privatePreparedArtifacts": [
+    {
+      "file": ".qa-results/phase3/cms/hosted-typed-read-query.graphql",
+      "sha256": "4d7de575101cc6030b2fb826cab971c6941918aea93431afc4f151b169e301d1"
+    },
+    {
+      "file": ".qa-results/phase3/cms/native-ui-field-matcher.mjs",
+      "sha256": "68274c29b439693f2c26dbc02d770e8b4de5a45fe410f1cea0d1a0c48fc8403d"
+    }
+  ],
+  "nativeFallback": {
+    "status": "PREPARED_NOT_RUN_AGAINST_HOSTED_CONTROLS",
+    "syntheticControlsPassed": 19,
+    "allRawExpectedRecords": 29,
+    "rawLeaves": 1238,
+    "actualHostedRawFieldsVerifiedByThisHelper": 0,
+    "limitations": [
+      "Only actual mounted visible controls count. Collapsed/hidden/unmounted fields remain NOT_OBSERVED.",
+      "Exact document and visibly confirmed main branch required; contradictory captures remain failures.",
+      "No browser-local editor state, hidden serialized object or request/session inspection is used.",
+      "Single-line named AX controls can be parsed; unsupported/multiline or unnamed controls require explicit actual visible-control observations."
+    ],
+    "previousSyntheticControlsPassed": [
+      12,
+      13
+    ],
+    "branchScope": "Project configuration main verified; no editor branch-switch label observed. Field-value coverage is reported separately from direct editor-branch proof.",
+    "navigationPlan": {
+      "privateFile": ".qa-results/phase3/cms/native-navigation-plan-working.json",
+      "sha256": "43a6c0956b62a74e4b3b95738f93832ea9a88906173e391e960db4ff370196b9",
+      "records": 29,
+      "expectedViews": 551,
+      "lists": 206,
+      "rawLeaves": 1238,
+      "unrepresentedRawLeaves": 0,
+      "actualHostedObserved": 0,
+      "sourceScope": "Expected source traversal plan only; root must inspect current DOM before any navigation."
+    },
+    "visibleTechnicalRepresentations": [
+      "Raw empty arrays require an actually mounted, confirmed loaded list with observed visible row count zero. Unloaded/hidden is not empty.",
+      "Template identifiers compare declared template labels only when actual visible block type was observed; no hidden _template input is read."
+    ]
+  },
+  "references": [
+    "https://tina.io/docs/reference/content-api/content-delivery",
+    "https://tina.io/docs/reference/config",
+    "https://tina.io/docs/features/data-fetching",
+    "https://tina.io/docs/data-fetching/custom-queries",
+    "https://tina.io/docs/graphql/queries/get-document",
+    "https://tina.io/docs/tinacloud/dashboard/projects"
+  ],
+  "nativeProjectConfiguration": {
+    "observedDate": "2026-11-28",
+    "repository": "abdulhameed-developer/filecompresser",
+    "separateContentRepository": false,
+    "mainBranchIndex": "Listed; indexed 3 hours ago as displayed",
+    "unindexedWarningBranch": "work/codec-source-rebuild-20261121",
+    "settingsChanged": false,
+    "reindexTriggered": false,
+    "sourceCaptures": [
+      {
+        "privateFile": ".qa-results/phase3/cms/tina-cloud-configuration-before.txt",
+        "sha256": "df9ddf6ec36f8b0a33395a958c43c013e46f66774cb27e3a87e944ff2bd53d5d"
+      },
+      {
+        "privateFile": ".qa-results/phase3/cms/tina-cloud-unindexed-branch-before.txt",
+        "sha256": "d5ecad79bd326874b22499223422baf5693ed0c8c54c9b66fc3ea6accc0a6736"
+      }
+    ],
+    "scope": "Root native read-only project/branch inspection; index presence/timestamp is not 29-record raw field parity or final source-commit identity."
+  }
+}

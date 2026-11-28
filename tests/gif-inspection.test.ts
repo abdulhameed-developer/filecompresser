@@ -38,7 +38,7 @@ describe('GIF preflight before decoder allocation', () => {
     const file = new File([gif()], 'huge.gif')
     Object.defineProperty(file, 'size', { value: GIF_LIMITS.maxBytes + 1 })
     const read = vi.spyOn(file, 'arrayBuffer')
-    await expect(inspectGif(file)).rejects.toThrow(/50 MB/)
+    await expect(inspectGif(file)).rejects.toThrow(/50 MiB/)
     expect(read).not.toHaveBeenCalled()
   })
 })

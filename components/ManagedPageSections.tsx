@@ -11,10 +11,10 @@ export function ManagedSectionBody({ section }: { section: ManagedSection }) {
 }
 
 export default function ManagedPageSections({ sections }: { sections: ManagedSection[] }) {
-  return <>{sections.map((section, i) => <section key={i}>
+  return <>{sections.map((section, i) => <section className="managedPageSection" key={i}>
     <h2 id={`page-section-${i}`} style={{ scrollMarginTop: '100px' }}>{section.heading}</h2>
     <ManagedSectionBody section={section} />
-    {section.links.length > 0 && <p>{section.links.map((link, j) => <span key={j}>{j > 0 && ' · '}<Link prefetch={false} href={link.href}>{link.label}</Link></span>)}</p>}
+    {section.links.length > 0 && <p>{section.links.map((link, j) => <span key={j}>{j > 0 && ' · '}<Link className="editorialLink" prefetch={false} href={link.href}>{link.label}</Link></span>)}</p>}
   </section>)}</>
 }
 

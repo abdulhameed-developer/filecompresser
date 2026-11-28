@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-28T09:15:08.721381+00:00",
+  "status": "PRE_PHASE3_PUBLIC_HOMEPAGE_BASELINE_ONLY",
+  "url": "https://filecompresser.com/",
+  "analysisActions": 1,
+  "reportTime": {
+    "displayed": "28 November 2026, 14:11:40 GMT+5",
+    "utc": "2026-11-28T09:11:40Z"
+  },
+  "scope": "One ordinary Analyze action in official PageSpeed Insights UI; both device views read from that report. No score reruns or request/security bypass.",
+  "operator": "Root agent native built-in browser. Child iab creation was unavailable; no Chrome fallback or child Analyze was attempted.",
+  "productionIdentity": {
+    "releaseSha": "4c0d1d6be06d264a944bb302167caa7e1beec7e3",
+    "cloudflareDeploymentId": "a6a05243-a716-4428-9c85-ae53135b47bc",
+    "cloudflareIdentitySource": "Parent native Cloudflare audit; see docs/CLOUDFLARE-DEPLOYMENT-AUDIT.md.",
+    "unchangedOrdinaryGetHashes": true,
+    "before": [
+      {
+        "url": "https://filecompresser.com/",
+        "startedAt": "2026-11-28T09:10:51.444Z",
+        "finishedAt": "2026-11-28T09:10:52.690Z",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "cfRay": "a6183df19e7ce28d-MRS",
+        "etag": null,
+        "bodyBytes": 110378,
+        "bodySha256": "c45d94bb8ded2332d1321a3a5fda4c6a467a6c49c47c7d7d6e9bfeddd1224340"
+      },
+      {
+        "url": "https://filecompresser.com/release.json",
+        "startedAt": "2026-11-28T09:10:51.667Z",
+        "finishedAt": "2026-11-28T09:10:53.866Z",
+        "status": 200,
+        "contentType": "application/json",
+        "cfRay": "a6183df36ae97346-NRT",
+        "etag": "W/\"e36e024c4ba66612c968d3c2992452a3\"",
+        "bodyBytes": 4007,
+        "bodySha256": "6dabfeceefa40f499f189f3112685bed309d35cb6e9c7a5dfdc2c11e3d8afc43"
+      }
+    ],
+    "after": [
+      {
+        "url": "https://filecompresser.com/",
+        "startedAt": "2026-11-28T09:13:51.473Z",
+        "finishedAt": "2026-11-28T09:13:52.438Z",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "cfRay": "a618425438681083-HKG",
+        "etag": null,
+        "bodyBytes": 110378,
+        "bodySha256": "c45d94bb8ded2332d1321a3a5fda4c6a467a6c49c47c7d7d6e9bfeddd1224340"
+      },
+      {
+        "url": "https://filecompresser.com/release.json",
+        "startedAt": "2026-11-28T09:13:51.536Z",
+        "finishedAt": "2026-11-28T09:13:52.406Z",
+        "status": 200,
+        "contentType": "application/json",
+        "cfRay": "a6184254ab42f3d2-NRT",
+        "etag": "W/\"e36e024c4ba66612c968d3c2992452a3\"",
+        "bodyBytes": 4007,
+        "bodySha256": "6dabfeceefa40f499f189f3112685bed309d35cb6e9c7a5dfdc2c11e3d8afc43"
+      }
+    ],
+    "requestScope": "One ordinary unauthenticated HTTPS GET per URL; no custom user agent, retries, TLS override or cache-busting."
+  },
+  "forms": {
+    "mobile": {
+      "reportUrl": "https://pagespeed.web.dev/analysis/https-filecompresser-com/apocwkl7bpnbdhy5try79l?form_factor=mobile",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "fieldData": "NO_DATA",
+      "displayedMetrics": {
+        "fcp": "1.0\u00a0s",
+        "lcp": "1.0\u00a0s",
+        "tbt": "20\u00a0ms",
+        "cls": "0",
+        "speedIndex": "1.0\u00a0s"
+      },
+      "calculatorLink": "https://googlechrome.github.io/lighthouse/scorecalc/#FCP=950&LCP=950&TBT=17&CLS=0&SI=950&TTI=1853&device=mobile&version=13.6.0",
+      "calculatorMetrics": {
+        "FCP": 950,
+        "LCP": 950,
+        "TBT": 17,
+        "CLS": 0,
+        "SI": 950,
+        "TTI": 1853
+      },
+      "calculatorMetricUnits": {
+        "FCP": "milliseconds",
+        "LCP": "milliseconds",
+        "TBT": "milliseconds",
+        "CLS": "unitless",
+        "SI": "milliseconds",
+        "TTI": "milliseconds; diagnostic"
+      },
+      "calculatorMetricsSource": "Exact score-calculator URL in native accessibility capture, not a downloaded Lighthouse JSON report.",
+      "environment": {
+        "lighthouse": "13.6.0",
+        "browser": "HeadlessChromium 157.0.8103.38",
+        "device": "Emulated Moto G Power",
+        "throttling": "Slow 4G",
+        "session": "Single page; initial page load"
+      },
+      "reportedDiagnostics": [
+        "Render-blocking requests \u2014Est savings of 400\u00a0ms",
+        "Use efficient cache lifetimes \u2014Est savings of 9\u00a0KiB",
+        "Improve image delivery \u2014Est savings of 20\u00a0KiB",
+        "Legacy JavaScript \u2014Est savings of 12\u00a0KiB",
+        "Reduce unused JavaScript \u2014Est savings of 54\u00a0KiB",
+        "Avoid long main-thread tasks \u20141 long task found"
+      ],
+      "screenshot": {
+        "file": "docs/evidence/2026-11-28/pagespeed-baseline-mobile.png",
+        "sha256": "1b3578dd12b5f7f92012be94c7076dba688240934f5bb0a85660c0eaf98b689e"
+      },
+      "nativeCapture": {
+        "privateFile": ".qa-results/phase3/performance/baseline-psi-mobile.txt",
+        "sha256": "3ec66f0e406959e133e148bc5b65ff8b8e76286d080f14a69742af66024f2a03"
+      }
+    },
+    "desktop": {
+      "reportUrl": "https://pagespeed.web.dev/analysis/https-filecompresser-com/apocwkl7bpnbdhy5try79l?form_factor=desktop",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "fieldData": "NO_DATA",
+      "displayedMetrics": {
+        "fcp": "0.3\u00a0s",
+        "lcp": "0.3\u00a0s",
+        "tbt": "0\u00a0ms",
+        "cls": "0",
+        "speedIndex": "0.4\u00a0s"
+      },
+      "calculatorLink": "https://googlechrome.github.io/lighthouse/scorecalc/#FCP=279&LCP=279&TBT=0&CLS=0&SI=354&TTI=279&device=desktop&version=13.6.0",
+      "calculatorMetrics": {
+        "FCP": 279,
+        "LCP": 279,
+        "TBT": 0,
+        "CLS": 0,
+        "SI": 354,
+        "TTI": 279
+      },
+      "calculatorMetricUnits": {
+        "FCP": "milliseconds",
+        "LCP": "milliseconds",
+        "TBT": "milliseconds",
+        "CLS": "unitless",
+        "SI": "milliseconds",
+        "TTI": "milliseconds; diagnostic"
+      },
+      "calculatorMetricsSource": "Exact score-calculator URL in native accessibility capture, not a downloaded Lighthouse JSON report.",
+      "environment": {
+        "lighthouse": "13.6.0",
+        "browser": "HeadlessChromium 157.0.8103.38",
+        "device": "Emulated Desktop",
+        "throttling": "Custom",
+        "session": "Single page; initial page load"
+      },
+      "reportedDiagnostics": [
+        "Render-blocking requests \u2014Est savings of 80\u00a0ms",
+        "Use efficient cache lifetimes \u2014Est savings of 9\u00a0KiB",
+        "Improve image delivery \u2014Est savings of 21\u00a0KiB",
+        "Legacy JavaScript \u2014Est savings of 12\u00a0KiB",
+        "Reduce unused CSS \u2014Est savings of 10\u00a0KiB",
+        "Reduce unused JavaScript \u2014Est savings of 54\u00a0KiB"
+      ],
+      "screenshot": {
+        "file": "docs/evidence/2026-11-28/pagespeed-baseline-desktop.png",
+        "sha256": "590a986dd672e8b44cf5ccf3686310e00605e5d5406254167bfbe53350ce4f5f"
+      },
+      "nativeCapture": {
+        "privateFile": ".qa-results/phase3/performance/baseline-psi-desktop.txt",
+        "sha256": "1081508f655a0005ff858ddb3d4c31c8132b54f45109c8d80ea68ecb7942dc0b"
+      }
+    }
+  },
+  "limitations": [
+    "Pre-change homepage baseline; not a Phase 3 post-release result or evidence of an improvement.",
+    "No eligible CrUX field sample was returned. Lab scores are not field Core Web Vitals.",
+    "One page and one analysis; not site-wide, real-device, repeated-run statistics, WCAG, complete security or search-ranking certification.",
+    "Bracketing GET hashes establish unchanged observed production delivery; PageSpeed does not expose its fetched HTML hash in these captures.",
+    "100 scores coexist with reported diagnostics and required manual checks; no diagnostic was hidden to obtain a score."
+  ]
+}

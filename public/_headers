@@ -17,6 +17,11 @@
 /logo.png
   Cache-Control: public, max-age=86400
 
+# Release identity is read after publishing; stale copies must not imply success.
+/release.json
+  Cache-Control: no-store
+  X-Robots-Tag: noindex
+
 /ffmpeg-core/*
   Cache-Control: public, max-age=0, must-revalidate
   Cross-Origin-Resource-Policy: same-origin

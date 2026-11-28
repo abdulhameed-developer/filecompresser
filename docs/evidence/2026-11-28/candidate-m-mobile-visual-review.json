@@ -1,0 +1,841 @@
+{
+  "candidate": "M",
+  "recordedAt": "2026-11-28T13:55:43.148521+00:00",
+  "buildId": "i6cl7-oxYwV3b6uSHuw_0",
+  "homepageSha256": "f46f733452e0169f0c3f12f4bcb9faaa89da828ff6a074ad28d3ca5927aa5aab",
+  "reviewedRoutes": 29,
+  "personallyViewedPanels": 69,
+  "all29RouteTopToBottomReviewComplete": true,
+  "method": "Actual personal inspection of every ordered native-width mobile panel from fresh M screenshots. Original full-page captures retained and hashes verified after viewing.",
+  "scope": "390x900 emulated viewport, default empty workspaces, closed navigation/default disclosures, complete pages including footers. This does not certify populated states, all browsers, physical devices, production or overall completion.",
+  "views": [
+    {
+      "route": "/404-missing",
+      "viewport": [
+        390,
+        900
+      ],
+      "fullPageDimensions": [
+        390,
+        1893
+      ],
+      "screenshot": ".qa-results/phase3/ui/final-m/responsive/404-missing-390.png",
+      "screenshotSha256": "f2f79462b5c3d9c8babdbd30a1b6c831be77a0f48c0c34668abcb0ff6b4d0dba",
+      "sequentialPanels": [
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/404-missing-390--panel-1.png",
+          "sha256": "d049967b100f88bc411b776122dee7c62329bed6642c9bf3f453e56149dab4c3"
+        }
+      ],
+      "personallyViewedEveryPanel": true,
+      "topToBottomReviewComplete": true,
+      "status": "REVIEWED_NO_NEW_VISUAL_DEFECT",
+      "notes": "Generic missing page: heading, explanation, recovery buttons and popular-tool groups remain balanced; entire footer reviewed. This is not the separate unpublished-draft proof."
+    },
+    {
+      "route": "/about",
+      "viewport": [
+        390,
+        900
+      ],
+      "fullPageDimensions": [
+        390,
+        4519
+      ],
+      "screenshot": ".qa-results/phase3/ui/final-m/responsive/about-390.png",
+      "screenshotSha256": "45ec0aff11d94c61f8924aeebc8726599d68cba1a80a4d63973a94ff41a6a18b",
+      "sequentialPanels": [
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/about-390--panel-1.png",
+          "sha256": "ddc282ab6f2974d99f75b33d8ba4b5056b3d009149d621abe5b517264383c08c"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/about-390--panel-2.png",
+          "sha256": "65d127bd8e3e9930757c981d6673ce73d7775a12fa15337bf2420de8b89f0938"
+        }
+      ],
+      "personallyViewedEveryPanel": true,
+      "topToBottomReviewComplete": true,
+      "status": "REVIEWED_NO_NEW_VISUAL_DEFECT",
+      "notes": "Hero, product principles, processing illustration, toolkit, limits and final help section all reviewed. The 300 MiB phrase wraps normally; managed help typography and links remain cohesive."
+    },
+    {
+      "route": "/archive-compressor",
+      "viewport": [
+        390,
+        900
+      ],
+      "fullPageDimensions": [
+        390,
+        9045
+      ],
+      "screenshot": ".qa-results/phase3/ui/final-m/responsive/archive-compressor-390.png",
+      "screenshotSha256": "60835f600cceda72a3ecc9d6bb74bed2fa89846fffee64c3b66e73920c1243cb",
+      "sequentialPanels": [
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/archive-compressor-390--panel-1.png",
+          "sha256": "491517a5aed3a990cb0b73ac054a63dd38b25e45917cf6d9ab5841062209f587"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/archive-compressor-390--panel-2.png",
+          "sha256": "7b132b2ca41953f6a1aa9f36ab1f3cbe9269ac923b8fce265829785356c6d1dd"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/archive-compressor-390--panel-3.png",
+          "sha256": "d098c33a11e2d82cfe4e85c14f8f3b48049b87339734d7890c310464af48dfc5"
+        }
+      ],
+      "personallyViewedEveryPanel": true,
+      "topToBottomReviewComplete": true,
+      "status": "REVIEWED_NO_NEW_VISUAL_DEFECT",
+      "notes": "ZIP extractor workspace shows Max 150 MiB; 300 MiB queue line fits. All guide sections, 150/200/500 MiB safety prose, collapsed FAQs, related links and footer reviewed."
+    },
+    {
+      "route": "/blog/choosing-a-compression-mode",
+      "viewport": [
+        390,
+        900
+      ],
+      "fullPageDimensions": [
+        390,
+        8446
+      ],
+      "screenshot": ".qa-results/phase3/ui/final-m/responsive/blog--choosing-a-compression-mode-390.png",
+      "screenshotSha256": "5b773b8b36a63a22afb930a5fb7183e96146fa95310f5917488d668eedecd46e",
+      "sequentialPanels": [
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/blog--choosing-a-compression-mode-390--panel-1.png",
+          "sha256": "1f70dcfd2170c014e93b73642e6c915c3b570b47144b1b5afb4ac7a559bfdcba"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/blog--choosing-a-compression-mode-390--panel-2.png",
+          "sha256": "4535d0f4cc70ac27de4e630b8a2eb5c2ac3e19621a51a58bf3d001c3788d20fe"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/blog--choosing-a-compression-mode-390--panel-3.png",
+          "sha256": "5b3033d8a97757adef12249bb91025454cd4f97afc1f6a2c193c036edd156a51"
+        }
+      ],
+      "personallyViewedEveryPanel": true,
+      "topToBottomReviewComplete": true,
+      "status": "REVIEWED_NO_NEW_VISUAL_DEFECT",
+      "notes": "Full article and footer reviewed. Revised paragraph clearly separates decimal file/target KB/MB from binary MiB capacities without crowding. Existing decimal examples and section structure remain readable."
+    },
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "viewport": [
+        390,
+        900
+      ],
+      "fullPageDimensions": [
+        390,
+        6637
+      ],
+      "screenshot": ".qa-results/phase3/ui/final-m/responsive/blog--compressing-files-for-the-web-390.png",
+      "screenshotSha256": "8b9c03d41607fc0622c204fc130875f7415c8d55c9826813574db000ef7ee309",
+      "sequentialPanels": [
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/blog--compressing-files-for-the-web-390--panel-1.png",
+          "sha256": "71874471a88a82af51755462a6769e857b90862e9efacef2e9afbe572745e822"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/blog--compressing-files-for-the-web-390--panel-2.png",
+          "sha256": "86138ddafbe59aedefc31d69f3b784ad7d5f1bc5e6d16764aa9bbd461dc5f8a3"
+        }
+      ],
+      "personallyViewedEveryPanel": true,
+      "topToBottomReviewComplete": true,
+      "status": "REVIEWED_NO_NEW_VISUAL_DEFECT",
+      "notes": "Full format article, contained diagram with scroll hint, codec guidance, linked tools and footer reviewed. No new text wrapping or hierarchy issue observed."
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "viewport": [
+        390,
+        900
+      ],
+      "fullPageDimensions": [
+        390,
+        6052
+      ],
+      "screenshot": ".qa-results/phase3/ui/final-m/responsive/blog--honest-file-size-reporting-390.png",
+      "screenshotSha256": "66db188223c42eb372447c128f85f8c1b070ed5c9f01fa7f0792b48d68611c22",
+      "sequentialPanels": [
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/blog--honest-file-size-reporting-390--panel-1.png",
+          "sha256": "cb494ad8ed77a65afc869a71d5fdf35e8b95ce462f7ba7cbd3eb5afb009f9c61"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/blog--honest-file-size-reporting-390--panel-2.png",
+          "sha256": "fb4e5cf582bbc2c536c6eeb2ce677235c98303ee02c08f502552dc7efda4fed0"
+        }
+      ],
+      "personallyViewedEveryPanel": true,
+      "topToBottomReviewComplete": true,
+      "status": "REVIEWED_NO_NEW_VISUAL_DEFECT",
+      "notes": "Full size-reporting article reviewed; native diagram rail and caption, outcome lists, exact-byte example, callout, related articles and footer remain readable."
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "viewport": [
+        390,
+        900
+      ],
+      "fullPageDimensions": [
+        390,
+        6142
+      ],
+      "screenshot": ".qa-results/phase3/ui/final-m/responsive/blog--how-browser-compression-works-390.png",
+      "screenshotSha256": "d8685b9a8ea4a9d1957f12edde54f9711305c7e7779370ee10014c28f24ea8fa",
+      "sequentialPanels": [
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/blog--how-browser-compression-works-390--panel-1.png",
+          "sha256": "03b57c79be516bae2df82415dd18b930115cbecd03b47d523db4033edd11a990"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/blog--how-browser-compression-works-390--panel-2.png",
+          "sha256": "b8be1e6af174b630fb3b3d1d55c59e601a3dd9419b95a636f88609acb5b4bc77"
+        }
+      ],
+      "personallyViewedEveryPanel": true,
+      "topToBottomReviewComplete": true,
+      "status": "REVIEWED_NO_NEW_VISUAL_DEFECT",
+      "notes": "Full processing article reviewed; illustrated lead, contained pipeline, stage headings, 21 MB engine copy, internal links and footer remain coherent."
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "viewport": [
+        390,
+        900
+      ],
+      "fullPageDimensions": [
+        390,
+        6600
+      ],
+      "screenshot": ".qa-results/phase3/ui/final-m/responsive/blog--what-privacy-claim-really-means-390.png",
+      "screenshotSha256": "2bf665b6b1bf07e2949993e6ccef7be310c4a31db6cca03a2e36c985f8a2f06f",
+      "sequentialPanels": [
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/blog--what-privacy-claim-really-means-390--panel-1.png",
+          "sha256": "94676f62eaeba901f2302e497ae0a3ad4cc13673d87e6a6c81f98aec7e4e5c2b"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/blog--what-privacy-claim-really-means-390--panel-2.png",
+          "sha256": "7fa941f12b3d9f21d30a5aa7f98c47ef1bdadff0659e5781e58ff184d9307389"
+        }
+      ],
+      "personallyViewedEveryPanel": true,
+      "topToBottomReviewComplete": true,
+      "status": "REVIEWED_NO_NEW_VISUAL_DEFECT",
+      "notes": "Full privacy article reviewed, including contained data-flow rail, readable lists, callout, distinction between files and network resources, related articles and footer."
+    },
+    {
+      "route": "/blog",
+      "viewport": [
+        390,
+        900
+      ],
+      "fullPageDimensions": [
+        390,
+        3994
+      ],
+      "screenshot": ".qa-results/phase3/ui/final-m/responsive/blog-390.png",
+      "screenshotSha256": "f7fe69138d9d31b40615733f8d07ca4aeb5b89f26e362d21b4a4543fcadb546d",
+      "sequentialPanels": [
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/blog-390--panel-1.png",
+          "sha256": "aba53ea0fa49c072087ea600eb7abea378e713ae6ae28f21cc231a34a8762b50"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/blog-390--panel-2.png",
+          "sha256": "1dbc63b966a392b056f806df1e7ac465bdc61cbf624ea2f51815feef5a28dcc9"
+        }
+      ],
+      "personallyViewedEveryPanel": true,
+      "topToBottomReviewComplete": true,
+      "status": "REVIEWED_NO_NEW_VISUAL_DEFECT",
+      "notes": "All five article cards, images, descriptions, visible updated labels and footer reviewed. Single-column card rhythm and text fit remain balanced."
+    },
+    {
+      "route": "/compress",
+      "viewport": [
+        390,
+        900
+      ],
+      "fullPageDimensions": [
+        390,
+        8070
+      ],
+      "screenshot": ".qa-results/phase3/ui/final-m/responsive/compress-390.png",
+      "screenshotSha256": "8292c3552a07c4b3894cb62557931ed47fe77e33e41f1d687d3c5356a2ced177",
+      "sequentialPanels": [
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/compress-390--panel-1.png",
+          "sha256": "7ef294ff1cda17f99f5e9ceafad9cede28dfdd7bf55fd012205972bb0db75da4"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/compress-390--panel-2.png",
+          "sha256": "0d32386174575eaa2f118f8a68dfd984cc83389cac25e6de334a15a483f0b566"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/compress-390--panel-3.png",
+          "sha256": "94c5834f08f7f19ae41b4f8c182343ab1cd0c00478990d3ed370fa169d947a59"
+        }
+      ],
+      "personallyViewedEveryPanel": true,
+      "topToBottomReviewComplete": true,
+      "status": "REVIEWED_NO_NEW_VISUAL_DEFECT",
+      "notes": "Max 200 MiB and queue label fit; mixed-format introduction, lists, all sections, 300 MiB prose, guide/disclosures, FAQs, related tools and footer reviewed."
+    },
+    {
+      "route": "/contact",
+      "viewport": [
+        390,
+        900
+      ],
+      "fullPageDimensions": [
+        390,
+        3512
+      ],
+      "screenshot": ".qa-results/phase3/ui/final-m/responsive/contact-390.png",
+      "screenshotSha256": "8b9dd3430b7c0a52a8f980e2b2b06b280b3ae4acf04c60d5dc211d3ed9049810",
+      "sequentialPanels": [
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/contact-390--panel-1.png",
+          "sha256": "524ff0e0a0719184109467133451c626490d8ceeefe3521fb3f2fe4809df3cfe"
+        }
+      ],
+      "personallyViewedEveryPanel": true,
+      "topToBottomReviewComplete": true,
+      "status": "REVIEWED_NO_NEW_VISUAL_DEFECT",
+      "notes": "Help introduction, support link, four troubleshooting cards, privacy-conscious guidance, lower links, support panel and footer reviewed."
+    },
+    {
+      "route": "/disclaimer",
+      "viewport": [
+        390,
+        900
+      ],
+      "fullPageDimensions": [
+        390,
+        4024
+      ],
+      "screenshot": ".qa-results/phase3/ui/final-m/responsive/disclaimer-390.png",
+      "screenshotSha256": "efae959208ffaddb7f62f03f06f8564eb4a52dd55f47ab6f522cb94fe1485b21",
+      "sequentialPanels": [
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/disclaimer-390--panel-1.png",
+          "sha256": "82b40a225b9855b2b7680dc477c3a054758947f8d761d6999db90b00a31639c2"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/disclaimer-390--panel-2.png",
+          "sha256": "13945b8ad0b1dcafb6800cb1432e1dd0f243e9980bb6f5d108a907c4f63d057d"
+        }
+      ],
+      "personallyViewedEveryPanel": true,
+      "topToBottomReviewComplete": true,
+      "status": "REVIEWED_NO_NEW_VISUAL_DEFECT",
+      "notes": "Whole legal page reviewed: title/date, contents summary, seven sections, links and footer retain readable width and spacing."
+    },
+    {
+      "route": "/gif-compressor",
+      "viewport": [
+        390,
+        900
+      ],
+      "fullPageDimensions": [
+        390,
+        9103
+      ],
+      "screenshot": ".qa-results/phase3/ui/final-m/responsive/gif-compressor-390.png",
+      "screenshotSha256": "3abea25ae5a29ca6f495ae7131f47f5d2245024181b854bfa82e5c3776cbaa0a",
+      "sequentialPanels": [
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/gif-compressor-390--panel-1.png",
+          "sha256": "0e3d0aa1f2671ad0a4a6ba4e0568c3ebc460694d219a091e405f677f6e36e1ee"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/gif-compressor-390--panel-2.png",
+          "sha256": "c501f51609968fae87f4e747fe34dd95cbb115c51b5949b73bf28a28a0fb4e7b"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/gif-compressor-390--panel-3.png",
+          "sha256": "ef63181f1d2f79ac4e1e7daa17e9c614e19bada4033dc169da820309586b7f67"
+        }
+      ],
+      "personallyViewedEveryPanel": true,
+      "topToBottomReviewComplete": true,
+      "status": "REVIEWED_NO_NEW_VISUAL_DEFECT",
+      "notes": "Max 50 MiB and queue line fit. Every guide section, mode/animation limits, updated 50 MiB prose, FAQs, related tools and footer reviewed."
+    },
+    {
+      "route": "/",
+      "viewport": [
+        390,
+        900
+      ],
+      "fullPageDimensions": [
+        390,
+        11631
+      ],
+      "screenshot": ".qa-results/phase3/ui/final-m/responsive/home-390.png",
+      "screenshotSha256": "ad599201d018f428e966f7117e34a3124d43e6967c4bc5148a1169da32210889",
+      "sequentialPanels": [
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/home-390--panel-1.png",
+          "sha256": "d4845f93b3f71c50dc249b79e6e12d756c4ddd2a199b5384fe988ed198d584bd"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/home-390--panel-2.png",
+          "sha256": "76fa479f7b7a373f8fced263dbebd58ab914e2daa6262ddacf1f9073224a4567"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/home-390--panel-3.png",
+          "sha256": "2cc6d127e90481723563ce9c93a751105cbfb38c205fa189d379e70fde8a8456"
+        }
+      ],
+      "personallyViewedEveryPanel": true,
+      "topToBottomReviewComplete": true,
+      "status": "REVIEWED_NO_NEW_VISUAL_DEFECT",
+      "notes": "Home hero, Max 200 MiB workspace, 300 MiB queue line, tool filter/list, process illustration, all authored sections, article rail, FAQs and footer reviewed."
+    },
+    {
+      "route": "/image-compressor",
+      "viewport": [
+        390,
+        900
+      ],
+      "fullPageDimensions": [
+        390,
+        8620
+      ],
+      "screenshot": ".qa-results/phase3/ui/final-m/responsive/image-compressor-390.png",
+      "screenshotSha256": "60019f4c093f48740fafa3f0f2ef47c3169ba1f689005a303fd9e9cf4c368558",
+      "sequentialPanels": [
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/image-compressor-390--panel-1.png",
+          "sha256": "6c52a13b0aca63f69e673402193417cae71f77f353e93390e062254905915f25"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/image-compressor-390--panel-2.png",
+          "sha256": "5bc1508e86fe75f4e2ce004931cf255e7b916ec88bba2ce499b783837dca8225"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/image-compressor-390--panel-3.png",
+          "sha256": "7a2c3d396b8573b92476d52f42c98366cfc3811cbdfd7b2670321cf14627c5fb"
+        }
+      ],
+      "personallyViewedEveryPanel": true,
+      "topToBottomReviewComplete": true,
+      "status": "REVIEWED_NO_NEW_VISUAL_DEFECT",
+      "notes": "Max 50 MiB/300 MiB queue fit. Whole image guide, true lists, 50/300 MiB prose, modes/dimensions guidance, FAQs, related tools and footer reviewed."
+    },
+    {
+      "route": "/jpeg-compressor",
+      "viewport": [
+        390,
+        900
+      ],
+      "fullPageDimensions": [
+        390,
+        8836
+      ],
+      "screenshot": ".qa-results/phase3/ui/final-m/responsive/jpeg-compressor-390.png",
+      "screenshotSha256": "397dbdf33d5624c1e4cafd8fbbf412a3e2be0a713ba6b1df8a6ff52e91f380da",
+      "sequentialPanels": [
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/jpeg-compressor-390--panel-1.png",
+          "sha256": "d9b5fa06f4a128e6edc628a98d1654b2399502c1bd9d7a5dd12bfbf1405460f4"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/jpeg-compressor-390--panel-2.png",
+          "sha256": "8cdb5262e1d1cdd0ff404864ce9a92ba37e6aa90be00ea99117b63ccfa2e13d9"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/jpeg-compressor-390--panel-3.png",
+          "sha256": "1b21f96ca61cc8f6d350cd468705f6baec278bd37117f032a50f611e19570f10"
+        }
+      ],
+      "personallyViewedEveryPanel": true,
+      "topToBottomReviewComplete": true,
+      "status": "REVIEWED_NO_NEW_VISUAL_DEFECT",
+      "notes": "Max 50 MiB cap and queue line fit. Whole JPEG guide, ordered steps, mode/capacity prose, FAQ headers, related links and footer reviewed."
+    },
+    {
+      "route": "/jpg-compressor",
+      "viewport": [
+        390,
+        900
+      ],
+      "fullPageDimensions": [
+        390,
+        8391
+      ],
+      "screenshot": ".qa-results/phase3/ui/final-m/responsive/jpg-compressor-390.png",
+      "screenshotSha256": "c8ed8def6f3dc2c86b6a5de2ca834afc65e6e568a59934c172966fbeb3038e6e",
+      "sequentialPanels": [
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/jpg-compressor-390--panel-1.png",
+          "sha256": "3eae7c7cfaab62c58cb7795514261e79ae98970370448fc9d4ba5ab3486caf4a"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/jpg-compressor-390--panel-2.png",
+          "sha256": "4b3e01361d79c9674127fb9bf7248a1c49140f67947a26579823900f9c18bc15"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/jpg-compressor-390--panel-3.png",
+          "sha256": "846d582af129176817fe3a0b701c05d5f625a7ce1b3641867ae09e1908dfcc3a"
+        }
+      ],
+      "personallyViewedEveryPanel": true,
+      "topToBottomReviewComplete": true,
+      "status": "REVIEWED_NO_NEW_VISUAL_DEFECT",
+      "notes": "Max 50 MiB/300 MiB queue fit; decimal 50 KB target examples remain intact. Whole guide, capacity paragraph, related links and footer reviewed."
+    },
+    {
+      "route": "/mp3-compressor",
+      "viewport": [
+        390,
+        900
+      ],
+      "fullPageDimensions": [
+        390,
+        8182
+      ],
+      "screenshot": ".qa-results/phase3/ui/final-m/responsive/mp3-compressor-390.png",
+      "screenshotSha256": "37e4bbac92363e3b0a7edeb5f2db73b25f3b9f60b5d076185d82a15f8a5f08a6",
+      "sequentialPanels": [
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/mp3-compressor-390--panel-1.png",
+          "sha256": "757b53f68ab13b91898c2d7bf1f0e14563738cdf11681295ec02722637ef8723"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/mp3-compressor-390--panel-2.png",
+          "sha256": "5c4b0d27a74f008c3faa7c22bc4777b2dafa7d275a1f8f01f97bdfea829de3dd"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/mp3-compressor-390--panel-3.png",
+          "sha256": "cd86e54e2e0c22434913ad36b55e5f03ad83c88a5dc2fd185c5c37d22017c5fd"
+        }
+      ],
+      "personallyViewedEveryPanel": true,
+      "topToBottomReviewComplete": true,
+      "status": "REVIEWED_NO_NEW_VISUAL_DEFECT",
+      "notes": "Max 100 MiB/300 MiB queue fit. Whole audio guide, bitrate headings/lists, 100 MiB capacity and unchanged around-21 MB engine text, FAQs and footer reviewed."
+    },
+    {
+      "route": "/pdf-compressor",
+      "viewport": [
+        390,
+        900
+      ],
+      "fullPageDimensions": [
+        390,
+        8212
+      ],
+      "screenshot": ".qa-results/phase3/ui/final-m/responsive/pdf-compressor-390.png",
+      "screenshotSha256": "5ce19d267b47dbfa694b294e57b35005b0b4daf85a93bc5dd021f1c5ddb400ba",
+      "sequentialPanels": [
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/pdf-compressor-390--panel-1.png",
+          "sha256": "fcd1e4ffb4e2db1595eb6b6a8ae161f61ae26bcb6d83e07e27d812ada0a778dc"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/pdf-compressor-390--panel-2.png",
+          "sha256": "d72065c5ad848aa56509589b1128fa6832cde3a5f3b67943d8aba1dc809018cb"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/pdf-compressor-390--panel-3.png",
+          "sha256": "d1a48ab2ebe5d5c90d483439d2c18d5b3f1a44af7fd84c280aa8a208e992a743"
+        }
+      ],
+      "personallyViewedEveryPanel": true,
+      "topToBottomReviewComplete": true,
+      "status": "REVIEWED_NO_NEW_VISUAL_DEFECT",
+      "notes": "Max 50 MiB/300 MiB queue fit. Whole PDF guide, structural-limit lists, capacity prose, guide/FAQ sections, related tools and footer reviewed."
+    },
+    {
+      "route": "/png-compressor",
+      "viewport": [
+        390,
+        900
+      ],
+      "fullPageDimensions": [
+        390,
+        8372
+      ],
+      "screenshot": ".qa-results/phase3/ui/final-m/responsive/png-compressor-390.png",
+      "screenshotSha256": "9b2311dbb5cc062e6040bc546ef22b912e3fb9b5aee6557db16e7821c802971a",
+      "sequentialPanels": [
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/png-compressor-390--panel-1.png",
+          "sha256": "5a69f098769c8f4453e51df96cc5581b205e61ffa4ec6edd1a361a3a751151fa"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/png-compressor-390--panel-2.png",
+          "sha256": "6159884185211db23e39ce3fc62a520438ee06e71bc1390d840738baf0c61ad9"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/png-compressor-390--panel-3.png",
+          "sha256": "a7e422facf2b345843c3088dbe71938fe2026426eaf54cbb843614ca18644c30"
+        }
+      ],
+      "personallyViewedEveryPanel": true,
+      "topToBottomReviewComplete": true,
+      "status": "REVIEWED_NO_NEW_VISUAL_DEFECT",
+      "notes": "Max 50 MiB/300 MiB queue fit. Whole PNG guide, Lossless/color-reduction distinctions, 50/300 MiB prose, target FAQ, related tools and footer reviewed."
+    },
+    {
+      "route": "/privacy",
+      "viewport": [
+        390,
+        900
+      ],
+      "fullPageDimensions": [
+        390,
+        6252
+      ],
+      "screenshot": ".qa-results/phase3/ui/final-m/responsive/privacy-390.png",
+      "screenshotSha256": "34f0787adfda2c2ba2a0e18d1f054875eb264557885b9bd9ef3362bf54ab9164",
+      "sequentialPanels": [
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/privacy-390--panel-1.png",
+          "sha256": "d2610e18828cb73ffa06d3f1bdb523ac7da53b9fb1dba00535d1b318f52176cd"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/privacy-390--panel-2.png",
+          "sha256": "688a818841e5d9a81cf5eabeff808bb00cfe89c5ca4dd4679082560805b2926b"
+        }
+      ],
+      "personallyViewedEveryPanel": true,
+      "topToBottomReviewComplete": true,
+      "status": "REVIEWED_NO_NEW_VISUAL_DEFECT",
+      "notes": "Full legal page reviewed: title/date, contents summary, all privacy sections, references, final questions and full footer retain readable hierarchy."
+    },
+    {
+      "route": "/sitemap",
+      "viewport": [
+        390,
+        900
+      ],
+      "fullPageDimensions": [
+        390,
+        2941
+      ],
+      "screenshot": ".qa-results/phase3/ui/final-m/responsive/sitemap-390.png",
+      "screenshotSha256": "ffaf34d47a41dd81fef9fcab5d0302a0b86c6ab327c559de00ec5d27ca2f2919",
+      "sequentialPanels": [
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/sitemap-390--panel-1.png",
+          "sha256": "7fb0df24462494da2c8a9fedae0bd75c5483d056ab5861daff162f5f8a250878"
+        }
+      ],
+      "personallyViewedEveryPanel": true,
+      "topToBottomReviewComplete": true,
+      "status": "REVIEWED_NO_NEW_VISUAL_DEFECT",
+      "notes": "Full sitemap reviewed: grouped tool/site/article links remain easy to scan and wrap, with no new narrow-column or footer defect."
+    },
+    {
+      "route": "/terms",
+      "viewport": [
+        390,
+        900
+      ],
+      "fullPageDimensions": [
+        390,
+        3760
+      ],
+      "screenshot": ".qa-results/phase3/ui/final-m/responsive/terms-390.png",
+      "screenshotSha256": "788dffae75f7518b7d6963cb6f058d28ae2e686829fec2f76f9b8b87895473c8",
+      "sequentialPanels": [
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/terms-390--panel-1.png",
+          "sha256": "40df4675b0a9bc34b3d5563b6c0879cb10bb46dfa904f981b58dd94cf02f7b26"
+        }
+      ],
+      "personallyViewedEveryPanel": true,
+      "topToBottomReviewComplete": true,
+      "status": "REVIEWED_NO_NEW_VISUAL_DEFECT",
+      "notes": "Whole legal page reviewed including 300 MiB queue phrase, contents summary, processing limits and contact/footer. A direct original header crop additionally confirms the header is present and identical to K."
+    },
+    {
+      "route": "/video-compressor",
+      "viewport": [
+        390,
+        900
+      ],
+      "fullPageDimensions": [
+        390,
+        9318
+      ],
+      "screenshot": ".qa-results/phase3/ui/final-m/responsive/video-compressor-390.png",
+      "screenshotSha256": "0c0a83ee44259a9f6a253077c47e004be81c87b3497ea104df216ab0fb2da913",
+      "sequentialPanels": [
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/video-compressor-390--panel-1.png",
+          "sha256": "11ae403780a0977de621ed1eb7a6ea8b946dc580dc6d50947d494212a3901870"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/video-compressor-390--panel-2.png",
+          "sha256": "4493db87e9d8dd18009994c21cd4dc69d56e1e37b7f3384ab89141142529a658"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/video-compressor-390--panel-3.png",
+          "sha256": "f13bcdf624764898ec897c1b3f587b0196da6754fe37dc8989108da241236631"
+        }
+      ],
+      "personallyViewedEveryPanel": true,
+      "topToBottomReviewComplete": true,
+      "status": "REVIEWED_NO_NEW_VISUAL_DEFECT",
+      "notes": "Max 200 MiB/300 MiB queue fit. Whole video guide, resolution and codec explanations, 200 MiB capacity, preserved ~21 MB engine text, FAQs and footer reviewed."
+    },
+    {
+      "route": "/wav-compressor",
+      "viewport": [
+        390,
+        900
+      ],
+      "fullPageDimensions": [
+        390,
+        8495
+      ],
+      "screenshot": ".qa-results/phase3/ui/final-m/responsive/wav-compressor-390.png",
+      "screenshotSha256": "d0e46510f3c0d24197d7974daa47b885051a1e7c478b07710a3ab1db0922886e",
+      "sequentialPanels": [
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/wav-compressor-390--panel-1.png",
+          "sha256": "aeb3a7fd0eea8d74dda2bd877f3843b9447b842c2c8a692b00edd514c920190c"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/wav-compressor-390--panel-2.png",
+          "sha256": "e770fab80891eb13dd34c37c949f36a51fc2a7e6e206ef5005421df5b4847e6f"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/wav-compressor-390--panel-3.png",
+          "sha256": "a836155200541d71f19a40e79e12029402e6cea1a07f01942a05d70894deaad1"
+        }
+      ],
+      "personallyViewedEveryPanel": true,
+      "topToBottomReviewComplete": true,
+      "status": "REVIEWED_NO_NEW_VISUAL_DEFECT",
+      "notes": "Max 100 MiB/300 MiB queue fit. Whole conversion guide, bitrate list, 100 MiB capacity/21 MB engine distinction, FAQs, related tools and footer reviewed."
+    },
+    {
+      "route": "/wav-to-mp3",
+      "viewport": [
+        390,
+        900
+      ],
+      "fullPageDimensions": [
+        390,
+        8495
+      ],
+      "screenshot": ".qa-results/phase3/ui/final-m/responsive/wav-to-mp3-390.png",
+      "screenshotSha256": "d0e46510f3c0d24197d7974daa47b885051a1e7c478b07710a3ab1db0922886e",
+      "sequentialPanels": [
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/wav-to-mp3-390--panel-1.png",
+          "sha256": "27880574547bdc6a5b00fbb27eff5f2ccbcbcb7b9c395c50310d86a4949506ea"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/wav-to-mp3-390--panel-2.png",
+          "sha256": "cda639a80a7949da05e978a70105da3a784b0aa30c693658e4a7c3d1a8c96dd2"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/wav-to-mp3-390--panel-3.png",
+          "sha256": "c07dec23d179cf8b94252c3d2ee9af34331753f0a2425433f16ba4afdfcf4a0a"
+        }
+      ],
+      "personallyViewedEveryPanel": true,
+      "topToBottomReviewComplete": true,
+      "status": "REVIEWED_NO_NEW_VISUAL_DEFECT",
+      "notes": "Alias reviewed independently top to bottom. It shows the same coherent WAV-to-MP3 workflow and 100 MiB/300 MiB limits without an implementation banner."
+    },
+    {
+      "route": "/webm-to-mp4",
+      "viewport": [
+        390,
+        900
+      ],
+      "fullPageDimensions": [
+        390,
+        4229
+      ],
+      "screenshot": ".qa-results/phase3/ui/final-m/responsive/webm-to-mp4-390.png",
+      "screenshotSha256": "b693a834f71a833cd2b9f9a7c2a4371211913a5d2b7166fbb075bb59d5e42485",
+      "sequentialPanels": [
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/webm-to-mp4-390--panel-1.png",
+          "sha256": "df37fa0857049c9f5fa3e8590c583431b16180f6603c6a9b55e19167b1c61cbb"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/webm-to-mp4-390--panel-2.png",
+          "sha256": "8db5ac89d3498509acfce4545684dafd7fb2851fcdcc9a569895af5f952a7590"
+        }
+      ],
+      "personallyViewedEveryPanel": true,
+      "topToBottomReviewComplete": true,
+      "status": "REVIEWED_NO_NEW_VISUAL_DEFECT",
+      "notes": "Fixed-purpose MP4 converter, Max 200 MiB/300 MiB queue, all guide paragraphs, conversion/dimension claims, FAQs, related tools and full footer reviewed."
+    },
+    {
+      "route": "/webp-compressor",
+      "viewport": [
+        390,
+        900
+      ],
+      "fullPageDimensions": [
+        390,
+        8244
+      ],
+      "screenshot": ".qa-results/phase3/ui/final-m/responsive/webp-compressor-390.png",
+      "screenshotSha256": "624ffe519d206099dfa12b966038194a88219a14658281c8cbffabb4b83402ee",
+      "sequentialPanels": [
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/webp-compressor-390--panel-1.png",
+          "sha256": "6b4d428cde55b36575d9533dc58568795778933691f7eb614fbf5d56d7139b5d"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/webp-compressor-390--panel-2.png",
+          "sha256": "9e1748614681ace18f6fbfe88ed91058e55876ccbb9789836613fe4a0bdcc01a"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/webp-compressor-390--panel-3.png",
+          "sha256": "2ad86799c834859f35c1e593c89e231e78b32a820c52f3acf7c49b899c26d601"
+        }
+      ],
+      "personallyViewedEveryPanel": true,
+      "topToBottomReviewComplete": true,
+      "status": "REVIEWED_NO_NEW_VISUAL_DEFECT",
+      "notes": "Max 50 MiB/300 MiB queue fit. Whole WebP guide, transparency and mode guidance, 50/300 MiB capacity prose, FAQs, related links and footer reviewed."
+    },
+    {
+      "route": "/zip-compressor",
+      "viewport": [
+        390,
+        900
+      ],
+      "fullPageDimensions": [
+        390,
+        7663
+      ],
+      "screenshot": ".qa-results/phase3/ui/final-m/responsive/zip-compressor-390.png",
+      "screenshotSha256": "7be606e663ecd59b3477ac349bb5dfac7427a2305bb466d3b68b86778f8d6eba",
+      "sequentialPanels": [
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/zip-compressor-390--panel-1.png",
+          "sha256": "ba13a749decfe8210871fd2c54c9640540c430f41fd00c842064120b7876df28"
+        },
+        {
+          "file": ".qa-results/phase3/ui/final-m/mobile-review-strips/zip-compressor-390--panel-2.png",
+          "sha256": "0e340b74b94ead8980378533b76a4fef9de40450950d1d82d66161e43d075e43"
+        }
+      ],
+      "personallyViewedEveryPanel": true,
+      "topToBottomReviewComplete": true,
+      "status": "REVIEWED_NO_NEW_VISUAL_DEFECT",
+      "notes": "Max 200 MiB/300 MiB queue fit. Whole ZIP creation guide, 200/300 MiB prose, extraction distinction, FAQs, related tools and footer reviewed."
+    }
+  ],
+  "status": "PASS_STATED_MOBILE_VISUAL_REVIEW_SCOPE"
+}

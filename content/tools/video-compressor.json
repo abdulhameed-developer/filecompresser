@@ -1,82 +1,82 @@
 {
-  "heading": "  Video Compressor Online for Smaller MP4 and MOV Files",
-  "introduction": "Video files can take up a significant amount of storage space, especially when they are recorded in high resolution or contain several minutes of footage. Large videos can be difficult to share through email, upload to websites or send using messaging applications.\n\nA video compressor helps reduce file size by changing how video and audio information is encoded. Depending on the selected settings, it can also reduce video dimensions to create a more manageable file.\n\nFile Compresser offers an online Video Compressor for supported MP4 and MOV files. It converts compatible videos into MP4 using H.264 video encoding and AAC audio when the source contains audio.\n\nThe processing takes place directly in your browser. You do not need to upload your video to an external server or install a separate video editing application.\n",
+  "heading": "Video Compressor Online for Smaller MP4 and MOV Files",
+  "introduction": "Process supported MP4 and MOV clips into H.264 MP4 with AAC audio when present. Keep original dimensions or explicitly choose a height cap, then check playback and the actual file size.",
   "sections": [
     {
       "heading": "What Is a Video Compressor?",
-      "body": "A video compressor is a tool that reduces the amount of data required to store a video.\n\nDigital videos contain a sequence of frames, along with audio and other possible streams. Their file size depends on factors such as resolution, bitrate, duration, frame rate, codec and visual complexity.\n\nVideo compression uses encoding methods to represent this information more efficiently.\n\nFile Compresser uses H.264 video encoding to prepare compatible video files in the MP4 container. This format is commonly used for sharing, website playback and everyday video storage.\n\nHowever, compression does not guarantee that every output will be smaller. The final result depends on the original video and the selected settings.\n"
+      "body": "A video compressor is a tool that reduces the amount of data required to store a video.\n\nDigital videos contain a sequence of frames, along with audio and other possible streams. Their file size depends on factors such as resolution, bitrate, duration, frame rate, codec and visual complexity.\n\nVideo compression uses encoding methods to represent this information more efficiently.\n\nFileCompresser uses H.264 video encoding to prepare compatible video files in the MP4 container. This format is commonly used for sharing, website playback and everyday video storage.\n\nHowever, compression does not guarantee that every output will be smaller. The final result depends on the original video and the selected settings."
     },
     {
       "heading": "How to Compress a Video Online",
-      "body": "You can use File Compresser to prepare a supported video without installing desktop software.\n\nFollow these steps:\n\n1. Open the Video Compressor page.\n2. Select an MP4 or MOV video from your device.\n3. Wait for the website to validate the file.\n4. Choose the desired resolution setting.\n5. Start video processing.\n6. Allow the browser to encode the video.\n7. Download the resulting MP4.\n8. Play the complete video and check its quality.\n\nKeep your original video until you have confirmed that the new file plays correctly.\n"
+      "body": "You can use FileCompresser to prepare a supported video without installing desktop software.\n\nFollow these steps:\n\n1. Open the Video Compressor page.\n2. Select an MP4 or MOV video from your device.\n3. Wait for the website to validate the file.\n4. Choose the desired resolution setting.\n5. Start video processing.\n6. Allow the browser to encode the video.\n7. Download the resulting MP4.\n8. Play the complete video and check its quality.\n\nKeep your original video until you have confirmed that the new file plays correctly."
     },
     {
       "heading": "Understand Video Resolution Settings",
-      "body": "Resolution describes the number of pixels used to display a video. Higher resolutions contain more image detail but can also require more data. File Compresser provides different maximum-height options.\n"
+      "body": "Resolution describes the number of pixels used to display a video. Higher resolutions contain more image detail but can also require more data. FileCompresser provides different maximum-height options."
     },
     {
       "heading": "Keep Original",
-      "body": "Keep Original maintains the original video dimensions. Choose this option when you do not want to reduce the display resolution.\n\nHowever, H.264 encoding may require even dimensions. If the source has odd dimensions, the encoder may need a suitable explicitly selected resolution cap.\n"
+      "body": "Keep Original maintains the original video dimensions. Choose this option when you do not want to reduce the display resolution.\n\nHowever, H.264 encoding may require even dimensions. If the source has odd dimensions, the encoder may need a suitable explicitly selected resolution cap."
     },
     {
       "heading": "1080p",
-      "body": "A 1080p maximum-height setting can be useful for videos that need to retain a relatively high level of detail while allowing larger inputs to be reduced.\n"
+      "body": "A 1080p maximum-height setting can be useful for videos that need to retain a relatively high level of detail while allowing larger inputs to be reduced."
     },
     {
       "heading": "720p",
-      "body": "720p can be suitable for everyday sharing, presentations and general online viewing when full HD resolution is not necessary.\n"
+      "body": "720p can be suitable for everyday sharing, presentations and general online viewing when full HD resolution is not necessary."
     },
     {
       "heading": "480p",
-      "body": "480p provides a lower resolution option for situations where smaller dimensions are acceptable.\n\nThe tool does not enlarge smaller input videos. Always select a resolution based on how the final video will be viewed.\n"
+      "body": "480p provides a lower resolution option for situations where smaller dimensions are acceptable.\n\nThe tool does not enlarge smaller input videos. Always select a resolution based on how the final video will be viewed."
     },
     {
       "heading": "What Is H.264 Video Encoding?",
-      "body": "H.264 is a widely used video compression standard. It allows video information to be encoded in a format supported by many devices and applications.\n\nFile Compresser uses H.264 for its MP4 output. When the source contains audio, the output uses AAC audio encoding.\n\nThis combination is commonly used for everyday video sharing and playback.\n\nA file's extension alone does not guarantee that its original codec is supported. A video may have an MP4 or MOV extension but still contain an unsupported video stream. In that situation, the tool may reject the source.\n"
+      "body": "H.264 is a widely used video compression standard. It allows video information to be encoded in a format supported by many devices and applications.\n\nFileCompresser uses H.264 for its MP4 output. When the source contains audio, the output uses AAC audio encoding.\n\nThis combination is commonly used for everyday video sharing and playback.\n\nA file's extension alone does not guarantee that its original codec is supported. A video may have an MP4 or MOV extension but still contain an unsupported video stream. In that situation, the tool may reject the source."
     },
     {
       "heading": "Why Should You Compress Video Files?",
-      "body": "Video compression is useful for many everyday tasks.\n"
+      "body": "Video compression is useful for many everyday tasks."
     },
     {
       "heading": "Share Videos More Easily",
-      "body": "Large video files can be difficult to send through email or messaging services. A smaller MP4 may be easier to transfer.\n"
+      "body": "Large video files can be difficult to send through email or messaging services. A smaller MP4 may be easier to transfer."
     },
     {
       "heading": "Prepare Videos for Websites",
-      "body": "Website owners and content publishers often use videos to explain services, demonstrate products or share tutorials. Reducing unnecessary video data can help manage storage and page resources.\n"
+      "body": "Website owners and content publishers often use videos to explain services, demonstrate products or share tutorials. Reducing unnecessary video data can help manage storage and page resources."
     },
     {
       "heading": "Save Device Storage",
-      "body": "Smartphones and computers can quickly fill up with recorded videos. Creating smaller copies may help manage storage space.\n"
+      "body": "Smartphones and computers can quickly fill up with recorded videos. Creating smaller copies may help manage storage space."
     },
     {
       "heading": "Upload Videos to Online Platforms",
-      "body": "Some platforms have maximum file size requirements. Video compression can help prepare compatible files for uploading.\n"
+      "body": "Some platforms have maximum file size requirements. Video compression can help prepare compatible files for uploading."
     },
     {
       "heading": "Prepare Videos for Presentations",
-      "body": "Business presentations and educational material sometimes include video clips. Smaller files can make presentations easier to store and transfer.\n"
+      "body": "Business presentations and educational material sometimes include video clips. Smaller files can make presentations easier to store and transfer."
     },
     {
       "heading": "Does Video Compression Reduce Quality?",
-      "body": "Video re-encoding can affect image and audio quality.\n\nThe final appearance depends on the original recording, selected resolution and encoding process. Lowering resolution can remove image detail, while stronger compression can affect textures, movement and small text.\n\nAudio may also change during conversion.\n\nFor this reason, always play the complete output before sharing it. Check important scenes, movement, spoken words and sound quality. Keep the original recording if you may need to edit it again or create another export.\n"
+      "body": "Video re-encoding can affect image and audio quality.\n\nThe final appearance depends on the original recording, selected resolution and encoding process. Lowering resolution can remove image detail, while stronger compression can affect textures, movement and small text.\n\nAudio may also change during conversion.\n\nFor this reason, always play the complete output before sharing it. Check important scenes, movement, spoken words and sound quality. Keep the original recording if you may need to edit it again or create another export."
     },
     {
       "heading": "Why Does the First Video Take Longer?",
-      "body": "The first video, audio or GIF processing job loads the required WebAssembly version of FFmpeg. This processing engine is approximately 21 MB and may be cached by your browser for later use.\n\nVideo encoding also requires processing power and memory. Long recordings and high-resolution videos can take considerable time, even when the input is within the stated file limit.\n\nFile Compresser accepts video files up to 200 MB per file. Media jobs have a five-minute processing limit. If a job fails, try a shorter clip or select a lower resolution.\n"
+      "body": "The first video, audio or GIF processing job loads the required WebAssembly version of FFmpeg. This processing engine is approximately 21 MB and may be cached by your browser for later use.\n\nVideo encoding also requires processing power and memory. Long recordings and high-resolution videos can take considerable time, even when the input is within the stated file limit.\n\nFileCompresser accepts video files up to 200 MiB per file. Media jobs have a five-minute processing limit. If a job fails, try a shorter clip or select a lower resolution."
     },
     {
       "heading": "Which Video Information Is Retained?",
-      "body": "The tool focuses on the primary video and audio streams. Subtitles and cover art are not retained in the output.\n\nIf your video depends on embedded subtitles or additional streams, keep the original file and use a workflow that supports those elements.\n\nAfter processing, check the MP4 in your preferred video player to confirm that the required picture and sound are present.\n"
+      "body": "The tool focuses on the primary video and audio streams. Subtitles and cover art are not retained in the output.\n\nIf your video depends on embedded subtitles or additional streams, keep the original file and use a workflow that supports those elements.\n\nAfter processing, check the MP4 in your preferred video player to confirm that the required picture and sound are present."
     },
     {
       "heading": "Private Video Processing in Your Browser",
-      "body": "File Compresser processes selected videos directly on your device. Your video is not uploaded to the website's servers for conversion. Your browser memory, available processing power and video duration can affect the result.\n\n"
+      "body": "FileCompresser processes selected videos directly on your device. Your video is not uploaded to the website's servers for conversion. Your browser memory, available processing power and video duration can affect the result."
     },
     {
       "heading": "Compress Videos for Easier Sharing",
-      "body": "Large video files can create problems when uploading, storing or sharing recordings. A suitable compression setting can help make these files more manageable.\n\nFile Compresser provides an online way to convert supported MP4 and MOV videos into H.264 MP4 files. Choose the resolution that matches your requirements, process your video and check the complete output before downloading.\n"
+      "body": "Large video files can create problems when uploading, storing or sharing recordings. A suitable compression setting can help make these files more manageable.\n\nFileCompresser provides an online way to convert supported MP4 and MOV videos into H.264 MP4 files. Choose the resolution that matches your requirements, process your video and check the complete output before downloading."
     }
   ],
   "links": [
@@ -92,29 +92,30 @@
   "faq": [
     {
       "q": "Can I compress MP4 videos online?",
-      "a": "Yes. File Compresser supports compatible MP4 input files and creates H.264 MP4 output.\n"
+      "a": "Yes. FileCompresser supports compatible MP4 input files and creates H.264 MP4 output."
     },
     {
       "q": "Can I compress MOV videos?",
-      "a": "Yes. Supported MOV videos can be converted into MP4.\n"
+      "a": "Yes. Supported MOV videos can be converted into MP4."
     },
     {
       "q": "Does the tool support 1080p and 720p?",
-      "a": "Yes. You can choose a maximum-height setting of 1080p, 720p or 480p, or keep the original dimensions where supported.\n"
+      "a": "Yes. You can choose a maximum-height setting of 1080p, 720p or 480p, or keep the original dimensions where supported."
     },
     {
       "q": "Will video compression reduce quality?",
-      "a": "It can. Re-encoding and lower resolution settings may affect visual and audio quality.\n"
+      "a": "It can. Re-encoding and lower resolution settings may affect visual and audio quality."
     },
     {
       "q": "Why is my video not processing?",
-      "a": "The source codec may be unsupported, or the video may require more memory or processing time than your browser can provide.\n"
+      "a": "The source codec may be unsupported, or the video may require more memory or processing time than your browser can provide."
     },
     {
       "q": "Are videos uploaded to a server?",
-      "a": "No. Video processing takes place in your browser.\n"
+      "a": "No. Video processing takes place in your browser."
     }
   ],
-  "seoTitle": "ideo Compressor Online Free – Compress MP4 & MOV",
-  "seoDescription": "Compress MP4 and MOV videos online for free. Convert to H.264 MP4, choose a resolution and reduce file size privately in your browser.\n"
+  "seoTitle": "Video Compressor Online Free – Compress MP4 & MOV",
+  "seoDescription": "Compress MP4 and MOV videos online for free. Convert to H.264 MP4, choose a resolution and reduce file size privately in your browser.",
+  "faqMode": "custom"
 }

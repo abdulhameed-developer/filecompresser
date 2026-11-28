@@ -61,7 +61,8 @@ describe('real PNG color reduction and alpha preservation', () => {
     expect(pngQualityAccepted(fidelity(36, 20), 'smart')).toBe(false)
     expect(pngQualityAccepted(fidelity(36, 20), 'maximum')).toBe(true)
     expect(pngQualityAccepted(fidelity(42, 37), 'smart')).toBe(false)
-    expect(pngQualityAccepted(fidelity(35, 65), 'target')).toBe(false)
+    expect(pngQualityAccepted(fidelity(15, 180), 'target')).toBe(true)
+    expect(pngQualityAccepted({ ...fidelity(15, 180), alphaEqual: false }, 'target')).toBe(false)
   })
 
   it('checks cancellation around real quantization work', () => {
@@ -131,9 +132,9 @@ describe('bounded, honest PNG strategy selection', () => {
     const lossless = { blob: new Blob([new Uint8Array(600)]), encoder: 'Lossless test encoder' }
     const sizes = [400, 250, 350, 200, 220]
     const qualities = [45, 38, 35, 34.5, 31]
-    const quantize = vi.fn(async (colorLimit: number) => ({ blob: new Blob([new Uint8Array(sizes[PNG_COLOR_LIMITS.indexOf(colorLimit)])]), encoder: 'Quantizer', colorLimit }))
+    const quantize = vi.fn(async (colorLimit: number) => ({ blob: new Blob([new Uint8Array(sizes[PNG_COLOR_LIMITS.indexOf(colorLimit)] ?? 500)]), encoder: 'Quantizer', colorLimit }))
     const verify = vi.fn(async (candidate: { colorLimit?: number }) => candidate.colorLimit
-      ? fidelity(qualities[PNG_COLOR_LIMITS.indexOf(candidate.colorLimit)], 20)
+      ? fidelity(qualities[PNG_COLOR_LIMITS.indexOf(candidate.colorLimit)] ?? 20, 20)
       : fidelity(Infinity, 0, true))
     return { lossless, quantize, verify }
   }
@@ -175,6 +176,29 @@ describe('bounded, honest PNG strategy selection', () => {
     const miss = await choosePngCandidate(impossible.lossless, { mode: 'target', targetBytes: 100 }, impossible)
     expect(miss.blob.size).toBe(200)
     expect(miss.blob.size).toBeGreaterThan(100)
+  })
+
+  it('continues Target to2colors when ordinary color guards cannot fit, keeping exact alpha', async () => {
+    const codec = candidates()
+    const quantize = vi.fn(async (colorLimit: number) => ({ blob: new Blob([new Uint8Array(colorLimit * 10)]), encoder: 'Test quantizer', colorLimit }))
+    const verify = vi.fn(async (candidate: { colorLimit?: number }) => candidate.colorLimit ? fidelity(12, 200) : fidelity(Infinity, 0, true))
+    const result = await choosePngCandidate(codec.lossless, { mode: 'target', targetBytes: 30 }, { quantize, verify })
+    expect(result.blob.size).toBeLessThanOrEqual(30)
+    expect(result.colorLimit).toBe(2)
+    expect(result.compressionKind).toBe('lossy')
+    expect(quantize.mock.calls.map(call => call[0])).toContain(2)
+    expect(quantize.mock.calls.length).toBeLessThanOrEqual(9)
+  })
+
+  it('refines a4color Target fit past a6color overshoot to a better5color fit', async () => {
+    const codec = candidates()
+    const quantize = vi.fn(async (colorLimit: number) => ({ blob: new Blob([new Uint8Array(colorLimit <= 5 ? colorLimit * 6 : colorLimit * 10)]), encoder: 'Test quantizer', colorLimit }))
+    const verify = vi.fn(async (candidate: { colorLimit?: number }) => candidate.colorLimit ? fidelity(candidate.colorLimit * 2, 200) : fidelity(Infinity, 0, true))
+    const result = await choosePngCandidate(codec.lossless, { mode: 'target', targetBytes: 35 }, { quantize, verify })
+    expect(result.blob.size).toBe(30)
+    expect(result.colorLimit).toBe(5)
+    expect(quantize.mock.calls.slice(-2).map(call => call[0])).toEqual([6, 5])
+    expect(quantize.mock.calls.length).toBeLessThanOrEqual(11)
   })
 
   it('rejects a falsely lossless candidate and keeps honest fallback classification', async () => {

@@ -7,6 +7,7 @@ import type {
 } from './types'
 import { ProcessingError } from './types'
 import { detectFormat } from './validation'
+import { parseImageTargetBytes } from './image-settings'
 
 export interface ProcessContext {
   engine: EngineKind
@@ -47,7 +48,7 @@ export async function processFile(
             isImageFormat(options.outputFormat)
               ? options.outputFormat
               : undefined,
-          targetSize: optionalSize(options.targetSize),
+          targetSize: parseImageTargetBytes(options.targetSize),
         },
         onProgress,
         signal,
@@ -146,18 +147,6 @@ function normalizeResolution(
 ): 'original' | '1080' | '720' | '480' {
   if (value === '1080' || value === '720' || value === '480') return value
   return 'original'
-}
-
-/**
- * A target size is opt-in: blank or nonsensical input must mean "no target", not
- * "target 1 byte", or every maximum-mode run would jump into the size search and
- * report that the target could not be met.
- */
-function optionalSize(value: unknown): number | undefined {
-  const parsed = typeof value === 'number' ? value : Number(value)
-  if (!Number.isFinite(parsed) || parsed <= 0) return undefined
-  const bytes = Math.floor(Math.min(parsed, 200 * 1024 * 1024))
-  return bytes > 0 ? bytes : undefined
 }
 
 /**

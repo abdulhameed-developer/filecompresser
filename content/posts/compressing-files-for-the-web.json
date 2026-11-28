@@ -12,7 +12,7 @@
   "title": "Choosing the right format for smaller web files",
   "description": "A practical guide to image formats, audio bitrate, video codecs and the limits of PDF optimization.",
   "date": "2026-09-20",
-  "updated": "2026-11-27",
+  "updated": "2026-11-28",
   "readingTime": "5 min",
   "figure": "formattree",
   "seoDescription": "Choose JPG, PNG, WebP, MP3 or MP4 for your task. Understand transparency, lossy encoding, audio bitrate and PDF optimization limits.",
@@ -56,6 +56,10 @@
     },
     {
       "_template": "p",
+      "text": "For a WebM recording that needs MP4 compatibility, use the [WebM-to-MP4 converter](/webm-to-mp4). It keeps source display dimensions and creates H.264 MP4 with AAC audio when present. Compatibility is its goal; the converted copy can be larger. For supported MP4/MOV compression settings, use the separate [video compressor](/video-compressor)."
+    },
+    {
+      "_template": "p",
       "text": "MP4 and MOV describe containers, not a single video codec. FileCompresser accepts supported MP4/MOV inputs and re-encodes to H.264 video with AAC audio when an audio track is present. A smaller resolution cap can help, but high-motion scenes and long clips still take time and memory. Unsupported codecs fail rather than becoming playable just by changing the extension."
     },
     {
@@ -73,6 +77,14 @@
     {
       "_template": "p",
       "text": "Check dimensions, transparency, text readability, playback and the reported output size. Ordinary compression retains the original if no smaller candidate is found. An explicit format conversion can increase bytes, but growth is never described as a saving. Keep your source until you have verified the download."
+    },
+    {
+      "_template": "h2",
+      "text": "Test the real delivery size"
+    },
+    {
+      "_template": "p",
+      "text": "Inspect a file at the scale where people will use it. For a transparent logo, compare edges on light and dark backgrounds using the [PNG compressor](/png-compressor). For a photograph, compare the [JPG](/jpg-compressor) or [WebP](/webp-compressor) output. Use a separate image editor when you need different pixel dimensions; the image tools here keep the original display dimensions."
     }
   ],
   "published": true

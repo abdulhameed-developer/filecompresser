@@ -2,15 +2,11 @@ import { closeSync, fstatSync, lstatSync, openSync, readSync, readdirSync } from
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { inspectCmsValidationInput } from './cms-security/resource-limits.mjs'
+import { CMS_CONTENT_LIMITS } from '../lib/cms-content-limits.mjs'
 
 // These project limits apply to authored JSON before Tina's indexer reads it.
 // They are deliberately separate from executable tina/config.js and callbacks.
-export const CMS_CONTENT_LIMITS = Object.freeze({
-  maxFileBytes: 2 * 1024 * 1024,
-  maxTotalBytes: 64 * 1024 * 1024,
-  maxFiles: 10000,
-  maxDirectoryDepth: 8,
-})
+export { CMS_CONTENT_LIMITS }
 
 function readBoundedJson(filename, size) {
   if (size > CMS_CONTENT_LIMITS.maxFileBytes) throw Error('JSON exceeds the 2 MiB file limit')

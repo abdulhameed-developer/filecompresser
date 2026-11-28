@@ -1,0 +1,28 @@
+{
+  "recordedAt": "2026-11-28T13:50:20.517270+00:00",
+  "comparison": "L to M actual exported CSS content, not file names or source assumptions",
+  "before": ".qa-results/phase3/candidate-l/export",
+  "after": ".qa-results/phase3/candidate-m/export",
+  "stylesheetsBefore": [
+    {
+      "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43",
+      "bytes": 43855
+    },
+    {
+      "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1",
+      "bytes": 57776
+    }
+  ],
+  "stylesheetsAfter": [
+    {
+      "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43",
+      "bytes": 43855
+    },
+    {
+      "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1",
+      "bytes": 57776
+    }
+  ],
+  "status": "PASS_EXACT_EXPORTED_CSS_BYTES",
+  "scope": "Stylesheet identity alone does not prove new label wrapping or other runtime UI states. Fresh M visual checks remain required."
+}

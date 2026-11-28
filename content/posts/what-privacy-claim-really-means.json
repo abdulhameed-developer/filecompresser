@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-04",
+  "updated": "2026-11-28",
   "title": "What \"your file never leaves your device\" does and does not cover",
   "description": "A precise account of the privacy claim: what never happens, what is still fetched from the network, and how to verify it yourself.",
   "date": "2026-09-16",
@@ -27,7 +27,7 @@
     },
     {
       "_template": "p",
-      "text": "This is a statement about the architecture, not a policy. There is no setting you can enable that would start uploading, and no legal arrangement that permits it. This describes the reviewed application code. Browser extensions, compromised hosting, or a different deployment can change what runs in a page."
+      "text": "This describes the reviewed public-tool implementation. It has no selected-file upload workflow. The claim does not cover private files you decide to attach to an email or submit to another service. Browser extensions, a compromised device or a changed deployment can also affect what runs in a page."
     },
     {
       "_template": "h2",
@@ -54,12 +54,12 @@
     },
     {
       "_template": "p",
-      "text": "Nothing is written to localStorage, IndexedDB, the Cache API, or cookies. The only persistent state is the browser's own caching of the engine files, which holds program code and never your data. Clearing your browser data is not necessary for your files, because none of them were persisted anywhere."
+      "text": "The application does not persist selected tool files in localStorage, IndexedDB, the Cache API or cookies. The browser can cache website resources and engine code. A download you save is a separate file on your device and remains there until you remove it. Releasing a queue entry is not a secure-erasure guarantee."
     },
     {
       "_template": "callout",
       "title": "The consequence worth knowing",
-      "text": "Because nothing is stored, nothing is recoverable. If a result is wrong or your browser crashes mid-process, the original file is the only copy. Keep a backup of anything you cannot re-download."
+      "text": "The application has no server copy from which to restore your selected file. A crash or closed tab can lose an unsaved result, while your original stays in its device location. Keep that original and save any result you need before clearing the queue."
     },
     {
       "_template": "h2",
@@ -67,12 +67,30 @@
     },
     {
       "_template": "p",
-      "text": "Open your browser's developer tools, switch to the Network tab, and compress a file. Every request you see will be for the page, its own JavaScript and CSS, editorial images, and the engine files. Nothing in that list will be your file, because the request that would carry it does not exist in this codebase."
+      "text": "Open your browser’s Network panel, clear its list and process a generated file. Inspect actual request URLs and payloads. The expected application requests fetch page resources and engines rather than submitting the selected file. Extensions and unrelated tabs can create their own traffic; distinguish those from this page instead of treating every request as a file upload."
     },
     {
       "_template": "p",
       "text": "That is the difference between a privacy policy and a privacy architecture. A policy tells you what someone promises not to do. The reviewed application avoids transferring selected files. That does not protect against a compromised browser, extension or hosting environment."
+    },
+    {
+      "_template": "h2",
+      "text": "Page requests, support and editor sessions"
+    },
+    {
+      "_template": "p",
+      "text": "Cloudflare still handles ordinary website requests and may process connection and security data. Automatic analytics/RUM is disabled for the public site. Support email and the authenticated TinaCMS editor have separate service providers and data handling; neither is required to process a file in a public tool. Read the [Privacy Policy](/privacy) for these distinctions, or use the [contact page](/contact) for a question without sending private files."
     }
   ],
-  "published": true
+  "published": true,
+  "references": [
+    {
+      "title": "MDN: using files from web applications",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/File_API/Using_files_from_web_applications"
+    },
+    {
+      "title": "Cloudflare Privacy Policy",
+      "url": "https://www.cloudflare.com/privacypolicy/"
+    }
+  ]
 }

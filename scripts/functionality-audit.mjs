@@ -400,11 +400,11 @@ async function processAndDownload(route, source, configure) {
   currentStep = 'completed-screenshot'
   if (!captureFullStates) await page.screenshot({ path: path.join(evidence, `${route.slice(1)}-completed.png`) })
   assert.equal(await page.locator('.compressBtn').count(), 0, 'Completed-only queues must not offer processing zero files')
-  const promise = page.waitForEvent('download')
   currentStep = 'download-click'
-  await activate(page.getByRole('button', { name: 'Download file', exact: true }))
-  currentStep = 'await-download'
-  const download = await promise
+  const [download] = await Promise.all([
+    page.waitForEvent('download'),
+    activate(page.getByRole('button', { name: 'Download file', exact: true })).then(() => { currentStep = 'await-download' }),
+  ])
   const out = path.join(
     fixtures,
     `result-${results.length}-${download.suggestedFilename()}`,
@@ -624,7 +624,8 @@ try {
     const bytes = readFileSync(out).length
     assertImageGeometry(input, out)
     decode(out)
-    assert.match(await page.locator('.fileTarget').textContent(), bytes <= 5000 ? /Within your limit/ : /Target not met/)
+    assert.ok(bytes <= 5000, 'A completed Target result must fit the exact maximum bytes')
+    assert.match(await page.locator('.fileTarget').textContent(), /Within your limit/)
     return { bytes, targetBytes: 5000, met: bytes <= 5000 }
   })
   const customSizes = {}
@@ -646,6 +647,19 @@ try {
   await check('JPG target size and stable KB input', async () => {
     const out = await processAndDownload('/jpg-compressor', jpg, async () => {
       await activate(page.getByRole('button', { name: 'Target size', exact: true }))
+      await page.getByLabel('Custom maximum (KB)', { exact: true }).fill('100.0005')
+      assert.equal(await page.getByLabel('Custom maximum (KB)', { exact: true }).inputValue(), '100.0005')
+      assert.equal(await page.getByLabel('Custom maximum (KB)', { exact: true }).getAttribute('aria-invalid'), 'true')
+      await closeSettings()
+      assert.equal(await page.locator('.compressBtn').isDisabled(), true, 'Fractional bytes cannot become an upward-rounded maximum')
+      await openSettings()
+      assert.equal(await page.getByLabel('Custom maximum (KB)', { exact: true }).inputValue(), '100.0005')
+      await page.getByLabel('Custom maximum (KB)', { exact: true }).fill('0.029')
+      assert.equal((await page.locator('.exactTarget').innerText()).replace(/\s+/gu, ' ').trim(), '29 bytes maximum')
+      assert.notEqual(await page.getByLabel('Custom maximum (KB)', { exact: true }).getAttribute('aria-invalid'), 'true')
+      await page.getByLabel('Custom maximum (KB)', { exact: true }).fill('2.9e-2')
+      assert.equal((await page.locator('.exactTarget').innerText()).replace(/\s+/gu, ' ').trim(), '29 bytes maximum')
+
       await page.getByLabel('Custom maximum (KB)', { exact: true }).fill('20')
       assert.equal(
         await page.getByLabel('Custom maximum (KB)', { exact: true }).inputValue(),
@@ -687,13 +701,19 @@ try {
       for (let index = 3; index < rgba.length; index += 4) assert.equal(rgba[index], 0)
     },
   )
-  await check('Unreachable image target is reported honestly', async () => {
-    const out = await processAndDownload('/jpg-compressor', jpg, async () => {
-      await activate(page.getByRole('button', { name: 'Target size', exact: true }))
-      await page.getByLabel('Custom maximum (KB)', { exact: true }).fill('1')
-    })
-    assert(readFileSync(out).length > 1000)
-    assert.match(await page.locator('.fileTarget').textContent(), /Target not met/)
+  await check('Unreachable image target fails without saving an above-limit result', async () => {
+    await upload('/jpg-compressor', jpg)
+    await openSettings()
+    await activate(page.getByRole('button', { name: 'Target size', exact: true }))
+    await page.getByLabel('Custom maximum (KB)', { exact: true }).fill('1')
+    await closeSettings()
+    await activate(page.locator('.compressBtn:enabled'))
+    await page.locator('.file.status-failed').waitFor({ timeout: 180_000 })
+    assert.match(await page.locator('.fileError').textContent(), /Target not met.*1,000-byte limit/)
+    assert.equal(await page.locator('.status-completed').count(), 0)
+    assert.equal(await page.getByRole('button', { name: 'Download file', exact: true }).count(), 0)
+    assert.equal(await page.locator('.filePendingFacts').count(), 1, 'Original source remains in the queue')
+    return { targetBytes: 1000, status: 'unreachable', noAboveLimitResult: true }
   })
   await check('PNG target controls are contextual and retain exact byte units', async () => {
     await upload('/png-compressor', png)

@@ -1,0 +1,906 @@
+{
+  "recordedAt": "2026-11-28T14:44:58.910358+00:00",
+  "scope": "Fresh local N Chromium79 only; not O, current production, hosted Save or every possible codec/file. O changes only numeric-control CSS and receives separately recorded native/readability checks.",
+  "candidate": "N",
+  "base": "http://127.0.0.1:3360",
+  "homepageSha256": "99eb848f8c7677392ba8314c5937521b17c63fdf48dc70e94e46e02a6b82b959",
+  "browser": "chromium",
+  "browserVersion": "156.0.8078.47",
+  "viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "caseCount": 79,
+  "passedCaseCount": 79,
+  "downloadCount": 56,
+  "stateCaptureCount": 50,
+  "zeroRecordedPageConsoleResourceUploadLifecycleAndCaptureErrors": true,
+  "actualProcessExitCode": 0,
+  "canonicalHarnessSha256": "6b24b2133fa384ccca9e2a5a56be0b392ea3645fcf42d5d3d3eeb590c3d43268",
+  "rawReportSha256": "876b1a0f03583e56400b7e4d5e23f58f3fb81e42244d401a793a66929e22182a",
+  "completionSha256": "f4825fa8dd363a6058b71f1a785efb7ce2d5926ad33d59b3aebcd6494d47f63d",
+  "identityBefore": [
+    {
+      "file": "index.html",
+      "status": 200,
+      "bytes": 108628,
+      "sha256": "99eb848f8c7677392ba8314c5937521b17c63fdf48dc70e94e46e02a6b82b959",
+      "expectedSha256": "99eb848f8c7677392ba8314c5937521b17c63fdf48dc70e94e46e02a6b82b959"
+    },
+    {
+      "file": "release.json",
+      "status": 200,
+      "bytes": 3984,
+      "sha256": "864b28b6792c1b935b3ad71a015a35865f01b2a358a9846814f8f19f979fd1b1",
+      "expectedSha256": "864b28b6792c1b935b3ad71a015a35865f01b2a358a9846814f8f19f979fd1b1"
+    },
+    {
+      "file": "image-worker/codec-manifest.json",
+      "status": 200,
+      "bytes": 3843,
+      "sha256": "13c838e502c80a6fa3b466ceb846939662d5a9a95f16414449653cfce33f9275",
+      "expectedSha256": "13c838e502c80a6fa3b466ceb846939662d5a9a95f16414449653cfce33f9275"
+    },
+    {
+      "file": "ffmpeg-core/wasm-manifest.json",
+      "status": 200,
+      "bytes": 5657,
+      "sha256": "9612006d08b9c847e994dd392bdae855db2ecb3f353b33e9c6e95c0d4ee520e4",
+      "expectedSha256": "9612006d08b9c847e994dd392bdae855db2ecb3f353b33e9c6e95c0d4ee520e4"
+    },
+    {
+      "file": "ffmpeg-core/ffmpeg-core.js",
+      "status": 200,
+      "bytes": 86526,
+      "sha256": "cea5a18a8ef99258fa2299b8feb57ca641c0222e88de077fd0562b4eeef7bfed",
+      "expectedSha256": "cea5a18a8ef99258fa2299b8feb57ca641c0222e88de077fd0562b4eeef7bfed"
+    },
+    {
+      "file": "image-worker/image-pipeline.mjs",
+      "status": 200,
+      "bytes": 16690,
+      "sha256": "770e69f8d76d5f682fda6183d5e2405d1c0c0e197205471c6220c98ea4522b8a",
+      "expectedSha256": "770e69f8d76d5f682fda6183d5e2405d1c0c0e197205471c6220c98ea4522b8a"
+    },
+    {
+      "file": "image-worker/image-png.mjs",
+      "status": 200,
+      "bytes": 13782,
+      "sha256": "d4beabe725a453099f39a337cf63f54fc0d2d5983753e820f9c810e057680a1f",
+      "expectedSha256": "d4beabe725a453099f39a337cf63f54fc0d2d5983753e820f9c810e057680a1f"
+    },
+    {
+      "file": "image-worker/image-canvas.mjs",
+      "status": 200,
+      "bytes": 15269,
+      "sha256": "96e366066cc5720a4a9267c878d05af80b591cc5e69bde773f71b8f5adbc4173",
+      "expectedSha256": "96e366066cc5720a4a9267c878d05af80b591cc5e69bde773f71b8f5adbc4173"
+    },
+    {
+      "file": "image-worker/image-metadata.mjs",
+      "status": 200,
+      "bytes": 10124,
+      "sha256": "a584b568d2735f3fb1f345157c2c118a3ab63e9e1cb3377684c03caff09b3ec9",
+      "expectedSha256": "a584b568d2735f3fb1f345157c2c118a3ab63e9e1cb3377684c03caff09b3ec9"
+    },
+    {
+      "file": "image-worker/image-engine.mjs",
+      "status": 200,
+      "bytes": 1174,
+      "sha256": "5179b8034f0272e92d54b8b9e2bb6aea6844658d66f1eab372fefb9ea6361f5a",
+      "expectedSha256": "5179b8034f0272e92d54b8b9e2bb6aea6844658d66f1eab372fefb9ea6361f5a"
+    }
+  ],
+  "identityAfter": [
+    {
+      "file": "index.html",
+      "status": 200,
+      "bytes": 108628,
+      "sha256": "99eb848f8c7677392ba8314c5937521b17c63fdf48dc70e94e46e02a6b82b959",
+      "expectedSha256": "99eb848f8c7677392ba8314c5937521b17c63fdf48dc70e94e46e02a6b82b959"
+    },
+    {
+      "file": "release.json",
+      "status": 200,
+      "bytes": 3984,
+      "sha256": "864b28b6792c1b935b3ad71a015a35865f01b2a358a9846814f8f19f979fd1b1",
+      "expectedSha256": "864b28b6792c1b935b3ad71a015a35865f01b2a358a9846814f8f19f979fd1b1"
+    },
+    {
+      "file": "image-worker/codec-manifest.json",
+      "status": 200,
+      "bytes": 3843,
+      "sha256": "13c838e502c80a6fa3b466ceb846939662d5a9a95f16414449653cfce33f9275",
+      "expectedSha256": "13c838e502c80a6fa3b466ceb846939662d5a9a95f16414449653cfce33f9275"
+    },
+    {
+      "file": "ffmpeg-core/wasm-manifest.json",
+      "status": 200,
+      "bytes": 5657,
+      "sha256": "9612006d08b9c847e994dd392bdae855db2ecb3f353b33e9c6e95c0d4ee520e4",
+      "expectedSha256": "9612006d08b9c847e994dd392bdae855db2ecb3f353b33e9c6e95c0d4ee520e4"
+    },
+    {
+      "file": "ffmpeg-core/ffmpeg-core.js",
+      "status": 200,
+      "bytes": 86526,
+      "sha256": "cea5a18a8ef99258fa2299b8feb57ca641c0222e88de077fd0562b4eeef7bfed",
+      "expectedSha256": "cea5a18a8ef99258fa2299b8feb57ca641c0222e88de077fd0562b4eeef7bfed"
+    },
+    {
+      "file": "image-worker/image-pipeline.mjs",
+      "status": 200,
+      "bytes": 16690,
+      "sha256": "770e69f8d76d5f682fda6183d5e2405d1c0c0e197205471c6220c98ea4522b8a",
+      "expectedSha256": "770e69f8d76d5f682fda6183d5e2405d1c0c0e197205471c6220c98ea4522b8a"
+    },
+    {
+      "file": "image-worker/image-png.mjs",
+      "status": 200,
+      "bytes": 13782,
+      "sha256": "d4beabe725a453099f39a337cf63f54fc0d2d5983753e820f9c810e057680a1f",
+      "expectedSha256": "d4beabe725a453099f39a337cf63f54fc0d2d5983753e820f9c810e057680a1f"
+    },
+    {
+      "file": "image-worker/image-canvas.mjs",
+      "status": 200,
+      "bytes": 15269,
+      "sha256": "96e366066cc5720a4a9267c878d05af80b591cc5e69bde773f71b8f5adbc4173",
+      "expectedSha256": "96e366066cc5720a4a9267c878d05af80b591cc5e69bde773f71b8f5adbc4173"
+    },
+    {
+      "file": "image-worker/image-metadata.mjs",
+      "status": 200,
+      "bytes": 10124,
+      "sha256": "a584b568d2735f3fb1f345157c2c118a3ab63e9e1cb3377684c03caff09b3ec9",
+      "expectedSha256": "a584b568d2735f3fb1f345157c2c118a3ab63e9e1cb3377684c03caff09b3ec9"
+    },
+    {
+      "file": "image-worker/image-engine.mjs",
+      "status": 200,
+      "bytes": 1174,
+      "sha256": "5179b8034f0272e92d54b8b9e2bb6aea6844658d66f1eab372fefb9ea6361f5a",
+      "expectedSha256": "5179b8034f0272e92d54b8b9e2bb6aea6844658d66f1eab372fefb9ea6361f5a"
+    }
+  ],
+  "cases": [
+    {
+      "ordinal": 1,
+      "name": "/jpg-compressor decoded output",
+      "pass": true
+    },
+    {
+      "ordinal": 2,
+      "name": "/jpeg-compressor decoded output",
+      "pass": true
+    },
+    {
+      "ordinal": 3,
+      "name": "/image-compressor decoded output",
+      "pass": true
+    },
+    {
+      "ordinal": 4,
+      "name": "/png-compressor decoded output",
+      "pass": true
+    },
+    {
+      "ordinal": 5,
+      "name": "/webp-compressor decoded output",
+      "pass": true
+    },
+    {
+      "ordinal": 6,
+      "name": "Image comparison zoom, mobile bounds, background scroll and keyboard recovery",
+      "pass": true
+    },
+    {
+      "ordinal": 7,
+      "name": "Enter in settings does not start processing; Done then the primary action succeeds",
+      "pass": true
+    },
+    {
+      "ordinal": 8,
+      "name": "/jpg-compressor real Balanced preset",
+      "pass": true
+    },
+    {
+      "ordinal": 9,
+      "name": "/jpg-compressor real High quality preset",
+      "pass": true
+    },
+    {
+      "ordinal": 10,
+      "name": "/jpg-compressor real Maximum preset",
+      "pass": true
+    },
+    {
+      "ordinal": 11,
+      "name": "/jpg-compressor Maximum produces no larger result than High quality",
+      "pass": true
+    },
+    {
+      "ordinal": 12,
+      "name": "/webp-compressor real Balanced preset",
+      "pass": true
+    },
+    {
+      "ordinal": 13,
+      "name": "/webp-compressor real High quality preset",
+      "pass": true
+    },
+    {
+      "ordinal": 14,
+      "name": "/webp-compressor real Maximum preset",
+      "pass": true
+    },
+    {
+      "ordinal": 15,
+      "name": "/webp-compressor Maximum produces no larger result than High quality",
+      "pass": true
+    },
+    {
+      "ordinal": 16,
+      "name": "PNG real Lossless preset",
+      "pass": true
+    },
+    {
+      "ordinal": 17,
+      "name": "PNG real Smart preset",
+      "pass": true
+    },
+    {
+      "ordinal": 18,
+      "name": "PNG real Maximum preset",
+      "pass": true
+    },
+    {
+      "ordinal": 19,
+      "name": "PNG to WEBP real High quality preset",
+      "pass": true
+    },
+    {
+      "ordinal": 20,
+      "name": "PNG to WEBP real Maximum preset",
+      "pass": true
+    },
+    {
+      "ordinal": 21,
+      "name": "WEBP conversion quality changes the real output byte size",
+      "pass": true
+    },
+    {
+      "ordinal": 22,
+      "name": "/png-compressor genuine target output and truthful limit status",
+      "pass": true
+    },
+    {
+      "ordinal": 23,
+      "name": "/webp-compressor genuine target output and truthful limit status",
+      "pass": true
+    },
+    {
+      "ordinal": 24,
+      "name": "JPEG real custom quality 10%",
+      "pass": true
+    },
+    {
+      "ordinal": 25,
+      "name": "JPEG real custom quality 100%",
+      "pass": true
+    },
+    {
+      "ordinal": 26,
+      "name": "JPEG custom quality changes the real output byte size",
+      "pass": true
+    },
+    {
+      "ordinal": 27,
+      "name": "JPG target size and stable KB input",
+      "pass": true
+    },
+    {
+      "ordinal": 28,
+      "name": "Image conversion to jpeg",
+      "pass": true
+    },
+    {
+      "ordinal": 29,
+      "name": "Image conversion to png",
+      "pass": true
+    },
+    {
+      "ordinal": 30,
+      "name": "Image conversion to webp",
+      "pass": true
+    },
+    {
+      "ordinal": 31,
+      "name": "Transparent JPG conversion is refused without losing the input",
+      "pass": true
+    },
+    {
+      "ordinal": 32,
+      "name": "Unreachable image target fails without saving an above-limit result",
+      "pass": true
+    },
+    {
+      "ordinal": 33,
+      "name": "PNG target controls are contextual and retain exact byte units",
+      "pass": true
+    },
+    {
+      "ordinal": 34,
+      "name": "GIF animation and finite loop preservation",
+      "pass": true
+    },
+    {
+      "ordinal": 35,
+      "name": "/wav-compressor .wav genuine audio source/output",
+      "pass": true
+    },
+    {
+      "ordinal": 36,
+      "name": "/wav-to-mp3 .wav genuine audio source/output",
+      "pass": true
+    },
+    {
+      "ordinal": 37,
+      "name": "/mp3-compressor .mp3 genuine audio source/output",
+      "pass": true
+    },
+    {
+      "ordinal": 38,
+      "name": "/mp3-compressor .m4a genuine audio source/output",
+      "pass": true
+    },
+    {
+      "ordinal": 39,
+      "name": "/mp3-compressor .flac genuine audio source/output",
+      "pass": true
+    },
+    {
+      "ordinal": 40,
+      "name": "/mp3-compressor .ogg genuine audio source/output",
+      "pass": true
+    },
+    {
+      "ordinal": 41,
+      "name": "Ogg Opus input decoded to genuine audible MP3",
+      "pass": true
+    },
+    {
+      "ordinal": 42,
+      "name": "ALAC in M4A input decoded to genuine audible MP3",
+      "pass": true
+    },
+    {
+      "ordinal": 43,
+      "name": "Low-sample-rate audio: 8000 Hz at 96k",
+      "pass": true
+    },
+    {
+      "ordinal": 44,
+      "name": "Low-sample-rate audio: 16000 Hz at 320k",
+      "pass": true
+    },
+    {
+      "ordinal": 45,
+      "name": "Low-sample-rate audio: 22050 Hz at 320k",
+      "pass": true
+    },
+    {
+      "ordinal": 46,
+      "name": "H264/AAC MP4 input produces decoded H264/AAC MP4",
+      "pass": true
+    },
+    {
+      "ordinal": 47,
+      "name": "H264/AAC MOV input produces decoded H264/AAC MP4",
+      "pass": true
+    },
+    {
+      "ordinal": 48,
+      "name": "HEVC/AAC MP4 input produces decoded H264/AAC MP4",
+      "pass": true
+    },
+    {
+      "ordinal": 49,
+      "name": "ProRes/PCM MOV input produces decoded H264/AAC MP4",
+      "pass": true
+    },
+    {
+      "ordinal": 50,
+      "name": "VP9/AAC MP4 input produces decoded H264/AAC MP4",
+      "pass": true
+    },
+    {
+      "ordinal": 51,
+      "name": "WebM converter downloads a valid H264/AAC MP4 with original duration and dimensions",
+      "pass": true
+    },
+    {
+      "ordinal": 52,
+      "name": "PDF readable content and page count",
+      "pass": true
+    },
+    {
+      "ordinal": 53,
+      "name": "ZIP batch round trip and full original total",
+      "pass": true
+    },
+    {
+      "ordinal": 54,
+      "name": "Extraction downloads every file without compression claims",
+      "pass": true
+    },
+    {
+      "ordinal": 55,
+      "name": "Unsafe archive is blocked",
+      "pass": true
+    },
+    {
+      "ordinal": 56,
+      "name": "Invalid/oversized input fake.mp3",
+      "pass": true
+    },
+    {
+      "ordinal": 57,
+      "name": "Invalid/oversized input oversized.jpg",
+      "pass": true
+    },
+    {
+      "ordinal": 58,
+      "name": "Validation and recovery: /compress",
+      "pass": true
+    },
+    {
+      "ordinal": 59,
+      "name": "Validation and recovery: /image-compressor",
+      "pass": true
+    },
+    {
+      "ordinal": 60,
+      "name": "Validation and recovery: /jpg-compressor",
+      "pass": true
+    },
+    {
+      "ordinal": 61,
+      "name": "Validation and recovery: /jpeg-compressor",
+      "pass": true
+    },
+    {
+      "ordinal": 62,
+      "name": "Validation and recovery: /png-compressor",
+      "pass": true
+    },
+    {
+      "ordinal": 63,
+      "name": "Validation and recovery: /webp-compressor",
+      "pass": true
+    },
+    {
+      "ordinal": 64,
+      "name": "Validation and recovery: /gif-compressor",
+      "pass": true
+    },
+    {
+      "ordinal": 65,
+      "name": "Validation and recovery: /video-compressor",
+      "pass": true
+    },
+    {
+      "ordinal": 66,
+      "name": "Validation and recovery: /webm-to-mp4",
+      "pass": true
+    },
+    {
+      "ordinal": 67,
+      "name": "Validation and recovery: /mp3-compressor",
+      "pass": true
+    },
+    {
+      "ordinal": 68,
+      "name": "Validation and recovery: /wav-compressor",
+      "pass": true
+    },
+    {
+      "ordinal": 69,
+      "name": "Validation and recovery: /wav-to-mp3",
+      "pass": true
+    },
+    {
+      "ordinal": 70,
+      "name": "Validation and recovery: /pdf-compressor",
+      "pass": true
+    },
+    {
+      "ordinal": 71,
+      "name": "Validation and recovery: /archive-compressor",
+      "pass": true
+    },
+    {
+      "ordinal": 72,
+      "name": "Mixed generic batch dispatch",
+      "pass": true
+    },
+    {
+      "ordinal": 73,
+      "name": "Cancel all prevents waiting video and retry succeeds",
+      "pass": true
+    },
+    {
+      "ordinal": 74,
+      "name": "Permanent ZIP failures require a replacement and reject futile submits",
+      "pass": true
+    },
+    {
+      "ordinal": 75,
+      "name": "ZIP creation preserves zero-byte entries (1 inputs)",
+      "pass": true
+    },
+    {
+      "ordinal": 76,
+      "name": "ZIP creation preserves zero-byte entries (2 inputs)",
+      "pass": true
+    },
+    {
+      "ordinal": 77,
+      "name": "ZIP extraction downloads a genuine zero-byte file",
+      "pass": true
+    },
+    {
+      "ordinal": 78,
+      "name": "A real ZIP Worker startup failure remains retryable and recovers",
+      "pass": true
+    },
+    {
+      "ordinal": 79,
+      "name": "No file-upload requests or unhandled browser exceptions",
+      "pass": true
+    }
+  ],
+  "downloads": [
+    {
+      "currentCase": "/jpg-compressor decoded output",
+      "suggestedFilename": "image-compressed.jpg",
+      "bytes": 12391,
+      "sha256": "968e31a6755ccc3c9c402168a7a9932f8e58bd12a81892c3139bc30e8ab8c711"
+    },
+    {
+      "currentCase": "/jpeg-compressor decoded output",
+      "suggestedFilename": "image-compressed.jpg",
+      "bytes": 12391,
+      "sha256": "968e31a6755ccc3c9c402168a7a9932f8e58bd12a81892c3139bc30e8ab8c711"
+    },
+    {
+      "currentCase": "/image-compressor decoded output",
+      "suggestedFilename": "image-compressed.jpg",
+      "bytes": 12391,
+      "sha256": "968e31a6755ccc3c9c402168a7a9932f8e58bd12a81892c3139bc30e8ab8c711"
+    },
+    {
+      "currentCase": "/png-compressor decoded output",
+      "suggestedFilename": "image-compressed.png",
+      "bytes": 3296,
+      "sha256": "ea6a297bf4269622bb3b09b6e9898f898a6b498a4e3d690eea3312e877c626ff"
+    },
+    {
+      "currentCase": "/webp-compressor decoded output",
+      "suggestedFilename": "image.webp",
+      "bytes": 5174,
+      "sha256": "69e51edd3bb895c5e784b10ef02745c298553efdaab5419aa4c186b254b4b7c8"
+    },
+    {
+      "currentCase": "Image comparison zoom, mobile bounds, background scroll and keyboard recovery",
+      "suggestedFilename": "image-compressed.jpg",
+      "bytes": 12391,
+      "sha256": "968e31a6755ccc3c9c402168a7a9932f8e58bd12a81892c3139bc30e8ab8c711"
+    },
+    {
+      "currentCase": "Enter in settings does not start processing; Done then the primary action succeeds",
+      "suggestedFilename": "image.jpg",
+      "bytes": 16876,
+      "sha256": "fd9d57be62459a151153e0bee92a745f37a44efd1debcfd03b9a5ae18205d263"
+    },
+    {
+      "currentCase": "/jpg-compressor real Balanced preset",
+      "suggestedFilename": "image-compressed.jpg",
+      "bytes": 12391,
+      "sha256": "968e31a6755ccc3c9c402168a7a9932f8e58bd12a81892c3139bc30e8ab8c711"
+    },
+    {
+      "currentCase": "/jpg-compressor real High quality preset",
+      "suggestedFilename": "image-compressed.jpg",
+      "bytes": 16859,
+      "sha256": "37500e32b4b5c82b8f22af2383647bdcd0606e1cc1bff5a6e390475d36095f6e"
+    },
+    {
+      "currentCase": "/jpg-compressor real Maximum preset",
+      "suggestedFilename": "image-compressed.jpg",
+      "bytes": 8125,
+      "sha256": "f103efff42a9821988c6a6671ff4920bc030e6233550e42ee0d0f43fad29c9c8"
+    },
+    {
+      "currentCase": "/webp-compressor real Balanced preset",
+      "suggestedFilename": "image.webp",
+      "bytes": 5174,
+      "sha256": "69e51edd3bb895c5e784b10ef02745c298553efdaab5419aa4c186b254b4b7c8"
+    },
+    {
+      "currentCase": "/webp-compressor real High quality preset",
+      "suggestedFilename": "image.webp",
+      "bytes": 5174,
+      "sha256": "69e51edd3bb895c5e784b10ef02745c298553efdaab5419aa4c186b254b4b7c8"
+    },
+    {
+      "currentCase": "/webp-compressor real Maximum preset",
+      "suggestedFilename": "image.webp",
+      "bytes": 5174,
+      "sha256": "69e51edd3bb895c5e784b10ef02745c298553efdaab5419aa4c186b254b4b7c8"
+    },
+    {
+      "currentCase": "PNG real Lossless preset",
+      "suggestedFilename": "image-compressed.png",
+      "bytes": 3296,
+      "sha256": "ea6a297bf4269622bb3b09b6e9898f898a6b498a4e3d690eea3312e877c626ff"
+    },
+    {
+      "currentCase": "PNG real Smart preset",
+      "suggestedFilename": "image-compressed.png",
+      "bytes": 3296,
+      "sha256": "ea6a297bf4269622bb3b09b6e9898f898a6b498a4e3d690eea3312e877c626ff"
+    },
+    {
+      "currentCase": "PNG real Maximum preset",
+      "suggestedFilename": "image-compressed.png",
+      "bytes": 2563,
+      "sha256": "80d3632715ff952df8c5fe98f8ede544763cbda8b0deade7dbbb8766c8f47c7e"
+    },
+    {
+      "currentCase": "PNG to WEBP real High quality preset",
+      "suggestedFilename": "image-converted.webp",
+      "bytes": 8174,
+      "sha256": "41bd541acfcd2b3df0e6bbff18bef07e6f2862fb79132f1549394221206b5d1c"
+    },
+    {
+      "currentCase": "PNG to WEBP real Maximum preset",
+      "suggestedFilename": "image-converted.webp",
+      "bytes": 5556,
+      "sha256": "6903fae35dd581ad773b8103d9a588774c106d4ea3c6bf3f5fb98bb918fbf258"
+    },
+    {
+      "currentCase": "/png-compressor genuine target output and truthful limit status",
+      "suggestedFilename": "image-compressed.png",
+      "bytes": 2535,
+      "sha256": "53b2b143f24bff57b241dad1b0a5fed9700ce89f4653151332db6dd3ec4eeddf"
+    },
+    {
+      "currentCase": "/webp-compressor genuine target output and truthful limit status",
+      "suggestedFilename": "image-compressed.webp",
+      "bytes": 4928,
+      "sha256": "78cfc17dd9c9b7857dd6f50e4c9c9ef2f31023664e37a2b4ff412626745a6793"
+    },
+    {
+      "currentCase": "JPEG real custom quality 10%",
+      "suggestedFilename": "image-compressed.jpg",
+      "bytes": 3697,
+      "sha256": "31ba07f47b87e9b226bb7dd55a48fa44cc950f9726b5875a570d1d28fd681323"
+    },
+    {
+      "currentCase": "JPEG real custom quality 100%",
+      "suggestedFilename": "image-compressed.jpg",
+      "bytes": 16859,
+      "sha256": "37500e32b4b5c82b8f22af2383647bdcd0606e1cc1bff5a6e390475d36095f6e"
+    },
+    {
+      "currentCase": "JPG target size and stable KB input",
+      "suggestedFilename": "image.jpg",
+      "bytes": 16876,
+      "sha256": "fd9d57be62459a151153e0bee92a745f37a44efd1debcfd03b9a5ae18205d263"
+    },
+    {
+      "currentCase": "Image conversion to jpeg",
+      "suggestedFilename": "image-converted.jpg",
+      "bytes": 12777,
+      "sha256": "ce83914a92b9d648e8c8aeb447105ac3e4c5f38408254c2bd4e15b2f4fa45cd2"
+    },
+    {
+      "currentCase": "Image conversion to png",
+      "suggestedFilename": "image-converted.png",
+      "bytes": 23679,
+      "sha256": "6433a5cceee043ce0e91269d831597bb2e707aa48b2ff1cdcbff9c54e25b9b93"
+    },
+    {
+      "currentCase": "Image conversion to webp",
+      "suggestedFilename": "image-converted.webp",
+      "bytes": 6668,
+      "sha256": "3e834ee79899a0facee219cf4dc5c35abc828862a10eb12fe1722db3a60115a3"
+    },
+    {
+      "currentCase": "Transparent JPG conversion is refused without losing the input",
+      "suggestedFilename": "alpha-converted.webp",
+      "bytes": 572,
+      "sha256": "a8e1dd62f2e62414b556945016c9ba9bdacf1ea3f3566d43d3325f66dfcd1be3"
+    },
+    {
+      "currentCase": "GIF animation and finite loop preservation",
+      "suggestedFilename": "animation.gif",
+      "bytes": 16010,
+      "sha256": "056e28401c5cd5fb98bcdfb9881a504ed40c101d33584f776a768cf6344a4034"
+    },
+    {
+      "currentCase": "/wav-compressor .wav genuine audio source/output",
+      "suggestedFilename": "tone.mp3",
+      "bytes": 50157,
+      "sha256": "a51af823394215ae291e5030281922e0d7d0db832c7592d6248a18adcf685076"
+    },
+    {
+      "currentCase": "/wav-to-mp3 .wav genuine audio source/output",
+      "suggestedFilename": "tone.mp3",
+      "bytes": 50157,
+      "sha256": "a51af823394215ae291e5030281922e0d7d0db832c7592d6248a18adcf685076"
+    },
+    {
+      "currentCase": "/mp3-compressor .mp3 genuine audio source/output",
+      "suggestedFilename": "tone.mp3",
+      "bytes": 41840,
+      "sha256": "37a02740181be595785f3fe6e0b54ef420bad928d83e7a9e4974e0de051388ab"
+    },
+    {
+      "currentCase": "/mp3-compressor .m4a genuine audio source/output",
+      "suggestedFilename": "tone.mp3",
+      "bytes": 51120,
+      "sha256": "0762ef6e9245fe9eac3600964e262a2af986e681f3bfd318039f80d3285d3ea1"
+    },
+    {
+      "currentCase": "/mp3-compressor .flac genuine audio source/output",
+      "suggestedFilename": "tone.mp3",
+      "bytes": 50157,
+      "sha256": "a51af823394215ae291e5030281922e0d7d0db832c7592d6248a18adcf685076"
+    },
+    {
+      "currentCase": "/mp3-compressor .ogg genuine audio source/output",
+      "suggestedFilename": "tone.mp3",
+      "bytes": 50157,
+      "sha256": "43a2c62ba132f42faaed0803b8469688e96027c03e33fc3623c4da0117f2a4df"
+    },
+    {
+      "currentCase": "Ogg Opus input decoded to genuine audible MP3",
+      "suggestedFilename": "tone-opus.mp3",
+      "bytes": 49581,
+      "sha256": "7cbac26b2d7959805e3fb27f6672c5628cc49ccb0e9cac9ad26e3d1e589f2e2f"
+    },
+    {
+      "currentCase": "ALAC in M4A input decoded to genuine audible MP3",
+      "suggestedFilename": "tone-alac.mp3",
+      "bytes": 49671,
+      "sha256": "730bdcb039e1016ddb1dba5826b8d87ca440f279f242d040833a889e7a586ffc"
+    },
+    {
+      "currentCase": "Low-sample-rate audio: 8000 Hz at 96k",
+      "suggestedFilename": "tone-8000.mp3",
+      "bytes": 13437,
+      "sha256": "68bea24a752eb43c8eb074ab853681a68d589f32b7c4f0abb2b15746fc9bc60c"
+    },
+    {
+      "currentCase": "Low-sample-rate audio: 16000 Hz at 320k",
+      "suggestedFilename": "tone-16000.mp3",
+      "bytes": 43245,
+      "sha256": "9f647d1ffd1c4c6913470bd5688f45933ebab7eaf82fe0afb08012c0e912264f"
+    },
+    {
+      "currentCase": "Low-sample-rate audio: 22050 Hz at 320k",
+      "suggestedFilename": "tone-22050.mp3",
+      "bytes": 43245,
+      "sha256": "3af9bd6c5b01bcfa8c7009f8fc1141220e410f2b08d012f6c05556433818ca81"
+    },
+    {
+      "currentCase": "H264/AAC MP4 input produces decoded H264/AAC MP4",
+      "suggestedFilename": "video.mp4",
+      "bytes": 17238,
+      "sha256": "88d437440f33f0e6d3296e8f2f81ad873b15132766f0b3b40ce521dfb5df61bd"
+    },
+    {
+      "currentCase": "H264/AAC MOV input produces decoded H264/AAC MP4",
+      "suggestedFilename": "video-compressed.mp4",
+      "bytes": 22437,
+      "sha256": "ce212770322b5ec2a95618ff72f70df2406b5643f31caa62a58cd1a657a6b3fd"
+    },
+    {
+      "currentCase": "HEVC/AAC MP4 input produces decoded H264/AAC MP4",
+      "suggestedFilename": "video-hevc-compressed.mp4",
+      "bytes": 22380,
+      "sha256": "ec05fa47987d203f3fd8982e2731833ca959ee9739337ed345b3f346673a2128"
+    },
+    {
+      "currentCase": "ProRes/PCM MOV input produces decoded H264/AAC MP4",
+      "suggestedFilename": "video-prores-compressed.mp4",
+      "bytes": 23644,
+      "sha256": "ca40b8f25614938837362d863b295d9a93048a6f82b34ec9ffcfbcc2a3edbe9a"
+    },
+    {
+      "currentCase": "VP9/AAC MP4 input produces decoded H264/AAC MP4",
+      "suggestedFilename": "video-vp9-compressed.mp4",
+      "bytes": 22349,
+      "sha256": "33f517601b20fd4eae841698f3b4d3e8287518288810db740c6c235ad34f4805"
+    },
+    {
+      "currentCase": "WebM converter downloads a valid H264/AAC MP4 with original duration and dimensions",
+      "suggestedFilename": "video.mp4",
+      "bytes": 37369,
+      "sha256": "6dbdffe343bc736bca3e0f672188c471b9d3059449d4ad28f2162cb4481025be"
+    },
+    {
+      "currentCase": "PDF readable content and page count",
+      "suggestedFilename": "misnamed-compressed.pdf",
+      "bytes": 731,
+      "sha256": "2aa15ddf72bf2a17bb4d276ed3a1e482738ed732365a15c4d7f8261dc64ba72a"
+    },
+    {
+      "currentCase": "ZIP batch round trip and full original total",
+      "suggestedFilename": "archive.zip",
+      "bytes": 13832,
+      "sha256": "2451ef78bfe4014afcf3338ae45171a6d3747548c1c656472eea62b816eee591"
+    },
+    {
+      "currentCase": "Extraction downloads every file without compression claims",
+      "suggestedFilename": "filecompresser-archive-compressor.zip",
+      "bytes": 233,
+      "sha256": "15a29d94bf753990a341d232f46a9bd46a3fe460c3cb23b135be14ce76713a82"
+    },
+    {
+      "currentCase": "Extraction downloads every file without compression claims",
+      "suggestedFilename": "one.txt",
+      "bytes": 5,
+      "sha256": "a7937b64b8caa58f03721bb6bacf5c78cb235febe0e70b1b84cd99541461a08e"
+    },
+    {
+      "currentCase": "Mixed generic batch dispatch",
+      "suggestedFilename": "filecompresser-compress.zip",
+      "bytes": 34401,
+      "sha256": "1feda977043023459502634493c840e0f3c91c44e3bfb89b4be7aabde9f04466"
+    },
+    {
+      "currentCase": "Cancel all prevents waiting video and retry succeeds",
+      "suggestedFilename": "cancel-compressed.mp4",
+      "bytes": 760632,
+      "sha256": "60d855207f99501f2173fc981070a40f2fbb32c1fc8c28d6adaa233707054d57"
+    },
+    {
+      "currentCase": "Permanent ZIP failures require a replacement and reject futile submits",
+      "suggestedFilename": "filecompresser-archive-compressor.zip",
+      "bytes": 233,
+      "sha256": "c873e2e4a22f6c6219bcdf458ff680bdcb704aa1e49af9ad16e550556bb1d0e0"
+    },
+    {
+      "currentCase": "ZIP creation preserves zero-byte entries (1 inputs)",
+      "suggestedFilename": "archive.zip",
+      "bytes": 118,
+      "sha256": "9eb792e7c98c09e85b712df8b8c955180df63284fe5536abf6ec01581b896593"
+    },
+    {
+      "currentCase": "ZIP creation preserves zero-byte entries (2 inputs)",
+      "suggestedFilename": "archive.zip",
+      "bytes": 986,
+      "sha256": "68badd7727ee65e48bdb78290e24a3490624bc6e4223263bef6b5a918f919990"
+    },
+    {
+      "currentCase": "ZIP extraction downloads a genuine zero-byte file",
+      "suggestedFilename": "empty.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "currentCase": "A real ZIP Worker startup failure remains retryable and recovers",
+      "suggestedFilename": "worker.bin",
+      "bytes": 524288,
+      "sha256": "b727666913c6db8b72b74ce50f1b9c4a4931225e32cc184e2592781007ff2acf"
+    }
+  ],
+  "limitations": [
+    "No new N Firefox79 pass is claimed; M Firefox79 and N focused native checks have their own scope.",
+    "Source/native output validation is separate from human listening and physical-device certification.",
+    "The original N Firefox resize pageY-equality failure remains retained with a native anchoring explanation."
+  ]
+}

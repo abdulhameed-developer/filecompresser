@@ -25,7 +25,7 @@ export async function compressPdf(
   signal?: CancelSignal,
 ): Promise<ProcessedResult> {
   assertNotCancelled(signal)
-  if (file.size > 50 * 1024 * 1024) throw new ProcessingError('This PDF exceeds the 50 MB input limit.')
+  if (file.size > 50 * 1024 * 1024) throw new ProcessingError('This PDF exceeds the 50 MiB input limit.')
   onProgress?.(5, 'Reading PDF…')
 
   let bytes: Uint8Array

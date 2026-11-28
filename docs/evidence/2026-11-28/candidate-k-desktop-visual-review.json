@@ -1,0 +1,1205 @@
+{
+  "recordedAt": "2026-11-28T12:44:34.530467+00:00",
+  "candidate": "K",
+  "status": "REVIEWED_WITH_SCOPE_LIMITS",
+  "buildId": "Rn00o2Wo67ki1taXs8WQS",
+  "homepageSha256": "2619895be5f398566f4ff7c1acd0a37230a148a202b1f9d8f42997f15c78a295",
+  "base": "http://127.0.0.1:3332",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "routesReviewed": 29,
+  "sourceSegmentsReviewed": 132,
+  "originalAndDerivedHashesVerifiedAfterReview": true,
+  "reviews": [
+    {
+      "route": "/404-missing",
+      "original": ".qa-results/phase3/ui/final-k/responsive/404-missing-1440.png",
+      "sha256": "9d8375a7e61d4730fb41b7b661ba775c1c15d53ac87a43c1ebae587e9b9c42bb",
+      "dimensions": [
+        1440,
+        1323
+      ],
+      "sheet": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/404-missing-1440.sheet.png",
+      "sheetSha256": "852b2fce100039f8a10d7d22bf3f23d66cf476bff9e3f7654b588cbc5de5a737",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          1323
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T12:44:34.530467+00:00",
+      "actualVisualReview": true,
+      "method": "Actual inspection of every ordered source strip in the displayed contact sheet, top to bottom; original full-page image retained. Viewing tool further scales large sheets; selected detail follow-ups are separate.",
+      "observations": "The generic missing-route page was inspected separately. Error title, explanation, two recovery actions, grouped popular-tool links and full footer fit. This capture is generic404 evidence, not the separate exact unpublished-draft URL proof.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": []
+    },
+    {
+      "route": "/about",
+      "original": ".qa-results/phase3/ui/final-k/responsive/about-1440.png",
+      "sha256": "74685032fc29b7adf0c5cd270c370da0c4163a0bfa3a8b8d55b4aa76d359fe47",
+      "dimensions": [
+        1440,
+        2640
+      ],
+      "sheet": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/about-1440.sheet.png",
+      "sheetSha256": "ef2d9ea4c7cb978ce935031475237b0078bbe000ab84dbe9ab0caa00b7c3bef3",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          2640
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T12:44:34.530467+00:00",
+      "actualVisualReview": true,
+      "method": "Actual inspection of every ordered source strip in the displayed contact sheet, top to bottom; original full-page image retained. Viewing tool further scales large sheets; selected detail follow-ups are separate.",
+      "observations": "Hero, three product-principle columns, process illustration, two detail rows and final help section were inspected. The formerly weak managed-text section now matches the page typography and link treatment. The support strip and footer align; no undersized black default body text or unrelated blue link remains in that section.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": []
+    },
+    {
+      "route": "/archive-compressor",
+      "original": ".qa-results/phase3/ui/final-k/responsive/archive-compressor-1440.png",
+      "sha256": "94e62d73a2c615381b2d8fbfb4ad2fd46b3f91cb86551c5e2d187535bf4cf7c5",
+      "dimensions": [
+        1440,
+        6301
+      ],
+      "sheet": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/archive-compressor-1440.sheet.png",
+      "sheetSha256": "2fe48c37a91bbf467d81eadad359c0f69f551b07825995f82ff9689458798eb3",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          6000
+        ],
+        [
+          6000,
+          6301
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T12:44:34.530467+00:00",
+      "actualVisualReview": true,
+      "method": "Actual inspection of every ordered source strip in the displayed contact sheet, top to bottom; original full-page image retained. Viewing tool further scales large sheets; selected detail follow-ups are separate.",
+      "observations": "ZIP extraction is clearly named in hero and workspace; the introduction correctly discusses refusal before downloads. The14-section guide, supported-format/limit text, contextual extraction information, six FAQ rows and footer were inspected. No clipping or confusing compression-result decoration seen in the empty state.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ]
+    },
+    {
+      "route": "/blog/choosing-a-compression-mode",
+      "original": ".qa-results/phase3/ui/final-k/responsive/blog--choosing-a-compression-mode-1440.png",
+      "sha256": "34af2a628665d81310b64fec629064620acb25feed9217c20545e336e282074a",
+      "dimensions": [
+        1440,
+        5772
+      ],
+      "sheet": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/blog--choosing-a-compression-mode-1440.sheet.png",
+      "sheetSha256": "06595cbc9ce86490e0df6cd23b446b94fed217b04cc08c96d6692af98b01af78",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          5772
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T12:44:34.530467+00:00",
+      "actualVisualReview": true,
+      "method": "Actual inspection of every ordered source strip in the displayed contact sheet, top to bottom; original full-page image retained. Viewing tool further scales large sheets; selected detail follow-ups are separate.",
+      "observations": "Header/cover/TOC, mode comparison panel, all quality/target/PNG/dimension sections, sources and related cards were reviewed. Reading width and heading hierarchy are consistent. The diagram panel and callout remain readable and visually connected to the article.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": []
+    },
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "original": ".qa-results/phase3/ui/final-k/responsive/blog--compressing-files-for-the-web-1440.png",
+      "sha256": "a417e261cc3a5944356de5bd89148ebbfdf94957686625f9a486c56250423a33",
+      "dimensions": [
+        1440,
+        4861
+      ],
+      "sheet": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/blog--compressing-files-for-the-web-1440.sheet.png",
+      "sheetSha256": "484372e1d528e8f7fadcab5ca9db98c9cde7a02f791d93bbb2c2dcdec2d08984",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          4861
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T12:44:34.530467+00:00",
+      "actualVisualReview": true,
+      "method": "Actual inspection of every ordered source strip in the displayed contact sheet, top to bottom; original full-page image retained. Viewing tool further scales large sheets; selected detail follow-ups are separate.",
+      "observations": "Header/cover/TOC, centered compact format tree, image/audio/video/PDF sections, internal tool links and sources were reviewed. The compact diagram has no large unused right-hand area. Article paragraphs, tool CTA, related cards and footer fit.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": []
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "original": ".qa-results/phase3/ui/final-k/responsive/blog--honest-file-size-reporting-1440.png",
+      "sha256": "a906c1ee61212de585eb5fa441bef952bdf930ffc55864e9808c2378736aa71b",
+      "dimensions": [
+        1440,
+        4501
+      ],
+      "sheet": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/blog--honest-file-size-reporting-1440.sheet.png",
+      "sheetSha256": "c69e45e07abd294e1f2e4ecc0a31bf46b2407ec0773b333861ca3df0fe2617fd",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4501
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T12:44:34.530467+00:00",
+      "actualVisualReview": true,
+      "method": "Actual inspection of every ordered source strip in the displayed contact sheet, top to bottom; original full-page image retained. Viewing tool further scales large sheets; selected detail follow-ups are separate.",
+      "observations": "Header/cover/TOC, size comparison diagram, new three-outcome bullet list, hard-limit explanation, actual-download guidance and footer were reviewed. The wider diagram shows all labels and bars within its frame; the list preserves distinct hanging bullet lines.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": []
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "original": ".qa-results/phase3/ui/final-k/responsive/blog--how-browser-compression-works-1440.png",
+      "sha256": "97975261b88ccb2329f6fcf511a336c530f27cffe8d6589e3c17de8ed5c5dace",
+      "dimensions": [
+        1440,
+        4595
+      ],
+      "sheet": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/blog--how-browser-compression-works-1440.sheet.png",
+      "sheetSha256": "0fe5f13cc6fb4521d618717364f7a0bf4f55724ec12c32dc839a442ac237924d",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4595
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T12:44:34.530467+00:00",
+      "actualVisualReview": true,
+      "method": "Actual inspection of every ordered source strip in the displayed contact sheet, top to bottom; original full-page image retained. Viewing tool further scales large sheets; selected detail follow-ups are separate.",
+      "observations": "Article header with one Updated label, full cover, TOC, all four processing steps, sources, tool CTA, related cards and footer were reviewed. The pipeline SVG now extends to its readable wide frame without clipping, while paragraph width stays comfortable.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": []
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "original": ".qa-results/phase3/ui/final-k/responsive/blog--what-privacy-claim-really-means-1440.png",
+      "sha256": "26234dc089deb73e21627a2113e055f0085a5979315821ea825108157b7759a1",
+      "dimensions": [
+        1440,
+        4964
+      ],
+      "sheet": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/blog--what-privacy-claim-really-means-1440.sheet.png",
+      "sheetSha256": "b01b9bb0e8f05ec8bc98674dca39b19e22f428f31018266273751c5c12daf253",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          4964
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T12:44:34.530467+00:00",
+      "actualVisualReview": true,
+      "method": "Actual inspection of every ordered source strip in the displayed contact sheet, top to bottom; original full-page image retained. Viewing tool further scales large sheets; selected detail follow-ups are separate.",
+      "observations": "Header/cover/TOC, data-flow diagram, local-versus-network sections, storage/backup callout, sources and related cards were reviewed. The widened SVG shows its right-hand page/engine side without clipping; prose, caption and CTA reflow within the article composition.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": []
+    },
+    {
+      "route": "/blog",
+      "original": ".qa-results/phase3/ui/final-k/responsive/blog-1440.png",
+      "sha256": "0a51036956505a341b7f149f6a824e873d6188eeac6c15304fbce9401414c393",
+      "dimensions": [
+        1440,
+        2568
+      ],
+      "sheet": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/blog-1440.sheet.png",
+      "sheetSha256": "1469bbd56f5bbb0e68156d18145a8cd65d9ab11825ebaa32db93cadb87007c30",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          2568
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T12:44:34.530467+00:00",
+      "actualVisualReview": true,
+      "method": "Actual inspection of every ordered source strip in the displayed contact sheet, top to bottom; original full-page image retained. Viewing tool further scales large sheets; selected detail follow-ups are separate.",
+      "observations": "Featured first article and four remaining article cards were reviewed. Cover crops, card headings/descriptions and single Updated date labels fit. The two-column card grid has balanced heights and clear spacing; footer begins after the final row.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": []
+    },
+    {
+      "route": "/compress",
+      "original": ".qa-results/phase3/ui/final-k/responsive/compress-1440.png",
+      "sha256": "d6272e7f86d08b60b73c3c55c8a478b64a08e5146276d97d4a04d56eb584c7dd",
+      "dimensions": [
+        1440,
+        5896
+      ],
+      "sheet": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/compress-1440.sheet.png",
+      "sheetSha256": "00409691b5498663815d2d68dcdad831ed9e3305c1715dfe117c5973e3abe6c2",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          5896
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T12:44:34.530467+00:00",
+      "actualVisualReview": true,
+      "method": "Actual inspection of every ordered source strip in the displayed contact sheet, top to bottom; original full-page image retained. Viewing tool further scales large sheets; selected detail follow-ups are separate.",
+      "observations": "Mixed-file upload panel and accepted formats precede the13-section guide. Numbered steps and bullets have readable separation; six custom FAQ headers, contextual output information, related-tool grid and footer align. Long authored guidance remains below the action.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ]
+    },
+    {
+      "route": "/contact",
+      "original": ".qa-results/phase3/ui/final-k/responsive/contact-1440.png",
+      "sha256": "c4f125b682db670aba0abce100992dda5d4a762d1220043c0586262382bf3668",
+      "dimensions": [
+        1440,
+        2152
+      ],
+      "sheet": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/contact-1440.sheet.png",
+      "sheetSha256": "9b3cce07471d44988b9ed7c0ef359dea07b14a0512e4b5767bd60504443cf844",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2152
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T12:44:34.530467+00:00",
+      "actualVisualReview": true,
+      "method": "Actual inspection of every ordered source strip in the displayed contact sheet, top to bottom; original full-page image retained. Viewing tool further scales large sheets; selected detail follow-ups are separate.",
+      "observations": "Contact destination and troubleshooting introduction are easy to find. Five issue cards, private-content guidance and the guide strip were reviewed through the footer. The fifth card naturally occupies the final left grid cell; no overlap, clipped text or oversized empty card was seen.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": []
+    },
+    {
+      "route": "/disclaimer",
+      "original": ".qa-results/phase3/ui/final-k/responsive/disclaimer-1440.png",
+      "sha256": "51684638f6d6662483b691940c0ed093866ee881e1308540ff19d4da368e3b50",
+      "dimensions": [
+        1440,
+        2742
+      ],
+      "sheet": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/disclaimer-1440.sheet.png",
+      "sheetSha256": "43700205b3944920551aeaba06643e5b5628f0ca1b327c529f0f3e6344d3f572",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          2742
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T12:44:34.530467+00:00",
+      "actualVisualReview": true,
+      "method": "Actual inspection of every ordered source strip in the displayed contact sheet, top to bottom; original full-page image retained. Viewing tool further scales large sheets; selected detail follow-ups are separate.",
+      "observations": "Header, factual introduction, seven-section contents control, all limitations/warranty/liability paragraphs and footer were reviewed. Paragraph width, heading contrast and section gaps remain consistent with the other legal pages.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": []
+    },
+    {
+      "route": "/gif-compressor",
+      "original": ".qa-results/phase3/ui/final-k/responsive/gif-compressor-1440.png",
+      "sha256": "0469887d69b5c86e70c077157b347b109f83604ce42589e4d24823a03066504a",
+      "dimensions": [
+        1440,
+        6420
+      ],
+      "sheet": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/gif-compressor-1440.sheet.png",
+      "sheetSha256": "e09aa8d1a571bb3a82e3f86ddb8813ad15b9cee25c17fed4c71e1f39de300f1d",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          6000
+        ],
+        [
+          6000,
+          6420
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T12:44:34.530467+00:00",
+      "actualVisualReview": true,
+      "method": "Actual inspection of every ordered source strip in the displayed contact sheet, top to bottom; original full-page image retained. Viewing tool further scales large sheets; selected detail follow-ups are separate.",
+      "observations": "GIF uploader and15-section animated-image guide were reviewed through the footer. The multi-line reasons-for-size list now uses actual bullets with hanging alignment. Recommended/Maximum sections, limits, FAQs and related tools remain visually distinct.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ]
+    },
+    {
+      "route": "/",
+      "original": ".qa-results/phase3/ui/final-k/responsive/home-1440.png",
+      "sha256": "f0256890d60096216dd0c58091bb2d9d94d687c54a83c4947369c948c32f5d74",
+      "dimensions": [
+        1440,
+        7504
+      ],
+      "sheet": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/home-1440.sheet.png",
+      "sheetSha256": "17366ef2aa652e50f0831cbe5124e9bf4bdad9edacbd80c4e7c5a8b83fa763a7",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          6000
+        ],
+        [
+          6000,
+          7200
+        ],
+        [
+          7200,
+          7504
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T12:44:34.530467+00:00",
+      "actualVisualReview": true,
+      "method": "Actual inspection of every ordered source strip in the displayed contact sheet, top to bottom; original full-page image retained. Viewing tool further scales large sheets; selected detail follow-ups are separate.",
+      "observations": "Hero, first upload action,14 tool cards, filters/search, process illustration,12-section authored reading body, Updated guide cards, FAQs and footer were reviewed in order. The task action comes before the long guide. Lists and links retain a clear reading column; no clipped/overlapping section was seen.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ]
+    },
+    {
+      "route": "/image-compressor",
+      "original": ".qa-results/phase3/ui/final-k/responsive/image-compressor-1440.png",
+      "sha256": "1cad86ce136b302a9750a1c66ba76a3740771eb2084d5ba7e717e59138d2ca88",
+      "dimensions": [
+        1440,
+        6120
+      ],
+      "sheet": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/image-compressor-1440.sheet.png",
+      "sheetSha256": "42fd2986ab24f6b192d181960b33d5f1124d979f7511f7292f4724e54a5c7d5b",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          6000
+        ],
+        [
+          6000,
+          6120
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T12:44:34.530467+00:00",
+      "actualVisualReview": true,
+      "method": "Actual inspection of every ordered source strip in the displayed contact sheet, top to bottom; original full-page image retained. Viewing tool further scales large sheets; selected detail follow-ups are separate.",
+      "observations": "General image upload,16-section guide, format-specific subheadings, workflow steps and original-dimension statements were inspected. Expanded first output explanation and collapsed remaining disclosures align. Related links and footer fit.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ]
+    },
+    {
+      "route": "/jpeg-compressor",
+      "original": ".qa-results/phase3/ui/final-k/responsive/jpeg-compressor-1440.png",
+      "sha256": "fefe476e76b04b503bb73ddb385e0e19570b0080fde58766ad399d741d70e00a",
+      "dimensions": [
+        1440,
+        6298
+      ],
+      "sheet": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/jpeg-compressor-1440.sheet.png",
+      "sheetSha256": "4c9ef3f87f90905efe3f74910f90e0612123b421aee479d83140b9b43d4d8a22",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          6000
+        ],
+        [
+          6000,
+          6298
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T12:44:34.530467+00:00",
+      "actualVisualReview": true,
+      "method": "Actual inspection of every ordered source strip in the displayed contact sheet, top to bottom; original full-page image retained. Viewing tool further scales large sheets; selected detail follow-ups are separate.",
+      "observations": "JPEG hero/upload,19-section reading guide and JPG-versus-JPEG explanation were inspected separately. Subheading hierarchy, ordered workflow and later metadata/privacy sections remain readable. Custom FAQs, output disclosures and footer fit.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ]
+    },
+    {
+      "route": "/jpg-compressor",
+      "original": ".qa-results/phase3/ui/final-k/responsive/jpg-compressor-1440.png",
+      "sha256": "fda84b534486a5bdf777e51757d161762856b5593c6c469d73b5845fc9203dd7",
+      "dimensions": [
+        1440,
+        6005
+      ],
+      "sheet": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/jpg-compressor-1440.sheet.png",
+      "sheetSha256": "83e1bfba1272eca131fe622c899a12e4619611515899102ac206c3fe52b34db1",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          6000
+        ],
+        [
+          6000,
+          6005
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T12:44:34.530467+00:00",
+      "actualVisualReview": true,
+      "method": "Actual inspection of every ordered source strip in the displayed contact sheet, top to bottom; original full-page image retained. Viewing tool further scales large sheets; selected detail follow-ups are separate.",
+      "observations": "JPG upload and concise hero remain prominent. The17-section guide separates quality modes,50KB target guidance and practical uses. Custom FAQ rows and two-row related links align, with no overflow or text/icon collision seen.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ]
+    },
+    {
+      "route": "/mp3-compressor",
+      "original": ".qa-results/phase3/ui/final-k/responsive/mp3-compressor-1440.png",
+      "sha256": "b3994c44b9fc17e29c4e9df1a5fb9d983e9ad6e4f65a29c18fd15ed0beab731b",
+      "dimensions": [
+        1440,
+        5659
+      ],
+      "sheet": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/mp3-compressor-1440.sheet.png",
+      "sheetSha256": "396c55e6e236810c692dbc0d90904ffd75ca403370493171619204149bf550a4",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          5659
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T12:44:34.530467+00:00",
+      "actualVisualReview": true,
+      "method": "Actual inspection of every ordered source strip in the displayed contact sheet, top to bottom; original full-page image retained. Viewing tool further scales large sheets; selected detail follow-ups are separate.",
+      "observations": "MP3 hero/uploader,11-section guide, bitrate subheadings and newly semantic five-item reasons list were inspected. Wrapped bullet lines align properly; output information, five FAQ rows and related tools are proportionate.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ]
+    },
+    {
+      "route": "/pdf-compressor",
+      "original": ".qa-results/phase3/ui/final-k/responsive/pdf-compressor-1440.png",
+      "sha256": "471a231a434426cfab79c76f89b6d2778ef7583d77341ff4e687879dc14ff13f",
+      "dimensions": [
+        1440,
+        5827
+      ],
+      "sheet": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/pdf-compressor-1440.sheet.png",
+      "sheetSha256": "3eb80054fc8a09ad32e08b676fe6ec065a1dda53d64a0b6005b8f1c340e85c2a",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          5827
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T12:44:34.530467+00:00",
+      "actualVisualReview": true,
+      "method": "Actual inspection of every ordered source strip in the displayed contact sheet, top to bottom; original full-page image retained. Viewing tool further scales large sheets; selected detail follow-ups are separate.",
+      "observations": "PDF upload and structural-optimization introduction precede the11-section guide. The six-item processing-limit list now uses real bullets with readable wrapped lines. No-downsampling caveat, six FAQ rows, related tools and footer remain clear.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ]
+    },
+    {
+      "route": "/png-compressor",
+      "original": ".qa-results/phase3/ui/final-k/responsive/png-compressor-1440.png",
+      "sha256": "7af6e983a92200551cd8009d0ad43a430a8c7b5a71a8652011f8d701958d7e40",
+      "dimensions": [
+        1440,
+        5898
+      ],
+      "sheet": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/png-compressor-1440.sheet.png",
+      "sheetSha256": "c494bcd7db83b460820ad1f31234bc2b36bd48f62801aaba732445ea8cce3a30",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          5898
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T12:44:34.530467+00:00",
+      "actualVisualReview": true,
+      "method": "Actual inspection of every ordered source strip in the displayed contact sheet, top to bottom; original full-page image retained. Viewing tool further scales large sheets; selected detail follow-ups are separate.",
+      "observations": "Lossless-default introduction, PNG-only drop area and13-section guide fit. Ordered workflow and real bullet lists have consistent leading. Target/transparency explanations, six FAQ rows and related tools are clearly separated. No visual clipping seen.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ]
+    },
+    {
+      "route": "/privacy",
+      "original": ".qa-results/phase3/ui/final-k/responsive/privacy-1440.png",
+      "sha256": "ce709b7c6a6b47a5c7d0231447f443a6ece5375d3c4b9094911aa5c50f8a6d23",
+      "dimensions": [
+        1440,
+        3899
+      ],
+      "sheet": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/privacy-1440.sheet.png",
+      "sheetSha256": "509a1ed3c0caf2a91fb3da5dc17889ff0bc175076265a6cd43277372b1b57cfe",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          3899
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T12:44:34.530467+00:00",
+      "actualVisualReview": true,
+      "method": "Actual inspection of every ordered source strip in the displayed contact sheet, top to bottom; original full-page image retained. Viewing tool further scales large sheets; selected detail follow-ups are separate.",
+      "observations": "One Last updated line, concise introduction, collapsed11-section contents control, every policy section, provider links and final contact link were inspected. The legal reading column and section spacing support scanning; no card-heavy layout or overflow seen.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": []
+    },
+    {
+      "route": "/sitemap",
+      "original": ".qa-results/phase3/ui/final-k/responsive/sitemap-1440.png",
+      "sha256": "8e291d47ca2406a2d7b525c51e0420253a357073571fae072d6e3636ccdbe6ab",
+      "dimensions": [
+        1440,
+        1620
+      ],
+      "sheet": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/sitemap-1440.sheet.png",
+      "sheetSha256": "dbba0b18365b925745e3cbd76ce09e543b4dd647e4504a2bea8c827173bc630b",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          1620
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T12:44:34.530467+00:00",
+      "actualVisualReview": true,
+      "method": "Actual inspection of every ordered source strip in the displayed contact sheet, top to bottom; original full-page image retained. Viewing tool further scales large sheets; selected detail follow-ups are separate.",
+      "observations": "Every grouped section was inspected: image tools, media, PDF/archives, product pages and all five guides. Compact link rows, aligned SVG arrows and the two-column span for guide links make the page efficient to scan. No truncated article titles or row overlap seen.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": []
+    },
+    {
+      "route": "/terms",
+      "original": ".qa-results/phase3/ui/final-k/responsive/terms-1440.png",
+      "sha256": "71b974fc685485982d34453bd94d6f0b346bd7d3f5cfda1d234f1078aafcbff5",
+      "dimensions": [
+        1440,
+        2533
+      ],
+      "sheet": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/terms-1440.sheet.png",
+      "sheetSha256": "61193ca6317a05b0f8fea8d90bbcb6f699064ecef51e5058f7a434d222aefc14",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          2533
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T12:44:34.530467+00:00",
+      "actualVisualReview": true,
+      "method": "Actual inspection of every ordered source strip in the displayed contact sheet, top to bottom; original full-page image retained. Viewing tool further scales large sheets; selected detail follow-ups are separate.",
+      "observations": "One Last updated line, seven-section contents control, usage/backup/processing/acceptable-use/IP sections and footer were reviewed. The page uses a restrained legal reading layout, clear headings and ordinary underlined contact link, with no clipping seen.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": []
+    },
+    {
+      "route": "/video-compressor",
+      "original": ".qa-results/phase3/ui/final-k/responsive/video-compressor-1440.png",
+      "sha256": "f131bde73284da3a7627cfec91a35086d3c5bd0f300d6820852952fb1aa70f7d",
+      "dimensions": [
+        1440,
+        6868
+      ],
+      "sheet": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/video-compressor-1440.sheet.png",
+      "sheetSha256": "a4acdcb447ec42e89fb252e247f78b97a0ef26c8b0b1d3935324588ff5e06e4f",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          6000
+        ],
+        [
+          6000,
+          6868
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T12:44:34.530467+00:00",
+      "actualVisualReview": true,
+      "method": "Actual inspection of every ordered source strip in the displayed contact sheet, top to bottom; original full-page image retained. Viewing tool further scales large sheets; selected detail follow-ups are separate.",
+      "observations": "MP4/MOV hero and upload surface precede the19-section video guide. Numbered instructions, original/1080/720/480 settings descriptions, codec/quality/retained-stream sections and FAQs remain legible and ordered. No clipped controls or section overlap seen.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ]
+    },
+    {
+      "route": "/wav-compressor",
+      "original": ".qa-results/phase3/ui/final-k/responsive/wav-compressor-1440.png",
+      "sha256": "a0b1345915b62b6d3d3a8efc3bbb0a6f598e9ddb013e107823e6280018ebaf7e",
+      "dimensions": [
+        1440,
+        5855
+      ],
+      "sheet": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/wav-compressor-1440.sheet.png",
+      "sheetSha256": "152086361e5610d659fdad22d56208cfaaad968229cff9933251c7b458fe2584",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          5855
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T12:44:34.530467+00:00",
+      "actualVisualReview": true,
+      "method": "Actual inspection of every ordered source strip in the displayed contact sheet, top to bottom; original full-page image retained. Viewing tool further scales large sheets; selected detail follow-ups are separate.",
+      "observations": "WAV-to-MP3 conversion is named in the page title and workspace. The12-section guide uses a true bitrate list with consistent multi-line spacing. Conversion caveats, five FAQ rows and related-tool links fit; no internal alias banner is present.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ]
+    },
+    {
+      "route": "/wav-to-mp3",
+      "original": ".qa-results/phase3/ui/final-k/responsive/wav-to-mp3-1440.png",
+      "sha256": "a0b1345915b62b6d3d3a8efc3bbb0a6f598e9ddb013e107823e6280018ebaf7e",
+      "dimensions": [
+        1440,
+        5855
+      ],
+      "sheet": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/wav-to-mp3-1440.sheet.png",
+      "sheetSha256": "5d4829ada135a3a1c35c9a364a2b5dc7abcaf7ca7c9f61cd9c5a0a6a6ec355fe",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          5855
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T12:44:34.530467+00:00",
+      "actualVisualReview": true,
+      "method": "Actual inspection of every ordered source strip in the displayed contact sheet, top to bottom; original full-page image retained. Viewing tool further scales large sheets; selected detail follow-ups are separate.",
+      "observations": "The alias was inspected independently, top to bottom. It presents the same WAV-to-MP3 title/workspace and complete guide as the canonical route, without an implementation notice. Lists, FAQ rows, related tools and footer show no layout defect.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ]
+    },
+    {
+      "route": "/webm-to-mp4",
+      "original": ".qa-results/phase3/ui/final-k/responsive/webm-to-mp4-1440.png",
+      "sha256": "65514e51e04f723d451f19b330bfe5f4323e163785ffb107d3ddb6ead5883f06",
+      "dimensions": [
+        1440,
+        3190
+      ],
+      "sheet": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/webm-to-mp4-1440.sheet.png",
+      "sheetSha256": "5395aac62826895d16c7a9dfd8eef5c6c098cc885625da3b8f1337ad23409323",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3190
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T12:44:34.530467+00:00",
+      "actualVisualReview": true,
+      "method": "Actual inspection of every ordered source strip in the displayed contact sheet, top to bottom; original full-page image retained. Viewing tool further scales large sheets; selected detail follow-ups are separate.",
+      "observations": "Dedicated conversion wording is visible in both hero and upload workspace. The shorter guide presents fixed MP4 output and three steps; source-dimension and timing limits follow. Four FAQ rows, output disclosures, related tools and footer fit without compression-only visual controls in this empty state.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": []
+    },
+    {
+      "route": "/webp-compressor",
+      "original": ".qa-results/phase3/ui/final-k/responsive/webp-compressor-1440.png",
+      "sha256": "26d5b0b3a5b593025d36a497aeca0c187a40e3c510b9a10c3a9f192f2dc8ebb3",
+      "dimensions": [
+        1440,
+        6040
+      ],
+      "sheet": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/webp-compressor-1440.sheet.png",
+      "sheetSha256": "59a66f07e1bc2574227dd65941e14dbd615e7dc3532d98977fec97d3b3afe8ea",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          6000
+        ],
+        [
+          6000,
+          6040
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T12:44:34.530467+00:00",
+      "actualVisualReview": true,
+      "method": "Actual inspection of every ordered source strip in the displayed contact sheet, top to bottom; original full-page image retained. Viewing tool further scales large sheets; selected detail follow-ups are separate.",
+      "observations": "WebP-specific uploader,14-section guide, five-item quality-impact bullet list, dimensions/transparency paragraphs, contextual output section and six FAQ rows were reviewed. The converted bullet content now scans as a list, with even line and item spacing.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ]
+    },
+    {
+      "route": "/zip-compressor",
+      "original": ".qa-results/phase3/ui/final-k/responsive/zip-compressor-1440.png",
+      "sha256": "3a6cdc0cf7cf9aca8626ae2b1f36a472e160f9733120f11b47a805d192332e3a",
+      "dimensions": [
+        1440,
+        5470
+      ],
+      "sheet": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/zip-compressor-1440.sheet.png",
+      "sheetSha256": "f07ece4a91f36277f1ee5efa2b4932734d6982dc3f7b4e1e83d2074429647f61",
+      "strips": [
+        [
+          0,
+          1200
+        ],
+        [
+          1200,
+          2400
+        ],
+        [
+          2400,
+          3600
+        ],
+        [
+          3600,
+          4800
+        ],
+        [
+          4800,
+          5470
+        ]
+      ],
+      "actualVisualReviewByGenerator": false,
+      "reviewedAt": "2026-11-28T12:44:34.530467+00:00",
+      "actualVisualReview": true,
+      "method": "Actual inspection of every ordered source strip in the displayed contact sheet, top to bottom; original full-page image retained. Viewing tool further scales large sheets; selected detail follow-ups are separate.",
+      "observations": "ZIP creation is named consistently in hero, workspace and guide. The12-section body separates creation steps from size/security caveats. About-this-archive disclosures, six FAQ rows and related links are compact and aligned.",
+      "assessment": "NO_NEW_BLOCKING_VISUAL_DEFECT_OBSERVED_IN_DEFAULT_DESKTOP_CAPTURE",
+      "requiredRefinement": [],
+      "flags": [
+        "LONG_AUTHORED_READING_BODY_RETAINED"
+      ]
+    }
+  ],
+  "confirmedJRefinementsVisible": [
+    "About managed-text typography/link cohesion",
+    "WebP/GIF/MP3/WAV/PDF multi-line enumerations rendered as semantic lists with wrapped-line leading",
+    "Wide pipeline/size/dataflow article diagrams no longer clipped to680px prose",
+    "Compact format tree remains centered without unused horizontal canvas",
+    "WAV alias presents product content without an implementation banner",
+    "Original-dimension wording visible in shared image output guide"
+  ],
+  "remainingBoundaries": [
+    "Only the29 actual1440px default/empty full-page captures reviewed here; mobile/tablet/shared-state reviews have separate owners/evidence.",
+    "No successful processing, Compare behavior, keyboard/focus/hover, cross-browser, screen-reader or live-production claim follows from these screenshots.",
+    "Known full-app Firefox native Compare failure remains a release blocker outside this default-view evidence.",
+    "The long SEO-team authored reading bodies are retained; this review does not claim every sentence was proofread or that no subjective design improvement is possible.",
+    "The generic404 capture is distinct from the exact unpublished-draft route verification."
+  ],
+  "unscaledDetailFollowups": {
+    "count": 6,
+    "pages": 3,
+    "manifest": "docs/evidence/2026-11-28/visual-comparisons/manifest.json",
+    "actualBeforeAndAfterImagesInspected": true
+  }
+}

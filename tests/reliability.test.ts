@@ -97,7 +97,7 @@ describe('archive preflight and output integrity', () => {
         view.setUint32(offset + 24, 5 * 1024 * 1024, true)
         view.setUint32(local + 22, 5 * 1024 * 1024, true)
       }
-    await expect(extractZip(file(bytes))).rejects.toThrow(/more memory.*500 MB/)
+    await expect(extractZip(file(bytes))).rejects.toThrow(/more memory.*500 MiB/)
   })
   it('rejects excessive entry count on a tiny archive', async () => {
     const entries = Object.fromEntries(
@@ -151,7 +151,7 @@ describe('archive preflight and output integrity', () => {
     const input = file(new Uint8Array([1]))
     Object.defineProperty(input, 'size', { value: 301 * 1024 * 1024 })
     const read = vi.spyOn(input, 'arrayBuffer')
-    await expect(createZip([input])).rejects.toThrow(/300 MB/)
+    await expect(createZip([input])).rejects.toThrow(/300 MiB/)
     expect(read).not.toHaveBeenCalled()
   })
 })

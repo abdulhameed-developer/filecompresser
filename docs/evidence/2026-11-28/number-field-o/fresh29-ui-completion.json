@@ -1,0 +1,47 @@
+{
+  "base": "http://127.0.0.1:3370",
+  "startedAt": "2026-11-28T14:43:32.258Z",
+  "homepageSha256": "4bba3c3c5b3dab637959431221a5491f02e6f199ad302bdb9a71852c81144ff6",
+  "sourceHashes": {
+    "scripts/responsive-audit.mjs": "61c28e2b15536bd072834d8393c1d5fb85dd6ebcf6ca90f075e715cc83193584",
+    "scripts/accessibility-audit.mjs": "1c5113de04a0d9a76647738f0fe8dc074f18241a3acd15a60afb14fae4123737",
+    "scripts/shared-ui-audits.mjs": "86557d6db7acbb4ecec136d8b55c1264d6d4f07e825de22e98ece22cf7134450"
+  },
+  "jobs": [
+    {
+      "name": "responsive",
+      "startedAt": "2026-11-28T14:43:32.258Z",
+      "pid": 215343,
+      "code": 0,
+      "signal": null,
+      "finishedAt": "2026-11-28T14:44:16.615Z",
+      "homeAfter": "4bba3c3c5b3dab637959431221a5491f02e6f199ad302bdb9a71852c81144ff6"
+    },
+    {
+      "name": "axe",
+      "startedAt": "2026-11-28T14:44:16.621Z",
+      "pid": 216449,
+      "code": 0,
+      "signal": null,
+      "finishedAt": "2026-11-28T14:44:38.740Z",
+      "homeAfter": "4bba3c3c5b3dab637959431221a5491f02e6f199ad302bdb9a71852c81144ff6"
+    },
+    {
+      "name": "shared",
+      "startedAt": "2026-11-28T14:44:38.746Z",
+      "pid": 217066,
+      "code": 0,
+      "signal": null,
+      "finishedAt": "2026-11-28T14:46:17.402Z",
+      "homeAfter": "4bba3c3c5b3dab637959431221a5491f02e6f199ad302bdb9a71852c81144ff6"
+    }
+  ],
+  "status": "PASS",
+  "sourceHashesAfter": {
+    "scripts/responsive-audit.mjs": "61c28e2b15536bd072834d8393c1d5fb85dd6ebcf6ca90f075e715cc83193584",
+    "scripts/accessibility-audit.mjs": "1c5113de04a0d9a76647738f0fe8dc074f18241a3acd15a60afb14fae4123737",
+    "scripts/shared-ui-audits.mjs": "86557d6db7acbb4ecec136d8b55c1264d6d4f07e825de22e98ece22cf7134450"
+  },
+  "homepageSha256After": "4bba3c3c5b3dab637959431221a5491f02e6f199ad302bdb9a71852c81144ff6",
+  "completedAt": "2026-11-28T14:46:17.416Z"
+}

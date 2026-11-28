@@ -82,7 +82,7 @@ export async function createZip(
     uncompressedSize > ARCHIVE_LIMITS.maxBatchBytes
   ) {
     throw new ProcessingError(
-      'Use at most 500 files and 300 MB in one ZIP batch.',
+      'Use at most 500 files and 300 MiB in one ZIP batch.',
     )
   }
   const entries: Record<string, Uint8Array> = Object.create(null)
@@ -208,12 +208,12 @@ function manifest(bytes: Uint8Array, allowUnsafe = false): Entry[] {
       fail('This archive contains an unsafe file path and was blocked.')
     if (size > ARCHIVE_LIMITS.maxSingleEntryBytes)
       fail(
-        'A file inside this archive is larger than the 200 MB per-file limit.',
+        'A file inside this archive is larger than the 200 MiB per-file limit.',
       )
     total += size
     if (total > ARCHIVE_LIMITS.maxUncompressedBytes)
       fail(
-        'This archive needs more memory than this tool allows (500 MB extracted).',
+        'This archive needs more memory than this tool allows (500 MiB extracted).',
       )
     // A small allowance accepts highly compressible small files, but not tiny bombs.
     if (
@@ -266,7 +266,7 @@ async function readArchive(
   assertNotCancelled(signal)
   if (file.size > ARCHIVE_LIMITS.maxArchiveBytes)
     throw new ProcessingError(
-      'This archive is larger than the 150 MB input limit.',
+      'This archive is larger than the 150 MiB input limit.',
       ARCHIVE_INPUT_FAILURE_CODES.invalid,
     )
   const bytes = await blobToUint8Array(file)

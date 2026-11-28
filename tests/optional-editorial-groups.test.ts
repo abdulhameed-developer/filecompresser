@@ -3,6 +3,7 @@ import { parseEditorialContent, parsePublishedPost } from '@/lib/content'
 import { postAuthor, postImage } from '@/lib/blog'
 import { ORGANIZATION_NAME } from '@/lib/seo'
 import { collections } from '../tina/collections.mjs'
+import { editorialFieldPublicationError } from '../tina/editorial-policy.mjs'
 
 const article = {
   published: true, title: 'Choosing an output', description: 'Compare the real result.',
@@ -48,8 +49,9 @@ describe('clearing optional editor groups', () => {
   })
 
   it('requires article content when publishing while allowing unfinished drafts and archived posts', () => {
-    const validate = group('post', 'body').ui?.validate
-    expect(validate).toBeTypeOf('function')
+    const body = group('post', 'body')
+    expect(body.ui?.validate).toBeUndefined()
+    const validate = (value: unknown, values?: Record<string, unknown>) => editorialFieldPublicationError(body, value, values)
     expect(validate?.([], { published: true, archived: false })).toMatch(/content block before publishing/)
     expect(validate?.(undefined, { published: true })).toMatch(/content block before publishing/)
     expect(validate?.([], { published: false })).toBeUndefined()
@@ -92,15 +94,16 @@ describe('clearing optional editor groups', () => {
     const hero = group('homepage', 'hero')
     for (const field of [image, author, hero]) {
       expect(field.fields?.every(child => !child.required)).toBe(true)
-      expect(field.ui?.validate?.({})).toBeUndefined()
+      expect(field.ui?.validate).toBeUndefined()
+      expect(editorialFieldPublicationError(field, {})).toBeUndefined()
     }
-    expect(image.ui?.validate?.({ src: '/uploads/output.png', alt: '' })).toMatch(/alternative text/)
-    expect(image.ui?.validate?.({ src: '', alt: '', caption: '' })).toBeUndefined()
-    expect(image.ui?.validate?.({ src: '/uploads/output.png', alt: 'Comparison' })).toBeUndefined()
-    expect(author.ui?.validate?.({ url: '/about' })).toMatch(/author name/)
-    expect(author.ui?.validate?.({ name: '', kind: '', url: '' })).toBeUndefined()
-    expect(hero.ui?.validate?.({ lead: 'Only a headline' })).toMatch(/Complete/)
-    expect(hero.ui?.validate?.({ lead: '', emphasis: '', description: '' })).toBeUndefined()
+    expect(editorialFieldPublicationError(image, { src: '/uploads/output.png', alt: '' })).toMatch(/alternative text/)
+    expect(editorialFieldPublicationError(image, { src: '', alt: '', caption: '' })).toBeUndefined()
+    expect(editorialFieldPublicationError(image, { src: '/uploads/output.png', alt: 'Comparison' })).toBeUndefined()
+    expect(editorialFieldPublicationError(author, { url: '/about' })).toMatch(/author name/)
+    expect(editorialFieldPublicationError(author, { name: '', kind: '', url: '' })).toBeUndefined()
+    expect(editorialFieldPublicationError(hero, { lead: 'Only a headline' })).toMatch(/Complete/)
+    expect(editorialFieldPublicationError(hero, { lead: '', emphasis: '', description: '' })).toBeUndefined()
     const bodyImage = group('post', 'body').templates?.find(template => template.name === 'image')
     expect(bodyImage?.fields.find(field => field.name === 'src')?.required).toBe(true)
     expect(bodyImage?.fields.find(field => field.name === 'alt')?.required).toBe(true)

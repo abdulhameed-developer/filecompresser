@@ -1,0 +1,91 @@
+--- a/scripts/functionality-audit.mjs
++++ b/scripts/functionality-audit.mjs
+@@ -208,7 +208,7 @@
+ const browser = await browsers[browserName].launch(browserName === 'chromium' ? {
+   executablePath: chrome,
+   args: ['--no-sandbox', '--disable-dev-shm-usage'],
+-} : { headless: true, ...(process.env.TEST_BROWSER_PATH ? { executablePath: process.env.TEST_BROWSER_PATH } : {}) })
++} : { headless: true, ...(browserName === 'firefox' ? { channel: 'moz-firefox-nightly' } : {}), ...(process.env.TEST_BROWSER_PATH ? { executablePath: process.env.TEST_BROWSER_PATH } : {}) })
+ const context = await browser.newContext({
+   acceptDownloads: true,
+   viewport: configuredViewport,
+@@ -239,6 +239,18 @@
+ // Default desktop actions stay unchanged; the optional touch run uses real
+ // emulated tap events rather than claiming mouse clicks exercise touch input.
+ const activate = locator => touchEmulation ? locator.tap() : locator.click()
++// BiDi's fill() main-world value setter bypasses React19 change tracking.
++// Exact generated React19 and actual L controls prove native key input works.
++// Keep each original requested string and every application assertion intact.
++async function enterCustomMaximumWithNativeKeys(locator, value) {
++  assert.equal(await locator.getAttribute('type'), 'number')
++  await locator.click()
++  await locator.press('Control+A')
++  await locator.press('Backspace')
++  await locator.pressSequentially(value)
++  assert.equal(await locator.inputValue(), value, 'Native input must preserve the exact requested numeric draft')
++}
++
+ const stateCaptureKeys = new Set()
+ const stateCaptureErrors = []
+ async function captureToolState(state) {
+@@ -559,7 +571,7 @@
+     await upload('/jpg-compressor', jpg)
+     await openSettings()
+     await activate(page.getByRole('button', { name: 'Target size', exact: true }))
+-    await page.getByLabel('Custom maximum (KB)', { exact: true }).fill('50')
++    await enterCustomMaximumWithNativeKeys(page.getByLabel('Custom maximum (KB)', { exact: true }), '50')
+     await page.getByLabel('Custom maximum (KB)', { exact: true }).press('Enter')
+     await page.waitForTimeout(100)
+     assert.equal(await page.locator('.file.status-queued').count(), 1)
+@@ -619,7 +631,7 @@
+   for (const [route, input] of [['/png-compressor', png], ['/webp-compressor', webp]]) await check(`${route} genuine target output and truthful limit status`, async () => {
+     const out = await processAndDownload(route, input, async () => {
+       await activate(page.getByRole('button', { name: 'Target size', exact: true }))
+-      await page.getByLabel('Custom maximum (KB)', { exact: true }).fill('5')
++      await enterCustomMaximumWithNativeKeys(page.getByLabel('Custom maximum (KB)', { exact: true }), '5')
+     })
+     const bytes = readFileSync(out).length
+     assertImageGeometry(input, out)
+@@ -647,20 +659,20 @@
+   await check('JPG target size and stable KB input', async () => {
+     const out = await processAndDownload('/jpg-compressor', jpg, async () => {
+       await activate(page.getByRole('button', { name: 'Target size', exact: true }))
+-      await page.getByLabel('Custom maximum (KB)', { exact: true }).fill('100.0005')
++      await enterCustomMaximumWithNativeKeys(page.getByLabel('Custom maximum (KB)', { exact: true }), '100.0005')
+       assert.equal(await page.getByLabel('Custom maximum (KB)', { exact: true }).inputValue(), '100.0005')
+       assert.equal(await page.getByLabel('Custom maximum (KB)', { exact: true }).getAttribute('aria-invalid'), 'true')
+       await closeSettings()
+       assert.equal(await page.locator('.compressBtn').isDisabled(), true, 'Fractional bytes cannot become an upward-rounded maximum')
+       await openSettings()
+       assert.equal(await page.getByLabel('Custom maximum (KB)', { exact: true }).inputValue(), '100.0005')
+-      await page.getByLabel('Custom maximum (KB)', { exact: true }).fill('0.029')
++      await enterCustomMaximumWithNativeKeys(page.getByLabel('Custom maximum (KB)', { exact: true }), '0.029')
+       assert.equal((await page.locator('.exactTarget').innerText()).replace(/\s+/gu, ' ').trim(), '29 bytes maximum')
+       assert.notEqual(await page.getByLabel('Custom maximum (KB)', { exact: true }).getAttribute('aria-invalid'), 'true')
+-      await page.getByLabel('Custom maximum (KB)', { exact: true }).fill('2.9e-2')
++      await enterCustomMaximumWithNativeKeys(page.getByLabel('Custom maximum (KB)', { exact: true }), '2.9e-2')
+       assert.equal((await page.locator('.exactTarget').innerText()).replace(/\s+/gu, ' ').trim(), '29 bytes maximum')
+ 
+-      await page.getByLabel('Custom maximum (KB)', { exact: true }).fill('20')
++      await enterCustomMaximumWithNativeKeys(page.getByLabel('Custom maximum (KB)', { exact: true }), '20')
+       assert.equal(
+         await page.getByLabel('Custom maximum (KB)', { exact: true }).inputValue(),
+         '20',
+@@ -705,7 +717,7 @@
+     await upload('/jpg-compressor', jpg)
+     await openSettings()
+     await activate(page.getByRole('button', { name: 'Target size', exact: true }))
+-    await page.getByLabel('Custom maximum (KB)', { exact: true }).fill('1')
++    await enterCustomMaximumWithNativeKeys(page.getByLabel('Custom maximum (KB)', { exact: true }), '1')
+     await closeSettings()
+     await activate(page.locator('.compressBtn:enabled'))
+     await page.locator('.file.status-failed').waitFor({ timeout: 180_000 })
+@@ -724,7 +736,7 @@
+       0,
+     )
+     await activate(page.getByRole('button', { name: 'Target size', exact: true }))
+-    await page.getByLabel('Custom maximum (KB)', { exact: true }).fill('20')
++    await enterCustomMaximumWithNativeKeys(page.getByLabel('Custom maximum (KB)', { exact: true }), '20')
+     assert.match(await page.locator('.exactTarget').innerText(), /20,000 bytes/)
+     await closeSettings()
+   })

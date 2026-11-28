@@ -1,6 +1,6 @@
 {
   "heading": "WAV to MP3 Converter Online",
-  "introduction": "WAV files are commonly used for recordings, music production, audio editing, and sound projects. They can provide high-quality audio, but their file sizes are often larger than those of MP3 files. This can make WAV recordings harder to store, send, or share when you have limited storage space or a file-size restriction.\n\nA WAV to MP3 converter changes a supported WAV recording into an MP3 file. File Compresser provides an online WAV to MP3 Converter that lets you choose an output bitrate and process audio directly in your browser. You do not need to install a separate program or create an account to get started.\n",
+  "introduction": "Convert supported WAV recordings to MP3 on your device. Choose a bitrate from 96 to 320 kbps, then listen to the downloaded copy. MP3 is lossy, so keep the WAV for editing or archiving.",
   "sections": [
     {
       "heading": "What Is a WAV to MP3 Converter?",
@@ -8,35 +8,35 @@
     },
     {
       "heading": "How to Convert WAV to MP3 Online",
-      "body": "You can convert a WAV recording into an MP3 file by following these steps:\n\n1. Open the WAV to MP3 Converter page on File Compresser.\n2. Select a WAV file from your computer or device.\n3. Choose an output bitrate between 96 kbps and 320 kbps.\n4. Start the conversion process.\n5. Allow the browser to process the recording.\n6. Review the converted file and download it.\n\nThe tool handles the conversion in your browser. You do not need to upload the original WAV recording to an external server to complete the process."
+      "body": "You can convert a WAV recording into an MP3 file by following these steps:\n\n1. Open the WAV to MP3 Converter page on FileCompresser.\n2. Select a WAV file from your computer or device.\n3. Choose an output bitrate between 96 kbps and 320 kbps.\n4. Start the conversion process.\n5. Allow the browser to process the recording.\n6. Review the converted file and download it.\n\nThe tool handles the conversion in your browser. You do not need to upload the original WAV recording to an external server to complete the process."
     },
     {
       "heading": "Why Convert WAV Files to MP3?",
-      "body": "The main reason to convert WAV to MP3 is to create an audio file that is easier to manage and share. WAV is useful when working with audio in its original or production format, while MP3 is commonly used for everyday listening and distribution.\n"
+      "body": "The main reason to convert WAV to MP3 is to create an audio file that is easier to manage and share. WAV is useful when working with audio in its original or production format, while MP3 is commonly used for everyday listening and distribution."
     },
     {
       "heading": "Make Audio Easier to Share",
-      "body": "WAV recordings can be large, especially when they contain long sessions or high-quality audio. An MP3 version may be easier to send through email, messaging apps, or other platforms with attachment limits.\n"
+      "body": "WAV recordings can be large, especially when they contain long sessions or high-quality audio. An MP3 version may be easier to send through email, messaging apps, or other platforms with attachment limits."
     },
     {
       "heading": "Save Storage Space",
-      "body": "If you have many WAV recordings, they can use a large amount of space on your computer, phone, or external drive. Converting selected files to MP3 may help reduce the storage required for everyday copies.\n"
+      "body": "If you have many WAV recordings, they can use a large amount of space on your computer, phone, or external drive. Converting selected files to MP3 may help reduce the storage required for everyday copies."
     },
     {
       "heading": "Prepare Audio for Online Use",
-      "body": "MP3 files are widely used for music, podcasts, voice recordings, and other audio content. Converting a WAV file can make it more convenient to add audio to a website or share it with an audience.\n"
+      "body": "MP3 files are widely used for music, podcasts, voice recordings, and other audio content. Converting a WAV file can make it more convenient to add audio to a website or share it with an audience."
     },
     {
       "heading": "Keep a Convenient Listening Copy",
-      "body": "You may want to keep the original WAV file for editing and create an MP3 version for listening or sharing. This approach allows you to use each format for a different purpose.\n"
+      "body": "You may want to keep the original WAV file for editing and create an MP3 version for listening or sharing. This approach allows you to use each format for a different purpose."
     },
     {
       "heading": "Choose the Right MP3 Bitrate",
-      "body": "The bitrate determines how much data is used for each second of the converted audio. File Compresser provides options from 96 kbps to 320 kbps.\n\nA lower bitrate generally creates a smaller MP3 file but removes more audio information. A higher bitrate usually retains more detail but results in a larger file.\n\n96 kbps: This lower setting may suit some spoken recordings when smaller file size is the main priority.\n128 kbps: This can be a practical option for basic listening and general audio sharing.\n192 kbps: This provides a higher data rate and may be more suitable when you want to retain more sound detail.\n256 kbps: This setting uses more data and can be considered when audio quality is more important than getting the smallest file.\n320 kbps: This is the highest available bitrate in the tool. It creates a higher-bitrate MP3, but it does not turn the file into lossless audio or restore information removed during an earlier conversion.\n\nThe best setting depends on your recording, listening needs, and available storage. It is worth listening to the converted file before replacing or deleting the original.\n"
+      "body": "The bitrate determines how much data is used for each second of the converted audio. FileCompresser provides options from 96 kbps to 320 kbps.\n\nA lower bitrate generally creates a smaller MP3 file but removes more audio information. A higher bitrate usually retains more detail but results in a larger file.\n\n- 96 kbps: This lower setting may suit some spoken recordings when smaller file size is the main priority.\n- 128 kbps: This can be a practical option for basic listening and general audio sharing.\n- 192 kbps: This provides a higher data rate and may be more suitable when you want to retain more sound detail.\n- 256 kbps: This setting uses more data and can be considered when audio quality is more important than getting the smallest file.\n- 320 kbps: This is the highest available bitrate in the tool. It creates a higher-bitrate MP3, but it does not turn the file into lossless audio or restore information removed during an earlier conversion.\n\nThe best setting depends on your recording, listening needs, and available storage. It is worth listening to the converted file before replacing or deleting the original."
     },
     {
       "heading": "Does WAV to MP3 Conversion Always Reduce File Size?",
-      "body": "No. WAV files are often larger than MP3 files, so converting them can reduce their size. However, the result depends on the source file and selected bitrate. In some cases, the converted MP3 may be similar in size or even larger than the original.\n\nA short WAV recording, a file with an unusual encoding, or a high selected bitrate may not produce the reduction you expect. Always compare the actual file sizes instead of assuming that every conversion will create a smaller file.\n"
+      "body": "No. WAV files are often larger than MP3 files, so converting them can reduce their size. However, the result depends on the source file and selected bitrate. In some cases, the converted MP3 may be similar in size or even larger than the original.\n\nA short WAV recording, a file with an unusual encoding, or a high selected bitrate may not produce the reduction you expect. Always compare the actual file sizes instead of assuming that every conversion will create a smaller file."
     },
     {
       "heading": "Keep the Original WAV Recording",
@@ -44,11 +44,11 @@
     },
     {
       "heading": "Convert WAV Files Privately in Your Browser",
-      "body": "File Compresser processes your selected WAV file directly in your browser. This means you do not need to send the recording to a remote server for conversion or create an account before using the tool.\n\nThe maximum supported WAV file size is 100 MB. Media processing uses a browser-based engine that may require an initial download of around 21 MB. Your browser can cache this engine for future use. Each processing job has a five-minute limit, and long recordings may need more processing resources.\n"
+      "body": "FileCompresser processes your selected WAV file directly in your browser. This means you do not need to send the recording to a remote server for conversion or create an account before using the tool.\n\nThe maximum supported WAV file size is 100 MiB. Media processing uses a browser-based engine that may require an initial download of around 21 MB. Your browser can cache this engine for future use. Each processing job has a five-minute limit, and long recordings may need more processing resources."
     },
     {
       "heading": "Convert WAV Audio to MP3 Online",
-      "body": "Use File Compresser when you need a convenient way to convert a supported WAV recording into MP3 format. Select your file, choose a bitrate, and download the converted audio after processing. Keep the original WAV recording for editing or archiving, and use the MP3 copy when a more convenient format is needed.\n"
+      "body": "Use FileCompresser when you need a convenient way to convert a supported WAV recording into MP3 format. Select your file, choose a bitrate, and download the converted audio after processing. Keep the original WAV recording for editing or archiving, and use the MP3 copy when a more convenient format is needed."
     }
   ],
   "links": [
@@ -64,25 +64,26 @@
   "faq": [
     {
       "q": "Is WAV to MP3 conversion free?",
-      "a": "The online converter can be used without installing a desktop application or creating an account. The only limits are the 100 MB file size and a queue of up to 500 files and 300 MB.\n"
+      "a": "The tool is free without an account. The input limit is 100 MiB per file; queues allow up to 500 files and 300 MiB total. Format, device-memory and processing limits also apply."
     },
     {
       "q": "Does converting WAV to MP3 reduce quality?",
-      "a": "Yes. MP3 is a lossy format, so some audio information is removed during conversion. A higher bitrate can retain more detail than a lower one, but it cannot make the output lossless.\n"
+      "a": "Yes. MP3 is a lossy format, so some audio information is removed during conversion. A higher bitrate can retain more detail than a lower one, but it cannot make the output lossless."
     },
     {
       "q": "Can I convert a large WAV file?",
-      "a": "The tool supports WAV files up to 100 MB. Files above this limit are not supported by the current workflow.\n"
+      "a": "The tool supports WAV files up to 100 MiB. Files above this limit are not supported by the current workflow."
     },
     {
       "q": "Should I delete my original WAV file after conversion?",
-      "a": "It is better to keep the original if you may need to edit, process, or archive the recording later. The MP3 version is more suitable as a convenient listening or sharing copy.\n"
+      "a": "It is better to keep the original if you may need to edit, process, or archive the recording later. The MP3 version is more suitable as a convenient listening or sharing copy."
     },
     {
       "q": "Can an MP3 file be converted back to the original WAV quality?",
-      "a": "No. Converting an MP3 back to WAV does not restore audio information removed during MP3 encoding.\n"
+      "a": "No. Converting an MP3 back to WAV does not restore audio information removed during MP3 encoding."
     }
   ],
   "seoTitle": "WAV to MP3 Converter Online Free – Convert Audio",
-  "seoDescription": "Convert WAV recordings to MP3 online for smaller, easier-to-share audio files. Choose a bitrate and process privately in your browser.\n"
+  "seoDescription": "Convert WAV recordings to MP3 online for smaller, easier-to-share audio files. Choose a bitrate and process privately in your browser.",
+  "faqMode": "custom"
 }

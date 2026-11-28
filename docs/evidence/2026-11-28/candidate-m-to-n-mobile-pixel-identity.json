@@ -1,0 +1,589 @@
+{
+  "recordedAt": "2026-11-28T14:21:36.283222+00:00",
+  "scope": "Actual native-width390 full-page screenshot pixels M to N, default empty workspaces/closed navigation/default disclosures. Pixel identity does not test open settings or all browser states.",
+  "count": 29,
+  "identical": 29,
+  "rows": [
+    {
+      "file": "404-missing-390.png",
+      "dimensionsM": [
+        390,
+        1893
+      ],
+      "dimensionsN": [
+        390,
+        1893
+      ],
+      "pixelIdentical": true,
+      "differenceBounds": null,
+      "mScreenshotSha256": "f2f79462b5c3d9c8babdbd30a1b6c831be77a0f48c0c34668abcb0ff6b4d0dba",
+      "nScreenshotSha256": "f2f79462b5c3d9c8babdbd30a1b6c831be77a0f48c0c34668abcb0ff6b4d0dba",
+      "originalModes": [
+        "RGB",
+        "RGB"
+      ],
+      "exactRgbaBytesEqual": true
+    },
+    {
+      "file": "about-390.png",
+      "dimensionsM": [
+        390,
+        4519
+      ],
+      "dimensionsN": [
+        390,
+        4519
+      ],
+      "pixelIdentical": true,
+      "differenceBounds": null,
+      "mScreenshotSha256": "45ec0aff11d94c61f8924aeebc8726599d68cba1a80a4d63973a94ff41a6a18b",
+      "nScreenshotSha256": "45ec0aff11d94c61f8924aeebc8726599d68cba1a80a4d63973a94ff41a6a18b",
+      "originalModes": [
+        "RGB",
+        "RGB"
+      ],
+      "exactRgbaBytesEqual": true
+    },
+    {
+      "file": "archive-compressor-390.png",
+      "dimensionsM": [
+        390,
+        9045
+      ],
+      "dimensionsN": [
+        390,
+        9045
+      ],
+      "pixelIdentical": true,
+      "differenceBounds": null,
+      "mScreenshotSha256": "60835f600cceda72a3ecc9d6bb74bed2fa89846fffee64c3b66e73920c1243cb",
+      "nScreenshotSha256": "60835f600cceda72a3ecc9d6bb74bed2fa89846fffee64c3b66e73920c1243cb",
+      "originalModes": [
+        "RGB",
+        "RGB"
+      ],
+      "exactRgbaBytesEqual": true
+    },
+    {
+      "file": "blog--choosing-a-compression-mode-390.png",
+      "dimensionsM": [
+        390,
+        8446
+      ],
+      "dimensionsN": [
+        390,
+        8446
+      ],
+      "pixelIdentical": true,
+      "differenceBounds": null,
+      "mScreenshotSha256": "5b773b8b36a63a22afb930a5fb7183e96146fa95310f5917488d668eedecd46e",
+      "nScreenshotSha256": "5b773b8b36a63a22afb930a5fb7183e96146fa95310f5917488d668eedecd46e",
+      "originalModes": [
+        "RGB",
+        "RGB"
+      ],
+      "exactRgbaBytesEqual": true
+    },
+    {
+      "file": "blog--compressing-files-for-the-web-390.png",
+      "dimensionsM": [
+        390,
+        6637
+      ],
+      "dimensionsN": [
+        390,
+        6637
+      ],
+      "pixelIdentical": true,
+      "differenceBounds": null,
+      "mScreenshotSha256": "8b9c03d41607fc0622c204fc130875f7415c8d55c9826813574db000ef7ee309",
+      "nScreenshotSha256": "8b9c03d41607fc0622c204fc130875f7415c8d55c9826813574db000ef7ee309",
+      "originalModes": [
+        "RGB",
+        "RGB"
+      ],
+      "exactRgbaBytesEqual": true
+    },
+    {
+      "file": "blog--honest-file-size-reporting-390.png",
+      "dimensionsM": [
+        390,
+        6052
+      ],
+      "dimensionsN": [
+        390,
+        6052
+      ],
+      "pixelIdentical": true,
+      "differenceBounds": null,
+      "mScreenshotSha256": "66db188223c42eb372447c128f85f8c1b070ed5c9f01fa7f0792b48d68611c22",
+      "nScreenshotSha256": "66db188223c42eb372447c128f85f8c1b070ed5c9f01fa7f0792b48d68611c22",
+      "originalModes": [
+        "RGB",
+        "RGB"
+      ],
+      "exactRgbaBytesEqual": true
+    },
+    {
+      "file": "blog--how-browser-compression-works-390.png",
+      "dimensionsM": [
+        390,
+        6142
+      ],
+      "dimensionsN": [
+        390,
+        6142
+      ],
+      "pixelIdentical": true,
+      "differenceBounds": null,
+      "mScreenshotSha256": "d8685b9a8ea4a9d1957f12edde54f9711305c7e7779370ee10014c28f24ea8fa",
+      "nScreenshotSha256": "d8685b9a8ea4a9d1957f12edde54f9711305c7e7779370ee10014c28f24ea8fa",
+      "originalModes": [
+        "RGB",
+        "RGB"
+      ],
+      "exactRgbaBytesEqual": true
+    },
+    {
+      "file": "blog--what-privacy-claim-really-means-390.png",
+      "dimensionsM": [
+        390,
+        6600
+      ],
+      "dimensionsN": [
+        390,
+        6600
+      ],
+      "pixelIdentical": true,
+      "differenceBounds": null,
+      "mScreenshotSha256": "2bf665b6b1bf07e2949993e6ccef7be310c4a31db6cca03a2e36c985f8a2f06f",
+      "nScreenshotSha256": "2bf665b6b1bf07e2949993e6ccef7be310c4a31db6cca03a2e36c985f8a2f06f",
+      "originalModes": [
+        "RGB",
+        "RGB"
+      ],
+      "exactRgbaBytesEqual": true
+    },
+    {
+      "file": "blog-390.png",
+      "dimensionsM": [
+        390,
+        3994
+      ],
+      "dimensionsN": [
+        390,
+        3994
+      ],
+      "pixelIdentical": true,
+      "differenceBounds": null,
+      "mScreenshotSha256": "f7fe69138d9d31b40615733f8d07ca4aeb5b89f26e362d21b4a4543fcadb546d",
+      "nScreenshotSha256": "f7fe69138d9d31b40615733f8d07ca4aeb5b89f26e362d21b4a4543fcadb546d",
+      "originalModes": [
+        "RGB",
+        "RGB"
+      ],
+      "exactRgbaBytesEqual": true
+    },
+    {
+      "file": "compress-390.png",
+      "dimensionsM": [
+        390,
+        8070
+      ],
+      "dimensionsN": [
+        390,
+        8070
+      ],
+      "pixelIdentical": true,
+      "differenceBounds": null,
+      "mScreenshotSha256": "8292c3552a07c4b3894cb62557931ed47fe77e33e41f1d687d3c5356a2ced177",
+      "nScreenshotSha256": "8292c3552a07c4b3894cb62557931ed47fe77e33e41f1d687d3c5356a2ced177",
+      "originalModes": [
+        "RGB",
+        "RGB"
+      ],
+      "exactRgbaBytesEqual": true
+    },
+    {
+      "file": "contact-390.png",
+      "dimensionsM": [
+        390,
+        3512
+      ],
+      "dimensionsN": [
+        390,
+        3512
+      ],
+      "pixelIdentical": true,
+      "differenceBounds": null,
+      "mScreenshotSha256": "8b9dd3430b7c0a52a8f980e2b2b06b280b3ae4acf04c60d5dc211d3ed9049810",
+      "nScreenshotSha256": "8b9dd3430b7c0a52a8f980e2b2b06b280b3ae4acf04c60d5dc211d3ed9049810",
+      "originalModes": [
+        "RGB",
+        "RGB"
+      ],
+      "exactRgbaBytesEqual": true
+    },
+    {
+      "file": "disclaimer-390.png",
+      "dimensionsM": [
+        390,
+        4024
+      ],
+      "dimensionsN": [
+        390,
+        4024
+      ],
+      "pixelIdentical": true,
+      "differenceBounds": null,
+      "mScreenshotSha256": "efae959208ffaddb7f62f03f06f8564eb4a52dd55f47ab6f522cb94fe1485b21",
+      "nScreenshotSha256": "efae959208ffaddb7f62f03f06f8564eb4a52dd55f47ab6f522cb94fe1485b21",
+      "originalModes": [
+        "RGB",
+        "RGB"
+      ],
+      "exactRgbaBytesEqual": true
+    },
+    {
+      "file": "gif-compressor-390.png",
+      "dimensionsM": [
+        390,
+        9103
+      ],
+      "dimensionsN": [
+        390,
+        9103
+      ],
+      "pixelIdentical": true,
+      "differenceBounds": null,
+      "mScreenshotSha256": "3abea25ae5a29ca6f495ae7131f47f5d2245024181b854bfa82e5c3776cbaa0a",
+      "nScreenshotSha256": "3abea25ae5a29ca6f495ae7131f47f5d2245024181b854bfa82e5c3776cbaa0a",
+      "originalModes": [
+        "RGB",
+        "RGB"
+      ],
+      "exactRgbaBytesEqual": true
+    },
+    {
+      "file": "home-390.png",
+      "dimensionsM": [
+        390,
+        11631
+      ],
+      "dimensionsN": [
+        390,
+        11631
+      ],
+      "pixelIdentical": true,
+      "differenceBounds": null,
+      "mScreenshotSha256": "ad599201d018f428e966f7117e34a3124d43e6967c4bc5148a1169da32210889",
+      "nScreenshotSha256": "ad599201d018f428e966f7117e34a3124d43e6967c4bc5148a1169da32210889",
+      "originalModes": [
+        "RGB",
+        "RGB"
+      ],
+      "exactRgbaBytesEqual": true
+    },
+    {
+      "file": "image-compressor-390.png",
+      "dimensionsM": [
+        390,
+        8620
+      ],
+      "dimensionsN": [
+        390,
+        8620
+      ],
+      "pixelIdentical": true,
+      "differenceBounds": null,
+      "mScreenshotSha256": "60019f4c093f48740fafa3f0f2ef47c3169ba1f689005a303fd9e9cf4c368558",
+      "nScreenshotSha256": "60019f4c093f48740fafa3f0f2ef47c3169ba1f689005a303fd9e9cf4c368558",
+      "originalModes": [
+        "RGB",
+        "RGB"
+      ],
+      "exactRgbaBytesEqual": true
+    },
+    {
+      "file": "jpeg-compressor-390.png",
+      "dimensionsM": [
+        390,
+        8836
+      ],
+      "dimensionsN": [
+        390,
+        8836
+      ],
+      "pixelIdentical": true,
+      "differenceBounds": null,
+      "mScreenshotSha256": "397dbdf33d5624c1e4cafd8fbbf412a3e2be0a713ba6b1df8a6ff52e91f380da",
+      "nScreenshotSha256": "397dbdf33d5624c1e4cafd8fbbf412a3e2be0a713ba6b1df8a6ff52e91f380da",
+      "originalModes": [
+        "RGB",
+        "RGB"
+      ],
+      "exactRgbaBytesEqual": true
+    },
+    {
+      "file": "jpg-compressor-390.png",
+      "dimensionsM": [
+        390,
+        8391
+      ],
+      "dimensionsN": [
+        390,
+        8391
+      ],
+      "pixelIdentical": true,
+      "differenceBounds": null,
+      "mScreenshotSha256": "c8ed8def6f3dc2c86b6a5de2ca834afc65e6e568a59934c172966fbeb3038e6e",
+      "nScreenshotSha256": "c8ed8def6f3dc2c86b6a5de2ca834afc65e6e568a59934c172966fbeb3038e6e",
+      "originalModes": [
+        "RGB",
+        "RGB"
+      ],
+      "exactRgbaBytesEqual": true
+    },
+    {
+      "file": "mp3-compressor-390.png",
+      "dimensionsM": [
+        390,
+        8182
+      ],
+      "dimensionsN": [
+        390,
+        8182
+      ],
+      "pixelIdentical": true,
+      "differenceBounds": null,
+      "mScreenshotSha256": "37e4bbac92363e3b0a7edeb5f2db73b25f3b9f60b5d076185d82a15f8a5f08a6",
+      "nScreenshotSha256": "37e4bbac92363e3b0a7edeb5f2db73b25f3b9f60b5d076185d82a15f8a5f08a6",
+      "originalModes": [
+        "RGB",
+        "RGB"
+      ],
+      "exactRgbaBytesEqual": true
+    },
+    {
+      "file": "pdf-compressor-390.png",
+      "dimensionsM": [
+        390,
+        8212
+      ],
+      "dimensionsN": [
+        390,
+        8212
+      ],
+      "pixelIdentical": true,
+      "differenceBounds": null,
+      "mScreenshotSha256": "5ce19d267b47dbfa694b294e57b35005b0b4daf85a93bc5dd021f1c5ddb400ba",
+      "nScreenshotSha256": "5ce19d267b47dbfa694b294e57b35005b0b4daf85a93bc5dd021f1c5ddb400ba",
+      "originalModes": [
+        "RGB",
+        "RGB"
+      ],
+      "exactRgbaBytesEqual": true
+    },
+    {
+      "file": "png-compressor-390.png",
+      "dimensionsM": [
+        390,
+        8372
+      ],
+      "dimensionsN": [
+        390,
+        8372
+      ],
+      "pixelIdentical": true,
+      "differenceBounds": null,
+      "mScreenshotSha256": "9b2311dbb5cc062e6040bc546ef22b912e3fb9b5aee6557db16e7821c802971a",
+      "nScreenshotSha256": "9b2311dbb5cc062e6040bc546ef22b912e3fb9b5aee6557db16e7821c802971a",
+      "originalModes": [
+        "RGB",
+        "RGB"
+      ],
+      "exactRgbaBytesEqual": true
+    },
+    {
+      "file": "privacy-390.png",
+      "dimensionsM": [
+        390,
+        6252
+      ],
+      "dimensionsN": [
+        390,
+        6252
+      ],
+      "pixelIdentical": true,
+      "differenceBounds": null,
+      "mScreenshotSha256": "34f0787adfda2c2ba2a0e18d1f054875eb264557885b9bd9ef3362bf54ab9164",
+      "nScreenshotSha256": "34f0787adfda2c2ba2a0e18d1f054875eb264557885b9bd9ef3362bf54ab9164",
+      "originalModes": [
+        "RGB",
+        "RGB"
+      ],
+      "exactRgbaBytesEqual": true
+    },
+    {
+      "file": "sitemap-390.png",
+      "dimensionsM": [
+        390,
+        2941
+      ],
+      "dimensionsN": [
+        390,
+        2941
+      ],
+      "pixelIdentical": true,
+      "differenceBounds": null,
+      "mScreenshotSha256": "ffaf34d47a41dd81fef9fcab5d0302a0b86c6ab327c559de00ec5d27ca2f2919",
+      "nScreenshotSha256": "ffaf34d47a41dd81fef9fcab5d0302a0b86c6ab327c559de00ec5d27ca2f2919",
+      "originalModes": [
+        "RGB",
+        "RGB"
+      ],
+      "exactRgbaBytesEqual": true
+    },
+    {
+      "file": "terms-390.png",
+      "dimensionsM": [
+        390,
+        3760
+      ],
+      "dimensionsN": [
+        390,
+        3760
+      ],
+      "pixelIdentical": true,
+      "differenceBounds": null,
+      "mScreenshotSha256": "788dffae75f7518b7d6963cb6f058d28ae2e686829fec2f76f9b8b87895473c8",
+      "nScreenshotSha256": "788dffae75f7518b7d6963cb6f058d28ae2e686829fec2f76f9b8b87895473c8",
+      "originalModes": [
+        "RGB",
+        "RGB"
+      ],
+      "exactRgbaBytesEqual": true
+    },
+    {
+      "file": "video-compressor-390.png",
+      "dimensionsM": [
+        390,
+        9318
+      ],
+      "dimensionsN": [
+        390,
+        9318
+      ],
+      "pixelIdentical": true,
+      "differenceBounds": null,
+      "mScreenshotSha256": "0c0a83ee44259a9f6a253077c47e004be81c87b3497ea104df216ab0fb2da913",
+      "nScreenshotSha256": "0c0a83ee44259a9f6a253077c47e004be81c87b3497ea104df216ab0fb2da913",
+      "originalModes": [
+        "RGB",
+        "RGB"
+      ],
+      "exactRgbaBytesEqual": true
+    },
+    {
+      "file": "wav-compressor-390.png",
+      "dimensionsM": [
+        390,
+        8495
+      ],
+      "dimensionsN": [
+        390,
+        8495
+      ],
+      "pixelIdentical": true,
+      "differenceBounds": null,
+      "mScreenshotSha256": "d0e46510f3c0d24197d7974daa47b885051a1e7c478b07710a3ab1db0922886e",
+      "nScreenshotSha256": "d0e46510f3c0d24197d7974daa47b885051a1e7c478b07710a3ab1db0922886e",
+      "originalModes": [
+        "RGB",
+        "RGB"
+      ],
+      "exactRgbaBytesEqual": true
+    },
+    {
+      "file": "wav-to-mp3-390.png",
+      "dimensionsM": [
+        390,
+        8495
+      ],
+      "dimensionsN": [
+        390,
+        8495
+      ],
+      "pixelIdentical": true,
+      "differenceBounds": null,
+      "mScreenshotSha256": "d0e46510f3c0d24197d7974daa47b885051a1e7c478b07710a3ab1db0922886e",
+      "nScreenshotSha256": "d0e46510f3c0d24197d7974daa47b885051a1e7c478b07710a3ab1db0922886e",
+      "originalModes": [
+        "RGB",
+        "RGB"
+      ],
+      "exactRgbaBytesEqual": true
+    },
+    {
+      "file": "webm-to-mp4-390.png",
+      "dimensionsM": [
+        390,
+        4229
+      ],
+      "dimensionsN": [
+        390,
+        4229
+      ],
+      "pixelIdentical": true,
+      "differenceBounds": null,
+      "mScreenshotSha256": "b693a834f71a833cd2b9f9a7c2a4371211913a5d2b7166fbb075bb59d5e42485",
+      "nScreenshotSha256": "b693a834f71a833cd2b9f9a7c2a4371211913a5d2b7166fbb075bb59d5e42485",
+      "originalModes": [
+        "RGB",
+        "RGB"
+      ],
+      "exactRgbaBytesEqual": true
+    },
+    {
+      "file": "webp-compressor-390.png",
+      "dimensionsM": [
+        390,
+        8244
+      ],
+      "dimensionsN": [
+        390,
+        8244
+      ],
+      "pixelIdentical": true,
+      "differenceBounds": null,
+      "mScreenshotSha256": "624ffe519d206099dfa12b966038194a88219a14658281c8cbffabb4b83402ee",
+      "nScreenshotSha256": "624ffe519d206099dfa12b966038194a88219a14658281c8cbffabb4b83402ee",
+      "originalModes": [
+        "RGB",
+        "RGB"
+      ],
+      "exactRgbaBytesEqual": true
+    },
+    {
+      "file": "zip-compressor-390.png",
+      "dimensionsM": [
+        390,
+        7663
+      ],
+      "dimensionsN": [
+        390,
+        7663
+      ],
+      "pixelIdentical": true,
+      "differenceBounds": null,
+      "mScreenshotSha256": "7be606e663ecd59b3477ac349bb5dfac7427a2305bb466d3b68b86778f8d6eba",
+      "nScreenshotSha256": "7be606e663ecd59b3477ac349bb5dfac7427a2305bb466d3b68b86778f8d6eba",
+      "originalModes": [
+        "RGB",
+        "RGB"
+      ],
+      "exactRgbaBytesEqual": true
+    }
+  ],
+  "status": "PASS_ALL29_PIXEL_IDENTICAL"
+}

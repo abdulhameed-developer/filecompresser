@@ -1,0 +1,816 @@
+{
+  "generatedAt": "2026-11-28T13:33:57.599426+00:00",
+  "status": "PASS_BOUNDED_INDEPENDENT_DOWNLOAD_INSPECTION",
+  "scope": "Every actual saved download path recorded by four accepted workflow contexts and three earlier failed/interrupted contexts was read and rehashed. Identical SHA-256 bytes share one independent decoder result; source/case-specific requirements were still checked for every proof. This is local mixed-candidate evidence, not a fresh full suite on L or a live-deployment certificate.",
+  "privateFullReport": {
+    "evidence": ".qa-results/phase3/functionality/candidate-k/independent-output-review-final/report.json",
+    "sha256": "9654f6e10693a21a21cc4acb77ef3bc70b82adbb91bfd5cd02d19da23aa780f3",
+    "inspectorSha256": "b4b924165db91d2fea66a767595b54b1b1c9df817f134cdcba7a953b692953ce",
+    "contextSelectionSha256": "3aa5b9955d9767c2e1fd7c75bf98f0808c389141a12395d4343fdd225e95e7c2"
+  },
+  "counts": {
+    "actualDownloadProofs": 335,
+    "acceptedActualDownloadProofs": 224,
+    "historicalActualDownloadProofs": 111,
+    "uniqueByteSequences": 78,
+    "duplicateProofs": 257,
+    "allActualDownloadBytesAndHashesMatchRecordedProofs": true,
+    "acceptedFormatCounts": {
+      "image": 112,
+      "media": 72,
+      "pdf": 4,
+      "zip": 24,
+      "exact-byte-file": 12
+    },
+    "allFormatCounts": {
+      "image": 167,
+      "media": 108,
+      "pdf": 6,
+      "zip": 36,
+      "exact-byte-file": 18
+    },
+    "nestedZipMemberChecks": 78,
+    "acceptedExactTargetChecks": 16,
+    "allExactTargetChecks": 19,
+    "aboveTargetSuccesses": 0,
+    "byteExactRetainedOriginalMp3Proofs": 6
+  },
+  "acceptedFourContextWorkflowPassed": true,
+  "deliveredWorkerAndMediaAssetPinsIdenticalAcrossAcceptedContexts": true,
+  "originalSerialSeriesPassed": false,
+  "contexts": [
+    {
+      "profile": "chromium-desktop",
+      "acceptedContext": true,
+      "reportKind": "FINAL_REPORT",
+      "candidate": "K",
+      "artifactHomepageBefore": "2619895be5f398566f4ff7c1acd0a37230a148a202b1f9d8f42997f15c78a295",
+      "artifactHomepageAfter": "2619895be5f398566f4ff7c1acd0a37230a148a202b1f9d8f42997f15c78a295",
+      "browser": "chromium",
+      "browserVersion": "156.0.8078.47",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "touchEmulation": false,
+      "reportSha256": "f780874e582121a86f502503a3e1c27ec724ea5a71b3f98ee61506005cfaf232",
+      "completionSha256": "b67ce12829f3bc0271c47275f969186caf0024c065301a275fed95e24879aecc",
+      "workflowCases": 79,
+      "workflowPasses": 79,
+      "workflowCompletionPassed": true,
+      "proofs": 56,
+      "uniqueByteSequences": 43,
+      "integrityPassed": true,
+      "sourceComparisonQualification": "Recorded actual fixture files were used for all case-specific source comparisons."
+    },
+    {
+      "profile": "webkit-desktop",
+      "acceptedContext": true,
+      "reportKind": "FINAL_REPORT",
+      "candidate": "K",
+      "artifactHomepageBefore": "2619895be5f398566f4ff7c1acd0a37230a148a202b1f9d8f42997f15c78a295",
+      "artifactHomepageAfter": "2619895be5f398566f4ff7c1acd0a37230a148a202b1f9d8f42997f15c78a295",
+      "browser": "webkit",
+      "browserVersion": "27.2",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "touchEmulation": false,
+      "reportSha256": "a90fbbe29787bee35928b22c9cd888134823c230b795c7297e4b73445f67bdd3",
+      "completionSha256": "36b61563989071c2349d2775d7588cc62f42f276282900a5299d9f71719d9958",
+      "workflowCases": 79,
+      "workflowPasses": 79,
+      "workflowCompletionPassed": true,
+      "proofs": 56,
+      "uniqueByteSequences": 43,
+      "integrityPassed": true,
+      "sourceComparisonQualification": "Recorded actual fixture files were used for all case-specific source comparisons."
+    },
+    {
+      "profile": "chromium-touch-retry",
+      "acceptedContext": true,
+      "reportKind": "FINAL_REPORT",
+      "candidate": "K",
+      "artifactHomepageBefore": "2619895be5f398566f4ff7c1acd0a37230a148a202b1f9d8f42997f15c78a295",
+      "artifactHomepageAfter": "2619895be5f398566f4ff7c1acd0a37230a148a202b1f9d8f42997f15c78a295",
+      "browser": "chromium",
+      "browserVersion": "156.0.8078.47",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "touchEmulation": true,
+      "reportSha256": "bc87310842e143916d88949c9998a890b7b829cc6185528dec2a90eeade24e4c",
+      "completionSha256": "05d65bbf91856ba235b28e84596f1bb89ac9527924ef4f4f9b4d2fbf3f30be4b",
+      "workflowCases": 79,
+      "workflowPasses": 79,
+      "workflowCompletionPassed": true,
+      "proofs": 56,
+      "uniqueByteSequences": 43,
+      "integrityPassed": true,
+      "sourceComparisonQualification": "Recorded actual fixture files were used for all case-specific source comparisons."
+    },
+    {
+      "profile": "l-firefox-nightly163-native-numbers-desktop",
+      "acceptedContext": true,
+      "reportKind": "FINAL_REPORT",
+      "candidate": "L",
+      "artifactHomepageBefore": "e1381f682d91dce59d1ab6bb54e2cfffdd07cc0b74dbbdfc440eadb6adc817d0",
+      "artifactHomepageAfter": "e1381f682d91dce59d1ab6bb54e2cfffdd07cc0b74dbbdfc440eadb6adc817d0",
+      "browser": "firefox",
+      "browserVersion": "163.0a1",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "touchEmulation": false,
+      "reportSha256": "b57b1754b8e1ca0a83818cb342b18a40274a5965ed606b92c03556b0dd1c2191",
+      "completionSha256": "ac85a53212ca8c1c5d56a4bdd776c4eee64b72046633c706f455e9f2f4bd15c8",
+      "workflowCases": 79,
+      "workflowPasses": 79,
+      "workflowCompletionPassed": true,
+      "proofs": 56,
+      "uniqueByteSequences": 43,
+      "integrityPassed": true,
+      "sourceComparisonQualification": "Recorded actual fixture files were used for all case-specific source comparisons."
+    },
+    {
+      "profile": "chromium-touch",
+      "acceptedContext": false,
+      "reportKind": "FINAL_REPORT",
+      "candidate": "K",
+      "artifactHomepageBefore": "2619895be5f398566f4ff7c1acd0a37230a148a202b1f9d8f42997f15c78a295",
+      "artifactHomepageAfter": "2619895be5f398566f4ff7c1acd0a37230a148a202b1f9d8f42997f15c78a295",
+      "browser": "chromium",
+      "browserVersion": "156.0.8078.47",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "touchEmulation": true,
+      "reportSha256": "c7eb94c1ca6a3c199a93eb7d37ecd71121c9fd8d21d0a80fc986c5dda5649bb6",
+      "completionSha256": "8d55c3b3e521b6d4fb1eb5a15eaeb9309579b84e25c3c936f304842f62bc6967",
+      "workflowCases": 79,
+      "workflowPasses": 78,
+      "workflowCompletionPassed": false,
+      "proofs": 55,
+      "uniqueByteSequences": 43,
+      "integrityPassed": true,
+      "sourceComparisonQualification": "Recorded actual fixture files were used for all case-specific source comparisons."
+    },
+    {
+      "profile": "firefox-desktop",
+      "acceptedContext": false,
+      "reportKind": "INTERRUPTED_PROGRESS_ONLY",
+      "candidate": "K",
+      "artifactHomepageBefore": "2619895be5f398566f4ff7c1acd0a37230a148a202b1f9d8f42997f15c78a295",
+      "artifactHomepageAfter": "2619895be5f398566f4ff7c1acd0a37230a148a202b1f9d8f42997f15c78a295",
+      "browser": "firefox",
+      "browserVersion": "160.0",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "touchEmulation": false,
+      "reportSha256": "e746f7ddff54e450740ed0d5134a19a2747d7cf0a96afe6bfcec23334628ba89",
+      "completionSha256": "b405feab471700a45c2d1fbe4120f84213bbdaf4aea1b70534275bff62b79f52",
+      "workflowCases": 4,
+      "workflowPasses": 4,
+      "workflowCompletionPassed": false,
+      "proofs": 4,
+      "uniqueByteSequences": 2,
+      "integrityPassed": true,
+      "sourceComparisonQualification": "NOT_TESTED: interrupted progress report did not retain fixtures path; no source directory is guessed."
+    },
+    {
+      "profile": "l-firefox-nightly163-original-bidi-fill",
+      "acceptedContext": false,
+      "reportKind": "FINAL_REPORT",
+      "candidate": "L",
+      "artifactHomepageBefore": "e1381f682d91dce59d1ab6bb54e2cfffdd07cc0b74dbbdfc440eadb6adc817d0",
+      "artifactHomepageAfter": "e1381f682d91dce59d1ab6bb54e2cfffdd07cc0b74dbbdfc440eadb6adc817d0",
+      "browser": "firefox",
+      "browserVersion": "163.0a1",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "touchEmulation": false,
+      "reportSha256": "6192ed2d9d4a51c896411e6841087597fd3aa9fd4ae90c2c8254c8e738076b80",
+      "completionSha256": "1cc69eb72a1c9dd92e1762dd727a96de637cd43872932421f8ce0b32f5f330fc",
+      "workflowCases": 79,
+      "workflowPasses": 73,
+      "workflowCompletionPassed": false,
+      "proofs": 52,
+      "uniqueByteSequences": 40,
+      "integrityPassed": true,
+      "sourceComparisonQualification": "Recorded actual fixture files were used for all case-specific source comparisons."
+    }
+  ],
+  "independentChecks": [
+    "JPEG/PNG/WebP/GIF fully decoded with Pillow; extensions, source display dimensions, PNG alpha and default/lossless pixels, and all animated GIF frames/delays/finite-loop metadata checked where applicable.",
+    "MP3/MP4 fully decoded with native FFmpeg and independently probed for codec, channels, frame counts/timestamps, source duration, output pixel format and sample-rate/bitrate constraints. Decoded PCM RMS was non-silent; no human listening claim is made.",
+    "MP3 profile expectations were calculated independently from the requested/default bitrate and MP3 sample-rate profile constraints. Byte-identical retained originals instead require exact source bytes and unchanged stream metadata. No application normalizer was imported.",
+    "PDF independently inspected with pdfinfo/pdftotext for one page, expected text, and removed title metadata.",
+    "Every ZIP was read fully and checked for CRC, unique safe member names, and exact expected source bytes; transformed mixed-archive members were independently decoded. Extraction text, zero-byte and binary output bytes matched their generated source."
+  ],
+  "decoderIdentities": {
+    "python": "3.14.4",
+    "Pillow": "12.1.1",
+    "nativeFFmpeg": {
+      "sha256": "e7e7fb30477f717e6f55f9180a70386c62677ef8a4d4d1a5d948f4098aa3eb99",
+      "version": "ffmpeg version 7.0.2-static https://johnvansickle.com/ffmpeg/  Copyright (c) 2000-2024 the FFmpeg developers"
+    },
+    "nativeFFprobe": {
+      "sha256": "e3624d8ff953c7e2f1f3e3ee24bfa64399bcb3bd5c302b2216d3f794b31bbbf6",
+      "version": "ffprobe version 4.0.2-static https://johnvansickle.com/ffmpeg/  Copyright (c) 2007-2018 the FFmpeg developers"
+    },
+    "PDF": "Independent pdfinfo page/metadata inspection and pdftotext text extraction",
+    "ZIP": "Python standard-library zipfile full CRC/member-byte reads"
+  },
+  "uniqueDecodedByteSequences": [
+    {
+      "sha256": "968e31a6755ccc3c9c402168a7a9932f8e58bd12a81892c3139bc30e8ab8c711",
+      "bytes": 12391,
+      "kind": "image",
+      "format": "JPEG",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "ea6a297bf4269622bb3b09b6e9898f898a6b498a4e3d690eea3312e877c626ff",
+      "bytes": 3296,
+      "kind": "image",
+      "format": "PNG",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "69e51edd3bb895c5e784b10ef02745c298553efdaab5419aa4c186b254b4b7c8",
+      "bytes": 5174,
+      "kind": "image",
+      "format": "WEBP",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "fd9d57be62459a151153e0bee92a745f37a44efd1debcfd03b9a5ae18205d263",
+      "bytes": 16876,
+      "kind": "image",
+      "format": "JPEG",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "37500e32b4b5c82b8f22af2383647bdcd0606e1cc1bff5a6e390475d36095f6e",
+      "bytes": 16859,
+      "kind": "image",
+      "format": "JPEG",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "f103efff42a9821988c6a6671ff4920bc030e6233550e42ee0d0f43fad29c9c8",
+      "bytes": 8125,
+      "kind": "image",
+      "format": "JPEG",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "80d3632715ff952df8c5fe98f8ede544763cbda8b0deade7dbbb8766c8f47c7e",
+      "bytes": 2563,
+      "kind": "image",
+      "format": "PNG",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "41bd541acfcd2b3df0e6bbff18bef07e6f2862fb79132f1549394221206b5d1c",
+      "bytes": 8174,
+      "kind": "image",
+      "format": "WEBP",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "6903fae35dd581ad773b8103d9a588774c106d4ea3c6bf3f5fb98bb918fbf258",
+      "bytes": 5556,
+      "kind": "image",
+      "format": "WEBP",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "53b2b143f24bff57b241dad1b0a5fed9700ce89f4653151332db6dd3ec4eeddf",
+      "bytes": 2535,
+      "kind": "image",
+      "format": "PNG",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "78cfc17dd9c9b7857dd6f50e4c9c9ef2f31023664e37a2b4ff412626745a6793",
+      "bytes": 4928,
+      "kind": "image",
+      "format": "WEBP",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "31ba07f47b87e9b226bb7dd55a48fa44cc950f9726b5875a570d1d28fd681323",
+      "bytes": 3697,
+      "kind": "image",
+      "format": "JPEG",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "ce83914a92b9d648e8c8aeb447105ac3e4c5f38408254c2bd4e15b2f4fa45cd2",
+      "bytes": 12777,
+      "kind": "image",
+      "format": "JPEG",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "6433a5cceee043ce0e91269d831597bb2e707aa48b2ff1cdcbff9c54e25b9b93",
+      "bytes": 23679,
+      "kind": "image",
+      "format": "PNG",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "3e834ee79899a0facee219cf4dc5c35abc828862a10eb12fe1722db3a60115a3",
+      "bytes": 6668,
+      "kind": "image",
+      "format": "WEBP",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "a8e1dd62f2e62414b556945016c9ba9bdacf1ea3f3566d43d3325f66dfcd1be3",
+      "bytes": 572,
+      "kind": "image",
+      "format": "WEBP",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "056e28401c5cd5fb98bcdfb9881a504ed40c101d33584f776a768cf6344a4034",
+      "bytes": 16010,
+      "kind": "image",
+      "format": "GIF",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "a51af823394215ae291e5030281922e0d7d0db832c7592d6248a18adcf685076",
+      "bytes": 50157,
+      "kind": "media",
+      "format": "mp3",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "37a02740181be595785f3fe6e0b54ef420bad928d83e7a9e4974e0de051388ab",
+      "bytes": 41840,
+      "kind": "media",
+      "format": "mp3",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "0762ef6e9245fe9eac3600964e262a2af986e681f3bfd318039f80d3285d3ea1",
+      "bytes": 51120,
+      "kind": "media",
+      "format": "mp3",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "43a2c62ba132f42faaed0803b8469688e96027c03e33fc3623c4da0117f2a4df",
+      "bytes": 50157,
+      "kind": "media",
+      "format": "mp3",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "7cbac26b2d7959805e3fb27f6672c5628cc49ccb0e9cac9ad26e3d1e589f2e2f",
+      "bytes": 49581,
+      "kind": "media",
+      "format": "mp3",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "730bdcb039e1016ddb1dba5826b8d87ca440f279f242d040833a889e7a586ffc",
+      "bytes": 49671,
+      "kind": "media",
+      "format": "mp3",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "68bea24a752eb43c8eb074ab853681a68d589f32b7c4f0abb2b15746fc9bc60c",
+      "bytes": 13437,
+      "kind": "media",
+      "format": "mp3",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "9f647d1ffd1c4c6913470bd5688f45933ebab7eaf82fe0afb08012c0e912264f",
+      "bytes": 43245,
+      "kind": "media",
+      "format": "mp3",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "3af9bd6c5b01bcfa8c7009f8fc1141220e410f2b08d012f6c05556433818ca81",
+      "bytes": 43245,
+      "kind": "media",
+      "format": "mp3",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "88d437440f33f0e6d3296e8f2f81ad873b15132766f0b3b40ce521dfb5df61bd",
+      "bytes": 17238,
+      "kind": "media",
+      "format": "mov,mp4,m4a,3gp,3g2,mj2",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "ce212770322b5ec2a95618ff72f70df2406b5643f31caa62a58cd1a657a6b3fd",
+      "bytes": 22437,
+      "kind": "media",
+      "format": "mov,mp4,m4a,3gp,3g2,mj2",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "ec05fa47987d203f3fd8982e2731833ca959ee9739337ed345b3f346673a2128",
+      "bytes": 22380,
+      "kind": "media",
+      "format": "mov,mp4,m4a,3gp,3g2,mj2",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "ca40b8f25614938837362d863b295d9a93048a6f82b34ec9ffcfbcc2a3edbe9a",
+      "bytes": 23644,
+      "kind": "media",
+      "format": "mov,mp4,m4a,3gp,3g2,mj2",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "33f517601b20fd4eae841698f3b4d3e8287518288810db740c6c235ad34f4805",
+      "bytes": 22349,
+      "kind": "media",
+      "format": "mov,mp4,m4a,3gp,3g2,mj2",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "6dbdffe343bc736bca3e0f672188c471b9d3059449d4ad28f2162cb4481025be",
+      "bytes": 37369,
+      "kind": "media",
+      "format": "mov,mp4,m4a,3gp,3g2,mj2",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "2aa15ddf72bf2a17bb4d276ed3a1e482738ed732365a15c4d7f8261dc64ba72a",
+      "bytes": 731,
+      "kind": "pdf",
+      "format": null,
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "7bddbab13da00692c4aec81fd01d4848b887d50142ba8ea59925554c878c572b",
+      "bytes": 13833,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "178b3e7b2afe791256419908e290e547e23e993ed94593ea2a7c1d54e4b32e88",
+      "bytes": 233,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "a7937b64b8caa58f03721bb6bacf5c78cb235febe0e70b1b84cd99541461a08e",
+      "bytes": 5,
+      "kind": "exact-byte-file",
+      "format": null,
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "5cbf7b93e3339f5e64159ae31fb6ab15fe78ee01c988422a36dd19609640f53a",
+      "bytes": 34401,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "60d855207f99501f2173fc981070a40f2fbb32c1fc8c28d6adaa233707054d57",
+      "bytes": 760632,
+      "kind": "media",
+      "format": "mov,mp4,m4a,3gp,3g2,mj2",
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "bb30ab1a2a597a48fc21f8dbc6b707938f109b8ac5d55ba99d2ec8d652ba1fed",
+      "bytes": 233,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "f9e2151cf4b3ed88f0c0d4f0beedbbdf1370d489fd4baf128ac3e6ee91449838",
+      "bytes": 118,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "7d15ed9087f9e2eb3e93c67e328dec960df9b26e6211e41af3a7e6225b081d38",
+      "bytes": 987,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "kind": "exact-byte-file",
+      "format": null,
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "b727666913c6db8b72b74ce50f1b9c4a4931225e32cc184e2592781007ff2acf",
+      "bytes": 524288,
+      "kind": "exact-byte-file",
+      "format": null,
+      "firstContext": "chromium-desktop"
+    },
+    {
+      "sha256": "c4cad1e4d79aea99c378cfad01a23e51617d5e15a489ac881bace894ed261857",
+      "bytes": 13832,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "webkit-desktop"
+    },
+    {
+      "sha256": "bc8fcbf92e8ae6753d41561299c8acc9fe73f9b6be589116893bcf901bd51d15",
+      "bytes": 233,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "webkit-desktop"
+    },
+    {
+      "sha256": "aca01dda8b423668c0044dd07b4e175744226daffa8cba29ca77419b38f999df",
+      "bytes": 34401,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "webkit-desktop"
+    },
+    {
+      "sha256": "4f94781f00c51bf1914852ec528dae1a9fb615e4b07513682e30c6a8d4aab351",
+      "bytes": 233,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "webkit-desktop"
+    },
+    {
+      "sha256": "900182c39ec7622e7c9d39431acf2ea6ec3685c9f3922a0fa98f1f10b7aaf747",
+      "bytes": 118,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "webkit-desktop"
+    },
+    {
+      "sha256": "c60fd3a631b7a14b1d7423d52c9b7cae1fdfe5d3413e6210edd0b83184e95455",
+      "bytes": 986,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "webkit-desktop"
+    },
+    {
+      "sha256": "c989bc4a1525bb0ad38b42a0a1dd338d6d0a3de1b265be695786c42e11d4f1f6",
+      "bytes": 13834,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "chromium-touch-retry"
+    },
+    {
+      "sha256": "770227a0df3efffcec52e2cfcf92b339f91a0ea403d0fce3fe8a934950c703ab",
+      "bytes": 233,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "chromium-touch-retry"
+    },
+    {
+      "sha256": "6d028567feb049a5318031cbafe9652e541d71a7bfb7d641ee9d9c300f96855f",
+      "bytes": 34401,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "chromium-touch-retry"
+    },
+    {
+      "sha256": "c659f6b44005486fa288f602aa7730162bb4b60d48b9347df63c59dd8290b33a",
+      "bytes": 233,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "chromium-touch-retry"
+    },
+    {
+      "sha256": "0ea6ca2d8bd16571cb2970d756ef18e20049e254bc0d995a9e7ca1df58c2be0c",
+      "bytes": 118,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "chromium-touch-retry"
+    },
+    {
+      "sha256": "af1894bb8a0e1032d468d7f77998dc917f3ecf8e89239d952a3942888a267370",
+      "bytes": 988,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "chromium-touch-retry"
+    },
+    {
+      "sha256": "cfe0f1640750793b0f8c4e8313ede68ebbeac22a48d3095a5f641346be778102",
+      "bytes": 7682,
+      "kind": "image",
+      "format": "WEBP",
+      "firstContext": "l-firefox-nightly163-native-numbers-desktop"
+    },
+    {
+      "sha256": "b4ed78db26bb29be0bb9d2a3f5372ef5f150cb5dcf34eea71ca47f0291cad9f8",
+      "bytes": 5084,
+      "kind": "image",
+      "format": "WEBP",
+      "firstContext": "l-firefox-nightly163-native-numbers-desktop"
+    },
+    {
+      "sha256": "0b91553678e18c5270b7a2de2695eec7a5dc33eac128dc6a45a3df139d9b05e5",
+      "bytes": 4896,
+      "kind": "image",
+      "format": "WEBP",
+      "firstContext": "l-firefox-nightly163-native-numbers-desktop"
+    },
+    {
+      "sha256": "40a8d167fd1da4ca5a254b9675e375468c30ce50f4dd5eb30c1690375a13e803",
+      "bytes": 6180,
+      "kind": "image",
+      "format": "WEBP",
+      "firstContext": "l-firefox-nightly163-native-numbers-desktop"
+    },
+    {
+      "sha256": "d2b53040cf7a82858527aa35bf7b7e9e6bbfbebcbd4332bf5a7d78001fce57d7",
+      "bytes": 108,
+      "kind": "image",
+      "format": "WEBP",
+      "firstContext": "l-firefox-nightly163-native-numbers-desktop"
+    },
+    {
+      "sha256": "a1cee54c9ffa792ab6fbf4fa7711e6db30aec1d89277360644624028bc73a208",
+      "bytes": 13832,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "l-firefox-nightly163-native-numbers-desktop"
+    },
+    {
+      "sha256": "b91876ff265b92edaaff27920d6f4f7960110e36b0c08f71cc6e428caa0e8fbe",
+      "bytes": 233,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "l-firefox-nightly163-native-numbers-desktop"
+    },
+    {
+      "sha256": "ab95249ef8f6ed32cfacaf4b06bc2cf4257543c258a1f6893cd860faf662c304",
+      "bytes": 34401,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "l-firefox-nightly163-native-numbers-desktop"
+    },
+    {
+      "sha256": "c19fb5a5d0ee9869ead81a8cb448c2a69d5ec0972792a6a76d52d3a9a999b586",
+      "bytes": 233,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "l-firefox-nightly163-native-numbers-desktop"
+    },
+    {
+      "sha256": "0498bab9aac7ea575286937e28583286abc8a3d14d0c89dbeebc43ab26925fdd",
+      "bytes": 118,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "l-firefox-nightly163-native-numbers-desktop"
+    },
+    {
+      "sha256": "3034eb9f0273272067ff69efdc999a81eb42da8c22e095b3839782e748749c70",
+      "bytes": 986,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "l-firefox-nightly163-native-numbers-desktop"
+    },
+    {
+      "sha256": "08b19b01ef64858c6c319d52cda98bf4f9d8ed9f00b65da31f31f500b5efd2d7",
+      "bytes": 13832,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "chromium-touch"
+    },
+    {
+      "sha256": "6cd67ca40ddc09f458a82d3aad96bb4521de71203cf3c291d9fafd02f6c5c4e3",
+      "bytes": 233,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "chromium-touch"
+    },
+    {
+      "sha256": "47d460a352311f6ff2eae464c599f4fdecaac781f0a9c7d90e01993e00a0d66d",
+      "bytes": 34401,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "chromium-touch"
+    },
+    {
+      "sha256": "9e9db890a840af0fb8c65993666bc1f7299b6ab9cf58a4193b030eff052a17b0",
+      "bytes": 233,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "chromium-touch"
+    },
+    {
+      "sha256": "748d39f2361908d138bbdfec054ee148a2b9b2da23128622853e7d340973e326",
+      "bytes": 118,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "chromium-touch"
+    },
+    {
+      "sha256": "c5a74243d28727be510409a557b1ab49ac19fda33910890d98588fa423c582de",
+      "bytes": 986,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "chromium-touch"
+    },
+    {
+      "sha256": "36e856afc5cebab901863597d65d19fca6b1c8bd6decfe3a701f2396b4393b1d",
+      "bytes": 13835,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "l-firefox-nightly163-original-bidi-fill"
+    },
+    {
+      "sha256": "4ddcc698337d96c5c9f5d42a1267e1339c12be142dc56a89ae3795bc776a2db3",
+      "bytes": 233,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "l-firefox-nightly163-original-bidi-fill"
+    },
+    {
+      "sha256": "41bc1c25d272a4742dcc2951d1d0b5b0a50f939ece1e8127761db6bddc163754",
+      "bytes": 34401,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "l-firefox-nightly163-original-bidi-fill"
+    },
+    {
+      "sha256": "e8538141f8552bb781a87571c8a034383140a7ac2aba48317183db5aaef9241f",
+      "bytes": 233,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "l-firefox-nightly163-original-bidi-fill"
+    },
+    {
+      "sha256": "1a8580a5633f00b5bea0aefafec11d63a410ded5ed636ed507b03cdaa769b8f8",
+      "bytes": 118,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "l-firefox-nightly163-original-bidi-fill"
+    },
+    {
+      "sha256": "ed42021edb725b38b414d2c1dee05d6791efb0f118459da6206ef6225e7d79b0",
+      "bytes": 989,
+      "kind": "zip",
+      "format": null,
+      "firstContext": "l-firefox-nightly163-original-bidi-fill"
+    }
+  ],
+  "priorInspectorAttempts": [
+    {
+      "evidence": ".qa-results/phase3/functionality/candidate-k/independent-output-review/report.json",
+      "sha256": "89f2afdf206830c8a6186d77f3c322a279b1181ae0a774fdaf2e108d901a71f5",
+      "status": "FAILED_INSPECTOR_ASSERTION_PRESERVED",
+      "failureCount": 30,
+      "reason": "Inspector initially required all MP3 sample rates to equal their sources. At default 192 kbps, MP3 MPEG-1 requires the 22.05 kHz fixture to use at least 32 kHz. All 30 resulting assertion failures are preserved; decode/channel/duration checks had passed.",
+      "appSourceChanged": false
+    },
+    {
+      "evidence": ".qa-results/phase3/functionality/candidate-k/independent-output-review-retry/report.json",
+      "sha256": "3e3c184e346e847cfc92b8e8cfb1298dcc3e203adfd771d137f8755369b69730",
+      "status": "FAILED_INSPECTOR_ASSERTION_PRESERVED",
+      "failureCount": 6,
+      "reason": "Inspector then incorrectly expected a re-encode when six downloads were SHA-identical to the smaller original MP3. The final independent branch requires exact source bytes plus unchanged rate, bitrate and channels; it does not infer retention from a filename.",
+      "appSourceChanged": false
+    }
+  ],
+  "limitations": [
+    "The accepted Chromium desktop, WebKit desktop and Chromium touch runs used K; accepted Firefox 163.0a1 used L. Their delivered processing asset pins match, but these are not relabeled as fresh L cross-browser runs.",
+    "Firefox 163.0a1 is the official prerelease browser used after an independently confirmed upstream stable-browser ARIA crash. It is not stable Firefox 161 certification.",
+    "Four saved downloads from the interrupted historical Firefox 160 prefix were fully decoded and rehashed, but source geometry/pixel comparison is NOT TESTED because its progress report did not retain a fixture path. No directory was guessed.",
+    "Three historical workflow runs remain failed/interrupted (78/79, four-case prefix, 73/79). Their downloaded artifacts passing integrity does not turn those workflows into passes.",
+    "Generated-fixture geometry, timestamps, PCM/RMS, pixels, metadata and archive checks do not certify every possible input, perceptual quality or physical device. No human audio listening or production processing is claimed."
+  ],
+  "failures": [],
+  "savedDownloadDirectoryAccounting": {
+    "status": "PASS",
+    "actualSavedFiles": 335,
+    "distinctRecordedPaths": 335,
+    "unboundSavedFiles": 0,
+    "missingRecordedFiles": 0,
+    "evidence": ".qa-results/phase3/functionality/candidate-k/independent-output-review-final/download-directory-accounting.json",
+    "sha256": "f2c74fd4dfd7f4a3c53d206ef106213a6f20d717b7a5dbafcaca0832afc19272",
+    "scope": "Actual owned download-proofs directories versus every canonical report-bound saved path; does not search arbitrary browser profiles or guess unrecorded downloads."
+  }
+}

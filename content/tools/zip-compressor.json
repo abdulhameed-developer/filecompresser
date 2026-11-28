@@ -1,54 +1,54 @@
 {
   "heading": "Free ZIP Creator Online",
-  "introduction": "Sharing several files separately can take extra time and make it harder for someone to keep everything organized. If you need to send documents, images, reports, or other files together, creating a ZIP archive can make the process more convenient.\n\nA ZIP file combines multiple files into a single archive. Instead of attaching each item separately, you can create one ZIP file and share it as a single download. This is useful for office documents, project folders, website resources, photos, and other collections of files.\n\nFile Compresser offers an online ZIP Creator that lets you select files and package them into a ZIP archive directly in your browser. You do not need to install additional software or create an account to create an archive.",
+  "introduction": "Combine files into one downloadable ZIP archive on your device. File contents are preserved, but already compressed media may gain little from ZIP compression. Review the archive before sharing.",
   "sections": [
     {
       "heading": "What Is a ZIP Creator?",
-      "body": "A ZIP Creator is a tool that combines selected files into one ZIP archive. The archive keeps the files together in a single package, which can make storage, transfer, and sharing easier.\n\nA ZIP archive is not always a way to make files significantly smaller. Many common formats, such as JPG images, MP3 audio, MP4 videos, and other compressed files, have already been optimized for storage. Adding these files to a ZIP archive may not reduce their total size by much.\n\nThe main purpose of File Compresser's ZIP Creator is to package files into one archive. It uses the selected input files to create the ZIP file, so the original file data is stored inside the archive.\n"
+      "body": "A ZIP Creator is a tool that combines selected files into one ZIP archive. The archive keeps the files together in a single package, which can make storage, transfer, and sharing easier.\n\nA ZIP archive is not always a way to make files significantly smaller. Many common formats, such as JPG images, MP3 audio, MP4 videos, and other compressed files, have already been optimized for storage. Adding these files to a ZIP archive may not reduce their total size by much.\n\nThe main purpose of FileCompresser's ZIP Creator is to package files into one archive. It uses the selected input files to create the ZIP file, so the original file data is stored inside the archive."
     },
     {
       "heading": "How to Create a ZIP File Online",
-      "body": "Creating a ZIP archive with File Compresser is a simple process. You can select the files you want to keep together and create one downloadable archive.\n\n1. Open the ZIP Creator page on File Compresser.\n2. Select the files you want to include in the archive.\n3. Review the selected files before continuing.\n4. Start the ZIP creation process.\n5. Wait for the browser to package the files.\n6. Download the completed ZIP archive to your device.\n\nAfter downloading, you can keep the archive on your computer, attach it to an email, or share it through a supported file-sharing service."
+      "body": "Creating a ZIP archive with FileCompresser is a simple process. You can select the files you want to keep together and create one downloadable archive.\n\n1. Open the ZIP Creator page on FileCompresser.\n2. Select the files you want to include in the archive.\n3. Review the selected files before continuing.\n4. Start the ZIP creation process.\n5. Wait for the browser to package the files.\n6. Download the completed ZIP archive to your device.\n\nAfter downloading, you can keep the archive on your computer, attach it to an email, or share it through a supported file-sharing service."
     },
     {
       "heading": "Why Create a ZIP Archive?",
-      "body": "A ZIP archive can help when you need to manage or share multiple files as one package. It is useful in different personal, educational, and professional situations.\n"
+      "body": "A ZIP archive can help when you need to manage or share multiple files as one package. It is useful in different personal, educational, and professional situations."
     },
     {
       "heading": "Combine Multiple Files",
-      "body": "If you have several documents for one project, you can place them in a single ZIP archive. This makes it easier to share the complete collection instead of sending each document separately.\n"
+      "body": "If you have several documents for one project, you can place them in a single ZIP archive. This makes it easier to share the complete collection instead of sending each document separately."
     },
     {
       "heading": "Make File Sharing More Organized",
-      "body": "Sending multiple attachments can sometimes lead to missing files or confusion about which items belong together. A ZIP archive keeps the selected files in one package, making the collection easier to transfer.\n"
+      "body": "Sending multiple attachments can sometimes lead to missing files or confusion about which items belong together. A ZIP archive keeps the selected files in one package, making the collection easier to transfer."
     },
     {
       "heading": "Prepare Project Files",
-      "body": "Designers, developers, students, and office teams often need to share several related files. A ZIP archive can hold images, documents, code files, and other project resources together.\n"
+      "body": "Designers, developers, students, and office teams often need to share several related files. A ZIP archive can hold images, documents, code files, and other project resources together."
     },
     {
       "heading": "Store Related Documents",
-      "body": "You can create an archive for invoices, reports, presentations, photos, or other groups of files. Keeping related items together can make them easier to move or store.\n"
+      "body": "You can create an archive for invoices, reports, presentations, photos, or other groups of files. Keeping related items together can make them easier to move or store."
     },
     {
       "heading": "Simplify Downloads",
-      "body": "If you provide several downloadable resources on a website, a ZIP archive can give visitors one file to download instead of requiring them to select each item individually.\n"
+      "body": "If you provide several downloadable resources on a website, a ZIP archive can give visitors one file to download instead of requiring them to select each item individually."
     },
     {
       "heading": "Does Creating a ZIP File Reduce File Size?",
-      "body": "Creating a ZIP archive does not guarantee a smaller total file size. The result depends on the types of files you add.\n\nSome text documents and uncompressed files may become smaller when stored in a ZIP archive. However, many images, videos, and audio files already use compression. These formats may show little or no additional size reduction when packaged into a ZIP file.\n\nFile Compresser displays the combined size of the selected input files as the original size. This gives you a reference for comparing the archive with the files you selected.\n\nIf your main goal is to reduce the size of an image, video, audio file, or PDF, it may be more useful to process that file with its dedicated compression tool before adding it to an archive.\n"
+      "body": "Creating a ZIP archive does not guarantee a smaller total file size. The result depends on the types of files you add.\n\nSome text documents and uncompressed files may become smaller when stored in a ZIP archive. However, many images, videos, and audio files already use compression. These formats may show little or no additional size reduction when packaged into a ZIP file.\n\nFileCompresser displays the combined size of the selected input files as the original size. This gives you a reference for comparing the archive with the files you selected.\n\nIf your main goal is to reduce the size of an image, video, audio file, or PDF, it may be more useful to process that file with its dedicated compression tool before adding it to an archive."
     },
     {
       "heading": "Check Your Files Before Creating an Archive",
-      "body": "Before creating a ZIP file, make sure you have selected the correct items. Review the file names and confirm that the collection includes everything you want to share.\n\nFile names may be normalized during archive creation. For this reason, it is useful to check the names and contents of the completed archive before sending it to someone else.\n\nAlso, remember that creating a ZIP file does not protect its contents with a password or make the files private from anyone who receives the archive. If you need to protect sensitive information, use an appropriate security method before sharing the files.\n"
+      "body": "Before creating a ZIP file, make sure you have selected the correct items. Review the file names and confirm that the collection includes everything you want to share.\n\nFile names may be normalized during archive creation. For this reason, it is useful to check the names and contents of the completed archive before sending it to someone else.\n\nAlso, remember that creating a ZIP file does not protect its contents with a password or make the files private from anyone who receives the archive. If you need to protect sensitive information, use an appropriate security method before sharing the files."
     },
     {
       "heading": "Create ZIP Archives Privately in Your Browser",
-      "body": "File Compresser creates ZIP archives directly in your browser. Your selected files do not need to be uploaded to an external server for the archive to be created. You can use the tool without installing a separate ZIP application.\n\nThe general file queue supports up to 500 files, with a combined queue size of up to 300 MB. Individual files can be up to 200 MB, subject to the queue limit.\n\nThese limits help define which file collections can be processed in the browser. If your selection exceeds the supported limits, reduce the number or size of the files and try again.\n"
+      "body": "FileCompresser creates ZIP archives directly in your browser. Your selected files do not need to be uploaded to an external server for the archive to be created. You can use the tool without installing a separate ZIP application.\n\nThe general file queue supports up to 500 files, with a combined queue size of up to 300 MiB. Individual files can be up to 200 MiB, subject to the queue limit.\n\nThese limits help define which file collections can be processed in the browser. If your selection exceeds the supported limits, reduce the number or size of the files and try again."
     },
     {
       "heading": "Create Your ZIP File Online",
-      "body": "Use File Compresser when you need to bring several files together in one archive. Select your documents, images, or other supported files, create the ZIP package, and download it to your device. Review the archive before sharing it to make sure the right files are included and their names are correct.\n"
+      "body": "Use FileCompresser when you need to bring several files together in one archive. Select your documents, images, or other supported files, create the ZIP package, and download it to your device. Review the archive before sharing it to make sure the right files are included and their names are correct."
     }
   ],
   "links": [
@@ -64,29 +64,30 @@
   "faq": [
     {
       "q": "Is the ZIP Creator free to use?",
-      "a": "You can use the online ZIP creation tool without installing desktop software or creating an account. The only limits are 200 MB per file and a queue of up to 500 files and 300 MB.\n"
+      "a": "The tool is free without an account. The input limit is 200 MiB per file; queues allow up to 500 files and 300 MiB total. Format, device-memory and processing limits also apply."
     },
     {
       "q": "Can I combine multiple files into one ZIP?",
-      "a": "Yes. Select the files you want to include, create the archive, and download the resulting ZIP file.\n"
+      "a": "Yes. Select the files you want to include, create the archive, and download the resulting ZIP file."
     },
     {
       "q": "Does a ZIP archive always reduce file size?",
-      "a": "No. Files that are already compressed, such as many JPG images, MP3 files, and videos, may not become much smaller inside a ZIP archive.\n"
+      "a": "No. Files that are already compressed, such as many JPG images, MP3 files, and videos, may not become much smaller inside a ZIP archive."
     },
     {
       "q": "Can I use ZIP Creator on my phone?",
-      "a": "The tool works through a browser, so you can try it on a supported mobile browser. Processing capacity may depend on your device and the size of the selected files.\n"
+      "a": "The tool works through a browser, so you can try it on a supported mobile browser. Processing capacity may depend on your device and the size of the selected files."
     },
     {
       "q": "Are my files uploaded to a server?",
-      "a": "The ZIP creation process runs in your browser. Your selected files do not need to be uploaded to an external server to create the archive.\n"
+      "a": "The ZIP creation process runs in your browser. Your selected files do not need to be uploaded to an external server to create the archive."
     },
     {
       "q": "What is the maximum supported file size?",
-      "a": "The general queue supports individual files up to 200 MB, with a combined queue limit of 300 MB and a maximum of 500 files.\n"
+      "a": "The general queue supports individual files up to 200 MiB, with a combined queue limit of 300 MiB and a maximum of 500 files."
     }
   ],
   "seoTitle": "ZIP Creator Online Free – Create ZIP Archives",
-  "seoDescription": "Create a ZIP archive from multiple files online. Combine documents, images and media in your browser without uploading your files."
+  "seoDescription": "Create a ZIP archive from multiple files online. Combine documents, images and media in your browser without uploading your files.",
+  "faqMode": "custom"
 }

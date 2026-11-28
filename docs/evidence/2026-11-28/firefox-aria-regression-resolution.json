@@ -1,0 +1,557 @@
+{
+  "capturedAt": "2026-11-28T12:58:35.122347+00:00",
+  "scope": "Native Firefox automation failure investigation and controlled local Compare verification; not a production release, physical-device or all-tool certification.",
+  "sources": [
+    "https://bugzilla.mozilla.org/show_bug.cgi?id=2090055",
+    "https://github.com/microsoft/playwright/issues/43967",
+    "https://github.com/microsoft/playwright/issues/44135",
+    "https://github.com/microsoft/playwright/pull/43982",
+    "https://wiki.mozilla.org/Gecko%3AMouse_Wheel_Scrolling"
+  ],
+  "nativeFault": {
+    "normalThirdDebuggerEnvelope": "complete, debugger exit0; app native crash retained as failed harness exit1",
+    "actualNativeSignal11ExitObserved": true,
+    "topFunction": "Element::GetAttrAssociatedElementsForBindings",
+    "caller": "Element_Binding::get_ariaLabelledByElements",
+    "verifiedExecutableFrames": 6,
+    "symbolVerification": "Official public symbols exact module ID; local process-map/offset match, no trace/dump uploaded.",
+    "rawTracePolicy": "Raw stacks/process mappings remain private.",
+    "earlierDebuggerAttempts": "Two failed envelopes retained; no passing reinterpretation.",
+    "stockMozilla159And161": "Both reproduce native SIG11; neither upgraded/repaired by this QA work."
+  },
+  "causalQueryControl": {
+    "candidate": "J",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "result": "PASS",
+    "change": "Dialog role selector replaced privately by CSS locator plus explicit native modal/implicit role/unique visible H2 exact-name assertions; application unchanged.",
+    "applicationAssertions": "Processing/download/nativewheel/zoom/keyboard/pane sync/edge chain/focus/exact background scroll return all pass.",
+    "outputBytes": 83020,
+    "outputSha256": "67181c1d03a5e42876abcf23d312ac169442bfb0c4af29261142a0d601143e7e"
+  },
+  "pairedBrowser": {
+    "coreVersion": "1.66.0-alpha-2026-11-28",
+    "firefoxVersion": "160.0",
+    "firefoxRevision": "1584",
+    "qaOnly": true,
+    "packageBytes": 3256900,
+    "officialIntegrityVerified": true,
+    "packageSha256": "a50a7718c17edb12903e7ca8ed0d176e5ad8e22e2fa719572a4a6085d239c776",
+    "oldStableCoreAndBrowserRetained": true,
+    "shippingDependencyChanged": false
+  },
+  "minimalRegression": [
+    {
+      "core": "1.65.1",
+      "browser": "159.0",
+      "case": "same-world-control",
+      "actualResult": "PASS",
+      "expectedOutcomeObserved": true
+    },
+    {
+      "core": "1.65.1",
+      "browser": "159.0",
+      "case": "aria-label-control",
+      "actualResult": "PASS",
+      "expectedOutcomeObserved": true
+    },
+    {
+      "core": "1.65.1",
+      "browser": "159.0",
+      "case": "two-world-trigger",
+      "actualResult": "NATIVE_CRASH",
+      "expectedOutcomeObserved": true
+    },
+    {
+      "core": "1.66.0-alpha-2026-11-28",
+      "browser": "160.0",
+      "case": "same-world-control",
+      "actualResult": "PASS",
+      "expectedOutcomeObserved": true
+    },
+    {
+      "core": "1.66.0-alpha-2026-11-28",
+      "browser": "160.0",
+      "case": "aria-label-control",
+      "actualResult": "PASS",
+      "expectedOutcomeObserved": true
+    },
+    {
+      "core": "1.66.0-alpha-2026-11-28",
+      "browser": "160.0",
+      "case": "two-world-trigger",
+      "actualResult": "PASS",
+      "expectedOutcomeObserved": true
+    }
+  ],
+  "nativeWheelControl": [
+    {
+      "case": "immediate-next-wheel",
+      "nativeWheelEventsTrusted": true,
+      "wheelGapMs": 462,
+      "paneAtBoundary": 0,
+      "dialogBefore": 160,
+      "dialogAfter": 160,
+      "dialogMoved": false,
+      "backgroundStable": true
+    },
+    {
+      "case": "idle1700ms-new-gesture",
+      "nativeWheelEventsTrusted": true,
+      "wheelGapMs": 2118,
+      "paneAtBoundary": 0,
+      "dialogBefore": 160,
+      "dialogAfter": 0,
+      "dialogMoved": true,
+      "backgroundStable": true
+    },
+    {
+      "case": "pointer-exit200ms-return",
+      "nativeWheelEventsTrusted": true,
+      "wheelGapMs": 670,
+      "paneAtBoundary": 0,
+      "dialogBefore": 160,
+      "dialogAfter": 0,
+      "dialogMoved": true,
+      "backgroundStable": true
+    }
+  ],
+  "qaInputCorrection": {
+    "historicalHarnessSha256": "73c126353307cf98a185eb57421055db73ee6d530ca94ce26468daf2bfcaa6c1",
+    "canonicalAfterReviewedInputCorrectionSha256": "36c8e925595e9abc9a44fe4e8850108f1fe1768abb0486eea3933cc46987f97d",
+    "change": "Normal1700msFirefox-onlyidle before a genuinely fresh boundary-wheel gesture. Browser native transaction default1500ms; no app/CSS/DOM/event-handler/preference changes.",
+    "assertionsChanged": false,
+    "originalNewBrowserAttempts": "Two original-byte runs fail boundary gesture; retained, not reclassified as passes.",
+    "actualJ390AfterCorrection": "PASS exit0, exact same output and stable artifact, all application assertions retained.",
+    "physicalTouch": "Not tested. Firefox uses native wheel; Chromium trusted touch input is emulated."
+  },
+  "candidateKMatrix": {
+    "status": "PASS",
+    "contexts": 12,
+    "homeSha256": "2619895be5f398566f4ff7c1acd0a37230a148a202b1f9d8f42997f15c78a295",
+    "canonicalHarnessSha256": "36c8e925595e9abc9a44fe4e8850108f1fe1768abb0486eea3933cc46987f97d",
+    "identityRecordsBeforeAndAfterPerContext": 23,
+    "exactServedIdentitiesStable": true,
+    "normalBrowserClosures": 12,
+    "actualDownloads": 12,
+    "uniquePayloads": 1,
+    "independentDownloadDecode": "12/12PNG,1440x900RGB,83020bytes,allSHA67181c1d03a5e42876abcf23d312ac169442bfb0c4af29261142a0d601143e7e",
+    "nativeScreenshotsCaptured": 120,
+    "selectedStatesVisuallyReviewed": 36,
+    "rows": [
+      {
+        "context": "firefox-390x844",
+        "actualBrowserVersion": "160.0",
+        "passed": true,
+        "gesturesPassed": 4,
+        "exitCode": 0
+      },
+      {
+        "context": "chromium-390x844",
+        "actualBrowserVersion": "156.0.8078.47",
+        "passed": true,
+        "gesturesPassed": 4,
+        "exitCode": 0
+      },
+      {
+        "context": "chromium-320x568",
+        "actualBrowserVersion": "156.0.8078.47",
+        "passed": true,
+        "gesturesPassed": 4,
+        "exitCode": 0
+      },
+      {
+        "context": "chromium-844x390",
+        "actualBrowserVersion": "156.0.8078.47",
+        "passed": true,
+        "gesturesPassed": 4,
+        "exitCode": 0
+      },
+      {
+        "context": "chromium-1280x900",
+        "actualBrowserVersion": "156.0.8078.47",
+        "passed": true,
+        "gesturesPassed": 4,
+        "exitCode": 0
+      },
+      {
+        "context": "webkit-390x844",
+        "actualBrowserVersion": "27.2",
+        "passed": true,
+        "gesturesPassed": 4,
+        "exitCode": 0
+      },
+      {
+        "context": "webkit-320x568",
+        "actualBrowserVersion": "27.2",
+        "passed": true,
+        "gesturesPassed": 4,
+        "exitCode": 0
+      },
+      {
+        "context": "webkit-844x390",
+        "actualBrowserVersion": "27.2",
+        "passed": true,
+        "gesturesPassed": 4,
+        "exitCode": 0
+      },
+      {
+        "context": "webkit-1280x900",
+        "actualBrowserVersion": "27.2",
+        "passed": true,
+        "gesturesPassed": 4,
+        "exitCode": 0
+      },
+      {
+        "context": "firefox-320x568",
+        "actualBrowserVersion": "160.0",
+        "passed": true,
+        "gesturesPassed": 4,
+        "exitCode": 0
+      },
+      {
+        "context": "firefox-844x390",
+        "actualBrowserVersion": "160.0",
+        "passed": true,
+        "gesturesPassed": 4,
+        "exitCode": 0
+      },
+      {
+        "context": "firefox-1280x900",
+        "actualBrowserVersion": "160.0",
+        "passed": true,
+        "gesturesPassed": 4,
+        "exitCode": 0
+      }
+    ],
+    "setupFailure": "First attempt stopped before any browser due encoded local asset filename lookup; preserved separately.",
+    "scope": "RealPNGCompareonly. Whole79workflowseriesandLfollow-upcandidate/productionareseparateverification.",
+    "finishedAt": "2026-11-28T13:00:05.022910+00:00"
+  },
+  "paired160DownloadLimitation": {
+    "actualFirstFiveTrace": "4PASS,5thWebPFAILED30sdownload-eventtimeout; properly captured. Trusted click and app anchor verified, no clickmiss fix.",
+    "objectControls": [
+      {
+        "browserKind": "official-fixed-paired-160",
+        "mode": "native-file",
+        "downloadEventVerified": false,
+        "observedResult": "FAILED_DIAGNOSTIC"
+      },
+      {
+        "browserKind": "official-fixed-paired-160",
+        "mode": "slice",
+        "downloadEventVerified": false,
+        "observedResult": "FAILED_DIAGNOSTIC"
+      },
+      {
+        "browserKind": "official-fixed-paired-160",
+        "mode": "new-blob",
+        "downloadEventVerified": false,
+        "observedResult": "FAILED_DIAGNOSTIC"
+      },
+      {
+        "browserKind": "official-stock-161-bidi",
+        "mode": "native-file",
+        "downloadEventVerified": true,
+        "observedResult": "BYTE_EXACT_DOWNLOAD"
+      },
+      {
+        "browserKind": "official-stock-161-bidi",
+        "mode": "slice",
+        "downloadEventVerified": true,
+        "observedResult": "BYTE_EXACT_DOWNLOAD"
+      },
+      {
+        "browserKind": "official-stock-161-bidi",
+        "mode": "new-blob",
+        "downloadEventVerified": true,
+        "observedResult": "BYTE_EXACT_DOWNLOAD"
+      }
+    ],
+    "separateNativeArtifactProof": {
+      "method": "Fresh empty task-owned public downloadsPath; same trusted standard anchor, noWaitAfter diagnostic only avoids waiting on resulting viewer navigation.",
+      "newFileCreatedAfterClick": true,
+      "bytes": 5174,
+      "sha256": "69e51edd3bb895c5e784b10ef02745c298553efdaab5419aa4c186b254b4b7c8",
+      "byteExact": true,
+      "pageDownloadEvents": 0,
+      "contextDownloadEvents": 0,
+      "originalHarnessPass": false
+    },
+    "applicationChanged": false,
+    "mimeCoerced": false,
+    "preferencesChanged": false,
+    "exactProtocolCodeCause": "Not established"
+  },
+  "officialNightly": {
+    "version": "163.0a1",
+    "buildId": "20261128083209",
+    "sourceStamp": "7f0936a952f5c887105c53411adb6c8e3fe14428",
+    "archiveBytes": 100199632,
+    "sha256": "e579b63c0f9a7ac0de729e1123bd40e876ca3feb8969222388abf43bae8cecc4",
+    "sha512": "69b3f7a09a1a6e192992b55515c40f5531d9f92d69671eaca291f05183570e87c69e158f51ba62b6f8cce92e8daaac16f416acd6d9adb3bbc2b4cf33b7242f9f",
+    "bothOfficialChecksumsMatch": true,
+    "datedArchive": "https://archive.mozilla.org/pub/firefox/nightly/2026/11/2026-11-28-08-32-09-mozilla-central/",
+    "exactSourceGuardVerified": true,
+    "nativeAriaMinimal": [
+      {
+        "case": "same-world-control",
+        "result": "PASS",
+        "browser": "159.0"
+      },
+      {
+        "case": "aria-label-control",
+        "result": "PASS",
+        "browser": "159.0"
+      },
+      {
+        "case": "two-world-trigger",
+        "result": "NATIVE_CRASH",
+        "browser": "159.0"
+      },
+      {
+        "case": "same-world-control",
+        "result": "PASS",
+        "browser": "163.0a1"
+      },
+      {
+        "case": "aria-label-control",
+        "result": "PASS",
+        "browser": "163.0a1"
+      },
+      {
+        "case": "two-world-trigger",
+        "result": "PASS",
+        "browser": "163.0a1"
+      }
+    ],
+    "webpObjectControls": [
+      {
+        "mode": "native-file",
+        "byteExactDownload": true,
+        "pageDownloadEvents": 1,
+        "contextDownloadEvents": 1
+      },
+      {
+        "mode": "slice",
+        "byteExactDownload": true,
+        "pageDownloadEvents": 1,
+        "contextDownloadEvents": 1
+      },
+      {
+        "mode": "new-blob",
+        "byteExactDownload": true,
+        "pageDownloadEvents": 1,
+        "contextDownloadEvents": 1
+      }
+    ],
+    "actualK390Comparison": {
+      "passed": true,
+      "exitCode": 0,
+      "scope": "All canonical application assertions intact, private explicit normalNightlychannel only; originalsourcehash/currentinputcorrection recorded."
+    },
+    "finalL79": "PASS_WITH_PROVEN_NATIVE_NUMERIC_INPUT_ADAPTER",
+    "physicalOrStableCertification": false
+  },
+  "updatedAt": "2026-11-28T14:00:33.067499+00:00",
+  "controlledNumberInput": {
+    "experiments": 16,
+    "runtime": {
+      "react": "19.3.0-canary-278794d7-20261002",
+      "reactDom": "19.3.0-canary-278794d7-20261002"
+    },
+    "isolatedAndActualAppSurfaces": true,
+    "values": [
+      "50",
+      "50.05",
+      "100.0005",
+      "2.9e-2"
+    ],
+    "fillObservation": "DOMvalue changes but Reactcontrolledstate stays empty; untrustedinputevent, cleared onblur/rerender.",
+    "nativeKeyboardObservation": "Trustedinput/change; exactReactstate, actual50000/50050bytevalues, invalidfractionalbyteerror retained, exponent29bytes; Enter/close/reopen preserved.",
+    "appChanged": false,
+    "numericFillCallSitesReplacedPrivately": 8,
+    "replacement": "Nativeclick/Ctrl+A/Backspace/pressSequentially, sameoriginalvalues/outputs/assertions; addsrawdraft equality.",
+    "javascriptPropertyOrEventInjectionByAdapter": false,
+    "upstreamExactIssue": "Not established; official pinned implementation and causal runtime evidence retained."
+  },
+  "finalLWorkflow": {
+    "status": "PASS",
+    "candidate": "L",
+    "homeSha256": "e1381f682d91dce59d1ab6bb54e2cfffdd07cc0b74dbbdfc440eadb6adc817d0",
+    "casesExecuted": 79,
+    "casesPassed": 79,
+    "exitCode": 0,
+    "browser": "163.0a1",
+    "sourceCanonicalQaSha256": "6b24b2133fa384ccca9e2a5a56be0b392ea3645fcf42d5d3d3eeb590c3d43268",
+    "privateQaSha256": "534e0bf822ac9eb1825b8ef7ab5c6da04d589fb9edae9d60849951d52d201b7a",
+    "privateDifference": "Only normalNightlyBiDilaunchchannel + provennativekeyboardentryforcustomnumericinput. Appassertionsandliteralvaluesretained.",
+    "sourceAndQaHashesStable": true,
+    "servedIdentitiesBeforeAndAfter": 24,
+    "servedIdentitiesStable": true,
+    "actualDownloads": 56,
+    "stateCaptures": 50,
+    "javascriptErrors": [],
+    "failedResources": [],
+    "unexpectedBrowserLifecycle": [],
+    "additionalArtifactVerification": {
+      "status": "PASS",
+      "actualSavedArtifacts": 56,
+      "uniquePayloads": 43,
+      "imageDownloadsFullyDecoded": 28,
+      "zipDownloadsCrcChecked": 6
+    },
+    "originalRetainedFailure": {
+      "status": "FAILED",
+      "casesExecuted": 79,
+      "casesPassed": 73,
+      "scope": "SixcustomnumericBiDifillfailures; not erased/reclassified."
+    },
+    "productionStatus": "NOT_THIS_LOCAL_GATE",
+    "finishedAt": "2026-11-28T13:27:19.261183+00:00",
+    "stateCaptureErrors": 0,
+    "consoleWarningsOrErrors": 0,
+    "fileUploadRequests": 0
+  },
+  "finalLComparison": {
+    "status": "PASS",
+    "profiles": 4,
+    "browser": "OfficialMozilla163.0a1NightlyBuild20261128083209",
+    "canonicalQaSha256": "36c8e925595e9abc9a44fe4e8850108f1fe1768abb0486eea3933cc46987f97d",
+    "privateChannelQaSha256": "c4bc06319efc238434ba3a8b478bd4760e3a879fe3ad36b71759785c317de689",
+    "privateDifference": "ExplicitnormalNightlyBiDilaunchchannelonly; allcurrentcanonicalapplicationassertions/inputtimingintact.",
+    "rows": [
+      {
+        "profile": "firefox-nightly163-390x844",
+        "passed": true,
+        "exitCode": 0,
+        "servedIdentityRecords": 24,
+        "identitiesStable": true
+      },
+      {
+        "profile": "firefox-nightly163-320x568",
+        "passed": true,
+        "exitCode": 0,
+        "servedIdentityRecords": 24,
+        "identitiesStable": true
+      },
+      {
+        "profile": "firefox-nightly163-844x390",
+        "passed": true,
+        "exitCode": 0,
+        "servedIdentityRecords": 24,
+        "identitiesStable": true
+      },
+      {
+        "profile": "firefox-nightly163-1280x900",
+        "passed": true,
+        "exitCode": 0,
+        "servedIdentityRecords": 24,
+        "identitiesStable": true
+      }
+    ],
+    "finishedAt": "2026-11-28T13:28:28.423530+00:00",
+    "selectedScreenshotStatesVisuallyReviewed": 12,
+    "screenshotsCaptured": 40,
+    "independentPngDownloadsDecoded": 4
+  },
+  "postQaPrivateRuntimeIntegrity": {
+    "nightlyArchiveFilesByteUnchanged": 51,
+    "officialCoreArchiveFilesByteUnchanged": 121,
+    "browserOrQaPackageSourcePatched": false
+  },
+  "finalMVerification": {
+    "candidate": "M",
+    "base": "http://127.0.0.1:3350",
+    "homeSha256": "f46f733452e0169f0c3f12f4bcb9faaa89da828ff6a074ad28d3ca5927aa5aab",
+    "scope": "Fresh actual final M local verification after size-unit correctness changes. Explicit prerelease QA engine and native input adapter; not production, current stable Firefox, physical devices or assistive-technology certification.",
+    "workflow": {
+      "passed": true,
+      "executed": 79,
+      "passing": 79,
+      "auditExitCode": 0,
+      "browserVersion": "163.0a1",
+      "normalBrowserClose": true,
+      "actualDownloads": 56,
+      "uniquePayloads": 43,
+      "savedDownloadsIndependentlyRehashed": 56,
+      "imagesFullyDecoded": 28,
+      "zipsFullyCrcRead": 6,
+      "stateCaptures": 50,
+      "stateCaptureErrors": 0,
+      "pageJavaScriptErrors": 0,
+      "pageConsoleErrorsWarnings": 0,
+      "failedResources": 0,
+      "unexpectedBrowserLifecycleEvents": 0,
+      "fileUploadRequests": 0,
+      "servedIdentityCountBeforeAndAfter": 24,
+      "identitiesStable": true,
+      "canonicalHarnessSha256": "6b24b2133fa384ccca9e2a5a56be0b392ea3645fcf42d5d3d3eeb590c3d43268",
+      "privateHarnessSha256": "534e0bf822ac9eb1825b8ef7ab5c6da04d589fb9edae9d60849951d52d201b7a",
+      "harnessesStable": true,
+      "evidence": ".qa-results/phase3/functionality/candidate-m/firefox-nightly163-native-numbers-desktop"
+    },
+    "comparison": {
+      "passed": true,
+      "contexts": 4,
+      "profiles": [
+        {
+          "width": 390,
+          "height": 844,
+          "auditExitCode": 0,
+          "passed": true,
+          "servedIdentitiesStable": true
+        },
+        {
+          "width": 320,
+          "height": 568,
+          "auditExitCode": 0,
+          "passed": true,
+          "servedIdentitiesStable": true
+        },
+        {
+          "width": 844,
+          "height": 390,
+          "auditExitCode": 0,
+          "passed": true,
+          "servedIdentitiesStable": true
+        },
+        {
+          "width": 1280,
+          "height": 900,
+          "auditExitCode": 0,
+          "passed": true,
+          "servedIdentitiesStable": true
+        }
+      ],
+      "downloadBytesEach": 83020,
+      "downloadSha256Each": "67181c1d03a5e42876abcf23d312ac169442bfb0c4af29261142a0d601143e7e",
+      "independentPngDecodes": 4,
+      "downloadDimensions": [
+        1440,
+        900
+      ],
+      "nativeScreenshots": 40,
+      "selectedStatesVisuallyInspected": 12,
+      "derivedReviewSheets": 4,
+      "everyScreenshotIndividuallyViewed": false,
+      "visualFinding": "No new structural defect observed in the selected states; SI labels agree with exact byte counts.",
+      "evidence": ".qa-results/phase3/comparison/candidate-m/firefox-nightly163"
+    },
+    "postQaOfficialRuntimeIntegrity": {
+      "allBrowserArchiveFilesMatch": true,
+      "browserFiles": 51,
+      "allCoreArchiveFilesMatch": true,
+      "coreFiles": 121,
+      "evidence": ".qa-results/phase3/functionality/candidate-m/firefox-nightly163-native-numbers-desktop/post-qa-runtime-integrity.json"
+    },
+    "limitations": [
+      "Nightly163 and alpha QA core are prereleases, not current stable Firefox certification.",
+      "Native vendor teardown warnings remain preserved in raw stderr; zero warnings above refers specifically to page console.",
+      "Generated fixtures and Linux emulation do not prove physical device or screen reader compatibility.",
+      "No production commit, push or deployment was performed by this agent."
+    ]
+  }
+}

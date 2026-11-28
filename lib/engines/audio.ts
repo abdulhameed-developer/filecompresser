@@ -41,7 +41,7 @@ export async function processAudio(
 ): Promise<ProcessedResult> {
   const started = performance.now()
   assertNotCancelled(signal)
-  if (file.size > 100 * 1024 * 1024) throw new ProcessingError('This audio file exceeds the 100 MB input limit.')
+  if (file.size > 100 * 1024 * 1024) throw new ProcessingError('This audio file exceeds the 100 MiB input limit.')
   const inputFormat = await detectFormat(file)
   if (!inputFormat || !['mp3', 'wav', 'm4a', 'flac', 'ogg'].includes(inputFormat)) throw new ProcessingError('Choose a verified MP3, WAV, M4A, FLAC or Ogg audio file.')
   onProgress?.(1, 'Loading the audio engine…')

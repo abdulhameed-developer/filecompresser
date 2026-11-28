@@ -1,0 +1,3608 @@
+{
+  "startedAt": "2026-11-28T13:15:21.928Z",
+  "base": "http://127.0.0.1:3340",
+  "scope": "Final compiled application: matching installed Firefox/WebKit, native keyboard and desktop-wheel input. Viewport emulation is not physical-device testing.",
+  "browsers": [
+    {
+      "name": "webkit",
+      "version": "27.2",
+      "executable": "/home/admin/.cache/ms-playwright/webkit-2388/pw_run.sh",
+      "playwrightVersion": "1.65.1",
+      "closedNormally": true
+    }
+  ],
+  "results": [
+    {
+      "name": "Compression pipeline diagram",
+      "figure": "pipeline",
+      "width": 320,
+      "documentWidth": 320,
+      "windowWidth": 320,
+      "left": 20,
+      "right": 300,
+      "clientWidth": 280,
+      "scrollWidth": 840,
+      "scrollLeft": 0,
+      "role": "region",
+      "tabIndex": 0,
+      "minScreenFont": 12.802232142857141,
+      "hintVisible": true,
+      "keyboardPan": 126,
+      "wheelInput": {
+        "x": 160,
+        "y": 467.234375
+      },
+      "wheelHitTest": {
+        "tag": "rect",
+        "insideRail": true
+      },
+      "nativeWheelPan": 240,
+      "pageMovedDuringHorizontalWheel": 0,
+      "screenshot": ".qa-results/phase3/ui/l-webkit-article-prefetch-after/webkit-pipeline-320.png"
+    },
+    {
+      "name": "File size comparison diagram",
+      "figure": "sizebars",
+      "width": 320,
+      "documentWidth": 320,
+      "windowWidth": 320,
+      "left": 20,
+      "right": 300,
+      "clientWidth": 280,
+      "scrollWidth": 840,
+      "scrollLeft": 0,
+      "role": "region",
+      "tabIndex": 0,
+      "minScreenFont": 12.802445652173914,
+      "hintVisible": true,
+      "keyboardPan": 126,
+      "wheelInput": {
+        "x": 160,
+        "y": 455.640625
+      },
+      "wheelHitTest": {
+        "tag": "svg",
+        "insideRail": true
+      },
+      "nativeWheelPan": 240,
+      "pageMovedDuringHorizontalWheel": 0,
+      "screenshot": ".qa-results/phase3/ui/l-webkit-article-prefetch-after/webkit-sizebars-320.png"
+    },
+    {
+      "name": "File privacy diagram",
+      "figure": "dataflow",
+      "width": 320,
+      "documentWidth": 320,
+      "windowWidth": 320,
+      "left": 20,
+      "right": 300,
+      "clientWidth": 280,
+      "scrollWidth": 840,
+      "scrollLeft": 0,
+      "role": "region",
+      "tabIndex": 0,
+      "minScreenFont": 12.802316810344827,
+      "hintVisible": true,
+      "keyboardPan": 126,
+      "wheelInput": {
+        "x": 160,
+        "y": 421.390625
+      },
+      "wheelHitTest": {
+        "tag": "text",
+        "insideRail": true
+      },
+      "nativeWheelPan": 240,
+      "pageMovedDuringHorizontalWheel": 0,
+      "screenshot": ".qa-results/phase3/ui/l-webkit-article-prefetch-after/webkit-dataflow-320.png"
+    },
+    {
+      "name": "File format guide diagram",
+      "figure": "formattree",
+      "width": 320,
+      "documentWidth": 320,
+      "windowWidth": 320,
+      "left": 20,
+      "right": 300,
+      "clientWidth": 280,
+      "scrollWidth": 490,
+      "scrollLeft": 0,
+      "role": "region",
+      "tabIndex": 0,
+      "minScreenFont": 12.780387931034483,
+      "hintVisible": true,
+      "keyboardPan": 126,
+      "wheelInput": {
+        "x": 160,
+        "y": 421.4375
+      },
+      "wheelHitTest": {
+        "tag": "svg",
+        "insideRail": true
+      },
+      "nativeWheelPan": 210,
+      "pageMovedDuringHorizontalWheel": 0,
+      "screenshot": ".qa-results/phase3/ui/l-webkit-article-prefetch-after/webkit-formattree-320.png"
+    },
+    {
+      "name": "Compression pipeline diagram",
+      "figure": "pipeline",
+      "width": 1440,
+      "documentWidth": 1440,
+      "windowWidth": 1440,
+      "left": 300,
+      "right": 1140,
+      "clientWidth": 840,
+      "scrollWidth": 840,
+      "scrollLeft": 0,
+      "role": "region",
+      "tabIndex": 0,
+      "minScreenFont": 12.802232142857141,
+      "hintVisible": false,
+      "keyboardPan": 0,
+      "wheelInput": {
+        "x": 720,
+        "y": 471.546875
+      },
+      "wheelHitTest": {
+        "tag": "text",
+        "insideRail": true
+      },
+      "nativeWheelPan": 0,
+      "pageMovedDuringHorizontalWheel": 0
+    },
+    {
+      "name": "File size comparison diagram",
+      "figure": "sizebars",
+      "width": 1440,
+      "documentWidth": 1440,
+      "windowWidth": 1440,
+      "left": 300,
+      "right": 1140,
+      "clientWidth": 840,
+      "scrollWidth": 840,
+      "scrollLeft": 0,
+      "role": "region",
+      "tabIndex": 0,
+      "minScreenFont": 12.802445652173914,
+      "hintVisible": false,
+      "keyboardPan": 0,
+      "wheelInput": {
+        "x": 720,
+        "y": 730.140625
+      },
+      "wheelHitTest": {
+        "tag": "svg",
+        "insideRail": true
+      },
+      "nativeWheelPan": 0,
+      "pageMovedDuringHorizontalWheel": 0
+    },
+    {
+      "name": "File privacy diagram",
+      "figure": "dataflow",
+      "width": 1440,
+      "documentWidth": 1440,
+      "windowWidth": 1440,
+      "left": 300,
+      "right": 1140,
+      "clientWidth": 840,
+      "scrollWidth": 840,
+      "scrollLeft": 0,
+      "role": "region",
+      "tabIndex": 0,
+      "minScreenFont": 12.802316810344827,
+      "hintVisible": false,
+      "keyboardPan": 0,
+      "wheelInput": {
+        "x": 720,
+        "y": 659.953125
+      },
+      "wheelHitTest": {
+        "tag": "svg",
+        "insideRail": true
+      },
+      "nativeWheelPan": 0,
+      "pageMovedDuringHorizontalWheel": 0
+    },
+    {
+      "name": "File format guide diagram",
+      "figure": "formattree",
+      "width": 1440,
+      "documentWidth": 1440,
+      "windowWidth": 1440,
+      "left": 475,
+      "right": 965,
+      "clientWidth": 490,
+      "scrollWidth": 490,
+      "scrollLeft": 0,
+      "role": "region",
+      "tabIndex": 0,
+      "minScreenFont": 12.780387931034483,
+      "hintVisible": false,
+      "keyboardPan": 0,
+      "wheelInput": {
+        "x": 720,
+        "y": 425.6875
+      },
+      "wheelHitTest": {
+        "tag": "svg",
+        "insideRail": true
+      },
+      "nativeWheelPan": 0,
+      "pageMovedDuringHorizontalWheel": 0
+    }
+  ],
+  "errors": [],
+  "failedRequests": [],
+  "network": [
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "method": "GET",
+      "type": "document",
+      "navigation": true,
+      "pageUrl": "about:blank",
+      "at": "2026-11-28T13:15:23.084Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "status": 200,
+      "pageUrl": "about:blank",
+      "at": "2026-11-28T13:15:23.328Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/logo.png",
+      "method": "GET",
+      "type": "image",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.344Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/c99e57961448dba8.css",
+      "method": "GET",
+      "type": "stylesheet",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.345Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/7ca778c1aad99526.css",
+      "method": "GET",
+      "type": "stylesheet",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.345Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/webpack-92bef864b67b6fcc.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.345Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.347Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/794-a07363c91e88b990.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.347Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/main-app-e0c5585404eeb003.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.348Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.349Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/437-637def3bf7b62bbb.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.349Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.349Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.349Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/blog/%5Bslug%5D/page-515a03fb2e247621.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.350Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/site.webmanifest",
+      "method": "GET",
+      "type": "other",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.353Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/pipeline-640.webp",
+      "method": "GET",
+      "type": "image",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.369Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.379Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/logo.png",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.380Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/logo.png",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.380Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/c99e57961448dba8.css",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.380Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/7ca778c1aad99526.css",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.382Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/c99e57961448dba8.css",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.394Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/7ca778c1aad99526.css",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.407Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/webpack-92bef864b67b6fcc.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.407Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/webpack-92bef864b67b6fcc.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.407Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/main-app-e0c5585404eeb003.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.411Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/main-app-e0c5585404eeb003.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.411Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.411Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.411Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/437-637def3bf7b62bbb.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.415Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.415Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/794-a07363c91e88b990.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.416Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/437-637def3bf7b62bbb.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.416Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.416Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.416Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.416Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/794-a07363c91e88b990.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.416Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.416Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.416Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/blog/%5Bslug%5D/page-515a03fb2e247621.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.419Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/blog/%5Bslug%5D/page-515a03fb2e247621.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.420Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/site.webmanifest",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.420Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/site.webmanifest",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.420Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/pipeline-640.webp",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.420Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/pipeline-640.webp",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:23.421Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "method": "GET",
+      "type": "document",
+      "navigation": true,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:26.480Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:26.482Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/logo.png",
+      "method": "GET",
+      "type": "image",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.489Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/c99e57961448dba8.css",
+      "method": "GET",
+      "type": "stylesheet",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.489Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/c99e57961448dba8.css",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.490Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/c99e57961448dba8.css",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.490Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/7ca778c1aad99526.css",
+      "method": "GET",
+      "type": "stylesheet",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.490Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/7ca778c1aad99526.css",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.490Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/7ca778c1aad99526.css",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.491Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/webpack-92bef864b67b6fcc.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.492Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/webpack-92bef864b67b6fcc.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.492Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/webpack-92bef864b67b6fcc.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.493Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.493Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.494Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.494Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/794-a07363c91e88b990.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.496Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/794-a07363c91e88b990.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.496Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/794-a07363c91e88b990.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.496Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/main-app-e0c5585404eeb003.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.498Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/main-app-e0c5585404eeb003.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.498Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/main-app-e0c5585404eeb003.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.498Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.498Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.498Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.498Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/437-637def3bf7b62bbb.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.500Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/437-637def3bf7b62bbb.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.500Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/437-637def3bf7b62bbb.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.500Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.500Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.500Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.500Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.500Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.500Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.500Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/blog/%5Bslug%5D/page-515a03fb2e247621.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.500Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/blog/%5Bslug%5D/page-515a03fb2e247621.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.500Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/blog/%5Bslug%5D/page-515a03fb2e247621.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.500Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/site.webmanifest",
+      "method": "GET",
+      "type": "other",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.500Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/sizebars-640.webp",
+      "method": "GET",
+      "type": "image",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.501Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.518Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/logo.png",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.624Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/logo.png",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.624Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/site.webmanifest",
+      "status": 304,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.624Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/site.webmanifest",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.624Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/sizebars-640.webp",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.625Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/sizebars-640.webp",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:26.625Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "method": "GET",
+      "type": "document",
+      "navigation": true,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:28.950Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:28.953Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/logo.png",
+      "method": "GET",
+      "type": "image",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.959Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/c99e57961448dba8.css",
+      "method": "GET",
+      "type": "stylesheet",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.961Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/c99e57961448dba8.css",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.961Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/c99e57961448dba8.css",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.961Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/7ca778c1aad99526.css",
+      "method": "GET",
+      "type": "stylesheet",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.961Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/7ca778c1aad99526.css",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.961Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/7ca778c1aad99526.css",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.962Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/webpack-92bef864b67b6fcc.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.962Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/webpack-92bef864b67b6fcc.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.962Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/webpack-92bef864b67b6fcc.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.963Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.963Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.963Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.963Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/794-a07363c91e88b990.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.963Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/794-a07363c91e88b990.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.963Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/794-a07363c91e88b990.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.964Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/main-app-e0c5585404eeb003.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.964Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/main-app-e0c5585404eeb003.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.964Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/main-app-e0c5585404eeb003.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.964Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.964Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.965Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.965Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/437-637def3bf7b62bbb.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.966Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/437-637def3bf7b62bbb.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.966Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/437-637def3bf7b62bbb.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.967Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.968Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.968Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.969Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.970Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.970Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.971Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/blog/%5Bslug%5D/page-515a03fb2e247621.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.971Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/blog/%5Bslug%5D/page-515a03fb2e247621.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.971Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/blog/%5Bslug%5D/page-515a03fb2e247621.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.971Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/site.webmanifest",
+      "method": "GET",
+      "type": "other",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.978Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/dataflow-640.webp",
+      "method": "GET",
+      "type": "image",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.978Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:28.998Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/logo.png",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:29.103Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/logo.png",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:29.103Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/site.webmanifest",
+      "status": 304,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:29.104Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/site.webmanifest",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:29.104Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/dataflow-640.webp",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:29.104Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/dataflow-640.webp",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:29.104Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "method": "GET",
+      "type": "document",
+      "navigation": true,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:31.143Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:31.146Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/logo.png",
+      "method": "GET",
+      "type": "image",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.151Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/c99e57961448dba8.css",
+      "method": "GET",
+      "type": "stylesheet",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.151Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/c99e57961448dba8.css",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.151Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/c99e57961448dba8.css",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.152Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/7ca778c1aad99526.css",
+      "method": "GET",
+      "type": "stylesheet",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.153Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/7ca778c1aad99526.css",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.153Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/7ca778c1aad99526.css",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.154Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/webpack-92bef864b67b6fcc.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.154Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/webpack-92bef864b67b6fcc.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.155Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/webpack-92bef864b67b6fcc.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.155Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.155Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.156Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.156Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/794-a07363c91e88b990.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.157Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/794-a07363c91e88b990.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.158Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/794-a07363c91e88b990.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.158Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/main-app-e0c5585404eeb003.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.158Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/main-app-e0c5585404eeb003.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.158Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/main-app-e0c5585404eeb003.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.158Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.158Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.158Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.160Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/437-637def3bf7b62bbb.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.160Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/437-637def3bf7b62bbb.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.160Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/437-637def3bf7b62bbb.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.160Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.160Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.160Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.160Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.160Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.160Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.160Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/blog/%5Bslug%5D/page-515a03fb2e247621.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.160Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/blog/%5Bslug%5D/page-515a03fb2e247621.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.160Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/blog/%5Bslug%5D/page-515a03fb2e247621.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.162Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/site.webmanifest",
+      "method": "GET",
+      "type": "other",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.163Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/formattree-640.webp",
+      "method": "GET",
+      "type": "image",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.165Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.186Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/logo.png",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.317Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/logo.png",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.318Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/site.webmanifest",
+      "status": 304,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.318Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/site.webmanifest",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.318Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/formattree-640.webp",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.318Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/formattree-640.webp",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:31.318Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/formattree.webp",
+      "method": "GET",
+      "type": "image",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:33.573Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/formattree.webp",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:33.579Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/formattree.webp",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:33.579Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "method": "GET",
+      "type": "document",
+      "navigation": true,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:33.580Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:33.583Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/logo.png",
+      "method": "GET",
+      "type": "image",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.589Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/c99e57961448dba8.css",
+      "method": "GET",
+      "type": "stylesheet",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.589Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/c99e57961448dba8.css",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.590Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/c99e57961448dba8.css",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.591Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/7ca778c1aad99526.css",
+      "method": "GET",
+      "type": "stylesheet",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.591Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/7ca778c1aad99526.css",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.591Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/7ca778c1aad99526.css",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.592Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/webpack-92bef864b67b6fcc.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.592Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/webpack-92bef864b67b6fcc.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.592Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/webpack-92bef864b67b6fcc.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.592Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.593Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.593Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.593Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/794-a07363c91e88b990.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.594Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/794-a07363c91e88b990.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.594Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/794-a07363c91e88b990.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.594Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/main-app-e0c5585404eeb003.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.595Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/main-app-e0c5585404eeb003.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.595Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/main-app-e0c5585404eeb003.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.595Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.595Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.596Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.596Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/437-637def3bf7b62bbb.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.596Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/437-637def3bf7b62bbb.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.596Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/437-637def3bf7b62bbb.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.596Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.597Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.597Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.597Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.597Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.597Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.597Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/blog/%5Bslug%5D/page-515a03fb2e247621.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.598Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/blog/%5Bslug%5D/page-515a03fb2e247621.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.598Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/blog/%5Bslug%5D/page-515a03fb2e247621.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.598Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/site.webmanifest",
+      "method": "GET",
+      "type": "other",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.600Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/pipeline.webp",
+      "method": "GET",
+      "type": "image",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.602Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.614Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/logo.png",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.621Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/logo.png",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.622Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/site.webmanifest",
+      "status": 304,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.622Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/site.webmanifest",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.622Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/pipeline.webp",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.622Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/pipeline.webp",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:33.622Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "method": "GET",
+      "type": "document",
+      "navigation": true,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:35.713Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:35.718Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/logo.png",
+      "method": "GET",
+      "type": "image",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.730Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/c99e57961448dba8.css",
+      "method": "GET",
+      "type": "stylesheet",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.732Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/c99e57961448dba8.css",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.732Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/c99e57961448dba8.css",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.734Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/7ca778c1aad99526.css",
+      "method": "GET",
+      "type": "stylesheet",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.735Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/7ca778c1aad99526.css",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.735Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/7ca778c1aad99526.css",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.735Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/webpack-92bef864b67b6fcc.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.737Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/webpack-92bef864b67b6fcc.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.738Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/webpack-92bef864b67b6fcc.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.738Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.739Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.739Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.740Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/794-a07363c91e88b990.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.740Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/794-a07363c91e88b990.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.740Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/794-a07363c91e88b990.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.741Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/main-app-e0c5585404eeb003.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.741Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/main-app-e0c5585404eeb003.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.741Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/main-app-e0c5585404eeb003.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.741Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.741Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.742Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.742Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/437-637def3bf7b62bbb.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.742Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/437-637def3bf7b62bbb.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.742Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/437-637def3bf7b62bbb.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.742Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.742Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.743Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.743Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.743Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.743Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.743Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/blog/%5Bslug%5D/page-515a03fb2e247621.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.743Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/blog/%5Bslug%5D/page-515a03fb2e247621.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.743Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/blog/%5Bslug%5D/page-515a03fb2e247621.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.743Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/site.webmanifest",
+      "method": "GET",
+      "type": "other",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.745Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/sizebars.webp",
+      "method": "GET",
+      "type": "image",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.746Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.770Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/logo.png",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.775Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/logo.png",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.777Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/site.webmanifest",
+      "status": 304,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.777Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/site.webmanifest",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.777Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/sizebars.webp",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.777Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/sizebars.webp",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:35.780Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "method": "GET",
+      "type": "document",
+      "navigation": true,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:37.909Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:37.911Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/logo.png",
+      "method": "GET",
+      "type": "image",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.917Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/c99e57961448dba8.css",
+      "method": "GET",
+      "type": "stylesheet",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.917Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/c99e57961448dba8.css",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.917Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/c99e57961448dba8.css",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.919Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/7ca778c1aad99526.css",
+      "method": "GET",
+      "type": "stylesheet",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.919Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/7ca778c1aad99526.css",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.919Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/7ca778c1aad99526.css",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.920Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/webpack-92bef864b67b6fcc.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.921Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/webpack-92bef864b67b6fcc.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.921Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/webpack-92bef864b67b6fcc.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.922Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.922Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.923Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.923Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/794-a07363c91e88b990.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.923Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/794-a07363c91e88b990.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.923Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/794-a07363c91e88b990.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.923Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/main-app-e0c5585404eeb003.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.923Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/main-app-e0c5585404eeb003.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.923Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/main-app-e0c5585404eeb003.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.923Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.923Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.924Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.924Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/437-637def3bf7b62bbb.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.924Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/437-637def3bf7b62bbb.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.924Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/437-637def3bf7b62bbb.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.924Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.924Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.924Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.925Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.925Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.925Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.925Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/blog/%5Bslug%5D/page-515a03fb2e247621.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.925Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/blog/%5Bslug%5D/page-515a03fb2e247621.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.925Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/blog/%5Bslug%5D/page-515a03fb2e247621.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.929Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/site.webmanifest",
+      "method": "GET",
+      "type": "other",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.929Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/dataflow.webp",
+      "method": "GET",
+      "type": "image",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.931Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.943Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/logo.png",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.947Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/logo.png",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.947Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/site.webmanifest",
+      "status": 304,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.947Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/site.webmanifest",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.947Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/dataflow.webp",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.948Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/dataflow.webp",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:37.954Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "method": "GET",
+      "type": "document",
+      "navigation": true,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:40.080Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:40.088Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/logo.png",
+      "method": "GET",
+      "type": "image",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.099Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/c99e57961448dba8.css",
+      "method": "GET",
+      "type": "stylesheet",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.099Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/c99e57961448dba8.css",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.099Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/c99e57961448dba8.css",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.099Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/7ca778c1aad99526.css",
+      "method": "GET",
+      "type": "stylesheet",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.100Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/7ca778c1aad99526.css",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.101Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/css/7ca778c1aad99526.css",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.101Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/webpack-92bef864b67b6fcc.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.102Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/webpack-92bef864b67b6fcc.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.102Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/webpack-92bef864b67b6fcc.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.103Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.103Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.103Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/4bd1b696-217264fa27a771c4.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.104Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/794-a07363c91e88b990.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.104Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/794-a07363c91e88b990.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.104Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/794-a07363c91e88b990.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.105Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/main-app-e0c5585404eeb003.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.105Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/main-app-e0c5585404eeb003.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.105Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/main-app-e0c5585404eeb003.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.105Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.106Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.106Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.106Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/437-637def3bf7b62bbb.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.106Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/437-637def3bf7b62bbb.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.106Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/437-637def3bf7b62bbb.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.106Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.107Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.107Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/layout-4a3517a7236432ee.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.107Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.107Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.107Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/error-8dc5b8e8e18e34d8.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.107Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/blog/%5Bslug%5D/page-515a03fb2e247621.js",
+      "method": "GET",
+      "type": "script",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.107Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/blog/%5Bslug%5D/page-515a03fb2e247621.js",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.107Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/_next/static/chunks/app/blog/%5Bslug%5D/page-515a03fb2e247621.js",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.107Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/site.webmanifest",
+      "method": "GET",
+      "type": "other",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.111Z"
+    },
+    {
+      "event": "request",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/formattree.webp",
+      "method": "GET",
+      "type": "image",
+      "navigation": false,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.115Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.130Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/logo.png",
+      "status": 200,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.136Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/logo.png",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.136Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/site.webmanifest",
+      "status": 304,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.137Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/site.webmanifest",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.137Z"
+    },
+    {
+      "event": "response",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/formattree.webp",
+      "status": 304,
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.139Z"
+    },
+    {
+      "event": "finished",
+      "name": "webkit",
+      "url": "http://127.0.0.1:3340/blog/formattree.webp",
+      "method": "GET",
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:40.139Z"
+    }
+  ],
+  "consoleEvents": [
+    {
+      "name": "webkit",
+      "type": "warning",
+      "text": "This document is not cross-origin isolated because the Cross-Origin-Embedder-Policy header is missing (it must be 'require-corp'). window.crossOriginIsolated is false and SharedArrayBuffer is unavailable.",
+      "location": {
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      },
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:26.487Z"
+    },
+    {
+      "name": "webkit",
+      "type": "warning",
+      "text": "This document is not cross-origin isolated because the Cross-Origin-Embedder-Policy header is missing (it must be 'require-corp'). window.crossOriginIsolated is false and SharedArrayBuffer is unavailable.",
+      "location": {
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      },
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:28.955Z"
+    },
+    {
+      "name": "webkit",
+      "type": "warning",
+      "text": "This document is not cross-origin isolated because the Cross-Origin-Embedder-Policy header is missing (it must be 'require-corp'). window.crossOriginIsolated is false and SharedArrayBuffer is unavailable.",
+      "location": {
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      },
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:31.150Z"
+    },
+    {
+      "name": "webkit",
+      "type": "warning",
+      "text": "This document is not cross-origin isolated because the Cross-Origin-Embedder-Policy header is missing (it must be 'require-corp'). window.crossOriginIsolated is false and SharedArrayBuffer is unavailable.",
+      "location": {
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      },
+      "pageUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "at": "2026-11-28T13:15:33.587Z"
+    },
+    {
+      "name": "webkit",
+      "type": "warning",
+      "text": "This document is not cross-origin isolated because the Cross-Origin-Embedder-Policy header is missing (it must be 'require-corp'). window.crossOriginIsolated is false and SharedArrayBuffer is unavailable.",
+      "location": {
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      },
+      "pageUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "at": "2026-11-28T13:15:35.727Z"
+    },
+    {
+      "name": "webkit",
+      "type": "warning",
+      "text": "This document is not cross-origin isolated because the Cross-Origin-Embedder-Policy header is missing (it must be 'require-corp'). window.crossOriginIsolated is false and SharedArrayBuffer is unavailable.",
+      "location": {
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      },
+      "pageUrl": "http://127.0.0.1:3340/blog/honest-file-size-reporting",
+      "at": "2026-11-28T13:15:37.914Z"
+    },
+    {
+      "name": "webkit",
+      "type": "warning",
+      "text": "This document is not cross-origin isolated because the Cross-Origin-Embedder-Policy header is missing (it must be 'require-corp'). window.crossOriginIsolated is false and SharedArrayBuffer is unavailable.",
+      "location": {
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      },
+      "pageUrl": "http://127.0.0.1:3340/blog/what-privacy-claim-really-means",
+      "at": "2026-11-28T13:15:40.094Z"
+    }
+  ],
+  "navigations": [
+    {
+      "phase": "start",
+      "route": "/blog/how-browser-compression-works",
+      "width": 320,
+      "at": "2026-11-28T13:15:23.068Z"
+    },
+    {
+      "phase": "finished",
+      "route": "/blog/how-browser-compression-works",
+      "width": 320,
+      "status": 200,
+      "at": "2026-11-28T13:15:23.929Z"
+    },
+    {
+      "phase": "start",
+      "route": "/blog/honest-file-size-reporting",
+      "width": 320,
+      "at": "2026-11-28T13:15:26.476Z"
+    },
+    {
+      "phase": "finished",
+      "route": "/blog/honest-file-size-reporting",
+      "width": 320,
+      "status": 200,
+      "at": "2026-11-28T13:15:27.126Z"
+    },
+    {
+      "phase": "start",
+      "route": "/blog/what-privacy-claim-really-means",
+      "width": 320,
+      "at": "2026-11-28T13:15:28.947Z"
+    },
+    {
+      "phase": "finished",
+      "route": "/blog/what-privacy-claim-really-means",
+      "width": 320,
+      "status": 200,
+      "at": "2026-11-28T13:15:29.605Z"
+    },
+    {
+      "phase": "start",
+      "route": "/blog/compressing-files-for-the-web",
+      "width": 320,
+      "at": "2026-11-28T13:15:31.140Z"
+    },
+    {
+      "phase": "finished",
+      "route": "/blog/compressing-files-for-the-web",
+      "width": 320,
+      "status": 200,
+      "at": "2026-11-28T13:15:31.819Z"
+    },
+    {
+      "phase": "start",
+      "route": "/blog/how-browser-compression-works",
+      "width": 1440,
+      "at": "2026-11-28T13:15:33.577Z"
+    },
+    {
+      "phase": "finished",
+      "route": "/blog/how-browser-compression-works",
+      "width": 1440,
+      "status": 200,
+      "at": "2026-11-28T13:15:34.123Z"
+    },
+    {
+      "phase": "start",
+      "route": "/blog/honest-file-size-reporting",
+      "width": 1440,
+      "at": "2026-11-28T13:15:35.710Z"
+    },
+    {
+      "phase": "finished",
+      "route": "/blog/honest-file-size-reporting",
+      "width": 1440,
+      "status": 200,
+      "at": "2026-11-28T13:15:36.281Z"
+    },
+    {
+      "phase": "start",
+      "route": "/blog/what-privacy-claim-really-means",
+      "width": 1440,
+      "at": "2026-11-28T13:15:37.905Z"
+    },
+    {
+      "phase": "finished",
+      "route": "/blog/what-privacy-claim-really-means",
+      "width": 1440,
+      "status": 200,
+      "at": "2026-11-28T13:15:38.455Z"
+    },
+    {
+      "phase": "start",
+      "route": "/blog/compressing-files-for-the-web",
+      "width": 1440,
+      "at": "2026-11-28T13:15:40.077Z"
+    },
+    {
+      "phase": "finished",
+      "route": "/blog/compressing-files-for-the-web",
+      "width": 1440,
+      "status": 200,
+      "at": "2026-11-28T13:15:40.638Z"
+    }
+  ],
+  "identitiesBefore": {
+    "/": "e1381f682d91dce59d1ab6bb54e2cfffdd07cc0b74dbbdfc440eadb6adc817d0",
+    "/blog/how-browser-compression-works": "678da6ceb41e6acb18e60590084a0e992866dc318e863f21907e06c3318c237b",
+    "/blog/honest-file-size-reporting": "c0ba69d8655c42d1cee6d2e674006a34acfda8750a0d9fbd9620fdcad1fcb273",
+    "/blog/what-privacy-claim-really-means": "0fd00e8520464a0f286abb17c4e04cea7efd8f74fc63e89f770f05718f2728d3",
+    "/blog/compressing-files-for-the-web": "a6df40e273ae6ba4d657aa959d76d644dae61c05dbc7d1a671e02e1190e477da"
+  },
+  "identitiesAfter": {
+    "/": "e1381f682d91dce59d1ab6bb54e2cfffdd07cc0b74dbbdfc440eadb6adc817d0",
+    "/blog/how-browser-compression-works": "678da6ceb41e6acb18e60590084a0e992866dc318e863f21907e06c3318c237b",
+    "/blog/honest-file-size-reporting": "c0ba69d8655c42d1cee6d2e674006a34acfda8750a0d9fbd9620fdcad1fcb273",
+    "/blog/what-privacy-claim-really-means": "0fd00e8520464a0f286abb17c4e04cea7efd8f74fc63e89f770f05718f2728d3",
+    "/blog/compressing-files-for-the-web": "a6df40e273ae6ba4d657aa959d76d644dae61c05dbc7d1a671e02e1190e477da"
+  },
+  "status": "PASS",
+  "finishedAt": "2026-11-28T13:15:42.363Z"
+}

@@ -1,0 +1,48 @@
+{
+  "base": "http://127.0.0.1:3340",
+  "startedAt": "2026-11-28T13:18:50.539Z",
+  "scope": "Two real published link-renderer paths in immutable L: native click, target page, browserBack and source page restoration. SafeHTML anchor branch is not currently authored in public records and receives a separate exact-source private fixture test.",
+  "results": [
+    {
+      "kind": "Actual published inline Markdown",
+      "route": "/blog/compressing-files-for-the-web",
+      "label": "WebM-to-MP4 converter",
+      "destination": "/webm-to-mp4",
+      "title": "WebM to MP4 Converter",
+      "originalH1": "Choosing the right format for smaller web files",
+      "targetH1": "WebM to MP4 Converter",
+      "backUrl": "http://127.0.0.1:3340/blog/compressing-files-for-the-web",
+      "sourceBeforeClickY": 2463,
+      "sourceAfterBrowserBackY": 2463,
+      "sourceScrollDelta": 0,
+      "actualDestinationScreenshot": ".qa-results/phase3/ui/l-real-published-link-navigation/webm-to-mp4-native-destination.png",
+      "screenshotSha256": "f521ca01bc75756023fb797c49c7ec2de85dd245b78907256ee39379ad25eb89",
+      "status": "PASS_NATIVE_CLICK_AND_BROWSER_BACK"
+    },
+    {
+      "kind": "Actual published structured blog link block",
+      "route": "/blog/how-browser-compression-works",
+      "label": "Try a supported mixed-file batch",
+      "destination": "/compress",
+      "title": "Compress Any File",
+      "originalH1": "How browser-based file compression works",
+      "targetH1": "Compress Any File",
+      "backUrl": "http://127.0.0.1:3340/blog/how-browser-compression-works",
+      "sourceBeforeClickY": 3560,
+      "sourceAfterBrowserBackY": 3560,
+      "sourceScrollDelta": 0,
+      "actualDestinationScreenshot": ".qa-results/phase3/ui/l-real-published-link-navigation/compress-native-destination.png",
+      "screenshotSha256": "9850f2443f26945ddbf1ab4d26def74578884198d1415069ab0bff9bbbbae749",
+      "status": "PASS_NATIVE_CLICK_AND_BROWSER_BACK"
+    }
+  ],
+  "errors": [],
+  "failedRequests": [],
+  "status": "PASS_REAL_PUBLISHED_LINK_NAVIGATION",
+  "homeBefore": "e1381f682d91dce59d1ab6bb54e2cfffdd07cc0b74dbbdfc440eadb6adc817d0",
+  "browserVersion": "27.2",
+  "playwrightVersion": "1.65.1",
+  "homeAfter": "e1381f682d91dce59d1ab6bb54e2cfffdd07cc0b74dbbdfc440eadb6adc817d0",
+  "browserClosedNormally": true,
+  "finishedAt": "2026-11-28T13:18:54.895Z"
+}

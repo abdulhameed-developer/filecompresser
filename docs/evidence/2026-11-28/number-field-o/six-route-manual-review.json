@@ -1,0 +1,94 @@
+{
+  "createdAt": "2026-11-28T14:46:46.427310+00:00",
+  "scope": "Native-size source screenshots pasted without scaling; labels only. Six actual tools,320 and481 each.",
+  "rows": [
+    {
+      "route": "compress",
+      "panel": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/o-actual-number-routes/manual-native-panels/compress.png",
+      "sourceScreenshots": [
+        {
+          "path": ".qa-results/phase3/ui/o-actual-number-routes/compress-320.png",
+          "sha256": "54fa90934770abfc9c5fc55c1aa4b44704d4305760406c525532c8c1e09612c5"
+        },
+        {
+          "path": ".qa-results/phase3/ui/o-actual-number-routes/compress-481.png",
+          "sha256": "36f8f716d392627b115da3ad6d7b8b2e44019bbacc785ea49bf75d76c7f1d130"
+        }
+      ]
+    },
+    {
+      "route": "image-compressor",
+      "panel": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/o-actual-number-routes/manual-native-panels/image-compressor.png",
+      "sourceScreenshots": [
+        {
+          "path": ".qa-results/phase3/ui/o-actual-number-routes/image-compressor-320.png",
+          "sha256": "35e1e4ef0ac12a5b4823624a3fd9189ae0fcf2017950e1d68d7f01b34df1748c"
+        },
+        {
+          "path": ".qa-results/phase3/ui/o-actual-number-routes/image-compressor-481.png",
+          "sha256": "a8a29be9e695f128d1aa01289a119cc0e4230079f34bfea7400bc4f4ba4467f5"
+        }
+      ]
+    },
+    {
+      "route": "jpg-compressor",
+      "panel": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/o-actual-number-routes/manual-native-panels/jpg-compressor.png",
+      "sourceScreenshots": [
+        {
+          "path": ".qa-results/phase3/ui/o-actual-number-routes/jpg-compressor-320.png",
+          "sha256": "04275e4544cfe83ff9ca1edfb330e8502026a251e3883b1b399980c46b6cca4a"
+        },
+        {
+          "path": ".qa-results/phase3/ui/o-actual-number-routes/jpg-compressor-481.png",
+          "sha256": "f8f5c8206fa76bb560da58f2bbb4838fa112fade0741b0c8e34117d3625f0449"
+        }
+      ]
+    },
+    {
+      "route": "jpeg-compressor",
+      "panel": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/o-actual-number-routes/manual-native-panels/jpeg-compressor.png",
+      "sourceScreenshots": [
+        {
+          "path": ".qa-results/phase3/ui/o-actual-number-routes/jpeg-compressor-320.png",
+          "sha256": "e40b2f45522a529797c4780169cd02039c2b671831bc31224b77568f3628aaff"
+        },
+        {
+          "path": ".qa-results/phase3/ui/o-actual-number-routes/jpeg-compressor-481.png",
+          "sha256": "0eb41a762994eb2f5e423d76d674a455fb14f90dc38c47c5ad8a5762219abca8"
+        }
+      ]
+    },
+    {
+      "route": "png-compressor",
+      "panel": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/o-actual-number-routes/manual-native-panels/png-compressor.png",
+      "sourceScreenshots": [
+        {
+          "path": ".qa-results/phase3/ui/o-actual-number-routes/png-compressor-320.png",
+          "sha256": "e41779ee333fea7386a28ea271c73dc88f4ea72876c1bcdcce577fb1ed3be5f9"
+        },
+        {
+          "path": ".qa-results/phase3/ui/o-actual-number-routes/png-compressor-481.png",
+          "sha256": "e6d22e9425409089d6f47cdf42718fb494d6ded7fc2bb1ce0f07c78d194f75a7"
+        }
+      ]
+    },
+    {
+      "route": "webp-compressor",
+      "panel": "/home/admin/Documents/Codex/2026-11-04/filecompresser-continuation/latest/.qa-results/phase3/ui/o-actual-number-routes/manual-native-panels/webp-compressor.png",
+      "sourceScreenshots": [
+        {
+          "path": ".qa-results/phase3/ui/o-actual-number-routes/webp-compressor-320.png",
+          "sha256": "a0195f6a72dc9e9d69a86821b159ca6b2d5ed3891afec83f405162e78d921dd9"
+        },
+        {
+          "path": ".qa-results/phase3/ui/o-actual-number-routes/webp-compressor-481.png",
+          "sha256": "ef74da8716818e900d37793673fb893f1b84c3d57cf93470c2faa73980cfad09"
+        }
+      ]
+    }
+  ],
+  "reviewedAt": "2026-11-28T14:46:55.252251+00:00",
+  "reviewer": "visual_final",
+  "reviewStatus": "ALL_TWELVE_ACTUALLY_VIEWED",
+  "observations": "Native320 and481 captures on every actual image target route show complete100.05 text, distinct KB unit, single balanced border/focus ring, exact100,050-byte summary, stable footer and bounded scroller. Long explanatory prose can continue below the body viewport; it remains available through the intentional dialog-body scroller. No new blocking issue found in these twelve states."
+}

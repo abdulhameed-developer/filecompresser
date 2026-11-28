@@ -54,8 +54,6 @@ export default async function ToolPage({ params }: { params: Promise<{ tool: str
   const tool = getTool(slug)
   if (!tool) notFound()
 
-  const canonical = canonicalSlug(slug)
-  const isAlias = canonical !== slug
   const content = getToolContent(tool.slug)
   const faq = resolveEditorialFaq(content, tool.faq ?? [])
   const related = content.relatedTools.length ? content.relatedTools.map(slug => getTool(slug)!).filter(other => other.slug !== tool.slug) : relatedTools(tool)
@@ -90,13 +88,6 @@ export default async function ToolPage({ params }: { params: Promise<{ tool: str
         <h1>{tool.title}</h1>
         <p className="toolIntro">{tool.description}</p>
 
-
-        {isAlias && (
-          <p className="aliasNotice">
-            This URL is an alias for <Link prefetch={false} href={`/${canonical}`}>{tool.title}</Link>. Both
-            addresses run the same tool.
-          </p>
-        )}
 
         <ToolWorkspace tool={workspaceTool(tool)} />
 

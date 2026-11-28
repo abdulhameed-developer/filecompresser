@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest'
+import { parseImageTargetBytes, parseTargetKilobytes, targetKilobytesDisplay } from '@/lib/image-settings'
 import { defaultOutputFormatFor, isImageFormat } from '@/lib/engines/image'
 
 /**
@@ -48,16 +49,7 @@ describe('output format guard', () => {
 })
 
 describe('target size coercion', () => {
-  /**
-   * Mirrors the guard in lib/process.ts. A blank field must mean "no target" —
-   * if it collapsed to a small number, every maximum-mode run would enter the
-   * encoder search and then report the target as unreachable.
-   */
-  const optionalSize = (value: unknown): number | undefined => {
-    const parsed = typeof value === 'number' ? value : Number(value)
-    if (!Number.isFinite(parsed) || parsed <= 0) return undefined
-    return Math.min(parsed, 200 * 1024 * 1024)
-  }
+  const optionalSize = parseImageTargetBytes
 
   it('treats a blank or zero target as absent', () => {
     expect(optionalSize('')).toBeUndefined()
@@ -72,7 +64,27 @@ describe('target size coercion', () => {
     expect(optionalSize('204800')).toBe(204800)
   })
 
-  it('caps an absurd target so it cannot be used to stall the search', () => {
-    expect(optionalSize(1e12)).toBe(200 * 1024 * 1024)
+  it('rejects an absurd or fractional target instead of silently changing its byte limit', () => {
+    expect(optionalSize(1e12)).toBeUndefined()
+    expect(optionalSize(3.9)).toBeUndefined()
+    expect(optionalSize(200_000_000)).toBe(200_000_000)
+    expect(optionalSize(200_000_001)).toBeUndefined()
+  })
+})
+
+describe('exact decimal KB settings', () => {
+  it.each([['0.029', 29], ['.029', 29], ['2.9e-2', 29], ['1e-3', 1], ['100.000', 100000], ['200000', 200000000]])('parses %sKB into exactly%iwhole bytes', (input, expected) => {
+    expect(parseTargetKilobytes(input)).toBe(expected)
+    expect(parseImageTargetBytes(parseTargetKilobytes(input))).toBe(expected)
+  })
+  it.each(['100.0005', '0.0299', '1.00000000000000001', '200000.001', '-1', '1e99999', 'not-a-number', '0'])('keeps invalid %sKB visible and rejects it as a byte limit', input => {
+    const value = parseTargetKilobytes(input)
+    expect(value).toBe(`${input} KB`)
+    expect(targetKilobytesDisplay(value)).toBe(input)
+    expect(parseImageTargetBytes(value)).toBeUndefined()
+  })
+  it('preserves a cleared target as an empty draft', () => {
+    expect(parseTargetKilobytes('')).toBe('')
+    expect(targetKilobytesDisplay('')).toBe('')
   })
 })

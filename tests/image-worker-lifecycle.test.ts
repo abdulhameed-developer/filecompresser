@@ -145,6 +145,18 @@ describe('image worker ownership and truthful downloads', () => {
     expect((await pending).inspection).toMatchObject({ inputWidth: 200, inputHeight: 100, outputWidth: 200, outputHeight: 100 })
   })
 
+  it('checks final worker Blob bytes against the caller limit even if worker reports success', async () => {
+    vi.stubGlobal('Worker', ControlledWorker)
+    const file = source()
+    const pending = compressImage(file, { mode: 'target', targetSize: 10 })
+    const rejected = expect(pending).rejects.toMatchObject({ code: 'target-unreachable' })
+    await vi.waitFor(() => expect(ControlledWorker.instances).toHaveLength(1))
+    const worker = ControlledWorker.instances[0]
+    worker.onmessage?.({ data: { type: 'result', jobId: worker.jobId, result: { blob: new Blob([file], { type: 'image/jpeg' }), inspection, outcome: 'target-met', targetBytes: 1000 } } } as MessageEvent)
+    await rejected
+    expect(file.size).toBeGreaterThan(10)
+  })
+
   it('reuses a warm encoder exclusively and ignores stale previous-job messages', async () => {
     vi.stubGlobal('Worker', ControlledWorker)
     const file = source(), first = compressImage(file)

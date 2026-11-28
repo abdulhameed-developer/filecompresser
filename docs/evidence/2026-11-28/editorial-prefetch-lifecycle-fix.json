@@ -1,0 +1,55 @@
+{
+  "frozenAt": "2026-11-28T13:06:31.344397+00:00",
+  "scope": "Exactly three supported prefetch=false props in two real renderer files. URLs, labels, semantic anchors, styles and client-side navigation are preserved. The compiled L source gate, same-sequence WebKit regression and native link navigation now pass; the original source-freeze status is retained separately.",
+  "files": [
+    {
+      "file": "components/EditorialText.tsx",
+      "beforeSha256": "9f5b9c8524d10dcdac833548d65f80cb29ad5754f86332f8ce82054286885268",
+      "backup": ".qa-results/phase3/ui/editorial-prefetch-fix/EditorialText.tsx.before",
+      "afterSha256": "22301dd3f2b8d06d28c5318fe9413d9483cedd88749974b46a4f20144aee20d2",
+      "addedSupportedPrefetchFalseProps": 2,
+      "allOtherTextByteIdentical": true
+    },
+    {
+      "file": "components/BlogContent.tsx",
+      "beforeSha256": "fa7a4e0a728af4f9f9fdfd2b6d536ba3d8530777e816e773b11dd3f9280ea217",
+      "backup": ".qa-results/phase3/ui/editorial-prefetch-fix/BlogContent.tsx.before",
+      "afterSha256": "856412fc372107d5e3f227f02382cb88a365c4c03a45dcec288cb355c249cbfe",
+      "addedSupportedPrefetchFalseProps": 1,
+      "allOtherTextByteIdentical": true
+    }
+  ],
+  "targetedLint": {
+    "command": [
+      "npx",
+      "eslint",
+      "components/EditorialText.tsx",
+      "components/BlogContent.tsx"
+    ],
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "installedDocs": {
+    "file": "node_modules/next/dist/docs/01-app/03-api-reference/02-components/link.md",
+    "lines": "294-304",
+    "sha256": "e2a12de1d1e8b7e59a7046d4674862d2a2ff9e8641596f121ff9a584aa3e7daa"
+  },
+  "causalEvidence": ".qa-results/phase3/ui/k-webkit-article-prefetch-observer/results.json",
+  "originalFailPreserved": true,
+  "status": "VERIFIED_COMPILED_L_AND_NATIVE_NAVIGATION",
+  "sourceFreezeStatusAtCreation": "IMPLEMENTED_SOURCE_FROZEN_NOT_YET_BUILT",
+  "verifiedAt": "2026-11-28T13:26:31.733261+00:00",
+  "postFixVerification": {
+    "candidate": "L",
+    "homepageSha256": "e1381f682d91dce59d1ab6bb54e2cfffdd07cc0b74dbbdfc440eadb6adc817d0",
+    "same8CaseWebKitBeforeAfter": "KFAIL1prefetchpageerror\u2192LPASS0errors",
+    "additionalWebKitFinal16": "PASS",
+    "realPublishedMarkdownAndBlogLinkNavigation": "2PASSwithnativebrowserBackandexactscrollrestoration",
+    "exactSourcePrivateThreeRendererNavigation": "6PASSinChrome/WebKit,includesSafeHTMLanchor",
+    "all30PublicVisibleHtmlAndActualStylesheetsKToLIdentical": true,
+    "mainL29Geometry29AxeFiveSharedGroups": "PASSnormaldurableexit0",
+    "fullReport": "docs/evidence/2026-11-28/candidate-l-visual-interaction-verification.json"
+  },
+  "scopeAtSourceFreeze": "Two renderer files, exactly three supported prefetch=false prop additions. URLs, labels, semantic anchors, styles and click/client navigation retained. Compiled L validation and regression still pending."
+}

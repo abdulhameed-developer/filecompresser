@@ -4,7 +4,9 @@ import { checkImageCodecs } from './check-image-codecs.mjs'
 import { checkStockBlogArt } from './check-stock-blog-art.mjs'
 import { readPublicRoutes, validateRedirectRules } from './prepare-redirects.mjs'
 import { fileURLToPath } from 'node:url'
+import { checkEditorialSource } from './check-editorial.mjs'
 const root = fileURLToPath(new URL('../', import.meta.url))
+checkEditorialSource(root)
 const allowed = new Set([
   'logo.png',
   'logo-mark.png',

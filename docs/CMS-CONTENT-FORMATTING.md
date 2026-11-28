@@ -69,6 +69,17 @@ For homepage/tool content, open **Content sections**, choose a section, and ente
 
 **Save** updates GitHub through Tina. The public site changes after Cloudflare's matching build succeeds; it is not an instant preview update. Historical verified builds took about four and five minutes, which is not a promise for the next build. A validation error disables Save; Save and Reset are also disabled when there are no unsaved changes. A failed hosting build keeps the previous working public release. Check the exact saved commit, its build status and the actual public answer before treating a change as published.
 
+## Phase 3 candidate: where each field appears
+
+- On a tool page, **Content heading**, **Introduction** and **Content sections** form the guide **below the file workspace**. The tool name, short upload introduction, supported formats and controls come from the verified tool configuration. Editing the guide does not rename a processing operation.
+- Under **FAQ display**, choose **Use the questions below** to publish the authored question list. **Use existing FAQs** intentionally shows the built-in fallback, even if edited rows remain stored. **Hide FAQs** hides both the visible list and its FAQ structured data. The reviewed Phase 3 tool records explicitly select the authored list.
+- Clear both fields of an unused FAQ row, or remove it. The candidate ignores wholly empty rows. A row with only a question or only an answer remains invalid and must be completed or cleared.
+- Fill or remove an unfinished content section, helpful link, step or article block. Closing its editor panel does not make an incomplete row valid: whole-record validation runs in Tina’s beforeSubmit hook before any backend write. A rejected Save names the affected field and opens its row for repair. Required nested fields, supported HTML and links are checked even if their row was never opened. Incomplete unpublished body text can remain a draft; enabling Publish or restoring an archived publication checks the full record.
+- Blog **Original publication date** remains the real first-publication date for search metadata. Visitors see one **Updated** date on cards and article headers. Change **Last updated** only after a real content change or meaningful review; leaving it empty uses the original date as a truthful fallback.
+- The editorial vocabulary policy reports the exact term and field. Rephrase naturally. Safe HTML, lists and links still use the same supported controls; the vocabulary check does not authorize unsafe markup or unknown link destinations.
+
+These are implemented candidate rules. The [Phase 3 acceptance report](PHASE3-ACCEPTANCE-REPORT.md) and [CMS/live audit](CMS-LIVE-CONTENT-AUDIT.md) record when the actual hosted editor and public output are verified. A source check or local editor build is not a new hosted-save result.
+
 ## Verified hosted-editor save — 27 November 2026
 
 The Phase 2 code commit `417fcfb8215837d2307fa4c6af992de06d94f32c` passed GitHub CI run `45993057996` with 877 tests and the initial Cloudflare build `6e2b0b9c-58f8-47b0-93b9-310cea77e097`. The new hosted Tina editor was then used directly, rather than simulating a save locally.
@@ -80,3 +91,12 @@ Tina created commit `5fdf646b2b1465c150777e4872a020d4cbd2ac24`. Its semantic cha
 See [where the homepage bullets are entered](evidence/2026-11-27/screenshots/tina-bullets-live.png) and [the saved/reopened FAQ in the hosted editor](evidence/2026-11-27/screenshots/tina-saved-faq-live.png). These screenshots show Tina, not proof of the new answer on the public homepage.
 
 The matching final Cloudflare deployment `3f5114e1-8094-4a07-9022-4a566e8feb0e`, from Tina commit `5fdf646b2b1465c150777e4872a020d4cbd2ac24`, succeeded. GitHub CI run `45993970761` also succeeded with 877 tests. On the public homepage, the expanded answer exactly matches the saved/committed text and the FAQ structured data; the three numbered steps and seven benefit bullets remain, and the observed DOM contains no analytics script sources. This completes the actual hosted Save → GitHub → Cloudflare → public-answer check. [Compact publishing evidence](evidence/2026-11-27/cms-publishing-roundtrip.json) records the identities, hashes and limits. Six isolated editor scenarios and these specific native controls do not certify every vendor field, every date rule or complete admin accessibility.
+
+
+### Native lists and repair feedback (28 November candidate)
+
+In an article, use **Article content → Add → Bullet list / Numbered list**, then add one item per row. Data tables have separate column and row/cell lists. Tool/Home section text also accepts `- item` bullets and `1. item` numbering. The compiled isolated editor has now saved both forms, including supported HTML and links, rather than only testing their callbacks.
+
+New/invalid rows stay openable. A field-specific rejected Save opens the affected group; fill the named field or remove the row, then save again. Whole-record size/graph errors name the existing limit and keep the current editor available for reducing the record. Native string-list inputs validate each item, so adding or deleting the last row cannot collide with a parent error. Profile links must use HTTPS; editorial images must use supported raster files under `/uploads/`; identity field lengths and sharing-image paths match the public readers. Empty optional groups retain their documented fallback. File existence and cross-page redirect targets still receive the separate build check.
+
+These are candidate local/isolated results. The actual hosted roundtrip is recorded separately after the matching release.

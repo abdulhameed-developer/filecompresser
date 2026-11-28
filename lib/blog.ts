@@ -30,7 +30,7 @@ export interface BlogPost {
   slug: string
   title: string
   description: string
-  /** ISO date, used for `datePublished` and the byline. */
+  /** Original publication date, retained for truthful structured metadata. */
   date: string
   updated?: string
   readingTime: string

@@ -1,0 +1,370 @@
+{
+  "generatedAt": "2026-11-28T13:44:54.470259+00:00",
+  "status": "PASS_UNIT_CONTRACT_AND_RESOURCE_INVARIANCE",
+  "scope": "Correct size-unit display and capacity labels only. File/result sizes use decimal KB/MB. Existing binary input, queue and extraction resource caps are labeled MiB, with KiB fallback for capacity labels. All byte limits and processing behavior are preserved. Authored content changes are owned and proved separately.",
+  "resourceCapValuesBefore": {
+    "maxFileSizes": [
+      {
+        "slug": "compress",
+        "maxFileSize": 209715200
+      },
+      {
+        "slug": "image-compressor",
+        "maxFileSize": 52428800
+      },
+      {
+        "slug": "jpg-compressor",
+        "maxFileSize": 52428800
+      },
+      {
+        "slug": "jpeg-compressor",
+        "maxFileSize": 52428800
+      },
+      {
+        "slug": "png-compressor",
+        "maxFileSize": 52428800
+      },
+      {
+        "slug": "webp-compressor",
+        "maxFileSize": 52428800
+      },
+      {
+        "slug": "gif-compressor",
+        "maxFileSize": 52428800
+      },
+      {
+        "slug": "video-compressor",
+        "maxFileSize": 209715200
+      },
+      {
+        "slug": "webm-to-mp4",
+        "maxFileSize": 209715200
+      },
+      {
+        "slug": "mp3-compressor",
+        "maxFileSize": 104857600
+      },
+      {
+        "slug": "wav-compressor",
+        "maxFileSize": 104857600
+      },
+      {
+        "slug": "pdf-compressor",
+        "maxFileSize": 52428800
+      },
+      {
+        "slug": "zip-compressor",
+        "maxFileSize": 209715200
+      },
+      {
+        "slug": "archive-compressor",
+        "maxFileSize": 157286400
+      }
+    ],
+    "archive": {
+      "maxEntries": 500,
+      "maxArchiveBytes": 157286400,
+      "maxBatchBytes": 314572800,
+      "maxUncompressedBytes": 524288000,
+      "maxSingleEntryBytes": 209715200,
+      "maxCompressionRatio": 100,
+      "maxPathLength": 512
+    },
+    "gif": {
+      "maxBytes": 52428800,
+      "maxCanvasPixels": 32000000,
+      "maxDecodedPixels": 64000000,
+      "maxFrames": 1000
+    },
+    "queue": {
+      "files": 500,
+      "bytes": 314572800
+    },
+    "imageTargetMaximumBytes": 200000000,
+    "inlineEngineInputBytes": {
+      "lib/engines/audio.ts": 104857600,
+      "lib/engines/video.ts": 209715200,
+      "lib/engines/pdf.ts": 52428800
+    }
+  },
+  "resourceCapValuesAfter": {
+    "maxFileSizes": [
+      {
+        "slug": "compress",
+        "maxFileSize": 209715200
+      },
+      {
+        "slug": "image-compressor",
+        "maxFileSize": 52428800
+      },
+      {
+        "slug": "jpg-compressor",
+        "maxFileSize": 52428800
+      },
+      {
+        "slug": "jpeg-compressor",
+        "maxFileSize": 52428800
+      },
+      {
+        "slug": "png-compressor",
+        "maxFileSize": 52428800
+      },
+      {
+        "slug": "webp-compressor",
+        "maxFileSize": 52428800
+      },
+      {
+        "slug": "gif-compressor",
+        "maxFileSize": 52428800
+      },
+      {
+        "slug": "video-compressor",
+        "maxFileSize": 209715200
+      },
+      {
+        "slug": "webm-to-mp4",
+        "maxFileSize": 209715200
+      },
+      {
+        "slug": "mp3-compressor",
+        "maxFileSize": 104857600
+      },
+      {
+        "slug": "wav-compressor",
+        "maxFileSize": 104857600
+      },
+      {
+        "slug": "pdf-compressor",
+        "maxFileSize": 52428800
+      },
+      {
+        "slug": "zip-compressor",
+        "maxFileSize": 209715200
+      },
+      {
+        "slug": "archive-compressor",
+        "maxFileSize": 157286400
+      }
+    ],
+    "archive": {
+      "maxEntries": 500,
+      "maxArchiveBytes": 157286400,
+      "maxBatchBytes": 314572800,
+      "maxUncompressedBytes": 524288000,
+      "maxSingleEntryBytes": 209715200,
+      "maxCompressionRatio": 100,
+      "maxPathLength": 512
+    },
+    "gif": {
+      "maxBytes": 52428800,
+      "maxCanvasPixels": 32000000,
+      "maxDecodedPixels": 64000000,
+      "maxFrames": 1000
+    },
+    "queue": {
+      "files": 500,
+      "bytes": 314572800
+    },
+    "imageTargetMaximumBytes": 200000000,
+    "inlineEngineInputBytes": {
+      "lib/engines/audio.ts": 104857600,
+      "lib/engines/video.ts": 209715200,
+      "lib/engines/pdf.ts": 52428800
+    }
+  },
+  "allResourceAndTargetBytesEqual": true,
+  "copyOnlyNonTextAstFiles": 12,
+  "unchangedFullSourceFiles": [
+    {
+      "file": "lib/tools.ts",
+      "beforeSha256": "c65770abbc8a5cc51b216cef7d6f1cd4d5cc6ffcfa9a648d9117fde4f20e1d0e",
+      "afterSha256": "c65770abbc8a5cc51b216cef7d6f1cd4d5cc6ffcfa9a648d9117fde4f20e1d0e",
+      "byteIdentical": true
+    },
+    {
+      "file": "lib/image-settings.ts",
+      "beforeSha256": "0969ecd99046955c78afdecb93d3959c47d1529c484b5bac4e01eb44cee7ba48",
+      "afterSha256": "0969ecd99046955c78afdecb93d3959c47d1529c484b5bac4e01eb44cee7ba48",
+      "byteIdentical": true
+    }
+  ],
+  "files": [
+    {
+      "file": "lib/format.ts",
+      "changed": true,
+      "beforeSha256": "2c8575e7b05ac4038bbc78d28e561020a60ef62d0acdc77471669be2fb0234e7",
+      "afterSha256": "aa4dd3e91238a20e0beb418dc018fd97333ff1c5d24ce119b1ecf7cb7316dc52"
+    },
+    {
+      "file": "components/ToolWorkspace.tsx",
+      "changed": true,
+      "beforeSha256": "139139913d4967a0f07747e72730553d3a2944cfbe288b7bbd4248a55b8bb05d",
+      "afterSha256": "249c6a00d6f4447908712fd1bbbcf457ada549847a8444c8bccbeb6a87125765"
+    },
+    {
+      "file": "components/ToolGuide.tsx",
+      "changed": true,
+      "beforeSha256": "985978db34a4042916fca1e53e73f277a267c56ef6ca8144664ce80d98fee0eb",
+      "afterSha256": "4ec20d937cdc004ee5c67d956e538ed700aae7f82d0e6730f937cf3bb6901f15"
+    },
+    {
+      "file": "app/page.tsx",
+      "changed": true,
+      "beforeSha256": "afedcbe4217f395efcde2f6648c225a309d5772b0884ca3a74173d61bddd40c2",
+      "afterSha256": "bc6d69dc80c017991061acc73dcb471b187755bf4b84d6cdd2a6be25087c2312"
+    },
+    {
+      "file": "lib/validation.ts",
+      "changed": true,
+      "beforeSha256": "a34ee29533efb3e0f6d2fee5353f17f6b90302cd9938f47a1f70cb7027639d30",
+      "afterSha256": "97bfe63a4206724c6dc9969b270ec7b9e3c834a2ce0f781c04cef44389386b99"
+    },
+    {
+      "file": "lib/useFileQueue.ts",
+      "changed": true,
+      "beforeSha256": "2e4a19bd601c71f6d186e3cb3cc0b0b403b7c43c2fa74414e7fb49dd2438f3aa",
+      "afterSha256": "79d9b6dc1bddf7e0d16de609aace34de0c9a00392fe37f8660bd8e333b09f1d2"
+    },
+    {
+      "file": "lib/downloads.ts",
+      "changed": true,
+      "beforeSha256": "953d9746df0a62ce08bd356d1e1f18abca10fd0852ae1ea702c55cb01f89350d",
+      "afterSha256": "ca88273fd6f38ab0cbc324238838469844291dd30bd10b3035d1b658c97a575c"
+    },
+    {
+      "file": "lib/tool-guides.ts",
+      "changed": true,
+      "beforeSha256": "af13cc653e4d1f9723498540488c8c937abb877befc26a49850458fc5552e0b3",
+      "afterSha256": "72449e02770223c0cc791a801aeca8b6fc36f37b8a273e7aa28697be96952f43"
+    },
+    {
+      "file": "lib/engines/audio.ts",
+      "changed": true,
+      "beforeSha256": "8b3f60301f11b513850e699cca5afb8cbd9030027b15504e0f6686c603c8f808",
+      "afterSha256": "a62161bd38b1c8326c8980995b9ce022399e0c5b05d92a4de8079616036fc875"
+    },
+    {
+      "file": "lib/engines/video.ts",
+      "changed": true,
+      "beforeSha256": "5060d357f0827bfc3a220901b50cff5be7efad4caa0988bc1477b7d25d820b92",
+      "afterSha256": "8ea9a4a76aaffd54e85c43d28bf09cfec6eb716bff90ba7c887decf3cc4b376b"
+    },
+    {
+      "file": "lib/engines/pdf.ts",
+      "changed": true,
+      "beforeSha256": "b2b7e635557b8585738691d7adae77e46b3b05988d0c57b6dfdecec20f9edfe7",
+      "afterSha256": "7e12b9f8bd4faea2ea2e43e74da4bdc2c34bf3297fc39c8338b9615c13375f46"
+    },
+    {
+      "file": "lib/engines/gif-inspection.ts",
+      "changed": true,
+      "beforeSha256": "595b6447dd8067abe3488626bfaddec98be83da04d830827e90a9173962f88a2",
+      "afterSha256": "79008a8d333743c5151a49267a3feeddc2a73a27a03e61f5686b301208f93e79"
+    },
+    {
+      "file": "lib/engines/zip.ts",
+      "changed": true,
+      "beforeSha256": "01636c675e261d647fe78a495dc70c95273e07a82282baa993ee90836dc50354",
+      "afterSha256": "ab768118f0260fd148d008411366ab362dc9534d182dfd94ca9cde91bb183b63"
+    },
+    {
+      "file": "tests/validation.test.ts",
+      "changed": true,
+      "beforeSha256": "f2ae53bf5e575589f462117b3e5d98f5235ed1f01cbdc766045fc6fec47881dc",
+      "afterSha256": "397ee0a13fcb4e1babbd5567bf54e6e4c43d9d3f6a51ef23979e1fa4ca614daf"
+    },
+    {
+      "file": "tests/navigation.test.ts",
+      "changed": true,
+      "beforeSha256": "0469250445ba410e9270d235071d5f35c7426f2f0eee6bcb9349b1469273b153",
+      "afterSha256": "07d5d1b2f2d15fc221a37921f9befc0448ffbec72ab20acd7831fef5bc07cdfc"
+    },
+    {
+      "file": "tests/prepared-downloads.test.tsx",
+      "changed": true,
+      "beforeSha256": "611298157ebc8cdda3bf68e55ae5020bd6c5f9e2864a4630c21a7c3d87157bbd",
+      "afterSha256": "5e8c984742b2b5516f778c37ad27e0f4068bf329197c7f3d90af07e5b10727d5"
+    },
+    {
+      "file": "tests/workflow-ui.test.tsx",
+      "changed": true,
+      "beforeSha256": "c577f9113103788290bdfe65993e5dccfadf1102612d6cd4592d2462b2fba5eb",
+      "afterSha256": "558844eba28f136464eee3b661d103014a674bb3801f3c17d569f290a313cfa4"
+    },
+    {
+      "file": "tests/reliability.test.ts",
+      "changed": true,
+      "beforeSha256": "1fdd4c317c15777e5227418cfd2f1519bb6d28a2adc77b4e459d590b9a0c3882",
+      "afterSha256": "5cdb1d75a81d2129e05e9f8f4f580485b2af558fc4b488114131021dd36f4fdd"
+    },
+    {
+      "file": "tests/gif-inspection.test.ts",
+      "changed": true,
+      "beforeSha256": "ce647ed27a8bf198627deb166f9a6add4d7cc61ef17861ba4e6ebba0e42c90a0",
+      "afterSha256": "d211e1426fe027004e8fde8f5feb6ba0e2e45b7217223678c2a9f8274df9e67d"
+    },
+    {
+      "file": "scripts/design-system-audit.mjs",
+      "changed": true,
+      "beforeSha256": "5fafc9f8db2e17619a3cdbd7ab241e161c90e617c18a75f3b4590f17a669b6b5",
+      "afterSha256": "d74aad31f3a3d1f272f83fe44b8e5a2f735b2cac48139beba98b1678c4307c7b"
+    },
+    {
+      "file": "lib/tools.ts",
+      "changed": false,
+      "beforeSha256": "c65770abbc8a5cc51b216cef7d6f1cd4d5cc6ffcfa9a648d9117fde4f20e1d0e",
+      "afterSha256": "c65770abbc8a5cc51b216cef7d6f1cd4d5cc6ffcfa9a648d9117fde4f20e1d0e"
+    },
+    {
+      "file": "lib/image-settings.ts",
+      "changed": false,
+      "beforeSha256": "0969ecd99046955c78afdecb93d3959c47d1529c484b5bac4e01eb44cee7ba48",
+      "afterSha256": "0969ecd99046955c78afdecb93d3959c47d1529c484b5bac4e01eb44cee7ba48"
+    }
+  ],
+  "changedRuntimeFiles": 13,
+  "changedTestFiles": 6,
+  "changedBrowserAssertionFiles": 1,
+  "decimalContractAssertions": {
+    "999": "999 B",
+    "1000": "1.0 KB",
+    "1024": "1.0 KB",
+    "5000": "5.0 KB",
+    "1000000": "1.00 MB",
+    "5242880": "5.24 MB",
+    "200000000": "200.00 MB"
+  },
+  "verification": [
+    {
+      "check": "Focused tests",
+      "status": "PASS",
+      "files": 6,
+      "tests": 200,
+      "observedExitCode": 0,
+      "logSha256": "04261674a8dc40170ae9fd1b91a818bd0e1b8c288c86e996a54556647513ab3e"
+    },
+    {
+      "check": "Repository ESLint",
+      "status": "PASS",
+      "observedExitCode": 0,
+      "logSha256": "55da4ae1ac4a63d94aeed794e4304fde703670f2411805c6e4f7283324bd5de5"
+    },
+    {
+      "check": "TypeScript noEmit",
+      "status": "PASS",
+      "observedExitCode": 0,
+      "logSha256": "5ef856e5e8fa3b74918977b955aac415f414b9526fdbb950b9e3cc0773067f06"
+    },
+    {
+      "check": "Independent numeric/AST invariance",
+      "status": "PASS",
+      "evidenceSha256": "06288695b084dde6331fac2a7ccb05b901ae94888ff6e03bbf107e97a2c95118"
+    }
+  ],
+  "reviewedDiffSha256": "40ecce0cc65895a6093311de04183aa77c2b320bf9a2ada547cea75912efca52",
+  "limitations": [
+    "This bounded change verification is not a new production build, post-change browser layout check or full processing rerun. Those remain the parent release gates.",
+    "Approximate 21 MB codec-download descriptions and decimal target controls are intentionally unchanged.",
+    "All earlier candidate artifacts and failed test/inspector attempts remain preserved."
+  ]
+}

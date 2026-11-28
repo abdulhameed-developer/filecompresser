@@ -139,6 +139,10 @@ details[open] > summary > svg { transform: rotate(180deg); }
 .productPage .processingStory { padding-inline: 0; margin-bottom: 40px; }
 .productLimits { display: grid; grid-template-columns: .8fr 1.2fr; gap: 64px; margin-bottom: 40px; }
 .productLimits h2 { font-size: 28px; letter-spacing: -.8px; }.productLimits p:first-child { margin-top: 0; }
+.productPage .managedPageSection { max-inline-size: 76ch; margin-block: 32px; }
+.productPage .managedPageSection h2 { margin: 0 0 12px; font-size: 24px; line-height: 1.3; letter-spacing: -.6px; }
+.productPage .managedPageSection :is(p,li) { color: var(--muted); font-size: 15px; line-height: 1.8; }
+.productPage .managedPageSection li + li { margin-top: 6px; }
 .inlineActions { display: flex; gap: 12px 24px; flex-wrap: wrap; }
 .supportStrip { display: flex; align-items: center; gap: 20px; background: #edf2e7; padding: 24px; border-radius: 12px; }
 .supportStrip p { margin: 0; font-size: 14px; line-height: 1.7; color: var(--muted); }.supportStrip strong { color: var(--ink); font-weight: 600; }.supportStrip > a { margin-left: auto; white-space: nowrap; }
@@ -233,8 +237,10 @@ details[open] > summary > svg { transform: rotate(180deg); }
 .editorialContent h2 { font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.25; margin: 0 0 1rem; }
 .editorialContent h3 { font-size: 1.15rem; margin: 1.6rem 0 .5rem; }
 .editorialContent p { font-size: 1rem; line-height: 1.8; margin: .7rem 0; white-space: pre-line; }
-.editorialContent a, .aliasNotice a { color: #2e5f3d; text-decoration-color: #9db48c; text-underline-offset: 3px; }
-.editorialContent a:hover, .aliasNotice a:hover { color: var(--ink); text-decoration-color: currentColor; }
+.editorialContent :is(ul,ol) { line-height: 1.8; }
+.editorialContent li + li { margin-top: 6px; }
+.editorialContent a { color: #2e5f3d; text-decoration-color: #9db48c; text-underline-offset: 3px; }
+.editorialContent a:hover { color: var(--ink); text-decoration-color: currentColor; }
 .postPage .sectionLabel a { color: #2e5f3d; text-underline-offset: 3px; text-decoration-color: #9db48c; }
 .postPage .sectionLabel a:hover { color: var(--ink); text-decoration-color: currentColor; }
 .diagramSummary { margin: 12px 0 0; color: #52655a; font: 400 14px/1.6 var(--font-sans); }
@@ -290,9 +296,13 @@ details[open] > summary > svg { transform: rotate(180deg); }
 .toolCard .imageAdvancedBody .settingField { margin: 0; min-width: 0; }
 .toolCard .settingField label > output { float: right; color: #42612d; }
 .toolCard .imageAdvancedBody input[type=range] { width: 100%; min-height: 34px; accent-color: #527438; }
-.toolCard .numberField { min-width: 0; }
+.toolCard .numberField { min-width: 0; border-color: #bacbbd; border-radius: 7px; }
+.toolCard .numberField:focus-within { border-color: var(--lime-deep); }
 .toolCard .numberField input,.toolCard .settingField select { min-height: 48px; width: 100%; color: var(--ink); background: white; border: 1px solid #bacbbd; border-radius: 7px; padding: 11px 13px; font: 400 16px var(--font-sans); }
-.toolCard .numberField input { padding-right: 48px; }
+.toolCard .numberField input { padding-inline: 13px; border: 0; border-radius: 0; background: transparent; }
+.toolCard .numberField input:focus-visible { outline: none; }
+.toolCard .numberField.invalid { border-color: var(--danger); }
+.toolCard .numberField.invalid:focus-within { outline-color: var(--danger); }
 .toolCard .numberSuffix { color: #52655a; font-size: 14px; right: 13px; }
 .toolCard .targetSizeBlock { min-width: 0; border: 1px solid #cbdabf; border-radius: 10px; background: white; padding: 17px; margin: 0; }
 .toolCard .targetSizeBlock > legend { padding: 0 6px; margin-left: -6px; }
@@ -303,6 +313,7 @@ details[open] > summary > svg { transform: rotate(180deg); }
 .toolCard .targetCustomRow .settingField { margin: 0; min-width: 0; }
 .toolCard .exactTarget { font-size: 14px; color: #52655a; line-height: 1.6; margin: 18px 0 0; }
 .toolCard .exactTarget strong { display: block; color: var(--ink); font-size: 18px; font-variant-numeric: tabular-nums; }
+.toolCard .exactTarget.invalid { color: var(--danger); }
 .toolCard .targetWarning { color: #775017; }
 .toolCard .outputFormatField { margin: 0; min-width: 0; width: 100%; padding-top: 20px; }
 .toolCard .formatNotice { padding: 11px 13px; border-radius: 7px; background: #fff4dc; color: #775017; font-size: 14px; line-height: 1.6; margin-bottom: 0; }
@@ -353,6 +364,8 @@ details[open] > summary > svg { transform: rotate(180deg); }
 
 .imageComparison { position: fixed; inset: 0; margin: auto; padding: 0; width: min(1240px,calc(100vw - 32px)); max-width: none; max-height: calc(100dvh - 32px); overflow: auto; color: var(--ink); background: white; border: 1px solid #b9c9be; border-radius: 15px; box-shadow: 0 24px 90px #081d1a55; }
 .imageComparison::backdrop { background: #10291fe0; backdrop-filter: blur(2px); }
+/* The dialog owns vertical scrolling. Image panes must pass an edge swipe to it. */
+.imageComparison { overscroll-behavior: contain; }
 .comparisonShell { min-width: 0; }
 .comparisonHeader { display: flex; justify-content: space-between; align-items: start; gap: 20px; padding: 22px 24px; border-bottom: 1px solid #dce5df; }
 .comparisonEyebrow { color: #5c7157; font: 600 11px var(--font-sans); letter-spacing: 1.3px; }
@@ -371,7 +384,7 @@ details[open] > summary > svg { transform: rotate(180deg); }
 .comparisonFacts small { color: #52655a; font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .comparisonFacts p { margin: 8px 0 0; color: #36503d; font-size: 13px; line-height: 1.5; }
 .comparisonFacts p span { display: block; color: #52655a; font-size: 12px; margin-top: 3px; }
-.comparisonPane { overflow: auto; height: min(46vh,420px); min-height: 230px; overscroll-behavior: contain; scrollbar-gutter: stable; background-color: #fff; background-image: linear-gradient(45deg,#e7ebe8 25%,transparent 25%),linear-gradient(-45deg,#e7ebe8 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#e7ebe8 75%),linear-gradient(-45deg,transparent 75%,#e7ebe8 75%); background-size: 20px 20px; background-position: 0 0,0 10px,10px -10px,-10px 0; }
+.comparisonPane { overflow: auto; height: min(46vh,420px); min-height: 230px; overscroll-behavior: contain auto; scrollbar-gutter: stable; background-color: #fff; background-image: linear-gradient(45deg,#e7ebe8 25%,transparent 25%),linear-gradient(-45deg,#e7ebe8 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#e7ebe8 75%),linear-gradient(-45deg,transparent 75%,#e7ebe8 75%); background-size: 20px 20px; background-position: 0 0,0 10px,10px -10px,-10px 0; }
 .comparisonCanvas { min-width: 100%; min-height: 100%; display: grid; place-items: center; }
 .comparisonCanvas img { display: block; max-width: none; max-height: none; flex-shrink: 0; }
 .comparisonFooter { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 16px 24px; }
@@ -581,6 +594,11 @@ details[open] > summary > svg { transform: rotate(180deg); }
   .workflowConfig { gap: 2px; }
   .workflowConfig strong { display: block; width: 100%; }
 }
+@media(max-width:480px) {
+  .workflowWorkspace .targetCustomRow { grid-template-columns: minmax(0,1fr); gap: 8px; }
+  .workflowWorkspace .targetCustomRow .exactTarget { margin-top: 0; }
+  .workflowWorkspace .targetCustomRow .exactTarget strong { display: inline; }
+}
 
 /* Compact, bounded file gallery shared by every tool. */
 .workflowBody { display: grid; gap: 20px; padding-top: 16px; align-items: start; }
@@ -714,3 +732,18 @@ details[open] > summary > svg { transform: rotate(180deg); }
   .workflowPrimaryActions > .workflowSettingsShortcut { flex: 0 0 auto; }
   .workflowWorkspace .workflowPrimaryActions > .compressBtn,.workflowWorkspace .workflowPrimaryActions > .downloadBtn { width: auto; min-width: 0; flex: 1 1 140px; }
 }
+
+/* Keep authored SVG labels readable; only the diagram scrolls. */
+.postPage > .postFigure:has(.editorialDiagram:not(.editorialDiagram--compact)) { max-inline-size: 840px; }
+.editorialDiagram { container: editorial-figure / inline-size; min-inline-size: 0; max-inline-size: 100%; }
+.diagramViewport { max-inline-size: 100%; overflow: auto; overscroll-behavior: contain auto; border-radius: var(--radius); background: var(--paper); }
+.diagramViewport > .figureSvg { inline-size: 840px; min-inline-size: 100%; max-inline-size: none; }
+.diagramViewport:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.diagramScrollHint { display: none; align-items: center; gap: 8px; margin: 10px 0 0; color: #52655a; font: 500 13px/1.5 var(--font-sans); }
+.diagramScrollHint > svg { flex: none; width: 16px; height: 16px; }
+@container editorial-figure (width < 840px) { .diagramScrollHint { display: flex; } }
+
+.editorialDiagram--compact { container-name: editorial-figure-compact; }
+.editorialDiagram--compact > .diagramViewport { max-inline-size: 490px; margin-inline: auto; }
+.editorialDiagram--compact > .diagramViewport > .figureSvg { inline-size: 490px; }
+@container editorial-figure-compact (width < 490px) { .diagramScrollHint { display: flex; } }

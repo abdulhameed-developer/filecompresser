@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-28T11:34:10.476322+00:00",
+  "scope": "Checker/release acceptance only. No app, CMS, content, production, or immutable candidate export changed.",
+  "status": "PASSED_WITH_ORIGINAL_I_ARTIFACT_PRESERVED",
+  "finding": {
+    "before": "An otherwise valid page with conflicting googlebot noindex,nofollow incorrectly passed177checks. Remote page inspection did not retain X-Robots-Tag.",
+    "fixed": "Global HTTP and Googlebot/Bingbot scopes plus case-insensitive crawler meta are combined with ordinary robots restrictions. Restrictive rules win; none blocks index and follow. A mixed-case duplicate ordinary robots meta is detected.",
+    "falsePositiveControls": "Unrelated crawler scopes and max-image-preview:none do not block acceptance. Intentional local CI noindex/follow remains valid.",
+    "securityBoundary": "Remote production cannot opt into noindex/nofollow expectations. Reads retain manual redirects; no external redirect followed, credential or token added, deployment performed, or new public URL override introduced."
+  },
+  "officialSources": [
+    "https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag",
+    "https://www.bing.com/webmasters/help?topicid=37c07477"
+  ],
+  "authorizedFiles": [
+    "scripts/content-parity-core.mjs",
+    "scripts/content-parity.mjs",
+    "tests/content-parity.test.ts"
+  ],
+  "hashesBefore": {
+    "scripts/content-parity-core.mjs": "aa77eaffcf573e9a2e9f503a0c6e429db0aa903e5701b372ab5a9ba64341d129",
+    "scripts/content-parity.mjs": "c27ad21ee96e1999a4b26f27dfcfed031c7836e4258b8770f2e142fb21ccaf7a",
+    "tests/content-parity.test.ts": "632dd68a1ac67086041cee29d29310ed45da3a6dfda8b780eb3b05444062b604"
+  },
+  "hashesAfter": {
+    "scripts/content-parity-core.mjs": "bb327427b7e0bed291d99c344032c1760779bbf9cba9fca66cdadfdc46101195",
+    "scripts/content-parity.mjs": "9707b547ee7f6221df02edbf972401b19a6b641e8e0e0d23cd077d31af0e0fe0",
+    "tests/content-parity.test.ts": "3610a909808f5732cf4c23d71b13b666220d684fc0a39a675751d5a6cefa54a1"
+  },
+  "verification": {
+    "focusedFiles": 2,
+    "focusedTests": 59,
+    "parityTests": 55,
+    "publicationTests": 4,
+    "scopedLintPassed": true,
+    "typecheckPassed": true
+  },
+  "stricterSavedExport": {
+    "passed": true,
+    "sourceStable": true,
+    "pages": 28,
+    "pageChecks": 3822,
+    "sitemapChecks": 16,
+    "mismatches": 0,
+    "proof": "candidate-i-stricter-robots-final-parity.json",
+    "committedContent": false
+  },
+  "originalCandidateI": {
+    "homeSha256": "2ca99e2bea55fc605bf25e3bc16d70067f2624640d1d3fa945aaf5b73323992a",
+    "reportSha256": "549dbc1bd236ecd03fd2060a9dc5e56d14bfca1262488b4e1ce49eb6c7bb7391",
+    "unchangedArtifact": true,
+    "stillUnchangedAtDraft": true,
+    "all28HtmlHashesStillMatchOriginalIReport": true,
+    "stillUnchangedAtFinish": true
+  },
+  "originalCandidateIGates": "13 passed /1257tests in66files before checker-only fix; later focused checks are separately identified, not relabeled as a full original-I rebuild.",
+  "ciProductionReview": {
+    "ci": "Local-only nonindexable artifacts use explicit noindex/follow; workflow cannot deploy.",
+    "publication": "Push main only. Checked-outHEAD must equalexpectedGitHubSHA; waits for that exact public release; requires committed content and hard production index/follow; verifies public identity again after all-page parity.",
+    "releaseIdentity": "Cloudflare packaging uses CF_PAGES_COMMIT_SHA; release.json no-store/noindex headers affect utility only, not public HTML.",
+    "timeout": "Root is adjusting job headroom from30 to45minutes to preserve bounded fail-closed monitoring during delayed build/transport; this review did not edit CI."
+  },
+  "remainingBoundaries": [
+    "Current saved I actual meta/header-rule scan passes, but actual Cloudflare response headers still require post-release capture.",
+    "Saved export inspections do not execute server header rules; runtime HTTP headers are evaluated in live parity.",
+    "No indexing, ranking, field CWV, browser interaction or deployed release result is implied."
+  ]
+}

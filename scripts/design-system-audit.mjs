@@ -156,7 +156,7 @@ try {
   })
   await check('Tool facts are near selection and supporting guidance stays available', async () => {
     await p.goto(`${base}/jpg-compressor`)
-    assert.match(await p.locator('.workspaceIntro').innerText(), /50 MB/)
+    assert.match(await p.locator('.workspaceIntro').innerText(), /50 MiB/)
     assert.match(await p.locator('.formats').innerText(), /JPG/)
     assert.equal(await p.locator('.toolFacts,.toolNoteBlock,.processExplainer').count(), 0)
     await p.getByText('Limits and quality', { exact: true }).click()

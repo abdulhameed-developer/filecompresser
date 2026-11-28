@@ -7,6 +7,8 @@ import path from 'node:path'
 import type { Block, BlogPost, EditorialImage, FigureId } from './blog'
 import { TOOLS, canonicalSlug } from './tools'
 import { parseEditorialHtml, safeEditorialHref, safeReferenceHref, validateEditorialValue } from './editorial-markup'
+import { assertEditorialVocabulary } from './editorial-vocabulary.mjs'
+import { safeEditorialImagePath } from './editorial-constraints.mjs'
 
 export interface EditorialContent {
   heading: string
@@ -98,16 +100,8 @@ function editorialText(value: unknown, location: string, optional = false, allow
 function editorialImage(value: unknown, location: string): EditorialImage {
   const item = object(value, location)
   const input = text(item.src, `${location}.src`)
-  let decoded: string
-  try { decoded = decodeURIComponent(input) } catch { return fail(location, 'invalid image path encoding') }
-  // Only repo-managed raster images, with each filename encoded independently.
-  // Ordinary spaces/non-Latin filenames work without allowing traversal or SVG.
-  if (!input.startsWith('/uploads/') || /[?#]/.test(input) || /[\\\u0000-\u001f\u007f]/.test(decoded) ||
-    decoded.split('/').slice(2).some(segment => !segment || segment.startsWith('.')) ||
-    !/\.(?:jpe?g|png|webp|gif|avif)$/i.test(decoded)) {
-    return fail(location, 'choose a raster image stored under /uploads/')
-  }
-  const src = decoded.split('/').map(segment => encodeURIComponent(segment)).join('/')
+  let src: string
+  try { src = safeEditorialImagePath(input) } catch (error) { return fail(location, error instanceof Error ? error.message : 'Invalid image path') }
   return {
     src,
     alt: text(item.alt, `${location}.alt`),
@@ -172,6 +166,7 @@ export function parsePublishedPost(value: unknown, slug: string): BlogPost | und
   }
   if (item.archived !== undefined && typeof item.archived !== 'boolean') return fail(slug, 'archived must be true or false')
   if (item.published !== true || item.archived === true) return undefined
+  assertEditorialVocabulary(item, slug)
   const post: BlogPost = {
     slug,
     title: text(item.title, `${slug}.title`),
@@ -251,6 +246,7 @@ export function readPublishedPosts(directory = path.join(contentRoot, 'posts')):
 
 export function parseEditorialContent(value: unknown, location: string): EditorialContent {
   const item = object(value, location)
+  assertEditorialVocabulary(item, location)
   const faqMode = item.faqMode ?? 'default'
   if (!['default', 'custom', 'hidden'].includes(String(faqMode))) return fail(location, 'choose a valid FAQ mode')
   const hero = optionalObject(item.hero, `${location}.hero`)
@@ -261,9 +257,12 @@ export function parseEditorialContent(value: unknown, location: string): Editori
       const section = object(entry, `${location}.sections[${i}]`)
       return { heading: text(section.heading, `${location}.sections[${i}].heading`), body: editorialText(section.body, `${location}.sections[${i}].body`, false, true) }
     }),
-    faq: list(item.faq ?? [], `${location}.faq`).map((entry, i) => {
+    faq: list(item.faq ?? [], `${location}.faq`).flatMap((entry, i) => {
       const faq = object(entry, `${location}.faq[${i}]`)
-      return { q: text(faq.q, `${location}.faq[${i}].q`), a: editorialText(faq.a, `${location}.faq[${i}].a`) }
+      // A cleared optional row is not content. A partially written row still
+      // fails with its exact field, instead of publishing an incomplete FAQ.
+      if (Object.values(faq).every(isBlankOptionalValue)) return []
+      return [{ q: text(faq.q, `${location}.faq[${i}].q`), a: editorialText(faq.a, `${location}.faq[${i}].a`) }]
     }),
     faqMode: faqMode as EditorialContent['faqMode'],
     links: list(item.links ?? [], `${location}.links`).map((entry, i) => {

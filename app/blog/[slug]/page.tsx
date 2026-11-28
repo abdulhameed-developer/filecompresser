@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { allPostSlugs, getPost, postAuthor, postImage, postsByDate } from '@/lib/blog'
+import { postDateLabel, postUpdatedDate } from '@/lib/blog-dates'
 import { ORGANIZATION_NAME, SITE_NAME, SITE_WORDMARK, SITE_INDEXABLE, absoluteUrl, breadcrumbJsonLd, jsonLdScript } from '@/lib/seo'
 import BlogContent from '@/components/BlogContent'
 import BlogImage from '@/components/BlogImage'
@@ -127,7 +128,7 @@ export default async function BlogPostPage({
       </nav>
 
       <div className="sectionLabel">
-        <time dateTime={post.date}>{formatDate(post.date)}</time>
+        <time dateTime={postUpdatedDate(post)}>Updated {postDateLabel(postUpdatedDate(post))}</time>
         <span className="postMetaDot" aria-hidden="true">
           ·
         </span>
@@ -138,7 +139,6 @@ export default async function BlogPostPage({
 
       <h1>{post.title}</h1>
       <p className="toolIntro">{post.description}</p>
-      {post.updated && post.updated !== post.date && <p className="postUpdated">Updated <time dateTime={post.updated}>{formatDate(post.updated)}</time></p>}
 
       <figure className="articleHero">
         {responsiveFigure ? <BlogImage figure={responsiveFigure} sizes="(max-width: 900px) calc(100vw - 40px), 860px" priority alt={image.alt} fallbackSrc={post.featuredImage ? image.src : undefined} /> : <Image src={image.src} alt={image.alt} width={1200} height={800} sizes="(max-width: 900px) calc(100vw - 40px), 860px" loading="eager" fetchPriority="high" style={{ width: '100%', height: 'auto' }} />}
@@ -164,7 +164,7 @@ export default async function BlogPostPage({
             <li key={other.slug}>
               <Link prefetch={false} href={`/blog/${other.slug}`}>
                 {other.title}
-                <small>{other.description}</small>
+                <small><time dateTime={postUpdatedDate(other)}>Updated {postDateLabel(postUpdatedDate(other))}</time> · {other.description}</small>
               </Link>
             </li>
           ))}
@@ -178,13 +178,4 @@ export default async function BlogPostPage({
       </p>
     </article>
   )
-}
-
-function formatDate(iso: string): string {
-  return new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-GB', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-    timeZone: 'UTC',
-  })
 }

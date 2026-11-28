@@ -1,42 +1,42 @@
 {
-  "heading": "  GIF Compressor Online to Reduce Animated GIF File Size",
-  "introduction": "Animated GIFs are commonly used in social media posts, website graphics, tutorials, product demonstrations and short reactions. They allow several image frames to play in sequence without requiring a separate video player.\n\nAlthough GIFs are useful for simple animations, their file sizes can become large. An animation with many frames, detailed colors or high dimensions may take up considerable storage space and require more time to load on a website.\n\nFile Compresser provides an online GIF Compressor that attempts to reduce the size of animated GIF files by optimizing their color palettes. You can process supported animations directly in your browser without installing software or uploading your files to an external server.\n\nThe tool is designed to check important animation properties so that reducing file size does not unnecessarily change the timing or looping of your GIF.\n",
+  "heading": "GIF Compressor Online to Reduce Animated GIF File Size",
+  "introduction": "Reduce GIF color palettes while checking dimensions, frame timing, transparency and looping. Choose Recommended or Maximum, process locally, and review the entire downloaded animation.",
   "sections": [
     {
       "heading": "What Is a GIF Compressor?",
-      "body": "A GIF compressor is a tool that optimizes animated or static GIF files to reduce their storage size.\n\nGIF images use a limited color palette. Each frame can contain information about the colors and visual changes needed to display the animation.\n\nOne way to reduce the size of a GIF is to use fewer colors. This can reduce the amount of image information stored in the animation, but it may also affect gradients, edges and subtle color differences.\n\nFile Compresser provides two main modes for animated GIF optimization: Recommended and Maximum.\n\nThe tool attempts to maintain the animation dimensions, frame delays and loop count. It does not simply reduce the frame rate to make the file smaller.\n"
+      "body": "A GIF compressor is a tool that optimizes animated or static GIF files to reduce their storage size.\n\nGIF images use a limited color palette. Each frame can contain information about the colors and visual changes needed to display the animation.\n\nOne way to reduce the size of a GIF is to use fewer colors. This can reduce the amount of image information stored in the animation, but it may also affect gradients, edges and subtle color differences.\n\nFileCompresser provides two main modes for animated GIF optimization: Recommended and Maximum.\n\nThe tool attempts to maintain the animation dimensions, frame delays and loop count. It does not simply reduce the frame rate to make the file smaller."
     },
     {
       "heading": "How to Compress an Animated GIF Online",
-      "body": "You can reduce an animated GIF using a few simple steps.\n\n1. Open the GIF Compressor page on File Compresser.\n2. Select a supported GIF file from your device.\n3. Wait for the file validation process.\n4. Choose Recommended or Maximum.\n5. Start the optimization process.\n6. Allow the browser to process the animation.\n7. Compare the original and processed file sizes.\n8. Download the result and play the complete animation.\n\nIt is important to review the entire animation rather than checking only its first frame. Some visual changes may become noticeable only when the GIF moves.\n"
+      "body": "You can reduce an animated GIF using a few simple steps.\n\n1. Open the GIF Compressor page on FileCompresser.\n2. Select a supported GIF file from your device.\n3. Wait for the file validation process.\n4. Choose Recommended or Maximum.\n5. Start the optimization process.\n6. Allow the browser to process the animation.\n7. Compare the original and processed file sizes.\n8. Download the result and play the complete animation.\n\nIt is important to review the entire animation rather than checking only its first frame. Some visual changes may become noticeable only when the GIF moves."
     },
     {
       "heading": "Understand GIF Compression Modes",
-      "body": "Choosing the right mode depends on the original animation and the quality you want to retain.\n"
+      "body": "Choosing the right mode depends on the original animation and the quality you want to retain."
     },
     {
       "heading": "Recommended Mode",
-      "body": "Recommended uses a palette of up to 128 colors. It is a practical starting point for people who want to reduce GIF size while avoiding the stronger color reduction of Maximum mode. It may be suitable for simple animations, reaction GIFs and short demonstrations.\n"
+      "body": "Recommended uses a palette of up to 128 colors. It is a practical starting point for people who want to reduce GIF size while avoiding the stronger color reduction of Maximum mode. It may be suitable for simple animations, reaction GIFs and short demonstrations."
     },
     {
       "heading": "Maximum Mode",
-      "body": "Maximum uses a palette of up to 64 colors. This can help reduce the file size further, but more noticeable color changes may occur.\n\nFor example, an animation with smooth gradients or subtle shades may show visible differences after processing. Always compare the original and final versions before using the optimized GIF.\n"
+      "body": "Maximum uses a palette of up to 64 colors. This can help reduce the file size further, but more noticeable color changes may occur.\n\nFor example, an animation with smooth gradients or subtle shades may show visible differences after processing. Always compare the original and final versions before using the optimized GIF."
     },
     {
       "heading": "Why Do Animated GIFs Have Large File Sizes?",
-      "body": "Several factors affect the size of an animated GIF.\n\nNumber of frames: Every animation frame contains image information. More frames can increase the total amount of data.\nImage dimensions: A GIF with a large width and height generally requires more image data than a smaller animation.\nColor complexity: Animations containing many different colors and gradients may need more information to display their appearance.\nAnimation duration: Longer animations may contain more frames, which can increase the file size.\nVisual movement: Animations with frequent changes across the image can require more data than animations where only a small section changes.\n\nUnderstanding these factors can help you decide whether palette optimization is sufficient or whether you need to create a shorter or smaller animation.\n"
+      "body": "Several factors affect the size of an animated GIF.\n\n- Number of frames: Every animation frame contains image information. More frames can increase the total amount of data.\n- Image dimensions: A GIF with a large width and height generally requires more image data than a smaller animation.\n- Color complexity: Animations containing many different colors and gradients may need more information to display their appearance.\n- Animation duration: Longer animations may contain more frames, which can increase the file size.\n- Visual movement: Animations with frequent changes across the image can require more data than animations where only a small section changes.\n\nUnderstanding these factors can help you decide whether palette optimization is sufficient or whether you need to create a shorter or smaller animation."
     },
     {
       "heading": "Does GIF Compression Affect Animation Quality?",
-      "body": "It can. Reducing the color palette may change the appearance of certain frames.\n\nYou may notice changes in gradients, shadows, fine edges or areas containing similar colors. Maximum mode can make these changes more noticeable because it uses a smaller palette.\n\nFile Compresser checks animation properties such as frame timing, frame count, dimensions, transparency and looping before offering a smaller result.\nIf the tool cannot safely preserve the checked properties, or if it cannot find a suitable smaller version, it retains the original file unchanged.\n"
+      "body": "It can. Reducing the color palette may change the appearance of certain frames.\n\nYou may notice changes in gradients, shadows, fine edges or areas containing similar colors. Maximum mode can make these changes more noticeable because it uses a smaller palette.\n\nFileCompresser checks animation properties such as frame timing, frame count, dimensions, transparency and looping before offering a smaller result.\nIf the tool cannot safely preserve the checked properties, or if it cannot find a suitable smaller version, it retains the original file unchanged."
     },
     {
       "heading": "Are Animation Speed and Looping Preserved?",
-      "body": "The GIF Compressor is designed to preserve frame delays and loop count.\n\nIt does not apply a fixed frame-rate reduction as its main compression method. This helps maintain the original animation timing rather than making the GIF play faster or slower simply to reduce its size.\n\nAfter downloading, play the complete GIF to confirm that its speed, appearance and looping are suitable.\n"
+      "body": "The GIF Compressor is designed to preserve frame delays and loop count.\n\nIt does not apply a fixed frame-rate reduction as its main compression method. This helps maintain the original animation timing rather than making the GIF play faster or slower simply to reduce its size.\n\nAfter downloading, play the complete GIF to confirm that its speed, appearance and looping are suitable."
     },
     {
       "heading": "When Should You Compress a GIF?",
-      "body": "GIF compression can be useful in several situations.\n"
+      "body": "GIF compression can be useful in several situations."
     },
     {
       "heading": "Website Animations",
@@ -44,23 +44,23 @@
     },
     {
       "heading": "Social Media Content",
-      "body": "People often share reaction GIFs and short animations through messaging applications and social platforms. Smaller files may be easier to share.\n"
+      "body": "People often share reaction GIFs and short animations through messaging applications and social platforms. Smaller files may be easier to share."
     },
     {
       "heading": "Educational Tutorials",
-      "body": "GIFs can demonstrate short processes, software actions and visual instructions. Compression may help make these files easier to include in learning material.\n"
+      "body": "GIFs can demonstrate short processes, software actions and visual instructions. Compression may help make these files easier to include in learning material."
     },
     {
       "heading": "Product Demonstrations",
-      "body": "Online stores may use animated graphics to show product features or simple movements. Optimizing these files can help manage their storage size.\n"
+      "body": "Online stores may use animated graphics to show product features or simple movements. Optimizing these files can help manage their storage size."
     },
     {
       "heading": "Browser Processing and File Limits",
-      "body": "File Compresser processes GIF files directly on your device. The website loads its media processing engine when needed, and your browser may cache the required code for later use.\n\nThe tool accepts GIF files up to 50 MB. It also applies preflight limits of 1,000 frames, a 32-megapixel canvas and 64 million pixels across full-canvas frames.\n\nLong or complex animations can still require significant memory. If processing fails, try a shorter animation or a smaller source file.\n"
+      "body": "FileCompresser processes GIF files directly on your device. The website loads its media processing engine when needed, and your browser may cache the required code for later use.\n\nThe tool accepts GIF files up to 50 MiB. It also applies preflight limits of 1,000 frames, a 32-megapixel canvas and 64 million pixels across full-canvas frames.\n\nLong or complex animations can still require significant memory. If processing fails, try a shorter animation or a smaller source file."
     },
     {
       "heading": "Reduce GIF Size Without Ignoring Animation Quality",
-      "body": "Animated GIFs can be useful for websites, tutorials and everyday sharing, but large files may create unnecessary storage and loading problems.\n\nFile Compresser provides a straightforward way to test GIF palette optimization while checking important animation properties.\n\nSelect your animation, choose a suitable mode and review the complete result before downloading. This helps you balance file size, color appearance and animation quality.\n"
+      "body": "Animated GIFs can be useful for websites, tutorials and everyday sharing, but large files may create unnecessary storage and loading problems.\n\nFileCompresser provides a straightforward way to test GIF palette optimization while checking important animation properties.\n\nSelect your animation, choose a suitable mode and review the complete result before downloading. This helps you balance file size, color appearance and animation quality."
     }
   ],
   "links": [
@@ -76,29 +76,30 @@
   "faq": [
     {
       "q": "Is the GIF Compressor free?",
-      "a": "Yes. You can use the available tool without creating an account or purchasing a subscription.\n"
+      "a": "Yes. You can use the available tool without creating an account or purchasing a subscription."
     },
     {
       "q": "Can I compress animated GIFs without changing their speed?",
-      "a": "The tool checks and preserves frame delays when it offers a suitable optimized result.\n"
+      "a": "The tool checks and preserves frame delays when it offers a suitable optimized result."
     },
     {
       "q": "Will GIF compression remove frames?",
-      "a": "The optimization process checks the frame count and does not use a simple frame-rate reduction as its compression method.\n"
+      "a": "The optimization process checks the frame count and does not use a simple frame-rate reduction as its compression method."
     },
     {
       "q": "Why did my GIF remain the same size?",
-      "a": "The original may already be optimized, or a smaller candidate may not safely preserve the checked animation properties.\n"
+      "a": "The original may already be optimized, or a smaller candidate may not safely preserve the checked animation properties."
     },
     {
       "q": "Which GIF mode should I choose?",
-      "a": "Recommended is a good starting point. Maximum uses fewer colors and may provide stronger size reduction, with a greater chance of visible color changes.\n"
+      "a": "Recommended is a good starting point. Maximum uses fewer colors and may provide stronger size reduction, with a greater chance of visible color changes."
     },
     {
-      "q": "Are GIF files uploaded to File Compresser?",
-      "a": "No. The selected GIF is processed directly in your browser.\n"
+      "q": "Are GIF files uploaded to FileCompresser?",
+      "a": "No. The selected GIF is processed directly in your browser."
     }
   ],
   "seoTitle": "GIF Compressor Online Free – Reduce Animated GIF Size",
-  "seoDescription": " Compress animated GIFs online for free. Reduce color palettes while preserving animation timing, dimensions and looping in your browser."
+  "seoDescription": "Compress animated GIFs online for free. Reduce color palettes while preserving animation timing, dimensions and looping in your browser.",
+  "faqMode": "custom"
 }

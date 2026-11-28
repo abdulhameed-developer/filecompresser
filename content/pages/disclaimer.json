@@ -1,24 +1,24 @@
 {
   "title": "Disclaimer",
-  "introduction": "",
+  "introduction": "A valid output still needs your review. File size, visible detail, playback and device limits depend on the source and selected settings.",
   "seoTitle": "Disclaimer",
   "seoDescription": "What filecompresser does and does not guarantee: limits of browser-based processing, backup responsibility, and when to keep your originals.",
-  "updated": "2026-11-26",
+  "updated": "2026-11-28",
   "sections": [
     {
       "heading": "Your files stay on your device",
       "body": [
-        "Processing happens in your browser. Your file is read into that browser tab, processed there, and handed back to you. It is not transmitted to us. This is a technical property of how the tools are built, not a policy promise — there is no upload endpoint to send it to."
+        "The public tool workflow reads and processes selected files in your browser rather than uploading them to a compression server. Website and engine code still need network requests. Local processing does not protect against a compromised device, browser extension or hosting environment. The Privacy Policy explains the scope of this description."
       ]
     },
     {
       "heading": "Keep your own backups",
       "body": [
-        "Because nothing is stored, nothing is recoverable either. If a result is wrong, or your browser crashes mid-process, the original file is the only copy. Keep a backup of anything you cannot afford to re-download before using these tools on it."
+        "FileCompresser has no server copy of selected tool files to recover. A result can be lost when a tab is closed, reloaded or crashes. Your original file is not overwritten by the tool. Keep a separate original and save any result you need before clearing the queue."
       ]
     },
     {
-      "heading": "Compression is not always compression",
+      "heading": "Size and quality trade-offs",
       "body": [
         "Some formats cannot be made meaningfully smaller at the selected settings. For ordinary compression, a candidate that is not smaller is discarded and the original is returned unchanged with 0% reduction, including its existing metadata. Explicit format conversions and ZIP creation can increase bytes and are reported separately. No result is padded, truncated or renamed to manufacture a saving.",
         "Audio re-encoded to MP3 and video re-encoded to H.264 are genuinely lossy. They are appropriate for web delivery and email, but they are not archival replacements for the original."
@@ -33,7 +33,8 @@
     {
       "heading": "Browser and device limits",
       "body": [
-        "A browser tab has less memory than a desktop application, and less again on a phone. Very large videos and PDFs can exhaust the memory a browser will give a single page, particularly on mobile. When that happens you get a clear error and your original is untouched. This is a device constraint, not a limit on file types."
+        "Available browser memory and processing speed vary by device. A large or complex source can fail even below the tool’s displayed input limit. Media jobs have a five-minute processing limit. A browser or device can also close a tab before the application can display an error.",
+        "A file extension does not guarantee codec support. Check the whole animation or video, listen to audio, and inspect PDF pages, forms and links. The PDF tool performs structural optimization without downsampling scans. ZIP safety checks are not malware scanning."
       ]
     },
     {
@@ -46,7 +47,7 @@
       "heading": "Liability",
       "body": [
         "To the fullest extent the law allows, filecompresser is provided as-is, without warranty of any kind. The operators of this site are not liable for lost files, lost data, corrupted output, or any loss arising from your use of the tools.",
-        "Because your files never leave your device, that is also your only backup. Nothing here is a substitute for keeping your own copy of anything you cannot afford to lose.",
+        "The application does not keep a recoverable server copy of your selected files. Keep your own original and check any downloaded copy before relying on it.",
         "If you are relying on these tools for something contractual, regulated or otherwise consequential — filing a document, submitting evidence, publishing under a deadline — check the output, and consider whether you need professional advice first."
       ]
     }

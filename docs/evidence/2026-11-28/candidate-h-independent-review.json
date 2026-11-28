@@ -1,0 +1,284 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-28T10:38:29.046756+00:00",
+  "candidate": "H",
+  "purpose": "Independent read-only checkpoint review, not final release acceptance. Candidate I is planned for mobile article diagram changes.",
+  "passed": true,
+  "source": {
+    "branch": "main",
+    "committedHead": "b32caea43c83b35dfb17cbafeaa8a2f1fed587dd",
+    "mode": "WORKING_TREE",
+    "allContentMatchesCommittedHead": false,
+    "records": 29,
+    "runtimePins": 88,
+    "gateSourceFiles": 303,
+    "gateInputMapsUnchanged": true,
+    "currentAtReviewMatchesHRecordsAndPins": true
+  },
+  "build": {
+    "gates": 13,
+    "tests": 1252,
+    "testFiles": 65,
+    "buildId": "Ze7KmmRmmEAXbnYbGsZwl",
+    "homepageSha256": "b53f2d52bf61f05e2746674b22117fe7e2b4b2b82f347dbf3a09eb76971dc087"
+  },
+  "savedParity": {
+    "passed": true,
+    "pages": 28,
+    "canonicalRoutes": 27,
+    "drafts": 1,
+    "pageChecks": 3654,
+    "sitemapChecks": 16,
+    "mismatches": 0
+  },
+  "independentChecks": 900,
+  "independentScope": "Python standard-library HTML parser and XML parser, separate from application and content-parity parser. Every exported page: title/description/canonical/robots/h1/JSON-LD/footer. Raw source exact FAQ order/question/answer + schema on home and 15 served tool views (WAV alias included). Raw published/updated dates on five posts; sitemap canonical set/lastmod and draft exclusion. Every source-record/runtime pin compared to hashes; all saved full parity check values inspected for consistency.",
+  "reports": [
+    {
+      "route": "/",
+      "htmlFile": ".qa-results/phase3/candidate-h/export/index.html",
+      "htmlSha256": "b53f2d52bf61f05e2746674b22117fe7e2b4b2b82f347dbf3a09eb76971dc087",
+      "independentCheckCount": 26,
+      "passed": true,
+      "savedFullParityChecks": 177
+    },
+    {
+      "route": "/compress",
+      "htmlFile": ".qa-results/phase3/candidate-h/export/compress.html",
+      "htmlSha256": "d49c774af7d93010df43302b0ad7db44784edece559a5b43af76a667b0af72eb",
+      "independentCheckCount": 26,
+      "passed": true,
+      "savedFullParityChecks": 158
+    },
+    {
+      "route": "/image-compressor",
+      "htmlFile": ".qa-results/phase3/candidate-h/export/image-compressor.html",
+      "htmlSha256": "47deb67a102e29f435b05f108a4e3bc10247d7366e8eba8bb2f48bf3edf89a14",
+      "independentCheckCount": 26,
+      "passed": true,
+      "savedFullParityChecks": 179
+    },
+    {
+      "route": "/jpg-compressor",
+      "htmlFile": ".qa-results/phase3/candidate-h/export/jpg-compressor.html",
+      "htmlSha256": "f621d25e5b291838ebf8ee2a51f8e365d3d6baf9b570d41b6ae4a0c3713ef6c2",
+      "independentCheckCount": 26,
+      "passed": true,
+      "savedFullParityChecks": 186
+    },
+    {
+      "route": "/jpeg-compressor",
+      "htmlFile": ".qa-results/phase3/candidate-h/export/jpeg-compressor.html",
+      "htmlSha256": "a6d1250a9dd1f75abf6b6baf4a65c96a5a319d173f8e670962abdfd8c8f1fdce",
+      "independentCheckCount": 26,
+      "passed": true,
+      "savedFullParityChecks": 200
+    },
+    {
+      "route": "/png-compressor",
+      "htmlFile": ".qa-results/phase3/candidate-h/export/png-compressor.html",
+      "htmlSha256": "5dbafcbea1292c4263a02283cf5fa99094fc096e72fa2a2f909edefa930c0c75",
+      "independentCheckCount": 26,
+      "passed": true,
+      "savedFullParityChecks": 158
+    },
+    {
+      "route": "/webp-compressor",
+      "htmlFile": ".qa-results/phase3/candidate-h/export/webp-compressor.html",
+      "htmlSha256": "d0c02b2b97036effd61cfcebc9acfe17a63339b917a67e1f802bd63fdf9d16d6",
+      "independentCheckCount": 26,
+      "passed": true,
+      "savedFullParityChecks": 165
+    },
+    {
+      "route": "/gif-compressor",
+      "htmlFile": ".qa-results/phase3/candidate-h/export/gif-compressor.html",
+      "htmlSha256": "ce643f6acd8423d114b5325a051f5af08d7b970bb311b1f973e1392c568c0134",
+      "independentCheckCount": 26,
+      "passed": true,
+      "savedFullParityChecks": 172
+    },
+    {
+      "route": "/video-compressor",
+      "htmlFile": ".qa-results/phase3/candidate-h/export/video-compressor.html",
+      "htmlSha256": "9bbf10fe0fc1b1f31aeb6fad10091669f361e8b69dc9f0a9c8ff17e13d81729d",
+      "independentCheckCount": 26,
+      "passed": true,
+      "savedFullParityChecks": 200
+    },
+    {
+      "route": "/webm-to-mp4",
+      "htmlFile": ".qa-results/phase3/candidate-h/export/webm-to-mp4.html",
+      "htmlSha256": "98e968cc9306a2973a390a1a2be054d64fd9f98807258d50c6de3310a9635e2d",
+      "independentCheckCount": 24,
+      "passed": true,
+      "savedFullParityChecks": 91
+    },
+    {
+      "route": "/mp3-compressor",
+      "htmlFile": ".qa-results/phase3/candidate-h/export/mp3-compressor.html",
+      "htmlSha256": "fef70cf728069b3228e6225ea5853f70efeb7aec9452667e6ba347b28d6deb5f",
+      "independentCheckCount": 25,
+      "passed": true,
+      "savedFullParityChecks": 142
+    },
+    {
+      "route": "/wav-compressor",
+      "htmlFile": ".qa-results/phase3/candidate-h/export/wav-compressor.html",
+      "htmlSha256": "03ed15e73b1a685d1cd0c02d65361bc6d58ac9d104b0f215a1b959b56d1bdcb5",
+      "independentCheckCount": 25,
+      "passed": true,
+      "savedFullParityChecks": 149
+    },
+    {
+      "route": "/pdf-compressor",
+      "htmlFile": ".qa-results/phase3/candidate-h/export/pdf-compressor.html",
+      "htmlSha256": "81cbcd4d9fc18afedd056e4f6c7271b0c8a3f09f7e0a215606b10d5a46c29635",
+      "independentCheckCount": 26,
+      "passed": true,
+      "savedFullParityChecks": 144
+    },
+    {
+      "route": "/zip-compressor",
+      "htmlFile": ".qa-results/phase3/candidate-h/export/zip-compressor.html",
+      "htmlSha256": "ae7b3923f784460d4a82fbf27bfe65ca0b874f69979565275cea7e63f6ddd552",
+      "independentCheckCount": 26,
+      "passed": true,
+      "savedFullParityChecks": 151
+    },
+    {
+      "route": "/archive-compressor",
+      "htmlFile": ".qa-results/phase3/candidate-h/export/archive-compressor.html",
+      "htmlSha256": "62cfb65132443677b01c85cea201c1b58417490713826ed50ad7cf1d83e7c82c",
+      "independentCheckCount": 26,
+      "passed": true,
+      "savedFullParityChecks": 165
+    },
+    {
+      "route": "/wav-to-mp3",
+      "htmlFile": ".qa-results/phase3/candidate-h/export/wav-to-mp3.html",
+      "htmlSha256": "be5c6ccf33f7479d87e6853702ba3b0ded00570accf2e128a24fdf60cb4c0017",
+      "independentCheckCount": 15,
+      "passed": true,
+      "savedFullParityChecks": 149
+    },
+    {
+      "route": "/about",
+      "htmlFile": ".qa-results/phase3/candidate-h/export/about.html",
+      "htmlSha256": "014e975d29cd1696a743d9f197cf8706f020ee0b683c3ef771f596b0dc3d0341",
+      "independentCheckCount": 15,
+      "passed": true,
+      "savedFullParityChecks": 78
+    },
+    {
+      "route": "/contact",
+      "htmlFile": ".qa-results/phase3/candidate-h/export/contact.html",
+      "htmlSha256": "22d522fbc791b8eaf4a023ffa2014d0579bb670c5af92ee2c8b78a753c8c2b00",
+      "independentCheckCount": 15,
+      "passed": true,
+      "savedFullParityChecks": 74
+    },
+    {
+      "route": "/privacy",
+      "htmlFile": ".qa-results/phase3/candidate-h/export/privacy.html",
+      "htmlSha256": "6386b4abff92b241b922abdcf0656d78914c610d326f97697940820df0e8f90d",
+      "independentCheckCount": 15,
+      "passed": true,
+      "savedFullParityChecks": 93
+    },
+    {
+      "route": "/terms",
+      "htmlFile": ".qa-results/phase3/candidate-h/export/terms.html",
+      "htmlSha256": "6c5cee0ca4f4d63a9e6108ca698a8f797b933b1fd3c18443c44415985aaf3909",
+      "independentCheckCount": 15,
+      "passed": true,
+      "savedFullParityChecks": 77
+    },
+    {
+      "route": "/disclaimer",
+      "htmlFile": ".qa-results/phase3/candidate-h/export/disclaimer.html",
+      "htmlSha256": "dd1cb66bc28a0e519c2b767690be88c8f9d6c7c9190ed2f0f1be1e74da9e7fd6",
+      "independentCheckCount": 15,
+      "passed": true,
+      "savedFullParityChecks": 77
+    },
+    {
+      "route": "/blog",
+      "htmlFile": ".qa-results/phase3/candidate-h/export/blog.html",
+      "htmlSha256": "c6082a58d46af587605d9bc469aec957e157a785699a0a7f89a5f44ef76fb351",
+      "independentCheckCount": 15,
+      "passed": true,
+      "savedFullParityChecks": 82
+    },
+    {
+      "route": "/blog/compressing-files-for-the-web",
+      "htmlFile": ".qa-results/phase3/candidate-h/export/blog/compressing-files-for-the-web.html",
+      "htmlSha256": "36eabc0ea389a89c73f20dee6fe198c635b76c4325e553d70610b32f3bc7c8b6",
+      "independentCheckCount": 20,
+      "passed": true,
+      "savedFullParityChecks": 103
+    },
+    {
+      "route": "/blog/what-privacy-claim-really-means",
+      "htmlFile": ".qa-results/phase3/candidate-h/export/blog/what-privacy-claim-really-means.html",
+      "htmlSha256": "83394cbec9dcfded85201d0166a14f05e70591166c861ed085efef0389261ac0",
+      "independentCheckCount": 20,
+      "passed": true,
+      "savedFullParityChecks": 106
+    },
+    {
+      "route": "/blog/choosing-a-compression-mode",
+      "htmlFile": ".qa-results/phase3/candidate-h/export/blog/choosing-a-compression-mode.html",
+      "htmlSha256": "26c70c062cbbfb8bd0c6ffd4a42b127c846ac50daa3cf04861d7edb9932e8f88",
+      "independentCheckCount": 20,
+      "passed": true,
+      "savedFullParityChecks": 122
+    },
+    {
+      "route": "/blog/honest-file-size-reporting",
+      "htmlFile": ".qa-results/phase3/candidate-h/export/blog/honest-file-size-reporting.html",
+      "htmlSha256": "c95824456794ab528b8025c82423cd5399c244acd27083f125eae37fd4b02af7",
+      "independentCheckCount": 20,
+      "passed": true,
+      "savedFullParityChecks": 102
+    },
+    {
+      "route": "/blog/how-browser-compression-works",
+      "htmlFile": ".qa-results/phase3/candidate-h/export/blog/how-browser-compression-works.html",
+      "htmlSha256": "c87bb9e81e708c327203181079c85f3f1adcd0ed10746338fc690eaf94873f67",
+      "independentCheckCount": 20,
+      "passed": true,
+      "savedFullParityChecks": 102
+    },
+    {
+      "route": "/sitemap",
+      "htmlFile": ".qa-results/phase3/candidate-h/export/sitemap.html",
+      "htmlSha256": "efaaa107e04198590b5951a2652ad6c14c115546f59b74b9f61eb778bc44c673",
+      "independentCheckCount": 15,
+      "passed": true,
+      "savedFullParityChecks": 52
+    }
+  ],
+  "evidenceHashes": {
+    "completion.json": "ab5810dccfcfa1fcd6edc32518992341ef26ea0e7400cd19878d2fd0a4098666",
+    "inputs-before.json": "998343ec4a35c0b439742797b6e6eeba92d0a18ec4ead448ddc99a837fd3ca47",
+    "inputs-after.json": "998343ec4a35c0b439742797b6e6eeba92d0a18ec4ead448ddc99a837fd3ca47",
+    "content-parity-export.json": "979073120493c74d5e991e8a8e6456b5e712a6e896b5e454fb61ed1ba6bbe92d",
+    "06.log": "fb62a6c7fd49635a348b3f1a1772a34960e184377f105321cde6a6e929db1edc"
+  },
+  "limits": [
+    "H uses uncommitted working-tree source based on b32caea, not a new committed release.",
+    "No hosted Tina or public-production field parity is implied.",
+    "No new browser interaction/performance test performed here.",
+    "Saved full 3654-field parity checks were inspected for internal consistency; independent re-extraction scope is explicitly narrower and does not reimplement every prose/HTML field."
+  ],
+  "localHttpHomeIdentity": {
+    "url": "http://127.0.0.1:3323/",
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "b53f2d52bf61f05e2746674b22117fe7e2b4b2b82f347dbf3a09eb76971dc087",
+    "bytes": 108573,
+    "startedAt": "2026-11-28T10:38:39.218849+00:00",
+    "finishedAt": "2026-11-28T10:38:39.245008+00:00"
+  }
+}

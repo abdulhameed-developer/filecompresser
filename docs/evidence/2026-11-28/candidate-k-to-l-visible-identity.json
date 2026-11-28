@@ -1,0 +1,982 @@
+{
+  "createdAt": "2026-11-28T13:13:58.261224+00:00",
+  "status": "PASS",
+  "scope": "All public HTML, including attributes,text,comments,inline styles,JSON-LD and metadata. Only Next static script tags/build preload URLs and self.__next_f transport payloads are excluded. Actual public stylesheet bytes and every referenced stylesheet content hash must remain identical. This binds static visual/content evidence; it does not replace runtime navigation/processing tests.",
+  "publicHtmlFiles": 30,
+  "allPublicStylesheetContentHashesIdentical": true,
+  "stylesheetContentHashes": [
+    "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43",
+    "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+  ],
+  "rows": [
+    {
+      "html": "404.html",
+      "beforeHtmlSha256": "a8ba9ce9ab4a9f64217cb3a80152feb8181a011f38cc6587cd0b093dd87c5002",
+      "afterHtmlSha256": "e2be6b12f8f50718ff1ce34e80c4daaf68c7aa2ef586581659a72d09913c06f0",
+      "allNonTransportHtmlTokensIdentical": true,
+      "nextScriptNonUrlAttributesAndOrderIdentical": true,
+      "tokenCountBefore": 374,
+      "tokenCountAfter": 374,
+      "nextTransportScriptsBefore": 2,
+      "nextTransportScriptsAfter": 2,
+      "stylesheetReferencesBefore": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "stylesheetReferencesAfter": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "firstDifference": null
+    },
+    {
+      "html": "_not-found.html",
+      "beforeHtmlSha256": "a8ba9ce9ab4a9f64217cb3a80152feb8181a011f38cc6587cd0b093dd87c5002",
+      "afterHtmlSha256": "e2be6b12f8f50718ff1ce34e80c4daaf68c7aa2ef586581659a72d09913c06f0",
+      "allNonTransportHtmlTokensIdentical": true,
+      "nextScriptNonUrlAttributesAndOrderIdentical": true,
+      "tokenCountBefore": 374,
+      "tokenCountAfter": 374,
+      "nextTransportScriptsBefore": 2,
+      "nextTransportScriptsAfter": 2,
+      "stylesheetReferencesBefore": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "stylesheetReferencesAfter": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "firstDifference": null
+    },
+    {
+      "html": "about.html",
+      "beforeHtmlSha256": "c5f7d24b501cbfd4d7def5aea6f9dfbc64393b9584e0aa4b1ae0d6a5a4624e4f",
+      "afterHtmlSha256": "dc1f81f088e10caafe97dcb1e2a2cf8f38efc7af8b97055a9561f321597cced3",
+      "allNonTransportHtmlTokensIdentical": true,
+      "nextScriptNonUrlAttributesAndOrderIdentical": true,
+      "tokenCountBefore": 573,
+      "tokenCountAfter": 573,
+      "nextTransportScriptsBefore": 2,
+      "nextTransportScriptsAfter": 2,
+      "stylesheetReferencesBefore": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "stylesheetReferencesAfter": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "firstDifference": null
+    },
+    {
+      "html": "archive-compressor.html",
+      "beforeHtmlSha256": "c38170fae159ea2f4e29881e2b795ff0dc2f005baf6690e018be1ff30df882eb",
+      "afterHtmlSha256": "208ab86742307623c0827101208f4733f5bd33496f4717e95deb327ae661d939",
+      "allNonTransportHtmlTokensIdentical": true,
+      "nextScriptNonUrlAttributesAndOrderIdentical": true,
+      "tokenCountBefore": 1033,
+      "tokenCountAfter": 1033,
+      "nextTransportScriptsBefore": 2,
+      "nextTransportScriptsAfter": 2,
+      "stylesheetReferencesBefore": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "stylesheetReferencesAfter": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "firstDifference": null
+    },
+    {
+      "html": "blog.html",
+      "beforeHtmlSha256": "0912405aca87d495e8747f63debb89e270edfeac66dba595c0a8705a41bce52a",
+      "afterHtmlSha256": "e88a54d36c1062448aeeaa045a981079c8fa097791545d47627165f5ad13d24d",
+      "allNonTransportHtmlTokensIdentical": true,
+      "nextScriptNonUrlAttributesAndOrderIdentical": true,
+      "tokenCountBefore": 475,
+      "tokenCountAfter": 475,
+      "nextTransportScriptsBefore": 2,
+      "nextTransportScriptsAfter": 2,
+      "stylesheetReferencesBefore": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "stylesheetReferencesAfter": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "firstDifference": null
+    },
+    {
+      "html": "blog/choosing-a-compression-mode.html",
+      "beforeHtmlSha256": "c07267861976c434b95830ac909d142ab39a7d3ca6e0954147d2fc0cf8572ed7",
+      "afterHtmlSha256": "cfd464aeda488b869ec5631fc6816ef8358dda405d9434de757851d3834d5862",
+      "allNonTransportHtmlTokensIdentical": true,
+      "nextScriptNonUrlAttributesAndOrderIdentical": true,
+      "tokenCountBefore": 600,
+      "tokenCountAfter": 600,
+      "nextTransportScriptsBefore": 2,
+      "nextTransportScriptsAfter": 2,
+      "stylesheetReferencesBefore": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "stylesheetReferencesAfter": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "firstDifference": null
+    },
+    {
+      "html": "blog/compressing-files-for-the-web.html",
+      "beforeHtmlSha256": "67e5eb41ac738c2b6314aeb75aa94b6607a764d44699001a617f8b3728f64520",
+      "afterHtmlSha256": "a6df40e273ae6ba4d657aa959d76d644dae61c05dbc7d1a671e02e1190e477da",
+      "allNonTransportHtmlTokensIdentical": true,
+      "nextScriptNonUrlAttributesAndOrderIdentical": true,
+      "tokenCountBefore": 620,
+      "tokenCountAfter": 620,
+      "nextTransportScriptsBefore": 2,
+      "nextTransportScriptsAfter": 2,
+      "stylesheetReferencesBefore": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "stylesheetReferencesAfter": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "firstDifference": null
+    },
+    {
+      "html": "blog/honest-file-size-reporting.html",
+      "beforeHtmlSha256": "8399efa8b19373a5f304b88dcaabe4084998c97a4af178feb89764426c46ab6a",
+      "afterHtmlSha256": "c0ba69d8655c42d1cee6d2e674006a34acfda8750a0d9fbd9620fdcad1fcb273",
+      "allNonTransportHtmlTokensIdentical": true,
+      "nextScriptNonUrlAttributesAndOrderIdentical": true,
+      "tokenCountBefore": 584,
+      "tokenCountAfter": 584,
+      "nextTransportScriptsBefore": 2,
+      "nextTransportScriptsAfter": 2,
+      "stylesheetReferencesBefore": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "stylesheetReferencesAfter": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "firstDifference": null
+    },
+    {
+      "html": "blog/how-browser-compression-works.html",
+      "beforeHtmlSha256": "fc6e4f939c47229e5b233031774a0f06e21a4a0afba802de034ef19f24272b57",
+      "afterHtmlSha256": "678da6ceb41e6acb18e60590084a0e992866dc318e863f21907e06c3318c237b",
+      "allNonTransportHtmlTokensIdentical": true,
+      "nextScriptNonUrlAttributesAndOrderIdentical": true,
+      "tokenCountBefore": 614,
+      "tokenCountAfter": 614,
+      "nextTransportScriptsBefore": 2,
+      "nextTransportScriptsAfter": 2,
+      "stylesheetReferencesBefore": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "stylesheetReferencesAfter": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "firstDifference": null
+    },
+    {
+      "html": "blog/what-privacy-claim-really-means.html",
+      "beforeHtmlSha256": "16014be899dd59a00e555893566cd4e558ca6dfc4e70b93538e53b1d3da585a7",
+      "afterHtmlSha256": "0fd00e8520464a0f286abb17c4e04cea7efd8f74fc63e89f770f05718f2728d3",
+      "allNonTransportHtmlTokensIdentical": true,
+      "nextScriptNonUrlAttributesAndOrderIdentical": true,
+      "tokenCountBefore": 619,
+      "tokenCountAfter": 619,
+      "nextTransportScriptsBefore": 2,
+      "nextTransportScriptsAfter": 2,
+      "stylesheetReferencesBefore": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "stylesheetReferencesAfter": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "firstDifference": null
+    },
+    {
+      "html": "compress.html",
+      "beforeHtmlSha256": "54d55737cfc9eb864414c546a55802f5ad7385c39bd01cfa6dd478597b0c4e31",
+      "afterHtmlSha256": "dd0adff6682e3a750861e1db57627e683ec1d1070868f9a3dcfadd54ac9c728c",
+      "allNonTransportHtmlTokensIdentical": true,
+      "nextScriptNonUrlAttributesAndOrderIdentical": true,
+      "tokenCountBefore": 999,
+      "tokenCountAfter": 999,
+      "nextTransportScriptsBefore": 2,
+      "nextTransportScriptsAfter": 2,
+      "stylesheetReferencesBefore": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "stylesheetReferencesAfter": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "firstDifference": null
+    },
+    {
+      "html": "contact.html",
+      "beforeHtmlSha256": "143b873a7a849e09e50376cd09000d6a13f3a8b14b6a4cd70cf18ab3bd5ad55e",
+      "afterHtmlSha256": "45b95ffe1319fcb54e4995df20d5b3c6445f550fb971c4997204ad7208d170a6",
+      "allNonTransportHtmlTokensIdentical": true,
+      "nextScriptNonUrlAttributesAndOrderIdentical": true,
+      "tokenCountBefore": 431,
+      "tokenCountAfter": 431,
+      "nextTransportScriptsBefore": 2,
+      "nextTransportScriptsAfter": 2,
+      "stylesheetReferencesBefore": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "stylesheetReferencesAfter": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "firstDifference": null
+    },
+    {
+      "html": "disclaimer.html",
+      "beforeHtmlSha256": "2aed3f5a533a2218067be2e0d4030693313f086c3a4634709c0f223609183b2e",
+      "afterHtmlSha256": "6273817deea33f2fdd0d47deffe34371659657415bfe48374d27a0ac2bb5080f",
+      "allNonTransportHtmlTokensIdentical": true,
+      "nextScriptNonUrlAttributesAndOrderIdentical": true,
+      "tokenCountBefore": 429,
+      "tokenCountAfter": 429,
+      "nextTransportScriptsBefore": 2,
+      "nextTransportScriptsAfter": 2,
+      "stylesheetReferencesBefore": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "stylesheetReferencesAfter": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "firstDifference": null
+    },
+    {
+      "html": "gif-compressor.html",
+      "beforeHtmlSha256": "53c7e8936ae02fc5b1481490e645d01928bb740f2776324ebeec5d74445b8974",
+      "afterHtmlSha256": "916395f6d342c3caca40568440cded89507e1f492a2ad3bebdabd181c0d9e787",
+      "allNonTransportHtmlTokensIdentical": true,
+      "nextScriptNonUrlAttributesAndOrderIdentical": true,
+      "tokenCountBefore": 1089,
+      "tokenCountAfter": 1089,
+      "nextTransportScriptsBefore": 2,
+      "nextTransportScriptsAfter": 2,
+      "stylesheetReferencesBefore": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "stylesheetReferencesAfter": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "firstDifference": null
+    },
+    {
+      "html": "image-compressor.html",
+      "beforeHtmlSha256": "b512c80043243a47f5b0a1c81a0a2101c52ea2dbb682eb65f8f2167c9f4c220c",
+      "afterHtmlSha256": "5164b895e1a841716dcd68b72d4494f2028da794b8b8fdcbfa105d2c724e7c88",
+      "allNonTransportHtmlTokensIdentical": true,
+      "nextScriptNonUrlAttributesAndOrderIdentical": true,
+      "tokenCountBefore": 1033,
+      "tokenCountAfter": 1033,
+      "nextTransportScriptsBefore": 2,
+      "nextTransportScriptsAfter": 2,
+      "stylesheetReferencesBefore": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "stylesheetReferencesAfter": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "firstDifference": null
+    },
+    {
+      "html": "index.html",
+      "beforeHtmlSha256": "2619895be5f398566f4ff7c1acd0a37230a148a202b1f9d8f42997f15c78a295",
+      "afterHtmlSha256": "e1381f682d91dce59d1ab6bb54e2cfffdd07cc0b74dbbdfc440eadb6adc817d0",
+      "allNonTransportHtmlTokensIdentical": true,
+      "nextScriptNonUrlAttributesAndOrderIdentical": true,
+      "tokenCountBefore": 1467,
+      "tokenCountAfter": 1467,
+      "nextTransportScriptsBefore": 2,
+      "nextTransportScriptsAfter": 2,
+      "stylesheetReferencesBefore": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "stylesheetReferencesAfter": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "firstDifference": null
+    },
+    {
+      "html": "jpeg-compressor.html",
+      "beforeHtmlSha256": "96fb510026fdb8a50bd72a8f629b3fff2621fd675ecbe231f721755171ebe42e",
+      "afterHtmlSha256": "334f9bfa15c2375fceb0fffc00c4d08613e5a32a231b698b23e677755a1a21b4",
+      "allNonTransportHtmlTokensIdentical": true,
+      "nextScriptNonUrlAttributesAndOrderIdentical": true,
+      "tokenCountBefore": 1029,
+      "tokenCountAfter": 1029,
+      "nextTransportScriptsBefore": 2,
+      "nextTransportScriptsAfter": 2,
+      "stylesheetReferencesBefore": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "stylesheetReferencesAfter": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "firstDifference": null
+    },
+    {
+      "html": "jpg-compressor.html",
+      "beforeHtmlSha256": "51d6f3d90fe6da9724097271192baffa08cce46033c5cfcea771d2928dee4634",
+      "afterHtmlSha256": "e5172cf7a15c37fa43433cc6160b5809c513311f53fb6ce3d3cbcc019f0fa793",
+      "allNonTransportHtmlTokensIdentical": true,
+      "nextScriptNonUrlAttributesAndOrderIdentical": true,
+      "tokenCountBefore": 990,
+      "tokenCountAfter": 990,
+      "nextTransportScriptsBefore": 2,
+      "nextTransportScriptsAfter": 2,
+      "stylesheetReferencesBefore": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "stylesheetReferencesAfter": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "firstDifference": null
+    },
+    {
+      "html": "mp3-compressor.html",
+      "beforeHtmlSha256": "5506e750815c3665fc98a2fe98f3c3ae3c74d0fbfa0954f7d841e06dff2d71a7",
+      "afterHtmlSha256": "36ed2772b8878708749b4bb5cfb85dfe70f2b0758c520869cad07113bfe62c93",
+      "allNonTransportHtmlTokensIdentical": true,
+      "nextScriptNonUrlAttributesAndOrderIdentical": true,
+      "tokenCountBefore": 958,
+      "tokenCountAfter": 958,
+      "nextTransportScriptsBefore": 2,
+      "nextTransportScriptsAfter": 2,
+      "stylesheetReferencesBefore": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "stylesheetReferencesAfter": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "firstDifference": null
+    },
+    {
+      "html": "pdf-compressor.html",
+      "beforeHtmlSha256": "c8c74f0fede6ea1ffe1492e726e4877a5a715bf19909607a62e1a266b62ad907",
+      "afterHtmlSha256": "e888ef26f370d5afe5ab43c90aa96f1d995047407927bd187e0ced023e91b359",
+      "allNonTransportHtmlTokensIdentical": true,
+      "nextScriptNonUrlAttributesAndOrderIdentical": true,
+      "tokenCountBefore": 953,
+      "tokenCountAfter": 953,
+      "nextTransportScriptsBefore": 2,
+      "nextTransportScriptsAfter": 2,
+      "stylesheetReferencesBefore": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "stylesheetReferencesAfter": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "firstDifference": null
+    },
+    {
+      "html": "png-compressor.html",
+      "beforeHtmlSha256": "6c9f5c96cbf5c74bbd8719b4bb7a82caa803be3a5b11d4bda2f2ba97af8ee264",
+      "afterHtmlSha256": "c73b847e7aa937545c89c0acba3784ca9ce493e8da6c59e71225af53941c4bf0",
+      "allNonTransportHtmlTokensIdentical": true,
+      "nextScriptNonUrlAttributesAndOrderIdentical": true,
+      "tokenCountBefore": 1002,
+      "tokenCountAfter": 1002,
+      "nextTransportScriptsBefore": 2,
+      "nextTransportScriptsAfter": 2,
+      "stylesheetReferencesBefore": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "stylesheetReferencesAfter": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "firstDifference": null
+    },
+    {
+      "html": "privacy.html",
+      "beforeHtmlSha256": "1d8986b13e846bd2057c68fae959af05f2eb0e5df9ade6c120c16fff9714555d",
+      "afterHtmlSha256": "619c63da41449580affe3e93a921bcfef09a82091f2d19609c5ac827aced7259",
+      "allNonTransportHtmlTokensIdentical": true,
+      "nextScriptNonUrlAttributesAndOrderIdentical": true,
+      "tokenCountBefore": 509,
+      "tokenCountAfter": 509,
+      "nextTransportScriptsBefore": 2,
+      "nextTransportScriptsAfter": 2,
+      "stylesheetReferencesBefore": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "stylesheetReferencesAfter": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "firstDifference": null
+    },
+    {
+      "html": "sitemap.html",
+      "beforeHtmlSha256": "9e9d57dc4560cc044d5b3960f62b2d42dd81105aa4aba5120a6f410e0552ae6d",
+      "afterHtmlSha256": "3bb2e4934de2320301e4daf8d7ca48a7239bf6947ab65be8abe2f5126735451b",
+      "allNonTransportHtmlTokensIdentical": true,
+      "nextScriptNonUrlAttributesAndOrderIdentical": true,
+      "tokenCountBefore": 651,
+      "tokenCountAfter": 651,
+      "nextTransportScriptsBefore": 2,
+      "nextTransportScriptsAfter": 2,
+      "stylesheetReferencesBefore": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "stylesheetReferencesAfter": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "firstDifference": null
+    },
+    {
+      "html": "terms.html",
+      "beforeHtmlSha256": "6b2437729f1ec3cc8c949fa659a6dfe85f919aaad0ec362670c1b31dfcd03aaf",
+      "afterHtmlSha256": "6197c8558098c0c0bda50a80a72ed139376141bc6548f16867ed93c58c87a207",
+      "allNonTransportHtmlTokensIdentical": true,
+      "nextScriptNonUrlAttributesAndOrderIdentical": true,
+      "tokenCountBefore": 426,
+      "tokenCountAfter": 426,
+      "nextTransportScriptsBefore": 2,
+      "nextTransportScriptsAfter": 2,
+      "stylesheetReferencesBefore": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "stylesheetReferencesAfter": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "firstDifference": null
+    },
+    {
+      "html": "video-compressor.html",
+      "beforeHtmlSha256": "f366d44c00dbd6065cc8a034fb4efd675d949254138af95a7c0927b49f6f60d1",
+      "afterHtmlSha256": "0b1ffdfe02839b01bfc756abdbd53fa2e6f8aa5044c133b32f7bb89f10eda9bc",
+      "allNonTransportHtmlTokensIdentical": true,
+      "nextScriptNonUrlAttributesAndOrderIdentical": true,
+      "tokenCountBefore": 1152,
+      "tokenCountAfter": 1152,
+      "nextTransportScriptsBefore": 2,
+      "nextTransportScriptsAfter": 2,
+      "stylesheetReferencesBefore": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "stylesheetReferencesAfter": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "firstDifference": null
+    },
+    {
+      "html": "wav-compressor.html",
+      "beforeHtmlSha256": "4ca7cf9d3133900cc37a82bf723b68de44658dccd17aea4719434ed8559f48d0",
+      "afterHtmlSha256": "4694eabde5a089481014470309517e5cf5ca18107e0734fbc4bc57ea2ae4913a",
+      "allNonTransportHtmlTokensIdentical": true,
+      "nextScriptNonUrlAttributesAndOrderIdentical": true,
+      "tokenCountBefore": 968,
+      "tokenCountAfter": 968,
+      "nextTransportScriptsBefore": 2,
+      "nextTransportScriptsAfter": 2,
+      "stylesheetReferencesBefore": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "stylesheetReferencesAfter": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "firstDifference": null
+    },
+    {
+      "html": "wav-to-mp3.html",
+      "beforeHtmlSha256": "8a720baeeae3250553e65c271dce74e222aa663226a0ad6a8d2d9621f98f5186",
+      "afterHtmlSha256": "3cceaca8f8eb70daff4d14fccc47bc231825d3639f67f8eb0a2c880ccdc08365",
+      "allNonTransportHtmlTokensIdentical": true,
+      "nextScriptNonUrlAttributesAndOrderIdentical": true,
+      "tokenCountBefore": 968,
+      "tokenCountAfter": 968,
+      "nextTransportScriptsBefore": 2,
+      "nextTransportScriptsAfter": 2,
+      "stylesheetReferencesBefore": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "stylesheetReferencesAfter": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "firstDifference": null
+    },
+    {
+      "html": "webm-to-mp4.html",
+      "beforeHtmlSha256": "120d58f8f34c2a4df0434af3515866ba96fea5e005bd9634197402a09ce33967",
+      "afterHtmlSha256": "d07a4cb13236eba97a555f4815b4d5e9b601a139a1f9cf00bd238622a58e0fe7",
+      "allNonTransportHtmlTokensIdentical": true,
+      "nextScriptNonUrlAttributesAndOrderIdentical": true,
+      "tokenCountBefore": 632,
+      "tokenCountAfter": 632,
+      "nextTransportScriptsBefore": 2,
+      "nextTransportScriptsAfter": 2,
+      "stylesheetReferencesBefore": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "stylesheetReferencesAfter": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "firstDifference": null
+    },
+    {
+      "html": "webp-compressor.html",
+      "beforeHtmlSha256": "a38ea6c2348ad43863276b601a0e4cb527b2186807b013839d979febe15d2cf2",
+      "afterHtmlSha256": "2b94a1a6aaaafca49138758890ec992470ac453b258ccb4b9d4c1a2839c857e6",
+      "allNonTransportHtmlTokensIdentical": true,
+      "nextScriptNonUrlAttributesAndOrderIdentical": true,
+      "tokenCountBefore": 1048,
+      "tokenCountAfter": 1048,
+      "nextTransportScriptsBefore": 2,
+      "nextTransportScriptsAfter": 2,
+      "stylesheetReferencesBefore": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "stylesheetReferencesAfter": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "firstDifference": null
+    },
+    {
+      "html": "zip-compressor.html",
+      "beforeHtmlSha256": "9b16823f24b50539429b2a609d6a11393a2dd707fc19f31804b9bd594d5bfe78",
+      "afterHtmlSha256": "3eb715b2157db5b49c760f33c34e29de25013264c09a82096d9266ceffa30ba7",
+      "allNonTransportHtmlTokensIdentical": true,
+      "nextScriptNonUrlAttributesAndOrderIdentical": true,
+      "tokenCountBefore": 954,
+      "tokenCountAfter": 954,
+      "nextTransportScriptsBefore": 2,
+      "nextTransportScriptsAfter": 2,
+      "stylesheetReferencesBefore": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "stylesheetReferencesAfter": [
+        {
+          "href": "/_next/static/css/c99e57961448dba8.css",
+          "sha256": "6e82255ac4dea65a0dd94e264449a3e0bc52d46d08ee309821907ee81df97a43"
+        },
+        {
+          "href": "/_next/static/css/7ca778c1aad99526.css",
+          "sha256": "ee1248c08a8ac7a9dbd6f86fa38e472fdde608e2e5867c410c4398bf7d1efac1"
+        }
+      ],
+      "firstDifference": null
+    }
+  ],
+  "beforeCandidate": {
+    "label": "K",
+    "homepageSha256": "2619895be5f398566f4ff7c1acd0a37230a148a202b1f9d8f42997f15c78a295"
+  },
+  "afterCandidate": {
+    "label": "L",
+    "buildId": "tCAX7d0XrOoaW5384thyJ",
+    "homepageSha256": "e1381f682d91dce59d1ab6bb54e2cfffdd07cc0b74dbbdfc440eadb6adc817d0"
+  }
+}

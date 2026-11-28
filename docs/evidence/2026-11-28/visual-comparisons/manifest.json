@@ -1,0 +1,129 @@
+{
+  "reviewedAt": "2026-11-28T12:45:39.845652+00:00",
+  "scope": "Actual default desktop screenshot details: Phase3 local candidateI before the additional bounded refinements versus public-configured local candidateK afterward. This is not an old-live/new-live comparison or an interaction/functional pass.",
+  "sourceCandidates": [
+    "I",
+    "K"
+  ],
+  "comparisons": [
+    {
+      "page": "/about",
+      "observedBefore": "Managed text rendered with unstyled full-width black text and default blue link.",
+      "observedAfter": "Scoped reading width,15px/1.8 muted body text and matching underlined product link."
+    },
+    {
+      "page": "/blog/how-browser-compression-works",
+      "observedBefore": "840px intrinsic diagram clipped inside680px prose frame on1440px desktop; final Download node required sideways scrolling.",
+      "observedAfter": "Wider840px figure frame shows all five nodes and full caption while neighboring prose keeps680px width."
+    },
+    {
+      "page": "/webp-compressor",
+      "observedBefore": "Five quality-impact items were plain newline-separated text.",
+      "observedAfter": "Same authored items use semantic bullets and deliberate item/wrapped-line spacing."
+    }
+  ],
+  "files": [
+    {
+      "candidate": "final-i",
+      "route": "/about",
+      "source": ".qa-results/phase3/ui/final-i/responsive/about-1440.png",
+      "sourceSha256": "3b6742ea482a24a8d56fd0c4668587705dbeabcb4a84ce992fc1c2d9141c2757",
+      "crop": [
+        160,
+        1690,
+        1280,
+        2210
+      ],
+      "detail": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/about-final-i-detail.png",
+      "detailSha256": "193557da5003e48a3805cd50082fd32a10ef03ef0842f93bd5d86a5091e68145",
+      "purpose": "Unscaled screenshot detail for comparison; no image-content editing.",
+      "publishedEvidence": "docs/evidence/2026-11-28/visual-comparisons/about-final-i-detail.png",
+      "actualVisualReview": true
+    },
+    {
+      "candidate": "final-k",
+      "route": "/about",
+      "source": ".qa-results/phase3/ui/final-k/responsive/about-1440.png",
+      "sourceSha256": "74685032fc29b7adf0c5cd270c370da0c4163a0bfa3a8b8d55b4aa76d359fe47",
+      "crop": [
+        160,
+        1690,
+        1280,
+        2210
+      ],
+      "detail": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/about-final-k-detail.png",
+      "detailSha256": "333ec79ec2e1fc2ab37de040d4764796959f0dabcf716a22fa9aaeca4697511e",
+      "purpose": "Unscaled screenshot detail for comparison; no image-content editing.",
+      "publishedEvidence": "docs/evidence/2026-11-28/visual-comparisons/about-final-k-detail.png",
+      "actualVisualReview": true
+    },
+    {
+      "candidate": "final-i",
+      "route": "/blog/how-browser-compression-works",
+      "source": ".qa-results/phase3/ui/final-i/responsive/blog--how-browser-compression-works-1440.png",
+      "sourceSha256": "148fe53e1f0cf65c3bd187b388b5dfd7c5c941a1bd370acd2acf7732f8f6d1e4",
+      "crop": [
+        220,
+        1930,
+        1220,
+        2580
+      ],
+      "detail": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/blog--how-browser-compression-works-final-i-detail.png",
+      "detailSha256": "a68139ac60022cd8cec08ff1fcd35c4af21f541971de221a49665417c644b282",
+      "purpose": "Unscaled screenshot detail for comparison; no image-content editing.",
+      "publishedEvidence": "docs/evidence/2026-11-28/visual-comparisons/blog--how-browser-compression-works-final-i-detail.png",
+      "actualVisualReview": true
+    },
+    {
+      "candidate": "final-k",
+      "route": "/blog/how-browser-compression-works",
+      "source": ".qa-results/phase3/ui/final-k/responsive/blog--how-browser-compression-works-1440.png",
+      "sourceSha256": "97975261b88ccb2329f6fcf511a336c530f27cffe8d6589e3c17de8ed5c5dace",
+      "crop": [
+        220,
+        1930,
+        1220,
+        2580
+      ],
+      "detail": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/blog--how-browser-compression-works-final-k-detail.png",
+      "detailSha256": "4f74063ba0cda3a7fcf089234a673f4ff04d42398f9238a90475c2b337a2b5a8",
+      "purpose": "Unscaled screenshot detail for comparison; no image-content editing.",
+      "publishedEvidence": "docs/evidence/2026-11-28/visual-comparisons/blog--how-browser-compression-works-final-k-detail.png",
+      "actualVisualReview": true
+    },
+    {
+      "candidate": "final-i",
+      "route": "/webp-compressor",
+      "source": ".qa-results/phase3/ui/final-i/responsive/webp-compressor-1440.png",
+      "sourceSha256": "b46391448bc368faaec7b5703a266563e657373c68d6efd31f51414bf36d32e5",
+      "crop": [
+        220,
+        2780,
+        1220,
+        3570
+      ],
+      "detail": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/webp-compressor-final-i-detail.png",
+      "detailSha256": "78965c7f0ba35d389c6700fdfcf262aa311eeec4efc16b3355e23d9088bd911b",
+      "purpose": "Unscaled screenshot detail for comparison; no image-content editing.",
+      "publishedEvidence": "docs/evidence/2026-11-28/visual-comparisons/webp-compressor-final-i-detail.png",
+      "actualVisualReview": true
+    },
+    {
+      "candidate": "final-k",
+      "route": "/webp-compressor",
+      "source": ".qa-results/phase3/ui/final-k/responsive/webp-compressor-1440.png",
+      "sourceSha256": "26d5b0b3a5b593025d36a497aeca0c187a40e3c510b9a10c3a9f192f2dc8ebb3",
+      "crop": [
+        220,
+        2780,
+        1220,
+        3570
+      ],
+      "detail": ".qa-results/phase3/ui/final-k/desktop-review-release-readiness/webp-compressor-final-k-detail.png",
+      "detailSha256": "2616720f6f119d1c4e6a4a093d579cdd46533ab0ebc933800ee1ce1cbfdf7b05",
+      "purpose": "Unscaled screenshot detail for comparison; no image-content editing.",
+      "publishedEvidence": "docs/evidence/2026-11-28/visual-comparisons/webp-compressor-final-k-detail.png",
+      "actualVisualReview": true
+    }
+  ]
+}

@@ -98,7 +98,7 @@ export function inspectGifBytes(bytes: Uint8Array, signal?: CancelSignal): GifIn
 
 export async function inspectGif(file: Blob, signal?: CancelSignal): Promise<GifInspection> {
   assertNotCancelled(signal)
-  if (file.size > GIF_LIMITS.maxBytes) throw new ProcessingError('This GIF exceeds the 50 MB input limit.')
+  if (file.size > GIF_LIMITS.maxBytes) throw new ProcessingError('This GIF exceeds the 50 MiB input limit.')
   const bytes = new Uint8Array(await file.arrayBuffer())
   assertNotCancelled(signal)
   return inspectGifBytes(bytes, signal)

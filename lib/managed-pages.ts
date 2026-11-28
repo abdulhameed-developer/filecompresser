@@ -5,6 +5,7 @@ import type { Metadata } from 'next'
 import type { IconName } from '@/components/Icon'
 import { pageMetadata } from './seo'
 import { safeEditorialHref } from './editorial-markup'
+import { assertEditorialVocabulary } from './editorial-vocabulary.mjs'
 
 export const MANAGED_PAGE_SLUGS = ['about', 'contact', 'privacy', 'terms', 'disclaimer', 'blog'] as const
 export type ManagedPageSlug = typeof MANAGED_PAGE_SLUGS[number]
@@ -73,6 +74,7 @@ function date(value: unknown, location: string): string | undefined {
 }
 export function parseManagedPage(value: unknown, location: string): ManagedPage {
   const item = record(value, location)
+  assertEditorialVocabulary(item, location)
   const result: ManagedPage = {
     title: text(item.title, `${location}.title`),
     introduction: text(item.introduction, `${location}.introduction`, true),

@@ -17,7 +17,7 @@
       "icon": "clock",
       "heading": "Processing is slow",
       "body": [
-        "Try fewer queued files, a shorter clip or a smaller resolution cap. Keep the tab open. Cancel a job before changing settings, then retry the input."
+        "Try fewer queued files or a shorter media clip. The first media job downloads the engine; later encoding still depends on your device and source. The video compressor offers explicit height caps, while WebM conversion preserves source dimensions. Cancel a job before changing settings and retrying."
       ],
       "placement": "card"
     },
@@ -34,6 +34,14 @@
       "heading": "A download did not start",
       "body": [
         "Try the individual Download button or a ZIP for several results. Check browser download permissions and device storage. Results stay in the tab until cleared or closed."
+      ],
+      "placement": "card"
+    },
+    {
+      "icon": "image",
+      "heading": "An image target cannot be met",
+      "body": [
+        "Target Size is a maximum in actual bytes, not an approximate quality preset. Some images cannot fit at the selected format and original dimensions. Choose a larger limit or review a supported format conversion. This site does not resize images."
       ],
       "placement": "card"
     },
@@ -64,5 +72,5 @@
       "href": "/blog"
     }
   },
-  "updated": "2026-11-26"
+  "updated": "2026-11-28"
 }

@@ -275,7 +275,7 @@ describe('honest savings reporting', () => {
   const size = (mb: number) => mb * MB
 
   it('describes a genuine reduction with both sizes and a percentage', () => {
-    expect(savingsSummary(size(12.4), size(4.8))).toBe('12.40 MB → 4.80 MB · 61.3% smaller')
+    expect(savingsSummary(size(12.4), size(4.8))).toBe('13.00 MB → 5.03 MB · 61.3% smaller')
   })
 
   it('never presents growth as a saving', () => {
