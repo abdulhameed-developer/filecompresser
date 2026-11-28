@@ -70,7 +70,10 @@
       "q": "Can I compress PNG without losing transparency?",
       "a": "Yes. The supported PNG processing modes are designed to preserve transparency values.\n"
     },
-    {},
+    {
+      "q": "Does PNG Lossless reduce image quality?",
+      "a": "Lossless mode preserves decoded image pixels. It may not produce a smaller file for every image.\n"
+    },
     {},
     {},
     {},
