@@ -15,9 +15,6 @@
       "body": "The queue accepts up to 500 files and 300 MB in total, with a 200 MB per-file limit on this tool. Filenames may be normalized for the archive. Keep the originals and review the resulting names and contents before deleting any source files."
     }
   ],
-  "faq": [],
-  "seoTitle": "ZIP Creator — Combine Files Without Uploading",
-  "seoDescription": "Create a ZIP from multiple files on your device. Package a delivery into one download; already-compressed files may not become much smaller.",
   "links": [
     {
       "label": "Why compressed media gains little from ZIP",
@@ -27,5 +24,8 @@
       "label": "How files are handled on your device",
       "href": "/blog/what-privacy-claim-really-means"
     }
-  ]
+  ],
+  "faq": [],
+  "seoTitle": "ZIP Creator Online Free – Create ZIP Archives",
+  "seoDescription": "Create a ZIP archive from multiple files online. Combine documents, images and media in your browser without uploading your files."
 }
