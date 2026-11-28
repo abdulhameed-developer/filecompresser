@@ -15,9 +15,6 @@
       "body": "GIF encoding uses the media engine and can consume substantial memory. This tool accepts files up to 50 MB, but a long or complex animation may still exceed the resources available to your browser. Keep the source and try a shorter animation if processing fails."
     }
   ],
-  "faq": [],
-  "seoTitle": "GIF Compressor — Reduce Animated GIF Size",
-  "seoDescription": "Optimize animated GIF palettes locally while preserving frame timing, dimensions and looping. Compare actual size; retain the original when no suitable saving is found.",
   "links": [
     {
       "label": "How the browser processing pipeline works",
@@ -27,5 +24,8 @@
       "label": "Understand actual size reporting",
       "href": "/blog/honest-file-size-reporting"
     }
-  ]
+  ],
+  "faq": [],
+  "seoTitle": "GIF Compressor Online Free – Reduce Animated GIF Size",
+  "seoDescription": " Compress animated GIFs online for free. Reduce color palettes while preserving animation timing, dimensions and looping in your browser."
 }
