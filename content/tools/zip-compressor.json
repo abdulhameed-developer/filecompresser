@@ -6,7 +6,10 @@
       "heading": "What Is a ZIP Creator?",
       "body": "A ZIP Creator is a tool that combines selected files into one ZIP archive. The archive keeps the files together in a single package, which can make storage, transfer, and sharing easier.\n\nA ZIP archive is not always a way to make files significantly smaller. Many common formats, such as JPG images, MP3 audio, MP4 videos, and other compressed files, have already been optimized for storage. Adding these files to a ZIP archive may not reduce their total size by much.\n\nThe main purpose of File Compresser's ZIP Creator is to package files into one archive. It uses the selected input files to create the ZIP file, so the original file data is stored inside the archive.\n"
     },
-    {},
+    {
+      "heading": "How to Create a ZIP File Online",
+      "body": "Creating a ZIP archive with File Compresser is a simple process. You can select the files you want to keep together and create one downloadable archive.\n\n1. Open the ZIP Creator page on File Compresser.\n2. Select the files you want to include in the archive.\n3. Review the selected files before continuing.\n4. Start the ZIP creation process.\n5. Wait for the browser to package the files.\n6. Download the completed ZIP archive to your device.\n\nAfter downloading, you can keep the archive on your computer, attach it to an email, or share it through a supported file-sharing service."
+    },
     {},
     {},
     {},
