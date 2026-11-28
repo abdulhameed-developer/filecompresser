@@ -44,7 +44,7 @@
     },
     {
       "heading": "Can You Resize a PNG?",
-      "body": "Yes. File Compresser provides optional image resizing.\n\nThe original dimensions are preserved by default. You can enable resizing when a smaller width or height is needed for a website, email or digital document.\nThe aspect ratio is maintained, and smaller images are not enlarged.\n\nRemember that resizing changes the actual image pixels. If exact dimensions are important, check the output before using it in your design or website.\n"
+      "body": "Yes. File Compresser provides optional image resizing.\n\nThe original dimensions are preserved by default. You can enable resizing when a smaller width or height is needed for a website, email or digital document. The aspect ratio is maintained, and smaller images are not enlarged.\n\nRemember that resizing changes the actual image pixels. If exact dimensions are important, check the output before using it in your design or website.\n"
     }
   ],
   "links": [
