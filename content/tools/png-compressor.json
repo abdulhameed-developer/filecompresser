@@ -78,7 +78,10 @@
       "q": "Why is my PNG still large?",
       "a": "Some PNG files already use efficient compression. Images with complex details and many colors may also be difficult to reduce.\n"
     },
-    {},
+    {
+      "q": "Can I reduce PNG to 100KB?",
+      "a": "You can use Target Size to attempt a maximum of 100 KB. Whether this is achievable depends on the image and selected processing options.\n"
+    },
     {},
     {}
   ],
