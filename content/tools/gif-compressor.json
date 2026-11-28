@@ -30,7 +30,10 @@
       "heading": "Does GIF Compression Affect Animation Quality?",
       "body": "It can. Reducing the color palette may change the appearance of certain frames.\n\nYou may notice changes in gradients, shadows, fine edges or areas containing similar colors. Maximum mode can make these changes more noticeable because it uses a smaller palette.\n\nFile Compresser checks animation properties such as frame timing, frame count, dimensions, transparency and looping before offering a smaller result.\nIf the tool cannot safely preserve the checked properties, or if it cannot find a suitable smaller version, it retains the original file unchanged.\n"
     },
-    {},
+    {
+      "heading": "Are Animation Speed and Looping Preserved?",
+      "body": "The GIF Compressor is designed to preserve frame delays and loop count.\n\nIt does not apply a fixed frame-rate reduction as its main compression method. This helps maintain the original animation timing rather than making the GIF play faster or slower simply to reduce its size.\n\nAfter downloading, play the complete GIF to confirm that its speed, appearance and looping are suitable.\n"
+    },
     {},
     {}
   ],
