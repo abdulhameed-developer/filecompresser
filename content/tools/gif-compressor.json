@@ -26,7 +26,10 @@
       "heading": "Why Do Animated GIFs Have Large File Sizes?",
       "body": "Several factors affect the size of an animated GIF.\n\nNumber of frames: Every animation frame contains image information. More frames can increase the total amount of data.\nImage dimensions: A GIF with a large width and height generally requires more image data than a smaller animation.\nColor complexity: Animations containing many different colors and gradients may need more information to display their appearance.\nAnimation duration: Longer animations may contain more frames, which can increase the file size.\nVisual movement: Animations with frequent changes across the image can require more data than animations where only a small section changes.\n\nUnderstanding these factors can help you decide whether palette optimization is sufficient or whether you need to create a shorter or smaller animation.\n"
     },
-    {},
+    {
+      "heading": "Does GIF Compression Affect Animation Quality?",
+      "body": "It can. Reducing the color palette may change the appearance of certain frames.\n\nYou may notice changes in gradients, shadows, fine edges or areas containing similar colors. Maximum mode can make these changes more noticeable because it uses a smaller palette.\n\nFile Compresser checks animation properties such as frame timing, frame count, dimensions, transparency and looping before offering a smaller result.\nIf the tool cannot safely preserve the checked properties, or if it cannot find a suitable smaller version, it retains the original file unchanged.\n"
+    },
     {},
     {},
     {}
