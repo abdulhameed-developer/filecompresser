@@ -3,17 +3,16 @@
   "introduction": "WAV files are commonly used for recordings, music production, audio editing, and sound projects. They can provide high-quality audio, but their file sizes are often larger than those of MP3 files. This can make WAV recordings harder to store, send, or share when you have limited storage space or a file-size restriction.\n\nA WAV to MP3 converter changes a supported WAV recording into an MP3 file. File Compresser provides an online WAV to MP3 Converter that lets you choose an output bitrate and process audio directly in your browser. You do not need to install a separate program or create an account to get started.\n",
   "sections": [
     {
-      "heading": "Make a sharing copy of the recording",
-      "body": "Add the WAV file, choose an MP3 bitrate from 96 to 320 kbps and process it. Play the resulting MP3 and compare the speech or music with the source before using it as an attachment or website download."
+      "heading": "What Is a WAV to MP3 Converter?",
+      "body": "A WAV to MP3 converter is an online tool that changes audio from the WAV format into the MP3 format. WAV files commonly contain uncompressed PCM audio, which can preserve the original audio data but usually requires more storage space.\n\nMP3 uses lossy compression. It reduces the amount of audio data by removing information that may be less noticeable during normal listening. This can make the output file smaller, depending on the original WAV recording and the selected bitrate.\n\nThe conversion is not a lossless way to keep the original PCM samples. It creates a new audio file with a different encoding. If you need the original audio for professional editing or long-term archiving, keep the WAV version."
     },
-    {
-      "heading": "Keep WAV for editing and archiving",
-      "body": "The MP3 is useful when you need a more compact sharing format. Keep the WAV when future editing, mixing or an exact copy of the source samples matters. Choosing a higher MP3 bitrate is still a lossy conversion."
-    },
-    {
-      "heading": "Understand the URL and limits",
-      "body": "The wav-compressor address and the wav-to-mp3 alias open this same conversion workflow. The input limit is 100 MB. Conversion loads the browser media engine and may need substantial time and memory for long recordings."
-    }
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
   ],
   "links": [
     {
