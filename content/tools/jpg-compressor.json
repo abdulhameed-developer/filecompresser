@@ -3,8 +3,8 @@
   "introduction": "JPG images are used across websites, online stores, social media, email attachments and digital documents. Their ability to store detailed photographs in relatively small files makes them a popular choice for everyday image sharing.\n\nHowever, some JPG photographs are still too large for a particular purpose. An online form may have a maximum upload limit, an email attachment may exceed the allowed size, or a website may need smaller images to reduce page weight.\n\nThe File Compresser JPG Compressor helps reduce the size of JPG and JPEG photographs directly in your browser. You can choose between different quality modes, set a maximum target size and compare the actual output with your original photograph.\n",
   "sections": [
     {
-      "heading": "Keep a copy of your original JPG",
-      "body": "Add the photograph and review the default Balanced mode for a moderate quality trade-off. Compare faces, textures and text at the same scale. High quality retains more detail at a potentially larger size; Maximum is an optional stronger mode that prioritizes smaller output with a greater risk of visible artifacts."
+      "heading": "What Is a JPG Compressor?",
+      "body": "A JPG compressor is an image optimization tool that reduces the amount of data used to store a photograph. JPG uses lossy compression. This means some image information is discarded during encoding to create a smaller file. The amount of information removed depends on the compression settings.\n\nA stronger compression setting can create a smaller file, but it can also affect visible details. Fine textures, faces, lettering and sharp edges may show changes when the quality is reduced too much. File Compresser provides different quality options so you can choose a result according to the purpose of your photograph.\n"
     },
     {
       "heading": "A target size is a limit, not an exact byte count",
