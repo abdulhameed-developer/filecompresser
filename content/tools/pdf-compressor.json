@@ -34,7 +34,10 @@
       "heading": "Why Does a PDF File Remain the Same Size?",
       "body": "Not every PDF contains information that can be removed to produce a smaller file. A document made mostly of scanned pages or embedded photographs may remain almost the same size because the File Compresser PDF tool does not downsample those images.\n\nThe tool also does not promise a fixed percentage reduction. The result depends on the document structure and the information that can safely be removed.\n\nIf the processed version is not smaller, File Compresser keeps the original file. This helps avoid replacing a document with a version that takes up more space without providing a useful reduction.\n"
     },
-    {},
+    {
+      "heading": "Important Things to Know Before Processing a PDF",
+      "body": "It is useful to understand what the tool does and does not change before selecting a document.\n\nScanned documents: A PDF made from scanned pages may contain large images. Since the tool does not reduce the resolution of embedded images, these documents may not become noticeably smaller.\nText and page content: The tool performs a structural rewrite rather than using OCR to recognize text in scanned pages. It does not turn scanned pages into searchable text.\nPasswords and encryption: The tool does not remove PDF passwords. Encrypted PDFs are not supported by the current workflow.\nDigital signatures: Signed PDFs are also refused by the tool. Processing a signed document can affect the validity of its signature, so do not use this workflow for signed files.\nForms and links: After processing, review interactive forms, links, and the appearance of important pages to make sure the document still works as expected.\nMetadata: Selected metadata may be removed when it is safe to do so, but this is not a complete privacy or metadata-cleaning service. Do not treat the tool as a way to remove every trace of information from a PDF.\n"
+    },
     {},
     {}
   ],
