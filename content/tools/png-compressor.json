@@ -15,9 +15,6 @@
       "body": "Target size tries real PNG encodes, including color-reduced candidates, and checks their bytes against your maximum. An oversized result is marked Target not met. Ordinary same-format compression returns the original unchanged with 0% reduction if no smaller suitable result is found. If a target cannot be reached, consider a less restrictive limit or supported WebP conversion."
     }
   ],
-  "faq": [],
-  "seoTitle": "PNG Compressor — Keep Transparent Images",
-  "seoDescription": "Compress PNG files losslessly by default, preserving decoded pixels, transparency and dimensions. Optional color-reduction modes show the trade-off and actual size.",
   "links": [
     {
       "label": "Compare transparent image formats",
@@ -27,5 +24,8 @@
       "label": "Why some images do not get smaller",
       "href": "/blog/honest-file-size-reporting"
     }
-  ]
+  ],
+  "faq": [],
+  "seoTitle": "PNG Compressor Online Free – Reduce PNG File Size",
+  "seoDescription": "Compress PNG images online while keeping transparent backgrounds. Choose lossless or color reduction settings and compare actual file sizes.\n"
 }
