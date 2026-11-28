@@ -30,7 +30,10 @@
       "heading": "Target Size",
       "body": "Target Size attempts to create a PNG within a specified maximum file size. It tests actual encoded results and checks the final number of bytes.\n\nThe tool can report Target not met if the selected maximum cannot be reached. It is better to use a realistic target than to force an image into a size that makes its colors or details unsuitable.\n"
     },
-    {},
+    {
+      "heading": "Why Is PNG Useful for Transparent Images?",
+      "body": "Transparency is one of the main reasons people choose PNG.\n\nFor example, a company logo may need to appear on a website with a colored background. A transparent PNG allows the background to show through instead of displaying a white or solid rectangle.\n\nPNG transparency is also useful for:\n\nWebsite icons and interface graphics.\nProduct images with removed backgrounds.\nDigital illustrations.\nScreenshots and diagrams.\nLogos and brand graphics.\nEducational graphics and charts.\n\nFile Compresser is designed to preserve transparency during its supported PNG optimization methods. Always inspect the output against both light and dark backgrounds to check the edges.\n"
+    },
     {},
     {},
     {}
