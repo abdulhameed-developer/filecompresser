@@ -3,17 +3,17 @@
   "introduction": "Website images play an important role in how visitors experience a page. Product photographs, banners, illustrations and other graphics help people understand products and services. However, large image files can increase page weight and make websites slower to load.\n\nWebP is a modern image format developed for web use. It supports lossy and lossless compression, along with transparency and animation. Many website owners use WebP to prepare images that can be delivered efficiently to visitors.\n\nEven when an image is already saved in WebP format, there may be opportunities to reduce its size further. File Compresser provides a WebP Compressor that lets you re-encode supported still WebP images, compare file sizes and review image quality directly in your browser.\n\nYou do not need to install software or upload your photographs to an external server. Your device handles the image processing.\n",
   "sections": [
     {
-      "heading": "Choose quality separately from dimensions",
-      "body": "Keep WebP output and choose Balanced, High quality, Maximum or a separate Target size. Compare the output at the same scale as the original. Image dimensions are preserved."
+      "heading": "What Is a WebP Compressor?",
+      "body": "A WebP compressor is an image optimization tool that changes how a WebP image is encoded to manage its file size.\n\nDepending on the selected settings, the tool can create a smaller image while keeping its original dimensions. It can also help prepare images for different website requirements.\n\nHowever, compression does not always make an existing WebP image smaller. Many WebP files are already optimized, and further encoding may produce little benefit.\nFile Compresser checks the actual result. If ordinary same-format compression does not create a smaller suitable file, the original is retained unchanged.\n"
     },
-    {
-      "heading": "Keep transparency when you need it",
-      "body": "WebP can retain transparent areas. Check edges against both light and dark backgrounds after downloading. JPG output is unavailable when a transparent source would have to be flattened."
-    },
-    {
-      "heading": "Keep a result only when it suits the page",
-      "body": "Compare actual file size, dimensions and visible detail together. A smaller image with unreadable text may be unsuitable. A requested conversion can increase bytes and is reported separately; it is never described as a saving."
-    }
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
   ],
   "links": [
     {
