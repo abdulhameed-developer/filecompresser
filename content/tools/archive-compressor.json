@@ -53,6 +53,10 @@
     {
       "heading": "Extract ZIP Files Online with File Compresser",
       "body": "If you need to open a ZIP archive without installing additional software, File Compresser provides a simple browser-based option. Select your supported ZIP file, extract its contents, and download the individual files or combined archive. Review unfamiliar files carefully before opening them, especially when the ZIP archive comes from an unknown source.\n"
+    },
+    {
+      "heading": "Is there a file-size limit?",
+      "body": "The maximum supported ZIP input size is 150 MB. Archives must also meet the tool's other extraction and safety limits.\n"
     }
   ],
   "links": [
