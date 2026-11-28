@@ -62,7 +62,10 @@
       "q": "Is the PDF Compressor free to use?",
       "a": "You can access the online tool without installing desktop software or creating an account. The only limits are the 50 MB file size and a queue of up to 500 files and 300 MB.\n"
     },
-    {},
+    {
+      "q": "Will the tool reduce every PDF file?",
+      "a": "No. The amount of reduction depends on the document. Some files may remain the same size because they contain little removable structural information.\n"
+    },
     {},
     {},
     {},
